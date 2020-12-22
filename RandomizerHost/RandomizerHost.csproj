@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>RandomizerHost</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -20,5 +21,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MM2RandoLib\MM2RandoLib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\MessageBox.axaml.cs">
+      <DependentUpon>MessageBox.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

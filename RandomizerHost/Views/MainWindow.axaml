@@ -209,6 +209,7 @@
                 Height="30"
                 Margin="2"
                 Command="{Binding CreateFromGivenSeedCommand}"
+                CommandParameter="{Binding ElementName=MainWindow}"
             >
                 Create From Given Seed
             </Button>
@@ -218,6 +219,7 @@
                 Height="30"
                 Margin="2"
                 Command="{Binding CreateFromRandomSeedCommand}"
+                CommandParameter="{Binding ElementName=MainWindow}"
             >
                 Create From Random Seed
             </Button>

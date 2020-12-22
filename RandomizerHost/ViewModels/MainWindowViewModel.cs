@@ -9,6 +9,7 @@ using Avalonia.Controls;
 using MM2Randomizer;
 using MM2Randomizer.Utilities;
 using ReactiveUI;
+using RandomizerHost.Views;
 
 namespace RandomizerHost.ViewModels
 {
@@ -35,8 +36,8 @@ namespace RandomizerHost.ViewModels
             }
 
             this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainngFolder, this.WhenAnyValue(x => x.CanOpenContainngFolder));
-            this.CreateFromGivenSeedCommand = ReactiveCommand.Create(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.RandoSettings.IsSeedValid));
-            this.CreateFromRandomSeedCommand = ReactiveCommand.Create(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.RandoSettings.IsHashValid));
+            this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.RandoSettings.IsSeedValid));
+            this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.RandoSettings.IsHashValid));
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
         }
 
@@ -129,7 +130,7 @@ namespace RandomizerHost.ViewModels
         }
 
 
-        public void CreateFromGivenSeed()
+        public async void CreateFromGivenSeed(Window in_Window)
         {
             Int32 seed = -1;
 
@@ -143,20 +144,37 @@ namespace RandomizerHost.ViewModels
                 }
                 catch (Exception ex)
                 {
+                    await MessageBox.Show(in_Window, ex.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+
                     Debug.WriteLine("Exception in parsing Seed. Using random seed. Message:/n" + ex.ToString());
                     seed = -1;
                 }
             }
 
-            // Perform randomization based on settings, then generate the ROM.
-            this.PerformRandomization(seed);
+            try
+            {
+                // Perform randomization based on settings, then generate the ROM.
+                this.PerformRandomization(seed);
+            }
+            catch (Exception e)
+            {
+                await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+            }
         }
 
 
-        public void CreateFromRandomSeed()
+        public async void CreateFromRandomSeed(Window in_Window)
         {
-            this.PerformRandomization(-1);
+            try
+            {
+                this.PerformRandomization(-1);
+            }
+            catch (Exception e)
+            {
+                await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+            }
         }
+
 
         public void OpenContainngFolder()
         {

@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <SignAssembly>True</SignAssembly>
+        <Title>MM2RandoLib</Title>
+        <Version>0.5.0</Version>
+        <Copyright>Copyright 2019 duckfist</Copyright>
+        <Description>.NET library that can generate a randomized ROM patch for Mega Man 2.</Description>
+        <Authors>duckfist</Authors>
+        <PackageLicenseUrl>https://github.com/duckfist/MM2Random/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/duckfist/MM2Random/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/duckfist/MM2Random/</RepositoryUrl>
+        <PackageTags></PackageTags>
+        <PackageReleaseNotes>migrated to .netstandard 2.0</PackageReleaseNotes>
+        <AssemblyVersion>0.5.0.*</AssemblyVersion>
+        <FileVersion>0.5.0.0</FileVersion>
+        <Deterministic>false</Deterministic>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <DebugType>full</DebugType>
+      <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <DebugType>full</DebugType>
+      <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
+    </ItemGroup>
+    
+</Project>
