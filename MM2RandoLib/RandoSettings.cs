@@ -223,6 +223,17 @@ namespace MM2Randomizer
             set => this.SetProperty(ref this.mSelectedPlayer, value);
         }
 
+        public ChargingSpeed HitPointChargingSpeed { get; set; } = ChargingSpeed.Slow;
+
+        public ChargingSpeed WeaponEnergyChargingSpeed { get; set; } = ChargingSpeed.Slow;
+
+        public ChargingSpeed EnergyTankChargingSpeed { get; set; } = ChargingSpeed.Normal;
+
+        public ChargingSpeed RobotMasterEnergyChargingSpeed { get; set; } = ChargingSpeed.Normal;
+
+        public ChargingSpeed CastleBossEnergyChargingSpeed { get; set; } = ChargingSpeed.Normal;
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -399,5 +410,15 @@ namespace MM2Randomizer
         Protoman,
         Roll,
         Bass
+    }
+
+    public enum ChargingSpeed
+    {
+        Fastest = 0x0,
+        Faster = 0x1,
+        FasterIrregular = 0x2,
+        Normal = 0x3,
+        FastIrregular = 0x4,
+        Slow = 0x7,
     }
 }
