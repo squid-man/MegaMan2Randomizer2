@@ -223,15 +223,15 @@ namespace MM2Randomizer
             set => this.SetProperty(ref this.mSelectedPlayer, value);
         }
 
-        public ChargingSpeed HitPointChargingSpeed { get; set; } = ChargingSpeed.Slow;
+        public ChargingSpeed HitPointChargingSpeed { get; set; } = ChargingSpeed.Fastest;
 
-        public ChargingSpeed WeaponEnergyChargingSpeed { get; set; } = ChargingSpeed.Slow;
+        public ChargingSpeed WeaponEnergyChargingSpeed { get; set; } = ChargingSpeed.Fastest;
 
-        public ChargingSpeed EnergyTankChargingSpeed { get; set; } = ChargingSpeed.Normal;
+        public ChargingSpeed EnergyTankChargingSpeed { get; set; } = ChargingSpeed.Fastest;
 
-        public ChargingSpeed RobotMasterEnergyChargingSpeed { get; set; } = ChargingSpeed.Normal;
+        public ChargingSpeed RobotMasterEnergyChargingSpeed { get; set; } = ChargingSpeed.Fastest;
 
-        public ChargingSpeed CastleBossEnergyChargingSpeed { get; set; } = ChargingSpeed.Normal;
+        public ChargingSpeed CastleBossEnergyChargingSpeed { get; set; } = ChargingSpeed.Fastest;
 
 
         /// <summary>
