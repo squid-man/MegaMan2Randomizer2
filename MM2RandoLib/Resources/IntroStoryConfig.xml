@@ -4,6 +4,7 @@
     <!-- Castlevania III: Dracula's Curse -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Castlevania III: Dracula's Curse</Title>
         <Lines>
             <Line>DURING 15TH CENTURY EUROPE </Line>
             <Line>  THERE LIVED A PERSON     </Line>
@@ -21,6 +22,7 @@
     <!-- Diablo -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Diablo</Title>
         <Lines>
             <Line>     HELLO, MY FRIEND.     </Line>
             <Line> STAY AWHILE, AND LISTEN...</Line>
@@ -38,6 +40,7 @@
     <!-- Dragon Warrior -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Dragon Warrior</Title>
         <Lines>
             <Line> LISTEN NOW TO MY WORDS.   </Line>
             <Line> DESCENDANT OF ERDRICK, IT </Line>
@@ -55,23 +58,25 @@
     <!-- Fallout 3 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Fallout 3</Title>
         <Lines>
             <Line>WAR...</Line>
-            <Line>WAR NEVER CHANGES</Line>
+            <Line>WAR NEVER CHANGES.</Line>
             <Line>IN THE YEAR 200X, AFTER</Line>
             <Line>MILLENNIA OF ARMED CONFLICT</Line>
             <Line>THE DESTRUCTIVE NATURE OF</Line>
-            <Line>MAN COULD NO LONGER ENDURE</Line>
-            <Line>THE WORLD WAS PLUNGED INTO</Line>
-            <Line>AN ABYSS OF NUCLEAR FIRE</Line>
-            <Line>BUT IT WAS NOT THE END OF</Line>
-            <Line>THE WORLD...</Line>
+            <Line>MAN COULD NO LONGER ENDURE.</Line>
+            <Line>THE EARTH WAS PLUNGED INTO</Line>
+            <Line>AN ABYSS OF NUCLEAR FIRE.</Line>
+            <Line>BUT IT WAS NOT THE END</Line>
+            <Line>OF THE WORLD...</Line>
         </Lines>
     </IntroStory>
 
     <!-- Final Fantasy -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Final Fantasy</Title>
         <Lines>
             <Line>  THE WORLD IS VEILED IN   </Line>
             <Line> DARKNESS. THE WIND STOPS, </Line>
@@ -89,6 +94,7 @@
     <!-- Final Fantasy 3, RPGe translation -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Final Fantasy 3</Title>
         <Lines>
             <Line>THE GURGAN QUIETLY SPOKE...</Line>
             <Line>THIS EARTHQUAKE IS AN OMEN </Line>
@@ -106,6 +112,7 @@
     <!-- Final Fantasy IV -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Final Fantasy IV</Title>
         <Lines>
             <Line>ONE TO BE BORN</Line>
             <Line>FROM A DRAGON</Line>
@@ -123,6 +130,7 @@
     <!-- Final Fantasy Tactics -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Final Fantasy Tactics</Title>
         <Lines>
             <Line> A WARRIOR TAKES SWORD IN  </Line>
             <Line>HAND, CLASPING A GEM TO HIS</Line>
@@ -140,6 +148,7 @@
     <!-- Half-Life -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Half-Life</Title>
         <Lines>
             <Line>HELLO, AND WELCOME TO THE  </Line>
             <Line>BLACK MESA TRANSIT SYSTEM. </Line>
@@ -154,9 +163,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- HALO -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>HALO</Title>
+        <Lines>
+            <Line>IN THE DISTANT PAST,</Line>
+            <Line>100,000 YEARS AGO</Line>
+            <Line>AN ALIEN PARASITE OVERRAN</Line>
+            <Line>THE GALAXY.</Line>
+            <Line>THE FORERUNNERS CALLED THIS</Line>
+            <Line>INFESTATION 'THE FLOOD'</Line>
+            <Line>TO STOP THE THREAT, THEY</Line>
+            <Line>CREATED THE RING DEVICES</Line>
+            <Line>THEY ACTIVATED THE RINGS</Line>
+            <Line>AND THEN DISAPPEARED...</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Killer Instinct 94 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Killer Instinct 94</Title>
         <Lines>
             <Line>ULTRATECH, THE MOST</Line>
             <Line>POWERFUL ORGANIZATION...</Line>
@@ -178,6 +206,7 @@
     <!-- The King of Fighters '98 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>The King of Fighters '98</Title>
         <Lines>
             <Line>IT ALL BEGAN IN 94</Line>
             <Line>KEPT ON ROLLING IN 95</Line>
@@ -194,6 +223,7 @@
     <!-- Kirby's Adventure -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Kirby's Adventure</Title>
         <Lines>
             <Line>ONE DAY, THE PEACEFUL LIFE </Line>
             <Line>OF DREAMLAND WAS SHATTERED </Line>
@@ -211,6 +241,7 @@
     <!-- The Legend of Zelda -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>The Legend of Zelda</Title>
         <Lines>
             <Line>   MANY YEARS AGO PRINCE   </Line>
             <Line>  DARKNESS 'GANNON' STOLE  </Line>
@@ -228,6 +259,7 @@
     <!-- Meegah Mem 2 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Meegah Mem 2</Title>
         <Lines>
             <Line>INN 200000X</Line>
             <Line>A SUPR ROBAT MEEGAH MEM</Line>
@@ -245,6 +277,7 @@
     <!-- Metal Gear Solid 3-->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Metal Gear Solid 3</Title>
         <Lines>
             <Line>     AFTER THE END OF      </Line>
             <Line>       WORLD WAR II,       </Line>
@@ -262,6 +295,7 @@
     <!-- Metroid -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Metroid</Title>
         <Lines>
             <Line>          METROID          </Line>
             <Line>                           </Line>
@@ -279,6 +313,7 @@
     <!-- Mortal Kombat -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Mortal Kombat</Title>
         <Lines>
             <Line> 2000 YEAR OLD HALF HUMAN  </Line>
             <Line>    DRAGON GORO REMAINS    </Line>
@@ -296,6 +331,7 @@
     <!-- Ninja Gaiden -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Ninja Gaiden</Title>
         <Lines>
             <Line> WITH WHOM DID FATHER HAVE </Line>
             <Line>     A DUEL AND LOSE?      </Line>
@@ -309,9 +345,54 @@
         </Lines>
     </IntroStory>
 
+    <!-- Pokemon -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Pokemon</Title>
+        <Lines>
+            <Line>A YOUNG BOY FROM PALLET</Line>
+            <Line>TOWN STARTS HIS JOURNEY.</Line>
+
+            <Line>THE LOCAL RESEARCHER, OAK,</Line>
+            <Line>ENTRUSTS A PIKACHU TO HIM.</Line>
+
+            <Line>BUT TEAM ROCKET WANTS TO</Line>
+            <Line>STEAL HIS PIKACHU.</Line>
+
+            <Line>CAN HE COLLECT ALL OF THE</Line>
+            <Line>GYM BADGES? CAN HE DEFEAT</Line>
+
+            <Line>THE ELITE 4 TO BECOME THE</Line>
+            <Line>POKEMON MASTER?</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Pokemon (Team Rocket) -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Pokemon (Team Rocket)</Title>
+        <Lines>
+            <Line>PREPARE FOR TROUBLE!</Line>
+            <Line>AND MAKE IT DOUBLE!</Line>
+
+            <Line>TO PROTECT THE WORLD</Line>
+            <Line>FROM DEVASTATION!</Line>
+
+            <Line>TO UNITE ALL PEOPLES</Line>
+            <Line>WITHIN OUR NATION!</Line>
+
+            <Line>TO DENOUNCE THE EVILS OF</Line>
+            <Line>TRUTH AND LOVE!</Line>
+
+            <Line>TO EXTEND OUR REACH</Line>
+            <Line>TO THE STARS ABOVE!</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Portal -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Portal</Title>
         <Lines>
             <Line>THIS WAS A TRIUMPH!</Line>
             <Line>I'M MAKING A NOTE HERE</Line>
@@ -333,6 +414,7 @@
     <!-- River City Ransom -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>River City Ransom</Title>
         <Lines>
             <Line>I HOLD UR CITY CAPTIVE AND</Line>
             <Line>RYAN'S GIRLFRIEND HOSTAGE</Line>
@@ -350,6 +432,7 @@
     <!-- Samurai Shodown II -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Samurai Shodown II</Title>
         <Lines>
             <Line>LONG, LONG AGO...</Line>
             <Line></Line>
@@ -367,6 +450,7 @@
     <!-- Shadow Of The Ninja -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Shadow Of The Ninja</Title>
         <Lines>
             <Line> UNITED STATES OF AMERICA. </Line>
             <Line>         200X A.D.         </Line>
@@ -381,9 +465,32 @@
         </Lines>
     </IntroStory>
 
+    <!-- Star Trek -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Star Trek</Title>
+        <Lines>
+            <Line>             NOW ENTERTING</Line>
+            <Line>        SIGMA IOTIA SYSTEM.</Line>
+
+            <Line>SLOW TO IMPULSE, ROLL.</Line>
+            <Line>         MEGAMAN, WE ARE...</Line>
+
+            <Line>   ENCOUNTERING AN AREA OF</Line>
+            <Line>  VERY UNSTABLE TURBULANCE.</Line>
+
+            <Line>  SENSORS INDICATE UNUSUAL</Line>
+            <Line>   FLUCTUATIONS IN GRAVITY.</Line>
+
+            <Line>MEGAMAN, THERE'S A BIG</Line>
+            <Line>HOLE IN SPACE!</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Star Wars -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Star Wars</Title>
         <Lines>
             <Line>IT'S A PERIOD OF CIVIL WAR.</Line>
             <Line>REBELS HAVE WON THEIR FIRST</Line>
@@ -401,6 +508,7 @@
     <!-- Super Mario Bros. 2 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Super Mario Bros. 2</Title>
         <Lines>
             <Line> MARIO OPENED A DOOR AFTER </Line>
             <Line> CLIMBING A LONG STAIR IN  </Line>
@@ -418,6 +526,7 @@
     <!-- Super Mario World -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Super Mario World</Title>
         <Lines>
             <Line>          WELCOME!         </Line>
             <Line>                           </Line>
@@ -435,6 +544,7 @@
     <!-- Super Mario 64 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Super Mario 64</Title>
         <Lines>
             <Line>       DEAR MEGAMAN,       </Line>
             <Line>                           </Line>
@@ -452,6 +562,7 @@
     <!-- Super Metroid -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Super Metroid</Title>
         <Lines>
             <Line>    I FIRST BATTLED THE    </Line>
             <Line> METROIDS ON PLANET ZEBES. </Line>
@@ -469,6 +580,7 @@
     <!-- Terminator 2 -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Terminator 2</Title>
         <Lines>
             <Line> TEN YEARS AGO THEY SENT A </Line>
             <Line>  MACHINE FROM THE FUTURE  </Line>
@@ -483,9 +595,32 @@
         </Lines>
     </IntroStory>
 
+    <!-- Ultima 4 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Ultima 4</Title>
+        <Lines>
+            <Line>LORD BRITISH, THE WISE</Line>
+            <Line>RULER OF BRITANNIA...</Line>
+
+            <Line>WISHES TO ERASE THE</Line>
+            <Line>LEGACY OF THE 3 EVIL LORDS</Line>
+
+            <Line>TO DO SO, HE MUST FIND</Line>
+            <Line>THE AVATAR!</Line>
+
+            <Line>ONLY THE MOST VIRTUOUS OF</Line>
+            <Line>SOULS CAN TAKE UP THE QUEST</Line>
+
+            <Line>PROVE YOUR WORTH IN THE</Line>
+            <Line>QUEST OF THE AVATAR!</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Zero Wing -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Zero Wing</Title>
         <Lines>
             <Line>        IN A.D. 200X       </Line>
             <Line>     WAR WAS BEGINNING.    </Line>
@@ -503,6 +638,7 @@
     <!-- Zork -->
     <IntroStory>
         <Enabled>true</Enabled>
+        <Title>Zork</Title>
         <Lines>
             <Line>       WEST OF HOUSE       </Line>
             <Line>                           </Line>
