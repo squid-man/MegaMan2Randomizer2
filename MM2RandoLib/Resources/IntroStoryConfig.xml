@@ -3,7 +3,7 @@
 <IntroStorySet>
     <!-- Castlevania III: Dracula's Curse -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>DURING 15TH CENTURY EUROPE </Line>
             <Line>  THERE LIVED A PERSON     </Line>
@@ -18,9 +18,43 @@
         </Lines>
     </IntroStory>
 
+    <!-- Diablo -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>     HELLO, MY FRIEND.     </Line>
+            <Line> STAY AWHILE, AND LISTEN...</Line>
+            <Line> THE EVIL YOU MOVE AGAINST </Line>
+            <Line>IS THE DARK LORD OF TERROR.</Line>
+            <Line> HE IS KNOWN TO MORTAL MEN </Line>
+            <Line>AS DIABLO. HE SEEKS TO ONCE</Line>
+            <Line>  AGAIN SOW CHAOS IN THE   </Line>
+            <Line>REALM OF MANKIND. YOU MUST </Line>
+            <Line>  FIND AND DESTROY DIABLO  </Line>
+            <Line>   BEFORE IT IS TOO LATE!  </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Dragon Warrior -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> LISTEN NOW TO MY WORDS.   </Line>
+            <Line> DESCENDANT OF ERDRICK, IT </Line>
+            <Line> IS TOLD THAT IN AGES PAST </Line>
+            <Line>ERDRICK FOUGHT DEMONS WITH </Line>
+            <Line>A BALL OF LIGHT. THEN CAME </Line>
+            <Line> THE DRAGONLORD WHO STOLE  </Line>
+            <Line>THE PRECIOUS GLOBE AND HID </Line>
+            <Line> IT IN THE DARKNESS. NOW,  </Line>
+            <Line>MEGAMAN, THOU MUST HELP US </Line>
+            <Line>RESTORE PEACE TO OUR LAND. </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Fallout 3 -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>WAR...</Line>
             <Line>WAR NEVER CHANGES</Line>
@@ -35,9 +69,43 @@
         </Lines>
     </IntroStory>
 
+    <!-- Final Fantasy -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>  THE WORLD IS VEILED IN   </Line>
+            <Line> DARKNESS. THE WIND STOPS, </Line>
+            <Line> THE SEA IS WILD, AND THE  </Line>
+            <Line> EARTH BEGINS TO ROT. THE  </Line>
+            <Line>  PEOPLE WAIT, THEIR ONLY  </Line>
+            <Line>HOPE, A PROPHECY. WHEN THE </Line>
+            <Line>WORLD IS IN DARKNESS, FOUR </Line>
+            <Line>WARRIORS WILL COME. AFTER A</Line>
+            <Line>LONG JOURNEY, FOUR WARRIORS</Line>
+            <Line>ARRIVE, EACH HOLDING AN ORB</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Final Fantasy 3, RPGe translation -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>THE GURGAN QUIETLY SPOKE...</Line>
+            <Line>THIS EARTHQUAKE IS AN OMEN </Line>
+            <Line> THE TREMORS THAT PULLED   </Line>
+            <Line>THE CRYSTALS INTO THE EARTH</Line>
+            <Line>AND BROUGHT FORTH MONSTERS </Line>
+            <Line>ARE NOTHING COMPARED TO THE</Line>
+            <Line>DARKNESS WHICH IS TO COME..</Line>
+            <Line> BUT HOPE IS NOT YET LOST. </Line>
+            <Line>  FOUR SOULS WILL TAKE UP  </Line>
+            <Line>  THE QUEST OF THE LIGHT.  </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Final Fantasy IV -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>ONE TO BE BORN</Line>
             <Line>FROM A DRAGON</Line>
@@ -52,9 +120,43 @@
         </Lines>
     </IntroStory>
 
+    <!-- Final Fantasy Tactics -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> A WARRIOR TAKES SWORD IN  </Line>
+            <Line>HAND, CLASPING A GEM TO HIS</Line>
+            <Line>HEART. ENGRAVING VANISHING </Line>
+            <Line>  MEMORIES INTO THE SWORD, </Line>
+            <Line>  HE PLACES FINELY HONED   </Line>
+            <Line>   SKILLS INTO THE STONE   </Line>
+            <Line>   SPOKEN FROM THE SWORD,  </Line>
+            <Line> HANDED DOWN FROM THE STONE</Line>
+            <Line>NOW THE STORY CAN BE TOLD..</Line>
+            <Line> THE 'ZODIAC BRAVE STORY'. </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Half-Life -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>HELLO, AND WELCOME TO THE  </Line>
+            <Line>BLACK MESA TRANSIT SYSTEM. </Line>
+            <Line>DUE TO THE HIGH TOXICITY OF</Line>
+            <Line>MATERIAL ROUTINELY HANDLED </Line>
+            <Line>NO SMOKING, EATING, OR     </Line>
+            <Line>DRINKING IS PERMITTED.     </Line>
+            <Line>NOW ARRIVING  SECTOR C TEST</Line>
+            <Line>LABS AND CONTROL FACILITIES</Line>
+            <Line>THANK YOU, AND HAVE A VERY </Line>
+            <Line>SAFE AND PRODUCTIVE DAY.   </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Killer Instinct 94 -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>ULTRATECH, THE MOST</Line>
             <Line>POWERFUL ORGANIZATION...</Line>
@@ -75,7 +177,7 @@
 
     <!-- The King of Fighters '98 -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>IT ALL BEGAN IN 94</Line>
             <Line>KEPT ON ROLLING IN 95</Line>
@@ -89,9 +191,43 @@
         </Lines>
     </IntroStory>
 
+    <!-- Kirby's Adventure -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>ONE DAY, THE PEACEFUL LIFE </Line>
+            <Line>OF DREAMLAND WAS SHATTERED </Line>
+            <Line>  BY A MYSTERIOUS CRISIS!  </Line>
+            <Line> THE PEOPLE DIDN'T DREAM!  </Line>
+            <Line>DEDEDE HAD BROKEN THE STAR </Line>
+            <Line> ROD AND GIVEN THE PIECES  </Line>
+            <Line>  TO HIS FRIENDS, WHO ARE  </Line>
+            <Line>    HIDING IN DREAMLAND!   </Line>
+            <Line> TO BRING BACK LOST DREAMS,</Line>
+            <Line> KIRBY SOUGHT THE STAR ROD!</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- The Legend of Zelda -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>   MANY YEARS AGO PRINCE   </Line>
+            <Line>  DARKNESS 'GANNON' STOLE  </Line>
+            <Line> ONE OF THE TRIFORCE WITH  </Line>
+            <Line> POWER. PRINCESS ZELDA HAD </Line>
+            <Line> ONE OF THE TRIFORCE WITH  </Line>
+            <Line>  WISDOM. SHE DIVIDED IT   </Line>
+            <Line>  INTO 8 UNITS TO HIDE IT  </Line>
+            <Line>FROM GANNON BEFORE SHE WAS </Line>
+            <Line>  CAPTURED. GO FIND THE 8  </Line>
+            <Line>  UNITS LINK TO SAVE HER.  </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Meegah Mem 2 -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>INN 200000X</Line>
             <Line>A SUPR ROBAT MEEGAH MEM</Line>
@@ -103,6 +239,73 @@
             <Line>DOCKTRE WILLEY CRATED 8</Line>
             <Line>OVE HIZ ONEW ROBATZ</Line>
             <Line>2 CONTR MEEGAH MEM</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Metal Gear Solid 3-->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>     AFTER THE END OF      </Line>
+            <Line>       WORLD WAR II,       </Line>
+            <Line>       THE WORLD WAS       </Line>
+            <Line>       SPLIT INTO TWO      </Line>
+            <Line>       EAST AND WEST.      </Line>
+            <Line>                           </Line>
+            <Line>      THIS MARKED THE      </Line>
+            <Line>        BEGINNING OF       </Line>
+            <Line>     THE ERA KNOWN AS      </Line>
+            <Line>       THE COLD WAR.       </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Metroid -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>          METROID          </Line>
+            <Line>                           </Line>
+            <Line>         EMERGENCY         </Line>
+            <Line>           ORDER           </Line>
+            <Line>   DEFEAT THE METROID OF   </Line>
+            <Line>   THE PLANET ZEBETH AND   </Line>
+            <Line> DESTROY THE MOTHER BRAIN  </Line>
+            <Line> THE MECHANICAL LIFE VEIN  </Line>
+            <Line>  GALAXY FEDEREAL POLICE   </Line>
+            <Line>          M510             </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Mortal Kombat -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> 2000 YEAR OLD HALF HUMAN  </Line>
+            <Line>    DRAGON GORO REMAINS    </Line>
+            <Line>UNDEFEATED FOR THE PAST 500</Line>
+            <Line>YEARS. HE WON THE TITLE OF </Line>
+            <Line>GRAND CHAMPION BY DEFEATING</Line>
+            <Line>    KUNG LAO, A SHAOLIN    </Line>
+            <Line>FIGHTING MONK.IT WAS DURING</Line>
+            <Line>  THIS TIME THE TOURNAMENT </Line>
+            <Line>  FELL INTO SHANG TSUNG'S  </Line>
+            <Line> HANDS AND WAS CORRUPTED...</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Ninja Gaiden -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> WITH WHOM DID FATHER HAVE </Line>
+            <Line>     A DUEL AND LOSE?      </Line>
+            <Line>  FOR WHAT REASON DID HE   </Line>
+            <Line>      FIGHT AND DIE?       </Line>
+            <Line>  AFTER HE DISAPPEARED, I  </Line>
+            <Line>FOUND A LETTER FROM FATHER.</Line>
+            <Line> 'TAKE THE DRAGON SWORD OF </Line>
+            <Line>    THE HAYABUSA FAMILY'   </Line>
+            <Line>   I WILL GET MY REVENGE!  </Line>
         </Lines>
     </IntroStory>
 
@@ -129,7 +332,7 @@
 
     <!-- River City Ransom -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>I HOLD UR CITY CAPTIVE AND</Line>
             <Line>RYAN'S GIRLFRIEND HOSTAGE</Line>
@@ -146,7 +349,7 @@
 
     <!-- Samurai Shodown II -->
     <IntroStory>
-        <Enabled>false</Enabled>
+        <Enabled>true</Enabled>
         <Lines>
             <Line>LONG, LONG AGO...</Line>
             <Line></Line>
@@ -158,6 +361,159 @@
             <Line>IT'S NO ACCIDENT</Line>
             <Line>THAT HE WAS INVOLVED</Line>
             <Line>IN THE TROUBLES</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Shadow Of The Ninja -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> UNITED STATES OF AMERICA. </Line>
+            <Line>         200X A.D.         </Line>
+            <Line>  DUE TO THE DICTATORIAL   </Line>
+            <Line>   GOVERNMENT OF EMPEROR   </Line>
+            <Line> GARUDA, A NUMBER OF LIVES </Line>
+            <Line>      HAVE BEEN LOST...    </Line>
+            <Line>  IN ORDER TO DEFEAT THE   </Line>
+            <Line>      EMPEROR GARUDA,      </Line>
+            <Line>   TWO SHADOWS APPEAR.     </Line>
+            <Line> 'NINJA' THEY ARE CALLED.  </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Star Wars -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>IT'S A PERIOD OF CIVIL WAR.</Line>
+            <Line>REBELS HAVE WON THEIR FIRST</Line>
+            <Line> VICTORY AGAINST THE EVIL  </Line>
+            <Line>  GALACTIC EMPIRE. REBEL   </Line>
+            <Line> SPIES STOLE PLANS TO THE  </Line>
+            <Line> EMPIRE'S ULTIMATE WEAPON  </Line>
+            <Line>  THE DEATH STAR. MEGAMAN  </Line>
+            <Line> ESCAPES WITH THE PLANS TO </Line>
+            <Line> SAVE HIS PEOPLE AND BRING </Line>
+            <Line>   FREEDOM TO THE GALAXY.  </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Super Mario Bros. 2 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> MARIO OPENED A DOOR AFTER </Line>
+            <Line> CLIMBING A LONG STAIR IN  </Line>
+            <Line> HIS DREAM, ANOTHER WORLD  </Line>
+            <Line> SPREAD BEFORE HIM AND HE  </Line>
+            <Line>  HEARD A VOICE CALL FOR   </Line>
+            <Line>  HELP TO BE FREED FROM A  </Line>
+            <Line>SPELL. AFTER WAKING, MARIO </Line>
+            <Line> WENT TO A CAVE NEARBY AND </Line>
+            <Line>  TO HIS SURPRISE HE SAW   </Line>
+            <Line>  WHAT WAS IN HIS DREAM... </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Super Mario World -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>          WELCOME!         </Line>
+            <Line>                           </Line>
+            <Line>          THIS IS          </Line>
+            <Line>       DINOSAUR LAND.      </Line>
+            <Line>    IN THIS STRANGE LAND   </Line>
+            <Line>        WE FIND THAT       </Line>
+            <Line>     PRINCESS TOADSTOOL    </Line>
+            <Line>     IS MISSING AGAIN!     </Line>
+            <Line>     LOOKS LIKE BOWSER     </Line>
+            <Line>      IS AT IT AGAIN!      </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Super Mario 64 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>       DEAR MEGAMAN,       </Line>
+            <Line>                           </Line>
+            <Line> PLEASE COME TO THE CASTLE.</Line>
+            <Line>                           </Line>
+            <Line> I'VE BAKED A CAKE FOR YOU.</Line>
+            <Line>                           </Line>
+            <Line> YOURS TRULY,              </Line>
+            <Line>  PRINCESS TOADSTOOL       </Line>
+            <Line>                           </Line>
+            <Line>                   'PEACH' </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Super Metroid -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>    I FIRST BATTLED THE    </Line>
+            <Line> METROIDS ON PLANET ZEBES. </Line>
+            <Line>IT WAS THERE THAT I FOILED </Line>
+            <Line>  THE PLANS OF THE SPACE   </Line>
+            <Line>PIRATE LEADER MOTHER BRAIN </Line>
+            <Line>  TO USE THE CREATURES TO  </Line>
+            <Line>      ATTACK GALACTIC      </Line>
+            <Line>       CIVILIZATION...     </Line>
+            <Line>     CERES STATION IS      </Line>
+            <Line>      UNDER ATTACK!!!      </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Terminator 2 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line> TEN YEARS AGO THEY SENT A </Line>
+            <Line>  MACHINE FROM THE FUTURE  </Line>
+            <Line>    TO GET SARAH CONNOR.   </Line>
+            <Line>    IT FAILED. NOW THEY    </Line>
+            <Line>     HAVE A NEW TARGET.    </Line>
+            <Line>     THE FUTURE LEADER     </Line>
+            <Line>     OF THE RESISTANCE,    </Line>
+            <Line>       HER SON JOHN.       </Line>
+            <Line>  THE BATTLE FOR TOMORROW  </Line>
+            <Line>       BEGINS TODAY        </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Zero Wing -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>        IN A.D. 200X       </Line>
+            <Line>     WAR WAS BEGINNING.    </Line>
+            <Line>CAPTAIN 'WHAT HAPPEN?'     </Line>
+            <Line>MECHANIC 'SOMEBODY SET UP  </Line>
+            <Line> US THE BOMB.'             </Line>
+            <Line>OPERATOR 'WE GET SIGNAL.'  </Line>
+            <Line>CATS 'ALL YOUR BASE ARE    </Line>
+            <Line> BELONG TO US.'            </Line>
+            <Line>CAPTAIN 'TAKE OFF EVERY    </Line>
+            <Line> ZIG. FOR GREAT JUSTICE.'  </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Zork -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>       WEST OF HOUSE       </Line>
+            <Line>                           </Line>
+            <Line> YOU ARE STANDING IN AN    </Line>
+            <Line> OPEN FIELD WEST OF A      </Line>
+            <Line> WHITE HOUSE, WITH A       </Line>
+            <Line> BOARDED FRONT DOOR.       </Line>
+            <Line> THERE IS A SMALL          </Line>
+            <Line> MAILBOX HERE.             </Line>
+            <Line> COMMAND?                  </Line>
+            <Line>                           </Line>
         </Lines>
     </IntroStory>
 </IntroStorySet>
