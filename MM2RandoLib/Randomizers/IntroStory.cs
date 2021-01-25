@@ -12,6 +12,9 @@ namespace MM2Randomizer.Randomizers
         [XmlElement("Enabled")]
         public Boolean Enabled { get; set; }
 
+        [XmlElement("Title")]
+        public String Title { get; set; }
+
         [XmlArrayItem("Line", typeof(String))]
         public List<String> Lines { get; set; }
 
