@@ -35,11 +35,12 @@ namespace MM2Randomizer.Randomizers
 
         public void Randomize(Patch p, Random r)
         {
-            Debug.Assert(AssertIntroTexts());
+            //Debug.Assert(AssertIntroTexts());
 
-            int numIntros = IntroTexts.GetLength(0);
-            int introIndex = r.Next(numIntros);
-            char[] introText = IntroTexts[introIndex].ToCharArray();
+            IntroStorySet introStorySet = Properties.Resources.IntroStoryConfig.Deserialize<IntroStorySet>();
+            IEnumerable<IntroStory> introStories = introStorySet.Where(x => true == x.Enabled);
+            IntroStory introStory = introStories.ElementAt(r.Next(introStories.Count()));
+            //Char[] introText = IntroTexts[introIndex].ToCharArray();
 
             // Write in splash screen intro text
             //Intro Screen Line 1: 0x036EA8 - 0x036EBA(20 chars)
@@ -141,13 +142,10 @@ namespace MM2Randomizer.Randomizers
             }
 
             // Write in cutscene intro text
-            for (int i = 0; i < 270; i++) // 27 characters per line, 5 pages, 2 lines per page
+            Int32 introTextIndex = 0;
+            foreach (Char c in introStory.GetFormattedIntroText())
             {
-                byte charByte = IntroCipher[introText[i]];
-                p.Add(
-                    offsetCutscenePage1L1 + i,
-                    charByte,
-                    $"Intro Text: {introText[i]}");
+                p.Add(offsetCutscenePage1L1 + introTextIndex++, IntroCipher[c], $"Intro Text: {c}");
             }
 
             // Write in new weapon names

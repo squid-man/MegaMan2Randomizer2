@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<IntroStorySet>
+    <!-- Castlevania III: Dracula's Curse -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>DURING 15TH CENTURY EUROPE </Line>
+            <Line>  THERE LIVED A PERSON     </Line>
+            <Line>    NAMED DRACULA. HE      </Line>
+            <Line>PRACTICED SORCERY IN ORDER </Line>
+            <Line>   TO CREATE A BAD WORLD   </Line>
+            <Line>     FILLED WITH EVIL.     </Line>
+            <Line>   THE CURSE OF DRACULA    </Line>
+            <Line>        HAS BEGUN.         </Line>
+            <Line>    THE FATE OF EUROPE     </Line>
+            <Line> LIES WITH TREVOR BELMONT. </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Fallout 3 -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>WAR...</Line>
+            <Line>WAR NEVER CHANGES</Line>
+            <Line>IN THE YEAR 200X, AFTER</Line>
+            <Line>MILLENNIA OF ARMED CONFLICT</Line>
+            <Line>THE DESTRUCTIVE NATURE OF</Line>
+            <Line>MAN COULD NO LONGER ENDURE</Line>
+            <Line>THE WORLD WAS PLUNGED INTO</Line>
+            <Line>AN ABYSS OF NUCLEAR FIRE</Line>
+            <Line>BUT IT WAS NOT THE END OF</Line>
+            <Line>THE WORLD...</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Final Fantasy IV -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>ONE TO BE BORN</Line>
+            <Line>FROM A DRAGON</Line>
+            <Line>HOISTING THE LIGHT</Line>
+            <Line>AND THE DARK</Line>
+            <Line>ARISES HIGH UP IN THE SKY</Line>
+            <Line>TO THE STILL LAND. VEILING</Line>
+            <Line>THE MOON WITH THE LIGHT OF</Line>
+            <Line>ETERNITY, IT BRINGS ANOTHER</Line>
+            <Line>PROMISE TO MOTHER EARTH</Line>
+            <Line>WITH A BOUNTY AND MERCY</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Killer Instinct 94 -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>ULTRATECH, THE MOST</Line>
+            <Line>POWERFUL ORGANIZATION...</Line>
+
+            <Line>CAN DO NO WRONG IN THE</Line>
+            <Line>PUBLIC EYE.</Line>
+
+            <Line>HOWEVER, CYBERNETIC CEO,</Line>
+            <Line>ARIA, FORCES HUMANS...</Line>
+
+            <Line>TO EVOLVE OR DIE.</Line>
+            <Line>HER TAMPERING AWAKENS</Line>
+
+            <Line>ANCIENT BEINGS, AND THE</Line>
+            <Line>WHOLE EARTH IS IN PERIL</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- The King of Fighters '98 -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>IT ALL BEGAN IN 94</Line>
+            <Line>KEPT ON ROLLING IN 95</Line>
+            <Line>PIECES WERE IN PLACE IN 96</Line>
+            <Line>AND IT CAME TO AN END IN 97</Line>
+            <Line>NOW IT COMES</Line>
+            <Line>HERE WE GO</Line>
+            <Line>K. O. F. IS HERE AGAIN</Line>
+            <Line>NOTHING IS GOING TO STOP</Line>
+            <Line>'CAUSE IT'S 1998!</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Meegah Mem 2 -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>INN 200000X</Line>
+            <Line>A SUPR ROBAT MEEGAH MEM</Line>
+            <Line>WUZ KRATED. DOCKTRE LITE</Line>
+            <Line>CRATED MEEGAH MEM</Line>
+            <Line>2 SHTAP DA EEVEL DERSIRS</Line>
+            <Line>OVE DOCKTRE WILLEY</Line>
+            <Line>HWOEVR, EFTR HIZ DEFEET</Line>
+            <Line>DOCKTRE WILLEY CRATED 8</Line>
+            <Line>OVE HIZ ONEW ROBATZ</Line>
+            <Line>2 CONTR MEEGAH MEM</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Portal -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Lines>
+            <Line>THIS WAS A TRIUMPH!</Line>
+            <Line>I'M MAKING A NOTE HERE</Line>
+
+            <Line>'HUGE SUCCESS!'</Line>
+            <Line>IT'S HARD TO OVERSTATE</Line>
+
+            <Line>MY SATISFACTION.</Line>
+            <Line>APERTURE SCIENCE, WE DO</Line>
+
+            <Line>WHAT WE MUST BECAUSE WE CAN</Line>
+            <Line>FOR THE GOOD OF ALL OF US</Line>
+
+            <Line>EXCEPT THE ONES</Line>
+            <Line>WHO ARE DEAD</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- River City Ransom -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>I HOLD UR CITY CAPTIVE AND</Line>
+            <Line>RYAN'S GIRLFRIEND HOSTAGE</Line>
+            <Line>WITH MY GANGS OF STUDENTS</Line>
+            <Line>AND EVIL BOSSES</Line>
+            <Line>NOBODY CAN STOP ME NOW!</Line>
+            <Line>MEET MY DEMANDS OR ELSE!</Line>
+            <Line>P.S. ALEX AND RYAN</Line>
+            <Line>IF YOU INTERFERE</Line>
+            <Line>YOU'LL BE IN FOR THE FIGHT</Line>
+            <Line>OF YOUR LIVES! ... SLICK</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Samurai Shodown II -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Lines>
+            <Line>LONG, LONG AGO...</Line>
+            <Line></Line>
+            <Line>THERE WERE A MAN</Line>
+            <Line>WHO TRY TO MAKE HIS SKILL</Line>
+            <Line>... ULTIMATE</Line>
+            <Line></Line>
+            <Line>BECAUSE OF HIS BLOODY LIFE,</Line>
+            <Line>IT'S NO ACCIDENT</Line>
+            <Line>THAT HE WAS INVOLVED</Line>
+            <Line>IN THE TROUBLES</Line>
+        </Lines>
+    </IntroStory>
+</IntroStorySet>
