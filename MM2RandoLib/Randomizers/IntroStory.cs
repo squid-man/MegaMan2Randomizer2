@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Text;
+using MM2Randomizer.Extensions;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -18,7 +19,7 @@ namespace MM2Randomizer.Randomizers
         [XmlArrayItem("Line", typeof(String))]
         public List<String> Lines { get; set; }
 
-        public String GetFormattedIntroText()
+        public Byte[] GetFormattedString()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -42,12 +43,13 @@ namespace MM2Randomizer.Randomizers
                 }
             }
 
+            // Fill in the rest of the lines if there were less than 10
             for (Int32 fillLine = currentLine; fillLine < IntroStory.MAX_LINES; ++fillLine)
             {
                 sb.Append(' ', IntroStory.MAX_LINE_LENGTH);
             }
 
-            return sb.ToString();
+            return sb.ToString().AsIntroString();
         }
 
 

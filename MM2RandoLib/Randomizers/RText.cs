@@ -140,9 +140,9 @@ namespace MM2Randomizer.Randomizers
 
             // Write in cutscene intro text
             Int32 introTextIndex = 0;
-            foreach (Char c in introStory.GetFormattedIntroText())
+            foreach (Byte character in introStory.GetFormattedString())
             {
-                p.Add(offsetCutscenePage1L1 + introTextIndex++, IntroCipher[c], $"Intro Text: {c}");
+                p.Add(offsetCutscenePage1L1 + introTextIndex++, character, $"Intro Text: {character}");
             }
 
             // Write in new weapon names

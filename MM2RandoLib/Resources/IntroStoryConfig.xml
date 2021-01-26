@@ -1,6 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <IntroStorySet>
+    <!-- Test -->
+    <IntroStory>
+        <Enabled>false</Enabled>
+        <Title>Test</Title>
+        <Lines>
+            <Line>`1234567890-=</Line>
+            <Line>~!@#$%^&amp;*()_+</Line>
+            <Line>qwertyuiop[]\</Line>
+            <Line>QWERTYUIOP{}|</Line>
+            <Line>asdfghjkl;'</Line>
+            <Line>ASDFGHJKL:"</Line>
+            <Line>zxcvbnm,./</Line>
+            <Line>ZXCVBNM&lt;&gt;?</Line>
+            <Line> ©™</Line>
+            <Line></Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Batman -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Batman</Title>
+        <Lines>
+            <Line>Governed by crime, Wily,</Line>
+            <Line>the city's evil leader...</Line>
+
+            <Line>spreads nerve gas</Line>
+            <Line>all over town.</Line>
+
+            <Line>Journalist Roll Caskett</Line>
+            <Line>tracks the story</Line>
+
+            <Line>and is saved by a</Line>
+            <Line>mysterious man</Line>
+
+            <Line>who is in fact...</Line>
+            <Line>Megaman</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Castlevania III: Dracula's Curse -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -462,6 +502,28 @@
             <Line>      EMPEROR GARUDA,      </Line>
             <Line>   TWO SHADOWS APPEAR.     </Line>
             <Line> 'NINJA' THEY ARE CALLED.  </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Star Fox 64 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Star Fox 64</Title>
+        <Lines>
+            <Line>Corneria, 4th planet of the</Line>
+            <Line>Lylat System. The evil...</Line>
+
+            <Line>Andross turned it into a</Line>
+            <Line>wasteland of extinction.</Line>
+
+            <Line>General Pepper exiled</Line>
+            <Line>Andross...</Line>
+
+            <Line>to the deserted planet</Line>
+            <Line>Venom. 5 years later...</Line>
+
+            <Line>Andross invades again.</Line>
+            <Line></Line>
         </Lines>
     </IntroStory>
 
