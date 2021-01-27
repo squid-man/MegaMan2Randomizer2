@@ -27,7 +27,7 @@ namespace MM2Randomizer.Extensions
                 }
                 else
                 {
-                    convertedString[index] = IntroCharacterLookup['?'];
+                    convertedString[index] = StringExtensions.IntroCharacterLookup['?'];
                 }
 
                 index++;
