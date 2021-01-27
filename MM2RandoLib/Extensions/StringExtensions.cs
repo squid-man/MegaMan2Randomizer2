@@ -11,31 +11,29 @@ namespace MM2Randomizer.Extensions
 
         public static Byte[] AsIntroString(this String in_String)
         {
-            if (null != in_String)
-            {
-                Byte[] convertedString = new Byte[in_String.Length];
-                Int32 index = 0;
-
-                foreach (Char c in in_String)
-                {
-                    if (true == StringExtensions.IntroCharacterLookup.TryGetValue(c, out Byte convertedCharacter))
-                    {
-                        convertedString[index] = convertedCharacter;
-                    }
-                    else
-                    {
-                        convertedString[index] = IntroCharacterLookup['?'];
-                    }
-
-                    index++;
-                }
-
-                return convertedString;
-            }
-            else
+            if (null == in_String)
             {
                 return null;
             }
+
+            Byte[] convertedString = new Byte[in_String.Length];
+            Int32 index = 0;
+
+            foreach (Char c in in_String)
+            {
+                if (true == StringExtensions.IntroCharacterLookup.TryGetValue(c, out Byte convertedCharacter))
+                {
+                    convertedString[index] = convertedCharacter;
+                }
+                else
+                {
+                    convertedString[index] = IntroCharacterLookup['?'];
+                }
+
+                index++;
+            }
+
+            return convertedString;
         }
 
 
@@ -49,16 +47,16 @@ namespace MM2Randomizer.Extensions
             { '0', 0xA0 },
             { '8', 0xA1 },
             { '2', 0xA2 },
-            { '©', 0xA3 },
-            { '™', 0xA4 }, // tm
+            { '©', 0xA3 },  // Copyright symbol
+            { '™', 0xA4 },  // Trademark symbol
             { '9', 0xA5 },
             { '7', 0xA6 },
             { '1', 0xA7 },
-            { '3', 0xA8 }, // check
-            { '4', 0xA9 }, // check
-            { '5', 0xAA }, // check
-            { '6', 0xAB }, // check
-            { '|', 0xC0 }, // Blank space, change later? also, there may be a blank row (B) to use...
+            { '3', 0xA8 },
+            { '4', 0xA9 },
+            { '5', 0xAA },
+            { '6', 0xAB },
+            { '|', 0xC0 },  // Blank space character
             { 'a', 0xC1 },
             { 'A', 0xC1 },
             { 'b', 0xC2 },
@@ -111,7 +109,7 @@ namespace MM2Randomizer.Extensions
             { 'Y', 0xD9 },
             { 'z', 0xDA },
             { 'Z', 0xDA },
-            { '?', 0xDB }, // "r." change to ?
+            { '?', 0xDB },
             { '.', 0xDC },
             { ',', 0xDD },
             { '\'', 0xDE },
