@@ -37,6 +37,23 @@ namespace MM2Randomizer.Extensions
         }
 
 
+        public static String PadCenter(this String in_String, Int32 in_TotalWidth)
+        {
+            Int32 totalPadding = in_TotalWidth - in_String.Length;
+
+            if (totalPadding > 1)
+            {
+                Int32 leftPadding = in_String.Length + (totalPadding / 2);
+
+                return in_String.PadLeft(leftPadding).PadRight(in_TotalWidth);
+            }
+            else
+            {
+                return in_String.PadRight(in_TotalWidth);
+            }
+        }
+
+
         //
         // Private Constants
         //

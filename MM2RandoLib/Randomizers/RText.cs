@@ -27,7 +27,7 @@ namespace MM2Randomizer.Randomizers
         public static readonly int offsetIntroLine4      = 0x036EEE;
 
         private readonly List<string> countryNames = new List<string>();
-        private readonly List<string> companyNames = new List<string>();
+        //private readonly List<string> companyNames = new List<string>();
         private readonly string[] newWeaponNames = new string[8];
         private readonly char[] newWeaponLetters = new char[9]; // Original order: P H A W B Q F M C
 
@@ -58,16 +58,9 @@ namespace MM2Randomizer.Randomizers
             char[] company;
 
             CompanyNameSet companyNameSet = Properties.Resources.CompanyNameConfig.Deserialize<CompanyNameSet>();
+            IEnumerable<CompanyName> enabledCompanyNames = companyNameSet.Where(x => true == x.Enabled);
+            CompanyName companyName = enabledCompanyNames.ElementAt(r.Next(enabledCompanyNames.Count()));
 
-            foreach (CompanyName companyName in companyNameSet)
-            {
-                if (true == companyName.Enabled)
-                {
-                    companyNames.Add(companyName.Name);
-                }
-            }
-
-            companyStr = companyNames[r.Next(companyNames.Count)];
             company = ($"©{DateTime.Now.Year} {companyStr}").ToCharArray();
             Char[] companyPadded = Enumerable.Repeat(' ', INTRO_LINE1_MAXCHARS).ToArray();
             startChar = (INTRO_LINE1_MAXCHARS - company.Length) / 2;
