@@ -33,12 +33,17 @@ namespace MM2Randomizer
             this.IsWeaponNamesRandom = true;
             this.IsColorsRandom = true;
             this.IsBGMRandom = true;
+            this.IsFlashingDisabled = true;
             this.SelectedPlayer = PlayerSprite.Rockman;
 
             // Flags for Optional Gameplay Modules
             this.FastText = true;
             this.BurstChaserMode = false;
             this.IsSpoilerFree = false;
+
+            // Flags for Quality of life
+            this.ReduceLag = true;
+            this.DisableDelayScrolling = true;
         }
 
 
@@ -239,6 +244,8 @@ namespace MM2Randomizer
         /// </summary>
         public Boolean IsWeaponNamesRandom { get; set; }
 
+        public bool IsFlashingDisabled { get; set; }
+
         /// <summary>
         /// TODO
         /// </summary>
@@ -253,6 +260,11 @@ namespace MM2Randomizer
 
         public Boolean IsWeaponBehaviorRandom { get; set; }
 
+        /// <summary>
+        /// Apply patches that reduce lag
+        /// </summary>
+        public Boolean ReduceLag { get; set; }
+        public Boolean DisableDelayScrolling { get; set; }
 
         //
         // Public Methods

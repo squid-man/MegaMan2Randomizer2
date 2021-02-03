@@ -103,12 +103,10 @@ namespace MM2Randomizer
             rWeaponNames = new RText();
 
             // Independent
-            randomColors = new RColors();
+            randomColors = new RColors(Settings.IsFlashingDisabled);
 
             // Independent
             randomMusic = new RMusic();
-
-
 
 
 
@@ -177,7 +175,7 @@ namespace MM2Randomizer
                 CosmeticRandomizers.Add(rWeaponNames);
             }
 
-                
+
             // Instantiate RNG object r based on RandomMM2.Seed
             InitializeSeed();
 
@@ -230,6 +228,11 @@ namespace MM2Randomizer
                 MiscHacks.SetBurstChaser(Patch);
             }
 
+            if (Settings.IsFlashingDisabled)
+            {
+                MiscHacks.DisableScreenFlashing(Patch, Settings);
+            }
+
             MiscHacks.SetHitPointChargingSpeed(Patch, Settings.HitPointChargingSpeed);
             MiscHacks.SetWeaponEnergyChargingSpeed(Patch, Settings.WeaponEnergyChargingSpeed);
             MiscHacks.SetEnergyTankChargingSpeed(Patch, Settings.EnergyTankChargingSpeed);
@@ -242,6 +245,16 @@ namespace MM2Randomizer
             MiscHacks.SetETankKeep(Patch);
             MiscHacks.PreventETankUseAtFullLife(Patch);
             MiscHacks.SetFastBossDefeatTeleport(Patch);
+
+            if(Settings.ReduceLag)
+            {
+                MiscHacks.ReduceLag(Patch);
+            }
+
+            if(Settings.DisableDelayScrolling)
+            {
+                MiscHacks.DisableDelayScroll(Patch);
+            }
 
             // Create file name based on seed and game region
             string seedAlpha = SeedConvert.ConvertBase10To26(Seed);
