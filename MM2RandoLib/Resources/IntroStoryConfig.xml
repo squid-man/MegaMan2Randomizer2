@@ -19,6 +19,24 @@
         </Lines>
     </IntroStory>
 
+    <!-- Bad Dudes -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Bad Dudes</Title>
+        <Lines>
+            <Line>     Emergency Order!!     </Line>
+            <Line></Line>
+            <Line>  Doctor Thomas Light has  </Line>
+            <Line> been kidnapped by ninjas. </Line>
+            <Line>    Rescue Doctor Light    </Line>
+            <Line>            ASAP           </Line>
+            <Line> Are you a bad enough dude </Line>
+            <Line>   to rescue the Doctor?   </Line>
+            <Line>  We're counting on you!!  </Line>
+            <Line></Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Batman -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -166,6 +184,25 @@
             <Line>WITH A BOUNTY AND MERCY</Line>
         </Lines>
     </IntroStory>
+
+    <!-- Final Fantasy VI -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Final Fantasy VI</Title>
+        <Lines>
+            <Line>Long ago, the War of the</Line>
+            <Line>Magi scorched the world...</Line>
+            <Line>And magic simply ceased</Line>
+            <Line>to exist.</Line>
+            <Line>1000 years have passed and</Line>
+            <Line>high technology reigns.</Line>
+            <Line>But there are some who</Line>
+            <Line>would enslave the world...</Line>
+            <Line>by reviving the destructive</Line>
+            <Line>force known as 'magic'...</Line>
+        </Lines>
+    </IntroStory>
+
 
     <!-- Final Fantasy Tactics -->
     <IntroStory>

@@ -8,13 +8,13 @@ using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Utilities;
 
+using MM2Randomizer.Extensions;
+
 namespace MM2Randomizer.Randomizers
 {
     public class RText : IRandomizer
     {
         public static readonly int MAX_CHARS = 12;
-        public static readonly int INTRO_LINE1_MAXCHARS = 19;
-        public static readonly int INTRO_LINE2_MAXCHARS = 31;
         public static readonly int INTRO_LINE3_MAXCHARS = 11;
         public static readonly int INTRO_LINE4_MAXCHARS = 25;
 
@@ -22,7 +22,6 @@ namespace MM2Randomizer.Randomizers
         public static readonly int offsetAtomicFire      = 0x037E2E;
         public static readonly int offsetCutscenePage1L1 = 0x036D56;
         public static readonly int offsetIntroLine1      = 0x036EA8;
-        public static readonly int offsetIntroLine2      = 0x036EBE;
         public static readonly int offsetIntroLine3      = 0x036EE0;
         public static readonly int offsetIntroLine4      = 0x036EEE;
 
@@ -31,7 +30,75 @@ namespace MM2Randomizer.Randomizers
         private readonly string[] newWeaponNames = new string[8];
         private readonly char[] newWeaponLetters = new char[9]; // Original order: P H A W B Q F M C
 
+
+        //
+        // Constructor
+        //
+
         public RText() { }
+
+
+        //
+        //
+        //
+
+        private void ModifyCompanyName(Patch in_Patch, Random in_Random)
+        {
+            const Int32 LINE_MAX_LENGTH = 19;
+
+            CompanyNameSet companyNameSet = Properties.Resources.CompanyNameConfig.Deserialize<CompanyNameSet>();
+            IEnumerable<CompanyName> enabledCompanyNames = companyNameSet.Where(x => true == x.Enabled);
+            CompanyName companyName = enabledCompanyNames.ElementAt(in_Random.Next(enabledCompanyNames.Count()));
+
+            String line = $"©{DateTime.Now.Year} {companyName.Name}".pa
+
+            company = ($"©{DateTime.Now.Year} {companyStr}").ToCharArray();
+            Char[] companyPadded = Enumerable.Repeat(' ', INTRO_LINE1_MAXCHARS).ToArray();
+            startChar = (INTRO_LINE1_MAXCHARS - company.Length) / 2;
+
+
+            for (int i = 0; i < company.Length; i++)
+            {
+                companyPadded[startChar + i] = company[i];
+            }
+
+            for (int i = 0; i < INTRO_LINE1_MAXCHARS; i++)
+            {
+                byte charByte = IntroCipher[companyPadded[i]];
+                p.Add(
+                    offsetIntroLine1 + i,
+                    charByte,
+                    $"Splash Text: {companyPadded[i]}");
+            }
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="in_Patch"></param>
+        /// <param name="in_Random"></param>
+        public static void PatchIntroVersion(Patch in_Patch, Random in_Random)
+        {
+            const Int32 INTRO_LINE2_OFFSET = 0x036EBE;
+            const String APP_NAME = "Mega Man 2 Randomizer";
+            const Int32 INTRO_LINE2_MAXLENGTH = 31;
+
+            // Line 2: Version
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            Version appVersion = assembly.GetName().Version;
+            String version = appVersion.ToString(2);
+
+            String line = APP_NAME + " " + version;
+            line = line.PadCenter(INTRO_LINE2_MAXLENGTH);
+
+            in_Patch.Add(INTRO_LINE2_OFFSET, line.AsIntroString(), $"Splash Text: {line}");
+        }
+
+        public static void PatchForUse(Patch in_Patch, Random in_Random)
+        {
+        }
 
         public void Randomize(Patch p, Random r)
         {
@@ -80,18 +147,7 @@ namespace MM2Randomizer.Randomizers
                     $"Splash Text: {companyPadded[i]}");
             }
 
-            // Line 2: Version
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            string version = assembly.GetName().Version.ToString().Substring(0, 5);
-            char[] line2 = $"  MEGA MAN 2 RANDOMIZER {version}  ".ToCharArray();
-            for (int i = 0; i < INTRO_LINE2_MAXCHARS; i++)
-            {
-                byte charByte = IntroCipher[line2[i]];
-                p.Add(
-                    offsetIntroLine2 + i,
-                    charByte,
-                    $"Splash Text: {line2[i]}");
-            }
+            RText.PatchIntroVersion(p, r);
 
             // Line 3: FOR USE IN
             char[] forUseIn = "FOR USE IN ".ToCharArray();
@@ -301,7 +357,7 @@ namespace MM2Randomizer.Randomizers
                 for (int j = 0; j < rowString.Length; j++)
                 {
                     p.Add(txtRobos[i] + j,
-                        CreditsCipher[rowString[j]],
+                        rowString[j].AsCreditsCharacter(),
                         $"Credits robo weakness table char #{j + i * rowString.Length}");
                 }
             }
@@ -322,7 +378,7 @@ namespace MM2Randomizer.Randomizers
                 for (int j = 0; j < rowString.Length; j++)
                 {
                     p.Add(txtWilys[i] + j,
-                        CreditsCipher[rowString[j]],
+                        rowString[j].AsCreditsCharacter(),
                         $"Credits wily weakness table char #{j + i * rowString.Length}");
                 }
             }
@@ -437,101 +493,6 @@ namespace MM2Randomizer.Randomizers
             0x001A10, // "C"
         };
 
-        public static Dictionary<char, byte> CreditsCipher = new Dictionary<char, byte>()
-        {
-            { ' ', 0x00},
-            { 'A', 0x01},
-            { 'B', 0x02},
-            { 'C', 0x03},
-            { 'D', 0x04},
-            { 'E', 0x05}, 
-            { 'F', 0x06},
-            { 'G', 0x07},
-            { 'H', 0x08},
-            { 'I', 0x09}, 
-            { 'J', 0x0A}, 
-            { 'K', 0x0B}, 
-            { 'L', 0x0C}, 
-            { 'M', 0x0D}, 
-            { 'N', 0x0E},
-            { 'O', 0x0F},
-            { 'P', 0x10},
-            { 'Q', 0x11},
-            { 'R', 0x12},
-            { 'S', 0x13},
-            { 'T', 0x14},
-            { 'U', 0x15},
-            { 'V', 0x16},
-            { 'W', 0x17},
-            { 'X', 0x18},
-            { 'Y', 0x19},
-            { 'Z', 0x1A},
-            { '.', 0x1C},
-            { ',', 0x1D},
-            {'\'', 0x1E},
-            { '!', 0x1F},
-            { 'f', 0x20},
-            { '0', 0x30},
-            { '1', 0x31},
-            { '2', 0x32},
-            { '3', 0x33},
-            { '4', 0x34},
-            { '5', 0x35},
-            { '6', 0x36},
-            { '7', 0x37},
-            { '8', 0x38}, 
-            { '9', 0x39},
-            { '=', 0x23},
-        };
-
-        public static Dictionary<char, byte> IntroCipher = new Dictionary<char, byte>()
-        {
-            { ' ', 0x00 },
-            { '0', 0xA0 },
-            { '8', 0xA1 },
-            { '2', 0xA2 },
-            { '©', 0xA3 },
-            { 't', 0xA4 }, // tm
-            { '9', 0xA5 },
-            { '7', 0xA6 },
-            { '1', 0xA7 },
-            { '3', 0xA8 }, // check
-            { '4', 0xA9 }, // check
-            { '5', 0xAA }, // check
-            { '6', 0xAB }, // check
-            { '|', 0xC0 }, // Blank space, change later? also, there may be a blank row (B) to use...
-            { 'A', 0xC1 },
-            { 'B', 0xC2 },
-            { 'C', 0xC3 },
-            { 'D', 0xC4 },
-            { 'E', 0xC5 },
-            { 'F', 0xC6 },
-            { 'G', 0xC7 },
-            { 'H', 0xC8 },
-            { 'I', 0xC9 },
-            { 'J', 0xCA },
-            { 'K', 0xCB },
-            { 'L', 0xCC },
-            { 'M', 0xCD },
-            { 'N', 0xCE },
-            { 'O', 0xCF },
-            { 'P', 0xD0 },
-            { 'Q', 0xD1 },
-            { 'R', 0xD2 },
-            { 'S', 0xD3 },
-            { 'T', 0xD4 },
-            { 'U', 0xD5 },
-            { 'V', 0xD6 },
-            { 'W', 0xD7 },
-            { 'X', 0xD8 },
-            { 'Y', 0xD9 },
-            { 'Z', 0xDA },
-            { '?', 0xDB }, // "r." change to ?
-            { '.', 0xDC },
-            { ',', 0xDD },
-            { '\'', 0xDE },
-            { '!', 0xDF },
-        };
         // STAFF == D3 D4 C1 C6 C6
 
         private string GetRandomName(Random r)

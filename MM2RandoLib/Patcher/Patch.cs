@@ -36,6 +36,24 @@ namespace MM2Randomizer.Patcher
             }
         }
 
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="value"></param>
+        /// <param name="note"></param>
+        public void Add(Int32 in_StartAddress, Byte[] in_Value, String note = "")
+        {
+            Int32 index = 0;
+
+            foreach (Byte b in in_Value)
+            {
+                this.Add(in_StartAddress++, b, $"{note}[{index++}]");
+            }
+        }
+
+
         /// <summary>
         /// TODO
         /// </summary>
@@ -53,16 +71,20 @@ namespace MM2Randomizer.Patcher
                 }
             }
         }
+
+
         public string GetStringSortedByAddress()
         {
             var sortDict = from kvp in Bytes orderby kvp.Key ascending select kvp;
             return ConvertDictToString(sortDict);
         }
 
+
         public string GetString()
         {
             return ConvertDictToString((IOrderedEnumerable<KeyValuePair<int, ChangeByteRecord>>)Bytes);
         }
+
 
         /// <summary>
         /// TODO
