@@ -43,7 +43,7 @@ namespace MM2Randomizer.Patcher
         /// <param name="address"></param>
         /// <param name="value"></param>
         /// <param name="note"></param>
-        public void Add(Int32 in_StartAddress, Byte[] in_Value, String note = "")
+        public Int32 Add(Int32 in_StartAddress, Byte[] in_Value, String note = "")
         {
             Int32 index = 0;
 
@@ -51,6 +51,8 @@ namespace MM2Randomizer.Patcher
             {
                 this.Add(in_StartAddress++, b, $"{note}[{index++}]");
             }
+
+            return in_StartAddress + in_Value.Length;
         }
 
 

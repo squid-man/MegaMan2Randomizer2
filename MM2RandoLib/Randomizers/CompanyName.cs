@@ -13,6 +13,17 @@ namespace MM2Randomizer.Randomizers
 
         [XmlElement("Name")]
         public String Name { get; set; }
+
+        public String GetCompanyName()
+        {
+            String prefix = this.Name ?? String.Empty;
+
+            // Truncate the prefix to the max length
+            String truncatedPrefix = prefix.Substring(0, Math.Min(CountryName.MAX_PREFIX_LENGTH, prefix.Length));
+            return truncatedPrefix.PadRight(CountryName.MAX_PREFIX_LENGTH).AsIntroString();
+        }
+
+        private const Int32 MAX_NAME_LENGTH = 13;
     }
 
     [Serializable]
