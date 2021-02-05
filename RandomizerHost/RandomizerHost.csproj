@@ -4,6 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>RandomizerHost</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
+    <PackageId>Mega Man 2 Randomizer</PackageId>
+    <Authors>Duckfist, Squidman, Dagit</Authors>
+    <Company />
+    <Product>Mega Man 2 Randomizer</Product>
+    <Version>0.6.0</Version>
+    <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
+    <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
+    <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyVersion>0.6.0.*</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -15,6 +25,10 @@
     <None Remove="Assets\sprite_proto.png" />
     <None Remove="Assets\sprite_rock.png" />
     <None Remove="Assets\sprite_roll.png" />
+    <None Include="Assets\MegaMan2Randomizer.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.12" />
