@@ -7,7 +7,6 @@
         <Copyright></Copyright>
         <Description>.NET library that can generate a randomized ROM patch for Mega Man 2.</Description>
         <Authors>duckfist, squidman, dagit</Authors>
-        <PackageLicenseUrl>https://github.com/duckfist/MM2Random/blob/master/LICENSE</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
         <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
         <PackageTags></PackageTags>

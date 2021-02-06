@@ -436,7 +436,6 @@ namespace MM2Randomizer.Randomizers
             0x001A10, // "C"
         };
 
-        // STAFF == D3 D4 C1 C6 C6
 
         //
         // Private Data Members
