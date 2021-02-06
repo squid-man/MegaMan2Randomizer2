@@ -52,7 +52,7 @@ namespace MM2Randomizer.Patcher
                 this.Add(in_StartAddress++, b, $"{note}[{index++}]");
             }
 
-            return in_StartAddress + in_Value.Length;
+            return in_StartAddress;
         }
 
 
@@ -62,8 +62,8 @@ namespace MM2Randomizer.Patcher
         /// <param name="filename"></param>
         public void ApplyRandoPatch(string filename)
         {
-            using (var stream = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite))
-            { 
+            using (FileStream stream = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite))
+            {
                 //GetStringSortedByAddress();
 
                 foreach (KeyValuePair<int, ChangeByteRecord> kvp in Bytes)
@@ -123,6 +123,7 @@ namespace MM2Randomizer.Patcher
             int totalrepeats = 0;
             int offset = 0;
             bool keepgoing = true;
+
             while (keepgoing == true)
             {
                 offset = ipsbyte[ipson] * 0x10000 + ipsbyte[ipson + 1] * 0x100 + ipsbyte[ipson + 2];
@@ -137,8 +138,12 @@ namespace MM2Randomizer.Patcher
                     ipson++;
                     ipson++;
                     byte[] repeatbyte = new byte[totalrepeats];
+
                     for (int ontime = 0; ontime < totalrepeats; ontime++)
+                    {
                         repeatbyte[ontime] = ipsbyte[ipson];
+                    }
+
                     romstream.Seek(offset, SeekOrigin.Begin);
                     romresult = romstream.BeginWrite(repeatbyte, 0, totalrepeats, null, null);
                     romstream.EndWrite(romresult);
@@ -154,8 +159,11 @@ namespace MM2Randomizer.Patcher
                     romstream.EndWrite(romresult);
                     ipson = ipson + totalrepeats;
                 }
+
                 if (ipsbyte[ipson] == 69 && ipsbyte[ipson + 1] == 79 && ipsbyte[ipson + 2] == 70)
+                {
                     keepgoing = false;
+                }
             }
             romstream.Close();
         }

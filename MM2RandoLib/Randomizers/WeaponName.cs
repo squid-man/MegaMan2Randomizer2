@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace MM2Randomizer.Randomizers
@@ -58,6 +57,7 @@ namespace MM2Randomizer.Randomizers
             this.mSecondName = in_SecondName ?? throw new ArgumentNullException(nameof(in_SecondName));
             this.mLetter = in_WeaponLetter;
 
+            // The '@' character is a newline
             if (this.mFirstName.Length + this.mSecondName.Length + 1 > WeaponName.WEAPON_NAME_MAXLENGTH)
             {
                 this.mName = $"{in_FirstName} {in_SecondName[0]}.";
@@ -174,7 +174,6 @@ namespace MM2Randomizer.Randomizers
         private String mSecondName;
         private String mName;
         private Char mLetter;
-        private Int32 mMaxLength;
 
 
         //
@@ -191,7 +190,7 @@ namespace MM2Randomizer.Randomizers
         private static readonly String[] WEAPON_FIRST_NAME_LIST = new String[]
         {
             //
-            // Generic Mega Man
+            // Mega Man
             //
             "Proto",        // DLN.000 Proto Man
             "Mega",         // DLN.001 Mega Man
@@ -384,103 +383,346 @@ namespace MM2Randomizer.Randomizers
             //
             // Speacial Weapons
             //
+            "Auto",
             "Rush",
             "Beat",
             "Wire",
             "Super",
 
             //
-            // Other
+            // Mega Man X
             //
-            "Toad",
-            "Wily",
-            "Cossack",
+            "Zero",         // Zero
+            "X",            // Mega Man X
+            "Shotgun",      // Chill Penguin
+            "Electric",     // Spark Mandrill
+            "Rolling",      // Armored Armadillo
+            "Homing",       // Launch Octopus
+            "Boomerang",    // Boomer Kuwanger
+            "Chameleon",    // Sting Chameleon
+            "Storm",        // Storm Eagle
+            "Fire",         // Flame Mammoth
+
+            //
+            // Mega Man X2
+            //
+            "Sonic",        // Overdrive Ostrich
+            "Strike",       // Wire Sponge
+            "Spin",         // Wheel Gator
+            "Bubble",       // Bubble Crab
+            "Speed",        // Flame Stag
+            "Silk",         // Morph Moth
+            "Magnet",       // Magna Centipede
+            "Crystal",      // Crystal Snail
+
+            //
+            // Mega Man X3
+            //
+            "Acid",         // Toxic Seahorse
+            "Tornado",      // Tunnel Rhino
+            "Triad",        // Volt Catfish
+            "Spinning",     // Crush Crawfish
+            "Ray",          // Neon Tiger
+            "Gravity",      // Gravity Beetle
+            "Parasitic",    // Blast Hornet
+            "Frost",        // Blizzard Buffalo
+
+            //
+            // Mega Man Boss Names
+            //
             "Guts",
             "Elec",
             "Cut",
+            "Toad",
+            "Wily",
+            "Cossack",
+            "Quint",
             "Clown",
-            "Rta",
-            "Mash",
-            "Turbo",
-            "Tas",
-            "Big",
-            "Urn",
 
-            "Nudua",
-            "Joka",
-            "Ello",
-            "Coolkid",
-            "Cyghfer",
-            "Zoda",
-            "Shoka",
-            "Twitch",
-            "Pro",
+            //
+            // Mega Man X Boss Names
+            //
+            "Volt",
+
+            //
+            // Other
+            //
+
+            "Big",
             "Ion",
-            "Auto",
-            "Beat",
-            "Lag",
+            "Key",
+            "Kick",
+            "Mash",
+            "Octopus",
+            "Ocean",
+            "Ooze",
+            "Orb",
+            "Quad",
+            "Quiet",
+            "Rta",
+            "Tas",
+            "Turbo",
+            "Ultimate",
+            "Umber",
+            "Undo",
+            "Urn",
+            "Vine",
+            "Virus",
+            "Void",
+            "XRay",
+            "Yammar",
+            "Yoga",
+            "Zap",
+            "Zeta",
+            "Zoom",
         };
 
         private static readonly String[] WEAPON_SECOND_NAME_LIST = new String[]
         {
-            "BLAST",
-            "BLASTER",
-            "FIRE",
-            "CUTTER",
-            "BLADE",
-            "STOPPER",
-            "GUN",
-            "CANNON",
-            "HIT",
-            "SHOT",
-            "COIL",
-            "SHOOTER",
-            "BOMB",
-            "BOMBER",
-            "LASER",
-            "FLUSH",
-            "BEAM",
-            "DASH",
-            "MISSILE",
-            "STORM",
-            "CUTTER",
-            "SHIELD",
-            "KNUCKLE",
-            "SNAKE",
-            "SHOCK",
-            "SPIN",
-            "CRUSHER",
-            "HOLD",
-            "EYE",
-            "ATTACK",
-            "KICK",
-            "STONE",
-            "WAVE",
-            "SPEAR",
-            "CLAW",
-            "BALL",
-            "TRIDENT",
-            "WOOL",
-            "SPIKE",
-            "BLAZE",
-            "STRIKER",
-            "WALL",
-            "BALLOON",
-            "MARINE",
-            "WIRE",
-            "BURNER",
-            "BUSTER",
-            "ZIP",
-            "GLITCH",
-            "ADAPTER",
-            "RAID",
-            "DEVICE",
-            "BOX",
-            "AXE",
-            "ARC",
-            "JAB",
-            "RESET",
-            "STRAT",
+            //
+            // Mega Man
+            //
+            "Shield",       // DLN.000 Proto Man
+            "Buster",       // DLN.001 Mega Man
+
+            //
+            // Mega Man 1
+            //
+            "Cutter",       // DLN.003 Cut Man
+            "Arm",          // DLN.004 Guts Man
+            "Slasher",      // DLN.005 Ice Man
+            "Bomb",         // DLN.006 Bomb Man
+            "Storm",        // DLN.007 Fire Man
+            "Beam",         // DLN.008 Elec Man
+
+            //
+            // Mega Man 2
+            //
+            "Blade",        // DWN.009 Metal Man
+            "Shooter",      // DWN.010 Air Man
+            "Lead",         // DWN.011 Bubble Man
+            "Boomerang",    // DWN.012 Quick Man
+            "Bomber",       // DWN.013 Crash Man
+            "Stopper",      // DWN.014 Flash Man
+            "Fire",         // DWN.015 Heat Man
+            "Shield",       // DWN.016 Wood Man
+
+            //
+            // Mega Man 3
+            //
+            "Cannon",       // DWN.017 Needle Man
+            "Missile",      // DWN.018 Magnet Man
+            "Laser",        // DWN.019 Gemini Man
+            "Knuckle",      // DWN.020 Hard Man
+            "Spin",         // DWN.021 Top Man
+            "Snake",        // DWN.022 Snake Man
+            "Shock",        // DWN.023 Spark Man
+            "Blade",        // DWN.024 Shadow Man
+
+            //
+            // Mega Man 4
+            //
+            "Stopper",      // DWN.025 Bright Man
+            "Flush",        // DWN.026 Toad Man
+            "Bomb",         // DWN.027 Drill Man
+            "Shot",         // DWN.028 Pharaoh Man
+            "Boomerang",    // DWN.029 Ring Man
+            "Crusher",      // DWN.030 Dust Man
+            "Missile",      // DWN.031 Dive Man
+            "Barrier",      // DWN.032 Skull Man
+
+            //
+            // Mega Man 5
+            //
+            "Hold",         // DWN.033 Gravity Man
+            "Wave",         // DWN.034 Wave Man
+            "Stone",        // DWN.035 Stone Man
+            "Attack",       // DWN.036 Gyro Man
+            "Crash",        // DWN.037 Star Man
+            "Kick",         // DWN.038 Charge Man
+            "Bomb",         // DWN.039 Napalm Man
+            "Eye",          // DWN.040 Crystal Man
+
+            //
+            // Mega Man 6
+            //
+            "Attack",       // DWN.041 Blizzard Man
+            "Flash",        // DWN.042 Centaur Man
+            "Blast",        // DWN.043 Flame Man
+            "Crusher",      // DWN.044 Knight Man
+            "Barrier",      // DWN.045 Plant Man
+            "Tomahawk",     // DWN.046 Tomahawk Man
+            "Storm",        // DWN.047 Wind Man
+            "Spear",        // DWN.048 Yamato Man
+
+            //
+            // Mega Man 7
+            //
+            "Cracker",      // DWN.049 Freeze Man
+            "Shield",       // DWN.050 Junk Man
+            "Wrap",         // DWN.051 Burst Man
+            "Bolt",         // DWN.052 Cloud Man
+            "Coil",         // DWN.053 Spring Man
+            "Claw",         // DWN.054 Slash Man
+            "Crush",        // DWN.055 Shade Man
+            "Wheel",        // DWN.056 Turbo Man
+
+            //
+            // Mega Man 8
+            //
+            "Hold",         // DWN.057 Tengu Man
+            "Crush",        // DWN.058 Astro Man
+            "Vision",       // DWN.058 Astro Man
+            "Sword",        // DWN.059 Sword Man
+            "Claw",         // DWN.060 Clown Man
+            "Sniper",       // DWN.061 Search Man
+            "Wave",         // DWN.062 Frost Man
+            "Bomb",         // DWN.063 Grenade Man
+            "Balloon",      // DWN.064 Aqua Man
+
+            //
+            // Mega Man 9
+            //
+            "Shot",         // DLN.065 Concrete Man
+            "Blow",         // DLN.066 Tornado Man
+            "Trident",      // DLN.067 Splash Woman
+            "Ball",         // DLN.068 Plug Man
+            "Satellite",    // DLN.069 Jewel Man
+            "Chaser",       // DLN.070 Hornet Man
+            "Bazooka",      // DLN.071 Magma Man
+            "Bomb",         // DLN.072 Galaxy Man
+
+            //
+            // Mega Man 10
+            //
+            "Blade",        // DWN.073 Blade Man
+            "Shield",       // DWN.074 Pump Man
+            "Bomb",         // DWN.075 Commando Man
+            "Spike",        // DWN.076 Chill Man
+            "Wool",         // DWN.077 Sheep Man
+            "Striker",      // DWN.078 Strike Man
+            "Cutter",       // DWN.079 Nitro Man
+            "Blaze",        // DWN.080 Solar Man
+
+            //
+            // Mega Man 11
+            //
+            "Dropper",      // DWN.081 Block Man
+            "Thunder",      // DWN.082 Fuse Man
+            "Blast",        // DWN.083 Blast Man
+            "Barrier",      // DWN.084 Acid Man
+            "Storm",        // DWN.085 Tundra Man
+            "Torch",        // DWN.086 Torch Man
+            "Driver",       // DWN.087 Impact Man
+            "Ball",         // DWN.088 Bounce Man
+
+            //
+            // Mega Man Killer
+            //
+            "Buster",       // MKN.001 Enker
+            "Crusher",      // MKN.002 Punk
+            "Cracker",      // MKN.003 Ballade
+
+            //
+            // Mega Man V
+            //
+            "Chaser",       // SRN.001 Terra
+            "Buster",       // SRN.002 Mercury
+            "Bomb",         // SRN.003 Venus
+            "Missile",      // SRN.004 Mars
+            "Shock",        // SRN.005 Jupiter
+            "Hole",         // SRN.006 Saturn
+            "Digger",       // SRN.007 Uranus
+            "Dash",         // SRN.008 Pluto
+            "Water",        // SRN.009 Neptune
+
+            //
+            // Mega Man & Bass
+            //
+            "Bolt",         // KGN.001 Dynamo Man
+            "Wall",         // KGN.002 Cold Man
+            "Drill",        // KGN.003 Ground Man
+            "Mine",         // KGN.004 Pirate Man
+            "Burner",       // KGN.005 Burner Man
+            "Card",         // KGN.006 Magic Man
+            "Buster",       // SWN.001 Bass
+
+            //
+            // Mega Man DOS
+            //
+            "Wave",         // ???.??? Sonic Man
+            "Field",        // ???.??? Volt Man
+            "Detonator",    // ???.??? Dyna Man
+
+            //
+            // Mega Man 3 DOS
+            //
+            "Cannon",       // ???.??? Bit Man
+            "Launcher",     // ???.??? Blade Man
+            "Stream",       // ???.??? Oil Man
+            "Boomerang",    // ???.??? Shark Man
+            "Shooter",      // ???.??? Wave Man
+            "Arm",          // ???.??? Torch Man
+
+            //
+            // Speacial Weapons
+            //
+            "Adapter",
+            "Coil",
+            "Marine",
+            "Jet",
+            "Arrow",
+
+            //
+            // Mega Man X
+            //
+            "Ice",          // Chill Penguin
+            "Spark",        // Spark Mandrill
+            "Shield",       // Armored Armadillo
+            "Torpedo",      // Launch Octopus
+            "Cutter",       // Boomer Kuwanger
+            "Sting",        // Sting Chameleon
+            "Tornado",      // Storm Eagle
+            "Wave",         // Flame Mammoth
+
+            //
+            // Mega Man X2
+            //
+            "Slicer",       // Overdrive Ostrich
+            "Chain",        // Wire Sponge
+            "Wheel",        // Wheel Gator
+            "Splash",       // Bubble Crab
+            "Burner",       // Flame Stag
+            "Shot",         // Morph Moth
+            "Mine",         // Magna Centipede
+            "Hunter",       // Crystal Snail
+
+            //
+            // Mega Man X3
+            //
+            "Burst",        // Toxic Seahorse
+            "Fang",         // Tunnel Rhino
+            "Thunder",      // Volt Catfish
+            "Blade",        // Crush Crawfish
+            "Splasher",     // Neon Tiger
+            "Well",         // Gravity Beetle
+            "Bomb",         // Blast Hornet
+            "Shield",       // Blizzard Buffalo
+
+            //
+            // Other
+            //
+
+            "Arc",
+            "Axe",
+            "Blaster",
+            "Box",
+            "Device",
+            "Gun",
+            "Hit",
+            "Jab",
+            "Kick",
+            "Zip",
         };
     }
 }

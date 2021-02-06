@@ -14,6 +14,7 @@
     <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyVersion>0.6.0.*</AssemblyVersion>
+    <Deterministic>false</Deterministic>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using System.Diagnostics;
-
+using System.Text;
 using MM2Randomizer.Enums;
+using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Utilities;
-
-using MM2Randomizer.Extensions;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -50,7 +47,11 @@ namespace MM2Randomizer.Randomizers
             IEnumerable<WeaponName> weaponNames = WeaponName.GenerateUniqueWeaponNames(in_Random, 8);
 
             // Write the new weapons names
-            RText.PatchWeaponNames(in_Patch, in_Random, weaponNames);
+            RText.PatchWeaponNames(in_Patch, in_Random, weaponNames, out List<Char> newWeaponLetters);
+
+            // This is a hack to get around the strange interdependency that
+            // the randomizer interfaces have
+            this.mNewWeaponLetters = newWeaponLetters;
 
             // Write the credits
             RText.PatchCredits(in_Patch, in_Random, companyName);
@@ -64,15 +65,15 @@ namespace MM2Randomizer.Randomizers
         /// This method patches the company name in the intro screen.
         /// </summary>
         /// <remarks>
-        /// Intro Screen Line 1: 0x036EA8 - 0x036EBA (20 chars)
+        /// Intro Screen Line 1: 0x036EA8 - 0x036EBA (19 chars)
         /// ©2017 <company name> (13 chars for company, 19 total)
         /// </remarks>
         public static void PatchCompanyName(Patch in_Patch, CompanyName in_CompanyName)
         {
-            const Int32 MAX_LINE_LENGTH = 20;
+            const Int32 MAX_LINE_LENGTH = 19;
             const Int32 INTRO_LINE1_ADDRESS = 0x036EA8;
 
-            String line = $"©{DateTime.Now.Year} {in_CompanyName.Name}".PadCenter(MAX_LINE_LENGTH);
+            String line = $"©{DateTime.Now.Year} {in_CompanyName.GetCompanyName()}".PadCenter(MAX_LINE_LENGTH);
 
             in_Patch.Add(
                 INTRO_LINE1_ADDRESS,
@@ -89,15 +90,15 @@ namespace MM2Randomizer.Randomizers
         /// </remarks>
         public static void PatchIntroVersion(Patch in_Patch)
         {
-            const String APP_NAME = "Mega Man 2 Randomizer";
+            const String APP_NAME = "Mega Man 2 Randomizer v";
             const Int32 INTRO_LINE2_OFFSET = 0x036EBE;
             const Int32 INTRO_LINE2_MAXLENGTH = 31;
 
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetEntryAssembly();
             Version appVersion = assembly.GetName().Version;
             String version = appVersion.ToString(2);
 
-            String line = APP_NAME + " " + version;
+            String line = APP_NAME + version;
             line = line.PadCenter(INTRO_LINE2_MAXLENGTH);
 
             in_Patch.Add(INTRO_LINE2_OFFSET, line.AsIntroString(), $"Splash Text: {line}");
@@ -161,7 +162,7 @@ namespace MM2Randomizer.Randomizers
         }
 
 
-        public static void PatchWeaponNames(Patch in_Patch, Random in_Random, IEnumerable<WeaponName> in_WeaponNames)
+        public static void PatchWeaponNames(Patch in_Patch, Random in_Random, IEnumerable<WeaponName> in_WeaponNames, out List<Char> out_NewWeaponLetters)
         {
             const Int32 WEAPON_GET_LETTERS_ADDRESS = 0x037E22;
             const Int32 WEAPON_GET_NAME_ADDRESS = 0x037E2E;
@@ -173,25 +174,19 @@ namespace MM2Randomizer.Randomizers
 
             List<WeaponName> weaponNames = in_WeaponNames.ToList();
 
-            //String[] newWeaponNames = new String[8];
-            //Char[] newWeaponLetters = new Char[9]; // Original order: P H A W B Q F M C
-
             // Write in new weapon names
             for (Int32 weaponIndex = 0; weaponIndex < weaponNames.Count; ++weaponIndex)
             {
                 // Magic numbers?
                 Int32 offsetAddress = WEAPON_GET_NAME_ADDRESS + (weaponIndex * 0x10);
-                String weaponName = weaponNames[weaponIndex].Name.PadRight(12, '@');
+                String weaponName = weaponNames[weaponIndex].Name.PadRight(12, ' ');
 
-                //newWeaponNames[i] = name;
                 Int32 characterIndex = 0;
                 foreach (Char c in weaponName)
                 {
-                    Byte b = Convert.ToByte(c);
-
                     in_Patch.Add(
                         offsetAddress + characterIndex,
-                        b,
+                        c.AsPrintCharacter(),
                         String.Format("Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)weaponIndex).Name, characterIndex, c.ToString()));
 
                     characterIndex++;
@@ -202,7 +197,7 @@ namespace MM2Randomizer.Randomizers
             // TODO: why?
             for (Int32 i = 0; i < 10; i++)
             {
-                in_Patch.Add(0x037f5e + i, Convert.ToByte('@'), $"Quick Boomerang Name Erase Char #{i}: @");
+                in_Patch.Add(0x037f5e + i, ' '.AsPrintCharacter(), $"Quick Boomerang Name Erase Char #{i}: @");
             }
 
             // Pick a new weapon letter for buster
@@ -219,7 +214,7 @@ namespace MM2Randomizer.Randomizers
 
                 in_Patch.Add(
                     WEAPON_GET_LETTERS_ADDRESS + weaponLetterIndex,
-                    weaponLetter.AsAsciiByte(),
+                    weaponLetter.AsPrintCharacter(),
                     $"Weapon Get {((EDmgVsBoss.Offset)weaponLetterIndex).Name} Letter: {weaponLetter}");
 
                 // Write to pause menu
@@ -231,6 +226,8 @@ namespace MM2Randomizer.Randomizers
                     pauseLetterBytes,
                     $"Pause menu weapon letter GFX for \'{weaponLetter}\'");
             }
+
+            out_NewWeaponLetters = weaponLetters;
         }
 
 
@@ -323,7 +320,7 @@ namespace MM2Randomizer.Randomizers
                 for (Int32 j = 0; j < 9; j++)
                 {
                     Int32 dmg = RWeaknesses.BotWeaknesses[newIndex, j];
-                    sb.Append($"{GetBossWeaknessDamageChar(dmg)} ");
+                    sb.Append($"{RText.GetBossWeaknessDamageChar(dmg)} ");
                 }
 
                 String rowString = sb.ToString().Trim();
@@ -344,7 +341,7 @@ namespace MM2Randomizer.Randomizers
                 for (Int32 j = 0; j < 8; j++)
                 {
                     Int32 dmg = RWeaknesses.WilyWeaknesses[i, j];
-                    sb.Append($"{GetBossWeaknessDamageChar(dmg)} ");
+                    sb.Append($"{RText.GetBossWeaknessDamageChar(dmg)} ");
                 }
 
                 sb.Remove(sb.Length - 1, 1);
@@ -361,23 +358,27 @@ namespace MM2Randomizer.Randomizers
 
 
 
-        public void FixWeaponLetters(Patch p, Int32[] permutation)
+        public void FixWeaponLetters(Patch in_Patch, Int32[] in_Permutation)
         {
+            const Int32 WEAPON_GET_LETTERS_ADDRESS = 0x037E22;
+
             // Re-order the letters array to match the ordering of the shuffled weapons
             Char[] newLettersPermutation = new Char[9];
-            newLettersPermutation[0] = newWeaponLetters[0];
+            newLettersPermutation[0] = this.mNewWeaponLetters[0];
 
             for (Int32 i = 0; i < 8; i++)
             {
-                newLettersPermutation[i + 1] = newWeaponLetters[permutation[i] + 1];
+                newLettersPermutation[i + 1] = this.mNewWeaponLetters[in_Permutation[i] + 1];
             }
 
             // Write new weapon letters to weapon get screen
             for (Int32 i = 1; i < 9; i++)
             {
                 // Write to Weapon Get screen (note: Buster value is unused here)
-                Int32 newLetter = 0x41 + Alphabet.IndexOf(newLettersPermutation[i]); // unicode
-                p.Add(offsetWpnGetLetters + i - 1, (Byte)newLetter, $"Weapon Get {((EDmgVsBoss.Offset)i).Name} Letter: {newWeaponLetters[i]}");
+                in_Patch.Add(
+                    WEAPON_GET_LETTERS_ADDRESS + i - 1,
+                    newLettersPermutation[i].AsPrintCharacter(),
+                    $"Weapon Get {((EDmgVsBoss.Offset)i).Name} Letter: {this.mNewWeaponLetters[i]}");
             }
 
             //// Write new weapon letters to pause menu
@@ -394,7 +395,7 @@ namespace MM2Randomizer.Randomizers
 
         private static Char GetBossWeaknessDamageChar(Int32 dmg)
         {
-            char c;
+            Char c;
 
             if (dmg == 0 || dmg == 255)
             {
@@ -416,44 +417,6 @@ namespace MM2Randomizer.Randomizers
             return c;
         }
 
-        public static String Alphabet { get; set; } = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        /// <summary>
-        /// These arrays represent the raw graphical data for each letter, A-Z, to be rendered on the pause menu. To 
-        /// replace a weapon letter's graphic on the pause screen, use <see cref="PauseScreenWpnAddressByBossIndex"/>
-        /// to get the address of the desired weapon letter to replace, and then write in the 16 bytes for the desired
-        /// new letter from this dictionary.
-        /// </summary>
-        public static Dictionary<Char, Int32[]> PauseScreenCipher = new Dictionary<Char, Int32[]>()
-        {
-            // Kept as int, to prevent a thousand (byte) casts clogging this up. Cast to byte in a loop later.
-            { 'A', new Int32[] { 0x02, 0x39, 0x21, 0x21, 0x01, 0x39, 0x21, 0xE7, 0x7C, 0xC6, 0xC6, 0xC6, 0xFE, 0xC6, 0xC6, 0x00 } },
-            { 'B', new Int32[] { 0x02, 0x39, 0x21, 0x02, 0x39, 0x21, 0x02, 0xFC, 0xFC, 0xC6, 0xC6, 0xFC, 0xC6, 0xC6, 0xFC, 0x00 } },
-            { 'C', new Int32[] { 0x00, 0x38, 0x26, 0x20, 0x20, 0x20, 0x82, 0x7C, 0x7C, 0xC6, 0xC0, 0xC0, 0xC0, 0xC6, 0x7C, 0x00 } },
-            { 'D', new Int32[] { 0x02, 0x39, 0x21, 0x21, 0x21, 0x21, 0x02, 0xFC, 0xFC, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xFC, 0x00 } },
-            { 'E', new Int32[] { 0x00, 0x3E, 0x20, 0x00, 0x3C, 0x20, 0x00, 0xFE, 0xFE, 0xC0, 0xC0, 0xFC, 0xC0, 0xC0, 0xFE, 0x00 } },
-            { 'F', new Int32[] { 0x00, 0x3E, 0x20, 0x00, 0x3C, 0x20, 0x20, 0xE0, 0xFE, 0xC0, 0xC0, 0xFC, 0xC0, 0xC0, 0xC0, 0x00 } },
-            { 'G', new Int32[] { 0x02, 0x39, 0x27, 0x21, 0x39, 0x21, 0x83, 0x7E, 0x7C, 0xC6, 0xC0, 0xDE, 0xC6, 0xC6, 0x7C, 0x00 } },
-            { 'H', new Int32[] { 0x21, 0x21, 0x21, 0x01, 0x39, 0x21, 0x21, 0xE7, 0xC6, 0xC6, 0xC6, 0xFE, 0xC6, 0xC6, 0xC6, 0x00 } },
-            { 'I', new Int32[] { 0x02, 0xCE, 0x08, 0x08, 0x08, 0x08, 0x02, 0xFE, 0xFC, 0x30, 0x30, 0x30, 0x30, 0x30, 0xFC, 0x00 } },
-            { 'J', new Int32[] { 0x02, 0x02, 0x02, 0x02, 0x12, 0x12, 0x46, 0x3C, 0x0C, 0x0C, 0x0C, 0x0C, 0x6C, 0x6C, 0x38, 0x00 } },
-            { 'K', new Int32[] { 0x22, 0x26, 0x0C, 0x18, 0x08, 0x24, 0x32, 0xEE, 0xCC, 0xD8, 0xF0, 0xE0, 0xF0, 0xD8, 0xCC, 0x00 } },
-            { 'L', new Int32[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x02, 0xFE, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xFC, 0x00 } },
-            { 'M', new Int32[] { 0x01, 0x01, 0x01, 0x29, 0x31, 0x21, 0x21, 0xE7, 0xC6, 0xEE, 0xFE, 0xD6, 0xC6, 0xC6, 0xC6, 0x00 } },
-            { 'N', new Int32[] { 0x21, 0x01, 0x01, 0x21, 0x31, 0x29, 0x21, 0xE7, 0xC6, 0xE6, 0xF6, 0xDE, 0xCE, 0xC6, 0xC6, 0x00 } },
-            { 'O', new Int32[] { 0x02, 0x39, 0x21, 0x21, 0x21, 0x21, 0x82, 0x7C, 0x7C, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0x7C, 0x00 } },
-            { 'P', new Int32[] { 0x02, 0x39, 0x21, 0x21, 0x02, 0x3C, 0x20, 0xE0, 0xFC, 0xC6, 0xC6, 0xC6, 0xFC, 0xC0, 0xC0, 0x00 } },
-            { 'Q', new Int32[] { 0x02, 0x39, 0x21, 0x21, 0x21, 0x31, 0x82, 0x7C, 0x7C, 0xC6, 0xC6, 0xC6, 0xDE, 0xCE, 0x7C, 0x00 } },
-            { 'R', new Int32[] { 0x02, 0x39, 0x21, 0x21, 0x02, 0x32, 0x09, 0xC7, 0xFC, 0xC6, 0xC6, 0xC6, 0xFC, 0xCC, 0xC6, 0x00 } },
-            { 'S', new Int32[] { 0x02, 0x39, 0x27, 0x82, 0x79, 0x21, 0x83, 0x7E, 0x7C, 0xC6, 0xC0, 0x7C, 0x06, 0xC6, 0x7C, 0x00 } },
-            { 'T', new Int32[] { 0x02, 0xCE, 0x08, 0x08, 0x08, 0x08, 0x08, 0x38, 0xFC, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00 } },
-            { 'U', new Int32[] { 0x21, 0x21, 0x21, 0x21, 0x21, 0x21, 0x82, 0x7C, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0xC6, 0x7C, 0x00 } },
-            { 'V', new Int32[] { 0x21, 0x21, 0x21, 0x21, 0x93, 0x46, 0x2C, 0x18, 0xC6, 0xC6, 0xC6, 0xC6, 0x6C, 0x38, 0x10, 0x00 } },
-            { 'W', new Int32[] { 0x21, 0x21, 0x21, 0x21, 0x01, 0x11, 0x21, 0xC7, 0xC6, 0xC6, 0xC6, 0xD6, 0xFE, 0xEE, 0xC6, 0x00 } },
-            { 'X', new Int32[] { 0x22, 0x22, 0x84, 0x48, 0x00, 0x32, 0x22, 0xCE, 0xCC, 0xCC, 0x78, 0x30, 0x78, 0xCC, 0xCC, 0x00 } },
-            { 'Y', new Int32[] { 0x22, 0x22, 0x22, 0x84, 0x48, 0x08, 0x08, 0x38, 0xCC, 0xCC, 0xCC, 0x78, 0x30, 0x30, 0x30, 0x00 } },
-            { 'Z', new Int32[] { 0x02, 0x72, 0x84, 0x08, 0x10, 0x22, 0x02, 0xFE, 0xFC, 0x8C, 0x18, 0x30, 0x60, 0xC4, 0xFC, 0x00 } },
-        };
 
         /// <summary>
         /// These ROM addresses point to the graphical data of the sprites in the pause menu, namely the weapon 
@@ -475,218 +438,21 @@ namespace MM2Randomizer.Randomizers
 
         // STAFF == D3 D4 C1 C6 C6
 
-        /*
-        private String GetRandomName(Random r)
+        //
+        // Private Data Members
+        //
+
+        List<Char> mNewWeaponLetters = new List<Char>()
         {
-            // Start with random list
-            Int32 l = r.Next(1);
-            String name0, name1;
-
-            if (l == 0)
-            {
-                // Get random name from first list
-                Int32 random = r.Next(Names0.Length);
-                name0 = Names0[random];
-
-                // From second list, get subset of names with valid character count
-                Int32 charsLeft = MAX_CHARS - name0.Length - 1; // 1 space
-                List<String> names1Left = new List<String>();
-
-                for (int j = 0; j < Names1.Length; j++)
-                {
-                    if (Names1[j].Length <= charsLeft)
-                    {
-                        names1Left.Add(Names1[j]);
-                    }
-                }
-
-                // Get random name from modified second list
-                if (names1Left.Count > 0)
-                {
-                    random = r.Next(names1Left.Count);
-                    name1 = names1Left[random];
-                }
-                else
-                {
-                    name1 = "";
-                }
-            }
-            else
-            {
-                // Get random name from second list
-                Int32 random = r.Next(Names1.Length);
-                name1 = Names1[random];
-
-                // From first list, get subset of names with valid character count
-                Int32 charsLeft = MAX_CHARS - name1.Length - 1; // 1 space
-                List<String> names0Left = new List<String>();
-                for (Int32 j = 0; j < Names0.Length; j++)
-                {
-                    if (Names0[j].Length <= charsLeft)
-                    {
-                        names0Left.Add(Names0[j]);
-                    }
-                }
-
-                // Get random name from modified first list
-                if (names0Left.Count > 0)
-                {
-                    random = r.Next(names0Left.Count);
-                    name0 = names0Left[random];
-                }
-                else
-                {
-                    name0 = "";
-                }
-            }
-
-            // Handle cases for only one name
-            String finalName;
-
-            if (name0.Length == 0)
-            {
-                finalName = name1;
-            }
-            else if (name1.Length == 0)
-            {
-                finalName = name0;
-            }
-            // Concatenate final name
-            else
-            {
-                finalName = name0 + "@" + name1;
-            }
-
-            return finalName;
-        }
-        */
-
-        /*
-        private static String[] Names0 = new String[]
-        {
-            "TIME",
-            "MEGA",
-            "SUPER",
-            "METAL",
-            "ATOMIC",
-            "AIR",
-            "WILY",
-            "ROLL",
-            "RUSH",
-            "FRANKERZ",
-            "WATER",
-            "GUTS",
-            "ELEC",
-            "GEMINI",
-            "COSSACK",
-            "TOAD",
-            "HYPER",
-            "TIME",
-            "CRASH",
-            "LEAF",
-            "QUICK",
-            "DRILL",
-            "FLAME",
-            "PLANT",
-            "KNIGHT",
-            "SILVER",
-            "JUNK",
-            "THUNDER",
-            "WILD",
-            "NOISE",
-            "SLASH",
-            "TORNADO",
-            "ASTRO",
-            "CLOWN",
-            "SOLAR",
-            "CHILL",
-            "TRIPLE",
-            "REBOUND",
-            "NUDUA",
-            "JOKA",
-            "ELLO",
-            "COOLKID",
-            "CYGHFER",
-            "ZODA",
-            "SHOKA",
-            "PROTO",
-            "PLUG",
-            "RTA",
-            "MASH",
-            "TURBO",
-            "TAS",
-            "BIG",
-            "CUT",
-            "URN",
-            "TWITCH",
-            "PRO",
-            "ION",
-            "AUTO",
-            "BEAT",
-            "LAG",
+            'P',
+            'H',
+            'A',
+            'W',
+            'B',
+            'Q',
+            'F',
+            'M',
+            'C',
         };
-
-        private static String[] Names1 = new String[]
-        {
-            "BLAST",
-            "BLASTER",
-            "FIRE",
-            "CUTTER",
-            "BLADE",
-            "STOPPER",
-            "GUN",
-            "CANNON",
-            "HIT",
-            "SHOT",
-            "COIL",
-            "SHOOTER",
-            "BOMB",
-            "BOMBER",
-            "LASER",
-            "FLUSH",
-            "BEAM",
-            "DASH",
-            "MISSILE",
-            "STORM",
-            "CUTTER",
-            "SHIELD",
-            "KNUCKLE",
-            "SNAKE",
-            "SHOCK",
-            "SPIN",
-            "CRUSHER",
-            "HOLD",
-            "EYE",
-            "ATTACK",
-            "KICK",
-            "STONE",
-            "WAVE",
-            "SPEAR",
-            "CLAW",
-            "BALL",
-            "TRIDENT",
-            "WOOL",
-            "SPIKE",
-            "BLAZE",
-            "STRIKER",
-            "WALL",
-            "BALLOON",
-            "MARINE",
-            "WIRE",
-            "BURNER",
-            "BUSTER",
-            "ZIP",
-            "GLITCH",
-            "ADAPTER",
-            "RAID",
-            "DEVICE",
-            "BOX",
-            "AXE",
-            "ARC",
-            "JAB",
-            "RESET",
-            "STRAT",
-        };
-        */
     }
 }

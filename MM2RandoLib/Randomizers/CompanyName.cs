@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using MM2Randomizer.Extensions;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -16,11 +17,10 @@ namespace MM2Randomizer.Randomizers
 
         public String GetCompanyName()
         {
-            String prefix = this.Name ?? String.Empty;
+            String name = this.Name ?? String.Empty;
 
             // Truncate the prefix to the max length
-            String truncatedPrefix = prefix.Substring(0, Math.Min(CountryName.MAX_PREFIX_LENGTH, prefix.Length));
-            return truncatedPrefix.PadRight(CountryName.MAX_PREFIX_LENGTH).AsIntroString();
+            return name.Substring(0, Math.Min(CompanyName.MAX_NAME_LENGTH, name.Length));
         }
 
         private const Int32 MAX_NAME_LENGTH = 13;

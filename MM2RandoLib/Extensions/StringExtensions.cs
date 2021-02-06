@@ -50,15 +50,15 @@ namespace MM2Randomizer.Extensions
         }
 
 
-        public static Byte AsAsciiByte(this Char in_Char)
+        public static Byte AsPrintCharacter(this Char in_Char)
         {
-            if (true == StringExtensions.AsciiCharacterLookup.TryGetValue(in_Char, out Byte retval))
+            if (true == StringExtensions.PrintCharacterLookup.TryGetValue(in_Char, out Byte retval))
             {
                 return retval;
             }
             else
             {
-                return StringExtensions.AsciiCharacterLookup['Z'];
+                return StringExtensions.PrintCharacterLookup['?'];
             }
         }
 
@@ -285,8 +285,9 @@ namespace MM2Randomizer.Extensions
             { '=',  0x23},
         };
 
-        private static readonly Dictionary<Char, Byte> AsciiCharacterLookup = new Dictionary<Char, Byte>()
+        private static readonly Dictionary<Char, Byte> PrintCharacterLookup = new Dictionary<Char, Byte>()
         {
+            { ' ',  0x40 },
             { 'a',  0x41 },
             { 'A',  0x41 },
             { 'b',  0x42 },
@@ -339,6 +340,21 @@ namespace MM2Randomizer.Extensions
             { 'Y',  0x59 },
             { 'z',  0x5A },
             { 'Z',  0x5A },
+            { '?',  0x5B },
+            { '.',  0x5C },
+            { ',',  0x5D },
+            { '\'', 0x5E },
+            { '!',  0x5F },
+            { '0',  0xA0 },
+            { '1',  0xA1 },
+            { '2',  0xA2 },
+            { '3',  0xA3 },
+            { '4',  0xA4 },
+            { '5',  0xA5 },
+            { '6',  0xA6 },
+            { '7',  0xA7 },
+            { '8',  0xA8 },
+            { '9',  0xA9 },
         };
 
         /// <summary>
