@@ -40,7 +40,7 @@ namespace MM2Randomizer.Randomizers
             RText.PatchCompanyName(in_Patch, companyName);
             RText.PatchIntroVersion(in_Patch);
             RText.PatchForUse(in_Patch, in_Random);
-            RText.PatchIntroStroy(in_Patch, in_Random);
+            RText.PatchIntroStory(in_Patch, in_Random);
 
 
             // Write the new weapons names
@@ -144,7 +144,7 @@ namespace MM2Randomizer.Randomizers
         /// 27 characters per line
         /// 10 lines
         /// </remarks>
-        public static void PatchIntroStroy(Patch in_Patch, Random in_Random)
+        public static void PatchIntroStory(Patch in_Patch, Random in_Random)
         {
             const Int32 INTRO_STORY_PAGE1_ADDRESS = 0x036D56;
 
@@ -387,29 +387,6 @@ namespace MM2Randomizer.Randomizers
 
         public void FixWeaponLetters(Patch in_Patch, Int32[] in_Permutation)
         {
-            /*
-            const Int32 WEAPON_GET_LETTERS_ADDRESS = 0x037E22;
-
-            // Re-order the letters array to match the ordering of the shuffled weapons
-            Char[] newLettersPermutation = new Char[9];
-            newLettersPermutation[0] = this.mNewWeaponLetters[0];
-
-            for (Int32 i = 0; i < 8; i++)
-            {
-                newLettersPermutation[i + 1] = this.mNewWeaponLetters[in_Permutation[i] + 1];
-            }
-
-            // Write new weapon letters to weapon get screen
-            for (Int32 i = 1; i < 9; i++)
-            {
-                // Write to Weapon Get screen (note: Buster value is unused here)
-                in_Patch.Add(
-                    WEAPON_GET_LETTERS_ADDRESS + i - 1,
-                    newLettersPermutation[i].AsPrintCharacter(),
-                    $"Weapon Get {((EDmgVsBoss.Offset)i).Name} Letter: {this.mNewWeaponLetters[i]}");
-            }
-            */
-
             // Re-order the pause screen letters to match the ordering
             // of the shuffled weapons
             //
