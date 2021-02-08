@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.HashFunction;
-using System.Data.HashFunction.FNV;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -11,6 +9,7 @@ using System.Windows.Input;
 using Avalonia.Controls;
 using MM2Randomizer;
 using MM2Randomizer.Extensions;
+using RandomizerHost.Extensions;
 using RandomizerHost.Views;
 using ReactiveUI;
 
@@ -146,24 +145,8 @@ namespace RandomizerHost.ViewModels
             {
                 try
                 {
-                    // Convert the String to an array for hashing
-                    Byte[] seedStringBytes = Encoding.ASCII.GetBytes(seedString);
-
-                    // Create a new config in order to hash to a 32-bit number
-                    FNVConfig c = new FNVConfig()
-                    {
-                        HashSizeInBits = 32,
-                        Prime = new System.Numerics.BigInteger(1099511628211),
-                        Offset = new System.Numerics.BigInteger(14695981039346656037),
-                    };
-
-                    // Compute the hash
-                    IHashValue hashValue = FNV1aFactory.Instance.Create(c).ComputeHash(seedStringBytes);
-
-                    // Copy the hash to the Int32 seed
-                    Int32[] array = new Int32[1];
-                    hashValue.AsBitArray().CopyTo(array, 0);
-                    seed = array[0];
+                    // Convert the string to a hash
+                    seed = seedString.ToHash32();
                 }
                 catch (Exception ex)
                 {
@@ -194,8 +177,22 @@ namespace RandomizerHost.ViewModels
         {
             try
             {
-                this.RandoSettings.SeedString = String.Empty;
-                this.PerformRandomization(null);
+                // Create a random string of numbers to use as the seed
+                const String NUMBERS = "0123456789";
+
+                StringBuilder sb = new StringBuilder();
+
+                Random r = new Random();
+
+                for (Int32 i = 0; i < 10; ++i)
+                {
+                    sb.Append(NUMBERS[r.Next(NUMBERS.Length)]);
+                }
+
+                String seedString = sb.ToString();
+
+                this.RandoSettings.SeedString = seedString;
+                this.PerformRandomization(seedString.ToHash32());
             }
             catch (Exception e)
             {

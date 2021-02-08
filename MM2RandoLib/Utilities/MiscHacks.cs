@@ -26,6 +26,10 @@ namespace MM2Randomizer.Utilities
             }
 
             // Draw seed
+            Byte[] hash = "HASH".AsIntroString();
+            p.Add(0x0373C2, hash, "Title Screen hash");
+
+
             string seedAlpha = in_SeedBase26;
             for (int i = 0; i < seedAlpha.Length; i++)
             {
