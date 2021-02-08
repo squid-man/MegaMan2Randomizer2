@@ -10,7 +10,7 @@ namespace MM2Randomizer.Utilities
 {
     public static class MiscHacks
     {
-        public static void DrawTitleScreenChanges(Patch p, int seed, RandoSettings settings)
+        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, RandoSettings settings)
         {
             // Adjust cursor positions
             p.Add(0x0362D4, 0x90, "Title screen Cursor top position"); // default 0x98
@@ -26,7 +26,7 @@ namespace MM2Randomizer.Utilities
             }
 
             // Draw seed
-            string seedAlpha = SeedConvert.ConvertBase10To26(seed);
+            string seedAlpha = in_SeedBase26;
             for (int i = 0; i < seedAlpha.Length; i++)
             {
                 byte value = seedAlpha[i].AsIntroCharacter();

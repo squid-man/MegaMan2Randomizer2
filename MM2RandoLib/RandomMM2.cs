@@ -1,21 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Diagnostics;
-
+using System.IO;
+using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Randomizers;
-using MM2Randomizer.Randomizers.Enemies;
 using MM2Randomizer.Randomizers.Colors;
+using MM2Randomizer.Randomizers.Enemies;
 using MM2Randomizer.Randomizers.Stages;
-using MM2Randomizer.Randomizers.Stages.Components;
 using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer
 {
     public static class RandomMM2
     {
-        public static int Seed = -1;
+        //
+        // Properties
+        //
+
+        public static Int32? InputSeed
+        {
+            get
+            {
+                return RandomMM2.mInputSeed;
+            }
+        }
+
+        public static Int32 Seed
+        {
+            get
+            {
+                return RandomMM2.mSeed;
+            }
+        }
+
+        public static String SeedBase26
+        {
+            get
+            {
+                return RandomMM2.mSeedBase26;
+            }
+        }
+
+        //
+        // Public Data Members
+        //
+
         public static Random Random;
         public static Random RNGCosmetic;
         public static Patch Patch;
@@ -44,9 +74,26 @@ namespace MM2Randomizer
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static string RandomizerCreate(bool fromClientApp, int seed)
+        public static String RandomizerCreate(Boolean fromClientApp, Int32? in_Seed)
         {
-            Seed = seed;
+            RandomMM2.mInputSeed = in_Seed;
+
+            // Initialize the seed
+            if (true == in_Seed.HasValue)
+            {
+                RandomMM2.mSeed = in_Seed.Value;
+            }
+            else
+            {
+                Random r = new Random();
+                RandomMM2.mSeed = r.Next(Int32.MaxValue);
+            }
+
+            // Get the base-26 representation of the seed
+            RandomMM2.mSeedBase26 = RandomMM2.mSeed.ConvertToBase26();
+
+            Random = new Random(RandomMM2.mSeed);
+            RNGCosmetic = new Random(RandomMM2.mSeed);
 
             // List of randomizer modules to use; will add modules based on checkbox states
             Randomizers = new List<IRandomizer>();
@@ -176,9 +223,6 @@ namespace MM2Randomizer
             }
 
 
-            // Instantiate RNG object r based on RandomMM2.Seed
-            InitializeSeed();
-
             // Create randomization patch
             Patch = new Patch();
 
@@ -239,7 +283,7 @@ namespace MM2Randomizer
             MiscHacks.SetRobotMasterEnergyChargingSpeed(Patch, Settings.RobotMasterEnergyChargingSpeed);
             MiscHacks.SetCastleBossEnergyChargingSpeed(Patch, Settings.CastleBossEnergyChargingSpeed);
 
-            MiscHacks.DrawTitleScreenChanges(Patch, Seed, Settings);
+            MiscHacks.DrawTitleScreenChanges(Patch, RandomMM2.mSeedBase26, Settings);
             MiscHacks.SetWily5NoMusicChange(Patch);
             MiscHacks.NerfDamageValues(Patch);
             MiscHacks.SetETankKeep(Patch);
@@ -257,8 +301,14 @@ namespace MM2Randomizer
             }
 
             // Create file name based on seed and game region
-            string seedAlpha = SeedConvert.ConvertBase10To26(Seed);
-            string newfilename = $"MM2-RNG-{seedAlpha} ({Settings.SeedString}).nes";
+            String newFileName = $"MM2-RNG-{RandomMM2.mSeedBase26}";
+
+            if (true == RandomMM2.mInputSeed.HasValue)
+            {
+                newFileName += $" ({Settings.SeedString})";
+            }
+
+            newFileName += ".nes";
 
             // Apply patch and deliver the ROM; different routine for client vs. web app
             if (fromClientApp)
@@ -283,25 +333,25 @@ namespace MM2Randomizer
                 Patch.ApplyRandoPatch(TempFileName);
 
                 // If a file of the same seed already exists, delete it
-                if (File.Exists(newfilename))
+                if (File.Exists(newFileName))
                 {
-                    File.Delete(newfilename);
+                    File.Delete(newFileName);
                 }
 
                 // Finish the copy/rename and open Explorer at that location
-                File.Move(TempFileName, newfilename);
-                RecentlyCreatedFileName = newfilename;
-                Settings.HashValidationMessage = "Successfully copied and patched! File: " + newfilename;
-                return newfilename;
+                File.Move(TempFileName, newFileName);
+                RecentlyCreatedFileName = newFileName;
+                Settings.HashValidationMessage = "Successfully copied and patched! File: " + newFileName;
+                return newFileName;
             }
             else
             {
                 //File.Copy(Settings.SourcePath, TempFileName, true);
-                string serverDir = $@"C:\mm2rng\{seedAlpha}";
+                string serverDir = $@"C:\mm2rng\{RandomMM2.mSeedBase26}";
                 Directory.CreateDirectory(serverDir);
 
                 string serverPathTemp = Path.Combine(serverDir, TempFileName);
-                string serverPathNew = Path.Combine(serverDir, newfilename);
+                string serverPathNew = Path.Combine(serverDir, newFileName);
                 using (Stream stream = new FileStream("MM2.nes", FileMode.Open))
                 {
                     using (Stream output = File.OpenWrite(serverPathTemp))
@@ -330,19 +380,6 @@ namespace MM2Randomizer
             }
         }
 
-        /// <summary>
-        /// Create a random seed or use the user-provided seed.
-        /// </summary>
-        private static void InitializeSeed()
-        {
-            if (Seed < 0)
-            {
-                Random rndSeed = new Random();
-                Seed = rndSeed.Next(int.MaxValue);
-            }
-            Random = new Random(Seed);
-            RNGCosmetic = new Random(Seed);
-        }
 
         /// <summary>
         /// Shuffle the elements of the provided list.
@@ -364,5 +401,14 @@ namespace MM2Randomizer
             }
             return list;
         }
+
+
+        //
+        // Private Data Members
+        //
+
+        private static Int32? mInputSeed = null;
+        private static Int32 mSeed = 0;
+        private static String mSeedBase26 = null;
     }
 }

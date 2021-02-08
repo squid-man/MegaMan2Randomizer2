@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace MM2Randomizer.Extensions
@@ -10,6 +11,17 @@ namespace MM2Randomizer.Extensions
         //
         // Public Methods
         //
+        public static String TrimNonAlphanumeric(this String in_String)
+        {
+            if (null == in_String)
+            {
+                return null;
+            }
+
+            return Regex.Replace(in_String, @"[^a-zA-Z0-9]", String.Empty);
+        }
+
+
         public static T Deserialize<T>(this String in_Resource)
         {
             T returnValue;
