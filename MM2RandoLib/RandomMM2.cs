@@ -347,11 +347,11 @@ namespace MM2Randomizer
             else
             {
                 //File.Copy(Settings.SourcePath, TempFileName, true);
-                string serverDir = $@"C:\mm2rng\{RandomMM2.mSeedBase26}";
+                String serverDir = $@"C:\mm2rng\{RandomMM2.mSeedBase26}";
                 Directory.CreateDirectory(serverDir);
 
                 string serverPathTemp = Path.Combine(serverDir, TempFileName);
-                string serverPathNew = Path.Combine(serverDir, newFileName);
+                String serverPathNew = Path.Combine(serverDir, newFileName);
                 using (Stream stream = new FileStream("MM2.nes", FileMode.Open))
                 {
                     using (Stream output = File.OpenWrite(serverPathTemp))

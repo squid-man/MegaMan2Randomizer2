@@ -18,7 +18,7 @@ namespace MM2Randomizer.Extensions
                 return null;
             }
 
-            return Regex.Replace(in_String, @"[^a-zA-Z0-9]", String.Empty);
+            return Regex.Replace(in_String.Trim(), @"[^a-zA-Z0-9 ]", String.Empty);
         }
 
 

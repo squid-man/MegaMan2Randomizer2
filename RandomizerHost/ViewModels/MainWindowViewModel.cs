@@ -177,20 +177,9 @@ namespace RandomizerHost.ViewModels
         {
             try
             {
-                // Create a random string of numbers to use as the seed
-                const String NUMBERS = "0123456789";
-
-                StringBuilder sb = new StringBuilder();
-
+                // Get a random number for the seed
                 Random r = new Random();
-
-                for (Int32 i = 0; i < 10; ++i)
-                {
-                    sb.Append(NUMBERS[r.Next(NUMBERS.Length)]);
-                }
-
-                String seedString = sb.ToString();
-
+                String seedString = r.Next(Int32.MaxValue).ToString();
                 this.RandoSettings.SeedString = seedString;
                 this.PerformRandomization(seedString.ToHash32());
             }
