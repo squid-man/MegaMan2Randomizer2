@@ -30,6 +30,7 @@
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Properties\Resources.Designer.cs">
