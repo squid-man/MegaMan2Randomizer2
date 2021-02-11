@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MM2Randomizer.Data;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -174,7 +176,7 @@ namespace MM2Randomizer.Randomizers
             // Write in new weapon names
             for (Int32 weaponIndex = 0; weaponIndex < WEAPON_COUNT; ++weaponIndex)
             {
-                // Each weapon get name is 14 bytes long with a 2 byte header
+                // Each weapon get name is 14 bytes long with a 2 Byte header
                 Int32 offsetAddress = WEAPON_GET_NAME_ADDRESS + (weaponIndex * 0x10);
 
                 if (WEAPON_GET_EXTENDED_NAME_INDEX == weaponIndex)
@@ -281,11 +283,11 @@ namespace MM2Randomizer.Randomizers
                 }
             }
 
-            Int32 startChar = 0x024D36; // First byte of credits text
+            Int32 startChar = 0x024D36; // First Byte of credits text
 
             for (Int32 i = 0; i < creditsSb.Length; i++)
             {
-                in_Patch.Add(startChar, creditsSb[i].AsCreditsCharacter(), $"Credits char #{i}");
+                in_Patch.Add(startChar, creditsSb[i].AsCreditsCharacter(), $"Credits Char #{i}");
                 startChar++;
             }
 
@@ -294,7 +296,7 @@ namespace MM2Randomizer.Randomizers
 
             for (Int32 i = 0; i < companyName.Length; i++)
             {
-                in_Patch.Add(startChar, companyName[i].AsCreditsCharacter(), $"Credits company char #{i}");
+                in_Patch.Add(startChar, companyName[i].AsCreditsCharacter(), $"Credits company Char #{i}");
                 startChar++;
             }
 
@@ -312,7 +314,7 @@ namespace MM2Randomizer.Randomizers
                 0x024E1F, // Clash
             };
 
-            int[] txtWilys = new int[6]
+            Int32[] txtWilys = new Int32[6]
             {
                 0x024E54, // Dragon
                 0x024E6C, // Picopico
@@ -356,7 +358,7 @@ namespace MM2Randomizer.Randomizers
                 {
                     in_Patch.Add(txtRobos[i] + j,
                         rowString[j].AsCreditsCharacter(),
-                        $"Credits robo weakness table char #{j + i * rowString.Length}");
+                        $"Credits robo weakness table Char #{j + i * rowString.Length}");
                 }
             }
 
@@ -378,7 +380,7 @@ namespace MM2Randomizer.Randomizers
                 {
                     in_Patch.Add(txtWilys[i] + j,
                         rowString[j].AsCreditsCharacter(),
-                        $"Credits wily weakness table char #{j + i * rowString.Length}");
+                        $"Credits wily weakness table Char #{j + i * rowString.Length}");
                 }
             }
         }
@@ -400,7 +402,7 @@ namespace MM2Randomizer.Randomizers
 
                 for (Int32 j = 0; j < pauseLetterBytes.Length; j++)
                 {
-                    in_Patch.Add(wpnLetterAddress + j, pauseLetterBytes[j], $"Pause menu weapon letter GFX for \'{this.mNewWeaponLetters[i]}\', byte #{j}");
+                    in_Patch.Add(wpnLetterAddress + j, pauseLetterBytes[j], $"Pause menu weapon letter GFX for \'{this.mNewWeaponLetters[i]}\', Byte #{j}");
                 }
             }
         }

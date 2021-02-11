@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using System.Text;
+using System.Xml.Serialization;
 using MM2Randomizer.Extensions;
 
-namespace MM2Randomizer.Randomizers
+namespace MM2Randomizer.Data
 {
     [Serializable]
     public class IntroStory
@@ -25,7 +25,7 @@ namespace MM2Randomizer.Randomizers
 
             Int32 currentLine = 0;
 
-            // Add lines from the config object
+            // Add lines from the config Object
             if (null != this.Lines)
             {
                 foreach (String line in this.Lines)
@@ -60,6 +60,7 @@ namespace MM2Randomizer.Randomizers
         private const Int32 MAX_LINE_LENGTH = 27;
         private const Int32 MAX_LINES = 10;
     }
+
 
     [Serializable]
     [XmlRoot("IntroStorySet")]

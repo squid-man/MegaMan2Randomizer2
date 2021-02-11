@@ -46,6 +46,7 @@ namespace MM2Randomizer
         // Public Data Members
         //
 
+        public static Int32 Seed = -1;
         public static Random Random;
         public static Random RNGCosmetic;
         public static Patch Patch;
@@ -74,7 +75,7 @@ namespace MM2Randomizer
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static String RandomizerCreate(Boolean fromClientApp, Int32? in_Seed)
+        public static String RandomizerCreate(Boolean fromClientApp, Int32 seed)
         {
             RandomMM2.mInputSeed = in_Seed;
 
@@ -223,6 +224,9 @@ namespace MM2Randomizer
             }
 
 
+            // Instantiate RNG Object r based on RandomMM2.Seed
+            InitializeSeed();
+
             // Create randomization patch
             Patch = new Patch();
 
@@ -301,14 +305,8 @@ namespace MM2Randomizer
             }
 
             // Create file name based on seed and game region
-            String newFileName = $"MM2-RNG-{RandomMM2.mSeedBase26}";
-
-            if (true == RandomMM2.mInputSeed.HasValue)
-            {
-                newFileName += $" ({Settings.SeedString})";
-            }
-
-            newFileName += ".nes";
+            String seedAlpha = SeedConvert.ConvertBase10To26(Seed);
+            String newfilename = $"MM2-RNG-{seedAlpha} ({Settings.SeedString}).nes";
 
             // Apply patch and deliver the ROM; different routine for client vs. web app
             if (fromClientApp)
@@ -347,11 +345,11 @@ namespace MM2Randomizer
             else
             {
                 //File.Copy(Settings.SourcePath, TempFileName, true);
-                String serverDir = $@"C:\mm2rng\{RandomMM2.mSeedBase26}";
+                String serverDir = $@"C:\mm2rng\{seedAlpha}";
                 Directory.CreateDirectory(serverDir);
 
-                string serverPathTemp = Path.Combine(serverDir, TempFileName);
-                String serverPathNew = Path.Combine(serverDir, newFileName);
+                String serverPathTemp = Path.Combine(serverDir, TempFileName);
+                String serverPathNew = Path.Combine(serverDir, newfilename);
                 using (Stream stream = new FileStream("MM2.nes", FileMode.Open))
                 {
                     using (Stream output = File.OpenWrite(serverPathTemp))
@@ -380,21 +378,34 @@ namespace MM2Randomizer
             }
         }
 
+        /// <summary>
+        /// Create a random seed or use the user-provided seed.
+        /// </summary>
+        private static void InitializeSeed()
+        {
+            if (Seed < 0)
+            {
+                Random rndSeed = new Random();
+                Seed = rndSeed.Next(Int32.MaxValue);
+            }
+            Random = new Random(Seed);
+            RNGCosmetic = new Random(Seed);
+        }
 
         /// <summary>
         /// Shuffle the elements of the provided list.
         /// </summary>
         /// <typeparam name="T">The Type of the elements in the list.</typeparam>
-        /// <param name="list">The object to be shuffled.</param>
+        /// <param name="list">The Object to be shuffled.</param>
         /// <param name="rng">The seed used to perform the shuffling.</param>
         /// <returns>A reference to the shuffled list.</returns>
         public static IList<T> Shuffle<T>(this IList<T> list, Random rng)
         {
-            int n = list.Count;
+            Int32 n = list.Count;
             while (n > 1)
             {
                 n--;
-                int k = rng.Next(n + 1);
+                Int32 k = rng.Next(n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
