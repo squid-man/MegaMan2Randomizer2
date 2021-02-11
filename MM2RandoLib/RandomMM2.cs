@@ -26,7 +26,7 @@ namespace MM2Randomizer
             }
         }
 
-        public static Int32 Seed
+        public static Seed Seed
         {
             get
             {
@@ -34,25 +34,17 @@ namespace MM2Randomizer
             }
         }
 
-        public static String SeedBase26
-        {
-            get
-            {
-                return RandomMM2.mSeedBase26;
-            }
-        }
 
         //
         // Public Data Members
         //
 
-        public static Int32 Seed = -1;
-        public static Random Random;
-        public static Random RNGCosmetic;
+        //public static Random Random;
+        //public static Random RNGCosmetic;
         public static Patch Patch;
         public static RandoSettings Settings;
-        public static readonly string TempFileName = "temp.nes";
-        public static string RecentlyCreatedFileName = "";
+        public static readonly String TempFileName = "temp.nes";
+        public static String RecentlyCreatedFileName = "";
 
         public static RStages randomStages;
         public static RWeaponGet randomWeaponGet;
@@ -75,19 +67,17 @@ namespace MM2Randomizer
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static String RandomizerCreate(Boolean fromClientApp, Int32 seed)
+        public static String RandomizerCreate(Boolean fromClientApp, String in_SeedString)
         {
-            RandomMM2.mInputSeed = in_Seed;
 
             // Initialize the seed
-            if (true == in_Seed.HasValue)
+            if (null == in_SeedString)
             {
-                RandomMM2.mSeed = in_Seed.Value;
+                RandomMM2.mSeed = Seed.Create();
             }
             else
             {
-                Random r = new Random();
-                RandomMM2.mSeed = r.Next(Int32.MaxValue);
+                RandomMM2.mSeed = Seed.Create(in_SeedString);
             }
 
             // Get the base-26 representation of the seed
@@ -224,9 +214,6 @@ namespace MM2Randomizer
             }
 
 
-            // Instantiate RNG Object r based on RandomMM2.Seed
-            InitializeSeed();
-
             // Create randomization patch
             Patch = new Patch();
 
@@ -305,112 +292,45 @@ namespace MM2Randomizer
             }
 
             // Create file name based on seed and game region
-            String seedAlpha = SeedConvert.ConvertBase10To26(Seed);
-            String newfilename = $"MM2-RNG-{seedAlpha} ({Settings.SeedString}).nes";
+            String newFileName = $"MM2-RNG-{RandomMM2.mSeedBase26}";
 
-            // Apply patch and deliver the ROM; different routine for client vs. web app
-            if (fromClientApp)
+            if (true == RandomMM2.mInputSeed.HasValue)
             {
-                //File.Copy(Settings.SourcePath, TempFileName, true);
-                //using (Stream stream = assembly.GetManifestResourceStream("MM2Randomizer.Resources.MM2.nes"))
-                // Load user provided ROM
-                using (Stream stream = new FileStream(Settings.SourcePath, FileMode.Open, FileAccess.Read))
-                {
-                    using (Stream output = File.OpenWrite(TempFileName))
-                    {
-                        stream.CopyTo(output);
-                    }
-                }
-
-                // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
-                Patch.ApplyIPSPatch(TempFileName, Properties.Resources.mm2rng_musicpatch);
-                Patch.ApplyIPSPatch(TempFileName, Properties.Resources.mm2rng_prepatch);
-                MiscHacks.SetNewMegaManSprite(Patch, TempFileName, Settings.SelectedPlayer);
-
-                // Apply patch with randomized content
-                Patch.ApplyRandoPatch(TempFileName);
-
-                // If a file of the same seed already exists, delete it
-                if (File.Exists(newFileName))
-                {
-                    File.Delete(newFileName);
-                }
-
-                // Finish the copy/rename and open Explorer at that location
-                File.Move(TempFileName, newFileName);
-                RecentlyCreatedFileName = newFileName;
-                Settings.HashValidationMessage = "Successfully copied and patched! File: " + newFileName;
-                return newFileName;
+                newFileName += $" ({Settings.SeedString})";
             }
-            else
+
+            newFileName += ".nes";
+
+            //File.Copy(Settings.SourcePath, TempFileName, true);
+            //using (Stream stream = assembly.GetManifestResourceStream("MM2Randomizer.Resources.MM2.nes"))
+            // Load user provided ROM
+            using (Stream stream = new FileStream(Settings.SourcePath, FileMode.Open, FileAccess.Read))
             {
-                //File.Copy(Settings.SourcePath, TempFileName, true);
-                String serverDir = $@"C:\mm2rng\{seedAlpha}";
-                Directory.CreateDirectory(serverDir);
-
-                String serverPathTemp = Path.Combine(serverDir, TempFileName);
-                String serverPathNew = Path.Combine(serverDir, newfilename);
-                using (Stream stream = new FileStream("MM2.nes", FileMode.Open))
+                using (Stream output = File.OpenWrite(TempFileName))
                 {
-                    using (Stream output = File.OpenWrite(serverPathTemp))
-                    {
-                        stream.CopyTo(output);
-                    }
+                    stream.CopyTo(output);
                 }
-
-                // Apply pre-patch changes via IPS patch (manual title screen, stage select, and stage changes)
-                Patch.ApplyIPSPatch(serverPathTemp, Properties.Resources.mm2rng_musicpatch);
-                Patch.ApplyIPSPatch(serverPathTemp, Properties.Resources.mm2rng_prepatch);
-
-                // Apply patch with randomized content
-                Patch.ApplyRandoPatch(serverPathTemp);
-
-                // If a file of the same seed already exists, delete it
-                if (File.Exists(serverPathNew))
-                {
-                    File.Delete(serverPathNew);
-                }
-
-                // Finish the copy/rename and open Explorer at that location
-                File.Move(serverPathTemp, serverPathNew);
-                RecentlyCreatedFileName = serverPathNew;
-                return serverPathNew;
             }
-        }
 
-        /// <summary>
-        /// Create a random seed or use the user-provided seed.
-        /// </summary>
-        private static void InitializeSeed()
-        {
-            if (Seed < 0)
+            // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
+            Patch.ApplyIPSPatch(TempFileName, Properties.Resources.mm2rng_musicpatch);
+            Patch.ApplyIPSPatch(TempFileName, Properties.Resources.mm2rng_prepatch);
+            MiscHacks.SetNewMegaManSprite(Patch, TempFileName, Settings.SelectedPlayer);
+
+            // Apply patch with randomized content
+            Patch.ApplyRandoPatch(TempFileName);
+
+            // If a file of the same seed already exists, delete it
+            if (File.Exists(newFileName))
             {
-                Random rndSeed = new Random();
-                Seed = rndSeed.Next(Int32.MaxValue);
+                File.Delete(newFileName);
             }
-            Random = new Random(Seed);
-            RNGCosmetic = new Random(Seed);
-        }
 
-        /// <summary>
-        /// Shuffle the elements of the provided list.
-        /// </summary>
-        /// <typeparam name="T">The Type of the elements in the list.</typeparam>
-        /// <param name="list">The Object to be shuffled.</param>
-        /// <param name="rng">The seed used to perform the shuffling.</param>
-        /// <returns>A reference to the shuffled list.</returns>
-        public static IList<T> Shuffle<T>(this IList<T> list, Random rng)
-        {
-            Int32 n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                Int32 k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-            return list;
+            // Finish the copy/rename and open Explorer at that location
+            File.Move(TempFileName, newFileName);
+            RecentlyCreatedFileName = newFileName;
+            Settings.HashValidationMessage = "Successfully copied and patched! File: " + newFileName;
+            return newFileName;
         }
 
 
@@ -418,8 +338,6 @@ namespace MM2Randomizer
         // Private Data Members
         //
 
-        private static Int32? mInputSeed = null;
-        private static Int32 mSeed = 0;
-        private static String mSeedBase26 = null;
+        private static Seed mSeed = null;
     }
 }

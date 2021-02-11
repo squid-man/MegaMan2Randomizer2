@@ -4,12 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Input;
 using Avalonia.Controls;
 using MM2Randomizer;
 using MM2Randomizer.Extensions;
-using RandomizerHost.Extensions;
 using RandomizerHost.Views;
 using ReactiveUI;
 
@@ -134,41 +132,26 @@ namespace RandomizerHost.ViewModels
 
         public async void CreateFromGivenSeed(Window in_Window)
         {
-            Int32? seed;
-
-            // First, clean the seed of non-alphanumerics
-            String seedString = this.RandoSettings.SeedString.TrimNonAlphanumeric().ToUpperInvariant();
+            // First, clean the seed of non-alphanumerics.  This isn't for the
+            // seed generation code, but to maintain safe file names
+            String seedString = this.RandoSettings.SeedString.Trim().RemoveNonAlphanumericCharacters();
             this.RandoSettings.SeedString = seedString;
 
-            // Check if textbox contains a valid seed string
-            if (false == String.IsNullOrEmpty(seedString))
+            if (true == String.IsNullOrEmpty(seedString))
             {
-                try
-                {
-                    // Convert the string to a hash
-                    seed = seedString.ToHash32();
-                }
-                catch (Exception ex)
-                {
-                    await MessageBox.Show(in_Window, ex.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
-
-                    Debug.WriteLine("Exception in parsing Seed. Using random seed. Message:/n" + ex.ToString());
-                    seed = null;
-                }
+                this.CreateFromRandomSeed(in_Window);
             }
             else
             {
-                seed = null;
-            }
-
-            try
-            {
-                // Perform randomization based on settings, then generate the ROM.
-                this.PerformRandomization(seed);
-            }
-            catch (Exception e)
-            {
-                await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+                try
+                {
+                    // Perform randomization based on settings, then generate the ROM.
+                    this.PerformRandomization(seedString);
+                }
+                catch (Exception e)
+                {
+                    await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+                }
             }
         }
 
@@ -177,11 +160,7 @@ namespace RandomizerHost.ViewModels
         {
             try
             {
-                // Get a random number for the seed
-                Random r = new Random();
-                String seedString = r.Next(Int32.MaxValue).ToString();
-                this.RandoSettings.SeedString = seedString;
-                this.PerformRandomization(seedString.ToHash32());
+                this.PerformRandomization();
             }
             catch (Exception e)
             {
@@ -210,10 +189,11 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        public void PerformRandomization(Int32? in_Seed)
+
+        public void PerformRandomization(String in_SeedString = null)
         {
             // Perform randomization based on settings, then generate the ROM.
-            RandomMM2.RandomizerCreate(true, in_Seed);
+            RandomMM2.RandomizerCreate(true, in_SeedString);
 
             // Get A-Z representation of seed
             String seedBase26 = RandomMM2.SeedBase26;

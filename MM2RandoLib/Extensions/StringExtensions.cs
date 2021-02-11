@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.HashFunction;
+using System.Data.HashFunction.FNV;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
@@ -11,14 +14,15 @@ namespace MM2Randomizer.Extensions
         //
         // Public Methods
         //
-        public static String TrimNonAlphanumeric(this String in_String)
+
+        public static String RemoveNonAlphanumericCharacters(this String in_String, Boolean in_KeepSpaces = true)
         {
             if (null == in_String)
             {
                 return null;
             }
 
-            return Regex.Replace(in_String.Trim(), @"[^a-zA-Z0-9 ]", String.Empty);
+            return Regex.Replace(in_String, @"[^a-zA-Z0-9 ]", String.Empty);
         }
 
 
@@ -46,7 +50,7 @@ namespace MM2Randomizer.Extensions
         }
 
 
-        public static Int32 ToHash32(this String in_String)
+        public static Int32 ToInt32Hash(this String in_String)
         {
             // Convert the String to an array for hashing
             Byte[] seedStringBytes = Encoding.ASCII.GetBytes(in_String);

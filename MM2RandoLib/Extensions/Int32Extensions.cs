@@ -5,7 +5,7 @@ namespace MM2Randomizer.Extensions
 {
     public static class Int32Extensions
     {
-        public static String ConvertToBase26(this Int32 in_Value)
+        public static String ToAlphaBase26(this Int32 in_Value)
         {
             const String DIGITS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const Int32 RADIX = 26;
