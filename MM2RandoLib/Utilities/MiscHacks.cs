@@ -1,9 +1,10 @@
-﻿using MM2Randomizer.Enums;
+﻿using System;
+using System.Linq;
+using MM2Randomizer.Enums;
+using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Randomizers;
 using MM2Randomizer.Randomizers.Stages;
-using System;
-using System.Linq;
 
 namespace MM2Randomizer.Utilities
 {
@@ -20,7 +21,7 @@ namespace MM2Randomizer.Utilities
             string version = assembly.GetName().Version.ToString();
             for (int i = 0; i < version.Length; i++)
             {
-                byte value = RText.IntroCipher[version[i]];
+                byte value = version[i].AsIntroCharacter();
                 p.Add(0x037407 + i, value, "Title Screen Version Number");
             }
 
@@ -28,7 +29,7 @@ namespace MM2Randomizer.Utilities
             string seedAlpha = SeedConvert.ConvertBase10To26(seed);
             for (int i = 0; i < seedAlpha.Length; i++)
             {
-                byte value = RText.IntroCipher[seedAlpha[i]];
+                byte value = seedAlpha[i].AsIntroCharacter();
                 p.Add(0x0373C7 + i, value, "Title Screen Seed");
             }
 
@@ -36,7 +37,7 @@ namespace MM2Randomizer.Utilities
             string flags = settings.GetFlagsString();
             for (int i = 0; i < flags.Length; i++)
             {
-                byte value = RText.IntroCipher[flags[i]];
+                byte value = flags[i].AsIntroCharacter();
                 if (i < 14)
                 {
                     p.Add(0x037387 + i, value, $"Title Screen Flags: {flags[i]}");
@@ -116,6 +117,46 @@ namespace MM2Randomizer.Utilities
         }
 
         /// <summary>
+        /// </summary>
+        public static void SetHitPointChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        {
+            int address = 0x03831B;
+            p.Add(address, (Byte)chargingSpeed, "Hit Point Charging Speed");
+        }
+
+        /// <summary>
+        /// </summary>
+        public static void SetWeaponEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        {
+            int address = 0x03835A;
+            p.Add(address, (Byte)chargingSpeed, "Weapon Energy Charging Speed");
+        }
+
+        /// <summary>
+        /// </summary>
+        public static void SetEnergyTankChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        {
+            int address = 0x0352B2;
+            p.Add(address, (Byte)chargingSpeed, "Energy Tank Charging Speed");
+        }
+
+        /// <summary>
+        /// </summary>
+        public static void SetRobotMasterEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        {
+            int address = 0x02C142;
+            p.Add(address, (Byte)chargingSpeed, "Robot Master Energy Charging Speed");
+        }
+
+        /// <summary>
+        /// </summary>
+        public static void SetCastleBossEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        {
+            int address = 0x02E12B;
+            p.Add(address, (Byte)chargingSpeed, "Castle Boss Energy Charging Speed");
+        }
+
+        /// <summary>
         /// This will speed up the wily map cutscene in between Wily stages by about 2 seconds
         /// </summary>
         /// <param name="p"></param>
@@ -178,6 +219,51 @@ namespace MM2Randomizer.Utilities
             {
                 p.Add(0x02E0B3 + i, 0xEA, "Fast Boss Defeat Teleport: Fanfare sound NOP");
             }
+        }
+
+        internal static void DisableScreenFlashing(Patch p, RandoSettings settings)
+        {
+            p.Add(0x3412E, 0x1F, "Disable Stage Select Flashing");
+            p.Add(0x3596D, 0x0F, "Wily Map Flash Color");
+            if (!settings.FastText)
+            {
+                // This sequence is disabled by FastText, and the patch conflicts with it.
+                p.Add(0x37C98, 0x0F, "Item Get Flash Color");
+            }
+
+            p.Add(0x2CA04, 0x0F, "Flash Man Fire Flash Color");
+            p.Add(0x2CC7C, 0x0F, "Metal Man Periodic Flash Color");
+
+            p.Add(0x37A1A, 0xEA, "NOP Ending Palette Flash");
+            p.Add(0x377A5, 0x00, "Disable Ending Screen Flash");
+
+            // Dragon
+            p.Add(0x2D1B2, 0x63, "Dragon Hit Flash Palette Index");
+            p.Add(0x2D187, 0x63, "Dragon Hit Restore Palette Index");
+            if (!settings.IsColorsRandom)
+            {
+                p.Add(0x2D1B0, 0x37, "Dragon Hit Flash Color");
+                p.Add(0x2D185, 0x27, "Dragon Hit Restore Color");
+            }
+            p.Add(0x2D3A0, 0x0F, "Dragon Defeat Flash Color");
+
+            // Guts Tank
+            p.Add(0x2D661, 0x5C, "Guts Tank Flash Palette Index");
+            // p.Add(0x2D65F, 0x0F, "Guts Tank Flash Color");
+
+            // Wily Machine
+            p.Add(0x2DA96, 0x63, "Wily Machine Flash Palette Index");
+            p.Add(0x2DA23, 0x63, "Wily Machine Restore Palette Index");
+            if (!settings.IsColorsRandom)
+            {
+                p.Add(0x2DA94, 0x25, "Wily Machine Flash Color");
+                p.Add(0x2DA21, 0x35, "Wily Machine Restore Color");
+            }
+
+            // Alien
+            p.Add(0x2DC97, 0x0F, "Alien Hit Flash Color");
+            p.Add(0x2DD6C, 0x0F, "Alien Defeat Flash Color");
+            p.Add(0x2DF1B, 0x0F, "Alien Explision Flash Color");
         }
 
         public static void SetFastReadyText(Patch p)
@@ -290,7 +376,9 @@ namespace MM2Randomizer.Utilities
         public static void FixM445PaletteGlitch(Patch p)
         {
             for (int i = 0; i < 3; i++)
+            {
                 p.Add(0x395BD + i, 0xEA, "M-445 Palette Glitch Fix");
+            }
         }
 
         /// <summary>
@@ -364,17 +452,19 @@ namespace MM2Randomizer.Utilities
             int prgOffset = 0x30010 - 0x4000;
             // Inject new jump subroutine at 0D:9296 (should be 0x352A6).
             int jsrLocation = 0x9296 + prgOffset;
-            var jsrBytes = new byte[]
+
+            Byte[] jsrBytes = new Byte[]
             {
                 0x20, 0x77, 0xBF,   // JSR $BF77
             };
+
             for(int offset = 0; offset < jsrBytes.Length; ++offset)
             {
                 p.Add(jsrLocation + offset, jsrBytes[offset], "Prevent E-Tank Use at Full Life");
             }
 
             // Subroutine to decrement E-Tank Count. Skips decrement if Life == 28.
-            var eTankSubroutineBytes = new byte[]
+            Byte[] eTankSubroutineBytes = new Byte[]
             {
                 0xAD, 0xC0, 0x06,       // LDA $06C0 ;$06C0 is Life
                 0xC9, 0x1C,             // CMP #$1C
@@ -417,6 +507,27 @@ namespace MM2Randomizer.Utilities
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// Reduces lag in various places (underwater, end of boss fight, and possibly other places) by disabling a subroutine
+        /// that just delays until an NMI occurs.
+        /// </summary>
+        /// <param name="p"></param>
+        public static void ReduceUnderwaterLag(Patch p)
+        {
+            p.Add((int)ESubroutineAddress.WasteAFrame, (byte)EInstruction.RTS, "Turn the 'waste a frame' subroutine into a NOP");
+        }
+
+        /// <summary>
+        /// This disables delay scrolling by preventing the audio subsystem from running at certain times.
+        /// More details can be found here: http://www.yuko2ch.net/rockman/howtodelayscroll_eng.htm
+        /// </summary>
+        /// <param name="p"></param>
+        public static void DisableDelayScroll(Patch p)
+        {
+            p.Add((int)ESubroutineAddress.ChangeBankBNE, (byte)EInstruction.NOP, "Disable the delayed audio processing branch");
+            p.Add((int)ESubroutineAddress.ChangeBankBNE + 1, (byte)EInstruction.NOP, "The branch instruction is 2 bytes");
         }
     }
 }

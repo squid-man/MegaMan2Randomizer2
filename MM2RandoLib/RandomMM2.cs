@@ -103,12 +103,10 @@ namespace MM2Randomizer
             rWeaponNames = new RText();
 
             // Independent
-            randomColors = new RColors();
+            randomColors = new RColors(Settings.IsFlashingDisabled);
 
             // Independent
             randomMusic = new RMusic();
-
-
 
 
 
@@ -177,7 +175,7 @@ namespace MM2Randomizer
                 CosmeticRandomizers.Add(rWeaponNames);
             }
 
-                
+
             // Instantiate RNG object r based on RandomMM2.Seed
             InitializeSeed();
 
@@ -224,10 +222,23 @@ namespace MM2Randomizer
                 MiscHacks.SetFastWilyMap(Patch);
                 MiscHacks.SkipItemGetPages(Patch);
             }
+
             if (Settings.BurstChaserMode)
             {
                 MiscHacks.SetBurstChaser(Patch);
             }
+
+            if (Settings.IsFlashingDisabled)
+            {
+                MiscHacks.DisableScreenFlashing(Patch, Settings);
+            }
+
+            MiscHacks.SetHitPointChargingSpeed(Patch, Settings.HitPointChargingSpeed);
+            MiscHacks.SetWeaponEnergyChargingSpeed(Patch, Settings.WeaponEnergyChargingSpeed);
+            MiscHacks.SetEnergyTankChargingSpeed(Patch, Settings.EnergyTankChargingSpeed);
+            MiscHacks.SetRobotMasterEnergyChargingSpeed(Patch, Settings.RobotMasterEnergyChargingSpeed);
+            MiscHacks.SetCastleBossEnergyChargingSpeed(Patch, Settings.CastleBossEnergyChargingSpeed);
+
             MiscHacks.DrawTitleScreenChanges(Patch, Seed, Settings);
             MiscHacks.SetWily5NoMusicChange(Patch);
             MiscHacks.NerfDamageValues(Patch);
@@ -235,9 +246,19 @@ namespace MM2Randomizer
             MiscHacks.PreventETankUseAtFullLife(Patch);
             MiscHacks.SetFastBossDefeatTeleport(Patch);
 
+            if (Settings.ReduceUnderwaterLag)
+            {
+                MiscHacks.ReduceUnderwaterLag(Patch);
+            }
+
+            if (Settings.DisableDelayScrolling)
+            {
+                MiscHacks.DisableDelayScroll(Patch);
+            }
+
             // Create file name based on seed and game region
             string seedAlpha = SeedConvert.ConvertBase10To26(Seed);
-            string newfilename = $"MM2-RNG-{seedAlpha}.nes";
+            string newfilename = $"MM2-RNG-{seedAlpha} ({Settings.SeedString}).nes";
 
             // Apply patch and deliver the ROM; different routine for client vs. web app
             if (fromClientApp)

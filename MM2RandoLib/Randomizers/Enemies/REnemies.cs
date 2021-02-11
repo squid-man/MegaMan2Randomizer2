@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-
-using MM2Randomizer.Properties;
 using MM2Randomizer.Enums;
+using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Utilities;
 
@@ -60,27 +58,24 @@ namespace MM2Randomizer.Randomizers.Enemies
         /// </summary>
         private void ReadEnemyInstancesFromFile()
         {
-            string[] lines = Resources.enemylist.Split(new string[] { Environment.NewLine }, StringSplitOptions.None );
+            EnemySet enemySet = Properties.Resources.EnemySet.Deserialize<EnemySet>();
 
-            foreach (string line in lines)
+            foreach (Enemy enemy in enemySet)
             {
-                if (line.StartsWith("#")) continue; // Ignore comment lines
+                EnemyInstance enemyInstance = new EnemyInstance(
+                    Convert.ToInt32(enemy.Index, 16),
+                    Convert.ToInt32(enemy.StageNumber, 16),
+                    Convert.ToInt32(enemy.RoomNumber, 16),
+                    Convert.ToInt32(enemy.ScreenNumber, 16),
+                    enemy.IsActive,
+                    Convert.ToInt32(enemy.EnemyId, 16),
+                    Convert.ToInt32(enemy.PositionX, 16),
+                    Convert.ToInt32(enemy.PositionY, 16),
+                    Convert.ToInt32(enemy.PositionAir, 16),
+                    Convert.ToInt32(enemy.PositionGround, 16),
+                    enemy.FaceRight);
 
-                string[] cols = line.Split(new char[] { ',' });
-
-                EnemyInstance enemy = new EnemyInstance(
-                    Convert.ToInt32(cols[0], 16), // Index
-                    Convert.ToInt32(cols[1], 16), // StageNum
-                    Convert.ToInt32(cols[2], 16), // RoomNum
-                    Convert.ToInt32(cols[3], 16), // ScreenNum
-                    Convert.ToBoolean(cols[4]),   // IsActive
-                    Convert.ToInt32(cols[5], 16), // EnemyID
-                    Convert.ToInt32(cols[6], 16), // XPosOriginal
-                    Convert.ToInt32(cols[7], 16), // YPosOriginal
-                    Convert.ToInt32(cols[8], 16), // YPosAir
-                    Convert.ToInt32(cols[9], 16), // YPosGround
-                    Convert.ToBoolean(cols[10])); // FaceRight
-                EnemyInstances.Add(enemy);
+                EnemyInstances.Add(enemyInstance);
             }
         }
 
@@ -90,14 +85,18 @@ namespace MM2Randomizer.Randomizers.Enemies
             {
                 // Skip processing the room if every sprite bank row is taken
                 if (sbrg.IsSpriteRestricted && sbrg.SpriteBankRowsRestriction.Count >= 6)
+                {
                     continue;
+                }
 
                 // Create valid random combination of enemies to place
                 List<EnemyType> newEnemies = GenerateEnemyCombinations(sbrg, r);
 
                 // No enemy can fit in this room for some reason, skip this room (GFX will be glitched)
                 if (newEnemies.Count == 0)
+                {
                     continue;
+                }
 
                 // For each enemy ID (in the room, in the room-group), change to a random enemy from the new set
                 for (int i = 0; i < sbrg.Rooms.Count; i++)
@@ -517,9 +516,14 @@ namespace MM2Randomizer.Randomizers.Enemies
 
                 // Find index of first enemy instance in the stage
                 int i = 0;
+
                 for (i = 0; i < usedInstances.Count; i++)
+                {
                     if (usedInstances.ElementAt(i).StageNum == stageNum)
+                    {
                         break;
+                    }
+                }
 
                 // Check each applicable room number for this room group
                 for (int roomIndex = 0; roomIndex < sbrg.Rooms.Count; roomIndex++)
@@ -578,38 +582,84 @@ namespace MM2Randomizer.Randomizers.Enemies
                     switch (en.ID)
                     {
                         case EEnemyID.Pipi_Activator:
+                        {
                             if (numPipis >= MAX_PIPIS)
+                            {
                                 continue;
+                            }
+
                             chance = r.NextDouble();
+
                             if (chance > CHANCE_PIPI)
+                            {
                                 continue;
+                            }
+
                             break;
+                        }
+
                         case EEnemyID.Mole_Activator:
+                        {
                             if (numMoles >= MAX_MOLES)
+                            {
                                 continue;
+                            }
+
                             chance = r.NextDouble();
+
                             if (chance > CHANCE_MOLE)
+                            {
                                 continue;
+                            }
+
                             break;
+                        }
+
                         case EEnemyID.M445_Activator:
+                        {
                             if (numM445s > MAX_M445S)
+                            {
                                 continue;
+                            }
+
                             chance = r.NextDouble();
+
                             if (chance > CHANCE_M445)
+                            {
                                 continue;
+                            }
+
                             break;
+                        }
+
                         case EEnemyID.Telly:
+                        {
                             chance = r.NextDouble();
+
                             if (chance > CHANCE_TELLY)
+                            {
                                 continue;
+                            }
+
                             break;
+                        }
+
                         case EEnemyID.Springer:
+                        {
                             chance = r.NextDouble();
+
                             if (chance > CHANCE_SPRINGER)
+                            {
                                 continue;
+                            }
+
                             break;
+                        }
+
                         default:
+                        {
                             break;
+                        }
                     }
 
                     // Skip any additional activator enemies
@@ -622,45 +672,126 @@ namespace MM2Randomizer.Randomizers.Enemies
                     switch (sbrg.Stage)
                     {
                         case EStageID.HeatW1:
+                        {
                             // Moles don't display correctly in Heat or Wily 1. Also too annoying in Heat Yoku room.
-                            if (en.ID == EEnemyID.Mole_Activator) continue;
+                            if (en.ID == EEnemyID.Mole_Activator)
+                            {
+                                continue;
+                            }
+
                             // Reject Pipis appearing in Yoku block room
-                            if (en.ID == EEnemyID.Pipi_Activator && sbrg.ContainsRoom(2)) continue;
+                            if (en.ID == EEnemyID.Pipi_Activator && sbrg.ContainsRoom(2))
+                            {
+                                continue;
+                            }
+
                             // Reject M445s appearing in Yoku block room
-                            if (en.ID == EEnemyID.M445_Activator && sbrg.ContainsRoom(2)) continue;
+                            if (en.ID == EEnemyID.M445_Activator && sbrg.ContainsRoom(2))
+                            {
+                                continue;
+                            }
+
                             // Press doesn't display correctly in Wily 1
-                            if (en.ID == EEnemyID.Press && sbrg.Rooms.Last().RoomNum >= 7) continue;
+                            if (en.ID == EEnemyID.Press && sbrg.Rooms.Last().RoomNum >= 7)
+                            {
+                                continue;
+                            }
+
                             break;
+                        }
+
                         case EStageID.AirW2:
+                        {
                             // Moles don't display correctly in Heat
-                            if (en.ID == EEnemyID.Mole_Activator && sbrg.Rooms[0].RoomNum < 7) continue;
+                            if (en.ID == EEnemyID.Mole_Activator && sbrg.Rooms[0].RoomNum < 7)
+                            {
+                                continue;
+                            }
+
                             break;
+                        }
+
                         case EStageID.WoodW3:
+                        {
                             // Moles and Press don't display in Wood outside room
-                            if (en.ID == EEnemyID.Mole_Activator && sbrg.ContainsRoom(7)) continue;
-                            if (en.ID == EEnemyID.Press && sbrg.ContainsRoom(7)) continue;
+                            if (en.ID == EEnemyID.Mole_Activator && sbrg.ContainsRoom(7))
+                            {
+                                continue;
+                            }
+
+                            if (en.ID == EEnemyID.Press && sbrg.ContainsRoom(7))
+                            {
+                                continue;
+                            }
+
                             // Don't spawn Springer, Blocky, or Press underwater
-                            if (en.ID == EEnemyID.Springer && sbrg.ContainsRoom(0x11)) continue;
-                            if (en.ID == EEnemyID.Blocky && sbrg.ContainsRoom(0x11)) continue;
-                            if (en.ID == EEnemyID.Press && sbrg.ContainsRoom(0x11)) continue;
+                            if (en.ID == EEnemyID.Springer && sbrg.ContainsRoom(0x11))
+                            {
+                                continue;
+                            }
+
+                            if (en.ID == EEnemyID.Blocky && sbrg.ContainsRoom(0x11))
+                            {
+                                continue;
+                            }
+
+                            if (en.ID == EEnemyID.Press && sbrg.ContainsRoom(0x11))
+                            {
+                                continue;
+                            }
+
                             break;
+                        }
+
                         case EStageID.BubbleW4:
+                        {
                             // Moles don't display correctly in Bubble
-                            if (en.ID == EEnemyID.Mole_Activator && sbrg.Rooms[0].RoomNum < 9) continue;
+                            if (en.ID == EEnemyID.Mole_Activator && sbrg.Rooms[0].RoomNum < 9)
+                            {
+                                continue;
+                            }
+
                             // Press doesn't display correctly in Bubble
-                            if (en.ID == EEnemyID.Press && sbrg.Rooms[0].RoomNum < 9) continue;
+                            if (en.ID == EEnemyID.Press && sbrg.Rooms[0].RoomNum < 9)
+                            {
+                                continue;
+                            }
+
                             // Don't spawn Springer or Blocky underwater
-                            if (en.ID == EEnemyID.Springer && (sbrg.ContainsRoom(3) || sbrg.ContainsRoom(4))) continue;
-                            if (en.ID == EEnemyID.Blocky && (sbrg.ContainsRoom(3) || sbrg.ContainsRoom(4))) continue;
+                            if (en.ID == EEnemyID.Springer && (sbrg.ContainsRoom(3) || sbrg.ContainsRoom(4)))
+                            {
+                                continue;
+                            }
+
+                            if (en.ID == EEnemyID.Blocky && (sbrg.ContainsRoom(3) || sbrg.ContainsRoom(4)))
+                            {
+                                continue;
+                            }
+
                             break;
+                        }
+
                         case EStageID.Clash:
+                        {
                             // Mole bad GFX
-                            if (en.ID == EEnemyID.Mole_Activator) continue;
+                            if (en.ID == EEnemyID.Mole_Activator)
+                            {
+                                continue;
+                            }
+
                             // Press bad GFX
-                            if (en.ID == EEnemyID.Press) continue;
+                            if (en.ID == EEnemyID.Press)
+                            {
+                                continue;
+                            }
+
                             break;
+                        }
+
                         default:
+                        {
                             break;
+                        }
                     }
 
                     // If room has sprite restrictions, check if this enemy's sprite can be used
