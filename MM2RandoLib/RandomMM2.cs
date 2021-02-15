@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 using MM2Randomizer.Randomizers;
 using MM2Randomizer.Randomizers.Colors;
 using MM2Randomizer.Randomizers.Enemies;
@@ -18,15 +18,7 @@ namespace MM2Randomizer
         // Properties
         //
 
-        public static Int32? InputSeed
-        {
-            get
-            {
-                return RandomMM2.mInputSeed;
-            }
-        }
-
-        public static Seed Seed
+        public static ISeed Seed
         {
             get
             {
@@ -67,24 +59,20 @@ namespace MM2Randomizer
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static String RandomizerCreate(Boolean fromClientApp, String in_SeedString)
+        public static String RandomizerCreate(String in_SeedString)
         {
-
             // Initialize the seed
             if (null == in_SeedString)
             {
-                RandomMM2.mSeed = Seed.Create();
+                RandomMM2.mSeed = SeedFactory.Create(GeneratorType.MT19937);
             }
             else
             {
-                RandomMM2.mSeed = Seed.Create(in_SeedString);
+                RandomMM2.mSeed = SeedFactory.Create(GeneratorType.MT19937, in_SeedString);
             }
 
-            // Get the base-26 representation of the seed
-            RandomMM2.mSeedBase26 = RandomMM2.mSeed.ConvertToBase26();
-
-            Random = new Random(RandomMM2.mSeed);
-            RNGCosmetic = new Random(RandomMM2.mSeed);
+            //Random = new Random(RandomMM2.mSeed);
+            //RNGCosmetic = new Random(RandomMM2.mSeed);
 
             // List of randomizer modules to use; will add modules based on checkbox states
             Randomizers = new List<IRandomizer>();
@@ -220,21 +208,20 @@ namespace MM2Randomizer
             // In tournament mode, offset the seed by 1 call, making seeds mode-dependent
             if (Settings.IsSpoilerFree)
             {
-                Random.Next();
-                RNGCosmetic.Next();
+                RandomMM2.mSeed.Next();
             }
 
             // Conduct randomization of Gameplay Modules
             foreach (IRandomizer randomizer in Randomizers)
             {
-                randomizer.Randomize(Patch, Random);
+                randomizer.Randomize(Patch, RandomMM2.mSeed);
                 Debug.WriteLine(randomizer);
             }
 
             // Conduct randomization of Cosmetic Modules
             foreach (IRandomizer cosmetic in CosmeticRandomizers)
             {
-                cosmetic.Randomize(Patch, RNGCosmetic);
+                cosmetic.Randomize(Patch, RandomMM2.mSeed);
                 Debug.WriteLine(cosmetic);
             }
 
@@ -274,7 +261,7 @@ namespace MM2Randomizer
             MiscHacks.SetRobotMasterEnergyChargingSpeed(Patch, Settings.RobotMasterEnergyChargingSpeed);
             MiscHacks.SetCastleBossEnergyChargingSpeed(Patch, Settings.CastleBossEnergyChargingSpeed);
 
-            MiscHacks.DrawTitleScreenChanges(Patch, RandomMM2.mSeedBase26, Settings);
+            MiscHacks.DrawTitleScreenChanges(Patch, RandomMM2.mSeed.Identifier, Settings);
             MiscHacks.SetWily5NoMusicChange(Patch);
             MiscHacks.NerfDamageValues(Patch);
             MiscHacks.SetETankKeep(Patch);
@@ -292,14 +279,7 @@ namespace MM2Randomizer
             }
 
             // Create file name based on seed and game region
-            String newFileName = $"MM2-RNG-{RandomMM2.mSeedBase26}";
-
-            if (true == RandomMM2.mInputSeed.HasValue)
-            {
-                newFileName += $" ({Settings.SeedString})";
-            }
-
-            newFileName += ".nes";
+            String newFileName = $"MM2-RNG-{RandomMM2.mSeed.Identifier} ({RandomMM2.mSeed.SeedString}).nes";
 
             //File.Copy(Settings.SourcePath, TempFileName, true);
             //using (Stream stream = assembly.GetManifestResourceStream("MM2Randomizer.Resources.MM2.nes"))
@@ -338,6 +318,6 @@ namespace MM2Randomizer
         // Private Data Members
         //
 
-        private static Seed mSeed = null;
+        private static ISeed mSeed = null;
     }
 }

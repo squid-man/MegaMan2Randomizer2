@@ -134,8 +134,7 @@ namespace RandomizerHost.ViewModels
         {
             // First, clean the seed of non-alphanumerics.  This isn't for the
             // seed generation code, but to maintain safe file names
-            String seedString = this.RandoSettings.SeedString.Trim().RemoveNonAlphanumericCharacters();
-            this.RandoSettings.SeedString = seedString;
+            String seedString = this.RandoSettings.SeedString.Trim().ToUpperInvariant().RemoveNonAlphanumericCharacters();
 
             if (true == String.IsNullOrEmpty(seedString))
             {
@@ -147,6 +146,7 @@ namespace RandomizerHost.ViewModels
                 {
                     // Perform randomization based on settings, then generate the ROM.
                     this.PerformRandomization(seedString);
+                    this.RandoSettings.SeedString = RandomMM2.Seed.SeedString;
                 }
                 catch (Exception e)
                 {
@@ -161,6 +161,7 @@ namespace RandomizerHost.ViewModels
             try
             {
                 this.PerformRandomization();
+                this.RandoSettings.SeedString = RandomMM2.Seed.SeedString;
             }
             catch (Exception e)
             {
@@ -193,10 +194,10 @@ namespace RandomizerHost.ViewModels
         public void PerformRandomization(String in_SeedString = null)
         {
             // Perform randomization based on settings, then generate the ROM.
-            RandomMM2.RandomizerCreate(true, in_SeedString);
+            RandomMM2.RandomizerCreate(in_SeedString);
 
             // Get A-Z representation of seed
-            String seedBase26 = RandomMM2.SeedBase26;
+            String seedBase26 = RandomMM2.Seed.Identifier;
             Debug.WriteLine("\nSeed: " + seedBase26 + "\n");
 
             // Create log file if left shift is pressed while clicking

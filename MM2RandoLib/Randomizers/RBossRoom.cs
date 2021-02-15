@@ -1,9 +1,7 @@
-using MM2Randomizer.Enums;
-using MM2Randomizer.Patcher;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -168,7 +166,7 @@ namespace MM2Randomizer.Randomizers
                         0xAB, 0x05,
                     });
 
-            BossRoomRandomComponent ClashManComponent = new BossRoomRandomComponent(
+            BossRoomRandomComponent CrashManComponent = new BossRoomRandomComponent(
                     original: 7,
                     introValue: 0x03,
                     aiPtr1: 0xC3,
@@ -187,7 +185,7 @@ namespace MM2Randomizer.Randomizers
                     }
                 );
 
-            Components = new List<BossRoomRandomComponent>
+            this.Components = new List<BossRoomRandomComponent>
             {
                 HeatManComponent,
                 AirManComponent,
@@ -196,36 +194,37 @@ namespace MM2Randomizer.Randomizers
                 QuickManComponent,
                 FlashManComponent,
                 MetalManComponent,
-                ClashManComponent,
+                CrashManComponent,
             };
         }
 
-        public List<BossRoomRandomComponent> Components { get; set; }
+        public IList<BossRoomRandomComponent> Components { get; set; }
 
         /// <summary>
         /// Shuffle which Robot Master awards which weapon.
         /// </summary>
-        public void Randomize(Patch Patch, Random r)
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
         {
-            Components.Shuffle(r);
+            IList<BossRoomRandomComponent> bossRoomComponents = in_Seed.Shuffle(this.Components);
+
             //DEBUG test a boss in a particular boss room, also comment out the corresponding boss from the Components list above
             //Components.Insert(3, BubbleManComponent);
 
             // Write in new boss positions
             for (Int32 i = 0; i < 8; i++)
             {
-                var bossroom = Components[i];
-                Patch.Add(0x02C15E + i, bossroom.IntroValue, $"Boss Intro Value for Boss Room {i}");
-                Patch.Add(0x02C057 + i, bossroom.AIPtrByte1, $"Boss AI Ptr Byte1 for Boss Room {i}");
-                Patch.Add(0x02C065 + i, bossroom.AIPtrByte2, $"Boss AI Ptr Byte2 for Boss Room {i}");
-                Patch.Add(0x02E4E9 + i, bossroom.GfxFix1, $"Boss GFX Fix 1 for Boss Room {i}");
-                Patch.Add(0x02C166 + i, bossroom.GfxFix1, $"Boss GFX Fix 2 for Boss Room {i}");
-                Patch.Add(0x02C14E + i, bossroom.YPosFix1, $"Boss Y-Pos Fix1 for Boss Room {i}");
-                Patch.Add(0x02C156 + i, bossroom.YPosFix2, $"Boss Y-Pos Fix2 for Boss Room {i}");
+                BossRoomRandomComponent bossroom = bossRoomComponents[i];
+                in_Patch.Add(0x02C15E + i, bossroom.IntroValue, $"Boss Intro Value for Boss Room {i}");
+                in_Patch.Add(0x02C057 + i, bossroom.AIPtrByte1, $"Boss AI Ptr Byte1 for Boss Room {i}");
+                in_Patch.Add(0x02C065 + i, bossroom.AIPtrByte2, $"Boss AI Ptr Byte2 for Boss Room {i}");
+                in_Patch.Add(0x02E4E9 + i, bossroom.GfxFix1, $"Boss GFX Fix 1 for Boss Room {i}");
+                in_Patch.Add(0x02C166 + i, bossroom.GfxFix1, $"Boss GFX Fix 2 for Boss Room {i}");
+                in_Patch.Add(0x02C14E + i, bossroom.YPosFix1, $"Boss Y-Pos Fix1 for Boss Room {i}");
+                in_Patch.Add(0x02C156 + i, bossroom.YPosFix2, $"Boss Y-Pos Fix2 for Boss Room {i}");
             }
 
             // Adjust sprite banks for each boss room
-            Int32[] spriteBankBossRoomAddresses = new Int32[]
+            Int32[] spriteBankBossRoomAddresses =
             {
                 0x0034A6, // Heat room
                 0x0074A6, // Air room
@@ -236,12 +235,13 @@ namespace MM2Randomizer.Randomizers
                 0x01B494, // Metal room
                 0x01F4DC, // Clash room
             };
+
             for (Int32 i = 0; i < spriteBankBossRoomAddresses.Length; i++)
             {
-                for (Int32 j = 0; j < Components[i].SpriteBankSlotRowsBytes.Length; j++)
+                for (Int32 j = 0; j < bossRoomComponents[i].SpriteBankSlotRowsBytes.Length; j++)
                 {
-                    Patch.Add(spriteBankBossRoomAddresses[i] + j, 
-                        Components[i].SpriteBankSlotRowsBytes[j], 
+                    in_Patch.Add(spriteBankBossRoomAddresses[i] + j,
+                        bossRoomComponents[i].SpriteBankSlotRowsBytes[j], 
                         $"Boss Room {i} Sprite Bank Swap {j}");
                 }
             }
@@ -250,11 +250,15 @@ namespace MM2Randomizer.Randomizers
             Int32 contactDmgTbl = 0x2E9C2;
             Byte[] originalDmgVals = new Byte[] { 08,08,08,04,04,04,06,04 };
             Byte[] newDmgVals = new Byte[8];
-            for (Int32 i = 0; i < Components.Count; i++)
+
+            for (Int32 i = 0; i < bossRoomComponents.Count; i++)
             {
-                newDmgVals[i] = originalDmgVals[Components[i].OriginalBossIndex];
-                Patch.Add(contactDmgTbl + i, newDmgVals[i]);
+                newDmgVals[i] = originalDmgVals[bossRoomComponents[i].OriginalBossIndex];
+                in_Patch.Add(contactDmgTbl + i, newDmgVals[i]);
             }
+
+
+            this.Components = bossRoomComponents;
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers.Stages
 {
@@ -49,7 +51,7 @@ namespace MM2Randomizer.Randomizers.Stages
         /// <summary>
         /// Shuffle the Robot Master stages.  This shuffling will not be indicated by the Robot Master portraits.
         /// </summary>
-        public void Randomize(Patch Patch, Random r)
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
         {
             // StageSelect  Address    Value
             // -----------------------------
@@ -169,7 +171,7 @@ namespace MM2Randomizer.Randomizers.Stages
                 newStageOrder.Add(i);
             }
 
-            newStageOrder.Shuffle(r);
+            newStageOrder = in_Seed.Shuffle(newStageOrder).ToList();
 
             debug.AppendLine("Stage Select:");
             for (Int32 i = 0; i < 8; i++)
@@ -185,13 +187,13 @@ namespace MM2Randomizer.Randomizers.Stages
                     for (Int32 k = 0; k < 6; k++)
                     {
                         // Write in a blank space at each letter ('f' by my cipher)
-                        Patch.Add((Int32)stage.TextAddress + k, '`'.AsCreditsCharacter(), $"Hide Stage Select Portrait Text");
+                        in_Patch.Add((Int32)stage.TextAddress + k, '`'.AsCreditsCharacter(), $"Hide Stage Select Portrait Text");
                     }
 
                     for (Int32 k = 0; k < 3; k++)
                     {
                         // Write in a blank space over "MAN"; 32 8-pixel tiles until the next row, 3 tiles until "MAN" text
-                        Patch.Add((Int32)stage.TextAddress + 32 + 3 + k, '`'.AsCreditsCharacter(), $"Hide Stage Select Portrait Text");
+                        in_Patch.Add((Int32)stage.TextAddress + 32 + 3 + k, '`'.AsCreditsCharacter(), $"Hide Stage Select Portrait Text");
                     }
                 }
                 // Change portrait text to match new destination
@@ -201,7 +203,7 @@ namespace MM2Randomizer.Randomizers.Stages
                     for (Int32 j = 0; j < newlabel.Length; j++)
                     {
                         Char c = newlabel[j];
-                        Patch.Add((Int32)stage.TextAddress + j, c.AsCreditsCharacter(), $"Stage Select Portrait Text");
+                        in_Patch.Add((Int32)stage.TextAddress + j, c.AsCreditsCharacter(), $"Stage Select Portrait Text");
                     }
                 }
 
@@ -210,7 +212,7 @@ namespace MM2Randomizer.Randomizers.Stages
 
             foreach (StageFromSelect stage in StageSelect)
             {
-                Patch.Add((Int32)stage.PortraitAddress, (Byte)stage.PortraitDestinationNew, $"Stage Select {stage.PortraitName} Destination");
+                in_Patch.Add((Int32)stage.PortraitAddress, (Byte)stage.PortraitDestinationNew, $"Stage Select {stage.PortraitName} Destination");
             }
         }
     }
