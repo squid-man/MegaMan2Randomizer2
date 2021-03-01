@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MM2Randomizer.Extensions;
 using Troschuetz.Random.Generators;
+using System.Security.Cryptography;
 
 namespace MM2Randomizer.Random
 {
@@ -24,8 +25,10 @@ namespace MM2Randomizer.Random
                 throw new ArgumentNullException(nameof(in_SeedString));
             }
 
-            UInt32[] seedArray = in_SeedString.Select(x => Convert.ToUInt32(x)).ToArray();
-            MT19937Generator random = new MT19937Generator(seedArray);
+            Byte[] seedStringArray = Encoding.ASCII.GetBytes(in_SeedString);
+            Byte[] hashArray = MT19937Seed.mSha512.ComputeHash(seedStringArray);
+
+            MT19937Generator random = new MT19937Generator(hashArray.ToUInt32Array());
             String alpha26Seed = in_SeedString.ToUInt64Hash().ToAlphaBase26();
 
             this.mRandom = random;
@@ -49,8 +52,10 @@ namespace MM2Randomizer.Random
 
             String seedString = sb.ToString();
 
-            UInt32[] seedArray = seedString.Select(x => Convert.ToUInt32(x)).ToArray();
-            MT19937Generator random = new MT19937Generator(seedArray);
+            Byte[] seedStringArray = Encoding.ASCII.GetBytes(seedString);
+            Byte[] hashArray = MT19937Seed.mSha512.ComputeHash(seedStringArray);
+
+            MT19937Generator random = new MT19937Generator(hashArray.ToUInt32Array());
             String alpha26Seed = seedString.ToUInt64Hash().ToAlphaBase26();
 
             this.mRandom = random;
@@ -172,5 +177,7 @@ namespace MM2Randomizer.Random
         private MT19937Generator mRandom;
         private String mSeedAlphaBase26;
         private String mSeedString;
+
+        private static readonly SHA512 mSha512 = SHA512.Create();
     }
 }
