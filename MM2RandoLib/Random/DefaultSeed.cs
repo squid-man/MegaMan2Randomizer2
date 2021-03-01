@@ -90,22 +90,22 @@ namespace MM2Randomizer.Random
         }
 
         // Boolean Methods
-        public Boolean GetNextBoolean()
+        public Boolean NextBoolean()
         {
             return (this.mRandom.Next() & 1) > 0;
         }
 
         // UInt8 Methods
-        public Byte GetNextUInt8()
+        public Byte NextUInt8()
         {
             return (Byte)this.mRandom.Next(0, Byte.MaxValue + 1);
         }
 
-        public Byte GetNextUInt8(Int32 in_MaxValue)
+        public Byte NextUInt8(Int32 in_MaxValue)
         {
             if (in_MaxValue <= 0 || in_MaxValue > Byte.MaxValue)
             {
-                return this.GetNextUInt8();
+                return this.NextUInt8();
             }
             else
             {
@@ -113,7 +113,7 @@ namespace MM2Randomizer.Random
             }
         }
 
-        public Byte GetNextUInt8(Int32 in_MinValue, Int32 in_MaxValue)
+        public Byte NextUInt8(Int32 in_MinValue, Int32 in_MaxValue)
         {
             if (in_MinValue > in_MaxValue)
             {
@@ -128,29 +128,29 @@ namespace MM2Randomizer.Random
 
 
         // Int32 Methods
-        public Int32 GetNextInt32()
+        public Int32 NextInt32()
         {
             return this.mRandom.Next();
         }
 
-        public Int32 GetNextInt32(Int32 in_MaxValue)
+        public Int32 NextInt32(Int32 in_MaxValue)
         {
             return this.mRandom.Next(in_MaxValue);
         }
 
-        public Int32 GetNextInt32(Int32 in_MinValue, Int32 in_MaxValue)
+        public Int32 NextInt32(Int32 in_MinValue, Int32 in_MaxValue)
         {
             return this.mRandom.Next(in_MinValue, in_MaxValue);
         }
 
-        public Double GetNextDouble()
+        public Double NextDouble()
         {
             return this.mRandom.NextDouble();
         }
 
 
         // IEnumerable Methods
-        public T GetNextElement<T>(IEnumerable<T> in_Elements)
+        public T NextElement<T>(IEnumerable<T> in_Elements)
         {
             Int32 count = in_Elements.Count();
             Int32 index = this.mRandom.Next(count);

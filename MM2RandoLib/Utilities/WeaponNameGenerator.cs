@@ -83,7 +83,7 @@ namespace MM2Randomizer.Utilities
                 IEnumerable<String> firstNameSet = WeaponNameGenerator.mFirstNameLookup[key];
 
                 // Get a random first part of the weapon name
-                String firstPart = this.mSeed.GetNextElement(firstNameSet);
+                String firstPart = this.mSeed.NextElement(firstNameSet);
 
                 // Get a random second part of the weapon name, and make sure
                 // it is not the same as the first part
@@ -100,7 +100,7 @@ namespace MM2Randomizer.Utilities
                     // If the second part is too long, don't attempt to
                     // hyphenate the name
                     if (secondPart.Length < WeaponNameGenerator.WEAPON_NAME_MAXLENGTH &&
-                        true == this.mSeed.GetNextBoolean())
+                        true == this.mSeed.NextBoolean())
                     {
                         extendedName = $"-{secondPart}";
                         fullName = $"{firstPart}-{secondPart}";
@@ -120,7 +120,7 @@ namespace MM2Randomizer.Utilities
                 // in one name, and assign an empty String to the extended name
                 else
                 {
-                    Char separator = (true == this.mSeed.GetNextBoolean()) ? '-' : ' ';
+                    Char separator = (true == this.mSeed.NextBoolean()) ? '-' : ' ';
                     name = $"{firstPart}{separator}{secondPart}".PadRight(WeaponNameGenerator.WEAPON_NAME_RIGHT_PADDING).PadLeft(WeaponNameGenerator.WEAPON_NAME_LEFT_PADDING);
                     extendedName = new String(' ', WeaponNameGenerator.WEAPON_NAME_MAXLENGTH);
                     fullName = $"{firstPart}{separator}{secondPart}";
@@ -141,7 +141,7 @@ namespace MM2Randomizer.Utilities
                 IEnumerable<String> firstNameSet = WeaponNameGenerator.mFirstNameLookup[key].Where(x => x.Length <= WeaponNameGenerator.WEAPON_FIRST_PART_MAXLENGTH);
 
                 // Get a random first part of the weapon name
-                String firstPart = this.mSeed.GetNextElement(firstNameSet);
+                String firstPart = this.mSeed.NextElement(firstNameSet);
 
                 // Get a random second part of the weapon name, and make sure
                 // it is not the same as the first part
@@ -160,7 +160,7 @@ namespace MM2Randomizer.Utilities
                 }
                 else
                 {
-                    Char separator = (true == this.mSeed.GetNextBoolean()) ? '-' : ' ';
+                    Char separator = (true == this.mSeed.NextBoolean()) ? '-' : ' ';
                     displayName = $"{firstPart}{separator}{secondPart}";
                     fullName = $"{firstPart}{separator}{secondPart}";
                 }

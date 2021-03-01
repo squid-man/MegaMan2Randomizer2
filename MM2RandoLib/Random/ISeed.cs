@@ -29,24 +29,24 @@ namespace MM2Randomizer.Random
         void Next();
 
         // Boolean Methods
-        Boolean GetNextBoolean();
+        Boolean NextBoolean();
 
 
         // UInt8 Methods
-        Byte GetNextUInt8();
-        Byte GetNextUInt8(Int32 in_MaxValue);
-        Byte GetNextUInt8(Int32 in_MinValue, Int32 in_MaxValue);
+        Byte NextUInt8();
+        Byte NextUInt8(Int32 in_MaxValue);
+        Byte NextUInt8(Int32 in_MinValue, Int32 in_MaxValue);
 
         // Int32 Methods
-        Int32 GetNextInt32();
-        Int32 GetNextInt32(Int32 in_MaxValue);
-        Int32 GetNextInt32(Int32 in_MinValue, Int32 in_MaxValue);
+        Int32 NextInt32();
+        Int32 NextInt32(Int32 in_MaxValue);
+        Int32 NextInt32(Int32 in_MinValue, Int32 in_MaxValue);
 
         // Double Methods
-        Double GetNextDouble();
+        Double NextDouble();
 
         // IEnumerable Methods
-        T GetNextElement<T>(IEnumerable<T> in_Elements);
+        T NextElement<T>(IEnumerable<T> in_Elements);
         IList<T> Shuffle<T>(IEnumerable<T> in_List);
     }
 }

@@ -99,7 +99,7 @@ namespace MM2Randomizer.Randomizers
                 // First, fill in special weapon tables with a 50% chance to block or do 1 damage
                 for (Int32 j = 0; j < bossPrimaryWeaknessAddresses.Count; j++)
                 {
-                    Double rTestImmune = in_Seed.GetNextDouble();
+                    Double rTestImmune = in_Seed.NextDouble();
                     Byte damage = 0;
                     if (rTestImmune > 0.5)
                     {
@@ -207,7 +207,7 @@ namespace MM2Randomizer.Randomizers
         {
             // Flat 25% chance to do 2 extra damage
             Byte damage = 0;
-            Double rExtraDmg = in_Seed.GetNextDouble();
+            Double rExtraDmg = in_Seed.NextDouble();
             if (rExtraDmg > 0.75)
             {
                 damage = 2;
@@ -235,7 +235,7 @@ namespace MM2Randomizer.Randomizers
             }
 
             // 50% chance to cap the minimum damage at 4, else cap minimum damage at 3
-            rExtraDmg = in_Seed.GetNextDouble();
+            rExtraDmg = in_Seed.NextDouble();
             if (rExtraDmg > 0.5)
             {
                 if (damage < 4)
@@ -320,7 +320,7 @@ namespace MM2Randomizer.Randomizers
 
                 // Dragon
                 // 25% chance to have a buster vulnerability
-                Double rBuster = in_Seed.GetNextDouble();
+                Double rBuster = in_Seed.NextDouble();
                 Byte busterDmg = 0x00;
 
                 if (rBuster > 0.75)
@@ -333,10 +333,10 @@ namespace MM2Randomizer.Randomizers
 
                 // Choose 2 special weapon weaknesses
                 List<EDmgVsBoss> dragon = new List<EDmgVsBoss>(dmgPtrBosses);
-                Int32 rInt = in_Seed.GetNextInt32(dragon.Count);
+                Int32 rInt = in_Seed.NextInt32(dragon.Count);
                 bossWeak1 = dragon[rInt];
                 dragon.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(dragon.Count);
+                rInt = in_Seed.NextInt32(dragon.Count);
                 bossWeak2 = dragon[rInt];
 
                 // For each weapon, apply the weaknesses and immunities
@@ -374,11 +374,11 @@ namespace MM2Randomizer.Randomizers
                 // Picopico-kun
                 // 20 HP each
                 // 25% chance for buster to deal 3-7 damage
-                rBuster = in_Seed.GetNextDouble();
+                rBuster = in_Seed.NextDouble();
                 busterDmg = 0x00;
                 if (rBuster > 0.75)
                 {
-                    busterDmg = (Byte)(in_Seed.GetNextInt32(5) + 3);
+                    busterDmg = (Byte)(in_Seed.NextInt32(5) + 3);
                 }
                 in_Patch.Add(EDmgVsEnemy.DamageP + EDmgVsEnemy.Offset.PicopicoKun, busterDmg, String.Format("Buster Damage to Picopico-Kun"));
                 WilyWeaknesses[1, 0] = busterDmg;
@@ -387,13 +387,13 @@ namespace MM2Randomizer.Randomizers
                 // Deal ammoUse x 6 for another
                 // Deal ammoUse x 3 for another
                 List<EDmgVsEnemy> pico = new List<EDmgVsEnemy>(dmgPtrEnemies);
-                rInt = in_Seed.GetNextInt32(pico.Count);
+                rInt = in_Seed.NextInt32(pico.Count);
                 enemyWeak1 = pico[rInt];
                 pico.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(pico.Count);
+                rInt = in_Seed.NextInt32(pico.Count);
                 enemyWeak2 = pico[rInt];
                 pico.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(pico.Count);
+                rInt = in_Seed.NextInt32(pico.Count);
                 enemyWeak3 = pico[rInt];
                 for (Int32 i = 0; i < dmgPtrEnemies.Count; i++)
                 {
@@ -455,7 +455,7 @@ namespace MM2Randomizer.Randomizers
 
                 // Guts
                 // 25% chance to have a buster vulnerability
-                rBuster = in_Seed.GetNextDouble();
+                rBuster = in_Seed.NextDouble();
                 busterDmg = 0x00;
 
                 if (rBuster > 0.75)
@@ -468,10 +468,10 @@ namespace MM2Randomizer.Randomizers
 
                 // Choose 2 special weapon weaknesses
                 List<EDmgVsBoss> guts = new List<EDmgVsBoss>(dmgPtrBosses);
-                rInt = in_Seed.GetNextInt32(guts.Count);
+                rInt = in_Seed.NextInt32(guts.Count);
                 bossWeak1 = guts[rInt];
                 guts.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(guts.Count);
+                rInt = in_Seed.NextInt32(guts.Count);
                 bossWeak2 = guts[rInt];
 
                 for (Int32 i = 0; i < dmgPtrBosses.Count; i++)
@@ -522,7 +522,7 @@ namespace MM2Randomizer.Randomizers
                 }
 
                 // Get Barrier weakness
-                Int32 rBarrierWeakness = in_Seed.GetNextInt32(dmgBarrierList.Count);
+                Int32 rBarrierWeakness = in_Seed.NextInt32(dmgBarrierList.Count);
                 EDmgVsEnemy wpnBarrier = dmgBarrierList[rBarrierWeakness];
 
                 // Scale damage to be slightly more capable than killing 5 barriers at full ammo
@@ -561,7 +561,7 @@ namespace MM2Randomizer.Randomizers
                 dmgBarrierList.RemoveAt(rBarrierWeakness);
 
                 // Get Buebeam weakness
-                rInt = in_Seed.GetNextInt32(dmgBarrierList.Count);
+                rInt = in_Seed.NextInt32(dmgBarrierList.Count);
                 EDmgVsEnemy wpnBuebeam = dmgBarrierList[rInt];
 
                 // Add Barrier weakness back to list for counting later
@@ -620,7 +620,7 @@ namespace MM2Randomizer.Randomizers
                 // Mega Man 2 behaves in a similar fashion, disabling Q and A in phase 1, but only disabling H in phase 2
 
                 // 75% chance to have a buster vulnerability
-                rBuster = in_Seed.GetNextDouble();
+                rBuster = in_Seed.NextDouble();
                 busterDmg = 0x00;
 
                 if (rBuster > 0.25)
@@ -633,16 +633,16 @@ namespace MM2Randomizer.Randomizers
 
                 // Choose 4 special weapon weaknesses
                 List<EDmgVsBoss> machine = new List<EDmgVsBoss>(dmgPtrBosses);
-                rInt = in_Seed.GetNextInt32(machine.Count);
+                rInt = in_Seed.NextInt32(machine.Count);
                 bossWeak1 = machine[rInt];
                 machine.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(machine.Count);
+                rInt = in_Seed.NextInt32(machine.Count);
                 bossWeak2 = machine[rInt];
                 machine.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(machine.Count);
+                rInt = in_Seed.NextInt32(machine.Count);
                 bossWeak3 = machine[rInt];
                 machine.RemoveAt(rInt);
-                rInt = in_Seed.GetNextInt32(machine.Count);
+                rInt = in_Seed.NextInt32(machine.Count);
                 bossWeak4 = machine[rInt];
 
                 for (Int32 i = 0; i < dmgPtrBosses.Count; i++)
@@ -702,7 +702,7 @@ namespace MM2Randomizer.Randomizers
                 // Buster Heat Air Wood Bubble Quick Clash Metal
                 Byte alienDamage = 1;
                 List<EDmgVsBoss> alienWeapons = EDmgVsBoss.GetTables(true, false);
-                Int32 rWeaponIndex = in_Seed.GetNextInt32(alienWeapons.Count);
+                Int32 rWeaponIndex = in_Seed.NextInt32(alienWeapons.Count);
 
                 // Deal two damage for 1-ammo weapons (or buster)
                 if (RWeaponBehavior.AmmoUsage[rWeaponIndex] == 1)

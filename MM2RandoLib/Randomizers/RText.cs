@@ -30,7 +30,7 @@ namespace MM2Randomizer.Randomizers
         {
             CompanyNameSet companyNameSet = Properties.Resources.CompanyNameConfig.Deserialize<CompanyNameSet>();
             IEnumerable<CompanyName> enabledCompanyNames = companyNameSet.Where(x => true == x.Enabled);
-            CompanyName companyName = in_Seed.GetNextElement(enabledCompanyNames);
+            CompanyName companyName = in_Seed.NextElement(enabledCompanyNames);
 
             // Write the intro text
 
@@ -120,7 +120,7 @@ namespace MM2Randomizer.Randomizers
 
             CountryNameSet countryNameSet = Properties.Resources.CountryNameConfig.Deserialize<CountryNameSet>();
             IEnumerable<CountryName> countryNames = countryNameSet.Where(x => true == x.Enabled);
-            CountryName countryName = in_Seed.GetNextElement(countryNames);
+            CountryName countryName = in_Seed.NextElement(countryNames);
 
             Int32 line3NextCharacterAddress = in_Patch.Add(
                 INTRO_LINE3_ADDRESS,
@@ -153,7 +153,7 @@ namespace MM2Randomizer.Randomizers
 
             IntroStorySet introStorySet = Properties.Resources.IntroStoryConfig.Deserialize<IntroStorySet>();
             IEnumerable<IntroStory> introStories = introStorySet.Where(x => true == x.Enabled);
-            IntroStory introStory = in_Seed.GetNextElement(introStories);
+            IntroStory introStory = in_Seed.NextElement(introStories);
 
             in_Patch.Add(
                 INTRO_STORY_PAGE1_ADDRESS,

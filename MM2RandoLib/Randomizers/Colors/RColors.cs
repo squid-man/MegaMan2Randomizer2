@@ -597,7 +597,7 @@ namespace MM2Randomizer.Randomizers.Colors
 
             for (Int32 i = 0; i < solidColorSolo.Count; i++)
             {
-                solidColor = in_Seed.GetNextElement(goodSolidColors);
+                solidColor = in_Seed.NextElement(goodSolidColors);
                 in_Patch.Add(solidColorSolo[i], solidColor, String.Format("Robot Master Color"));
             }
 
@@ -606,7 +606,7 @@ namespace MM2Randomizer.Randomizers.Colors
                 in_Patch.Add(solidColorPair1Main[i], solidColor, String.Format("Robot Master Color"));
 
                 // Make 2nd color brighter. If already bright, make white.
-                solidColor = in_Seed.GetNextElement(goodSolidColors);
+                solidColor = in_Seed.NextElement(goodSolidColors);
                 Byte solidColorLight = (Byte)(solidColor + 16);
 
                 if (solidColorLight > 0x3C)
@@ -619,8 +619,8 @@ namespace MM2Randomizer.Randomizers.Colors
 
             for (Int32 i = 0; i < solidColorPair2Dark.Count; i++)
             {
-                in_Patch.Add(solidColorPair2Dark[i], in_Seed.GetNextElement(goodDarkColors), String.Format("Robot Master Color"));
-                in_Patch.Add(solidColorPair2Light[i], in_Seed.GetNextElement(goodLightColors), String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair2Dark[i], in_Seed.NextElement(goodDarkColors), String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair2Light[i], in_Seed.NextElement(goodLightColors), String.Format("Robot Master Color"));
             }
 
 
@@ -629,7 +629,7 @@ namespace MM2Randomizer.Randomizers.Colors
             //
 
             // choose main body color
-            Byte wilyMachineBodyColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte wilyMachineBodyColorReplacement = in_Seed.NextElement(darkOnly);
             Byte wilyMachineBodyColorReplacementLight;
 
             if (0x0F == wilyMachineBodyColorReplacement)
@@ -652,7 +652,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x02D7DB, wilyMachineBodyColorReplacement, "Wily Machine Dark Gold 2 Color"); // 0x07
 
             // choose front color
-            Byte wilyMachineFrontColorReplacement = in_Seed.GetNextElement(mediumOnly);
+            Byte wilyMachineFrontColorReplacement = in_Seed.NextElement(mediumOnly);
             Byte wilyMachineFrontColorReplacementLight = (Byte)(wilyMachineFrontColorReplacement + 16);
             Byte wilyMachineFrontColorReplacementLighter = (Byte)(wilyMachineFrontColorReplacementLight + 32);
 
@@ -672,7 +672,7 @@ namespace MM2Randomizer.Randomizers.Colors
             //
 
             // choose orange replacement
-            Byte dragonOrangeColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte dragonOrangeColorReplacement = in_Seed.NextElement(darkOnly);
             Byte dragonOrangeColorReplacementLight;
 
             if (0x0F == dragonOrangeColorReplacement)
@@ -700,7 +700,7 @@ namespace MM2Randomizer.Randomizers.Colors
             }
 
             // Choose green replacement
-            Byte dragonGreenColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte dragonGreenColorReplacement = in_Seed.NextElement(darkOnly);
             Byte dragonGreenColorReplacementLight;
 
             if (0x0F == dragonGreenColorReplacement)
@@ -724,7 +724,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x02CF91, dragonGreenColorReplacementLight, "Dragon Dark Green 4");
 
             // choose blue replacement
-            Byte dragonBlueColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte dragonBlueColorReplacement = in_Seed.NextElement(darkOnly);
             Byte dragonBlueColorReplacementLight;
 
             if (0x0F == dragonBlueColorReplacement)
@@ -746,7 +746,7 @@ namespace MM2Randomizer.Randomizers.Colors
             //
 
             // Choose red replacement
-            Byte gutstankRedColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte gutstankRedColorReplacement = in_Seed.NextElement(darkOnly);
             Byte gutstankRedColorReplacementLight;
 
             if (0x0F == gutstankRedColorReplacement)
@@ -771,7 +771,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x00BF4D, gutstankRedColorReplacementLight, "Guts Light Red 6");
 
             // Choose blue replacement
-            Byte gutstankBlueColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte gutstankBlueColorReplacement = in_Seed.NextElement(darkOnly);
             Byte gutstankBlueColorReplacementLight;
 
             if (0x0F == gutstankBlueColorReplacement)
@@ -790,7 +790,7 @@ namespace MM2Randomizer.Randomizers.Colors
 
 
             // Choose orange replacement
-            Byte gutstankOrangeColorReplacement = in_Seed.GetNextElement(darkOnly);
+            Byte gutstankOrangeColorReplacement = in_Seed.NextElement(darkOnly);
             Byte gutstankOrangeColorReplacementLight;
 
             if (0x0F == gutstankOrangeColorReplacement)
@@ -831,18 +831,18 @@ namespace MM2Randomizer.Randomizers.Colors
             mediumAndLight.AddRange(lightOnly);
 
             // Alien Body Color
-            Byte alienSolidBodyColor = in_Seed.GetNextElement(mediumAndLight);
+            Byte alienSolidBodyColor = in_Seed.NextElement(mediumAndLight);
             in_Patch.Add(0x02DC74, alienSolidBodyColor, String.Format("Alien Body Solid Color"));
 
-            Byte alienBodyColor = in_Seed.GetNextElement(mediumOnly);
+            Byte alienBodyColor = in_Seed.NextElement(mediumOnly);
             in_Patch.Add(0x02DC76, alienBodyColor, String.Format("Alien Body Dark Color"));
             in_Patch.Add(0x02DC75, (Byte)(alienBodyColor + 16), String.Format("Alien Body Light Color"));
 
             // Alien Head Color
-            Byte alienSolidHeadColor = in_Seed.GetNextElement(mediumAndLight);
+            Byte alienSolidHeadColor = in_Seed.NextElement(mediumAndLight);
             in_Patch.Add(0x02DC78, alienSolidHeadColor, String.Format("Alien Head Solid Color"));
 
-            Byte alienHeadColor = in_Seed.GetNextElement(mediumOnly);
+            Byte alienHeadColor = in_Seed.NextElement(mediumOnly);
             in_Patch.Add(0x02DC7A, alienHeadColor, String.Format("Alien Head Dark Color"));
             in_Patch.Add(0x02DC79, (Byte)(alienHeadColor + 16), String.Format("Alien Head Light Color"));
         }

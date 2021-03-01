@@ -108,7 +108,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                     {
                         EnemyInstance instance = room.EnemyInstances[j];
 
-                        EnemyType newEnemyType = in_Seed.GetNextElement(newEnemies);
+                        EnemyType newEnemyType = in_Seed.NextElement(newEnemies);
                         Byte newId = (Byte)newEnemyType.ID;
 
                         // When placing the last enemy, If room contains an activator, manually change the last spawn in the room to be its deactivator
@@ -148,7 +148,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                         {
                             case EEnemyID.Shrink:
                             {
-                                Double randomSpawner = in_Seed.GetNextDouble();
+                                Double randomSpawner = in_Seed.NextDouble();
 
                                 if (randomSpawner < CHANCE_SHRINKSPAWNER)
                                 {
@@ -601,7 +601,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                                 continue;
                             }
 
-                            chance = in_Seed.GetNextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_PIPI)
                             {
@@ -618,7 +618,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                                 continue;
                             }
 
-                            chance = in_Seed.GetNextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_MOLE)
                             {
@@ -635,7 +635,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                                 continue;
                             }
 
-                            chance = in_Seed.GetNextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_M445)
                             {
@@ -647,7 +647,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
                         case EEnemyID.Telly:
                         {
-                            chance = in_Seed.GetNextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_TELLY)
                             {
@@ -659,7 +659,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
                         case EEnemyID.Springer:
                         {
-                            chance = in_Seed.GetNextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_SPRINGER)
                             {
@@ -863,7 +863,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                 else
                 {
                     // Choose a new enemy to add to the set from all possible new enemies to add
-                    EnemyType newEnemy = in_Seed.GetNextElement(potentialEnemies);
+                    EnemyType newEnemy = in_Seed.NextElement(potentialEnemies);
                     newEnemies.Add(newEnemy);
                     potentialEnemies.Clear();
 

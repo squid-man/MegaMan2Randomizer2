@@ -477,7 +477,7 @@ namespace MM2Randomizer.Randomizers
             }
 
             // Play a random song during wily 6
-            Int32 w6song = in_Seed.GetNextInt32(11);
+            Int32 w6song = in_Seed.NextInt32(11);
             if (w6song == 10)
             {
                 // Wily 5 song was saved to 0x0C, don't use 0x0A  
@@ -490,7 +490,7 @@ namespace MM2Randomizer.Randomizers
             debug.AppendLine($"Wily 6 stage song: {stageSongs[w6song].SongName} (#{w6song})");
 
             // Play a random stage song during the credits
-            Song creditsSong = in_Seed.GetNextElement(stageSongs);
+            Song creditsSong = in_Seed.NextElement(stageSongs);
             in_Patch.Add(0x30A88, creditsSong.SongStartPtr2ndByte, $"Song Credits 2 Byte 0 ({creditsSong.SongName})");
             in_Patch.Add(0x30A89, creditsSong.SongStartPtr1stByte, $"Song Credits 2 Byte 1 ({creditsSong.SongName})");
             debug.AppendLine($"Credits song: {creditsSong.SongName}");

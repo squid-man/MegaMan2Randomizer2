@@ -47,8 +47,8 @@ namespace MM2Randomizer.Randomizers
         private static void ChangeW4FloorsBeforeSpikes(Patch in_Patch, ISeed in_Seed)
         {
             // Choose 2 of the 5 32x32 tiles to be fake
-            Int32 tileA = in_Seed.GetNextInt32(5);
-            Int32 tileB = in_Seed.GetNextInt32(4);
+            Int32 tileA = in_Seed.NextInt32(5);
+            Int32 tileB = in_Seed.NextInt32(4);
 
             // Make sure 2nd tile chosen is different
             if (tileB == tileA)
@@ -72,7 +72,7 @@ namespace MM2Randomizer.Randomizers
         private static void ChangeW4FloorsSpikePit(Patch in_Patch, ISeed in_Seed)
         {
             // 5 tiles, but since two adjacent must construct a gap, 4 possible gaps.  Choose 1 random gap.
-            Int32 gap = in_Seed.GetNextInt32(4);
+            Int32 gap = in_Seed.NextInt32(4);
 
             for (Int32 i = 0; i < 4; i++)
             {

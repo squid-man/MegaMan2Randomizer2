@@ -20,7 +20,7 @@ namespace MM2Randomizer.Randomizers.Colors
 
         public void RandomizeAndWrite(Patch in_Patch, ISeed in_Seed, Int32 setNumber)
         {
-            this.Index = in_Seed.GetNextInt32(ColorBytes.Count);
+            this.Index = in_Seed.NextInt32(ColorBytes.Count);
 
             for (Int32 i = 0; i < this.addresses.Length; i++)
             {
