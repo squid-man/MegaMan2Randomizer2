@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Utilities
 {
@@ -52,13 +53,15 @@ namespace MM2Randomizer.Utilities
         // Constructor
         //
 
-        public WeaponNameGenerator(Random in_Random)
+        public WeaponNameGenerator(ISeed in_Seed)
         {
-            this.mRandomLetterList = WeaponNameGenerator.ALPHABET.OrderBy(x => in_Random.Next());
+            this.mSeed = in_Seed ?? throw new ArgumentNullException(nameof(in_Seed));
+
+            this.mRandomLetterList = in_Seed.Shuffle(WeaponNameGenerator.ALPHABET);
             this.mRandomLetterEnumerator = this.mRandomLetterList.GetEnumerator();
             this.mRandomLetterEnumerator.MoveNext();
 
-            this.mNameSecondPartList = WeaponNameGenerator.mSecondNameLookup.OrderBy(x => in_Random.Next());
+            this.mNameSecondPartList = in_Seed.Shuffle(WeaponNameGenerator.mSecondNameLookup);
             this.mNameSecondPartEnumerator = this.mNameSecondPartList.GetEnumerator();
             this.mNameSecondPartEnumerator.MoveNext();
         }
@@ -67,7 +70,7 @@ namespace MM2Randomizer.Utilities
         // Public Methods
         //
 
-        public WeaponName GenerateWeaponName(Random in_Random, Boolean in_IsExtendedName)
+        public WeaponName GenerateWeaponName(Boolean in_IsExtendedName)
         {
             WeaponName weaponName;
 
@@ -80,7 +83,7 @@ namespace MM2Randomizer.Utilities
                 IEnumerable<String> firstNameSet = WeaponNameGenerator.mFirstNameLookup[key];
 
                 // Get a random first part of the weapon name
-                String firstPart = firstNameSet.ElementAt(in_Random.Next(firstNameSet.Count()));
+                String firstPart = this.mSeed.NextElement(firstNameSet);
 
                 // Get a random second part of the weapon name, and make sure
                 // it is not the same as the first part
@@ -97,7 +100,7 @@ namespace MM2Randomizer.Utilities
                     // If the second part is too long, don't attempt to
                     // hyphenate the name
                     if (secondPart.Length < WeaponNameGenerator.WEAPON_NAME_MAXLENGTH &&
-                        (in_Random.Next() & 1) > 0)
+                        true == this.mSeed.NextBoolean())
                     {
                         extendedName = $"-{secondPart}";
                         fullName = $"{firstPart}-{secondPart}";
@@ -117,7 +120,7 @@ namespace MM2Randomizer.Utilities
                 // in one name, and assign an empty String to the extended name
                 else
                 {
-                    Char separator = ((in_Random.Next() & 1) > 0) ? '-' : ' ';
+                    Char separator = (true == this.mSeed.NextBoolean()) ? '-' : ' ';
                     name = $"{firstPart}{separator}{secondPart}".PadRight(WeaponNameGenerator.WEAPON_NAME_RIGHT_PADDING).PadLeft(WeaponNameGenerator.WEAPON_NAME_LEFT_PADDING);
                     extendedName = new String(' ', WeaponNameGenerator.WEAPON_NAME_MAXLENGTH);
                     fullName = $"{firstPart}{separator}{secondPart}";
@@ -138,7 +141,7 @@ namespace MM2Randomizer.Utilities
                 IEnumerable<String> firstNameSet = WeaponNameGenerator.mFirstNameLookup[key].Where(x => x.Length <= WeaponNameGenerator.WEAPON_FIRST_PART_MAXLENGTH);
 
                 // Get a random first part of the weapon name
-                String firstPart = firstNameSet.ElementAt(in_Random.Next(firstNameSet.Count()));
+                String firstPart = this.mSeed.NextElement(firstNameSet);
 
                 // Get a random second part of the weapon name, and make sure
                 // it is not the same as the first part
@@ -157,7 +160,7 @@ namespace MM2Randomizer.Utilities
                 }
                 else
                 {
-                    Char separator = ((in_Random.Next() & 1) > 0) ? '-' : ' ';
+                    Char separator = (true == this.mSeed.NextBoolean()) ? '-' : ' ';
                     displayName = $"{firstPart}{separator}{secondPart}";
                     fullName = $"{firstPart}{separator}{secondPart}";
                 }
@@ -218,6 +221,8 @@ namespace MM2Randomizer.Utilities
         //
         // Private Data Members
         //
+
+        ISeed mSeed;
 
         IEnumerable<Char> mRandomLetterList;
         IEnumerator<Char> mRandomLetterEnumerator;

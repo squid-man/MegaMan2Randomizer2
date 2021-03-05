@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Input;
 using Avalonia.Controls;
 using MM2Randomizer;
-using MM2Randomizer.Utilities;
-using ReactiveUI;
+using MM2Randomizer.Extensions;
 using RandomizerHost.Views;
+using ReactiveUI;
 
 namespace RandomizerHost.ViewModels
 {
@@ -132,33 +132,26 @@ namespace RandomizerHost.ViewModels
 
         public async void CreateFromGivenSeed(Window in_Window)
         {
-            Int32 seed = -1;
+            // First, clean the seed of non-alphanumerics.  This isn't for the
+            // seed generation code, but to maintain safe file names
+            String seedString = this.RandoSettings.SeedString.Trim().ToUpperInvariant().RemoveNonAlphanumericCharacters();
 
-            // Check if textbox contains a valid seed String
-            if (false == String.IsNullOrEmpty(this.RandoSettings.SeedString))
+            if (true == String.IsNullOrEmpty(seedString))
+            {
+                this.CreateFromRandomSeed(in_Window);
+            }
+            else
             {
                 try
                 {
-                    // Use the provided seed so that a specific ROM may be generated.
-                    seed = SeedConvert.ConvertBase26To10(this.RandoSettings.SeedString);
+                    // Perform randomization based on settings, then generate the ROM.
+                    this.PerformRandomization(seedString);
+                    this.RandoSettings.SeedString = RandomMM2.Seed.SeedString;
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    await MessageBox.Show(in_Window, ex.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
-
-                    Debug.WriteLine("Exception in parsing Seed. Using random seed. Message:/n" + ex.ToString());
-                    seed = -1;
+                    await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
                 }
-            }
-
-            try
-            {
-                // Perform randomization based on settings, then generate the ROM.
-                this.PerformRandomization(seed);
-            }
-            catch (Exception e)
-            {
-                await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
             }
         }
 
@@ -167,7 +160,8 @@ namespace RandomizerHost.ViewModels
         {
             try
             {
-                this.PerformRandomization(-1);
+                this.PerformRandomization();
+                this.RandoSettings.SeedString = RandomMM2.Seed.SeedString;
             }
             catch (Exception e)
             {
@@ -196,32 +190,27 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        public void PerformRandomization(Int32 in_Seed)
+
+        public void PerformRandomization(String in_SeedString = null)
         {
             // Perform randomization based on settings, then generate the ROM.
-            RandomMM2.RandomizerCreate(true, in_Seed);
+            RandomMM2.RandomizerCreate(in_SeedString);
 
             // Get A-Z representation of seed
-            String seedAlpha = SeedConvert.ConvertBase10To26(RandomMM2.Seed);
-
-            if (in_Seed < 0)
-            {
-                RandoSettings.SeedString = seedAlpha;
-            }
-
-            Debug.WriteLine("\nSeed: " + seedAlpha + "\n");
+            String seedBase26 = RandomMM2.Seed.Identifier;
+            Debug.WriteLine("\nSeed: " + seedBase26 + "\n");
 
             // Create log file if left shift is pressed while clicking
             if (true == this.RandoSettings.CreateLogFile &&
                 false == this.RandoSettings.IsSpoilerFree)
             {
-                String logFileName = $"MM2RNG-{seedAlpha}.log";
+                String logFileName = $"MM2RNG-{seedBase26}.log";
 
                 using (StreamWriter sw = new StreamWriter(logFileName, false))
                 {
                     sw.WriteLine("Mega Man 2 Randomizer");
                     sw.WriteLine($"Version {RandoSettings.AssemblyVersion.ToString()}");
-                    sw.WriteLine($"Seed {seedAlpha}\n");
+                    sw.WriteLine($"Seed {seedBase26}\n");
                     sw.WriteLine(RandomMM2.randomStages.ToString());
                     sw.WriteLine(RandomMM2.randomWeaponBehavior.ToString());
                     sw.WriteLine(RandomMM2.randomEnemyWeakness.ToString());

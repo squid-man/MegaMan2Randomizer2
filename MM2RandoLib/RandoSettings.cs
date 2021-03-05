@@ -61,8 +61,6 @@ namespace MM2Randomizer
 
             set
             {
-                value = value.ToUpper();
-
                 if (this.mSeedString != value)
                 {
                     this.mSeedString = value;

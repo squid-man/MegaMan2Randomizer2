@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using MM2Randomizer.Patcher;
 using MM2Randomizer.Enums;
+using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -13,7 +13,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards Items 1, 2, and 3.
         /// </summary>
-        public void Randomize(Patch patch, Random r)
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
         {
             // 0x03C291 - Item # from Heat Man
             // 0x03C292 - Item # from Air Man
@@ -24,21 +24,26 @@ namespace MM2Randomizer.Randomizers
             // 0x03C297 - Item # from Metal Man
             // 0x03C298 - Item # from Crash Man
 
-            List<EItemNumber> newItemOrder = new List<EItemNumber>();
-
-            for (Byte i = 0; i < 5; i++)
+            List<EItemNumber> itemGetList = new List<EItemNumber>()
             {
-                newItemOrder.Add(EItemNumber.None);
-            }
+                EItemNumber.None,
+                EItemNumber.None,
+                EItemNumber.None,
+                EItemNumber.None,
+                EItemNumber.None,
+                EItemNumber.One,
+                EItemNumber.Two,
+                EItemNumber.Three,
+            };
 
-            newItemOrder.Add(EItemNumber.One);
-            newItemOrder.Add(EItemNumber.Two);
-            newItemOrder.Add(EItemNumber.Three);
-            newItemOrder.Shuffle(r);
+            IList<EItemNumber> itemGetOrder = in_Seed.Shuffle(itemGetList);
 
-            for (Int32 i = 0; i < 8; i++)
+            for (Int32 index = 0; index < itemGetOrder.Count; ++index)
             {
-                patch.Add((Int32)EItemStageAddress.HeatMan + i, (Byte)newItemOrder[i], String.Format("{0}man Item Get", ((EDmgVsBoss.Offset)i).ToString()));
+                in_Patch.Add(
+                    (Int32)EItemStageAddress.HeatMan + index,
+                    (Byte)itemGetOrder[index],
+                    String.Format("{0}man Item Get", ((EDmgVsBoss.Offset)index).ToString()));
             }
         }
     }

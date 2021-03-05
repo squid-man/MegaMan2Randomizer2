@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-
-using MM2Randomizer.Patcher;
+using System.Linq;
 using MM2Randomizer.Enums;
-using MM2Randomizer;
+using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers.Colors
 {
@@ -13,24 +12,35 @@ namespace MM2Randomizer.Randomizers.Colors
     /// </summary>
     public class RColors : IRandomizer
     {
-        private static Int32 MegaManColorAddressU = 0x03d314;
+        //
+        // Constructors
+        //
 
-        private Boolean flashing_disabled;
-
-        public RColors(Boolean flashing_disabled) {
-            this.flashing_disabled = flashing_disabled;
-        }
-
-        public void Randomize(Patch p, Random r)
+        public RColors(Boolean in_DisableFlashing)
         {
-            RandomizeStageColors(p, r);
-            RandomizeWeaponColors(p, r);
-            RandomizeBossColors(p, r);
-            RandomizeIntroColors(p, r);
-            RandomizeMenuColors(p, r);
+            this.mDisableFlashing = in_DisableFlashing;
         }
 
-        private void RandomizeMenuColors(Patch p, Random r)
+
+        //
+        // IRandomizer Methods
+        //
+
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        {
+            this.RandomizeStageColors(in_Patch, in_Seed);
+            this.RandomizeWeaponColors(in_Patch, in_Seed);
+            this.RandomizeBossColors(in_Patch, in_Seed);
+            this.RandomizeIntroColors(in_Patch, in_Seed);
+            this.RandomizeMenuColors(in_Patch, in_Seed);
+        }
+
+
+        //
+        // Private Helper Methods
+        //
+
+        private void RandomizeMenuColors(Patch in_Patch, ISeed in_Seed)
         {
             List<ColorSet> StageSelectColorSets = new List<ColorSet>()
             {
@@ -365,6 +375,7 @@ namespace MM2Randomizer.Randomizers.Colors
                     },
                 }
             };
+
             for (Int32 i = 1; i <= 12; i++)
             {
                 // Add the standard range of palette color shades (starting with default)
@@ -391,6 +402,7 @@ namespace MM2Randomizer.Randomizers.Colors
                     },
                 }
             };
+
             for (Int32 i = 1; i <= 12; i++)
             {
                 wilyMap6.ColorBytes.Add(
@@ -424,6 +436,7 @@ namespace MM2Randomizer.Randomizers.Colors
                     },
                 }
             };
+
             for (Int32 i = 1; i <= 12; i++)
             {
                 wilyMap7.ColorBytes.Add(new EColorsHex[] {
@@ -438,40 +451,41 @@ namespace MM2Randomizer.Randomizers.Colors
             for (Int32 i = 0; i < StageSelectColorSets.Count; i++)
             {
                 ColorSet set = StageSelectColorSets[i];
-                set.RandomizeAndWrite(p, r, i);
+                set.RandomizeAndWrite(in_Patch, in_Seed, i);
             }
         }
 
-        private void RandomizeWeaponColors(Patch p, Random r)
+        private void RandomizeWeaponColors(Patch in_Patch, ISeed in_Seed)
         {
             // Create lists of possible colors to choose from and shuffle them
-            List<Byte> PossibleDarkColors = new List<Byte>();
-            List<Byte> PossibleLightColors = new List<Byte>();
+            List<Byte> possibleDarkColors = new List<Byte>();
+            List<Byte> possibleLightColors = new List<Byte>();
 
             for (Byte i = 0x01; i <= 0x0C; i++)
             {
                 // Add first two rows of colors to dark list (except black/white/gray)
-                PossibleDarkColors.Add(i);
-                PossibleDarkColors.Add((Byte)(i + 0x10));
+                possibleDarkColors.Add(i);
+                possibleDarkColors.Add((Byte)(i + 0x10));
                 // Add third and fourth rows to light list (except black/white/gray)
-                PossibleLightColors.Add((Byte)(i + 0x20));
-                PossibleLightColors.Add((Byte)(i + 0x30));
+                possibleLightColors.Add((Byte)(i + 0x20));
+                possibleLightColors.Add((Byte)(i + 0x30));
             }
+
             // Add black and dark-gray to dark list, white and light-gray to light list
-            PossibleDarkColors.Add(0x0F);
-            PossibleDarkColors.Add(0x00);
-            PossibleLightColors.Add(0x10);
-            PossibleLightColors.Add(0x20);
-            
+            possibleDarkColors.Add(0x0F);
+            possibleDarkColors.Add(0x00);
+            possibleLightColors.Add(0x10);
+            possibleLightColors.Add(0x20);
+
             // Randomize lists, and pick the first 9 and 8 elements to use as new colors
-            PossibleDarkColors.Shuffle(r);
-            PossibleLightColors.Shuffle(r);
-            Queue<Byte> DarkColors = new Queue<Byte>(PossibleDarkColors.GetRange(0, 9));
-            Queue<Byte> LightColors = new Queue<Byte>(PossibleLightColors.GetRange(0, 8));
+            possibleDarkColors = in_Seed.Shuffle(possibleDarkColors).ToList();
+            possibleLightColors = in_Seed.Shuffle(possibleLightColors).ToList();
+            Queue<Byte> DarkColors = new Queue<Byte>(possibleDarkColors.GetRange(0, 9));
+            Queue<Byte> LightColors = new Queue<Byte>(possibleLightColors.GetRange(0, 8));
 
             // Get starting address depending on game version
-            //Int32 startAddress = (RandomMM2.Settings.IsJapanese) ? MegaManColorAddressJ : MegaManColorAddressU;
-            Int32 startAddress = MegaManColorAddressU;
+            //Int32 startAddress = (RandomMM2.Settings.IsJapanese) ? MegaManColorAddressJ : MEGA_MAN_COLOR_ADDRESS;
+            Int32 startAddress = MEGA_MAN_COLOR_ADDRESS;
 
             // Change 8 robot master weapon colors
             for (Int32 i = 0; i < 8; i++)
@@ -480,8 +494,8 @@ namespace MM2Randomizer.Randomizers.Colors
                 Byte light = LightColors.Dequeue();
 
                 Int32 pos = startAddress + 0x04 + i * 0x04;
-                p.Add(pos, light, String.Format("{0} Weapon Color Light", ((EDmgVsBoss.Offset)i).ToString()));
-                p.Add(pos+1, dark, String.Format("{0} Weapon Color Dark", ((EDmgVsBoss.Offset)i).ToString()));
+                in_Patch.Add(pos, light, String.Format("{0} Weapon Color Light", ((EDmgVsBoss.Offset)i).ToString()));
+                in_Patch.Add(pos+1, dark, String.Format("{0} Weapon Color Dark", ((EDmgVsBoss.Offset)i).ToString()));
 
                 if (i == 0)
                 {
@@ -490,8 +504,8 @@ namespace MM2Randomizer.Randomizers.Colors
                     //    31 15 - flash lv 1(outline only; keep 15 from weapon color)
                     //    35 2C - flash lv 2
                     //    30 30 - flash lv 3
-                    p.Add(0x03DE4A, dark, "Heat Weapon Charge Color 1");
-                    p.Add(0x03DE4C, dark, "Heat Weapon Charge Color 2");
+                    in_Patch.Add(0x03DE4A, dark, "Heat Weapon Charge Color 1");
+                    in_Patch.Add(0x03DE4C, dark, "Heat Weapon Charge Color 2");
                 }
             }
 
@@ -499,34 +513,34 @@ namespace MM2Randomizer.Randomizers.Colors
             Byte itemColor = DarkColors.Dequeue();
             for (Int32 i = 0; i < 3; i++)
             {
-                p.Add(startAddress + 0x25 + i * 0x04, itemColor, String.Format("Item {0} Dark Color", i+1));
+                in_Patch.Add(startAddress + 0x25 + i * 0x04, itemColor, String.Format("Item {0} Dark Color", i+1));
             }
         }
 
-        private void RandomizeBossColors(Patch p, Random r)
+        private void RandomizeBossColors(Patch in_Patch, ISeed in_Seed)
         {
             //// Robot Master Color Palettes
-            List<Int32> SolidColorSolo = new List<Int32>
+            List<Int32> solidColorSolo = new List<Int32>
             {
                 0x00B4EA, // Wood leaf color 0x29
                 //0x01B4A1, // Metal blade color 0x30 // WARNING: This should be synchronized with some stage BG colors, or else can appear invisible.
             };
 
-            List<Int32> SolidColorPair1Main = new List<Int32> {
+            List<Int32> solidColorPair1Main = new List<Int32> {
                 0x01F4ED, // Clash red color 0x16
                 0x0174B7, // Flash blue color 0x12
                 0x0074B4, // Air projectile blue color 0x11
                 0x00B4ED, // Wood orange color 0x17
             };
 
-            List<Int32> SolidColorPair1White = new List<Int32> {
+            List<Int32> solidColorPair1White = new List<Int32> {
                 0x01F4EC, // Clash white color 0x30
                 0x0174B6, // Flash white color 0x30
                 0x0074B3, // Air projectile white color 0x30
                 0x00B4EC, // Wood white color 0x36
             };
 
-            List<Int32> SolidColorPair2Dark = new List<Int32> {
+            List<Int32> solidColorPair2Dark = new List<Int32> {
                 0x0034B4, // Heat projectile red color 0x15
                 0x0034B7, // Heat red color 0x15
                 0x0074B7, // Air blue color 0x11
@@ -536,7 +550,7 @@ namespace MM2Randomizer.Randomizers.Colors
                 0x00F4B7, // Bubble green color 0x19
             };
 
-            List<Int32> SolidColorPair2Light = new List<Int32> {
+            List<Int32> solidColorPair2Light = new List<Int32> {
                 0x0034B3, // Heat projectile yellow color 0x28
                 0x0034B6, // Heat yellow color 0x28
                 0x0074B6, // Air yellow color 0x28
@@ -578,218 +592,262 @@ namespace MM2Randomizer.Randomizers.Colors
                 0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,0x29,0x2A,0x2B,0x2C
             };
 
-            Int32 rColor = 0;
-            for (Int32 i = 0; i < SolidColorSolo.Count; i++)
+            //Int32 rColor = 0;
+            Byte solidColor = 0;// = in_Seed.GetNextElement(goodSolidColors);
+
+            for (Int32 i = 0; i < solidColorSolo.Count; i++)
             {
-                rColor = r.Next(goodSolidColors.Count);
-                p.Add(SolidColorSolo[i], goodSolidColors[rColor], String.Format("Robot Master Color"));
+                solidColor = in_Seed.NextElement(goodSolidColors);
+                in_Patch.Add(solidColorSolo[i], solidColor, String.Format("Robot Master Color"));
             }
 
-            for (Int32 i = 0; i < SolidColorPair1Main.Count; i++)
+            for (Int32 i = 0; i < solidColorPair1Main.Count; i++)
             {
-                p.Add(SolidColorPair1Main[i], goodSolidColors[rColor], String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair1Main[i], solidColor, String.Format("Robot Master Color"));
 
                 // Make 2nd color brighter. If already bright, make white.
-                rColor = r.Next(goodSolidColors.Count);
-                Int32 lightColor = goodSolidColors[rColor] + 0x10;
-                if (lightColor > 0x3C)
+                solidColor = in_Seed.NextElement(goodSolidColors);
+                Byte solidColorLight = (Byte)(solidColor + 16);
+
+                if (solidColorLight > 0x3C)
                 {
-                    lightColor = 0x30;
+                    solidColorLight = 0x30;
                 }
-                p.Add(SolidColorPair1White[i], (Byte)lightColor, String.Format("Robot Master Color"));
+
+                in_Patch.Add(solidColorPair1White[i], solidColorLight, String.Format("Robot Master Color"));
             }
 
-            for (Int32 i = 0; i < SolidColorPair2Dark.Count; i++)
+            for (Int32 i = 0; i < solidColorPair2Dark.Count; i++)
             {
-                rColor = r.Next(SolidColorPair2Dark.Count);
-                p.Add(SolidColorPair2Dark[i], goodDarkColors[rColor], String.Format("Robot Master Color"));
-
-                rColor = r.Next(SolidColorPair2Light.Count);
-                p.Add(SolidColorPair2Light[i], goodLightColors[rColor], String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair2Dark[i], in_Seed.NextElement(goodDarkColors), String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair2Light[i], in_Seed.NextElement(goodLightColors), String.Format("Robot Master Color"));
             }
 
-            
+
+            //
             // Wily Machine
+            //
+
             // choose main body color
-            rColor = r.Next(darkOnly.Count);
-            Byte shade0 = darkOnly[rColor];
-            Byte shade1 = (Byte)(shade0 + 0x10);
+            Byte wilyMachineBodyColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte wilyMachineBodyColorReplacementLight;
 
-            if (shade0 == 0x0F)
+            if (0x0F == wilyMachineBodyColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                // Dark gray up from black
+                wilyMachineBodyColorReplacementLight = 0;
+            }
+            else
+            {
+                wilyMachineBodyColorReplacementLight = (Byte)(wilyMachineBodyColorReplacement + 16);
             }
 
-            Byte shade2 = (Byte)(shade1 + 0x10);
+            Byte wilyMachineBodyColorReplacementLighter = (Byte)(wilyMachineBodyColorReplacementLight + 16);
 
-            p.Add(0x02D7D5, shade2, "Wily Machine Light-Gold Color"); // 0x27
-            p.Add(0x02D7D2, shade1, "Wily Machine Gold 1 Color"); // 0x17
-            p.Add(0x02D7D6, shade1, "Wily Machine Gold 2 Color"); // 0x17
-            p.Add(0x02D7DA, shade1, "Wily Machine Gold 3 Color"); // 0x17
-            p.Add(0x02D7D7, shade0, "Wily Machine Dark Gold 1 Color"); // 0x07
-            p.Add(0x02D7DB, shade0, "Wily Machine Dark Gold 2 Color"); // 0x07
-            
+            in_Patch.Add(0x02D7D5, wilyMachineBodyColorReplacementLighter, "Wily Machine Light-Gold Color"); // 0x27
+            in_Patch.Add(0x02D7D2, wilyMachineBodyColorReplacementLight, "Wily Machine Gold 1 Color"); // 0x17
+            in_Patch.Add(0x02D7D6, wilyMachineBodyColorReplacementLight, "Wily Machine Gold 2 Color"); // 0x17
+            in_Patch.Add(0x02D7DA, wilyMachineBodyColorReplacementLight, "Wily Machine Gold 3 Color"); // 0x17
+            in_Patch.Add(0x02D7D7, wilyMachineBodyColorReplacement, "Wily Machine Dark Gold 1 Color"); // 0x07
+            in_Patch.Add(0x02D7DB, wilyMachineBodyColorReplacement, "Wily Machine Dark Gold 2 Color"); // 0x07
+
             // choose front color
-            rColor = r.Next(mediumOnly.Count);
-            shade0 = mediumOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
-            shade2 = (Byte)(shade1 + 0x20);
+            Byte wilyMachineFrontColorReplacement = in_Seed.NextElement(mediumOnly);
+            Byte wilyMachineFrontColorReplacementLight = (Byte)(wilyMachineFrontColorReplacement + 16);
+            Byte wilyMachineFrontColorReplacementLighter = (Byte)(wilyMachineFrontColorReplacementLight + 32);
 
-            p.Add(0x02D7D1, shade0, "Wily Machine Red 1 Color"); // 0x15
-            p.Add(0x02D7D9, shade0, "Wily Machine Red 2 Color"); // 0x15
-            p.Add(0x02D7D3, shade2, "Wily Machine Light Red 1 Color"); // 0x15
-            if (flashing_disabled)
+            in_Patch.Add(0x02D7D1, wilyMachineFrontColorReplacement, "Wily Machine Red 1 Color"); // 0x15
+            in_Patch.Add(0x02D7D9, wilyMachineFrontColorReplacement, "Wily Machine Red 2 Color"); // 0x15
+            in_Patch.Add(0x02D7D3, wilyMachineFrontColorReplacementLighter, "Wily Machine Light Red 1 Color"); // 0x15
+
+            if (true == this.mDisableFlashing)
             {
-                p.Add(0x2DA94, shade1, "Wily Machine Flash Color");
-                p.Add(0x2DA21, shade2, "Wily Machine Restore Color");
+                in_Patch.Add(0x2DA94, wilyMachineFrontColorReplacementLight, "Wily Machine Flash Color");
+                in_Patch.Add(0x2DA21, wilyMachineFrontColorReplacementLighter, "Wily Machine Restore Color");
             }
 
+
+            //
             // Dragon
-            // choose orange replacement
-            rColor = r.Next(darkOnly.Count);
-            shade0 = darkOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
+            //
 
-            if (shade0 == 0x0F)
+            // choose orange replacement
+            Byte dragonOrangeColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte dragonOrangeColorReplacementLight;
+
+            if (0x0F == dragonOrangeColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                // Dark gray up from black
+                dragonOrangeColorReplacementLight = 0;
+            }
+            else
+            {
+                dragonOrangeColorReplacementLight = (Byte)(dragonOrangeColorReplacement + 16);
             }
 
-            shade2 = (Byte)(shade1 + 0x10);
-            Byte shade3 = (Byte)(shade2 + 0x10);
-            p.Add(0x02CF8F, shade2, "Dragon Orange Color 1");
-            p.Add(0x02CF97, shade2, "Dragon Orange Color 2");
-            p.Add(0x0034C6, shade3, "Dragon Orange Mouth");
-            p.Add(0x0034C7, shade2, "Dragon Orange Color 3");
-            if (flashing_disabled)
+            Byte dragonOrangeColorReplacementLighter = (Byte)(dragonOrangeColorReplacementLight + 16);
+            Byte dragonOrangeColorReplacementLightest = (Byte)(dragonOrangeColorReplacementLighter + 16);
+
+            in_Patch.Add(0x02CF8F, dragonOrangeColorReplacementLighter, "Dragon Orange Color 1");
+            in_Patch.Add(0x02CF97, dragonOrangeColorReplacementLighter, "Dragon Orange Color 2");
+            in_Patch.Add(0x0034C6, dragonOrangeColorReplacementLightest, "Dragon Orange Mouth");
+            in_Patch.Add(0x0034C7, dragonOrangeColorReplacementLighter, "Dragon Orange Color 3");
+
+            if (true == this.mDisableFlashing)
             {
-                p.Add(0x002D1B0, shade3, "Dragon Hit Flash Color");
-                p.Add(0x002D185, shade2, "Dragon Hit Restore Color");
+                in_Patch.Add(0x002D1B0, dragonOrangeColorReplacementLightest, "Dragon Hit Flash Color");
+                in_Patch.Add(0x002D185, dragonOrangeColorReplacementLighter, "Dragon Hit Restore Color");
             }
 
             // Choose green replacement
-            rColor = r.Next(darkOnly.Count);
-            shade0 = darkOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
+            Byte dragonGreenColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte dragonGreenColorReplacementLight;
 
-            if (shade0 == 0x0F)
+            if (0x0F == dragonGreenColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                // Dark gray up from black
+                dragonGreenColorReplacementLight = 0;
+            }
+            else
+            {
+                dragonGreenColorReplacementLight = (Byte)(dragonGreenColorReplacement + 16);
             }
 
-            shade2 = (Byte)(shade1 + 0x10);
-            p.Add(0x02CF8C, shade2, "Dragon Light Green 1");
-            p.Add(0x02CF8D, shade1, "Dragon Dark Green 1");
-            p.Add(0x02CF98, shade2, "Dragon Light Green 2");
-            p.Add(0x02CF99, shade1, "Dragon Dark Green 2");
-            p.Add(0x0034C8, shade2, "Dragon Light Green 3");
-            p.Add(0x0034C9, shade1, "Dragon Dark Green 3");
-            p.Add(0x02CF91, shade1, "Dragon Dark Green 4");
+            Byte dragonGreenColorReplacementLighter = (Byte)(dragonGreenColorReplacementLight + 16);
+
+            in_Patch.Add(0x02CF8C, dragonGreenColorReplacementLighter, "Dragon Light Green 1");
+            in_Patch.Add(0x02CF8D, dragonGreenColorReplacementLight, "Dragon Dark Green 1");
+            in_Patch.Add(0x02CF98, dragonGreenColorReplacementLighter, "Dragon Light Green 2");
+            in_Patch.Add(0x02CF99, dragonGreenColorReplacementLight, "Dragon Dark Green 2");
+            in_Patch.Add(0x0034C8, dragonGreenColorReplacementLighter, "Dragon Light Green 3");
+            in_Patch.Add(0x0034C9, dragonGreenColorReplacementLight, "Dragon Dark Green 3");
+            in_Patch.Add(0x02CF91, dragonGreenColorReplacementLight, "Dragon Dark Green 4");
 
             // choose blue replacement
-            rColor = r.Next(darkOnly.Count);
-            shade0 = darkOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
+            Byte dragonBlueColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte dragonBlueColorReplacementLight;
 
-            if (shade0 == 0x0F)
+            if (0x0F == dragonBlueColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                // Dark gray up from black
+                dragonBlueColorReplacementLight = 0;
+            }
+            else
+            {
+                dragonBlueColorReplacementLight = (Byte)(dragonBlueColorReplacement + 16);
             }
 
-            shade2 = (Byte)(shade1 + 0x10);
-            p.Add(0x02CF90, shade1, "Dragon Blue Color 1");
+            Byte dragonBlueColorReplacementLighter = (Byte)(dragonBlueColorReplacementLight + 16);
+            in_Patch.Add(0x02CF90, dragonBlueColorReplacementLight, "Dragon Blue Color 1");
 
-            // Gutsdozer
+
+            //
+            // Guts Tank
+            //
+
             // Choose red replacement
-            rColor = r.Next(darkOnly.Count);
-            shade0 = darkOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
+            Byte gutstankRedColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte gutstankRedColorReplacementLight;
 
-            if (shade0 == 0x0F)
+            if (0x0F == gutstankRedColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                // Dark gray up from black
+                gutstankRedColorReplacementLight = 0;
+            }
+            else
+            {
+                gutstankRedColorReplacementLight = (Byte)(gutstankRedColorReplacement + 16);
             }
 
-            shade2 = (Byte)(shade1 + 0x10);
-            p.Add(0x00BF40, shade0, "Guts Dark Red 1");
-            p.Add(0x00BF41, shade1, "Guts Light Red 1");
-            p.Add(0x00BF50, shade0, "Guts Dark Red 2");
-            p.Add(0x00BF51, shade1, "Guts Light Red 2");
-            p.Add(0x00BF39, shade1, "Guts Light Red 3");
-            p.Add(0x00BF49, shade1, "Guts Light Red 4");
-            p.Add(0x00BF3D, shade1, "Guts Light Red 5");
-            p.Add(0x00BF4D, shade1, "Guts Light Red 6");
+            Byte gutstankRedColorReplacementLighter = (Byte)(gutstankRedColorReplacementLight + 16);
+
+            in_Patch.Add(0x00BF40, gutstankRedColorReplacement, "Guts Dark Red 1");
+            in_Patch.Add(0x00BF41, gutstankRedColorReplacementLight, "Guts Light Red 1");
+            in_Patch.Add(0x00BF50, gutstankRedColorReplacement, "Guts Dark Red 2");
+            in_Patch.Add(0x00BF51, gutstankRedColorReplacementLight, "Guts Light Red 2");
+            in_Patch.Add(0x00BF39, gutstankRedColorReplacementLight, "Guts Light Red 3");
+            in_Patch.Add(0x00BF49, gutstankRedColorReplacementLight, "Guts Light Red 4");
+            in_Patch.Add(0x00BF3D, gutstankRedColorReplacementLight, "Guts Light Red 5");
+            in_Patch.Add(0x00BF4D, gutstankRedColorReplacementLight, "Guts Light Red 6");
 
             // Choose blue replacement
-            rColor = r.Next(darkOnly.Count);
-            shade0 = darkOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
+            Byte gutstankBlueColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte gutstankBlueColorReplacementLight;
 
-            if (shade0 == 0x0F)
+            if (0x0F == gutstankBlueColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                gutstankBlueColorReplacementLight = 0;
+            }
+            else
+            {
+                gutstankBlueColorReplacementLight = (Byte)(gutstankBlueColorReplacement + 16);
             }
 
-            shade2 = (Byte)(shade1 + 0x10);
-            p.Add(0x00BF38, shade1, "Guts Blue 1");
-            p.Add(0x00BF48, shade1, "Guts Blue 2");
+            Byte gutstankBlueColorReplacementLighter = (Byte)(gutstankBlueColorReplacementLight + 16);
+
+            in_Patch.Add(0x00BF38, gutstankBlueColorReplacementLight, "Guts Blue 1");
+            in_Patch.Add(0x00BF48, gutstankBlueColorReplacementLighter, "Guts Blue 2");
+
 
             // Choose orange replacement
-            rColor = r.Next(darkOnly.Count);
-            shade0 = darkOnly[rColor];
-            shade1 = (Byte)(shade0 + 0x10);
+            Byte gutstankOrangeColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte gutstankOrangeColorReplacementLight;
 
-            if (shade0 == 0x0F)
+            if (0x0F == gutstankOrangeColorReplacement)
             {
-                shade1 = 0x00; // Dark gray up from black
+                // Dark gray up from black
+                gutstankOrangeColorReplacementLight = 0;
+            }
+            else
+            {
+                gutstankOrangeColorReplacementLight = (Byte)(gutstankOrangeColorReplacement + 16);
             }
 
-            shade2 = (Byte)(shade1 + 0x10);
-            shade3 = (Byte)(shade2 + 0x10);
-            p.Add(0x00BF3F, shade2, "Guts Light Orange Color 1");
-            p.Add(0x00BF4F, shade2, "Guts Light Orange Color 2");
-            p.Add(0x00BF37, shade2, "Guts Light Orange Color 3");
-            p.Add(0x00BF47, shade2, "Guts Light Orange Color 4");
-            p.Add(0x00BF33, shade2, "Guts Light Orange Color 5");
-            p.Add(0x00BF34, shade3, "Guts Lighter Orange Color 1");
-            p.Add(0x00BF43, shade2, "Guts Light Orange Color 6");
-            p.Add(0x00BF44, shade3, "Guts Lighter Orange Color 2");
-            p.Add(0x00B4FE, shade3, "Guts Lighter Orange Color 3");
-            p.Add(0x00B4FF, shade2, "Guts Light Orange Color 7");
-            p.Add(0x03918F, shade2, "Guts Orange Color Stage");
-            p.Add(0x039190, shade3, "Guts Light Orange Color Stage");
+            Byte gutstankOrangeColorReplacementLighter = (Byte)(gutstankOrangeColorReplacementLight + 16);
+            Byte gutstankOrangeColorReplacementLightest = (Byte)(gutstankOrangeColorReplacementLighter + 16);
 
+            in_Patch.Add(0x00BF3F, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 1");
+            in_Patch.Add(0x00BF4F, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 2");
+            in_Patch.Add(0x00BF37, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 3");
+            in_Patch.Add(0x00BF47, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 4");
+            in_Patch.Add(0x00BF33, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 5");
+            in_Patch.Add(0x00BF34, gutstankOrangeColorReplacementLightest, "Guts Lighter Orange Color 1");
+            in_Patch.Add(0x00BF43, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 6");
+            in_Patch.Add(0x00BF44, gutstankOrangeColorReplacementLightest, "Guts Lighter Orange Color 2");
+            in_Patch.Add(0x00B4FE, gutstankOrangeColorReplacementLightest, "Guts Lighter Orange Color 3");
+            in_Patch.Add(0x00B4FF, gutstankOrangeColorReplacementLighter, "Guts Light Orange Color 7");
+            in_Patch.Add(0x03918F, gutstankOrangeColorReplacementLighter, "Guts Orange Color Stage");
+            in_Patch.Add(0x039190, gutstankOrangeColorReplacementLightest, "Guts Light Orange Color Stage");
+
+
+            //
             // Alien
+            //
+
             //0x02DC74(3 bytes) Alien Body, static   0x16 0x29 0x19
             //0x02DC78(3 bytes) Alien Head, static   0x16 0x29 0x19
             // Looks good as 4 separate color groups, should be easy. Save the animations for later.
             List<Byte> mediumAndLight = new List<Byte>(mediumOnly);
             mediumAndLight.AddRange(lightOnly);
 
-            rColor = r.Next(mediumAndLight.Count);
-            shade0 = mediumAndLight[rColor];
-            p.Add(0x02DC74, shade0, String.Format("Alien Body Solid Color"));
+            // Alien Body Color
+            Byte alienSolidBodyColor = in_Seed.NextElement(mediumAndLight);
+            in_Patch.Add(0x02DC74, alienSolidBodyColor, String.Format("Alien Body Solid Color"));
 
-            rColor = r.Next(mediumAndLight.Count);
-            shade1 = mediumAndLight[rColor];
-            p.Add(0x02DC78, shade1, String.Format("Alien Head Solid Color"));
+            Byte alienBodyColor = in_Seed.NextElement(mediumOnly);
+            in_Patch.Add(0x02DC76, alienBodyColor, String.Format("Alien Body Dark Color"));
+            in_Patch.Add(0x02DC75, (Byte)(alienBodyColor + 16), String.Format("Alien Body Light Color"));
 
-            rColor = r.Next(mediumOnly.Count);
-            shade0 = mediumOnly[rColor];
-            p.Add(0x02DC76, shade0, String.Format("Alien Body Dark Color"));
+            // Alien Head Color
+            Byte alienSolidHeadColor = in_Seed.NextElement(mediumAndLight);
+            in_Patch.Add(0x02DC78, alienSolidHeadColor, String.Format("Alien Head Solid Color"));
 
-            shade1 = (Byte)(shade0 + 0x10);
-            p.Add(0x02DC75, shade1, String.Format("Alien Body Light Color"));
-
-            rColor = r.Next(mediumOnly.Count);
-            shade0 = mediumOnly[rColor];
-            p.Add(0x02DC7A, shade0, String.Format("Alien Body Dark Color"));
-
-            shade1 = (Byte)(shade0 + 0x10);
-            p.Add(0x02DC79, shade1, String.Format("Alien Head Light Color"));
+            Byte alienHeadColor = in_Seed.NextElement(mediumOnly);
+            in_Patch.Add(0x02DC7A, alienHeadColor, String.Format("Alien Head Dark Color"));
+            in_Patch.Add(0x02DC79, (Byte)(alienHeadColor + 16), String.Format("Alien Head Light Color"));
         }
 
-        private void RandomizeIntroColors(Patch p, Random r)
+        private void RandomizeIntroColors(Patch in_Patch, ISeed in_Seed)
         {
             List<ColorSet> IntroColorSets = new List<ColorSet>()
             {
@@ -950,11 +1008,11 @@ namespace MM2Randomizer.Randomizers.Colors
             for (Int32 i = 0; i < IntroColorSets.Count; i++)
             {
                 ColorSet set = IntroColorSets[i];
-                set.RandomizeAndWrite(p, r, i);
+                set.RandomizeAndWrite(in_Patch, in_Seed, i);
             }
         }
 
-        private void RandomizeStageColors(Patch p, Random r)
+        private void RandomizeStageColors(Patch in_Patch, ISeed in_Seed)
         {
             List<ColorSet> StagesColorSets = new List<ColorSet>()
             {
@@ -2806,8 +2864,19 @@ namespace MM2Randomizer.Randomizers.Colors
             for (Int32 i = 0; i < StagesColorSets.Count; i++)
             {
                 ColorSet set = StagesColorSets[i];
-                set.RandomizeAndWrite(p, r, i);
+                set.RandomizeAndWrite(in_Patch, in_Seed, i);
             }
         }
+
+
+        //
+        // Private Data Members
+        //
+
+        private Boolean mDisableFlashing;
+
+        private const Int32 MEGA_MAN_COLOR_ADDRESS = 0x03d314;
+
+
     }
 }

@@ -5,6 +5,7 @@ using MM2Randomizer.Data;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer.Randomizers.Enemies
@@ -38,20 +39,20 @@ namespace MM2Randomizer.Randomizers.Enemies
 
         public REnemies() { }
 
-        public void Randomize(Patch p, Random r)
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
         {
-            EnemyTypes.Clear();
-            EnemiesByType.Clear();
-            RoomGroups.Clear();
-            EnemyInstances.Clear();
+            this.EnemyTypes.Clear();
+            this.EnemiesByType.Clear();
+            this.RoomGroups.Clear();
+            this.EnemyInstances.Clear();
 
-            ReadEnemyInstancesFromFile();
-            ChangeRoomSpriteBankSlots(p);
-            InitializeEnemies();
-            InitializeRooms();
-            Execute(p, r);
+            this.ReadEnemyInstancesFromFile();
+            this.ChangeRoomSpriteBankSlots(in_Patch);
+            this.InitializeEnemies();
+            this.InitializeRooms();
+            this.Execute(in_Patch, in_Seed);
 
-            MiscHacks.DisableChangkeyMakerPaletteSwap(p);
+            MiscHacks.DisableChangkeyMakerPaletteSwap(in_Patch);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             }
         }
 
-        private void Execute(Patch Patch, Random r)
+        private void Execute(Patch in_Patch, ISeed in_Seed)
         {
             foreach (SpriteBankRoomGroup sbrg in RoomGroups)
             {
@@ -91,7 +92,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                 }
 
                 // Create valid random combination of enemies to place
-                List<EnemyType> newEnemies = GenerateEnemyCombinations(sbrg, r);
+                List<EnemyType> newEnemies = this.GenerateEnemyCombinations(sbrg, in_Seed);
 
                 // No enemy can fit in this room for some reason, skip this room (GFX will be glitched)
                 if (newEnemies.Count == 0)
@@ -107,8 +108,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                     {
                         EnemyInstance instance = room.EnemyInstances[j];
 
-                        Int32 randomIndex = r.Next(newEnemies.Count);
-                        EnemyType newEnemyType = newEnemies[randomIndex];
+                        EnemyType newEnemyType = in_Seed.NextElement(newEnemies);
                         Byte newId = (Byte)newEnemyType.ID;
 
                         // When placing the last enemy, If room contains an activator, manually change the last spawn in the room to be its deactivator
@@ -147,19 +147,31 @@ namespace MM2Randomizer.Randomizers.Enemies
                         switch ((EEnemyID)newId)
                         {
                             case EEnemyID.Shrink:
-                                Double randomSpawner = r.NextDouble();
+                            {
+                                Double randomSpawner = in_Seed.NextDouble();
+
                                 if (randomSpawner < CHANCE_SHRINKSPAWNER)
                                 {
                                     newId = (Byte)EEnemyID.Shrink_Spawner;
                                 }
+
                                 break;
+                            }
+
                             case EEnemyID.Shotman_Left:
+                            {
                                 if (instance.IsFaceRight)
                                 {
                                     newId = (Byte)EEnemyID.Shotman_Right;
                                 }
+
                                 break;
-                            default: break;
+                            }
+
+                            default:
+                            {
+                                break;
+                            }
                         }
 
                         // Update Object with new ID for future use
@@ -170,7 +182,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                             instance.StageNum * StageLength +
                             instance.Offset;
 
-                        Patch.Add(IDposition, newId, $"{sbrg.Stage.ToString("G")} Stage Enemy #{instance.Offset} ID (Room {instance.RoomNum}) {((EEnemyID)instance.EnemyID).ToString("G")}");
+                        in_Patch.Add(IDposition, newId, $"{sbrg.Stage.ToString("G")} Stage Enemy #{instance.Offset} ID (Room {instance.RoomNum}) {((EEnemyID)instance.EnemyID).ToString("G")}");
 
                         // Change the enemy Y pos based on Air or Ground category
                         Int32 newY = newEnemyType.YAdjust;
@@ -178,7 +190,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                         IDposition = Stage0EnemyYAddress +
                             instance.StageNum * StageLength +
                             instance.Offset;
-                        Patch.Add(IDposition, (Byte)newY, $"{sbrg.Stage.ToString("G")} Stage Enemy #{instance.Offset} Y (Room {instance.RoomNum}) {((EEnemyID)instance.EnemyID).ToString("G")}");
+                        in_Patch.Add(IDposition, (Byte)newY, $"{sbrg.Stage.ToString("G")} Stage Enemy #{instance.Offset} Y (Room {instance.RoomNum}) {((EEnemyID)instance.EnemyID).ToString("G")}");
                     }
                 }
 
@@ -191,8 +203,8 @@ namespace MM2Randomizer.Randomizers.Enemies
                         Int32 patternTblPtr1 = e.PatternTableAddresses[2 * i];
                         Int32 patternTblPtr2 = e.PatternTableAddresses[2 * i + 1];
 
-                        Patch.Add(rowInSlotAddress,     (Byte)patternTblPtr1, $"{sbrg.Stage.ToString("G")} Stage Sprite Bank Slot ? Row {e.SpriteBankRows[i]} Indirect Address 1");
-                        Patch.Add(rowInSlotAddress + 1, (Byte)patternTblPtr2, $"{sbrg.Stage.ToString("G")} Stage Sprite Bank Slot ? Row {e.SpriteBankRows[i]} Indirect Address 2");
+                        in_Patch.Add(rowInSlotAddress,     (Byte)patternTblPtr1, $"{sbrg.Stage.ToString("G")} Stage Sprite Bank Slot ? Row {e.SpriteBankRows[i]} Indirect Address 1");
+                        in_Patch.Add(rowInSlotAddress + 1, (Byte)patternTblPtr2, $"{sbrg.Stage.ToString("G")} Stage Sprite Bank Slot ? Row {e.SpriteBankRows[i]} Indirect Address 2");
                     }
                 }
             } // end foreach sbrg
@@ -565,11 +577,11 @@ namespace MM2Randomizer.Randomizers.Enemies
             } // end foreach sbrg
         }
 
-        private List<EnemyType> GenerateEnemyCombinations(SpriteBankRoomGroup sbrg, Random r)
+        private List<EnemyType> GenerateEnemyCombinations(SpriteBankRoomGroup sbrg, ISeed in_Seed)
         {
             // Create a random enemy set
-            List<EnemyType> NewEnemies = new List<EnemyType>();
-            List<EnemyType> PotentialEnemies = new List<EnemyType>();
+            List<EnemyType> newEnemies = new List<EnemyType>();
+            List<EnemyType> potentialEnemies = new List<EnemyType>();
             Boolean done = false;
             Boolean hasActivator = false;
             while (!done)
@@ -589,7 +601,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                                 continue;
                             }
 
-                            chance = r.NextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_PIPI)
                             {
@@ -606,7 +618,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                                 continue;
                             }
 
-                            chance = r.NextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_MOLE)
                             {
@@ -623,7 +635,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                                 continue;
                             }
 
-                            chance = r.NextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_M445)
                             {
@@ -635,7 +647,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
                         case EEnemyID.Telly:
                         {
-                            chance = r.NextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_TELLY)
                             {
@@ -647,7 +659,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
                         case EEnemyID.Springer:
                         {
-                            chance = r.NextDouble();
+                            chance = in_Seed.NextDouble();
 
                             if (chance > CHANCE_SPRINGER)
                             {
@@ -836,39 +848,50 @@ namespace MM2Randomizer.Randomizers.Enemies
                     }
 
                     // Check if this enemy would fit in the sprite bank, given other new enemies already added
-                    if (CheckEnemySpriteFitInBank(NewEnemies, en))
+                    if (CheckEnemySpriteFitInBank(newEnemies, en))
                     {
                         // Add enemy to set of possible enemies to place in 
-                        PotentialEnemies.Add(en);
+                        potentialEnemies.Add(en);
                     }
                 }
 
                 // Unable to add any more enemies, done
-                if (PotentialEnemies.Count == 0)
+                if (potentialEnemies.Count == 0)
                 {
                     done = true;
                 }
                 else
                 {
                     // Choose a new enemy to add to the set from all possible new enemies to add
-                    EnemyType newEnemy = PotentialEnemies[r.Next(PotentialEnemies.Count)];
-                    NewEnemies.Add(newEnemy);
-                    PotentialEnemies.Clear();
+                    EnemyType newEnemy = in_Seed.NextElement(potentialEnemies);
+                    newEnemies.Add(newEnemy);
+                    potentialEnemies.Clear();
 
                     // Increase total count of certain enemy types to limit their appearance later
                     switch (newEnemy.ID)
                     {
                         case EEnemyID.Pipi_Activator:
+                        {
                             numPipis++;
                             break;
+                        }
+
                         case EEnemyID.Mole_Activator:
+                        {
                             numMoles++;
                             break;
+                        }
+
                         case EEnemyID.M445_Activator:
+                        {
                             numM445s++;
                             break;
+                        }
+
                         default:
+                        {
                             break;
+                        }
                     }
 
                     // Flag the new enemy set as having an activator so that no more will be added
@@ -879,7 +902,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                 }
             }
 
-            return NewEnemies;
+            return newEnemies;
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using MM2Randomizer.Data;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -144,13 +146,13 @@ namespace MM2Randomizer.Randomizers
             return debug.ToString();
         }
 
-        public void Randomize(Patch p, Random r)
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
         {
             debug.AppendLine();
             debug.AppendLine("Random Music Module");
             debug.AppendLine("--------------------------------------------");
 
-            ImportMusic(p, r);
+            this.ImportMusic(in_Patch, in_Seed);
         }
 
 
@@ -159,7 +161,7 @@ namespace MM2Randomizer.Randomizers
         /// </summary>
         /// <param name="p"></param>
         /// <param name="r"></param>
-        public void ImportMusic(Patch p, Random r)
+        public void ImportMusic(Patch in_Patch, ISeed in_Seed)
         {
             List<Song> songs = new List<Song>();
             List<Song> stageSongs = new List<Song>();
@@ -184,7 +186,7 @@ namespace MM2Randomizer.Randomizers
             while (checkBytes)
             {
                 // Shuffle and get first 11 songs
-                songs.Shuffle(r);
+                songs = in_Seed.Shuffle(songs).ToList();
                 stageSongs = songs.GetRange(0, numTracks);
 
                 // Count bytes 
@@ -224,20 +226,20 @@ namespace MM2Randomizer.Randomizers
                 String addressHex = addressTwoBytes.ToString("X");
                 song.SongStartPtr1stByte = Byte.Parse(addressHex.Substring(0, 2), NumberStyles.HexNumber);
                 song.SongStartPtr2ndByte = Byte.Parse(addressHex.Substring(2, 2), NumberStyles.HexNumber);
-                
+
                 if (k >= 10) // Must use a different location for the 11th track; use Stage Select at 0x30A78
                 {
-                    p.Add(0x30A78, song.SongStartPtr2ndByte, $"Song {k} Pointer Offset Byte 1");
-                    p.Add(0x30A79, song.SongStartPtr1stByte, $"Song {k} Pointer Offset Byte 2");
+                    in_Patch.Add(0x30A78, song.SongStartPtr2ndByte, $"Song {k} Pointer Offset Byte 1");
+                    in_Patch.Add(0x30A79, song.SongStartPtr1stByte, $"Song {k} Pointer Offset Byte 2");
 
                     Byte songIndex = 0x0C; // Wily 5 will play the song at the Stage Select address
-                    p.Add(0x0381EC, songIndex, $"Wily 5 Song"); 
+                    in_Patch.Add(0x0381EC, songIndex, $"Wily 5 Song"); 
                     debug.AppendLine($"{Enum.GetName(typeof(EMusicID), (EMusicID)songIndex)} stage song: {song.SongName}, {song.OriginalStartAddress}");
                 }
                 else
                 {
-                    p.Add(TblPtrOffset++, song.SongStartPtr2ndByte, $"Song {k} Pointer Offset Byte 1");
-                    p.Add(TblPtrOffset++, song.SongStartPtr1stByte, $"Song {k} Pointer Offset Byte 2");
+                    in_Patch.Add(TblPtrOffset++, song.SongStartPtr2ndByte, $"Song {k} Pointer Offset Byte 1");
+                    in_Patch.Add(TblPtrOffset++, song.SongStartPtr1stByte, $"Song {k} Pointer Offset Byte 2");
                     debug.AppendLine($"{Enum.GetName(typeof(EMusicID), (EMusicID)k)} stage song: {song.SongName}, {song.OriginalStartAddress}");
                 }
 
@@ -315,7 +317,7 @@ namespace MM2Randomizer.Randomizers
                 // Write song header
                 foreach (Byte b in song.SongHeader)
                 {
-                    p.Add(songStartRom, b, $"Song Header Byte for {song.SongName}");
+                    in_Patch.Add(songStartRom, b, $"Song Header Byte for {song.SongName}");
                     songStartRom++;
                 }
 
@@ -465,32 +467,32 @@ namespace MM2Randomizer.Randomizers
                         }
                     }
                 }
-                
+
                 // Write song data
                 foreach (Byte b in song.SongData)
                 {
-                    p.Add(songStartRom, b, $"Song Data Byte for {song.SongName}");
+                    in_Patch.Add(songStartRom, b, $"Song Data Byte for {song.SongName}");
                     songStartRom++;
                 }
             }
 
             // Play a random song during wily 6
-            Int32 w6song = r.Next(11);
+            Int32 w6song = in_Seed.NextInt32(11);
             if (w6song == 10)
             {
                 // Wily 5 song was saved to 0x0C, don't use 0x0A  
-                p.Add(0x0381ED, 0x0C, $"Random Wily 6 Song: Song #{w6song}, {stageSongs[w6song].SongName}");
+                in_Patch.Add(0x0381ED, 0x0C, $"Random Wily 6 Song: Song #{w6song}, {stageSongs[w6song].SongName}");
             }
             else
             {
-                p.Add(0x0381ED, (Byte)w6song, $"Random Wily 6 Song: Song #{w6song}, {stageSongs[w6song].SongName}");
+                in_Patch.Add(0x0381ED, (Byte)w6song, $"Random Wily 6 Song: Song #{w6song}, {stageSongs[w6song].SongName}");
             }
             debug.AppendLine($"Wily 6 stage song: {stageSongs[w6song].SongName} (#{w6song})");
 
             // Play a random stage song during the credits
-            Song creditsSong = stageSongs[r.Next(numTracks)];
-            p.Add(0x30A88, creditsSong.SongStartPtr2ndByte, $"Song Credits 2 Byte 0 ({creditsSong.SongName})");
-            p.Add(0x30A89, creditsSong.SongStartPtr1stByte, $"Song Credits 2 Byte 1 ({creditsSong.SongName})");
+            Song creditsSong = in_Seed.NextElement(stageSongs);
+            in_Patch.Add(0x30A88, creditsSong.SongStartPtr2ndByte, $"Song Credits 2 Byte 0 ({creditsSong.SongName})");
+            in_Patch.Add(0x30A89, creditsSong.SongStartPtr1stByte, $"Song Credits 2 Byte 1 ({creditsSong.SongName})");
             debug.AppendLine($"Credits song: {creditsSong.SongName}");
         }
     }

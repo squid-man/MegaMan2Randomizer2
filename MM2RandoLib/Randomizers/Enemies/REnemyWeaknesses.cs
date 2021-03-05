@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using MM2Randomizer.Data;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers.Enemies
 {
@@ -40,7 +42,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             return debug.ToString();
         }
 
-        public void Randomize(Patch p, Random r)
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
         {
             EnemyWeaknessSet enemyWeaknessSet = Properties.Resources.EnemyWeaknessSet.Deserialize<EnemyWeaknessSet>();
 
@@ -61,14 +63,14 @@ namespace MM2Randomizer.Randomizers.Enemies
                 }
             }
 
-            shotP.Shuffle(r);
-            shotH.Shuffle(r);
-            shotA.Shuffle(r);
-            shotW.Shuffle(r);
-            shotB.Shuffle(r);
-            shotQ.Shuffle(r);
-            shotC.Shuffle(r);
-            shotM.Shuffle(r);
+            shotP = in_Seed.Shuffle(shotP).ToList();
+            shotH = in_Seed.Shuffle(shotH).ToList();
+            shotA = in_Seed.Shuffle(shotA).ToList();
+            shotW = in_Seed.Shuffle(shotW).ToList();
+            shotB = in_Seed.Shuffle(shotB).ToList();
+            shotQ = in_Seed.Shuffle(shotQ).ToList();
+            shotC = in_Seed.Shuffle(shotC).ToList();
+            shotM = in_Seed.Shuffle(shotM).ToList();
 
             // Force Buster to always do 1 damage to minibosses
             shotP[EnemyIndexInShotArray_Friender] = 0x01;
@@ -77,14 +79,14 @@ namespace MM2Randomizer.Randomizers.Enemies
             for (Int32 i = 0; i < offsets.Count; i++)
             {
                 // ...apply each weapon's damage
-                p.Add(EnemyDamageAddressP + offsets[i], shotP[i], $"{enemyNames[i]} damage from P");
-                p.Add(EnemyDamageAddressH + offsets[i], shotH[i], $"{enemyNames[i]} damage from H");
-                p.Add(EnemyDamageAddressA + offsets[i], shotA[i], $"{enemyNames[i]} damage from A");
-                p.Add(EnemyDamageAddressW + offsets[i], shotW[i], $"{enemyNames[i]} damage from W");
-                p.Add(EnemyDamageAddressB + offsets[i], shotB[i], $"{enemyNames[i]} damage from B");
-                p.Add(EnemyDamageAddressQ + offsets[i], shotQ[i], $"{enemyNames[i]} damage from Q");
-                p.Add(EnemyDamageAddressC + offsets[i], shotC[i], $"{enemyNames[i]} damage from C");
-                p.Add(EnemyDamageAddressM + offsets[i], shotM[i], $"{enemyNames[i]} damage from M");
+                in_Patch.Add(EnemyDamageAddressP + offsets[i], shotP[i], $"{enemyNames[i]} damage from P");
+                in_Patch.Add(EnemyDamageAddressH + offsets[i], shotH[i], $"{enemyNames[i]} damage from H");
+                in_Patch.Add(EnemyDamageAddressA + offsets[i], shotA[i], $"{enemyNames[i]} damage from A");
+                in_Patch.Add(EnemyDamageAddressW + offsets[i], shotW[i], $"{enemyNames[i]} damage from W");
+                in_Patch.Add(EnemyDamageAddressB + offsets[i], shotB[i], $"{enemyNames[i]} damage from B");
+                in_Patch.Add(EnemyDamageAddressQ + offsets[i], shotQ[i], $"{enemyNames[i]} damage from Q");
+                in_Patch.Add(EnemyDamageAddressC + offsets[i], shotC[i], $"{enemyNames[i]} damage from C");
+                in_Patch.Add(EnemyDamageAddressM + offsets[i], shotM[i], $"{enemyNames[i]} damage from M");
 
                 // Furthermore, there are 3 enemy types that need a second array of damage values 
                 // - Shrink (instance vs. spawner)
@@ -99,14 +101,14 @@ namespace MM2Randomizer.Randomizers.Enemies
                 // Shotman (Left) 0x4B apply same damage to Shotman (Right) 0x4C
                 if (offsets[i] == 0x00 || offsets[i] == 0x48 || offsets[i] == 0x4B)
                 {
-                    p.Add(EnemyDamageAddressP + offsets[i] + 1, shotP[i], $"{enemyNames[i]} damage from P");
-                    p.Add(EnemyDamageAddressH + offsets[i] + 1, shotH[i], $"{enemyNames[i]} damage from H");
-                    p.Add(EnemyDamageAddressA + offsets[i] + 1, shotA[i], $"{enemyNames[i]} damage from A");
-                    p.Add(EnemyDamageAddressW + offsets[i] + 1, shotW[i], $"{enemyNames[i]} damage from W");
-                    p.Add(EnemyDamageAddressB + offsets[i] + 1, shotB[i], $"{enemyNames[i]} damage from B");
-                    p.Add(EnemyDamageAddressQ + offsets[i] + 1, shotQ[i], $"{enemyNames[i]} damage from Q");
-                    p.Add(EnemyDamageAddressC + offsets[i] + 1, shotC[i], $"{enemyNames[i]} damage from C");
-                    p.Add(EnemyDamageAddressM + offsets[i] + 1, shotM[i], $"{enemyNames[i]} damage from M");
+                    in_Patch.Add(EnemyDamageAddressP + offsets[i] + 1, shotP[i], $"{enemyNames[i]} damage from P");
+                    in_Patch.Add(EnemyDamageAddressH + offsets[i] + 1, shotH[i], $"{enemyNames[i]} damage from H");
+                    in_Patch.Add(EnemyDamageAddressA + offsets[i] + 1, shotA[i], $"{enemyNames[i]} damage from A");
+                    in_Patch.Add(EnemyDamageAddressW + offsets[i] + 1, shotW[i], $"{enemyNames[i]} damage from W");
+                    in_Patch.Add(EnemyDamageAddressB + offsets[i] + 1, shotB[i], $"{enemyNames[i]} damage from B");
+                    in_Patch.Add(EnemyDamageAddressQ + offsets[i] + 1, shotQ[i], $"{enemyNames[i]} damage from Q");
+                    in_Patch.Add(EnemyDamageAddressC + offsets[i] + 1, shotC[i], $"{enemyNames[i]} damage from C");
+                    in_Patch.Add(EnemyDamageAddressM + offsets[i] + 1, shotM[i], $"{enemyNames[i]} damage from M");
                 }
             }
 
