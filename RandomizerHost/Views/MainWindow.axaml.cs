@@ -2,9 +2,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using MM2Randomizer;
+//using MM2Randomizer;
 using Avalonia.Input;
 using System.Linq;
+using RandomizerHost.Settings;
 
 namespace RandomizerHost.Views
 {
@@ -33,7 +34,7 @@ namespace RandomizerHost.Views
 
             // Set up the custom sprite ComboBox
             ComboBox comboBoxPlayerSprite = this.Find<ComboBox>("ComboBox_PlayerSprite");
-            comboBoxPlayerSprite.Items = Enum.GetValues(typeof(PlayerSprite));
+            comboBoxPlayerSprite.Items = Enum.GetValues(typeof(CharacterSprite));
 
             // Set up the hit point charging speed ComboBox
             ComboBox comboBoxHitPointChargingSpeed = this.Find<ComboBox>("ComboBox_HitPointChargingSpeed");

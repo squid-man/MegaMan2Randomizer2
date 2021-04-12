@@ -2,7 +2,9 @@
 using System.Globalization;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
-using MM2Randomizer;
+using RandomizerHost.Settings;
+
+//using MM2Randomizer;
 
 namespace RandomizerHost.Converters
 {
@@ -33,7 +35,7 @@ namespace RandomizerHost.Converters
 
             if (in_Parameter is String stringParameter)
             {
-                Object parameter = Enum.Parse(typeof(PlayerSprite), stringParameter);
+                Object parameter = Enum.Parse(typeof(CharacterSprite), stringParameter);
 
                 Boolean retval = parameter.Equals(in_Value);
                 return retval;

@@ -10,6 +10,7 @@ using MM2Randomizer;
 using MM2Randomizer.Extensions;
 using RandomizerHost.Views;
 using ReactiveUI;
+using RandomizerHost.Settings;
 
 namespace RandomizerHost.ViewModels
 {
@@ -21,6 +22,9 @@ namespace RandomizerHost.ViewModels
 
         public MainWindowViewModel()
         {
+            this.AppConfigurationSettings = new AppConfigurationSettings();
+            this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+
             RandoSettings = new RandoSettings();
             RandomMM2.Settings = RandoSettings;
 
@@ -41,6 +45,11 @@ namespace RandomizerHost.ViewModels
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
         }
 
+        private void AppConfigurationSettings_PropertyChanged(Object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            this.AppConfigurationSettings.Save();
+        }
+
 
         //
         // Commands
@@ -55,6 +64,12 @@ namespace RandomizerHost.ViewModels
         //
         // Properties
         //
+
+        public AppConfigurationSettings AppConfigurationSettings
+        {
+            get => this.mAppConfigurationSettings;
+            set => this.RaiseAndSetIfChanged(ref this.mAppConfigurationSettings, value);
+        }
 
         public RandoSettings RandoSettings
         {
@@ -117,7 +132,7 @@ namespace RandomizerHost.ViewModels
                 String fileName = dialogResult[0];
 
                 this.IsShowingHint = false;
-                this.mRandoSettings.SourcePath = fileName;
+                this.mAppConfigurationSettings.RomSourcePath = fileName;
 
                 TextBox romFile = in_Window.FindControl<TextBox>("TextBox_RomFile");
                 romFile.Focus();
@@ -228,6 +243,7 @@ namespace RandomizerHost.ViewModels
         // Private Data Members
         //
 
+        private AppConfigurationSettings mAppConfigurationSettings;
         private RandoSettings mRandoSettings;
         private Boolean mIsShowingHint = true;
         private Boolean mCanOpenContainngFolder = false;
