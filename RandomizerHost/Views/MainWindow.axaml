@@ -121,7 +121,7 @@
 
                     <TextBox
                         Margin="4,0,0,0"
-                        IsVisible="{Binding RandoSettings.IsSourcePathValid}"
+                        IsVisible="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
                         Text="{Binding RandoSettings.HashStringMD5}"
                     />
                 </DockPanel>
@@ -147,7 +147,7 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         Margin="4,0,0,0"
-                        IsVisible="{Binding RandoSettings.IsSourcePathValid}"
+                        IsVisible="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
                         Text="{Binding RandoSettings.HashStringSHA256}"
                     />
                 </DockPanel>
@@ -182,7 +182,7 @@
         <DockPanel
             Grid.Row="2"
             HorizontalAlignment="Stretch"
-            IsEnabled="{Binding RandoSettings.IsSourcePathValid}"
+            IsEnabled="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
         >
             <TextBlock
                 Text="Seed:"

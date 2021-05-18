@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 using System.Configuration;
+using System.IO;
 
 namespace RandomizerHost.Settings
 {
@@ -19,7 +20,7 @@ namespace RandomizerHost.Settings
 
 
         //
-        // Properties
+        // Editable Properties
         //
 
         [UserScopedSetting]
@@ -35,6 +36,7 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.ROM_SOURCE_PATH_SETTING_NAME] = value;
+                this.mIsRomSourcePathValid = File.Exists(value);
             }
         }
 
@@ -408,6 +410,24 @@ namespace RandomizerHost.Settings
 
 
         //
+        // Read-only Properties
+        //
+
+        public Boolean IsRomSourcePathValid
+        {
+            get
+            {
+                return this.mIsRomSourcePathValid;
+            }
+
+            private set
+            {
+                this.mIsRomSourcePathValid = value;
+            }
+        }
+
+
+        //
         // Private Helper Methods
         //
 
@@ -417,6 +437,89 @@ namespace RandomizerHost.Settings
             return (value is T) ? (T)value : in_Default;
         }
 
+        public Boolean ValidateFile(String path)
+        {
+            // Check if file even exists
+            //SourcePath = path;
+            this.IsSourcePathValid = System.IO.File.Exists(path);
+            this.IsSourcePathAndSeedValid = this.IsSourcePathValid && this.IsSeedValid;
+
+            if (false == this.IsSourcePathValid)
+            {
+                this.IsHashValid = false;
+                this.HashValidationMessage = "File does not exist.";
+                return false;
+            }
+
+            // Ensure file size is small so that we can take the hash
+            FileInfo info = new System.IO.FileInfo(path);
+            Int64 size = info.Length;
+
+            if (size > 2000000)
+            {
+                Decimal MB = (size / (decimal)(1024d * 1024d));
+
+                this.HashValidationMessage = $"File is {MB:0.00} MB, clearly not a NES ROM. WTF are you doing?";
+                this.IsSourcePathValid = false;
+                this.IsHashValid = false;
+                return false;
+            }
+
+            // Calculate the file's hash
+            String hashStrMd5 = "";
+            String hashStrSha256 = "";
+
+            // SHA256
+            using (System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed())
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    Byte[] hashSha256 = sha.ComputeHash(fs);
+                    hashStrSha256 = BitConverter.ToString(hashSha256).Replace("-", String.Empty).ToLowerInvariant();
+                }
+            }
+
+            // MD5
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    Byte[] hashMd5 = md5.ComputeHash(fs);
+                    hashStrMd5 = BitConverter.ToString(hashMd5).Replace("-", "").ToLowerInvariant();
+                }
+            }
+
+            // Update hash strings
+            this.HashStringSHA256 = hashStrSha256;
+            this.HashStringMD5 = hashStrMd5;
+
+            // Check that the hash matches a supported hash
+            List<String> md5s = new List<String>(EXPECTED_MD5_HASH_LIST);
+            List<String> sha256s = new List<String>(EXPECTED_SHA256_HASH_LIST);
+
+            this.IsHashValid = (md5s.Contains(this.HashStringMD5) && sha256s.Contains(this.HashStringSHA256));
+
+
+            if (this.IsHashValid)
+            {
+                this.HashValidationMessage = "ROM checksum is valid, good to go!";
+            }
+            else
+            {
+                this.HashValidationMessage = "Wrong file checksum. Please try another ROM, or it may not work.";
+                return false;
+            }
+
+            // If we made it this far, the file looks good!
+            return true;
+        }
+
+
+        //
+        // Private Data Members
+        //
+
+        private Boolean mIsRomSourcePathValid;
 
         //
         // Constatnts
