@@ -119,10 +119,10 @@
                         VerticalAlignment="Center"
                     />
 
-                    <TextBox
+                    <TextBlock
                         Margin="4,0,0,0"
                         IsVisible="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
-                        Text="{Binding RandoSettings.HashStringMD5}"
+                        Text="{Binding AppConfigurationSettings.HashStringMD5}"
                     />
                 </DockPanel>
             </Border>
@@ -143,12 +143,12 @@
                         VerticalAlignment="Center"
                     />
 
-                    <TextBox
+                    <TextBlock
                         Grid.Row="3"
                         Grid.Column="1"
                         Margin="4,0,0,0"
                         IsVisible="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
-                        Text="{Binding RandoSettings.HashStringSHA256}"
+                        Text="{Binding AppConfigurationSettings.HashStringSHA256}"
                     />
                 </DockPanel>
             </Border>
@@ -173,7 +173,7 @@
 
                 <TextBlock
                     FontWeight="Bold"
-                    Text="{Binding RandoSettings.HashValidationMessage}"
+                    Text="{Binding AppConfigurationSettings.HashValidationMessage}"
                 />
             </Border>
         </Grid>
@@ -195,7 +195,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Margin="0,3,3,3"
-                Text="{Binding Path=RandoSettings.SeedString}"
+                Text="{Binding Path=AppConfigurationSettings.SeedString}"
             />
         </DockPanel>
 
@@ -235,7 +235,7 @@
 
             <CheckBox
                 Name="CheckBox_CreateLogFile"
-                IsChecked="{Binding RandoSettings.CreateLogFile}"
+                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
             >
                 Create Log File
             </CheckBox>
@@ -340,7 +340,7 @@
                             DockPanel.Dock="Bottom"
                             HorizontalAlignment="Right"
                             IsVisible="False"
-                            IsChecked="{Binding Path=RandoSettings.IsSpoilerFree}">
+                            IsChecked="{Binding Path=AppConfigurationSettings.IsSpoilerFree}">
                         </CheckBox>
 
                         <Grid

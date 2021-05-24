@@ -13,7 +13,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards Items 1, 2, and 3.
         /// </summary>
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             // 0x03C291 - Item # from Heat Man
             // 0x03C292 - Item # from Air Man

@@ -146,7 +146,7 @@ namespace MM2Randomizer.Randomizers
             return debug.ToString();
         }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             debug.AppendLine();
             debug.AppendLine("Random Music Module");

@@ -20,8 +20,24 @@ namespace RandomizerHost.Settings
 
 
         //
-        // Editable Properties
+        // Variable Properties
         //
+
+        [UserScopedSetting]
+        public String SeedString
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.SEED_STRING_SETTING_NAME,
+                    AppConfigurationSettings.SEED_STRING_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.SEED_STRING_SETTING_NAME] = value;
+            }
+        }
 
         [UserScopedSetting]
         public String RomSourcePath
@@ -36,135 +52,76 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.ROM_SOURCE_PATH_SETTING_NAME] = value;
-                this.mIsRomSourcePathValid = File.Exists(value);
+                this.ValidateFile(value);
             }
         }
 
+
+        //
+        // Flag Properties
+        //
+
         [UserScopedSetting]
-        public Boolean EnableWeaponBehaviorModule
+        public Boolean CreateLogFile
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_WEAPON_BEHAVIOR_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_WEAPON_BEHAVIOR_MODULE_DEFAULT_VALUE);
+                    AppConfigurationSettings.CREATE_LOG_FILE_SETTING_NAME,
+                    AppConfigurationSettings.CREATE_LOG_FILE_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_WEAPON_BEHAVIOR_MODULE_SETTING_NAME] = value;
+                this[AppConfigurationSettings.CREATE_LOG_FILE_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean EnableBossWeaknessModule
+        public Boolean DisableDelayScrolling
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_BOSS_WEAKNESS_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_BOSS_WEAKNESS_MODULE_DEFAULT_VALUE);
+                    AppConfigurationSettings.DISABLE_DELAY_SCROLLING_SETTING_NAME,
+                    AppConfigurationSettings.DISABLE_DELAY_SCROLLING_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_BOSS_WEAKNESS_MODULE_SETTING_NAME] = value;
+                this[AppConfigurationSettings.DISABLE_DELAY_SCROLLING_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean EnableBossRoomModule
+        public Boolean DisableFlashingEffects
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_BOSS_ROOM_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_BOSS_ROOM_MODULE_DEFAULT_VALUE);
+                    AppConfigurationSettings.DISABLE_FLASHING_EFFECTS_SETTING_NAME,
+                    AppConfigurationSettings.DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_BOSS_ROOM_MODULE_SETTING_NAME] = value;
+                this[AppConfigurationSettings.DISABLE_FLASHING_EFFECTS_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean EnableBossBehaviorModule
+        public Boolean EnableBurstChaserMode
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_BOSS_BEHAVIOR_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_BOSS_BEHAVIOR_MODULE_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_BURST_CHASER_MODE_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_BURST_CHASER_MODE_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_BOSS_BEHAVIOR_MODULE_SETTING_NAME] = value;
-            }
-        }
-
-        [UserScopedSetting]
-        public Boolean EnableSpecialItemsModule
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_SPECIAL_ITEMS_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_SPECIAL_ITEMS_MODULE_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.ENABLE_SPECIAL_ITEMS_MODULE_SETTING_NAME] = value;
-            }
-        }
-
-        [UserScopedSetting]
-        public Boolean EnableEnemySpawnsModule
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_ENEMY_SPAWNS_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_ENEMY_SPAWNS_MODULE_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.ENABLE_ENEMY_SPAWNS_MODULE_SETTING_NAME] = value;
-            }
-        }
-
-        [UserScopedSetting]
-        public Boolean EnableEnemyWeaknessModule
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_ENEMY_WEAKNESS_MODULE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_ENEMY_WEAKNESS_MODULE_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.ENABLE_ENEMY_WEAKNESS_MODULE_SETTING_NAME] = value;
-            }
-        }
-
-        [UserScopedSetting]
-        public Boolean EnableStageLayoutPatches
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_STAGE_LAYOUT_PATCHES_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_STAGE_LAYOUT_PATCHES_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.ENABLE_STAGE_LAYOUT_PATCHES_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_BURST_CHASER_MODE_SETTING_NAME] = value;
             }
         }
 
@@ -185,22 +142,6 @@ namespace RandomizerHost.Settings
         }
 
         [UserScopedSetting]
-        public Boolean EnableBurstChaser
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_BURST_CHASER_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_BURST_CHASER_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.ENABLE_BURST_CHASER_SETTING_NAME] = value;
-            }
-        }
-
-        [UserScopedSetting]
         public Boolean EnableHiddenStageNames
         {
             get
@@ -217,194 +158,335 @@ namespace RandomizerHost.Settings
         }
 
         [UserScopedSetting]
-        public Boolean EnableRandomColorPalette
+        public Boolean EnableRandomizationOfBossWeaknesses
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_RANDOM_COLOR_PALETTE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_RANDOM_COLOR_PALETTE_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_RANDOM_COLOR_PALETTE_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean EnableRandomStageMusic
+        public Boolean EnableRandomizationOfColorPalettes
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_RANDOM_STAGE_MUSIC_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_RANDOM_STAGE_MUSIC_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_RANDOM_STAGE_MUSIC_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean EnableRandomText
+        public Boolean EnableRandomizationOfEnemySpawns
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_RANDOM_TEXT_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_RANDOM_TEXT_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_RANDOM_TEXT_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean DisableScreenFlashing
+        public Boolean EnableRandomizationOfEnemyWeaknesses
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.DISABLE_SCREEN_FLASHING_SETTING_NAME,
-                    AppConfigurationSettings.DISABLE_SCREEN_FLASHING_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.DISABLE_SCREEN_FLASHING_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public CharacterSprite CharacterSprite
+        public Boolean EnableRandomizationOfFalseFloors
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.CHARACTER_SPRITE_SETTING_NAME,
-                    AppConfigurationSettings.CHARACTER_SPRITE_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.CHARACTER_SPRITE_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_SETTING_NAME] = value;
+            }
+        }
+
+        public Boolean EnableRandomizationOfSpecialWeaponReward
+        {
+            get
+            {
+                return AppConfigurationSettings.mEnableRandomizationOfSpecialWeaponReward;
             }
         }
 
         [UserScopedSetting]
-        public ChargingSpeed RefillSpeedHitPoints
+        public Boolean EnableRandomizationOfMusicTracks
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.REFILL_SPEED_HIT_POINTS_SETTING_NAME,
-                    AppConfigurationSettings.REFILL_SPEED_HIT_POINTS_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.REFILL_SPEED_HIT_POINTS_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_SETTING_NAME] = value;
+            }
+        }
+
+        public Boolean EnableRandomizationOfRefightTeleporters
+        {
+            get
+            {
+                return AppConfigurationSettings.mEnableRandomizationOfRefightTeleporters;
             }
         }
 
         [UserScopedSetting]
-        public ChargingSpeed RefillSpeedWeaponEnergy
+        public Boolean EnableRandomizationOfRobotMasterBehavior
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.REFILL_SPEED_WEAPON_ENERGY_SETTING_NAME,
-                    AppConfigurationSettings.REFILL_SPEED_WEAPON_ENERGY_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.REFILL_SPEED_WEAPON_ENERGY_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public ChargingSpeed RefillSpeedEnergyTank
+        public Boolean EnableRandomizationOfRobotMasterLocations
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.REFILL_SPEED_ENERGY_TANK_SETTING_NAME,
-                    AppConfigurationSettings.REFILL_SPEED_ENERGY_TANK_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.REFILL_SPEED_ENERGY_TANK_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_SETTING_NAME] = value;
+            }
+        }
+
+        public Boolean EnableRandomizationOfRobotMasterStageSelection
+        {
+            get
+            {
+                return AppConfigurationSettings.mEnableRandomizationOfRobotMasterStageSelection;
             }
         }
 
         [UserScopedSetting]
-        public ChargingSpeed RefillSpeedRobotMasterEnergy
+        public Boolean EnableRandomizationOfSpecialItemLocations
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.REFILL_SPEED_ROBOT_MASTER_ENERGY_SETTING_NAME,
-                    AppConfigurationSettings.REFILL_SPEED_ROBOT_MASTER_ENERGY_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.REFILL_SPEED_ROBOT_MASTER_ENERGY_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public ChargingSpeed RefillSpeedCastleBossEnergy
+        public Boolean EnableRandomizationOfSpecialWeaponBehavior
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.REFILL_SPEED_CASTLE_BOSS_ENERGY_SETTING_NAME,
-                    AppConfigurationSettings.REFILL_SPEED_CASTLE_BOSS_ENERGY_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.REFILL_SPEED_CASTLE_BOSS_ENERGY_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean EnableReduceUnderwaterLag
+        public Boolean EnableRandomizationOfSpecialWeaponNames
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_REDUCE_UNDERWATER_LAG_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_REDUCE_UNDERWATER_LAG_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_REDUCE_UNDERWATER_LAG_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_SETTING_NAME] = value;
             }
         }
 
         [UserScopedSetting]
-        public Boolean DisableDelayScrolling
+        public Boolean EnableSpoilerFreeMode
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.DISABLE_DELAY_SCROLLING_SETTING_NAME,
-                    AppConfigurationSettings.DISABLE_DELAY_SCROLLING_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_SPOILER_FREE_MODE_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_SPOILER_FREE_MODE_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.DISABLE_DELAY_SCROLLING_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_SPOILER_FREE_MODE_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        public Boolean EnableUnderwaterLagReduction
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME] = value;
+            }
+        }
+
+
+        //
+        // Scalar Properties
+        //
+
+        [UserScopedSetting]
+        public ChargingSpeed CastleBossEnergyRefillSpeed
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.CASTLE_BOSS_ENERGY_REFILL_SPEED_SETTING_NAME,
+                    AppConfigurationSettings.CASTLE_BOSS_ENERGY_REFILL_SPEED_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.CASTLE_BOSS_ENERGY_REFILL_SPEED_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        public ChargingSpeed EnergyTankRefillSpeed
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENERGY_TANK_REFILL_SPEED_SETTING_NAME,
+                    AppConfigurationSettings.ENERGY_TANK_REFILL_SPEED_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENERGY_TANK_REFILL_SPEED_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        public ChargingSpeed HitPointRefillSpeed
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.HIT_POINT_REFILL_SPEED_SETTING_NAME,
+                    AppConfigurationSettings.HIT_POINT_REFILL_SPEED_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.HIT_POINT_REFILL_SPEED_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        public PlayerSprite PlayerSprite
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.PLAYER_SPRITE_SETTING_NAME,
+                    AppConfigurationSettings.PLAYER_SPRITE_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.PLAYER_SPRITE_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        public ChargingSpeed RobotMasterEnergyRefillSpeed
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME,
+                    AppConfigurationSettings.ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        public ChargingSpeed WeaponEnergyRefillSpeed
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.WEAPON_ENERGY_REFILL_SPEED_SETTING_NAME,
+                    AppConfigurationSettings.WEAPON_ENERGY_REFILL_SPEED_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.WEAPON_ENERGY_REFILL_SPEED_SETTING_NAME] = value;
             }
         }
 
@@ -426,6 +508,122 @@ namespace RandomizerHost.Settings
             }
         }
 
+        public Boolean IsSeedValid
+        {
+            get
+            {
+                return this.mIsSeedValid;
+            }
+
+            private set
+            {
+                this.mIsSeedValid = value;
+            }
+        }
+
+        public Boolean IsHashValid
+        {
+            get
+            {
+                return this.mIsHashValid;
+            }
+
+            private set
+            {
+                this.mIsHashValid = value;
+            }
+        }
+
+        public String HashStringMD5
+        {
+            get
+            {
+                return this.mHashStringMD5;
+            }
+
+            private set
+            {
+                this.mHashStringMD5 = value;
+            }
+        }
+
+        public String HashStringSHA256
+        {
+            get
+            {
+                return this.mHashStringSHA256;
+            }
+
+            private set
+            {
+                this.mHashStringSHA256 = value;
+            }
+        }
+
+        public String HashValidationMessage
+        {
+            get
+            {
+                return this.mHashValidationMessage;
+            }
+
+            set
+            {
+                this.mHashValidationMessage = value;
+            }
+        }
+
+
+        //
+        // Public Methods
+        //
+
+        public MM2Randomizer.Settings AsRandomizerSettings()
+        {
+            MM2Randomizer.Settings settings = new MM2Randomizer.Settings();
+
+            //settings.IsSourcePathValid;
+            //settings.IsSeedValid;
+            //settings.IsSourcePathAndSeedValid;
+            //settings.HashStringMD5;
+            //settings.HashStringSHA256;
+
+            settings.SeedString = this.SeedString;
+            settings.RomSourcePath = this.RomSourcePath;
+
+            settings.CreateLogFile = this.CreateLogFile;
+            settings.DisableDelayScrolling = this.DisableDelayScrolling;
+            settings.DisableFlashingEffects = this.DisableFlashingEffects;
+            settings.EnableBurstChaserMode = this.EnableBurstChaserMode;
+            settings.EnableFasterCutsceneText = this.EnableFasterCutsceneText;
+            settings.EnableHiddenStageNames = this.EnableHiddenStageNames;
+            settings.EnableRandomizationOfBossWeaknesses = this.EnableRandomizationOfBossWeaknesses;
+            settings.EnableRandomizationOfColorPalettes = this.EnableRandomizationOfColorPalettes;
+            settings.EnableRandomizationOfEnemySpawns = this.EnableRandomizationOfEnemySpawns;
+            settings.EnableRandomizationOfEnemyWeaknesses = this.EnableRandomizationOfEnemyWeaknesses;
+            settings.EnableRandomizationOfFalseFloors = this.EnableRandomizationOfFalseFloors;
+            settings.EnableRandomizationOfMusicTracks = this.EnableRandomizationOfMusicTracks;
+            settings.EnableRandomizationOfRefightTeleporters = this.EnableRandomizationOfRefightTeleporters;
+            settings.EnableRandomizationOfRobotMasterBehavior = this.EnableRandomizationOfRobotMasterBehavior;
+            settings.EnableRandomizationOfRobotMasterLocations = this.EnableRandomizationOfRobotMasterLocations;
+            settings.EnableRandomizationOfRobotMasterStageSelection = this.EnableRandomizationOfRobotMasterStageSelection;
+            settings.EnableRandomizationOfSpecialItemLocations = this.EnableRandomizationOfSpecialItemLocations;
+            settings.EnableRandomizationOfSpecialWeaponBehavior = this.EnableRandomizationOfSpecialWeaponBehavior;
+            settings.EnableRandomizationOfSpecialWeaponNames = this.EnableRandomizationOfSpecialWeaponNames;
+            settings.EnableRandomizationOfSpecialWeaponReward = this.EnableRandomizationOfSpecialWeaponReward;
+            settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
+            settings.EnableUnderwaterLagReduction = this.EnableUnderwaterLagReduction;
+
+            settings.CastleBossEnergyRefillSpeed = (MM2Randomizer.ChargingSpeed)this.CastleBossEnergyRefillSpeed;
+            settings.EnergyTankRefillSpeed = (MM2Randomizer.ChargingSpeed)this.EnergyTankRefillSpeed;
+            settings.HitPointRefillSpeed = (MM2Randomizer.ChargingSpeed)this.HitPointRefillSpeed;
+            settings.PlayerSprite = (MM2Randomizer.PlayerSprite)this.PlayerSprite;
+            settings.RobotMasterEnergyRefillSpeed = (MM2Randomizer.ChargingSpeed)this.RobotMasterEnergyRefillSpeed;
+            settings.WeaponEnergyRefillSpeed = (MM2Randomizer.ChargingSpeed)this.WeaponEnergyRefillSpeed;
+
+            return settings;
+        }
+
 
         //
         // Private Helper Methods
@@ -437,11 +635,18 @@ namespace RandomizerHost.Settings
             return (value is T) ? (T)value : in_Default;
         }
 
-        public Boolean ValidateFile(String path)
+
+        public Boolean ValidateFile(String in_FilePath)
         {
-            // Check if file even exists
-            //SourcePath = path;
-            this.IsSourcePathValid = System.IO.File.Exists(path);
+            this.mIsRomSourcePathValid = File.Exists(in_FilePath);
+
+            if (true == this.mIsRomSourcePathValid)
+            {
+            }
+            else
+            {
+            }
+
             this.IsSourcePathAndSeedValid = this.IsSourcePathValid && this.IsSeedValid;
 
             if (false == this.IsSourcePathValid)
@@ -472,7 +677,7 @@ namespace RandomizerHost.Settings
             // SHA256
             using (System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed())
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
                 {
                     Byte[] hashSha256 = sha.ComputeHash(fs);
                     hashStrSha256 = BitConverter.ToString(hashSha256).Replace("-", String.Empty).ToLowerInvariant();
@@ -482,7 +687,7 @@ namespace RandomizerHost.Settings
             // MD5
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
                 {
                     Byte[] hashMd5 = md5.ComputeHash(fs);
                     hashStrMd5 = BitConverter.ToString(hashMd5).Replace("-", "").ToLowerInvariant();
@@ -494,23 +699,20 @@ namespace RandomizerHost.Settings
             this.HashStringMD5 = hashStrMd5;
 
             // Check that the hash matches a supported hash
-            List<String> md5s = new List<String>(EXPECTED_MD5_HASH_LIST);
-            List<String> sha256s = new List<String>(EXPECTED_SHA256_HASH_LIST);
-
-            this.IsHashValid = (md5s.Contains(this.HashStringMD5) && sha256s.Contains(this.HashStringSHA256));
-
+            this.IsHashValid =
+                EXPECTED_MD5_HASH_LIST.Contains(this.HashStringMD5) &&
+                EXPECTED_SHA256_HASH_LIST.Contains(this.HashStringSHA256);
 
             if (this.IsHashValid)
             {
-                this.HashValidationMessage = "ROM checksum is valid, good to go!";
+                this.HashValidationMessage = "ROM checksum is valid.";
             }
             else
             {
-                this.HashValidationMessage = "Wrong file checksum. Please try another ROM, or it may not work.";
+                this.HashValidationMessage = "ROM checksum is INVALID.";
                 return false;
             }
 
-            // If we made it this far, the file looks good!
             return true;
         }
 
@@ -519,82 +721,116 @@ namespace RandomizerHost.Settings
         // Private Data Members
         //
 
-        private Boolean mIsRomSourcePathValid;
+        private const Boolean mEnableRandomizationOfRobotMasterStageSelection = true;
+        private const Boolean mEnableRandomizationOfSpecialWeaponReward = true;
+        private const Boolean mEnableRandomizationOfRefightTeleporters = true;
+
+        private Boolean mIsRomSourcePathValid = false;
+        private Boolean mIsSeedValid = false;
+        private Boolean mIsHashValid = false;
+        private String mHashStringMD5 = String.Empty;
+        private String mHashStringSHA256 = String.Empty;
+        private String mHashValidationMessage = String.Empty;
+
 
         //
         // Constatnts
         //
 
+        public readonly List<String> EXPECTED_MD5_HASH_LIST = new List<String>()
+        {
+            "caaeb9ee3b52839de261fd16f93103e6", // Mega Man 2 (U)
+            "8e4bc5b03ffbd4ef91400e92e50dd294", // Mega Man 2 (USA)
+        };
+
+        public readonly List<String> EXPECTED_SHA256_HASH_LIST = new List<String>()
+        {
+            "27b5a635df33ed57ed339dfc7fd62fc603b39c1d1603adb5cdc3562a0b0d555b", // Mega Man 2 (U)
+            "49136b412ff61beac6e40d0bbcd8691a39a50cd2744fdcdde3401eed53d71edf", // Mega Man 2 (USA)
+        };
+
+        // Variable Property Constants
+        private const String SEED_STRING_SETTING_NAME = @"SeedString";
+        private const String SEED_STRING_DEFAULT_VALUE = @"";
+
         private const String ROM_SOURCE_PATH_SETTING_NAME = @"RomSourcePath";
         private const String ROM_SOURCE_PATH_DEFAULT_VALUE = @"";
 
-        private const String ENABLE_WEAPON_BEHAVIOR_MODULE_SETTING_NAME = @"EnableWeaponBehaviorModule";
-        private const Boolean ENABLE_WEAPON_BEHAVIOR_MODULE_DEFAULT_VALUE = true;
+        // Flag Property Constants
+        private const String CREATE_LOG_FILE_SETTING_NAME = @"CreateLogFile";
+        private const Boolean CREATE_LOG_FILE_DEFAULT_VALUE = false;
 
-        private const String ENABLE_BOSS_WEAKNESS_MODULE_SETTING_NAME = @"EnableBossWeaknessModule";
-        private const Boolean ENABLE_BOSS_WEAKNESS_MODULE_DEFAULT_VALUE = true;
+        private const String DISABLE_DELAY_SCROLLING_SETTING_NAME = @"DisableDelayScrolling";
+        private const Boolean DISABLE_DELAY_SCROLLING_DEFAULT_VALUE = false;
 
-        private const String ENABLE_BOSS_ROOM_MODULE_SETTING_NAME = @"EnableBossRoomModule";
-        private const Boolean ENABLE_BOSS_ROOM_MODULE_DEFAULT_VALUE = true;
+        private const String DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"DisableFlashingEffects";
+        private const Boolean DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE = true;
 
-        private const String ENABLE_BOSS_BEHAVIOR_MODULE_SETTING_NAME = @"EnableBossBehaviorModule";
-        private const Boolean ENABLE_BOSS_BEHAVIOR_MODULE_DEFAULT_VALUE = true;
-
-        private const String ENABLE_SPECIAL_ITEMS_MODULE_SETTING_NAME = @"EnableSpecialItemsModule";
-        private const Boolean ENABLE_SPECIAL_ITEMS_MODULE_DEFAULT_VALUE = true;
-
-        private const String ENABLE_ENEMY_SPAWNS_MODULE_SETTING_NAME = @"EnableEnemySpawnsModule";
-        private const Boolean ENABLE_ENEMY_SPAWNS_MODULE_DEFAULT_VALUE = true;
-
-        private const String ENABLE_ENEMY_WEAKNESS_MODULE_SETTING_NAME = @"EnableEnemyWeaknessModule";
-        private const Boolean ENABLE_ENEMY_WEAKNESS_MODULE_DEFAULT_VALUE = true;
-
-        private const String ENABLE_STAGE_LAYOUT_PATCHES_SETTING_NAME = @"EnableStageLayoutPatches";
-        private const Boolean ENABLE_STAGE_LAYOUT_PATCHES_DEFAULT_VALUE = true;
+        private const String ENABLE_BURST_CHASER_MODE_SETTING_NAME = @"EnableBurstChaserMode";
+        private const Boolean ENABLE_BURST_CHASER_MODE_DEFAULT_VALUE = false;
 
         private const String ENABLE_FASTER_CUTSCENE_TEXT_SETTING_NAME = @"EnableFasterCutsceneText";
         private const Boolean ENABLE_FASTER_CUTSCENE_TEXT_DEFAULT_VALUE = true;
 
-        private const String ENABLE_BURST_CHASER_SETTING_NAME = @"EnableBurstChaser";
-        private const Boolean ENABLE_BURST_CHASER_DEFAULT_VALUE = false;
-
         private const String ENABLE_HIDDEN_STAGE_NAMES_SETTING_NAME = @"EnableHiddenStageNames";
         private const Boolean ENABLE_HIDDEN_STAGE_NAMES_DEFAULT_VALUE = false;
 
-        private const String ENABLE_RANDOM_COLOR_PALETTE_SETTING_NAME = @"EnableRandomColorPalette";
-        private const Boolean ENABLE_RANDOM_COLOR_PALETTE_DEFAULT_VALUE = true;
+        private const String ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_SETTING_NAME = @"EnableRandomizationOfBossWeaknesses";
+        private const Boolean ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_DEFAULT_VALUE = true;
 
-        private const String ENABLE_RANDOM_STAGE_MUSIC_SETTING_NAME = @"EnableRandomColorPalette";
-        private const Boolean ENABLE_RANDOM_STAGE_MUSIC_DEFAULT_VALUE = true;
+        private const String ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_SETTING_NAME = @"EnableRandomizationOfColorPalettes";
+        private const Boolean ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_DEFAULT_VALUE = true;
 
-        private const String ENABLE_RANDOM_TEXT_SETTING_NAME = @"EnableRandomText";
-        private const Boolean ENABLE_RANDOM_TEXT_DEFAULT_VALUE = true;
+        private const String ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME = @"EnableRandomizationOfEnemySpawns";
+        private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_DEFAULT_VALUE = true;
 
-        private const String DISABLE_SCREEN_FLASHING_SETTING_NAME = @"DisableScreenFlashing";
-        private const Boolean DISABLE_SCREEN_FLASHING_DEFAULT_VALUE = true;
+        private const String ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_SETTING_NAME = @"EnableRandomizationOfEnemyWeaknesses";
+        private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_DEFAULT_VALUE = true;
 
-        private const String CHARACTER_SPRITE_SETTING_NAME = @"CharacterSprite";
-        private const CharacterSprite CHARACTER_SPRITE_DEFAULT_VALUE = CharacterSprite.Rockman;
+        private const String ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_SETTING_NAME = @"EnableRandomizationOfFalseFloors";
+        private const Boolean ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_DEFAULT_VALUE = true;
 
-        private const String REFILL_SPEED_HIT_POINTS_SETTING_NAME = @"RefillSpeedHitPoints";
-        private const ChargingSpeed REFILL_SPEED_HIT_POINTS_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const String ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_SETTING_NAME = @"EnableRandomizationOfMusicTracks";
+        private const Boolean ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_DEFAULT_VALUE = true;
 
-        private const String REFILL_SPEED_WEAPON_ENERGY_SETTING_NAME = @"RefillSpeedWeaponEnergy";
-        private const ChargingSpeed REFILL_SPEED_WEAPON_ENERGY_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const String ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_SETTING_NAME = @"EnableRandomizationOfRobotMasterBehavior";
+        private const Boolean ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_DEFAULT_VALUE = true;
 
-        private const String REFILL_SPEED_ENERGY_TANK_SETTING_NAME = @"RefillSpeedEnergyTank";
-        private const ChargingSpeed REFILL_SPEED_ENERGY_TANK_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const String ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_SETTING_NAME = @"EnableRandomizationOfRobotMasterLocations";
+        private const Boolean ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_DEFAULT_VALUE = true;
 
-        private const String REFILL_SPEED_ROBOT_MASTER_ENERGY_SETTING_NAME = @"RefillSpeedRobotMasterEnergy";
-        private const ChargingSpeed REFILL_SPEED_ROBOT_MASTER_ENERGY_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const String ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_SETTING_NAME = @"EnableRandomizationOfSpecialItemLocations";
+        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_DEFAULT_VALUE = true;
 
-        private const String REFILL_SPEED_CASTLE_BOSS_ENERGY_SETTING_NAME = @"RefillSpeedCastleBossEnergy";
-        private const ChargingSpeed REFILL_SPEED_CASTLE_BOSS_ENERGY_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponBehavior";
+        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE = true;
 
-        private const String ENABLE_REDUCE_UNDERWATER_LAG_SETTING_NAME = @"EnableReduceUnderwaterLag";
-        private const Boolean ENABLE_REDUCE_UNDERWATER_LAG_DEFAULT_VALUE = false;
+        private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponNames";
+        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_DEFAULT_VALUE = true;
 
-        private const String DISABLE_DELAY_SCROLLING_SETTING_NAME = @"DisableDelayScrolling";
-        private const Boolean DISABLE_DELAY_SCROLLING_DEFAULT_VALUE = false;
+        private const String ENABLE_SPOILER_FREE_MODE_SETTING_NAME = @"EnableSpoilerFreeMode";
+        private const Boolean ENABLE_SPOILER_FREE_MODE_DEFAULT_VALUE = false;
+
+        private const String ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME = @"EnableUnderwaterLagReduction";
+        private const Boolean ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = false;
+
+        // Scalar Property Constants
+        private const String CASTLE_BOSS_ENERGY_REFILL_SPEED_SETTING_NAME = @"CastleBossEnergyRefillSpeed";
+        private const ChargingSpeed CASTLE_BOSS_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+
+        private const String ENERGY_TANK_REFILL_SPEED_SETTING_NAME = @"EnergyTankRefillSpeed";
+        private const ChargingSpeed ENERGY_TANK_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+
+        private const String HIT_POINT_REFILL_SPEED_SETTING_NAME = @"HitPointRefillSpeed";
+        private const ChargingSpeed HIT_POINT_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+
+        private const String PLAYER_SPRITE_SETTING_NAME = @"PlayerSprite";
+        private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.Rockman;
+
+        private const String ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RobotMasterEnergyRefillSpeed";
+        private const ChargingSpeed ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+
+        private const String WEAPON_ENERGY_REFILL_SPEED_SETTING_NAME = @"WeaponEnergyRefillSpeed";
+        private const ChargingSpeed WEAPON_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
     }
 }

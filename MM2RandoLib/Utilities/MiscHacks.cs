@@ -10,7 +10,7 @@ namespace MM2Randomizer.Utilities
 {
     public static class MiscHacks
     {
-        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, RandoSettings settings)
+        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, Settings settings)
         {
             // Adjust cursor positions
             p.Add(0x0362D4, 0x90, "Title screen Cursor top position"); // default 0x98
@@ -53,7 +53,7 @@ namespace MM2Randomizer.Utilities
             }
 
             // Draw tournament mode/spoiler free information
-            if (settings.IsSpoilerFree)
+            if (settings.EnableSpoilerFreeMode)
             {
                 // 0x037367 = Start of row beneath "seed"
                 String flagsAlpha = "TOURNAMENT";
@@ -225,11 +225,11 @@ namespace MM2Randomizer.Utilities
             }
         }
 
-        internal static void DisableScreenFlashing(Patch p, RandoSettings settings)
+        internal static void DisableScreenFlashing(Patch p, Settings settings)
         {
             p.Add(0x3412E, 0x1F, "Disable Stage Select Flashing");
             p.Add(0x3596D, 0x0F, "Wily Map Flash Color");
-            if (!settings.FastText)
+            if (!settings.EnableFasterCutsceneText)
             {
                 // This sequence is disabled by FastText, and the patch conflicts with it.
                 p.Add(0x37C98, 0x0F, "Item Get Flash Color");
@@ -244,7 +244,7 @@ namespace MM2Randomizer.Utilities
             // Dragon
             p.Add(0x2D1B2, 0x63, "Dragon Hit Flash Palette Index");
             p.Add(0x2D187, 0x63, "Dragon Hit Restore Palette Index");
-            if (!settings.IsColorsRandom)
+            if (!settings.EnableRandomizationOfColorPalettes)
             {
                 p.Add(0x2D1B0, 0x37, "Dragon Hit Flash Color");
                 p.Add(0x2D185, 0x27, "Dragon Hit Restore Color");
@@ -258,7 +258,7 @@ namespace MM2Randomizer.Utilities
             // Wily Machine
             p.Add(0x2DA96, 0x63, "Wily Machine Flash Palette Index");
             p.Add(0x2DA23, 0x63, "Wily Machine Restore Palette Index");
-            if (!settings.IsColorsRandom)
+            if (!settings.EnableRandomizationOfColorPalettes)
             {
                 p.Add(0x2DA94, 0x25, "Wily Machine Flash Color");
                 p.Add(0x2DA21, 0x35, "Wily Machine Restore Color");

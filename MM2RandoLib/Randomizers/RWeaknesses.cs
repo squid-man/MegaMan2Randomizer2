@@ -60,7 +60,7 @@ namespace MM2Randomizer.Randomizers
 
         public RWeaknesses() { }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             debug = new StringBuilder();
             RandomizeU(in_Patch, in_Seed);

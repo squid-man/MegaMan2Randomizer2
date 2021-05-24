@@ -39,7 +39,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
         public REnemies() { }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             this.EnemyTypes.Clear();
             this.EnemiesByType.Clear();

@@ -11,7 +11,7 @@ namespace MM2Randomizer.Randomizers
     {
         public RTeleporters() { }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             // Create list of default teleporter position values
             List<Position> DEFAULT_TELEPORTER_POSITIONS = new List<Position>

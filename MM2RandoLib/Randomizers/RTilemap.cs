@@ -11,7 +11,7 @@ namespace MM2Randomizer.Randomizers
         public RTilemap() { }
 
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             //ReadLevelComponentJSON(p, r);
 

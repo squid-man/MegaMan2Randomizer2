@@ -10,7 +10,7 @@ namespace MM2Randomizer.Randomizers
     {
         public RBossAI() { }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
         {
             this.ChangeHeat(in_Patch, in_Seed);
             this.ChangeAir(in_Patch, in_Seed);

@@ -5,6 +5,6 @@ namespace MM2Randomizer.Randomizers
 {
     public interface IRandomizer
     {
-        void Randomize(Patch in_Patch, ISeed in_Seed);
+        void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed);
     }
 }
