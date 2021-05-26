@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -203,9 +202,9 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards which weapon.
         /// </summary>
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
-            IList<BossRoomRandomComponent> bossRoomComponents = in_Seed.Shuffle(this.Components);
+            IList<BossRoomRandomComponent> bossRoomComponents = in_Context.Seed.Shuffle(this.Components);
 
             //DEBUG test a boss in a particular boss room, also comment out the corresponding boss from the Components list above
             //Components.Insert(3, BubbleManComponent);

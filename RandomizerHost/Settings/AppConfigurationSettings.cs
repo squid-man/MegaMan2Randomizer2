@@ -1,10 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
+using MM2Randomizer.Extensions;
+using System.Xml.Serialization;
 
 namespace RandomizerHost.Settings
 {
@@ -28,9 +28,13 @@ namespace RandomizerHost.Settings
         {
             get
             {
-                return this.GetValueOrDefault(
+                String value = this.GetValueOrDefault(
                     AppConfigurationSettings.SEED_STRING_SETTING_NAME,
                     AppConfigurationSettings.SEED_STRING_DEFAULT_VALUE);
+
+                this.ValidateSeed(ref value);
+
+                return value;
             }
 
             set
@@ -44,15 +48,23 @@ namespace RandomizerHost.Settings
         {
             get
             {
-                return this.GetValueOrDefault(
+                String value = this.GetValueOrDefault(
                     AppConfigurationSettings.ROM_SOURCE_PATH_SETTING_NAME,
                     AppConfigurationSettings.ROM_SOURCE_PATH_DEFAULT_VALUE);
+
+                // Validate the file path, which sets read-only flags, here
+                // because both getting and setting calls this method, and the
+                // path also needs to be validated when reading, for example,
+                // when the application starts, and the value is read from the
+                // user settings.
+                this.ValidateFile(value);
+
+                return value;
             }
 
             set
             {
                 this[AppConfigurationSettings.ROM_SOURCE_PATH_SETTING_NAME] = value;
-                this.ValidateFile(value);
             }
         }
 
@@ -237,6 +249,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+        // This property has a constant value; ignore this property
+        // for serialization
+        [XmlIgnore]
         public Boolean EnableRandomizationOfSpecialWeaponReward
         {
             get
@@ -261,6 +276,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+        // This property has a constant value; ignore this property
+        // for serialization
+        [XmlIgnore]
         public Boolean EnableRandomizationOfRefightTeleporters
         {
             get
@@ -301,6 +319,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+        // This property has a constant value; ignore this property
+        // for serialization
+        [XmlIgnore]
         public Boolean EnableRandomizationOfRobotMasterStageSelection
         {
             get
@@ -342,18 +363,18 @@ namespace RandomizerHost.Settings
         }
 
         [UserScopedSetting]
-        public Boolean EnableRandomizationOfSpecialWeaponNames
+        public Boolean EnableRandomizationOfInGameText
         {
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_DEFAULT_VALUE);
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_SETTING_NAME] = value;
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME] = value;
             }
         }
 
@@ -495,6 +516,9 @@ namespace RandomizerHost.Settings
         // Read-only Properties
         //
 
+        // This property is read-only outside of the scope of the class;
+        // ignore this property for serialization
+        [XmlIgnore]
         public Boolean IsRomSourcePathValid
         {
             get
@@ -505,9 +529,14 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mIsRomSourcePathValid = value;
+                this.OnPropertyChanged(this, new PropertyChangedEventArgs("IsRomSourcePathValid"));
             }
         }
 
+
+        // This property is read-only outside of the scope of the class;
+        // ignore this property for serialization
+        [XmlIgnore]
         public Boolean IsSeedValid
         {
             get
@@ -518,22 +547,32 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mIsSeedValid = value;
+                this.OnPropertyChanged(this, new PropertyChangedEventArgs("IsSeedValid"));
             }
         }
 
-        public Boolean IsHashValid
+
+        // This property is read-only outside of the scope of the class;
+        // ignore this property for serialization
+        [XmlIgnore]
+        public Boolean IsRomValid
         {
             get
             {
-                return this.mIsHashValid;
+                return this.mIsRomValid;
             }
 
             private set
             {
-                this.mIsHashValid = value;
+                this.mIsRomValid = value;
+                this.OnPropertyChanged(this, new PropertyChangedEventArgs("IsRomValid"));
             }
         }
 
+
+        // This property is read-only outside of the scope of the class;
+        // ignore this property for serialization
+        [XmlIgnore]
         public String HashStringMD5
         {
             get
@@ -544,9 +583,14 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mHashStringMD5 = value;
+                this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashStringMD5"));
             }
         }
 
+
+        // This property is read-only outside of the scope of the class;
+        // ignore this property for serialization
+        [XmlIgnore]
         public String HashStringSHA256
         {
             get
@@ -557,9 +601,14 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mHashStringSHA256 = value;
+                this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashStringSHA256"));
             }
         }
 
+
+        // This property is read-only outside of the scope of the class;
+        // ignore this property for serialization
+        [XmlIgnore]
         public String HashValidationMessage
         {
             get
@@ -570,6 +619,7 @@ namespace RandomizerHost.Settings
             set
             {
                 this.mHashValidationMessage = value;
+                this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashValidationMessage"));
             }
         }
 
@@ -578,17 +628,11 @@ namespace RandomizerHost.Settings
         // Public Methods
         //
 
-        public MM2Randomizer.Settings AsRandomizerSettings()
+        public MM2Randomizer.Settings AsRandomizerSettings(Boolean in_DefaultSeed)
         {
             MM2Randomizer.Settings settings = new MM2Randomizer.Settings();
 
-            //settings.IsSourcePathValid;
-            //settings.IsSeedValid;
-            //settings.IsSourcePathAndSeedValid;
-            //settings.HashStringMD5;
-            //settings.HashStringSHA256;
-
-            settings.SeedString = this.SeedString;
+            settings.SeedString = (true == in_DefaultSeed) ? null : this.SeedString;
             settings.RomSourcePath = this.RomSourcePath;
 
             settings.CreateLogFile = this.CreateLogFile;
@@ -602,6 +646,7 @@ namespace RandomizerHost.Settings
             settings.EnableRandomizationOfEnemySpawns = this.EnableRandomizationOfEnemySpawns;
             settings.EnableRandomizationOfEnemyWeaknesses = this.EnableRandomizationOfEnemyWeaknesses;
             settings.EnableRandomizationOfFalseFloors = this.EnableRandomizationOfFalseFloors;
+            settings.EnableRandomizationOfInGameText = this.EnableRandomizationOfInGameText;
             settings.EnableRandomizationOfMusicTracks = this.EnableRandomizationOfMusicTracks;
             settings.EnableRandomizationOfRefightTeleporters = this.EnableRandomizationOfRefightTeleporters;
             settings.EnableRandomizationOfRobotMasterBehavior = this.EnableRandomizationOfRobotMasterBehavior;
@@ -609,7 +654,6 @@ namespace RandomizerHost.Settings
             settings.EnableRandomizationOfRobotMasterStageSelection = this.EnableRandomizationOfRobotMasterStageSelection;
             settings.EnableRandomizationOfSpecialItemLocations = this.EnableRandomizationOfSpecialItemLocations;
             settings.EnableRandomizationOfSpecialWeaponBehavior = this.EnableRandomizationOfSpecialWeaponBehavior;
-            settings.EnableRandomizationOfSpecialWeaponNames = this.EnableRandomizationOfSpecialWeaponNames;
             settings.EnableRandomizationOfSpecialWeaponReward = this.EnableRandomizationOfSpecialWeaponReward;
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
             settings.EnableUnderwaterLagReduction = this.EnableUnderwaterLagReduction;
@@ -624,6 +668,9 @@ namespace RandomizerHost.Settings
             return settings;
         }
 
+        public void Serialize()
+        {
+        }
 
         //
         // Private Helper Methods
@@ -636,84 +683,89 @@ namespace RandomizerHost.Settings
         }
 
 
-        public Boolean ValidateFile(String in_FilePath)
+        private void ValidateSeed(ref String ref_Seed)
         {
-            this.mIsRomSourcePathValid = File.Exists(in_FilePath);
+            // First, clean the seed of non-alphanumerics.  This isn't for the
+            // seed generation code, but to maintain safe file names
+            ref_Seed = ref_Seed.Trim().ToUpperInvariant().RemoveNonAlphanumericCharacters();
 
-            if (true == this.mIsRomSourcePathValid)
+            if (true == String.IsNullOrWhiteSpace(ref_Seed))
             {
+                this.IsSeedValid = false;
             }
             else
             {
+                this.IsSeedValid = true;
+            }
+        }
+
+
+        private void ValidateFile(String in_FilePath)
+        {
+            if (true == String.IsNullOrWhiteSpace(in_FilePath))
+            {
+                this.IsRomSourcePathValid = false;
+                this.IsRomValid = false;
+                this.HashStringSHA256 = String.Empty;
+                this.HashStringMD5 = String.Empty;
+                this.HashValidationMessage = String.Empty;
+                return;
             }
 
-            this.IsSourcePathAndSeedValid = this.IsSourcePathValid && this.IsSeedValid;
+            this.IsRomSourcePathValid = File.Exists(in_FilePath);
 
-            if (false == this.IsSourcePathValid)
+            if (true == this.IsRomSourcePathValid)
             {
-                this.IsHashValid = false;
+                // Ensure file size is small so that we can take the hash
+                FileInfo info = new FileInfo(in_FilePath);
+                Int64 fileSize = info.Length;
+
+                if (fileSize > AppConfigurationSettings.ONE_MEGABYTE)
+                {
+                    Double sizeInMegabytes = fileSize / AppConfigurationSettings.BYTES_PER_MEGABYTE;
+
+                    this.HashValidationMessage = $"File is too large! {sizeInMegabytes:0.00} MB";
+                    this.IsRomValid = false;
+                }
+                else
+                {
+                    using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
+                    {
+                        using (System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed())
+                        {
+                            Byte[] hashSha256 = sha.ComputeHash(fs);
+                            this.HashStringSHA256 = BitConverter.ToString(hashSha256).Replace("-", String.Empty).ToLowerInvariant();
+                        }
+
+                        fs.Seek(0, SeekOrigin.Begin);
+
+                        using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+                        {
+                            Byte[] hashMd5 = md5.ComputeHash(fs);
+                            this.HashStringMD5 = BitConverter.ToString(hashMd5).Replace("-", "").ToLowerInvariant();
+                        }
+                    }
+
+                    // Check that the hash matches a supported hash
+                    this.IsRomValid =
+                        EXPECTED_MD5_HASH_LIST.Contains(this.HashStringMD5) &&
+                        EXPECTED_SHA256_HASH_LIST.Contains(this.HashStringSHA256);
+
+                    if (this.IsRomValid)
+                    {
+                        this.HashValidationMessage = "ROM checksum is valid.";
+                    }
+                    else
+                    {
+                        this.HashValidationMessage = "ROM checksum is INVALID.";
+                    }
+                }
+            }
+            else
+            {
+                this.IsRomValid = false;
                 this.HashValidationMessage = "File does not exist.";
-                return false;
             }
-
-            // Ensure file size is small so that we can take the hash
-            FileInfo info = new System.IO.FileInfo(path);
-            Int64 size = info.Length;
-
-            if (size > 2000000)
-            {
-                Decimal MB = (size / (decimal)(1024d * 1024d));
-
-                this.HashValidationMessage = $"File is {MB:0.00} MB, clearly not a NES ROM. WTF are you doing?";
-                this.IsSourcePathValid = false;
-                this.IsHashValid = false;
-                return false;
-            }
-
-            // Calculate the file's hash
-            String hashStrMd5 = "";
-            String hashStrSha256 = "";
-
-            // SHA256
-            using (System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed())
-            {
-                using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
-                {
-                    Byte[] hashSha256 = sha.ComputeHash(fs);
-                    hashStrSha256 = BitConverter.ToString(hashSha256).Replace("-", String.Empty).ToLowerInvariant();
-                }
-            }
-
-            // MD5
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
-                {
-                    Byte[] hashMd5 = md5.ComputeHash(fs);
-                    hashStrMd5 = BitConverter.ToString(hashMd5).Replace("-", "").ToLowerInvariant();
-                }
-            }
-
-            // Update hash strings
-            this.HashStringSHA256 = hashStrSha256;
-            this.HashStringMD5 = hashStrMd5;
-
-            // Check that the hash matches a supported hash
-            this.IsHashValid =
-                EXPECTED_MD5_HASH_LIST.Contains(this.HashStringMD5) &&
-                EXPECTED_SHA256_HASH_LIST.Contains(this.HashStringSHA256);
-
-            if (this.IsHashValid)
-            {
-                this.HashValidationMessage = "ROM checksum is valid.";
-            }
-            else
-            {
-                this.HashValidationMessage = "ROM checksum is INVALID.";
-                return false;
-            }
-
-            return true;
         }
 
 
@@ -727,7 +779,8 @@ namespace RandomizerHost.Settings
 
         private Boolean mIsRomSourcePathValid = false;
         private Boolean mIsSeedValid = false;
-        private Boolean mIsHashValid = false;
+        private Boolean mIsRomValid = false;
+
         private String mHashStringMD5 = String.Empty;
         private String mHashStringSHA256 = String.Empty;
         private String mHashValidationMessage = String.Empty;
@@ -737,13 +790,16 @@ namespace RandomizerHost.Settings
         // Constatnts
         //
 
-        public readonly List<String> EXPECTED_MD5_HASH_LIST = new List<String>()
+        private const Double BYTES_PER_MEGABYTE = 1024d * 1024d;
+        private const Int64 ONE_MEGABYTE = 1024 * 1024;
+
+        private readonly List<String> EXPECTED_MD5_HASH_LIST = new List<String>()
         {
             "caaeb9ee3b52839de261fd16f93103e6", // Mega Man 2 (U)
             "8e4bc5b03ffbd4ef91400e92e50dd294", // Mega Man 2 (USA)
         };
 
-        public readonly List<String> EXPECTED_SHA256_HASH_LIST = new List<String>()
+        private readonly List<String> EXPECTED_SHA256_HASH_LIST = new List<String>()
         {
             "27b5a635df33ed57ed339dfc7fd62fc603b39c1d1603adb5cdc3562a0b0d555b", // Mega Man 2 (U)
             "49136b412ff61beac6e40d0bbcd8691a39a50cd2744fdcdde3401eed53d71edf", // Mega Man 2 (USA)
@@ -761,7 +817,7 @@ namespace RandomizerHost.Settings
         private const Boolean CREATE_LOG_FILE_DEFAULT_VALUE = false;
 
         private const String DISABLE_DELAY_SCROLLING_SETTING_NAME = @"DisableDelayScrolling";
-        private const Boolean DISABLE_DELAY_SCROLLING_DEFAULT_VALUE = false;
+        private const Boolean DISABLE_DELAY_SCROLLING_DEFAULT_VALUE = true;
 
         private const String DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"DisableFlashingEffects";
         private const Boolean DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE = true;
@@ -805,14 +861,14 @@ namespace RandomizerHost.Settings
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponBehavior";
         private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE = true;
 
-        private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponNames";
-        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_NAMES_DEFAULT_VALUE = true;
+        private const String ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME = @"EnableRandomizationOfInGameText";
+        private const Boolean ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = true;
 
         private const String ENABLE_SPOILER_FREE_MODE_SETTING_NAME = @"EnableSpoilerFreeMode";
         private const Boolean ENABLE_SPOILER_FREE_MODE_DEFAULT_VALUE = false;
 
         private const String ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME = @"EnableUnderwaterLagReduction";
-        private const Boolean ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = true;
 
         // Scalar Property Constants
         private const String CASTLE_BOSS_ENERGY_REFILL_SPEED_SETTING_NAME = @"CastleBossEnergyRefillSpeed";

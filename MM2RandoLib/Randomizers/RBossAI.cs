@@ -10,16 +10,16 @@ namespace MM2Randomizer.Randomizers
     {
         public RBossAI() { }
 
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
-            this.ChangeHeat(in_Patch, in_Seed);
-            this.ChangeAir(in_Patch, in_Seed);
-            this.ChangeWood(in_Patch, in_Seed);
-            this.ChangeBubble(in_Patch, in_Seed);
-            this.ChangeQuick(in_Patch, in_Seed);
-            this.ChangeFlash(in_Patch, in_Seed);
-            this.ChangeMetal(in_Patch, in_Seed);
-            this.ChangeCrash(in_Patch, in_Seed);
+            this.ChangeHeat(in_Patch, in_Context.Seed);
+            this.ChangeAir(in_Patch, in_Context.Seed);
+            this.ChangeWood(in_Patch, in_Context.Seed);
+            this.ChangeBubble(in_Patch, in_Context.Seed);
+            this.ChangeQuick(in_Patch, in_Context.Seed);
+            this.ChangeFlash(in_Patch, in_Context.Seed);
+            this.ChangeMetal(in_Patch, in_Context.Seed);
+            this.ChangeCrash(in_Patch, in_Context.Seed);
         }
 
         /// <summary>

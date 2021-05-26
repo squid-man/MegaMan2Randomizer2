@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer.Randomizers
@@ -11,7 +10,7 @@ namespace MM2Randomizer.Randomizers
     {
         public RTeleporters() { }
 
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             // Create list of default teleporter position values
             List<Position> DEFAULT_TELEPORTER_POSITIONS = new List<Position>
@@ -26,7 +25,7 @@ namespace MM2Randomizer.Randomizers
                 new Position(0xE0, 0xBB),
             };
 
-            IList<Position> newTeleporterPositions = in_Seed.Shuffle(DEFAULT_TELEPORTER_POSITIONS);
+            IList<Position> newTeleporterPositions = in_Context.Seed.Shuffle(DEFAULT_TELEPORTER_POSITIONS);
 
             // Write the new x-coordinates
             for (Int32 index = 0; index < newTeleporterPositions.Count; ++index)

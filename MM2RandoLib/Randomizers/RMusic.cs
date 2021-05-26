@@ -146,13 +146,13 @@ namespace MM2Randomizer.Randomizers
             return debug.ToString();
         }
 
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             debug.AppendLine();
             debug.AppendLine("Random Music Module");
             debug.AppendLine("--------------------------------------------");
 
-            this.ImportMusic(in_Patch, in_Seed);
+            this.ImportMusic(in_Patch, in_Context.Seed);
         }
 
 

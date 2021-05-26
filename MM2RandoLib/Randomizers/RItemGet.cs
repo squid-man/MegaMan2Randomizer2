@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -13,7 +12,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards Items 1, 2, and 3.
         /// </summary>
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             // 0x03C291 - Item # from Heat Man
             // 0x03C292 - Item # from Air Man
@@ -36,7 +35,7 @@ namespace MM2Randomizer.Randomizers
                 EItemNumber.Three,
             };
 
-            IList<EItemNumber> itemGetOrder = in_Seed.Shuffle(itemGetList);
+            IList<EItemNumber> itemGetOrder = in_Context.Seed.Shuffle(itemGetList);
 
             for (Int32 index = 0; index < itemGetOrder.Count; ++index)
             {

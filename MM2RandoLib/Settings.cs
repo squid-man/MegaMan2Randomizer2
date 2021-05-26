@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Reflection;
-using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 namespace MM2Randomizer
@@ -52,6 +49,8 @@ namespace MM2Randomizer
 
         public Boolean EnableRandomizationOfFalseFloors { get; set; }
 
+        public Boolean EnableRandomizationOfInGameText { get; set; }
+
         public Boolean EnableRandomizationOfMusicTracks { get; set; }
 
         public Boolean EnableRandomizationOfRefightTeleporters { get; set; }
@@ -65,8 +64,6 @@ namespace MM2Randomizer
         public Boolean EnableRandomizationOfSpecialItemLocations { get; set; }
 
         public Boolean EnableRandomizationOfSpecialWeaponBehavior { get; set; }
-
-        public Boolean EnableRandomizationOfSpecialWeaponNames { get; set; }
 
         public Boolean EnableRandomizationOfSpecialWeaponReward { get; set; }
 
@@ -114,7 +111,7 @@ namespace MM2Randomizer
             sb.Append(true == this.EnableRandomizationOfEnemyWeaknesses ? 'G' : ' ');
             sb.Append(true == this.EnableRandomizationOfFalseFloors ? 'H' : ' ');
 
-            sb.Append(true == this.EnableRandomizationOfSpecialWeaponNames ? '1' : ' ');
+            sb.Append(true == this.EnableRandomizationOfInGameText ? '1' : ' ');
             sb.Append(true == this.EnableRandomizationOfColorPalettes ? '2' : ' ');
             sb.Append(true == this.EnableRandomizationOfMusicTracks ? '3' : ' ');
 

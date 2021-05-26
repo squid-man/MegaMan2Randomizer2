@@ -60,11 +60,11 @@ namespace MM2Randomizer.Randomizers
 
         public RWeaknesses() { }
 
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             debug = new StringBuilder();
-            RandomizeU(in_Patch, in_Seed);
-            RandomizeWilyUJ(in_Patch, in_Seed);
+            RandomizeU(in_Patch, in_Context.Seed);
+            RandomizeWilyUJ(in_Patch, in_Context.Seed);
         }
 
         /// <summary>

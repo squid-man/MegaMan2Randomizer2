@@ -26,11 +26,11 @@ namespace MM2Randomizer.Randomizers
         // IRandomizer Methods
         //
 
-        public void Randomize(Patch in_Patch, Settings in_Settings, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             CompanyNameSet companyNameSet = Properties.Resources.CompanyNameConfig.Deserialize<CompanyNameSet>();
             IEnumerable<CompanyName> enabledCompanyNames = companyNameSet.Where(x => true == x.Enabled);
-            CompanyName companyName = in_Seed.NextElement(enabledCompanyNames);
+            CompanyName companyName = in_Context.Seed.NextElement(enabledCompanyNames);
 
             // Write the intro text
 
@@ -42,19 +42,19 @@ namespace MM2Randomizer.Randomizers
 
             RText.PatchCompanyName(in_Patch, companyName);
             RText.PatchIntroVersion(in_Patch);
-            RText.PatchForUse(in_Patch, in_Seed);
-            RText.PatchIntroStory(in_Patch, in_Seed);
+            RText.PatchForUse(in_Patch, in_Context.Seed);
+            RText.PatchIntroStory(in_Patch, in_Context.Seed);
 
 
             // Write the new weapons names
-            RText.PatchWeaponNames(in_Patch, in_Seed, out List<Char> newWeaponLetters);
+            RText.PatchWeaponNames(in_Patch, in_Context.Seed, out List<Char> newWeaponLetters);
 
             // This is a hack to get around the strange interdependency that
             // the randomizer interfaces have
             this.mNewWeaponLetters = newWeaponLetters;
 
             // Write the credits
-            RText.PatchCredits(in_Patch, companyName);
+            RText.PatchCredits(in_Patch, companyName, in_Context);
         }
 
         //
@@ -261,7 +261,7 @@ namespace MM2Randomizer.Randomizers
         }
 
 
-        public static void PatchCredits(Patch in_Patch, CompanyName in_CompanyName)
+        public static void PatchCredits(Patch in_Patch, CompanyName in_CompanyName, RandomizationContext in_Context)
         {
             // Credits: Text content and line lengths (Starting with "Special Thanks")
             CreditTextSet creditTextSet = Properties.Resources.CreditTextConfig.Deserialize<CreditTextSet>();
@@ -336,9 +336,9 @@ namespace MM2Randomizer.Randomizers
                 // TODO: Optimize this mess; when the bossroom is shuffled it should save
                 // a mapping that could be reused here.
                 Int32 newIndex = 0;
-                for (Int32 m = 0; m < RandomMM2.randomBossInBossRoom.Components.Count; m++)
+                for (Int32 m = 0; m < in_Context.RandomBossInBossRoom.Components.Count; m++)
                 {
-                    RBossRoom.BossRoomRandomComponent room = RandomMM2.randomBossInBossRoom.Components[m];
+                    RBossRoom.BossRoomRandomComponent room = in_Context.RandomBossInBossRoom.Components[m];
 
                     if (room.OriginalBossIndex == i)
                     {
