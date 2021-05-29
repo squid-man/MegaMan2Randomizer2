@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-//using MM2Randomizer;
 using Avalonia.Input;
-using System.Linq;
+using Avalonia.Markup.Xaml;
 using RandomizerHost.Settings;
 
 namespace RandomizerHost.Views
