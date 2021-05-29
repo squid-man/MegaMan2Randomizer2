@@ -5,12 +5,12 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
+using System.Xml;
 using Avalonia.Controls;
 using MM2Randomizer;
 using RandomizerHost.Settings;
 using RandomizerHost.Views;
 using ReactiveUI;
-using System.Xml.Serialization;
 
 namespace RandomizerHost.ViewModels
 {
@@ -191,12 +191,12 @@ namespace RandomizerHost.ViewModels
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.ToString());
-                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", System.Reflection.Assembly.GetExecutingAssembly().Location));
+                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", Assembly.GetExecutingAssembly().Location));
                 }
             }
             else
             {
-                Process.Start("explorer.exe", String.Format("/select,\"{0}\"", System.Reflection.Assembly.GetExecutingAssembly().Location));
+                Process.Start("explorer.exe", String.Format("/select,\"{0}\"", Assembly.GetExecutingAssembly().Location));
             }
         }
 
@@ -266,13 +266,13 @@ namespace RandomizerHost.ViewModels
             if (dialogResult.Length > 0)
             {
                 String fileName = dialogResult[0];
-
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(AppConfigurationSettings));
-                using (StreamReader streamReader = new StreamReader(fileName))
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
                 {
-                    this.AppConfigurationSettings = (AppConfigurationSettings)xmlSerializer.Deserialize(streamReader);
-                    this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
-                    streamReader.Close();
+                    using (XmlReader xmlReader = XmlReader.Create(fileStream, new XmlReaderSettings() { IgnoreComments = true, IgnoreWhitespace = true }))
+                    {
+                        this.AppConfigurationSettings.ReadXml(xmlReader);
+                        xmlReader.Close();
+                    }
                 }
             }
         }
@@ -304,12 +304,12 @@ namespace RandomizerHost.ViewModels
             if (dialogResult.Length > 0)
             {
                 String fileName = dialogResult;
-
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(AppConfigurationSettings));
-                using (StreamWriter streamWriter = new StreamWriter(fileName))
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
                 {
-                    xmlSerializer.Serialize(streamWriter, this.AppConfigurationSettings);
-                    streamWriter.Close();
+                    using (XmlWriter xmlWriter = XmlWriter.Create(fileStream))
+                    {
+                        this.AppConfigurationSettings.WriteXml(xmlWriter);
+                    }
                 }
             }
         }

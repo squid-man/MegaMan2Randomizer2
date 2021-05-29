@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.IO;
-using MM2Randomizer.Extensions;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
+using MM2Randomizer.Extensions;
 
 namespace RandomizerHost.Settings
 {
-    [Serializable]
-    public sealed class AppConfigurationSettings : ApplicationSettingsBase
+    public sealed class AppConfigurationSettings : ApplicationSettingsBase, IXmlSerializable
     {
         //
         // Constructor
@@ -24,6 +25,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
+        [DefaultSettingValue("")]
         public String SeedString
         {
             get
@@ -43,7 +45,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("")]
         public String RomSourcePath
         {
             get
@@ -74,6 +78,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
         public Boolean CreateLogFile
         {
             get
@@ -89,7 +94,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean DisableDelayScrolling
         {
             get
@@ -105,7 +112,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean DisableFlashingEffects
         {
             get
@@ -121,7 +130,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
         public Boolean EnableBurstChaserMode
         {
             get
@@ -137,7 +148,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableFasterCutsceneText
         {
             get
@@ -153,7 +166,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
         public Boolean EnableHiddenStageNames
         {
             get
@@ -169,7 +184,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfBossWeaknesses
         {
             get
@@ -185,7 +202,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfColorPalettes
         {
             get
@@ -201,7 +220,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfEnemySpawns
         {
             get
@@ -217,7 +238,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfEnemyWeaknesses
         {
             get
@@ -233,7 +256,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfFalseFloors
         {
             get
@@ -249,9 +274,8 @@ namespace RandomizerHost.Settings
             }
         }
 
-        // This property has a constant value; ignore this property
-        // for serialization
-        [XmlIgnore]
+
+        // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfSpecialWeaponReward
         {
             get
@@ -260,7 +284,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfMusicTracks
         {
             get
@@ -276,9 +302,8 @@ namespace RandomizerHost.Settings
             }
         }
 
-        // This property has a constant value; ignore this property
-        // for serialization
-        [XmlIgnore]
+
+        // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfRefightTeleporters
         {
             get
@@ -287,7 +312,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfRobotMasterBehavior
         {
             get
@@ -303,7 +330,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfRobotMasterLocations
         {
             get
@@ -319,9 +348,8 @@ namespace RandomizerHost.Settings
             }
         }
 
-        // This property has a constant value; ignore this property
-        // for serialization
-        [XmlIgnore]
+
+        // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfRobotMasterStageSelection
         {
             get
@@ -330,7 +358,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfSpecialItemLocations
         {
             get
@@ -346,7 +376,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfSpecialWeaponBehavior
         {
             get
@@ -362,7 +394,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfInGameText
         {
             get
@@ -378,7 +412,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
         public Boolean EnableSpoilerFreeMode
         {
             get
@@ -394,7 +430,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("True")]
         public Boolean EnableUnderwaterLagReduction
         {
             get
@@ -416,6 +454,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
+        [DefaultSettingValue("Fastest")]
         public ChargingSpeed CastleBossEnergyRefillSpeed
         {
             get
@@ -431,7 +470,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("Fastest")]
         public ChargingSpeed EnergyTankRefillSpeed
         {
             get
@@ -447,7 +488,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("Fastest")]
         public ChargingSpeed HitPointRefillSpeed
         {
             get
@@ -463,7 +506,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("Rockman")]
         public PlayerSprite PlayerSprite
         {
             get
@@ -479,7 +524,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("Fastest")]
         public ChargingSpeed RobotMasterEnergyRefillSpeed
         {
             get
@@ -495,7 +542,9 @@ namespace RandomizerHost.Settings
             }
         }
 
+
         [UserScopedSetting]
+        [DefaultSettingValue("Fastest")]
         public ChargingSpeed WeaponEnergyRefillSpeed
         {
             get
@@ -516,9 +565,7 @@ namespace RandomizerHost.Settings
         // Read-only Properties
         //
 
-        // This property is read-only outside of the scope of the class;
-        // ignore this property for serialization
-        [XmlIgnore]
+        // This property has a constant value; it does not access the app configuration
         public Boolean IsRomSourcePathValid
         {
             get
@@ -534,9 +581,7 @@ namespace RandomizerHost.Settings
         }
 
 
-        // This property is read-only outside of the scope of the class;
-        // ignore this property for serialization
-        [XmlIgnore]
+        // This property has a constant value; it does not access the app configuration
         public Boolean IsSeedValid
         {
             get
@@ -552,9 +597,7 @@ namespace RandomizerHost.Settings
         }
 
 
-        // This property is read-only outside of the scope of the class;
-        // ignore this property for serialization
-        [XmlIgnore]
+        // This property has a constant value; it does not access the app configuration
         public Boolean IsRomValid
         {
             get
@@ -570,9 +613,7 @@ namespace RandomizerHost.Settings
         }
 
 
-        // This property is read-only outside of the scope of the class;
-        // ignore this property for serialization
-        [XmlIgnore]
+        // This property has a constant value; it does not access the app configuration
         public String HashStringMD5
         {
             get
@@ -588,9 +629,7 @@ namespace RandomizerHost.Settings
         }
 
 
-        // This property is read-only outside of the scope of the class;
-        // ignore this property for serialization
-        [XmlIgnore]
+        // This property has a constant value; it does not access the app configuration
         public String HashStringSHA256
         {
             get
@@ -606,9 +645,7 @@ namespace RandomizerHost.Settings
         }
 
 
-        // This property is read-only outside of the scope of the class;
-        // ignore this property for serialization
-        [XmlIgnore]
+        // This property has a constant value; it does not access the app configuration
         public String HashValidationMessage
         {
             get
@@ -621,6 +658,48 @@ namespace RandomizerHost.Settings
                 this.mHashValidationMessage = value;
                 this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashValidationMessage"));
             }
+        }
+
+
+        //
+        // IXmlSerializable Methods
+        //
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+
+        public void ReadXml(XmlReader in_Reader)
+        {
+            in_Reader.MoveToContent();
+
+            if ("Settings" == in_Reader.Name &&
+                false == in_Reader.IsEmptyElement &&
+                XmlNodeType.Element == in_Reader.NodeType)
+            {
+                using (XmlReader xmlReader = in_Reader.ReadSubtree())
+                {
+                    this.ReadSettingsFromXml(xmlReader);
+                    xmlReader.Close();
+                }
+            }
+        }
+
+
+        public void WriteXml(XmlWriter in_Writer)
+        {
+            in_Writer.WriteStartElement("Settings");
+            {
+                foreach (SettingsPropertyValue settingsPropertyValue in this.PropertyValues)
+                {
+                    in_Writer.WriteStartElement(settingsPropertyValue.Name);
+                    in_Writer.WriteString(settingsPropertyValue.SerializedValue.ToString());
+                    in_Writer.WriteEndElement();
+                }
+            }
+            in_Writer.WriteEndElement();
         }
 
 
@@ -668,13 +747,50 @@ namespace RandomizerHost.Settings
             return settings;
         }
 
-        public void Serialize()
-        {
-        }
 
         //
         // Private Helper Methods
         //
+
+        private void ReadSettingsFromXml(XmlReader in_Reader)
+        {
+            in_Reader.MoveToContent();
+
+            while (true == in_Reader.Read())
+            {
+                if (false == in_Reader.IsEmptyElement &&
+                    XmlNodeType.Element == in_Reader.NodeType)
+                {
+                    using (XmlReader xmlReader = in_Reader.ReadSubtree())
+                    {
+                        this.SetPropertyFromXml(xmlReader);
+                        xmlReader.Close();
+                    }
+                }
+            }
+        }
+
+
+        private void SetPropertyFromXml(XmlReader in_Reader)
+        {
+            in_Reader.MoveToContent();
+
+            String propertyName = in_Reader.Name;
+            SettingsPropertyValue settingsPropertyValue = this.PropertyValues[propertyName];
+
+            if (null != settingsPropertyValue)
+            {
+                in_Reader.Read();
+                in_Reader.MoveToContent();
+
+                if (XmlNodeType.Text == in_Reader.NodeType)
+                {
+                    SettingsProperty settingsProperty = this.Properties[propertyName];
+                    this[propertyName] = AppConfigurationSettings.ConvertFromString(in_Reader.Value, settingsProperty.PropertyType);
+                }
+            }
+        }
+
 
         private T GetValueOrDefault<T>(String in_ValueName, T in_Default)
         {
@@ -765,6 +881,23 @@ namespace RandomizerHost.Settings
             {
                 this.IsRomValid = false;
                 this.HashValidationMessage = "File does not exist.";
+            }
+        }
+
+
+        //
+        // Private Static Methods
+        //
+
+        private static Object ConvertFromString(String in_Value, Type in_Type)
+        {
+            if (true == in_Type.IsEnum)
+            {
+                return Enum.Parse(in_Type, in_Value);
+            }
+            else
+            {
+                return Convert.ChangeType(in_Value, in_Type);
             }
         }
 
