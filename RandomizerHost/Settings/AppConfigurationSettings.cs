@@ -920,7 +920,7 @@ namespace RandomizerHost.Settings
 
 
         //
-        // Constatnts
+        // Constants
         //
 
         private const Double BYTES_PER_MEGABYTE = 1024d * 1024d;
