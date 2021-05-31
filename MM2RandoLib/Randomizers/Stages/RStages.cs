@@ -24,10 +24,10 @@ namespace MM2Randomizer.Randomizers.Stages
         public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
         {
             // Get the new stage order
-            Int32[] newOrder = new Int32[8];
+            ERMPortraitDestination[] newOrder = new ERMPortraitDestination[8];
             foreach (StageFromSelect stage in StageSelect)
             {
-                newOrder[stage.PortraitDestinationOriginal] = stage.PortraitDestinationNew;
+                newOrder[(int)stage.PortraitDestination.Old] = stage.PortraitDestination.New;
             }
 
             // Permute portrait x/y values via the shuffled stage-order array 
@@ -35,14 +35,14 @@ namespace MM2Randomizer.Randomizers.Stages
 
             for (Int32 i = 0; i < 8; i++)
             {
-                cpy[newOrder[i]] = portraitBG_y[i];
+                cpy[(int)newOrder[i]] = portraitBG_y[i];
             }
 
             Array.Copy(cpy, portraitBG_y, 8);
 
             for (Int32 i = 0; i < 8; i++)
             {
-                cpy[newOrder[i]] = portraitBG_x[i];
+                cpy[(int)newOrder[i]] = portraitBG_x[i];
             }
 
             Array.Copy(cpy, portraitBG_x, 8);
@@ -70,11 +70,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Bubble Man",
                 PortraitAddress = ERMPortraitAddress.BubbleMan,
-                PortraitDestinationOriginal = 3,
-                PortraitDestinationNew = 3,
-                StageClearAddress = ERMStageClearAddress.BubbleMan,
-                StageClearDestinationOriginal = 8,
-                StageClearDestinationNew = 8,
+                InitialPortraitDestination = ERMPortraitDestination.BubbleMan,
                 TextAddress = ERMPortraitText.BubbleMan,
                 TextValues = "BUBBLE",
             });
@@ -82,11 +78,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Air Man",
                 PortraitAddress = ERMPortraitAddress.AirMan,
-                PortraitDestinationOriginal = 1,
-                PortraitDestinationNew = 1,
-                StageClearAddress = ERMStageClearAddress.AirMan,
-                StageClearDestinationOriginal = 2,
-                StageClearDestinationNew = 2,
+                InitialPortraitDestination = ERMPortraitDestination.AirMan,
                 TextAddress = ERMPortraitText.AirMan,
                 TextValues = "`AIR```"
             });
@@ -94,11 +86,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Quick Man",
                 PortraitAddress = ERMPortraitAddress.QuickMan,
-                PortraitDestinationOriginal = 4,
-                PortraitDestinationNew = 4,
-                StageClearAddress = ERMStageClearAddress.QuickMan,
-                StageClearDestinationOriginal = 16,
-                StageClearDestinationNew = 16,
+                InitialPortraitDestination = ERMPortraitDestination.QuickMan,
                 TextAddress = ERMPortraitText.QuickMan,
                 TextValues = "QUICK`"
             });
@@ -106,11 +94,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Wood Man",
                 PortraitAddress = ERMPortraitAddress.WoodMan,
-                PortraitDestinationOriginal = 2,
-                PortraitDestinationNew = 2,
-                StageClearAddress = ERMStageClearAddress.WoodMan,
-                StageClearDestinationOriginal = 4,
-                StageClearDestinationNew = 4,
+                InitialPortraitDestination = ERMPortraitDestination.WoodMan,
                 TextAddress = ERMPortraitText.WoodMan,
                 TextValues = "WOOD``",
             });
@@ -118,11 +102,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Clash Man",
                 PortraitAddress = ERMPortraitAddress.CrashMan,
-                PortraitDestinationOriginal = 7,
-                PortraitDestinationNew = 7,
-                StageClearAddress = ERMStageClearAddress.CrashMan,
-                StageClearDestinationOriginal = 128,
-                StageClearDestinationNew = 128,
+                InitialPortraitDestination = ERMPortraitDestination.CrashMan,
                 TextAddress = ERMPortraitText.CrashMan,
                 TextValues = "CRASH`",
             });
@@ -130,11 +110,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Flash Man",
                 PortraitAddress = ERMPortraitAddress.FlashMan,
-                PortraitDestinationOriginal = 5,
-                PortraitDestinationNew = 5,
-                StageClearAddress = ERMStageClearAddress.FlashMan,
-                StageClearDestinationOriginal = 32,
-                StageClearDestinationNew = 32,
+                InitialPortraitDestination = ERMPortraitDestination.FlashMan,
                 TextAddress = ERMPortraitText.FlashMan,
                 TextValues = "FLASH`",
             });
@@ -142,11 +118,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Metal Man",
                 PortraitAddress = ERMPortraitAddress.MetalMan,
-                PortraitDestinationOriginal = 6,
-                PortraitDestinationNew = 6,
-                StageClearAddress = ERMStageClearAddress.MetalMan,
-                StageClearDestinationOriginal = 64,
-                StageClearDestinationNew = 64,
+                InitialPortraitDestination = ERMPortraitDestination.MetalMan,
                 TextAddress = ERMPortraitText.MetalMan,
                 TextValues = "METAL`",
             });
@@ -154,11 +126,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 PortraitName = "Heat Man",
                 PortraitAddress = ERMPortraitAddress.HeatMan,
-                PortraitDestinationOriginal = 0,
-                PortraitDestinationNew = 0, // 4 = quick
-                StageClearAddress = ERMStageClearAddress.HeatMan,
-                StageClearDestinationOriginal = 1,
-                StageClearDestinationNew = 1,
+                InitialPortraitDestination = ERMPortraitDestination.HeatMan,
                 TextAddress = ERMPortraitText.HeatMan,
                 TextValues = "HEAT``",
             });
@@ -179,7 +147,7 @@ namespace MM2Randomizer.Randomizers.Stages
                 StageFromSelect stage = StageSelect[i];
 
                 // Change portrait destination
-                stage.PortraitDestinationNew = StageSelect[newStageOrder[i]].PortraitDestinationOriginal;
+                stage.PortraitDestination.New = StageSelect[newStageOrder[i]].PortraitDestination.Old;
 
                 // Erase the portrait text if StageNameHidden flag is set
                 if (RandomMM2.Settings.IsStageNameHidden)
@@ -207,12 +175,12 @@ namespace MM2Randomizer.Randomizers.Stages
                     }
                 }
 
-                debug.AppendLine($"{Enum.GetName(typeof(EStageID), stage.PortraitDestinationOriginal)}'s portrait -> {Enum.GetName(typeof(EStageID), StageSelect[i].PortraitDestinationNew)} stage");
+                debug.AppendLine($"{Enum.GetName(typeof(EStageID), stage.PortraitDestination.Old)}'s portrait -> {Enum.GetName(typeof(EStageID), StageSelect[i].PortraitDestination.New)} stage");
             }
 
             foreach (StageFromSelect stage in StageSelect)
             {
-                in_Patch.Add((Int32)stage.PortraitAddress, (Byte)stage.PortraitDestinationNew, $"Stage Select {stage.PortraitName} Destination");
+                in_Patch.Add((Int32)stage.PortraitAddress, (Byte)stage.PortraitDestination.New, $"Stage Select {stage.PortraitName} Destination");
             }
         }
     }
