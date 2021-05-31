@@ -23,29 +23,31 @@ namespace MM2Randomizer.Randomizers.Stages
 
         public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
         {
+            const Int32 count = (Int32)ERMPortraitDestination.Count;
+
             // Get the new stage order
-            ERMPortraitDestination[] newOrder = new ERMPortraitDestination[8];
+            ERMPortraitDestination[] newOrder = new ERMPortraitDestination[count];
             foreach (StageFromSelect stage in StageSelect)
             {
-                newOrder[(int)stage.PortraitDestination.Old] = stage.PortraitDestination.New;
+                newOrder[(Int32)stage.PortraitDestination.Old] = stage.PortraitDestination.New;
             }
 
-            // Permute portrait x/y values via the shuffled stage-order array 
-            Byte[] cpy = new Byte[8];
+            // Permute portrait x/y values via the shuffled stage-order array
+            Byte[] cpy = new Byte[count];
 
-            for (Int32 i = 0; i < 8; i++)
+            for (Int32 i = 0; i < count; i++)
             {
-                cpy[(int)newOrder[i]] = portraitBG_y[i];
+                cpy[(Int32)newOrder[i]] = portraitBG_y[i];
             }
 
-            Array.Copy(cpy, portraitBG_y, 8);
+            Array.Copy(cpy, portraitBG_y, count);
 
-            for (Int32 i = 0; i < 8; i++)
+            for (Int32 i = 0; i < count; i++)
             {
-                cpy[(int)newOrder[i]] = portraitBG_x[i];
+                cpy[(Int32)newOrder[i]] = portraitBG_x[i];
             }
 
-            Array.Copy(cpy, portraitBG_x, 8);
+            Array.Copy(cpy, portraitBG_x, count);
         }
 
         /// <summary>
@@ -133,8 +135,9 @@ namespace MM2Randomizer.Randomizers.Stages
 
 
             List<Byte> newStageOrder = new List<Byte>();
+            const Int32 count = (Int32)ERMPortraitDestination.Count;
 
-            for (Byte i = 0; i < 8; i++)
+            for (Byte i = 0; i < count; i++)
             {
                 newStageOrder.Add(i);
             }
@@ -142,7 +145,7 @@ namespace MM2Randomizer.Randomizers.Stages
             newStageOrder = in_Seed.Shuffle(newStageOrder).ToList();
 
             debug.AppendLine("Stage Select:");
-            for (Int32 i = 0; i < 8; i++)
+            for (Int32 i = 0; i < count; i++)
             {
                 StageFromSelect stage = StageSelect[i];
 

@@ -1,4 +1,6 @@
-﻿namespace MM2Randomizer.Enums
+﻿using System;
+
+namespace MM2Randomizer.Enums
 {
     /// <summary>
     /// These values correspond to the stage numbers in the vanilla rom.
@@ -6,7 +8,7 @@
     /// range from 0 to 7 and can safely be used as array indices.
     /// </summary>
     /// Please keep these constraints in mind when editing these values.
-    public enum ERMPortraitDestination
+    public enum ERMPortraitDestination : Int32
     {
         HeatMan = 0,
         AirMan = 1,
@@ -15,6 +17,8 @@
         QuickMan = 4,
         FlashMan = 5,
         MetalMan = 6,
-        CrashMan = 7
+        CrashMan = 7,
+
+        Count = CrashMan + 1
     }
 }
