@@ -21,39 +21,7 @@ namespace MM2Randomizer.Randomizers.Stages
             return debug.ToString();
         }
 
-        public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
-        {
-            const Int32 count = (Int32)ERMPortraitDestination.Count;
-
-            // Get the new stage order
-            ERMPortraitDestination[] newOrder = new ERMPortraitDestination[count];
-            foreach (StageFromSelect stage in StageSelect)
-            {
-                newOrder[(Int32)stage.PortraitDestination.Old] = stage.PortraitDestination.New;
-            }
-
-            // Permute portrait x/y values via the shuffled stage-order array
-            Byte[] cpy = new Byte[count];
-
-            for (Int32 i = 0; i < count; i++)
-            {
-                cpy[(Int32)newOrder[i]] = portraitBG_y[i];
-            }
-
-            Array.Copy(cpy, portraitBG_y, count);
-
-            for (Int32 i = 0; i < count; i++)
-            {
-                cpy[(Int32)newOrder[i]] = portraitBG_x[i];
-            }
-
-            Array.Copy(cpy, portraitBG_x, count);
-        }
-
-        /// <summary>
-        /// Shuffle the Robot Master stages.  This shuffling will not be indicated by the Robot Master portraits.
-        /// </summary>
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public static List<StageFromSelect> VanillaStageSelect()
         {
             // StageSelect  Address    Value
             // -----------------------------
@@ -66,8 +34,7 @@ namespace MM2Randomizer.Randomizers.Stages
             // Metal Man    0x034676   6
             // Heat Man     0x034677   0
 
-            StageSelect = new List<StageFromSelect>();
-
+            List<StageFromSelect> StageSelect = new List<StageFromSelect>();
             StageSelect.Add(new StageFromSelect()
             {
                 PortraitName = "Bubble Man",
@@ -132,7 +99,45 @@ namespace MM2Randomizer.Randomizers.Stages
                 TextAddress = ERMPortraitText.HeatMan,
                 TextValues = "HEAT``",
             });
+            return StageSelect;
+        }
 
+        public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
+        {
+            const Int32 count = (Int32)ERMPortraitDestination.Count;
+
+            // Get the new stage order
+            ERMPortraitDestination[] newOrder = new ERMPortraitDestination[count];
+            foreach (StageFromSelect stage in StageSelect)
+            {
+                newOrder[(Int32)stage.PortraitDestination.Old] = stage.PortraitDestination.New;
+            }
+
+            // Permute portrait x/y values via the shuffled stage-order array
+            Byte[] cpy = new Byte[count];
+
+            for (Int32 i = 0; i < count; i++)
+            {
+                cpy[(Int32)newOrder[i]] = portraitBG_y[i];
+            }
+
+            Array.Copy(cpy, portraitBG_y, count);
+
+            for (Int32 i = 0; i < count; i++)
+            {
+                cpy[(Int32)newOrder[i]] = portraitBG_x[i];
+            }
+
+            Array.Copy(cpy, portraitBG_x, count);
+        }
+
+        /// <summary>
+        /// Shuffle the Robot Master stages.  This shuffling will not be indicated by the Robot Master portraits.
+        /// </summary>
+        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        {
+
+            StageSelect = VanillaStageSelect();
 
             List<Byte> newStageOrder = new List<Byte>();
             const Int32 count = (Int32)ERMPortraitDestination.Count;
