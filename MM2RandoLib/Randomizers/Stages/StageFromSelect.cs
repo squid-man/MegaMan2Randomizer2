@@ -13,10 +13,21 @@ namespace MM2Randomizer.Randomizers.Stages
         public ERMPortraitText TextAddress;
         public String TextValues;
         public ERMPortraitAddress PortraitAddress;
-        public Int32 PortraitDestinationOriginal;
-        public Int32 PortraitDestinationNew;
-        public ERMStageClearAddress StageClearAddress;
-        public Int32 StageClearDestinationOriginal;
-        public Int32 StageClearDestinationNew;
+        public DestinationPair PortraitDestination;
+
+        public ERMPortraitDestination InitialPortraitDestination
+        {
+            set => PortraitDestination = new DestinationPair()
+            {
+                Old = value,
+                New = value
+            };
+        }
+    }
+
+    public class DestinationPair
+    {
+        public ERMPortraitDestination Old { get; set; }
+        public ERMPortraitDestination New { get; set; }
     }
 }
