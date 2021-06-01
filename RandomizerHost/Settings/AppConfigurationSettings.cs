@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using MM2Randomizer;
 using MM2Randomizer.Extensions;
 
 namespace RandomizerHost.Settings
@@ -737,12 +738,12 @@ namespace RandomizerHost.Settings
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
             settings.EnableUnderwaterLagReduction = this.EnableUnderwaterLagReduction;
 
-            settings.CastleBossEnergyRefillSpeed = (MM2Randomizer.ChargingSpeed)this.CastleBossEnergyRefillSpeed;
-            settings.EnergyTankRefillSpeed = (MM2Randomizer.ChargingSpeed)this.EnergyTankRefillSpeed;
-            settings.HitPointRefillSpeed = (MM2Randomizer.ChargingSpeed)this.HitPointRefillSpeed;
-            settings.PlayerSprite = (MM2Randomizer.PlayerSprite)this.PlayerSprite;
-            settings.RobotMasterEnergyRefillSpeed = (MM2Randomizer.ChargingSpeed)this.RobotMasterEnergyRefillSpeed;
-            settings.WeaponEnergyRefillSpeed = (MM2Randomizer.ChargingSpeed)this.WeaponEnergyRefillSpeed;
+            settings.CastleBossEnergyRefillSpeed = this.CastleBossEnergyRefillSpeed;
+            settings.EnergyTankRefillSpeed = this.EnergyTankRefillSpeed;
+            settings.HitPointRefillSpeed = this.HitPointRefillSpeed;
+            settings.PlayerSprite = this.PlayerSprite;
+            settings.RobotMasterEnergyRefillSpeed = this.RobotMasterEnergyRefillSpeed;
+            settings.WeaponEnergyRefillSpeed = this.WeaponEnergyRefillSpeed;
 
             return settings;
         }

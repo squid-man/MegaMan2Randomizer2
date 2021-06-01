@@ -2,9 +2,7 @@
 using System.Globalization;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
-using RandomizerHost.Settings;
-
-//using MM2Randomizer;
+using MM2Randomizer;
 
 namespace RandomizerHost.Converters
 {

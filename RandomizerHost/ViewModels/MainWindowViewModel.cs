@@ -301,7 +301,7 @@ namespace RandomizerHost.ViewModels
             String dialogResult = await saveFileDialog.ShowAsync(in_Window);
 
             // Process input if the user clicked OK.
-            if (dialogResult.Length > 0)
+            if (dialogResult?.Length > 0)
             {
                 String fileName = dialogResult;
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
