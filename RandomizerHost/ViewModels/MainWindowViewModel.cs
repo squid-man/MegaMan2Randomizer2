@@ -5,9 +5,10 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
+using System.Xml;
 using Avalonia.Controls;
 using MM2Randomizer;
-using MM2Randomizer.Extensions;
+using RandomizerHost.Settings;
 using RandomizerHost.Views;
 using ReactiveUI;
 
@@ -21,24 +22,36 @@ namespace RandomizerHost.ViewModels
 
         public MainWindowViewModel()
         {
-            RandoSettings = new RandoSettings();
-            RandomMM2.Settings = RandoSettings;
+            this.AppConfigurationSettings = new AppConfigurationSettings();
+            this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
 
-            // Try to load "MM2.nes" if one is in the local directory already to save time
-            String tryLocalpath = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                "MM2.nes");
-
-            if (File.Exists(tryLocalpath))
+            // If the application configuration settings does not have a saved value,
+            // try to load the Mega Man 2 rom from the executable path
+            if (true == String.IsNullOrEmpty(this.AppConfigurationSettings.RomSourcePath))
             {
-                this.mRandoSettings.SourcePath = tryLocalpath;
-                IsShowingHint = false;
+                String tryLocalpath = Path.Combine(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "MM2.nes");
+
+                if (File.Exists(tryLocalpath))
+                {
+                    this.AppConfigurationSettings.RomSourcePath = tryLocalpath;
+                    this.IsShowingHint = false;
+                }
             }
 
             this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainngFolder, this.WhenAnyValue(x => x.CanOpenContainngFolder));
-            this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.RandoSettings.IsSeedValid));
-            this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.RandoSettings.IsHashValid));
+            this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.AppConfigurationSettings.IsSeedValid));
+            this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.AppConfigurationSettings.IsRomValid));
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
+
+            this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
+            this.ExportSettingsCommand = ReactiveCommand.Create<Window>(this.ExportSettings);
+        }
+
+        private void AppConfigurationSettings_PropertyChanged(Object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            this.AppConfigurationSettings.Save();
         }
 
 
@@ -50,16 +63,18 @@ namespace RandomizerHost.ViewModels
         public ICommand CreateFromGivenSeedCommand { get; }
         public ICommand CreateFromRandomSeedCommand { get; }
         public ICommand OpenContainingFolderCommand { get; }
+        public ICommand ImportSettingsCommand { get; }
+        public ICommand ExportSettingsCommand { get; }
 
 
         //
         // Properties
         //
 
-        public RandoSettings RandoSettings
+        public AppConfigurationSettings AppConfigurationSettings
         {
-            get => this.mRandoSettings;
-            set => this.RaiseAndSetIfChanged(ref this.mRandoSettings, value);
+            get => this.mAppConfigurationSettings;
+            set => this.RaiseAndSetIfChanged(ref this.mAppConfigurationSettings, value);
         }
 
         public Boolean IsShowingHint
@@ -76,9 +91,9 @@ namespace RandomizerHost.ViewModels
 
         public Boolean IsCoreModulesChecked
         {
-            get => RandoSettings.Is8StagesRandom &&
-                   RandoSettings.IsWeaponsRandom &&
-                   RandoSettings.IsTeleportersRandom;
+            get => this.AppConfigurationSettings.EnableRandomizationOfRobotMasterStageSelection &&
+                   this.AppConfigurationSettings.EnableRandomizationOfSpecialWeaponReward &&
+                   this.AppConfigurationSettings.EnableRandomizationOfRefightTeleporters;
         }
 
 
@@ -105,7 +120,7 @@ namespace RandomizerHost.ViewModels
             openFileDialog.Title = @"Open Mega Man 2 (U) NES ROM File";
 
             // Call the ShowDialog method to show the dialog box.
-            String exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            String exePath = Assembly.GetExecutingAssembly().Location;
             String exeDir = Path.GetDirectoryName(exePath);
             openFileDialog.Directory = exeDir;
 
@@ -117,7 +132,7 @@ namespace RandomizerHost.ViewModels
                 String fileName = dialogResult[0];
 
                 this.IsShowingHint = false;
-                this.mRandoSettings.SourcePath = fileName;
+                this.mAppConfigurationSettings.RomSourcePath = fileName;
 
                 TextBox romFile = in_Window.FindControl<TextBox>("TextBox_RomFile");
                 romFile.Focus();
@@ -132,11 +147,7 @@ namespace RandomizerHost.ViewModels
 
         public async void CreateFromGivenSeed(Window in_Window)
         {
-            // First, clean the seed of non-alphanumerics.  This isn't for the
-            // seed generation code, but to maintain safe file names
-            String seedString = this.RandoSettings.SeedString.Trim().ToUpperInvariant().RemoveNonAlphanumericCharacters();
-
-            if (true == String.IsNullOrEmpty(seedString))
+            if (true == String.IsNullOrEmpty(this.AppConfigurationSettings.SeedString))
             {
                 this.CreateFromRandomSeed(in_Window);
             }
@@ -144,9 +155,8 @@ namespace RandomizerHost.ViewModels
             {
                 try
                 {
-                    // Perform randomization based on settings, then generate the ROM.
-                    this.PerformRandomization(seedString);
-                    this.RandoSettings.SeedString = RandomMM2.Seed.SeedString;
+                    this.PerformRandomization(in_DefaultSeed: false);
+                    this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext.Seed.SeedString;
                 }
                 catch (Exception e)
                 {
@@ -160,8 +170,8 @@ namespace RandomizerHost.ViewModels
         {
             try
             {
-                this.PerformRandomization();
-                this.RandoSettings.SeedString = RandomMM2.Seed.SeedString;
+                this.PerformRandomization(in_DefaultSeed: true);
+                this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext.Seed.SeedString;
             }
             catch (Exception e)
             {
@@ -172,50 +182,54 @@ namespace RandomizerHost.ViewModels
 
         public void OpenContainngFolder()
         {
-            if (RandomMM2.RecentlyCreatedFileName != "")
+            if (false == String.IsNullOrEmpty(this.mCurrentRandomizationContext?.FileName))
             {
                 try
                 {
-                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", RandomMM2.RecentlyCreatedFileName));
+                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", this.mCurrentRandomizationContext.FileName));
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.ToString());
-                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", System.Reflection.Assembly.GetExecutingAssembly().Location));
+                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", Assembly.GetExecutingAssembly().Location));
                 }
             }
             else
             {
-                Process.Start("explorer.exe", String.Format("/select,\"{0}\"", System.Reflection.Assembly.GetExecutingAssembly().Location));
+                Process.Start("explorer.exe", String.Format("/select,\"{0}\"", Assembly.GetExecutingAssembly().Location));
             }
         }
 
 
-        public void PerformRandomization(String in_SeedString = null)
+        public void PerformRandomization(Boolean in_DefaultSeed)
         {
             // Perform randomization based on settings, then generate the ROM.
-            RandomMM2.RandomizerCreate(in_SeedString);
+            RandomMM2.RandomizerCreate(this.AppConfigurationSettings.AsRandomizerSettings(in_DefaultSeed), out RandomizationContext context);
+            this.AppConfigurationSettings.HashValidationMessage = "Successfully copied and patched! File: " + context.FileName;
 
             // Get A-Z representation of seed
-            String seedBase26 = RandomMM2.Seed.Identifier;
+            String seedBase26 = context.Seed.Identifier;
+
+            this.mCurrentRandomizationContext = context;
+
             Debug.WriteLine("\nSeed: " + seedBase26 + "\n");
 
             // Create log file if left shift is pressed while clicking
-            if (true == this.RandoSettings.CreateLogFile &&
-                false == this.RandoSettings.IsSpoilerFree)
+            if (true == this.AppConfigurationSettings.CreateLogFile &&
+                false == this.AppConfigurationSettings.EnableSpoilerFreeMode)
             {
                 String logFileName = $"MM2RNG-{seedBase26}.log";
 
                 using (StreamWriter sw = new StreamWriter(logFileName, false))
                 {
                     sw.WriteLine("Mega Man 2 Randomizer");
-                    sw.WriteLine($"Version {RandoSettings.AssemblyVersion.ToString()}");
+                    sw.WriteLine($"Version {RandomMM2.AssemblyVersion}");
                     sw.WriteLine($"Seed {seedBase26}\n");
-                    sw.WriteLine(RandomMM2.randomStages.ToString());
-                    sw.WriteLine(RandomMM2.randomWeaponBehavior.ToString());
-                    sw.WriteLine(RandomMM2.randomEnemyWeakness.ToString());
-                    sw.WriteLine(RandomMM2.randomWeaknesses.ToString());
-                    sw.Write(RandomMM2.Patch.GetStringSortedByAddress());
+                    sw.WriteLine(context.RandomStages.ToString());
+                    sw.WriteLine(context.RandomWeaponBehavior.ToString());
+                    sw.WriteLine(context.RandomEnemyWeakness.ToString());
+                    sw.WriteLine(context.RandomWeaknesses.ToString());
+                    sw.Write(context.Patch.GetStringSortedByAddress());
                 }
             }
 
@@ -223,12 +237,90 @@ namespace RandomizerHost.ViewModels
             this.CanOpenContainngFolder = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         }
 
+        public async void ImportSettings(Window in_Window)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.AllowMultiple = false;
+
+            openFileDialog.Filters.Add(
+                new FileDialogFilter()
+                {
+                    Name = @"XML Settings",
+                    Extensions = new List<String>()
+                    {
+                        @"xml"
+                    }
+                });
+
+            openFileDialog.Title = @"Import Settings";
+
+            // Call the ShowDialog method to show the dialog box.
+            String exePath = Assembly.GetExecutingAssembly().Location;
+            String exeDir = Path.GetDirectoryName(exePath);
+            openFileDialog.Directory = exeDir;
+
+            String[] dialogResult = await openFileDialog.ShowAsync(in_Window);
+
+            // Process input if the user clicked OK.
+            if (dialogResult.Length > 0)
+            {
+                String fileName = dialogResult[0];
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+                {
+                    using (XmlReader xmlReader = XmlReader.Create(fileStream, new XmlReaderSettings() { IgnoreComments = true, IgnoreWhitespace = true }))
+                    {
+                        this.AppConfigurationSettings.ReadXml(xmlReader);
+                        xmlReader.Close();
+                    }
+                }
+            }
+        }
+
+        public async void ExportSettings(Window in_Window)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filters.Add(
+                new FileDialogFilter()
+                {
+                    Name = @"XML Settings",
+                    Extensions = new List<String>()
+                    {
+                        @"xml"
+                    }
+                });
+
+            saveFileDialog.Title = @"Export Settings";
+
+            // Call the ShowDialog method to show the dialog box.
+            String exePath = Assembly.GetExecutingAssembly().Location;
+            String exeDir = Path.GetDirectoryName(exePath);
+            saveFileDialog.Directory = exeDir;
+
+            String dialogResult = await saveFileDialog.ShowAsync(in_Window);
+
+            // Process input if the user clicked OK.
+            if (dialogResult?.Length > 0)
+            {
+                String fileName = dialogResult;
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+                {
+                    using (XmlWriter xmlWriter = XmlWriter.Create(fileStream))
+                    {
+                        this.AppConfigurationSettings.WriteXml(xmlWriter);
+                    }
+                }
+            }
+        }
+
 
         //
         // Private Data Members
         //
 
-        private RandoSettings mRandoSettings;
+        private AppConfigurationSettings mAppConfigurationSettings;
+        private RandomizationContext mCurrentRandomizationContext = null;
         private Boolean mIsShowingHint = true;
         private Boolean mCanOpenContainngFolder = false;
     }

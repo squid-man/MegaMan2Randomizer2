@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:RandomizerHost.Converters"
-        xmlns:MM2Lib="clr-namespace:MM2Randomizer;assembly=MM2RandoLib"
         mc:Ignorable="d"
         d:DesignWidth="550"
         d:DesignHeight="600"
@@ -99,7 +98,7 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Margin="4,0,0,0"
-                        Text="{Binding RandoSettings.SourcePath}"
+                        Text="{Binding AppConfigurationSettings.RomSourcePath}"
                     />
                 </DockPanel>
             </Border>
@@ -119,10 +118,10 @@
                         VerticalAlignment="Center"
                     />
 
-                    <TextBox
+                    <TextBlock
                         Margin="4,0,0,0"
-                        IsVisible="{Binding RandoSettings.IsSourcePathValid}"
-                        Text="{Binding RandoSettings.HashStringMD5}"
+                        IsVisible="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
+                        Text="{Binding AppConfigurationSettings.HashStringMD5}"
                     />
                 </DockPanel>
             </Border>
@@ -143,12 +142,12 @@
                         VerticalAlignment="Center"
                     />
 
-                    <TextBox
+                    <TextBlock
                         Grid.Row="3"
                         Grid.Column="1"
                         Margin="4,0,0,0"
-                        IsVisible="{Binding RandoSettings.IsSourcePathValid}"
-                        Text="{Binding RandoSettings.HashStringSHA256}"
+                        IsVisible="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
+                        Text="{Binding AppConfigurationSettings.HashStringSHA256}"
                     />
                 </DockPanel>
             </Border>
@@ -173,7 +172,7 @@
 
                 <TextBlock
                     FontWeight="Bold"
-                    Text="{Binding RandoSettings.HashValidationMessage}"
+                    Text="{Binding AppConfigurationSettings.HashValidationMessage}"
                 />
             </Border>
         </Grid>
@@ -182,7 +181,7 @@
         <DockPanel
             Grid.Row="2"
             HorizontalAlignment="Stretch"
-            IsEnabled="{Binding RandoSettings.IsSourcePathValid}"
+            IsEnabled="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
         >
             <TextBlock
                 Text="Seed:"
@@ -195,7 +194,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Margin="0,3,3,3"
-                Text="{Binding Path=RandoSettings.SeedString}"
+                Text="{Binding Path=AppConfigurationSettings.SeedString}"
             />
         </DockPanel>
 
@@ -235,10 +234,37 @@
 
             <CheckBox
                 Name="CheckBox_CreateLogFile"
-                IsChecked="{Binding RandoSettings.CreateLogFile}"
+                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
             >
                 Create Log File
             </CheckBox>
+        </StackPanel>
+
+        <!-- Export and Import Buttons -->
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="1"
+            Orientation="Vertical"
+        >
+            <Button
+                Name="Button_ImportSettings"
+                Height="30"
+                Margin="2"
+                Command="{Binding ImportSettingsCommand}"
+                CommandParameter="{Binding ElementName=MainWindow}"
+            >
+                Import Settings
+            </Button>
+
+            <Button
+                Name="Button_ExportSettings"
+                Height="30"
+                Margin="2"
+                Command="{Binding ExportSettingsCommand}"
+                CommandParameter="{Binding ElementName=MainWindow}"
+            >
+                Export Settings
+            </Button>
         </StackPanel>
 
         <!--Settings Tabs-->
@@ -272,60 +298,60 @@
                             />
                         </Grid>
 
-                        <Grid x:Name="Grid_WeaponBehavior">
+                        <Grid x:Name="Grid_SpecialWeaponBehavior">
                             <CheckBox
                                 Grid.ColumnSpan="2"
-                                Content="Weapon Behavior"
-                                IsChecked="{Binding Path=RandoSettings.IsWeaponBehaviorRandom}"
+                                Content="Randomize Special Weapon Behavior"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfSpecialWeaponBehavior}"
                             />
                         </Grid>
 
                         <Grid x:Name="Grid_BossWeaknesses">
                             <CheckBox
-                                Content="Boss Weaknesses"
-                                IsChecked="{Binding Path=RandoSettings.IsWeaknessRandom}"
+                                Content="Randomize Boss Weaknesses"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfBossWeaknesses}"
                             />
                         </Grid>
 
-                        <Grid x:Name="Grid_BossRoom">
+                        <Grid x:Name="Grid_RobotMasterLocations">
                             <CheckBox
-                                Content="Boss Room"
-                                IsChecked="{Binding Path=RandoSettings.IsBossInBossRoomRandom}"
+                                Content="Randomize Robot Master Locations"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfRobotMasterLocations}"
                             />
                         </Grid>
 
-                        <Grid x:Name="Grid_BossAI">
+                        <Grid x:Name="Grid_RobotMasterBehavior">
                             <CheckBox
-                                Content="Boss AI"
-                                IsChecked="{Binding Path=RandoSettings.IsBossAIRandom}"
+                                Content="Randomize Robot Master Behavior"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfRobotMasterBehavior}"
                             />
                         </Grid>
 
-                        <Grid x:Name="Grid_Items">
+                        <Grid x:Name="Grid_SpecialItemLocations">
                             <CheckBox
-                                Content="Items 1, 2, and 3 Get"
-                                IsChecked="{Binding Path=RandoSettings.IsItemsRandom}"
+                                Content="Randomize Special Item Locations"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfSpecialItemLocations}"
                             />
                         </Grid>
 
-                        <Grid x:Name="Grid_EnemyLocations">
+                        <Grid x:Name="Grid_EnemySpawns">
                             <CheckBox
-                                Content="Enemy Locations"
-                                IsChecked="{Binding Path=RandoSettings.IsEnemiesRandom}"
+                                Content="Randomize Enemy Spawns"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnemySpawns}"
                             />
                         </Grid>
 
                         <Grid x:Name="Grid_EnemyWeaknesses">
                             <CheckBox
-                                Content="Enemy Weaknesses"
-                                IsChecked="{Binding Path=RandoSettings.IsEnemyWeaknessRandom}"
+                                Content="Randomize Enemy Weaknesses"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnemyWeaknesses}"
                             />
                         </Grid>
 
-                        <Grid x:Name="Grid_StageLayouts">
+                        <Grid x:Name="Grid_FalseFloors">
                             <CheckBox
-                                Content="Stage Layouts"
-                                IsChecked="{Binding Path=RandoSettings.IsTilemapChangesEnabled}"
+                                Content="Randomize False Floors"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfFalseFloors}"
                             />
                         </Grid>
                     </StackPanel>
@@ -340,26 +366,26 @@
                             DockPanel.Dock="Bottom"
                             HorizontalAlignment="Right"
                             IsVisible="False"
-                            IsChecked="{Binding Path=RandoSettings.IsSpoilerFree}">
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableSpoilerFreeMode}">
                         </CheckBox>
 
                         <Grid
-                            x:Name="Grid_FastText"
+                            x:Name="Grid_FasterCutsceneText"
                             DockPanel.Dock="Top"
                         >
                             <CheckBox
-                                Content="Faster Text"
-                                IsChecked="{Binding Path=RandoSettings.FastText}"
+                                Content="Enable Faster Cutscene Text"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableFasterCutsceneText}"
                             />
                         </Grid>
 
                         <Grid
-                            x:Name="Grid_BurstChaser"
+                            x:Name="Grid_BurstChaserMode"
                             DockPanel.Dock="Top"
                         >
                             <CheckBox
-                                Content="Burst Chaser Mode"
-                                IsChecked="{Binding Path=RandoSettings.BurstChaserMode}"
+                                Content="Enable Burst Chaser Mode"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableBurstChaserMode}"
                             />
                         </Grid>
 
@@ -369,7 +395,7 @@
                         >
                             <CheckBox
                                 Content="Hide Stage Names"
-                                IsChecked="{Binding RandoSettings.IsStageNameHidden}"
+                                IsChecked="{Binding AppConfigurationSettings.EnableHiddenStageNames}"
                                 VerticalAlignment="Top"
                             />
                         </Grid>
@@ -386,24 +412,41 @@
 
                     <StackPanel Grid.Column="0" Margin="4">
                         <CheckBox
-                            Name="CheckBox_Colors"
-                            Content="Random Colors"
-                            IsChecked="{Binding Path=RandoSettings.IsColorsRandom}"/>
+                            Name="CheckBox_ColorPalettes"
+                            Content="Randomize Color Palettes"
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfColorPalettes}"
+                        />
 
                         <CheckBox
-                            Name="CheckBox_Music"
-                            Content="Random New Music"
-                            IsChecked="{Binding Path=RandoSettings.IsBGMRandom}"/>
+                            Name="CheckBox_MusicTracks"
+                            Content="Randomize Music Tracks"
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMusicTracks}"
+                        />
 
                         <CheckBox
-                            Name="CheckBox_TextContent"
-                            Content="Random Text Content"
-                            IsChecked="{Binding Path=RandoSettings.IsWeaponNamesRandom}"/>
+                            Name="CheckBox_InGameText"
+                            Content="Randomize In Game Text"
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfInGameText}"
+                        />
 
-                      <CheckBox
-                          Name="CheckBox_DisableFlashing"
-                          Content="Disable Screen Flashing"
-                          IsChecked="{Binding Path=RandoSettings.IsFlashingDisabled}"/>
+                        <CheckBox
+                            Name="CheckBox_DisableFlashingEffects"
+                            Content="Disable Flashing Effects"
+                            IsChecked="{Binding Path=AppConfigurationSettings.DisableFlashingEffects}"
+                        />
+
+                        <CheckBox
+                            Name="CheckBox_ReduceUnderwaterLag"
+                            Content="Reduce Underwater Lag"
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableUnderwaterLagReduction}"
+                        />
+
+                        <CheckBox
+                            Name="CheckBox_DisableDelayScrolling"
+                            Content="Disable Delay Scrolling"
+                            IsChecked="{Binding Path=AppConfigurationSettings.DisableDelayScrolling}"
+                        />
+
                     </StackPanel>
 
                     <!-- Custom Sprite Selection -->
@@ -412,10 +455,11 @@
                             Text="Choose your Player Sprite"
                             HorizontalAlignment="Center"/>
 
+                        <!-- NOTE: Changing the binding here may require code behind changes -->
                         <ComboBox
                             x:Name="ComboBox_PlayerSprite"
                             Margin="32,0"
-                            SelectedItem="{Binding Path=RandoSettings.SelectedPlayer}"
+                            SelectedItem="{Binding Path=AppConfigurationSettings.PlayerSprite}"
                             >
 
                             <ComboBox.ItemTemplate>
@@ -435,28 +479,28 @@
                                 Width="104"
                                 Height="96"
                                 Source="/Assets/sprite_rock.png"
-                                IsVisible="{Binding RandoSettings.SelectedPlayer, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Rockman}"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Rockman}"
                             />
 
                             <Image
                                 Width="104"
                                 Height="96"
                                 Source="/Assets/sprite_proto.png"
-                                IsVisible="{Binding RandoSettings.SelectedPlayer, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Protoman}"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Protoman}"
                             />
 
                             <Image
                                 Width="104"
                                 Height="96"
                                 Source="/Assets/sprite_roll.png"
-                                IsVisible="{Binding RandoSettings.SelectedPlayer, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Roll}"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Roll}"
                             />
 
                             <Image
                                 Width="104"
                                 Height="96"
                                 Source="/Assets/sprite_bass.png"
-                                IsVisible="{Binding RandoSettings.SelectedPlayer, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Bass}"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Bass}"
                             />
                         </Grid>
                     </StackPanel>
@@ -486,12 +530,13 @@
                         VerticalAlignment="Center"
                     />
 
+                    <!-- NOTE: Changing the binding here may require code behind changes -->
                     <ComboBox
                         Grid.Row="0"
                         Grid.Column="1"
                         x:Name="ComboBox_HitPointChargingSpeed"
                         Margin="32,4"
-                        SelectedItem="{Binding Path=RandoSettings.HitPointChargingSpeed}"
+                        SelectedItem="{Binding Path=AppConfigurationSettings.HitPointRefillSpeed}"
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -509,12 +554,13 @@
                         VerticalAlignment="Center"
                     />
 
+                    <!-- NOTE: Changing the binding here may require code behind changes -->
                     <ComboBox
                         Grid.Row="1"
                         Grid.Column="1"
                         x:Name="ComboBox_WeaponEnergyChargingSpeed"
                         Margin="32,4"
-                        SelectedItem="{Binding Path=RandoSettings.WeaponEnergyChargingSpeed}"
+                        SelectedItem="{Binding Path=AppConfigurationSettings.WeaponEnergyRefillSpeed}"
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -532,12 +578,13 @@
                         VerticalAlignment="Center"
                     />
 
+                    <!-- NOTE: Changing the binding here may require code behind changes -->
                     <ComboBox
                         Grid.Row="2"
                         Grid.Column="1"
                         x:Name="ComboBox_EnergyTankChargingSpeed"
                         Margin="32,4"
-                        SelectedItem="{Binding Path=RandoSettings.EnergyTankChargingSpeed}"
+                        SelectedItem="{Binding Path=AppConfigurationSettings.EnergyTankRefillSpeed}"
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -555,12 +602,13 @@
                         VerticalAlignment="Center"
                     />
 
+                    <!-- NOTE: Changing the binding here may require code behind changes -->
                     <ComboBox
                         Grid.Row="3"
                         Grid.Column="1"
                         x:Name="ComboBox_RobotMasterEnergyChargingSpeed"
                         Margin="32,4"
-                        SelectedItem="{Binding Path=RandoSettings.RobotMasterEnergyChargingSpeed}"
+                        SelectedItem="{Binding Path=AppConfigurationSettings.RobotMasterEnergyRefillSpeed}"
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -578,12 +626,13 @@
                         VerticalAlignment="Center"
                     />
 
+                    <!-- NOTE: Changing the binding here may require code behind changes -->
                     <ComboBox
                         Grid.Row="4"
                         Grid.Column="1"
                         x:Name="ComboBox_CastleBossEnergyChargingSpeed"
                         Margin="32,4"
-                        SelectedItem="{Binding Path=RandoSettings.CastleBossEnergyChargingSpeed}"
+                        SelectedItem="{Binding Path=AppConfigurationSettings.CastleBossEnergyRefillSpeed}"
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -593,7 +642,9 @@
                     </ComboBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Experimental" IsEnabled="True">
+            <!-- Make invisible for now -->
+            <TabItem Header="Experimental" IsEnabled="True" IsVisible="False">
+                <!--
                 <Grid Margin="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="93*"/>
@@ -609,15 +660,16 @@
                         <CheckBox
                             Name="CheckBox_ReduceUnderwaterLag"
                             Content="Reduce underwater lag"
-                            IsChecked="{Binding Path=RandoSettings.ReduceUnderwaterLag}"/>
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableReduceUnderwaterLag}"/>
 
                         <CheckBox
                             Name="CheckBox_DisableDelayScrolling"
                             Content="Disable delay scrolling"
-                            IsChecked="{Binding Path=RandoSettings.DisableDelayScrolling}"/>
+                            IsChecked="{Binding Path=AppConfigurationSettings.DisableDelayScrolling}"/>
 
                     </StackPanel>
                 </Grid>
+                -->
             </TabItem>
         </TabControl>
     </Grid>

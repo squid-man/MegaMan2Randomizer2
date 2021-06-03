@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers.Colors
 {
@@ -16,9 +15,8 @@ namespace MM2Randomizer.Randomizers.Colors
         // Constructors
         //
 
-        public RColors(Boolean in_DisableFlashing)
+        public RColors()
         {
-            this.mDisableFlashing = in_DisableFlashing;
         }
 
 
@@ -26,13 +24,13 @@ namespace MM2Randomizer.Randomizers.Colors
         // IRandomizer Methods
         //
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
-            this.RandomizeStageColors(in_Patch, in_Seed);
-            this.RandomizeWeaponColors(in_Patch, in_Seed);
-            this.RandomizeBossColors(in_Patch, in_Seed);
-            this.RandomizeIntroColors(in_Patch, in_Seed);
-            this.RandomizeMenuColors(in_Patch, in_Seed);
+            this.RandomizeStageColors(in_Patch, in_Context);
+            this.RandomizeWeaponColors(in_Patch, in_Context);
+            this.RandomizeBossColors(in_Patch, in_Context);
+            this.RandomizeIntroColors(in_Patch, in_Context);
+            this.RandomizeMenuColors(in_Patch, in_Context);
         }
 
 
@@ -40,7 +38,7 @@ namespace MM2Randomizer.Randomizers.Colors
         // Private Helper Methods
         //
 
-        private void RandomizeMenuColors(Patch in_Patch, ISeed in_Seed)
+        private void RandomizeMenuColors(Patch in_Patch, RandomizationContext in_Context)
         {
             List<ColorSet> StageSelectColorSets = new List<ColorSet>()
             {
@@ -451,11 +449,11 @@ namespace MM2Randomizer.Randomizers.Colors
             for (Int32 i = 0; i < StageSelectColorSets.Count; i++)
             {
                 ColorSet set = StageSelectColorSets[i];
-                set.RandomizeAndWrite(in_Patch, in_Seed, i);
+                set.RandomizeAndWrite(in_Patch, in_Context.Seed, i);
             }
         }
 
-        private void RandomizeWeaponColors(Patch in_Patch, ISeed in_Seed)
+        private void RandomizeWeaponColors(Patch in_Patch, RandomizationContext in_Context)
         {
             // Create lists of possible colors to choose from and shuffle them
             List<Byte> possibleDarkColors = new List<Byte>();
@@ -478,8 +476,8 @@ namespace MM2Randomizer.Randomizers.Colors
             possibleLightColors.Add(0x20);
 
             // Randomize lists, and pick the first 9 and 8 elements to use as new colors
-            possibleDarkColors = in_Seed.Shuffle(possibleDarkColors).ToList();
-            possibleLightColors = in_Seed.Shuffle(possibleLightColors).ToList();
+            possibleDarkColors = in_Context.Seed.Shuffle(possibleDarkColors).ToList();
+            possibleLightColors = in_Context.Seed.Shuffle(possibleLightColors).ToList();
             Queue<Byte> DarkColors = new Queue<Byte>(possibleDarkColors.GetRange(0, 9));
             Queue<Byte> LightColors = new Queue<Byte>(possibleLightColors.GetRange(0, 8));
 
@@ -517,7 +515,7 @@ namespace MM2Randomizer.Randomizers.Colors
             }
         }
 
-        private void RandomizeBossColors(Patch in_Patch, ISeed in_Seed)
+        private void RandomizeBossColors(Patch in_Patch, RandomizationContext in_Context)
         {
             //// Robot Master Color Palettes
             List<Int32> solidColorSolo = new List<Int32>
@@ -593,11 +591,11 @@ namespace MM2Randomizer.Randomizers.Colors
             };
 
             //Int32 rColor = 0;
-            Byte solidColor = 0;// = in_Seed.GetNextElement(goodSolidColors);
+            Byte solidColor = 0;// = in_Context.Seed.GetNextElement(goodSolidColors);
 
             for (Int32 i = 0; i < solidColorSolo.Count; i++)
             {
-                solidColor = in_Seed.NextElement(goodSolidColors);
+                solidColor = in_Context.Seed.NextElement(goodSolidColors);
                 in_Patch.Add(solidColorSolo[i], solidColor, String.Format("Robot Master Color"));
             }
 
@@ -606,7 +604,7 @@ namespace MM2Randomizer.Randomizers.Colors
                 in_Patch.Add(solidColorPair1Main[i], solidColor, String.Format("Robot Master Color"));
 
                 // Make 2nd color brighter. If already bright, make white.
-                solidColor = in_Seed.NextElement(goodSolidColors);
+                solidColor = in_Context.Seed.NextElement(goodSolidColors);
                 Byte solidColorLight = (Byte)(solidColor + 16);
 
                 if (solidColorLight > 0x3C)
@@ -619,8 +617,8 @@ namespace MM2Randomizer.Randomizers.Colors
 
             for (Int32 i = 0; i < solidColorPair2Dark.Count; i++)
             {
-                in_Patch.Add(solidColorPair2Dark[i], in_Seed.NextElement(goodDarkColors), String.Format("Robot Master Color"));
-                in_Patch.Add(solidColorPair2Light[i], in_Seed.NextElement(goodLightColors), String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair2Dark[i], in_Context.Seed.NextElement(goodDarkColors), String.Format("Robot Master Color"));
+                in_Patch.Add(solidColorPair2Light[i], in_Context.Seed.NextElement(goodLightColors), String.Format("Robot Master Color"));
             }
 
 
@@ -629,7 +627,7 @@ namespace MM2Randomizer.Randomizers.Colors
             //
 
             // choose main body color
-            Byte wilyMachineBodyColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte wilyMachineBodyColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte wilyMachineBodyColorReplacementLight;
 
             if (0x0F == wilyMachineBodyColorReplacement)
@@ -652,7 +650,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x02D7DB, wilyMachineBodyColorReplacement, "Wily Machine Dark Gold 2 Color"); // 0x07
 
             // choose front color
-            Byte wilyMachineFrontColorReplacement = in_Seed.NextElement(mediumOnly);
+            Byte wilyMachineFrontColorReplacement = in_Context.Seed.NextElement(mediumOnly);
             Byte wilyMachineFrontColorReplacementLight = (Byte)(wilyMachineFrontColorReplacement + 16);
             Byte wilyMachineFrontColorReplacementLighter = (Byte)(wilyMachineFrontColorReplacementLight + 32);
 
@@ -660,7 +658,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x02D7D9, wilyMachineFrontColorReplacement, "Wily Machine Red 2 Color"); // 0x15
             in_Patch.Add(0x02D7D3, wilyMachineFrontColorReplacementLighter, "Wily Machine Light Red 1 Color"); // 0x15
 
-            if (true == this.mDisableFlashing)
+            if (true == in_Context.Settings.DisableFlashingEffects)
             {
                 in_Patch.Add(0x2DA94, wilyMachineFrontColorReplacementLight, "Wily Machine Flash Color");
                 in_Patch.Add(0x2DA21, wilyMachineFrontColorReplacementLighter, "Wily Machine Restore Color");
@@ -672,7 +670,7 @@ namespace MM2Randomizer.Randomizers.Colors
             //
 
             // choose orange replacement
-            Byte dragonOrangeColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte dragonOrangeColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte dragonOrangeColorReplacementLight;
 
             if (0x0F == dragonOrangeColorReplacement)
@@ -693,14 +691,14 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x0034C6, dragonOrangeColorReplacementLightest, "Dragon Orange Mouth");
             in_Patch.Add(0x0034C7, dragonOrangeColorReplacementLighter, "Dragon Orange Color 3");
 
-            if (true == this.mDisableFlashing)
+            if (true == in_Context.Settings.DisableFlashingEffects)
             {
                 in_Patch.Add(0x002D1B0, dragonOrangeColorReplacementLightest, "Dragon Hit Flash Color");
                 in_Patch.Add(0x002D185, dragonOrangeColorReplacementLighter, "Dragon Hit Restore Color");
             }
 
             // Choose green replacement
-            Byte dragonGreenColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte dragonGreenColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte dragonGreenColorReplacementLight;
 
             if (0x0F == dragonGreenColorReplacement)
@@ -724,7 +722,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x02CF91, dragonGreenColorReplacementLight, "Dragon Dark Green 4");
 
             // choose blue replacement
-            Byte dragonBlueColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte dragonBlueColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte dragonBlueColorReplacementLight;
 
             if (0x0F == dragonBlueColorReplacement)
@@ -746,7 +744,7 @@ namespace MM2Randomizer.Randomizers.Colors
             //
 
             // Choose red replacement
-            Byte gutstankRedColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte gutstankRedColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte gutstankRedColorReplacementLight;
 
             if (0x0F == gutstankRedColorReplacement)
@@ -771,7 +769,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x00BF4D, gutstankRedColorReplacementLight, "Guts Light Red 6");
 
             // Choose blue replacement
-            Byte gutstankBlueColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte gutstankBlueColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte gutstankBlueColorReplacementLight;
 
             if (0x0F == gutstankBlueColorReplacement)
@@ -790,7 +788,7 @@ namespace MM2Randomizer.Randomizers.Colors
 
 
             // Choose orange replacement
-            Byte gutstankOrangeColorReplacement = in_Seed.NextElement(darkOnly);
+            Byte gutstankOrangeColorReplacement = in_Context.Seed.NextElement(darkOnly);
             Byte gutstankOrangeColorReplacementLight;
 
             if (0x0F == gutstankOrangeColorReplacement)
@@ -831,23 +829,23 @@ namespace MM2Randomizer.Randomizers.Colors
             mediumAndLight.AddRange(lightOnly);
 
             // Alien Body Color
-            Byte alienSolidBodyColor = in_Seed.NextElement(mediumAndLight);
+            Byte alienSolidBodyColor = in_Context.Seed.NextElement(mediumAndLight);
             in_Patch.Add(0x02DC74, alienSolidBodyColor, String.Format("Alien Body Solid Color"));
 
-            Byte alienBodyColor = in_Seed.NextElement(mediumOnly);
+            Byte alienBodyColor = in_Context.Seed.NextElement(mediumOnly);
             in_Patch.Add(0x02DC76, alienBodyColor, String.Format("Alien Body Dark Color"));
             in_Patch.Add(0x02DC75, (Byte)(alienBodyColor + 16), String.Format("Alien Body Light Color"));
 
             // Alien Head Color
-            Byte alienSolidHeadColor = in_Seed.NextElement(mediumAndLight);
+            Byte alienSolidHeadColor = in_Context.Seed.NextElement(mediumAndLight);
             in_Patch.Add(0x02DC78, alienSolidHeadColor, String.Format("Alien Head Solid Color"));
 
-            Byte alienHeadColor = in_Seed.NextElement(mediumOnly);
+            Byte alienHeadColor = in_Context.Seed.NextElement(mediumOnly);
             in_Patch.Add(0x02DC7A, alienHeadColor, String.Format("Alien Head Dark Color"));
             in_Patch.Add(0x02DC79, (Byte)(alienHeadColor + 16), String.Format("Alien Head Light Color"));
         }
 
-        private void RandomizeIntroColors(Patch in_Patch, ISeed in_Seed)
+        private void RandomizeIntroColors(Patch in_Patch, RandomizationContext in_Context)
         {
             List<ColorSet> IntroColorSets = new List<ColorSet>()
             {
@@ -1008,11 +1006,11 @@ namespace MM2Randomizer.Randomizers.Colors
             for (Int32 i = 0; i < IntroColorSets.Count; i++)
             {
                 ColorSet set = IntroColorSets[i];
-                set.RandomizeAndWrite(in_Patch, in_Seed, i);
+                set.RandomizeAndWrite(in_Patch, in_Context.Seed, i);
             }
         }
 
-        private void RandomizeStageColors(Patch in_Patch, ISeed in_Seed)
+        private void RandomizeStageColors(Patch in_Patch, RandomizationContext in_Context)
         {
             List<ColorSet> StagesColorSets = new List<ColorSet>()
             {
@@ -2864,7 +2862,7 @@ namespace MM2Randomizer.Randomizers.Colors
             for (Int32 i = 0; i < StagesColorSets.Count; i++)
             {
                 ColorSet set = StagesColorSets[i];
-                set.RandomizeAndWrite(in_Patch, in_Seed, i);
+                set.RandomizeAndWrite(in_Patch, in_Context.Seed, i);
             }
         }
 
@@ -2873,10 +2871,6 @@ namespace MM2Randomizer.Randomizers.Colors
         // Private Data Members
         //
 
-        private Boolean mDisableFlashing;
-
         private const Int32 MEGA_MAN_COLOR_ADDRESS = 0x03d314;
-
-
     }
 }

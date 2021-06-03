@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -29,7 +28,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards which weapon.
         /// </summary>
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             // StageBeat    Address    Value
             // -----------------------------
@@ -41,7 +40,7 @@ namespace MM2Randomizer.Randomizers
             // Flash Man    0x03C28E   32
             // Metal Man    0x03C28F   64
             // Crash Man    0x03C290   128
-            this.mNewWeaponOrder = in_Seed.Shuffle(this.mNewWeaponOrder).ToList();
+            this.mNewWeaponOrder = in_Context.Seed.Shuffle(this.mNewWeaponOrder).ToList();
 
             // Create table for which weapon is awarded by which robot master
             // This also affects which portrait is blacked out on the stage select

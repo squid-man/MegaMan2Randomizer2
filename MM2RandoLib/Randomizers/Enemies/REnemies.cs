@@ -39,7 +39,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
         public REnemies() { }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             this.EnemyTypes.Clear();
             this.EnemiesByType.Clear();
@@ -50,7 +50,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             this.ChangeRoomSpriteBankSlots(in_Patch);
             this.InitializeEnemies();
             this.InitializeRooms();
-            this.Execute(in_Patch, in_Seed);
+            this.Execute(in_Patch, in_Context.Seed);
 
             MiscHacks.DisableChangkeyMakerPaletteSwap(in_Patch);
         }
