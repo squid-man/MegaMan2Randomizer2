@@ -8,12 +8,12 @@
     <Authors>Duckfist, Squidman, Dagit</Authors>
     <Company />
     <Product>Mega Man 2 Randomizer</Product>
-    <Version>0.6.1</Version>
+    <Version>0.6.2</Version>
     <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
     <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.1.*</AssemblyVersion>
+    <AssemblyVersion>0.6.2.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
   </PropertyGroup>
   <ItemGroup>
@@ -35,6 +35,7 @@
     <PackageReference Include="Avalonia" Version="0.9.12" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.12" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.12" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MM2RandoLib\MM2RandoLib.csproj" />

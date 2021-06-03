@@ -97,22 +97,22 @@ namespace MM2Randomizer.Randomizers
             });
         }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             debug = new StringBuilder();
             sounds = GetSoundList();
             AmmoUsage = new List<Double>();
             AmmoUsage.Add(0); // Buster is free
 
-            ChangeHeat(in_Patch, in_Seed);
-            ChangeAir(in_Patch, in_Seed);
-            ChangeWood(in_Patch, in_Seed);
-            ChangeBubble(in_Patch, in_Seed);
-            ChangeQuick(in_Patch, in_Seed);
-            ChangeFlash(in_Patch, in_Seed);
-            ChangeMetal(in_Patch, in_Seed);
-            ChangeCrash(in_Patch, in_Seed);
-            ChangeItem1(in_Patch, in_Seed);
+            ChangeHeat(in_Patch, in_Context.Seed);
+            ChangeAir(in_Patch, in_Context.Seed);
+            ChangeWood(in_Patch, in_Context.Seed);
+            ChangeBubble(in_Patch, in_Context.Seed);
+            ChangeQuick(in_Patch, in_Context.Seed);
+            ChangeFlash(in_Patch, in_Context.Seed);
+            ChangeMetal(in_Patch, in_Context.Seed);
+            ChangeCrash(in_Patch, in_Context.Seed);
+            ChangeItem1(in_Patch, in_Context.Seed);
 
             debug.AppendLine("Ammo Usage");
             debug.AppendLine("P     H     A     W     B     Q     M     C");

@@ -5,7 +5,6 @@ using System.Text;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers.Stages
 {
@@ -20,6 +19,7 @@ namespace MM2Randomizer.Randomizers.Stages
         {
             return debug.ToString();
         }
+
 
         public static List<StageFromSelect> VanillaStageSelect()
         {
@@ -134,7 +134,7 @@ namespace MM2Randomizer.Randomizers.Stages
         /// <summary>
         /// Shuffle the Robot Master stages.  This shuffling will not be indicated by the Robot Master portraits.
         /// </summary>
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
 
             StageSelect = VanillaStageSelect();
@@ -147,7 +147,7 @@ namespace MM2Randomizer.Randomizers.Stages
                 newStageOrder.Add(i);
             }
 
-            newStageOrder = in_Seed.Shuffle(newStageOrder).ToList();
+            newStageOrder = in_Context.Seed.Shuffle(newStageOrder).ToList();
 
             debug.AppendLine("Stage Select:");
             for (Int32 i = 0; i < count; i++)
@@ -158,7 +158,7 @@ namespace MM2Randomizer.Randomizers.Stages
                 stage.PortraitDestination.New = StageSelect[newStageOrder[i]].PortraitDestination.Old;
 
                 // Erase the portrait text if StageNameHidden flag is set
-                if (RandomMM2.Settings.IsStageNameHidden)
+                if (in_Context.Settings.EnableHiddenStageNames)
                 {
                     for (Int32 k = 0; k < 6; k++)
                     {

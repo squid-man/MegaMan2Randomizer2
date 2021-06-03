@@ -1,8 +1,6 @@
 ﻿using System;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Random;
-using MM2Randomizer.Randomizers.Stages.Components;
-using Newtonsoft.Json;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -11,12 +9,12 @@ namespace MM2Randomizer.Randomizers
         public RTilemap() { }
 
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             //ReadLevelComponentJSON(p, r);
 
-            RTilemap.ChangeW4FloorsBeforeSpikes(in_Patch, in_Seed);
-            RTilemap.ChangeW4FloorsSpikePit(in_Patch, in_Seed);
+            RTilemap.ChangeW4FloorsBeforeSpikes(in_Patch, in_Context.Seed);
+            RTilemap.ChangeW4FloorsSpikePit(in_Patch, in_Context.Seed);
         }
 
         /*

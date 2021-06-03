@@ -5,7 +5,6 @@ using System.Text;
 using MM2Randomizer.Data;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
-using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers.Enemies
 {
@@ -42,7 +41,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             return debug.ToString();
         }
 
-        public void Randomize(Patch in_Patch, ISeed in_Seed)
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             EnemyWeaknessSet enemyWeaknessSet = Properties.Resources.EnemyWeaknessSet.Deserialize<EnemyWeaknessSet>();
 
@@ -63,14 +62,14 @@ namespace MM2Randomizer.Randomizers.Enemies
                 }
             }
 
-            shotP = in_Seed.Shuffle(shotP).ToList();
-            shotH = in_Seed.Shuffle(shotH).ToList();
-            shotA = in_Seed.Shuffle(shotA).ToList();
-            shotW = in_Seed.Shuffle(shotW).ToList();
-            shotB = in_Seed.Shuffle(shotB).ToList();
-            shotQ = in_Seed.Shuffle(shotQ).ToList();
-            shotC = in_Seed.Shuffle(shotC).ToList();
-            shotM = in_Seed.Shuffle(shotM).ToList();
+            shotP = in_Context.Seed.Shuffle(shotP).ToList();
+            shotH = in_Context.Seed.Shuffle(shotH).ToList();
+            shotA = in_Context.Seed.Shuffle(shotA).ToList();
+            shotW = in_Context.Seed.Shuffle(shotW).ToList();
+            shotB = in_Context.Seed.Shuffle(shotB).ToList();
+            shotQ = in_Context.Seed.Shuffle(shotQ).ToList();
+            shotC = in_Context.Seed.Shuffle(shotC).ToList();
+            shotM = in_Context.Seed.Shuffle(shotM).ToList();
 
             // Force Buster to always do 1 damage to minibosses
             shotP[EnemyIndexInShotArray_Friender] = 0x01;
