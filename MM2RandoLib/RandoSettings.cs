@@ -241,7 +241,6 @@ namespace MM2Randomizer
         /// 
         /// </summary>
         public Boolean IsWeaponNamesRandom { get; set; }
-
         public Boolean IsFlashingDisabled { get; set; }
 
         /// <summary>

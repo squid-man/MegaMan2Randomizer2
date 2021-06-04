@@ -83,7 +83,6 @@ namespace MM2Randomizer.Patcher
             return ConvertDictToString(sortDict);
         }
 
-
         public String GetString()
         {
             return ConvertDictToString((IOrderedEnumerable<KeyValuePair<Int32, ChangeByteRecord>>)Bytes);

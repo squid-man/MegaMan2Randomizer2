@@ -23,7 +23,6 @@ namespace MM2Randomizer.Randomizers
             // 0x03C296 - Item # from Flash Man
             // 0x03C297 - Item # from Metal Man
             // 0x03C298 - Item # from Crash Man
-
             List<EItemNumber> itemGetList = new List<EItemNumber>()
             {
                 EItemNumber.None,

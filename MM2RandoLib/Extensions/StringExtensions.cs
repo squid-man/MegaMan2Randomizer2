@@ -306,7 +306,6 @@ namespace MM2Randomizer.Extensions
             { '!',  0xDF },
         };
 
-
         public static Dictionary<Char, Byte> CreditsCharacterLookup = new Dictionary<Char, Byte>()
         {
             { ' ',  0x00},
