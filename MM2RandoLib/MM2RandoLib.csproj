@@ -3,7 +3,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
-        <Version>0.6.0</Version>
+        <Version>0.6.1</Version>
         <Copyright></Copyright>
         <Description>.NET library that can generate a randomized ROM patch for Mega Man 2.</Description>
         <Authors>duckfist, squidman, dagit</Authors>
@@ -11,8 +11,8 @@
         <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
         <PackageTags></PackageTags>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <AssemblyVersion>0.6.0.*</AssemblyVersion>
-        <FileVersion>0.6.0.0</FileVersion>
+        <AssemblyVersion>0.6.1.*</AssemblyVersion>
+        <FileVersion>0.6.1.0</FileVersion>
         <Deterministic>false</Deterministic>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Platforms>AnyCPU;x64</Platforms>
@@ -30,6 +30,9 @@
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
+      <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+      <PackageReference Include="Troschuetz.Random" Version="5.0.1" />
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Properties\Resources.Designer.cs">
