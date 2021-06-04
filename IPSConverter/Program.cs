@@ -7,6 +7,8 @@ namespace IPSConverter
     {
         static void Main(string[] args)
         {
+            Range r = new Range(1, 5);
+            Console.WriteLine("Range end: " + r.End);
             if(args.Length < 1)
             {
                 Console.WriteLine("Expected IPS filename");
@@ -22,6 +24,7 @@ namespace IPSConverter
                     Console.WriteLine("" + hunk);
 
                 }
+                patch.EditsAreDisjoint();
             }
         }
     }

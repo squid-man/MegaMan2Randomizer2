@@ -16,6 +16,62 @@ namespace IPSConverter.IPS
 
         public readonly IList<Hunk> Hunks = new List<Hunk>();
 
+        private static int CompareRangesByOffset(Range l, Range r)
+        {
+            return l.Start.Value.CompareTo(r.Start.Value);
+        }
+
+        private IList<Hunk> SelectByOffset(Int32 in_Offset)
+        {
+            IList<Hunk> copy = Hunks.ToList();
+            return copy.Where(hunk => hunk.EditRange.Start.Value <= in_Offset && hunk.EditRange.End.Value < in_Offset).ToList();
+        }
+
+        public bool EditsAreDisjoint()
+        {
+            List<Range> ranges = new List<Range>();
+            foreach (Hunk h in Hunks)
+            {
+                ranges.Add(h.EditRange);
+            }
+            ranges.Sort(CompareRangesByOffset);
+            IList<Hunk> conflicts = new List<Hunk>();
+            foreach (Range r in ranges)
+            {
+                IEnumerable<int> re = Enumerable.Range(r.Start.Value, r.End.Value - r.Start.Value + 1);
+                foreach (Range l in ranges)
+                {
+                    IEnumerable<int> le = Enumerable.Range(l.Start.Value, l.End.Value - l.Start.Value + 1);
+                    // TODO: not sure if this is the correct equality
+                    if (r.Equals(l))
+                    {
+                        continue;
+                    }
+                    IEnumerable<int> intersection = re.ToArray().Intersect(le.ToArray());
+                    //Console.WriteLine($"r = {r}, re = {String.Join(" ", re.ToArray())}");
+                    //Console.WriteLine($"l = {l}, le = {String.Join(" ", le.ToArray())}");
+                    //Console.WriteLine($"r = {r}, l = {l}, intersection.Any = {intersection.Any()}, intersection = {0}", String.Join(" ", intersection.ToArray()));
+                    if (intersection.Any())
+                    {
+                        //Console.WriteLine($"r = {r}, l = {l}");
+                    }
+                    foreach (int i in intersection)
+                    {
+                        //Console.WriteLine($"Multiple writes to {i}, in {r} and {l}");
+                        conflicts = conflicts.Concat(SelectByOffset(i)).ToList();
+                        //Console.WriteLine($"Multiple writes to 0x{i:X}");
+                    }
+                }
+            }
+            conflicts = conflicts.Distinct().ToList();
+            Console.WriteLine("The following hunks have conflicting edits:");
+            foreach (Hunk c in conflicts)
+            {
+                Console.WriteLine("" + c);
+            }
+            return false;
+        }
+
         public void Parse(Stream in_Stream)
         {
             Hunks.Clear();
@@ -138,6 +194,14 @@ namespace IPSConverter.IPS
 
         public abstract IEnumerator<Int32> GetEnumerator();
         public abstract T Match<T>(Func<RegularHunk, T> Regular, Func<RLEHunk, T> RLE);
+
+        public Range EditRange
+        {
+            get
+            {
+                return new(Offset, Offset + Count - 1);
+            }
+        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
