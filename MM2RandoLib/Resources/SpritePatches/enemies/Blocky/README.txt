@@ -1,1 +1,0 @@
-MM4Totem_blocky.ips ripped from MM4 by ProdigyRTA

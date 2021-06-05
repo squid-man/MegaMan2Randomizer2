@@ -14,7 +14,7 @@ using ReactiveUI;
 
 namespace RandomizerHost.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ReactiveObject
     {
         //
         // Constructor

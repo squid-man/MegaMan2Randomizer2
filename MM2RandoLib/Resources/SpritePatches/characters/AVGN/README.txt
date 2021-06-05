@@ -1,1 +1,0 @@
-AVGN sprite ripped by Charlieboy, credit for AVGN sprite to ABOHICCUPS
