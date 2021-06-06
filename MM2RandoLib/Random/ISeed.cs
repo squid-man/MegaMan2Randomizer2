@@ -48,5 +48,7 @@ namespace MM2Randomizer.Random
         // IEnumerable Methods
         T NextElement<T>(IEnumerable<T> in_Elements);
         IList<T> Shuffle<T>(IEnumerable<T> in_List);
+
+        Dictionary<TKey, TValue> Shuffle<TKey, TValue>(IDictionary<TKey, TValue> in_Dict);
     }
 }

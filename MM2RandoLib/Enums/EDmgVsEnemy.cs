@@ -18,16 +18,21 @@ namespace MM2Randomizer.Enums
             get; private set;
         }
 
+        public EWeaponIndex Index
+        {
+            get; private set;
+        }
+
         public static Dictionary<Int32, EDmgVsEnemy> Addresses { get; set; }
 
-        public static readonly EDmgVsEnemy DamageP = new EDmgVsEnemy(0x03E9A8, "Buster");
-        public static readonly EDmgVsEnemy DamageH = new EDmgVsEnemy(0x03EA24, "Atomic Fire");
-        public static readonly EDmgVsEnemy DamageA = new EDmgVsEnemy(0x03EA9C, "Air Shooter");
-        public static readonly EDmgVsEnemy DamageW = new EDmgVsEnemy(0x03EB14, "Leaf Shield");
-        public static readonly EDmgVsEnemy DamageB = new EDmgVsEnemy(0x03EB8C, "Bubble Lead");
-        public static readonly EDmgVsEnemy DamageQ = new EDmgVsEnemy(0x03EC04, "Quick Boomerang");
-        public static readonly EDmgVsEnemy DamageM = new EDmgVsEnemy(0x03ECF4, "Metal Blade");
-        public static readonly EDmgVsEnemy DamageC = new EDmgVsEnemy(0x03EC7C, "Clash Bomber");
+        public static readonly EDmgVsEnemy DamageP = new EDmgVsEnemy(EWeaponIndex.Buster, 0x03E9A8, "Buster");
+        public static readonly EDmgVsEnemy DamageH = new EDmgVsEnemy(EWeaponIndex.Heat, 0x03EA24, "Atomic Fire");
+        public static readonly EDmgVsEnemy DamageA = new EDmgVsEnemy(EWeaponIndex.Air, 0x03EA9C, "Air Shooter");
+        public static readonly EDmgVsEnemy DamageW = new EDmgVsEnemy(EWeaponIndex.Wood, 0x03EB14, "Leaf Shield");
+        public static readonly EDmgVsEnemy DamageB = new EDmgVsEnemy(EWeaponIndex.Bubble, 0x03EB8C, "Bubble Lead");
+        public static readonly EDmgVsEnemy DamageQ = new EDmgVsEnemy(EWeaponIndex.Quick, 0x03EC04, "Quick Boomerang");
+        public static readonly EDmgVsEnemy DamageM = new EDmgVsEnemy(EWeaponIndex.Metal, 0x03ECF4, "Metal Blade");
+        public static readonly EDmgVsEnemy DamageC = new EDmgVsEnemy(EWeaponIndex.Clash, 0x03EC7C, "Clash Bomber");
 
         static EDmgVsEnemy()
         {
@@ -44,8 +49,9 @@ namespace MM2Randomizer.Enums
             };
         }
 
-        private EDmgVsEnemy(Int32 address, String name)
+        private EDmgVsEnemy(EWeaponIndex index, Int32 address, String name)
         {
+            this.Index = index;
             this.Address = address;
             this.WeaponName = name;
         }
@@ -93,25 +99,25 @@ namespace MM2Randomizer.Enums
         /// 
         /// </summary>
         /// <returns></returns>
-        public static List<EDmgVsEnemy> GetTables(Boolean includeBuster)
+        public static Dictionary<EWeaponIndex, EDmgVsEnemy> GetTables(Boolean includeBuster)
         {
-            List<EDmgVsEnemy> list = new List<EDmgVsEnemy>()
+            Dictionary<EWeaponIndex, EDmgVsEnemy> dict = new Dictionary<EWeaponIndex, EDmgVsEnemy>()
             {
-                DamageH,
-                DamageA,
-                DamageW,
-                DamageB,
-                DamageQ,
-                DamageM,
-                DamageC,
+                { EWeaponIndex.Heat, DamageH },
+                { EWeaponIndex.Air, DamageA },
+                { EWeaponIndex.Wood, DamageW },
+                { EWeaponIndex.Bubble, DamageB },
+                { EWeaponIndex.Quick, DamageQ },
+                { EWeaponIndex.Metal, DamageM },
+                { EWeaponIndex.Clash, DamageC },
             };
 
             if (includeBuster)
             {
-                list.Insert(0, DamageP);
+                dict.Add(EWeaponIndex.Buster, DamageP);
             }
 
-            return list;
+            return dict;
         }
 
         /// <summary>

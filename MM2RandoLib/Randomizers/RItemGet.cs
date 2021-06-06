@@ -42,7 +42,7 @@ namespace MM2Randomizer.Randomizers
                 in_Patch.Add(
                     (Int32)EItemStageAddress.HeatMan + index,
                     (Byte)itemGetOrder[index],
-                    String.Format("{0}man Item Get", ((EDmgVsBoss.Offset)index).ToString()));
+                    String.Format("{0}man Item Get", ((EDmgVsBoss.Offset)(EBossIndex)index).ToString()));
             }
         }
     }
