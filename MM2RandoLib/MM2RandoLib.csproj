@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
         <Version>0.6.2</Version>
@@ -17,6 +17,9 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <Platforms>AnyCPU;x64</Platforms>
         <Company />
+        <ApplicationIcon />
+        <OutputType>Library</OutputType>
+        <StartupObject />
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
       <DefineConstants>DEBUG;TRACE</DefineConstants>
