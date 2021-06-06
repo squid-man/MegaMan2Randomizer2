@@ -492,8 +492,8 @@ namespace MM2Randomizer.Randomizers.Colors
                 Byte light = LightColors.Dequeue();
 
                 Int32 pos = startAddress + 0x04 + i * 0x04;
-                in_Patch.Add(pos, light, String.Format("{0} Weapon Color Light", ((EDmgVsBoss.Offset)i).ToString()));
-                in_Patch.Add(pos+1, dark, String.Format("{0} Weapon Color Dark", ((EDmgVsBoss.Offset)i).ToString()));
+                in_Patch.Add(pos, light, String.Format("{0} Weapon Color Light", ((EDmgVsBoss.Offset)(EBossIndex)i).ToString()));
+                in_Patch.Add(pos+1, dark, String.Format("{0} Weapon Color Dark", ((EDmgVsBoss.Offset)(EBossIndex)i).ToString()));
 
                 if (i == 0)
                 {

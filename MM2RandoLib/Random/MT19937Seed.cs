@@ -169,6 +169,14 @@ namespace MM2Randomizer.Random
             return in_List.OrderBy(x => this.mRandom.Next()).ToList();
         }
 
+        public Dictionary<TKey, TValue> Shuffle<TKey, TValue>(IDictionary<TKey, TValue> in_Dict)
+        {
+            List<TValue> values = Shuffle(in_Dict.Values).ToList();
+
+            return in_Dict.Keys
+                .Zip(values, (key, value) => new KeyValuePair<TKey, TValue>(key, value))
+                .ToDictionary(x => x.Key, x => x.Value);
+        }
 
         //
         // Private Data Members

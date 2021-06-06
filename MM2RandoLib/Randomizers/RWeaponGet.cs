@@ -45,9 +45,10 @@ namespace MM2Randomizer.Randomizers
             // Create table for which weapon is awarded by which robot master
             // This also affects which portrait is blacked out on the stage select
             // This also affects which teleporter deactivates after defeating a Wily 5 refight boss
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in Utilities.MiscHacks.GetRobos())
             {
-                in_Patch.Add((Int32)(ERMStageWeaponAddress.HeatMan + i), (Byte)this.mNewWeaponOrder[i], $"{(EDmgVsBoss.Offset)i} Weapon Get");
+                // TODO: This could use more polish
+                in_Patch.Add((Int32)(ERMStageWeaponAddress.HeatMan + (Int32)i), (Byte)this.mNewWeaponOrder[(Int32)i], $"{(EDmgVsBoss.Offset)i} Weapon Get");
             }
 
             // Create a copy of the default weapon order table to be used by teleporter function
@@ -74,27 +75,30 @@ namespace MM2Randomizer.Randomizers
             }
         }
 
-        public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
+        public void FixPortraits<T>(ref Dictionary<EBossIndex, T> portraitBG_x, ref Dictionary<EBossIndex, T> portraitBG_y)
         {
             // Since the acquired-weapons table's elements are powers of two, get a new array of their 0-7 index
-            Int32[] newWeaponIndex = GetShuffleIndexPermutation();
+            Dictionary<EBossIndex, EBossIndex> newWeaponIndex = GetShuffleIndexPermutation();
 
             // Permute portrait x/y values via the shuffled acquired-weapons array 
-            Byte[] cpy = new Byte[8];
+            Dictionary<EBossIndex, T> cpy = new Dictionary<EBossIndex, T>();
 
-            for (Int32 i = 0; i < 8; i++)
+            List<EBossIndex> bosses = Utilities.MiscHacks.GetRobos();
+
+            foreach (EBossIndex i in bosses)
             {
                 cpy[newWeaponIndex[i]] = portraitBG_y[i];
             }
 
-            Array.Copy(cpy, portraitBG_y, 8);
+            portraitBG_y = new Dictionary<EBossIndex, T>(cpy);
+            cpy.Clear();
 
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in bosses)
             {
                 cpy[newWeaponIndex[i]] = portraitBG_x[i];
             }
 
-            Array.Copy(cpy, portraitBG_x, 8);
+            portraitBG_x = new Dictionary<EBossIndex, T>(cpy);
         }
 
         /// <summary>
@@ -104,21 +108,91 @@ namespace MM2Randomizer.Randomizers
         /// <returns>An array of the new locations of the 8 awarded weapons. The index represents the original robot master index,
         /// in the order H A W B Q F M C. The value represents the index of the new location.
         /// </returns>
-        public Int32[] GetShuffleIndexPermutation()
+        public Dictionary<EBossIndex, EBossIndex> GetShuffleIndexPermutation()
         {
-            Int32[] newWeaponIndex = new Int32[8];
-            for (Int32 i = 0; i < 8; i++)
+
+            List<EBossIndex> bosses = Utilities.MiscHacks.GetRobos();
+            Dictionary<EBossIndex, EBossIndex> newWeaponIndex = new Dictionary<EBossIndex, EBossIndex>();
+
+            for (Int32 i = 0; i < bosses.Count; i++)
             {
-                Int32 j = 0;
-                Byte val = (Byte)this.mNewWeaponOrder[i];
-                while (val != 0)
-                {
-                    val = (Byte)(val >> 1);
-                    j++;
-                }
-                newWeaponIndex[i] = j - 1;
+                EBossIndex origIndex = bosses.ElementAt(i);
+                EBossIndex newIndex = GetBossIndex(this.mNewWeaponOrder[i]);
+                newWeaponIndex[origIndex] = newIndex;
             }
+
             return newWeaponIndex;
         }
+
+        public static EWeaponIndex GetWeaponIndex(ERMWeaponValueBit in_WeaponValueBit)
+        {
+            EWeaponIndex idx;
+            switch (in_WeaponValueBit)
+            {
+                case ERMWeaponValueBit.HeatMan:
+                    idx = EWeaponIndex.Heat;
+                    break;
+                case ERMWeaponValueBit.AirMan:
+                    idx = EWeaponIndex.Air;
+                    break;
+                case ERMWeaponValueBit.WoodMan:
+                    idx = EWeaponIndex.Wood;
+                    break;
+                case ERMWeaponValueBit.BubbleMan:
+                    idx = EWeaponIndex.Bubble;
+                    break;
+                case ERMWeaponValueBit.QuickMan:
+                    idx = EWeaponIndex.Quick;
+                    break;
+                case ERMWeaponValueBit.FlashMan:
+                    idx = EWeaponIndex.Flash;
+                    break;
+                case ERMWeaponValueBit.MetalMan:
+                    idx = EWeaponIndex.Metal;
+                    break;
+                case ERMWeaponValueBit.CrashMan:
+                    idx = EWeaponIndex.Clash;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException();
+            }
+            return idx;
+        }
+
+        public static EBossIndex GetBossIndex(ERMWeaponValueBit in_WeaponValueBit)
+        {
+            EBossIndex idx;
+            switch (in_WeaponValueBit)
+            {
+                case ERMWeaponValueBit.HeatMan:
+                    idx = EBossIndex.Heat;
+                    break;
+                case ERMWeaponValueBit.AirMan:
+                    idx = EBossIndex.Air;
+                    break;
+                case ERMWeaponValueBit.WoodMan:
+                    idx = EBossIndex.Wood;
+                    break;
+                case ERMWeaponValueBit.BubbleMan:
+                    idx = EBossIndex.Bubble;
+                    break;
+                case ERMWeaponValueBit.QuickMan:
+                    idx = EBossIndex.Quick;
+                    break;
+                case ERMWeaponValueBit.FlashMan:
+                    idx = EBossIndex.Flash;
+                    break;
+                case ERMWeaponValueBit.MetalMan:
+                    idx = EBossIndex.Metal;
+                    break;
+                case ERMWeaponValueBit.CrashMan:
+                    idx = EBossIndex.Clash;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException();
+            }
+            return idx;
+        }
+
     }
 }

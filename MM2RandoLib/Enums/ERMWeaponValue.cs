@@ -29,12 +29,15 @@ namespace MM2Randomizer.Enums
 
     public enum EWeaponIndex
     {
-        Heat = 0x01,
-        Air = 0x02,
-        Wood = 0x03,
-        Bubble = 0x04,
-        Quick = 0x05,
-        Clash = 0x06,
-        Metal = 0x07,
+        Buster = 0,
+        Heat = 1,
+        Air = 2,
+        Wood = 3,
+        Bubble = 4,
+        Quick = 5,
+        Flash = 6,
+        Metal = 7,
+        Clash = 8
     }
+
 }
