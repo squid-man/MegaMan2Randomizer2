@@ -12,7 +12,7 @@ namespace MM2Randomizer.Randomizers
     {
         private List<ESoundID> sounds;
 
-        // Buster Heat Air Wood Bubble Quick Metal Clash
+        // Buster Heat Air Wood Bubble Quick Metal Crash
         private static IDictionary<EWeaponIndex, Double> AmmoUsage;
 
         public static Double GetAmmoUsage(EWeaponIndex weapon)
@@ -48,7 +48,7 @@ namespace MM2Randomizer.Randomizers
                 ESoundID.DamageEnemy,
                 ESoundID.Dragon,
                 ESoundID.Tink,
-                ESoundID.ClashAttach,
+                ESoundID.CrashAttach,
                 ESoundID.Cursor,
                 ESoundID.TeleportIn,
                 ESoundID.WeaponW,
@@ -615,7 +615,7 @@ namespace MM2Randomizer.Randomizers
             //0x03DB99 - C ammo per shot (04) (do 1-3)
             Int32 ammoUse = in_Seed.NextInt32(0x03) + 0x01;
             in_Patch.Add(0x03DB99, (Byte)ammoUse, "(C) | Ammo Usage");
-            AmmoUsage.Add(EWeaponIndex.Clash, ammoUse);
+            AmmoUsage.Add(EWeaponIndex.Crash, ammoUse);
 
             // 0x03DB9F - C explosion type? (02)
             // Change to 03 to "single explosion" type. Most other values break the game.

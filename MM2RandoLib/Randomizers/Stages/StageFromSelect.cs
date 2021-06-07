@@ -26,37 +26,18 @@ namespace MM2Randomizer.Randomizers.Stages
 
         public static EBossIndex GetBossIndex(ERMPortraitDestination in_Dest)
         {
-            EBossIndex index;
-            switch (in_Dest)
+            return in_Dest switch
             {
-                case ERMPortraitDestination.HeatMan:
-                    index = EBossIndex.Heat;
-                    break;
-                case ERMPortraitDestination.AirMan:
-                    index = EBossIndex.Air;
-                    break;
-                case ERMPortraitDestination.WoodMan:
-                    index = EBossIndex.Wood;
-                    break;
-                case ERMPortraitDestination.BubbleMan:
-                    index = EBossIndex.Bubble;
-                    break;
-                case ERMPortraitDestination.QuickMan:
-                    index = EBossIndex.Quick;
-                    break;
-                case ERMPortraitDestination.FlashMan:
-                    index = EBossIndex.Flash;
-                    break;
-                case ERMPortraitDestination.MetalMan:
-                    index = EBossIndex.Metal;
-                    break;
-                case ERMPortraitDestination.CrashMan:
-                    index = EBossIndex.Clash;
-                    break;
-                default:
-                    throw new IndexOutOfRangeException();
+                ERMPortraitDestination.HeatMan => EBossIndex.Heat,
+                ERMPortraitDestination.AirMan => EBossIndex.Air,
+                ERMPortraitDestination.WoodMan => EBossIndex.Wood,
+                ERMPortraitDestination.BubbleMan => EBossIndex.Bubble,
+                ERMPortraitDestination.QuickMan => EBossIndex.Quick,
+                ERMPortraitDestination.FlashMan => EBossIndex.Flash,
+                ERMPortraitDestination.MetalMan => EBossIndex.Metal,
+                ERMPortraitDestination.CrashMan => EBossIndex.Crash,
+                _ => throw new IndexOutOfRangeException(),
             };
-            return index;
         }
     }
 

@@ -19,11 +19,11 @@ namespace MM2Randomizer.Randomizers
         // Quickman  2 A 2 0 0 1 0 0 4
         // Flashman  2 6 0 0 2 0 0 4 3
         // Metalman  1 4 0 0 0 0 4 A 0
-        // Clashman  1 6 A 0 1 0 1 0 0
-        public static Dictionary<EBossIndex, Dictionary<EWeaponIndex, Int32>> BotWeaknesses = new Dictionary<EBossIndex, Dictionary<EWeaponIndex, Int32>>()
+        // Crashman  1 6 A 0 1 0 1 0 0
+        public static readonly Dictionary<EBossIndex, Dictionary<EWeaponIndex, Int32>> BotWeaknesses = new()
         {
             {
-                EBossIndex.Heat, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Heat, new(){
                     { EWeaponIndex.Buster, 2 },
                     { EWeaponIndex.Heat, 0 },
                     { EWeaponIndex.Air, 2 },
@@ -32,11 +32,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 2 },
                     { EWeaponIndex.Metal, 1 },
-                    { EWeaponIndex.Clash, 0 },
+                    { EWeaponIndex.Crash, 0 },
                 }
             },
             {
-                EBossIndex.Air, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Air, new() {
                     { EWeaponIndex.Buster, 2 },
                     { EWeaponIndex.Heat, 6 },
                     { EWeaponIndex.Air, 0 },
@@ -45,11 +45,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 2 },
                     { EWeaponIndex.Metal, 0 },
-                    { EWeaponIndex.Clash, 0 },
+                    { EWeaponIndex.Crash, 0 },
                 }
             },
             {
-                EBossIndex.Wood, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Wood, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 10 },
                     { EWeaponIndex.Air, 4 },
@@ -58,11 +58,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 0 },
                     { EWeaponIndex.Metal, 2 },
-                    { EWeaponIndex.Clash, 2 },
+                    { EWeaponIndex.Crash, 2 },
                 }
             },
             {
-                EBossIndex.Bubble, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Bubble, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 0 },
                     { EWeaponIndex.Air, 0 },
@@ -71,11 +71,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 2 },
                     { EWeaponIndex.Metal, 4 },
-                    { EWeaponIndex.Clash, 2 },
+                    { EWeaponIndex.Crash, 2 },
                 }
             },
             {
-                EBossIndex.Quick, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Quick, new() {
                     { EWeaponIndex.Buster, 2 },
                     { EWeaponIndex.Heat, 10 },
                     { EWeaponIndex.Air, 2 },
@@ -84,11 +84,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 1 },
                     { EWeaponIndex.Quick, 0 },
                     { EWeaponIndex.Metal, 0 },
-                    { EWeaponIndex.Clash, 4 },
+                    { EWeaponIndex.Crash, 4 },
                 }
             },
             {
-                EBossIndex.Flash, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Flash, new() {
                     { EWeaponIndex.Buster, 2 },
                     { EWeaponIndex.Heat, 6 },
                     { EWeaponIndex.Air, 0 },
@@ -97,11 +97,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 0 },
                     { EWeaponIndex.Metal, 4 },
-                    { EWeaponIndex.Clash, 3 },
+                    { EWeaponIndex.Crash, 3 },
                 }
             },
             {
-                EBossIndex.Metal, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Metal, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 4 },
                     { EWeaponIndex.Air, 0 },
@@ -110,11 +110,11 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 4 },
                     { EWeaponIndex.Metal, 10 },
-                    { EWeaponIndex.Clash, 0 },
+                    { EWeaponIndex.Crash, 0 },
                 }
             },
             {
-                EBossIndex.Clash, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Crash, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 6 },
                     { EWeaponIndex.Air, 10 },
@@ -123,7 +123,7 @@ namespace MM2Randomizer.Randomizers
                     { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Quick, 1 },
                     { EWeaponIndex.Metal, 0 },
-                    { EWeaponIndex.Clash, 0 },
+                    { EWeaponIndex.Crash, 0 },
                 }
             },
         };
@@ -136,101 +136,107 @@ namespace MM2Randomizer.Randomizers
         // Bueb   0 0 0 0 0 0 0 B
         // WilyM  1 E 1 0 0 1 1 4
         // Alien  X X X X 1 X X X
-        public static Dictionary<EBossIndex, Dictionary<EWeaponIndex, Int32>> WilyWeaknesses = new Dictionary<EBossIndex, Dictionary<EWeaponIndex, Int32>>()
+        public static readonly Dictionary<EBossIndex, Dictionary<EWeaponIndex, Int32>> WilyWeaknesses = new()
         {
              {
-                EBossIndex.Dragon, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Dragon, new () {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 8 },
                     { EWeaponIndex.Air, 0 },
                     { EWeaponIndex.Wood, 0 },
                     { EWeaponIndex.Bubble, 0 },
                     { EWeaponIndex.Quick, 1 },
+                    { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Metal, 0 },
-                    { EWeaponIndex.Clash, 1 },
+                    { EWeaponIndex.Crash, 1 },
                 }
             },
             {
-                EBossIndex.Pico, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Pico, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 3 },
                     { EWeaponIndex.Air, 0 },
                     { EWeaponIndex.Wood, 0 },
                     { EWeaponIndex.Bubble, 10 },
                     { EWeaponIndex.Quick, 7 },
+                    { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Metal, 7 },
-                    { EWeaponIndex.Clash, 0 },
+                    { EWeaponIndex.Crash, 0 },
                 }
             },
             {
-                EBossIndex.Guts, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Guts, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 8 },
                     { EWeaponIndex.Air, 0 },
                     { EWeaponIndex.Wood, 0 },
                     { EWeaponIndex.Bubble, 1 },
                     { EWeaponIndex.Quick, 2 },
+                    { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Metal, 0 },
-                    { EWeaponIndex.Clash, 1 },
+                    { EWeaponIndex.Crash, 1 },
                 }
             },
             {
-                EBossIndex.Boobeam, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Boobeam, new() {
                     { EWeaponIndex.Buster, 0 },
                     { EWeaponIndex.Heat, 0 },
                     { EWeaponIndex.Air, 0 },
                     { EWeaponIndex.Wood, 0 },
                     { EWeaponIndex.Bubble, 0 },
                     { EWeaponIndex.Quick, 0 },
+                    { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Metal, 0 },
-                    { EWeaponIndex.Clash, 11 },
+                    { EWeaponIndex.Crash, 11 },
                 }
             },
             {
-                EBossIndex.Machine, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Machine, new() {
                     { EWeaponIndex.Buster, 1 },
                     { EWeaponIndex.Heat, 14 },
                     { EWeaponIndex.Air, 1 },
                     { EWeaponIndex.Wood, 0 },
                     { EWeaponIndex.Bubble, 0 },
                     { EWeaponIndex.Quick, 1 },
+                    { EWeaponIndex.Flash, 0 },
                     { EWeaponIndex.Metal, 1 },
-                    { EWeaponIndex.Clash, 4 },
+                    { EWeaponIndex.Crash, 4 },
                 }
             },
             {
-                EBossIndex.Alien, new Dictionary<EWeaponIndex, Int32>() {
+                EBossIndex.Alien, new() {
                     { EWeaponIndex.Buster, 255 },
                     { EWeaponIndex.Heat, 255 },
                     { EWeaponIndex.Air, 255 },
                     { EWeaponIndex.Wood, 255 },
                     { EWeaponIndex.Bubble, 1 },
                     { EWeaponIndex.Quick, 255 },
+                    { EWeaponIndex.Flash, 255 },
                     { EWeaponIndex.Metal, 255 },
-                    { EWeaponIndex.Clash, 255 },
+                    { EWeaponIndex.Crash, 255 },
                 }
             },
         };
 
-        private Dictionary<EBossIndex, Dictionary<EWeaponIndex, Char>> WilyWeaknessInfo = new Dictionary<EBossIndex, Dictionary<EWeaponIndex, Char>>()
+        private readonly Dictionary<EBossIndex, Dictionary<EWeaponIndex, Char>> WilyWeaknessInfo = new()
         {
             {
-                EBossIndex.Dragon, new Dictionary<EWeaponIndex, Char>()
+                EBossIndex.Dragon, new()
             },
             {
-                EBossIndex.Pico, new Dictionary<EWeaponIndex, Char>()
+                EBossIndex.Pico, new()
             },
             {
-                EBossIndex.Guts, new Dictionary<EWeaponIndex, Char>()
+                EBossIndex.Guts, new()
             },
             {
-                EBossIndex.Boobeam, new Dictionary<EWeaponIndex, Char>()
+                EBossIndex.Boobeam, new()
             },
             {
-                EBossIndex.Machine, new Dictionary<EWeaponIndex, Char>()
+                EBossIndex.Machine, new()
             },
             {
-                EBossIndex.Alien, new Dictionary<EWeaponIndex, Char>()
+                EBossIndex.Alien, new()
             },
         };
 
@@ -256,7 +262,7 @@ namespace MM2Randomizer.Randomizers
         {
             Dictionary<EWeaponIndex, EDmgVsBoss> bossPrimaryWeaknessAddresses = EDmgVsBoss.GetTables(false, true);
             Dictionary<EBossIndex, EDmgVsBoss> bossWeaknessShuffled = bossPrimaryWeaknessAddresses
-                .ToDictionary(x => EDmgVsBoss.GetBossIndexFromWeaponIndex(x.Key), x => x.Value);
+                .ToDictionary(x => x.Key.ToBossIndex(), x => x.Value);
             bossWeaknessShuffled = in_Seed.Shuffle(bossWeaknessShuffled);
 
             // Preparation: Disable redundant Atomic Fire healing code
@@ -282,7 +288,7 @@ namespace MM2Randomizer.Randomizers
                 EWeaponIndex.Bubble,
                 EWeaponIndex.Quick,
                 EWeaponIndex.Metal,
-                EWeaponIndex.Clash
+                EWeaponIndex.Crash
             };
             List<EWeaponIndex> greatWeaknessWeapons = in_Seed.Shuffle(weaponsExcludingBusterAndFlash).ToList().GetRange(0, 2);
             EWeaponIndex weaponGreatWeakness = greatWeaknessWeapons[0];
@@ -313,19 +319,19 @@ namespace MM2Randomizer.Randomizers
                             damage = 0x01;
                         }
                     }
-                    in_Patch.Add(bossPrimaryWeaknessAddresses[j] + (Int32)i, damage, String.Format("{0} Damage to {1}", bossPrimaryWeaknessAddresses[j].WeaponName, (EDmgVsBoss.Offset)i));
+                    in_Patch.Add(bossPrimaryWeaknessAddresses[j] + i.Offset, damage, String.Format("{0} Damage to {1}", bossPrimaryWeaknessAddresses[j].WeaponName, (EDmgVsBoss.Offset)i));
                     BotWeaknesses[i][j] = damage;
                 }
 
                 // Write the primary weakness for this boss
                 Byte dmgPrimary = RWeaknesses.GetRoboDamagePrimary(in_Seed, bossWeaknessShuffled[i]);
-                in_Patch.Add(bossWeaknessShuffled[i] + (Int32)i, dmgPrimary, $"{bossWeaknessShuffled[i].WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Primary)");
+                in_Patch.Add(bossWeaknessShuffled[i] + i.Offset, dmgPrimary, $"{bossWeaknessShuffled[i].WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Primary)");
 
                 // Write the secondary weakness for this boss (next element in list)
                 // Secondary weakness will either do 2 damage or 4 if it is Atomic Fire
                 // Time Stopper cannot be a secondary weakness. Instead it will heal that boss.
                 // As a result, one Robot Master will not have a secondary weakness
-                EBossIndex i2 = (EBossIndex)(((Int32)i + 1) % bossWeaknessShuffled.Count);
+                EBossIndex i2 = i.NextBoss(bossWeaknessShuffled.Keys.ToList());
                 EDmgVsBoss weakWeap2 = bossWeaknessShuffled[i2];
                 Byte dmgSecondary = 0x02;
                 if (weakWeap2 == EDmgVsBoss.U_DamageH)
@@ -337,14 +343,14 @@ namespace MM2Randomizer.Randomizers
                     dmgSecondary = 0x00;
 
                     // Address in Time-Stopper code that normally heals Flashman, change to heal this boss instead
-                    in_Patch.Add(0x02C08F, (Byte)i, $"Time-Stopper Heals {(EDmgVsBoss.Offset)i} (Special Code)");
+                    in_Patch.Add(0x02C08F, (Byte)i.Offset, $"Time-Stopper Heals {(EDmgVsBoss.Offset)i} (Special Code)");
                 }
-                in_Patch.Add(weakWeap2 + (Int32)i, dmgSecondary, $"{weakWeap2.WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Secondary)");
+                in_Patch.Add(weakWeap2 + i.Offset, dmgSecondary, $"{weakWeap2.WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Secondary)");
 
                 // Add buster damage
                 {
                     Byte busterDmg = (Byte)(busterList.Contains(i) ? 2 : 1);
-                    in_Patch.Add(EDmgVsBoss.U_DamageP + (Int32)i, busterDmg, $"Buster Damage to {(EDmgVsBoss.Offset)i}");
+                    in_Patch.Add(EDmgVsBoss.U_DamageP + i.Offset, busterDmg, $"Buster Damage to {(EDmgVsBoss.Offset)i}");
                     BotWeaknesses[i][EWeaponIndex.Buster] = busterDmg;
                 }
 
@@ -359,14 +365,14 @@ namespace MM2Randomizer.Randomizers
                 {
                     // Great weakness. Can't be Buster or Flash. Deal 7 damage.
                     EDmgVsBoss wpn = EDmgVsBoss.GetTables(false, false)[weaponGreatWeakness];
-                    in_Patch.Add(wpn.Address + (Int32)i, 0x07, $"{wpn.WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Great)");
+                    in_Patch.Add(wpn.Address + i.Offset, 0x07, $"{wpn.WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Great)");
                     BotWeaknesses[i][wpn.Index] = 0x07;
                 }
                 else if (bossWithUltimateWeakness == i)
                 {
                     // Ultimate weakness. Can't be Buster or Flash. Deal 10 damage.
                     EDmgVsBoss wpn = EDmgVsBoss.GetTables(false, false)[weaponUltimateWeakness];
-                    in_Patch.Add(wpn.Address + (Int32)i, 0x0A, $"{wpn.WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Ultimate)");
+                    in_Patch.Add(wpn.Address + i.Offset, 0x0A, $"{wpn.WeaponName} Damage to {(EDmgVsBoss.Offset)i} (Ultimate)");
                     BotWeaknesses[i][wpn.Index] = 0x0A;
                 }
             }
@@ -378,7 +384,7 @@ namespace MM2Randomizer.Randomizers
             debug.AppendLine("--------------------------------------------");
             foreach(EBossIndex i in BotWeaknesses.Keys)
             {
-                foreach(EWeaponIndex j in Enum.GetValues(typeof(EWeaponIndex)))
+                foreach(EWeaponIndex j in EWeaponIndex.All)
                 {
                     debug.Append(String.Format("{0}\t", BotWeaknesses[i][j]));
                 }
@@ -422,7 +428,7 @@ namespace MM2Randomizer.Randomizers
             }
             else if (weapon == EDmgVsBoss.U_DamageC)
             {
-                damage += (Byte)(RWeaponBehavior.GetAmmoUsage(EWeaponIndex.Clash) + 1);
+                damage += (Byte)(RWeaponBehavior.GetAmmoUsage(EWeaponIndex.Crash) + 1);
             }
 
             // 50% chance to cap the minimum damage at 4, else cap minimum damage at 3
@@ -475,11 +481,11 @@ namespace MM2Randomizer.Randomizers
                     busterDmg = 0x01;
                 }
 
-                in_Patch.Add(EDmgVsBoss.U_DamageP + (Int32)EDmgVsBoss.Offset.Dragon.Value, busterDmg, "Buster Damage to Dragon");
+                in_Patch.Add(EDmgVsBoss.U_DamageP + EDmgVsBoss.Offset.Dragon, busterDmg, "Buster Damage to Dragon");
                 WilyWeaknesses[EBossIndex.Dragon][EWeaponIndex.Buster] = busterDmg;
 
                 // Choose 2 special weapon weaknesses
-                Dictionary<EWeaponIndex, EDmgVsBoss> dragon = new Dictionary<EWeaponIndex, EDmgVsBoss>(dmgPtrBosses);
+                Dictionary<EWeaponIndex, EDmgVsBoss> dragon = new(dmgPtrBosses);
 
                 //1st weakness
                 Int32 rInt = in_Seed.NextInt32(dragon.Count);
@@ -491,7 +497,7 @@ namespace MM2Randomizer.Randomizers
                 bossWeak2 = dragon.Values.ElementAt(rInt);
 
                 // For each weapon, apply the weaknesses and immunities
-                foreach( EWeaponIndex i in dmgPtrBosses.Keys )
+                foreach (EWeaponIndex i in dmgPtrBosses.Keys)
                 {
                     EDmgVsBoss weapon = dmgPtrBosses[i];
 
@@ -507,13 +513,13 @@ namespace MM2Randomizer.Randomizers
                             Int32 tryDamage = (Int32)RWeaponBehavior.GetAmmoUsage(weapon.Index) - 0x01;
                             damage = (tryDamage < 2) ? (Byte)0x02 : (Byte)tryDamage;
                         }
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Dragon.Value, damage, String.Format("{0} Damage to Dragon", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Dragon, damage, String.Format("{0} Damage to Dragon", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Dragon][weapon.Index] = damage;
                     }
                     // Dragon immune
                     else
                     {
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Dragon.Value, 0x00, String.Format("{0} Damage to Dragon", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Dragon, 0x00, String.Format("{0} Damage to Dragon", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Dragon][weapon.Index] = 0x00;
                     }
                 }
@@ -537,7 +543,7 @@ namespace MM2Randomizer.Randomizers
                 // Deal ammoUse x 10 for the main weakness
                 // Deal ammoUse x 6 for another
                 // Deal ammoUse x 3 for another
-                Dictionary<EWeaponIndex, EDmgVsEnemy> pico = new Dictionary<EWeaponIndex, EDmgVsEnemy>(dmgPtrEnemies);
+                Dictionary<EWeaponIndex, EDmgVsEnemy> pico = new(dmgPtrEnemies);
 
                 //1st weakness
                 rInt = in_Seed.NextInt32(pico.Count);
@@ -553,7 +559,7 @@ namespace MM2Randomizer.Randomizers
                 rInt = in_Seed.NextInt32(pico.Count);
                 enemyWeak3 = pico.Values.ElementAt(rInt);
 
-                foreach(EWeaponIndex i in dmgPtrEnemies.Keys)
+                foreach (EWeaponIndex i in dmgPtrEnemies.Keys)
                 {
                     EDmgVsEnemy weapon = dmgPtrEnemies[i];
                     Byte damage = 0x00;
@@ -621,11 +627,11 @@ namespace MM2Randomizer.Randomizers
                     busterDmg = 0x01;
                 }
 
-                in_Patch.Add(EDmgVsBoss.U_DamageP + ((Int32)EDmgVsBoss.Offset.Guts.Value), busterDmg, String.Format("Buster Damage to Guts Tank"));
+                in_Patch.Add(EDmgVsBoss.U_DamageP + EDmgVsBoss.Offset.Guts, busterDmg, String.Format("Buster Damage to Guts Tank"));
                 WilyWeaknesses[EBossIndex.Guts][EWeaponIndex.Buster] = busterDmg;
 
                 // Choose 2 special weapon weaknesses
-                Dictionary<EWeaponIndex, EDmgVsBoss> guts = new Dictionary<EWeaponIndex, EDmgVsBoss>(dmgPtrBosses);
+                Dictionary<EWeaponIndex, EDmgVsBoss> guts = new(dmgPtrBosses);
 
                 //1st weakness
                 rInt = in_Seed.NextInt32(guts.Count);
@@ -636,7 +642,7 @@ namespace MM2Randomizer.Randomizers
                 rInt = in_Seed.NextInt32(guts.Count);
                 bossWeak2 = guts.Values.ElementAt(rInt);
 
-                foreach(EWeaponIndex i in dmgPtrBosses.Keys)
+                foreach (EWeaponIndex i in dmgPtrBosses.Keys)
                 {
                     EDmgVsBoss weapon = dmgPtrBosses[i];
 
@@ -652,22 +658,22 @@ namespace MM2Randomizer.Randomizers
                             Int32 tryDamage = (Int32)RWeaponBehavior.GetAmmoUsage(weapon.Index) - 0x01;
                             damage = (tryDamage < 2) ? (Byte)0x02 : (Byte)tryDamage;
                         }
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Guts.Value, damage, String.Format("{0} Damage to Guts Tank", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Guts, damage, String.Format("{0} Damage to Guts Tank", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Guts][weapon.Index] = damage;
                     }
                     // Guts immune
                     else
                     {
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Guts.Value, 0x00, String.Format("{0} Damage to Guts Tank", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Guts, 0x00, String.Format("{0} Damage to Guts Tank", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Guts][weapon.Index] = 0x00;
                     }
                 }
 
                 #endregion
 
-                #region Buebeam Trap
+                #region Boobeam Trap
 
-                // Buebeam
+                // Boobeam
                 // 5 Orbs + 3 Required Barriers (5 total barriers, 4 in speedrun route)
                 // Choose a weakness for both Barriers and Orbs, scale damage to have plenty of energy
                 // If the same weakness for both, scale damage further
@@ -706,70 +712,76 @@ namespace MM2Randomizer.Randomizers
 
                     dmgW4 = (Int32)Math.Ceiling(20d / numHitsPerBarrier);
                 }
-                foreach(EWeaponIndex i in dmgBarrierList.Keys)
+
+                // We consult the full damage table here so that we can also update
+                // any weapons that have been filtered out, such as heat or flash
+                Dictionary<EWeaponIndex, EDmgVsEnemy> fullDmgList = EDmgVsEnemy.GetTables(true);
+                foreach (EWeaponIndex i in fullDmgList.Keys)
                 {
                     // Deal damage with weakness, and 0 for everything else
                     Byte damage = (Byte)dmgW4;
-                    EDmgVsEnemy wpn = dmgBarrierList[i];
+                    EDmgVsEnemy wpn = fullDmgList[i];
                     if (wpn != wpnBarrier)
                     {
                         damage = 0;
                     }
-                    in_Patch.Add(wpn.Address + EDmgVsEnemy.Offset.ClashBarrier_W4, damage, String.Format("{0} Damage to Clash Barrier 1", wpn.WeaponName));
-                    in_Patch.Add(wpn.Address + EDmgVsEnemy.Offset.ClashBarrier_Other, damage, String.Format("{0} Damage to Clash Barrier 2", wpn.WeaponName));
+                    in_Patch.Add(wpn.Address + EDmgVsEnemy.Offset.CrashBarrier_W4, damage, String.Format("{0} Damage to Crash Barrier 1", wpn.WeaponName));
+                    in_Patch.Add(wpn.Address + EDmgVsEnemy.Offset.CrashBarrier_Other, damage, String.Format("{0} Damage to Crash Barrier 2", wpn.WeaponName));
+
                 }
 
-                // Remove Barrier weakness from list first (therefore, different Buebeam weakness)
+                // Remove Barrier weakness from list first (therefore, different Boobeam weakness)
+                // At this point we removed:
+                //   * heat (if it's expensive)
+                //   * flash
+                //   * the barrier weakness
                 dmgBarrierList.Remove(rBarrierWeakness);
 
-                // Get Buebeam weakness
+                // Get Boobeam weakness
                 rInt = in_Seed.NextInt32(dmgBarrierList.Count);
-                EDmgVsEnemy wpnBuebeam = dmgBarrierList.Values.ElementAt(rInt);
+                EDmgVsEnemy wpnBoobeam = dmgBarrierList.Values.ElementAt(rInt);
 
                 // Add Barrier weakness back to list for counting later
+                // Now flash and possibly heat are the only weapons missing
                 dmgBarrierList.Add(rBarrierWeakness, wpnBarrier);
 
                 // Scale damage to be slightly more capable than killing 5 buebeams at full ammo
                 dmgW4 = 0x01;
-                if (wpnBuebeam != EDmgVsEnemy.DamageP)
+                if (wpnBoobeam != EDmgVsEnemy.DamageP)
                 {
-                    Int32 totalShots = (Int32)(28 / RWeaponBehavior.GetAmmoUsage(wpnBuebeam.Index));
-                    Int32 numHitsPerBuebeam = (Int32)(totalShots / 5);
+                    Int32 totalShots = (Int32)(28 / RWeaponBehavior.GetAmmoUsage(wpnBoobeam.Index));
+                    Int32 numHitsPerBoobeam = (Int32)(totalShots / 5);
 
-                    if (numHitsPerBuebeam > 1)
+                    if (numHitsPerBoobeam > 1)
                     {
-                        numHitsPerBuebeam--;
+                        numHitsPerBoobeam--;
                     }
 
-                    if (numHitsPerBuebeam > 8)
+                    if (numHitsPerBoobeam > 8)
                     {
-                        numHitsPerBuebeam = 8;
+                        numHitsPerBoobeam = 8;
                     }
 
-                    dmgW4 = (Int32)Math.Ceiling(20d / numHitsPerBuebeam);
+                    dmgW4 = (Int32)Math.Ceiling(20d / numHitsPerBoobeam);
                 }
 
-                // Add Buebeam damage values to patch, as well as array for use by Text and other modules later
-                foreach(EWeaponIndex i in dmgBarrierList.Keys)
+                // Add Boobeam damage values to patch, as well as array for use by Text and other modules later
+                foreach (EWeaponIndex i in fullDmgList.Keys)
                 {
                     Byte damage = (Byte)dmgW4;
-                    EDmgVsEnemy wpn = dmgBarrierList[i];
-                    if (wpn != wpnBuebeam)
+                    EDmgVsEnemy wpn = fullDmgList[i];
+                    if (wpn != wpnBoobeam)
                     {
                         damage = 0;
                     }
-                    in_Patch.Add(wpn.Address + EDmgVsEnemy.Offset.Buebeam, damage, String.Format("{0} Damage to Buebeam Trap", wpnBuebeam.WeaponName));
+                    in_Patch.Add(wpn.Address + EDmgVsEnemy.Offset.Boobeam, damage, String.Format("{0} Damage to Boobeam Trap", wpnBoobeam.WeaponName));
 
-                    // Add to damage table (skipping heat if necessary)
-                    // TODO: is this logic with the comparison still right?
-                    if (RWeaponBehavior.GetAmmoUsage(EWeaponIndex.Heat) > 5 && i >= EWeaponIndex.Heat)
-                    {
-                        WilyWeaknesses[EBossIndex.Boobeam][i + 1] = damage;
-                    }
-                    else
-                    {
-                        WilyWeaknesses[EBossIndex.Boobeam][i] = damage;
-                    }
+                    // Add to damage table
+                    // Note: We used to special case heat here when it's expensive. However, in that
+                    // case we already excluded it from being the weakness when we chose a random weakness.
+                    // The logic in this loop will set its value to 0 in that case so the special case
+                    // is no longer necessary.
+                    WilyWeaknesses[EBossIndex.Boobeam][i] = damage;
                 }
 
                 #endregion
@@ -791,11 +803,11 @@ namespace MM2Randomizer.Randomizers
                     busterDmg = 0x01;
                 }
 
-                in_Patch.Add(EDmgVsBoss.U_DamageP + (Int32)EDmgVsBoss.Offset.Machine.Value, busterDmg, String.Format("Buster Damage to Wily Machine"));
+                in_Patch.Add(EDmgVsBoss.U_DamageP + EDmgVsBoss.Offset.Machine, busterDmg, String.Format("Buster Damage to Wily Machine"));
                 WilyWeaknesses[EBossIndex.Machine][EWeaponIndex.Buster] = busterDmg;
 
                 // Choose 4 special weapon weaknesses
-                Dictionary<EWeaponIndex, EDmgVsBoss> machine = new Dictionary<EWeaponIndex, EDmgVsBoss>(dmgPtrBosses);
+                Dictionary<EWeaponIndex, EDmgVsBoss> machine = new(dmgPtrBosses);
 
                 //1st weakness
                 rInt = in_Seed.NextInt32(machine.Count);
@@ -832,29 +844,29 @@ namespace MM2Randomizer.Randomizers
                         {
                             damage = (Byte)RWeaponBehavior.GetAmmoUsage(weapon.Index);
                         }
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Machine.Value, damage, String.Format("{0} Damage to Wily Machine", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Machine, damage, String.Format("{0} Damage to Wily Machine", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Machine][weapon.Index] = damage;
                     }
                     // Machine immune
                     else
                     {
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Machine.Value, 0x00, String.Format("{0} Damage to Wily Machine", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Machine, 0x00, String.Format("{0} Damage to Wily Machine", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Machine][weapon.Index] = 0x00;
                     }
 
                     // Disable weakness 1 and 2 on Wily Machine Phase 1
                     if (weapon == bossWeak1)
                     {
-                        in_Patch.Add(0x02DA2E, (Byte)i, String.Format("Wily Machine Phase 1 Resistance 1 ({0})", weapon.WeaponName));
+                        in_Patch.Add(0x02DA2E, (Byte)i.Offset, String.Format("Wily Machine Phase 1 Resistance 1 ({0})", weapon.WeaponName));
                     }
                     if (weapon == bossWeak2)
                     {
-                        in_Patch.Add(0x02DA32, (Byte)i, String.Format("Wily Machine Phase 1 Resistance 2 ({0})", weapon.WeaponName));
+                        in_Patch.Add(0x02DA32, (Byte)i.Offset, String.Format("Wily Machine Phase 1 Resistance 2 ({0})", weapon.WeaponName));
                     }
                     // Disable weakness 3 on Wily Machine Phase 2
                     if (weapon == bossWeak3)
                     {
-                        in_Patch.Add(0x02DA3A, (Byte)i, String.Format("Wily Machine Phase 2 Resistance ({0})", weapon.WeaponName));
+                        in_Patch.Add(0x02DA3A, (Byte)i.Offset, String.Format("Wily Machine Phase 2 Resistance ({0})", weapon.WeaponName));
                     }
                 }
 
@@ -863,7 +875,7 @@ namespace MM2Randomizer.Randomizers
                 #region Alien
 
                 // Alien
-                // Buster Heat Air Wood Bubble Quick Clash Metal
+                // Buster Heat Air Wood Bubble Quick Crash Metal
                 Byte alienDamage = 1;
                 Dictionary<EWeaponIndex, EDmgVsBoss> alienWeapons = EDmgVsBoss.GetTables(true, false);
                 EWeaponIndex rWeaponIndex = in_Seed.NextElement(alienWeapons.Keys);
@@ -886,12 +898,12 @@ namespace MM2Randomizer.Randomizers
 
                     if (i == rWeaponIndex)
                     {
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Alien.Value, alienDamage, String.Format("{0} Damage to Alien", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Alien, alienDamage, String.Format("{0} Damage to Alien", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Alien][i] = alienDamage;
                     }
                     else
                     {
-                        in_Patch.Add(weapon + (Int32)EDmgVsBoss.Offset.Alien.Value, 0xFF, String.Format("{0} Damage to Alien", weapon.WeaponName));
+                        in_Patch.Add(weapon + EDmgVsBoss.Offset.Alien, 0xFF, String.Format("{0} Damage to Alien", weapon.WeaponName));
                         WilyWeaknesses[EBossIndex.Alien][i] = 0xFF;
                     }
                 }
@@ -906,36 +918,8 @@ namespace MM2Randomizer.Randomizers
                     foreach (EWeaponIndex j in WilyWeaknesses[i].Keys)
                     {
                         debug.Append(String.Format("{0}\t", WilyWeaknesses[i][j]));
-
-                        if (j == EWeaponIndex.Flash)
-                        {
-                            debug.Append("X\t"); // skip flash
-                        }
                     }
-                    String bossName = "";
-                    switch (i)
-                    {
-                        case EBossIndex.Dragon:
-                            bossName = "dragon";
-                            break;
-                        case EBossIndex.Pico:
-                            bossName = "picopico-kun";
-                            break;
-                        case EBossIndex.Guts:
-                            bossName = "guts";
-                            break;
-                        case EBossIndex.Boobeam:
-                            bossName = "boobeam";
-                            break;
-                        case EBossIndex.Machine:
-                            bossName = "machine";
-                            break;
-                        case EBossIndex.Alien:
-                            bossName = "alien";
-                            break;
-                        default: break;
-                    }
-                    debug.AppendLine("< " + bossName);
+                    debug.AppendLine("< " + i.Name);
                 }
                 debug.Append(Environment.NewLine);
 
