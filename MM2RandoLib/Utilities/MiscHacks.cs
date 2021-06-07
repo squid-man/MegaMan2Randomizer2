@@ -84,21 +84,6 @@ namespace MM2Randomizer.Utilities
             }
         }
 
-        public static List<EBossIndex> GetRobos()
-        {
-            return new List<EBossIndex>()
-            {
-                EBossIndex.Heat,
-                EBossIndex.Air,
-                EBossIndex.Wood,
-                EBossIndex.Bubble,
-                EBossIndex.Quick,
-                EBossIndex.Flash,
-                EBossIndex.Metal,
-                EBossIndex.Clash,
-            };
-        }
-
         /// <summary>
         /// TODO
         /// </summary>
@@ -345,7 +330,10 @@ namespace MM2Randomizer.Utilities
         {
             // Arrays of default values for X and Y of the black square that marks out each portrait
             // Index of arrays are stage order, e.g. Heat, Air, etc.
-            Dictionary<EBossIndex, Byte> portraitBG_y = new Dictionary<EBossIndex, Byte>()
+            // Note: It's terrible to be repeating the boss list here, but at least this way
+            // the connection between each boss and their offset is explicit, which would not be the
+            // case if we used the EBossIndex.RobotMasters property instead.
+            Dictionary<EBossIndex, Byte> portraitBG_y = new()
             {
                 { EBossIndex.Heat, 0x21 },
                 { EBossIndex.Air, 0x20 },
@@ -354,9 +342,9 @@ namespace MM2Randomizer.Utilities
                 { EBossIndex.Quick, 0x20 },
                 { EBossIndex.Flash, 0x22 },
                 { EBossIndex.Metal, 0x22 },
-                { EBossIndex.Clash, 0x22 },
+                { EBossIndex.Crash, 0x22 },
             };
-            Dictionary<EBossIndex, Byte> portraitBG_x = new Dictionary<EBossIndex, Byte>()
+            Dictionary<EBossIndex, Byte> portraitBG_x = new()
             {
                 { EBossIndex.Heat, 0x86 },
                 { EBossIndex.Air, 0x8E },
@@ -365,7 +353,7 @@ namespace MM2Randomizer.Utilities
                 { EBossIndex.Quick, 0x96 },
                 { EBossIndex.Flash, 0x8E },
                 { EBossIndex.Metal, 0x86 },
-                { EBossIndex.Clash, 0x96 },
+                { EBossIndex.Crash, 0x96 },
             };
 
             // Adjusting the sprites is not necessary because the hacked portrait graphics ("?" images)
@@ -386,12 +374,12 @@ namespace MM2Randomizer.Utilities
                 randomWeaponGet.FixPortraits(ref portraitBG_x, ref portraitBG_y);
             }
 
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
-                Byte y = portraitBG_y.ElementAt(i).Value;
-                Byte x = portraitBG_x.ElementAt(i).Value;
-                Patch.Add(0x034541 + i, y, $"Stage Select Portrait {i + 1} Y-Pos Fix");
-                Patch.Add(0x034549 + i, x, $"Stage Select Portrait {i + 1} X-Pos Fix");
+                Byte y = portraitBG_y[i];
+                Byte x = portraitBG_x[i];
+                Patch.Add(0x034541 + i.Offset, y, $"Stage Select Portrait {i.Offset + 1} Y-Pos Fix");
+                Patch.Add(0x034549 + i.Offset, x, $"Stage Select Portrait {i.Offset + 1} X-Pos Fix");
                 // Changing this sprite table misplaces their positions by default.
                 //stream.Position = 0x03460D + i;
                 //stream.WriteByte(portraitSprite_y[i]);
@@ -405,7 +393,7 @@ namespace MM2Randomizer.Utilities
         {
             Dictionary<EWeaponIndex, EWeaponIndex> shuffledWeapons = randomWeaponGet
                 .GetShuffleIndexPermutation()
-                .ToDictionary(x => EDmgVsBoss.GetWeaponIndexFromBossIndex(x.Key), x => EDmgVsBoss.GetWeaponIndexFromBossIndex(x.Value));
+                .ToDictionary(x => x.Key.ToWeaponIndex(), x => x.Value.ToWeaponIndex());
             rText.FixWeaponLetters(Patch, shuffledWeapons);
         }
 

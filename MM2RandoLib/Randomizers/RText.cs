@@ -167,15 +167,12 @@ namespace MM2Randomizer.Randomizers
             const Int32 WEAPON_GET_LETTERS_ADDRESS = 0x037E22;
             const Int32 WEAPON_GET_NAME_ADDRESS = 0x037E2C;
             const Int32 WEAPON_GET_EXTENDED_NAME_ADDRESS = 0x037F5C;
-            const EWeaponIndex WEAPON_GET_EXTENDED_NAME_INDEX = EWeaponIndex.Quick;     // Quick Boomerang has an extended name
+            EWeaponIndex WEAPON_GET_EXTENDED_NAME_INDEX = EWeaponIndex.Quick;     // Quick Boomerang has an extended name
 
-            WeaponNameGenerator weaponNameGenerator = new WeaponNameGenerator(in_Seed);
+            WeaponNameGenerator weaponNameGenerator = new(in_Seed);
 
-            Dictionary<EWeaponIndex, WeaponName> weaponNames = new Dictionary<EWeaponIndex, WeaponName>();
-            List<EWeaponIndex> onlySpecialWeapons =
-                ((IEnumerable<EWeaponIndex>)Enum.GetValues(typeof(EWeaponIndex)))
-                .Where(x => x != EWeaponIndex.Buster)
-                .ToList();
+            Dictionary<EWeaponIndex, WeaponName> weaponNames = new();
+            List<EWeaponIndex> onlySpecialWeapons = EWeaponIndex.SpecialWeapons.ToList();
 
             // Write in new weapon names
             Int32 offset = 0; // incremented at the end of this loop
@@ -195,7 +192,7 @@ namespace MM2Randomizer.Randomizers
                         in_Patch.Add(
                             offsetAddress + characterIndex,
                             c.AsPrintCharacter(),
-                            String.Format("Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)EDmgVsBoss.GetBossIndexFromWeaponIndex(weaponIndex)).Name, characterIndex, c.ToString()));
+                            String.Format("Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)weaponIndex.ToBossIndex()).Name, characterIndex, c.ToString()));
 
                         characterIndex++;
                     }
@@ -206,7 +203,7 @@ namespace MM2Randomizer.Randomizers
                         in_Patch.Add(
                             WEAPON_GET_EXTENDED_NAME_ADDRESS + characterIndex,
                             c.AsPrintCharacter(),
-                            String.Format("Extended Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)EDmgVsBoss.GetBossIndexFromWeaponIndex(weaponIndex)).Name, characterIndex, c.ToString()));
+                            String.Format("Extended Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)weaponIndex.ToBossIndex()).Name, characterIndex, c.ToString()));
 
                         characterIndex++;
                     }
@@ -222,7 +219,7 @@ namespace MM2Randomizer.Randomizers
                         in_Patch.Add(
                             offsetAddress + characterIndex,
                             c.AsPrintCharacter(),
-                            String.Format("Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)EDmgVsBoss.GetBossIndexFromWeaponIndex(weaponIndex)).Name, characterIndex, c.ToString()));
+                            String.Format("Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)weaponIndex.ToBossIndex()).Name, characterIndex, c.ToString()));
 
                         characterIndex++;
                     }
@@ -239,7 +236,7 @@ namespace MM2Randomizer.Randomizers
             //
             // NOTE! There is not a space for buster because
             // there is never a "Weapon Get" for buster
-            Dictionary<EWeaponIndex, Int32> weaponGetLetterAddress = new Dictionary<EWeaponIndex, Int32>()
+            Dictionary<EWeaponIndex, Int32> weaponGetLetterAddress = new()
             {
                 { EWeaponIndex.Heat, WEAPON_GET_LETTERS_ADDRESS + 0},
                 { EWeaponIndex.Air, WEAPON_GET_LETTERS_ADDRESS + 1},
@@ -248,7 +245,7 @@ namespace MM2Randomizer.Randomizers
                 { EWeaponIndex.Quick, WEAPON_GET_LETTERS_ADDRESS + 4},
                 { EWeaponIndex.Flash, WEAPON_GET_LETTERS_ADDRESS + 5},
                 { EWeaponIndex.Metal, WEAPON_GET_LETTERS_ADDRESS + 6},
-                { EWeaponIndex.Clash, WEAPON_GET_LETTERS_ADDRESS + 7},
+                { EWeaponIndex.Crash, WEAPON_GET_LETTERS_ADDRESS + 7},
             };
 
             foreach (KeyValuePair<EWeaponIndex, char> weaponLetter in weaponLetters)
@@ -256,7 +253,7 @@ namespace MM2Randomizer.Randomizers
                 in_Patch.Add(
                     weaponGetLetterAddress[weaponLetter.Key],
                     weaponLetter.Value.AsPrintCharacter(),
-                    $"Weapon Get {((EDmgVsBoss.Offset)EDmgVsBoss.GetBossIndexFromWeaponIndex(weaponLetter.Key)).Name} Letter: {weaponLetter}");
+                    $"Weapon Get {((EDmgVsBoss.Offset)weaponLetter.Key.ToBossIndex()).Name} Letter: {weaponLetter}");
             }
 
             // Pick a new weapon letter for buster
@@ -318,7 +315,7 @@ namespace MM2Randomizer.Randomizers
 
             in_Patch.Add(0x024CA4, (Byte)companyName.Length, "Credits Company Line Length");
 
-            Dictionary<EBossIndex, Int32> txtRobos = new Dictionary<EBossIndex, Int32>()
+            Dictionary<EBossIndex, Int32> txtRobos = new()
             {
                 { EBossIndex.Heat, 0x024D6B }, // Heat
                 { EBossIndex.Air, 0x024D83 }, // Air
@@ -327,10 +324,10 @@ namespace MM2Randomizer.Randomizers
                 { EBossIndex.Quick, 0x024DD1 }, // Quick
                 { EBossIndex.Flash, 0x024DEB }, // Flash
                 { EBossIndex.Metal, 0x024E05 }, // Metal
-                { EBossIndex.Clash, 0x024E1F }, // Clash
+                { EBossIndex.Crash, 0x024E1F }, // Crash
             };
 
-            Dictionary<EBossIndex, Int32> txtWilys = new Dictionary<EBossIndex, Int32>()
+            Dictionary<EBossIndex, Int32> txtWilys = new()
             {
                 { EBossIndex.Dragon, 0x024E54 }, // Dragon
                 { EBossIndex.Pico, 0x024E6C }, // Picopico
@@ -362,7 +359,7 @@ namespace MM2Randomizer.Randomizers
                     }
                 }
 
-                foreach (EWeaponIndex j in Enum.GetValues(typeof(EWeaponIndex)))
+                foreach (EWeaponIndex j in EWeaponIndex.All)
                 {
                     Int32 dmg = RWeaknesses.BotWeaknesses[txtRobos.ElementAt(newIndex).Key][j];
                     sb.Append($"{RText.GetBossWeaknessDamageChar(dmg)} ");
@@ -379,9 +376,8 @@ namespace MM2Randomizer.Randomizers
             }
 
             // Write Wily Boss damage table
-            List<EWeaponIndex> weaponsSansFlash =
-                ((IEnumerable<EWeaponIndex>)Enum.GetValues(typeof(EWeaponIndex)))
-                .Where( x => x != EWeaponIndex.Flash )
+            List<EWeaponIndex> weaponsSansFlash = EWeaponIndex.All
+                .Where(x => EWeaponIndex.Flash != x)
                 .ToList();
             for (Int32 i = 0; i < txtWilys.Count; i++)
             {
@@ -414,12 +410,8 @@ namespace MM2Randomizer.Randomizers
             //
             // TODO: This is done so poorly. Need to think about how to achieve
             // this without the depencendy of on other randomizers
-            List<EWeaponIndex> onlySpecialWeapons =
-                ((IEnumerable<EWeaponIndex>)Enum.GetValues(typeof(EWeaponIndex)))
-                .Where(x => x != EWeaponIndex.Buster)
-                .ToList();
 
-            foreach (EWeaponIndex i in onlySpecialWeapons)
+            foreach (EWeaponIndex i in EWeaponIndex.SpecialWeapons)
             {
                 Byte[] pauseLetterBytes = this.mNewWeaponLetters[i].AsPauseScreenString();
 
@@ -462,7 +454,7 @@ namespace MM2Randomizer.Randomizers
         /// letters. Use the data at <see cref="PauseScreenCipher"/> to write new values at these locations to
         /// change the weapon letter graphics.
         /// </summary>
-        public static Dictionary<EWeaponIndex, Int32> PauseScreenWpnAddress = new Dictionary<EWeaponIndex, Int32>
+        public static Dictionary<EWeaponIndex, Int32> PauseScreenWpnAddress = new()
         {
             { EWeaponIndex.Buster, 0x001B00 }, // "P"
             { EWeaponIndex.Heat, 0x001A00 }, // "H"
@@ -472,7 +464,7 @@ namespace MM2Randomizer.Randomizers
             { EWeaponIndex.Quick, 0x0019D0 }, // "Q"
             { EWeaponIndex.Flash, 0x0019B0 }, // "F"
             { EWeaponIndex.Metal, 0x0019F0 }, // "M"
-            { EWeaponIndex.Clash, 0x001A10 }, // "C"
+            { EWeaponIndex.Crash, 0x001A10 }, // "C"
         };
 
 
@@ -480,7 +472,7 @@ namespace MM2Randomizer.Randomizers
         // Private Data Members
         //
 
-        Dictionary<EWeaponIndex, Char> mNewWeaponLetters = new Dictionary<EWeaponIndex, Char>()
+        Dictionary<EWeaponIndex, Char> mNewWeaponLetters = new()
         {
             { EWeaponIndex.Buster, 'P' },
             { EWeaponIndex.Heat, 'H' },
@@ -490,7 +482,7 @@ namespace MM2Randomizer.Randomizers
             { EWeaponIndex.Quick, 'Q' },
             { EWeaponIndex.Flash, 'F' },
             { EWeaponIndex.Metal, 'M' },
-            { EWeaponIndex.Clash, 'C' },
+            { EWeaponIndex.Crash, 'C' },
         };
     }
 }

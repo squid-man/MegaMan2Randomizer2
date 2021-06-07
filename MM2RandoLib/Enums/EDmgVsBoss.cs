@@ -20,29 +20,29 @@ namespace MM2Randomizer.Enums
             get; private set;
         }
 
-        public static Dictionary<Int32, EDmgVsBoss> Addresses;
+        public static readonly Dictionary<Int32, EDmgVsBoss> Addresses;
 
         //Japanese
-        public static readonly EDmgVsBoss Buster          = new EDmgVsBoss(EWeaponIndex.Buster, 0x02E933, "Buster");
-        public static readonly EDmgVsBoss AtomicFire      = new EDmgVsBoss(EWeaponIndex.Heat, 0x02E941, "Atomic Fire");
-        public static readonly EDmgVsBoss AirShooter      = new EDmgVsBoss(EWeaponIndex.Air, 0x02E94F, "Air Shooter");
-        public static readonly EDmgVsBoss LeafShield      = new EDmgVsBoss(EWeaponIndex.Wood, 0x02E95D, "Leaf Shield");
-        public static readonly EDmgVsBoss BubbleLead      = new EDmgVsBoss(EWeaponIndex.Bubble, 0x02E96B, "Bubble Lead");
-        public static readonly EDmgVsBoss QuickBoomerang  = new EDmgVsBoss(EWeaponIndex.Quick, 0x02E979, "Quick Boomerang");
-        public static readonly EDmgVsBoss TimeStopper     = new EDmgVsBoss(EWeaponIndex.Flash, 0x02C049, "Time Stopper");
-        public static readonly EDmgVsBoss MetalBlade      = new EDmgVsBoss(EWeaponIndex.Metal, 0x02E995, "Metal Blade");
-        public static readonly EDmgVsBoss ClashBomber     = new EDmgVsBoss(EWeaponIndex.Clash, 0x02E987, "Clash Bomber");
+        public static readonly EDmgVsBoss Buster          = new(EWeaponIndex.Buster, 0x02E933, "Buster");
+        public static readonly EDmgVsBoss AtomicFire      = new(EWeaponIndex.Heat, 0x02E941, "Atomic Fire");
+        public static readonly EDmgVsBoss AirShooter      = new(EWeaponIndex.Air, 0x02E94F, "Air Shooter");
+        public static readonly EDmgVsBoss LeafShield      = new(EWeaponIndex.Wood, 0x02E95D, "Leaf Shield");
+        public static readonly EDmgVsBoss BubbleLead      = new(EWeaponIndex.Bubble, 0x02E96B, "Bubble Lead");
+        public static readonly EDmgVsBoss QuickBoomerang  = new(EWeaponIndex.Quick, 0x02E979, "Quick Boomerang");
+        public static readonly EDmgVsBoss TimeStopper     = new(EWeaponIndex.Flash, 0x02C049, "Time Stopper");
+        public static readonly EDmgVsBoss MetalBlade      = new(EWeaponIndex.Metal, 0x02E995, "Metal Blade");
+        public static readonly EDmgVsBoss CrashBomber     = new(EWeaponIndex.Crash, 0x02E987, "Crash Bomber");
         
         //English
-        public static readonly EDmgVsBoss U_DamageP = new EDmgVsBoss(EWeaponIndex.Buster, 0x2e952, "Buster");
-        public static readonly EDmgVsBoss U_DamageH = new EDmgVsBoss(EWeaponIndex.Heat, 0x2e960, "Atomic Fire");
-        public static readonly EDmgVsBoss U_DamageA = new EDmgVsBoss(EWeaponIndex.Air, 0x2e96e, "Air Shooter");
-        public static readonly EDmgVsBoss U_DamageW = new EDmgVsBoss(EWeaponIndex.Wood, 0x2e97c, "Leaf Shield");
-        public static readonly EDmgVsBoss U_DamageB = new EDmgVsBoss(EWeaponIndex.Bubble, 0x2e98a, "Bubble Lead");
-        public static readonly EDmgVsBoss U_DamageQ = new EDmgVsBoss(EWeaponIndex.Quick, 0x2e998, "Quick Boomerang");
-        public static readonly EDmgVsBoss U_DamageF = new EDmgVsBoss(EWeaponIndex.Flash, 0x2C049, "Time Stopper");
-        public static readonly EDmgVsBoss U_DamageM = new EDmgVsBoss(EWeaponIndex.Metal, 0x2e9b4, "Metal Blade");
-        public static readonly EDmgVsBoss U_DamageC = new EDmgVsBoss(EWeaponIndex.Clash, 0x2e9a6, "Clash Bomber");
+        public static readonly EDmgVsBoss U_DamageP = new(EWeaponIndex.Buster, 0x2e952, "Buster");
+        public static readonly EDmgVsBoss U_DamageH = new(EWeaponIndex.Heat, 0x2e960, "Atomic Fire");
+        public static readonly EDmgVsBoss U_DamageA = new(EWeaponIndex.Air, 0x2e96e, "Air Shooter");
+        public static readonly EDmgVsBoss U_DamageW = new(EWeaponIndex.Wood, 0x2e97c, "Leaf Shield");
+        public static readonly EDmgVsBoss U_DamageB = new(EWeaponIndex.Bubble, 0x2e98a, "Bubble Lead");
+        public static readonly EDmgVsBoss U_DamageQ = new(EWeaponIndex.Quick, 0x2e998, "Quick Boomerang");
+        public static readonly EDmgVsBoss U_DamageF = new(EWeaponIndex.Flash, 0x2C049, "Time Stopper");
+        public static readonly EDmgVsBoss U_DamageM = new(EWeaponIndex.Metal, 0x2e9b4, "Metal Blade");
+        public static readonly EDmgVsBoss U_DamageC = new(EWeaponIndex.Crash, 0x2e9a6, "Crash Bomber");
 
         static EDmgVsBoss()
         {
@@ -90,7 +90,7 @@ namespace MM2Randomizer.Enums
         /// <returns></returns>
         public static Dictionary<EWeaponIndex, EDmgVsBoss> GetTables(Boolean includeBuster, Boolean includeTimeStopper)
         {
-            Dictionary<EWeaponIndex, EDmgVsBoss> tables = new Dictionary<EWeaponIndex, EDmgVsBoss>();
+            Dictionary<EWeaponIndex, EDmgVsBoss> tables = new();
 
             if (includeBuster)
             {
@@ -109,78 +109,8 @@ namespace MM2Randomizer.Enums
             }
 
             tables.Add(EWeaponIndex.Metal, U_DamageM);
-            tables.Add(EWeaponIndex.Clash, U_DamageC);
+            tables.Add(EWeaponIndex.Crash, U_DamageC);
             return tables;
-        }
-
-        public static EBossIndex GetBossIndexFromWeaponIndex(EWeaponIndex in_WeaponIndex)
-        {
-            EBossIndex index;
-            switch (in_WeaponIndex)
-            {
-                case EWeaponIndex.Heat:
-                    index = EBossIndex.Heat;
-                    break;
-                case EWeaponIndex.Air:
-                    index = EBossIndex.Air;
-                    break;
-                case EWeaponIndex.Wood:
-                    index = EBossIndex.Wood;
-                    break;
-                case EWeaponIndex.Bubble:
-                    index = EBossIndex.Bubble;
-                    break;
-                case EWeaponIndex.Quick:
-                    index = EBossIndex.Quick;
-                    break;
-                case EWeaponIndex.Flash:
-                    index = EBossIndex.Flash;
-                    break;
-                case EWeaponIndex.Metal:
-                    index = EBossIndex.Metal;
-                    break;
-                case EWeaponIndex.Clash:
-                    index = EBossIndex.Clash;
-                    break;
-                default:
-                    throw new IndexOutOfRangeException();
-            };
-            return index;
-        }
-
-        public static EWeaponIndex GetWeaponIndexFromBossIndex(EBossIndex in_BossIndex)
-        {
-            EWeaponIndex index;
-            switch (in_BossIndex)
-            {
-                case EBossIndex.Heat:
-                    index = EWeaponIndex.Heat;
-                    break;
-                case EBossIndex.Air:
-                    index = EWeaponIndex.Air;
-                    break;
-                case EBossIndex.Wood:
-                    index = EWeaponIndex.Wood;
-                    break;
-                case EBossIndex.Bubble:
-                    index = EWeaponIndex.Bubble;
-                    break;
-                case EBossIndex.Quick:
-                    index = EWeaponIndex.Quick;
-                    break;
-                case EBossIndex.Flash:
-                    index = EWeaponIndex.Flash;
-                    break;
-                case EBossIndex.Metal:
-                    index = EWeaponIndex.Metal;
-                    break;
-                case EBossIndex.Clash:
-                    index = EWeaponIndex.Clash;
-                    break;
-                default:
-                    throw new IndexOutOfRangeException();
-            };
-            return index;
         }
 
         /// <summary>
@@ -193,52 +123,55 @@ namespace MM2Randomizer.Enums
                 get; private set;
             }
 
-            public EBossIndex Value
+            public Int32 Value
             {
-                get; private set;
+                get { return mValue.Offset; }
             }
 
-            public static Dictionary<EBossIndex, Offset> Offsets;
+            private readonly EBossIndex mValue;
 
-            public static readonly Offset Dragon    = new Offset(EBossIndex.Dragon, "Dragon");
-            public static readonly Offset Guts      = new Offset(EBossIndex.Guts, "Guts");
-            public static readonly Offset Machine   = new Offset(EBossIndex.Machine, "Machine");
-            public static readonly Offset Alien     = new Offset(EBossIndex.Alien, "Alien");
-            public static readonly Offset Heat      = new Offset(EBossIndex.Heat, "Heat");
-            public static readonly Offset Air       = new Offset(EBossIndex.Air, "Air");
-            public static readonly Offset Wood      = new Offset(EBossIndex.Wood, "Wood");
-            public static readonly Offset Bubble    = new Offset(EBossIndex.Bubble, "Bubble");
-            public static readonly Offset Quick     = new Offset(EBossIndex.Quick, "Quick");
-            public static readonly Offset Flash     = new Offset(EBossIndex.Flash, "Flash");
-            public static readonly Offset Metal     = new Offset(EBossIndex.Metal, "Metal");
-            public static readonly Offset Clash     = new Offset(EBossIndex.Clash, "Clash");
+            private static readonly Dictionary<EBossIndex, Offset> Offsets;
+
+            public static readonly Offset Dragon    = new(EBossIndex.Dragon, "Dragon");
+            // Note: Pico is handled in EDmgVsEnemy instead of here
+            public static readonly Offset Guts      = new(EBossIndex.Guts, "Guts");
+            public static readonly Offset Machine   = new(EBossIndex.Machine, "Machine");
+            public static readonly Offset Alien     = new(EBossIndex.Alien, "Alien");
+            public static readonly Offset Heat      = new(EBossIndex.Heat, "Heat");
+            public static readonly Offset Air       = new(EBossIndex.Air, "Air");
+            public static readonly Offset Wood      = new(EBossIndex.Wood, "Wood");
+            public static readonly Offset Bubble    = new(EBossIndex.Bubble, "Bubble");
+            public static readonly Offset Quick     = new(EBossIndex.Quick, "Quick");
+            public static readonly Offset Flash     = new(EBossIndex.Flash, "Flash");
+            public static readonly Offset Metal     = new(EBossIndex.Metal, "Metal");
+            public static readonly Offset Crash     = new(EBossIndex.Crash, "Crash");
 
         static Offset()
             {
                 Offsets = new Dictionary<EBossIndex, Offset>()
                 {
-                    { Dragon.Value  , Dragon  },
-                    { Guts.Value    , Guts    },
-                    { Machine.Value , Machine },
-                    { Alien.Value   , Alien   },
-                    { Heat.Value    , Heat    },
-                    { Air.Value     , Air     },
-                    { Wood.Value    , Wood    },
-                    { Bubble.Value  , Bubble  },
-                    { Quick.Value   , Quick   },
-                    { Flash.Value   , Flash   },
-                    { Metal.Value   , Metal   },
-                    { Clash.Value   , Clash   },
+                    { EBossIndex.Dragon  , Dragon  },
+                    { EBossIndex.Guts    , Guts    },
+                    { EBossIndex.Machine , Machine },
+                    { EBossIndex.Alien   , Alien   },
+                    { EBossIndex.Heat    , Heat    },
+                    { EBossIndex.Air     , Air     },
+                    { EBossIndex.Wood    , Wood    },
+                    { EBossIndex.Bubble  , Bubble  },
+                    { EBossIndex.Quick   , Quick   },
+                    { EBossIndex.Flash   , Flash   },
+                    { EBossIndex.Metal   , Metal   },
+                    { EBossIndex.Crash   , Crash   },
                 };
             }
 
             private Offset(EBossIndex offset, String name)
             {
                 this.Name = name;
-                this.Value = offset;
+                this.mValue = offset;
             }
 
-            public static implicit operator EBossIndex (Offset offset)
+            public static implicit operator Int32 (Offset offset)
             {
                 return offset.Value;
             }

@@ -68,7 +68,7 @@ namespace MM2Randomizer.Randomizers.Stages
             });
             StageSelect.Add(new StageFromSelect()
             {
-                PortraitName = "Clash Man",
+                PortraitName = "Crash Man",
                 PortraitAddress = ERMPortraitAddress.CrashMan,
                 InitialPortraitDestination = ERMPortraitDestination.CrashMan,
                 TextAddress = ERMPortraitText.CrashMan,
@@ -103,10 +103,8 @@ namespace MM2Randomizer.Randomizers.Stages
 
         public void FixPortraits<T>(ref Dictionary<EBossIndex, T> portraitBG_x, ref Dictionary<EBossIndex, T> portraitBG_y)
         {
-            Int32 count = Enum.GetValues(typeof(ERMPortraitDestination)).Length;
-
             // Get the new stage order
-            Dictionary<EBossIndex, EBossIndex> newOrder = new Dictionary<EBossIndex, EBossIndex>();
+            Dictionary<EBossIndex, EBossIndex> newOrder = new();
 
             foreach (StageFromSelect stage in StageSelect)
             {
@@ -114,9 +112,9 @@ namespace MM2Randomizer.Randomizers.Stages
             }
 
             // Permute portrait x/y values via the shuffled stage-order array
-            Dictionary<EBossIndex, T> cpy = new Dictionary<EBossIndex, T>();
+            Dictionary<EBossIndex, T> cpy = new();
 
-            foreach (EBossIndex i in Utilities.MiscHacks.GetRobos())
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
                 cpy[newOrder[i]] = portraitBG_y[i];
             }
@@ -124,7 +122,7 @@ namespace MM2Randomizer.Randomizers.Stages
             portraitBG_y = new Dictionary<EBossIndex, T>(cpy);
             cpy.Clear();
 
-            foreach (EBossIndex i in Utilities.MiscHacks.GetRobos())
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
                 cpy[newOrder[i]] = portraitBG_x[i];
             }
@@ -140,8 +138,8 @@ namespace MM2Randomizer.Randomizers.Stages
 
             StageSelect = VanillaStageSelect();
 
-            List<Byte> newStageOrder = new List<Byte>();
-            Int32 count = Enum.GetValues(typeof(ERMPortraitDestination)).Length;
+            List<Byte> newStageOrder = new();
+            Int32 count = StageSelect.Count;
 
             for (Byte i = 0; i < count; i++)
             {

@@ -112,12 +112,16 @@ namespace MM2Randomizer.Randomizers.Enemies
             }
 
             // Format nice debug table
+            Int32 longestName = enemyNames.Select(x => x.Length).Max();
+            String padding = new(' ', longestName);
             debug.AppendLine("Enemy Weaknesses:");
-            debug.AppendLine("\t\t\t\t\t\tP\tH\tA\tW\tB\tQ\tM\tC:");
+            debug.AppendLine($"{padding}\tP\tH\tA\tW\tB\tQ\tM\tC:");
             debug.AppendLine("--------------------------------------------------------");
             for (Int32 i = 0; i < offsets.Count; i++)
             {
-                debug.AppendLine($"{enemyNames[i]}\t{shotP[i]}\t{shotH[i]}\t{shotA[i]}\t{shotW[i]}\t{shotB[i]}\t{shotQ[i]}\t{shotC[i]}\t{shotM[i]}");
+                Int32 nameLen = enemyNames[i].Length;
+                padding = new(' ', longestName - nameLen);
+                debug.AppendLine($"{enemyNames[i]}{padding}\t{shotP[i]}\t{shotH[i]}\t{shotA[i]}\t{shotW[i]}\t{shotB[i]}\t{shotQ[i]}\t{shotC[i]}\t{shotM[i]}");
             }
             debug.Append(Environment.NewLine);
         }
