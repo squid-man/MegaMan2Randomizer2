@@ -339,7 +339,7 @@ namespace MM2Randomizer.Randomizers
 
             // Write Robot Master damage table
             StringBuilder sb;
-            for (Int32 i = 0; i < txtRobos.Count; i++)
+            foreach (EBossIndex i in txtRobos.Keys)
             {
                 sb = new StringBuilder();
 
@@ -347,21 +347,21 @@ namespace MM2Randomizer.Randomizers
                 // obtain the weakness for the boss at this room
                 // TODO: Optimize this mess; when the bossroom is shuffled it should save
                 // a mapping that could be reused here.
-                Int32 newIndex = 0;
+                EBossIndex newIndex = i;
                 for (Int32 m = 0; m < in_Context.RandomBossInBossRoom.Components.Count; m++)
                 {
                     RBossRoom.BossRoomRandomComponent room = in_Context.RandomBossInBossRoom.Components[m];
 
-                    if (room.OriginalBossIndex == i)
+                    if (room.OriginalBossIndex == i.Offset)
                     {
-                        newIndex = m;
+                        newIndex = i;
                         break;
                     }
                 }
 
                 foreach (EWeaponIndex j in EWeaponIndex.All)
                 {
-                    Int32 dmg = RWeaknesses.BotWeaknesses[txtRobos.ElementAt(newIndex).Key][j];
+                    Int32 dmg = RWeaknesses.BotWeaknesses[newIndex][j];
                     sb.Append($"{RText.GetBossWeaknessDamageChar(dmg)} ");
                 }
 
@@ -369,23 +369,23 @@ namespace MM2Randomizer.Randomizers
 
                 for (Int32 j = 0; j < rowString.Length; j++)
                 {
-                    in_Patch.Add(txtRobos.ElementAt(i).Value + j,
+                    in_Patch.Add(txtRobos[i] + j,
                         rowString[j].AsCreditsCharacter(),
-                        $"Credits robo weakness table Char #{j + i * rowString.Length}");
+                        $"Credits robo weakness table Char #{j + i.Offset * rowString.Length}");
                 }
             }
 
             // Write Wily Boss damage table
-            List<EWeaponIndex> weaponsSansFlash = EWeaponIndex.All
+            List<EWeaponIndex> weaponsExcludingFlash = EWeaponIndex.All
                 .Where(x => EWeaponIndex.Flash != x)
                 .ToList();
-            for (Int32 i = 0; i < txtWilys.Count; i++)
+            foreach (EBossIndex i in txtWilys.Keys)
             {
                 sb = new StringBuilder();
 
-                foreach (EWeaponIndex j in weaponsSansFlash)
+                foreach (EWeaponIndex j in weaponsExcludingFlash)
                 {
-                    Int32 dmg = RWeaknesses.WilyWeaknesses[txtWilys.ElementAt(i).Key][j];
+                    Int32 dmg = RWeaknesses.WilyWeaknesses[i][j];
                     sb.Append($"{RText.GetBossWeaknessDamageChar(dmg)} ");
                 }
 
@@ -394,9 +394,9 @@ namespace MM2Randomizer.Randomizers
 
                 for (Int32 j = 0; j < rowString.Length; j++)
                 {
-                    in_Patch.Add(txtWilys.ElementAt(i).Value + j,
+                    in_Patch.Add(txtWilys[i] + j,
                         rowString[j].AsCreditsCharacter(),
-                        $"Credits wily weakness table Char #{j + i * rowString.Length}");
+                        $"Credits wily weakness table Char #{j + i.Offset * rowString.Length}");
                 }
             }
         }

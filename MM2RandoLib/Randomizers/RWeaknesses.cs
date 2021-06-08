@@ -260,7 +260,7 @@ namespace MM2Randomizer.Randomizers
         /// </summary>
         private void RandomizeU(Patch in_Patch, ISeed in_Seed)
         {
-            Dictionary<EWeaponIndex, EDmgVsBoss> bossPrimaryWeaknessAddresses = EDmgVsBoss.GetTables(false, true);
+            Dictionary<EWeaponIndex, EDmgVsBoss> bossPrimaryWeaknessAddresses = EDmgVsBoss.GetTables(includeBuster: false, includeTimeStopper: true);
             Dictionary<EBossIndex, EDmgVsBoss> bossWeaknessShuffled = bossPrimaryWeaknessAddresses
                 .ToDictionary(x => x.Key.ToBossIndex(), x => x.Value);
             bossWeaknessShuffled = in_Seed.Shuffle(bossWeaknessShuffled);
