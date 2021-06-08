@@ -31,7 +31,7 @@ namespace MM2Randomizer.Enums
         QuickNormalPalette  = 0x27,
         Pierrobot           = 0x29,
         FlyBoy              = 0x2B,
-        ClashBarrier        = 0x2D,
+        CrashBarrier        = 0x2D,
         Press               = 0x30,
         Blocky              = 0x31,
         NeoMetall           = 0x34,

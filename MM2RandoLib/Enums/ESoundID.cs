@@ -15,7 +15,7 @@
         DamageEnemy     = 0x2B, 
         Dragon          = 0x2C, 
         Tink            = 0x2D, 
-        ClashAttach     = 0x2E,
+        CrashAttach     = 0x2E,
         Cursor          = 0x2F, 
         TeleportIn      = 0x30,
         WeaponW         = 0x31, 

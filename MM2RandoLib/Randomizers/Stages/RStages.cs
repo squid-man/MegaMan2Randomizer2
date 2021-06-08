@@ -20,7 +20,6 @@ namespace MM2Randomizer.Randomizers.Stages
             return debug.ToString();
         }
 
-
         public static List<StageFromSelect> VanillaStageSelect()
         {
             // StageSelect  Address    Value
@@ -69,7 +68,7 @@ namespace MM2Randomizer.Randomizers.Stages
             });
             StageSelect.Add(new StageFromSelect()
             {
-                PortraitName = "Clash Man",
+                PortraitName = "Crash Man",
                 PortraitAddress = ERMPortraitAddress.CrashMan,
                 InitialPortraitDestination = ERMPortraitDestination.CrashMan,
                 TextAddress = ERMPortraitText.CrashMan,
@@ -102,33 +101,33 @@ namespace MM2Randomizer.Randomizers.Stages
             return StageSelect;
         }
 
-        public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
+        public void FixPortraits<T>(ref Dictionary<EBossIndex, T> portraitBG_x, ref Dictionary<EBossIndex, T> portraitBG_y)
         {
-            const Int32 count = (Int32)ERMPortraitDestination.Count;
-
             // Get the new stage order
-            ERMPortraitDestination[] newOrder = new ERMPortraitDestination[count];
+            Dictionary<EBossIndex, EBossIndex> newOrder = new();
+
             foreach (StageFromSelect stage in StageSelect)
             {
-                newOrder[(Int32)stage.PortraitDestination.Old] = stage.PortraitDestination.New;
+                newOrder[StageFromSelect.GetBossIndex(stage.PortraitDestination.Old)] = StageFromSelect.GetBossIndex(stage.PortraitDestination.New);
             }
 
             // Permute portrait x/y values via the shuffled stage-order array
-            Byte[] cpy = new Byte[count];
+            Dictionary<EBossIndex, T> cpy = new();
 
-            for (Int32 i = 0; i < count; i++)
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
-                cpy[(Int32)newOrder[i]] = portraitBG_y[i];
+                cpy[newOrder[i]] = portraitBG_y[i];
             }
 
-            Array.Copy(cpy, portraitBG_y, count);
+            portraitBG_y = new Dictionary<EBossIndex, T>(cpy);
+            cpy.Clear();
 
-            for (Int32 i = 0; i < count; i++)
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
-                cpy[(Int32)newOrder[i]] = portraitBG_x[i];
+                cpy[newOrder[i]] = portraitBG_x[i];
             }
 
-            Array.Copy(cpy, portraitBG_x, count);
+            portraitBG_x = new Dictionary<EBossIndex, T>(cpy);
         }
 
         /// <summary>
@@ -139,8 +138,8 @@ namespace MM2Randomizer.Randomizers.Stages
 
             StageSelect = VanillaStageSelect();
 
-            List<Byte> newStageOrder = new List<Byte>();
-            const Int32 count = (Int32)ERMPortraitDestination.Count;
+            List<Byte> newStageOrder = new();
+            Int32 count = StageSelect.Count;
 
             for (Byte i = 0; i < count; i++)
             {

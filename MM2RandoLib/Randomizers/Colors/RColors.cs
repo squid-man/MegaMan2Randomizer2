@@ -486,16 +486,16 @@ namespace MM2Randomizer.Randomizers.Colors
             Int32 startAddress = MEGA_MAN_COLOR_ADDRESS;
 
             // Change 8 robot master weapon colors
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
                 Byte dark = DarkColors.Dequeue();
                 Byte light = LightColors.Dequeue();
 
-                Int32 pos = startAddress + 0x04 + i * 0x04;
+                Int32 pos = startAddress + 0x04 + i.Offset * 0x04;
                 in_Patch.Add(pos, light, String.Format("{0} Weapon Color Light", ((EDmgVsBoss.Offset)i).ToString()));
                 in_Patch.Add(pos+1, dark, String.Format("{0} Weapon Color Dark", ((EDmgVsBoss.Offset)i).ToString()));
 
-                if (i == 0)
+                if (EBossIndex.Heat == i)
                 {
                     //0x03DE49 - H charge colors
                     //    0F 15 - flash neutral color (15 = weapon color)
@@ -525,14 +525,14 @@ namespace MM2Randomizer.Randomizers.Colors
             };
 
             List<Int32> solidColorPair1Main = new List<Int32> {
-                0x01F4ED, // Clash red color 0x16
+                0x01F4ED, // Crash red color 0x16
                 0x0174B7, // Flash blue color 0x12
                 0x0074B4, // Air projectile blue color 0x11
                 0x00B4ED, // Wood orange color 0x17
             };
 
             List<Int32> solidColorPair1White = new List<Int32> {
-                0x01F4EC, // Clash white color 0x30
+                0x01F4EC, // Crash white color 0x30
                 0x0174B6, // Flash white color 0x30
                 0x0074B3, // Air projectile white color 0x30
                 0x00B4EC, // Wood white color 0x36
@@ -2805,53 +2805,53 @@ namespace MM2Randomizer.Randomizers.Colors
 
                 #endregion
 
-                #region 08 Clashman
+                #region 08 Crashman
 
                 // TODO: Comment later, missing a color in boss corridor
                 new ColorSet() {
                     addresses = new Int32[] { 0x01fe13, 0x01fe14, 0x03b63a, 0x03b63b, 0x03b642, 0x03b643, 0x03b646, 0x03b647, 0x03b64a, 0x03b64b, 0x03b64e, 0x03b64f, 0x039188, 0x039189, 0x03918c, 0x03918d, },
                     ColorBytes = new List<EColorsHex[]>() {
-                        // Clash | Border1 | Default
+                        // Crash | Border1 | Default
                         new EColorsHex[] {  EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod, EColorsHex.PastelLemon, EColorsHex.GoldenRod,},
-                        // Clash | Border1 | Blue
+                        // Crash | Border1 | Blue
                         new EColorsHex[] {  EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue, EColorsHex.MediumBlue, EColorsHex.RoyalBlue,},
-                        // Clash | Border1 | Orange
+                        // Crash | Border1 | Orange
                         new EColorsHex[] {  EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange, EColorsHex.YellowOrange, EColorsHex.Orange,},
-                        // Clash | Border1 | Green
+                        // Crash | Border1 | Green
                         new EColorsHex[] {  EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen, EColorsHex.Lime, EColorsHex.ForestGreen,},
-                        // Clash | Border1 | Red Black
+                        // Crash | Border1 | Red Black
                         new EColorsHex[] {  EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Red,},
                     }
                 },
                 new ColorSet() {
                     addresses = new Int32[] { 0x01fe15,0x01fe17,0x03b63c,0x03b644,0x03b648,0x03b64c,0x03b650,},
                     ColorBytes = new List<EColorsHex[]>() {
-                        // Clash | Background | Default
+                        // Crash | Background | Default
                         new EColorsHex[] {  EColorsHex.Blue, EColorsHex.Blue, EColorsHex.RoyalBlue, EColorsHex.RoyalBlue, EColorsHex.Black2, EColorsHex.Black2, EColorsHex.Black2,},
-                        // Clash | Background | Yellow
+                        // Crash | Background | Yellow
                         new EColorsHex[] {  EColorsHex.Yellow, EColorsHex.Yellow, EColorsHex.Brown, EColorsHex.Brown, EColorsHex.Black2, EColorsHex.Black2, EColorsHex.Black2,},
-                        // Clash | Background | Orange
+                        // Crash | Background | Orange
                         new EColorsHex[] {  EColorsHex.Orange, EColorsHex.Orange, EColorsHex.Red, EColorsHex.Red, EColorsHex.Black2, EColorsHex.Black2, EColorsHex.Black2,},
-                        // Clash | Background | Green
+                        // Crash | Background | Green
                         new EColorsHex[] {  EColorsHex.Lime, EColorsHex.Lime, EColorsHex.Moss, EColorsHex.Moss, EColorsHex.Black2, EColorsHex.Black2, EColorsHex.Black2,},
-                        // Clash | Background | Purple
+                        // Crash | Background | Purple
                         new EColorsHex[] {  EColorsHex.LightPink, EColorsHex.LightPink, EColorsHex.DarkMagenta, EColorsHex.DarkMagenta, EColorsHex.Black2, EColorsHex.Black2, EColorsHex.Black2,}
                     }
                 },
                 new ColorSet() {
                     addresses = new Int32[] { 0x01fe18,0x01fe19, },
                     ColorBytes = new List<EColorsHex[]>() {
-                        // Clash | Doodads | Default
+                        // Crash | Doodads | Default
                         new EColorsHex[] {  EColorsHex.YellowOrange, EColorsHex.NearWhite,},
-                        // Clash | Doodads | Green
+                        // Crash | Doodads | Green
                         new EColorsHex[] {  EColorsHex.Green, EColorsHex.NearWhite,},
-                        // Clash | Doodads | Teal
+                        // Crash | Doodads | Teal
                         new EColorsHex[] {  EColorsHex.Teal, EColorsHex.NearWhite,},
-                        // Clash | Doodads | Purple
+                        // Crash | Doodads | Purple
                         new EColorsHex[] {  EColorsHex.Purple, EColorsHex.NearWhite,},
-                        // Clash | Doodads | Red
+                        // Crash | Doodads | Red
                         new EColorsHex[] {  EColorsHex.Crimson, EColorsHex.NearWhite,},
-                        // Clash | Doodads | Gray
+                        // Crash | Doodads | Gray
                         new EColorsHex[] {  EColorsHex.Gray, EColorsHex.NearWhite,},
                     }
                 },

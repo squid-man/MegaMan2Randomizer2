@@ -18,16 +18,21 @@ namespace MM2Randomizer.Enums
             get; private set;
         }
 
-        public static Dictionary<Int32, EDmgVsEnemy> Addresses { get; set; }
+        public EWeaponIndex Index
+        {
+            get; private set;
+        }
 
-        public static readonly EDmgVsEnemy DamageP = new EDmgVsEnemy(0x03E9A8, "Buster");
-        public static readonly EDmgVsEnemy DamageH = new EDmgVsEnemy(0x03EA24, "Atomic Fire");
-        public static readonly EDmgVsEnemy DamageA = new EDmgVsEnemy(0x03EA9C, "Air Shooter");
-        public static readonly EDmgVsEnemy DamageW = new EDmgVsEnemy(0x03EB14, "Leaf Shield");
-        public static readonly EDmgVsEnemy DamageB = new EDmgVsEnemy(0x03EB8C, "Bubble Lead");
-        public static readonly EDmgVsEnemy DamageQ = new EDmgVsEnemy(0x03EC04, "Quick Boomerang");
-        public static readonly EDmgVsEnemy DamageM = new EDmgVsEnemy(0x03ECF4, "Metal Blade");
-        public static readonly EDmgVsEnemy DamageC = new EDmgVsEnemy(0x03EC7C, "Clash Bomber");
+        public static Dictionary<Int32, EDmgVsEnemy> Addresses { get; }
+
+        public static readonly EDmgVsEnemy DamageP = new(EWeaponIndex.Buster, 0x03E9A8, "Buster");
+        public static readonly EDmgVsEnemy DamageH = new(EWeaponIndex.Heat, 0x03EA24, "Atomic Fire");
+        public static readonly EDmgVsEnemy DamageA = new(EWeaponIndex.Air, 0x03EA9C, "Air Shooter");
+        public static readonly EDmgVsEnemy DamageW = new(EWeaponIndex.Wood, 0x03EB14, "Leaf Shield");
+        public static readonly EDmgVsEnemy DamageB = new(EWeaponIndex.Bubble, 0x03EB8C, "Bubble Lead");
+        public static readonly EDmgVsEnemy DamageQ = new(EWeaponIndex.Quick, 0x03EC04, "Quick Boomerang");
+        public static readonly EDmgVsEnemy DamageM = new(EWeaponIndex.Metal, 0x03ECF4, "Metal Blade");
+        public static readonly EDmgVsEnemy DamageC = new(EWeaponIndex.Crash, 0x03EC7C, "Crash Bomber");
 
         static EDmgVsEnemy()
         {
@@ -44,8 +49,9 @@ namespace MM2Randomizer.Enums
             };
         }
 
-        private EDmgVsEnemy(Int32 address, String name)
+        private EDmgVsEnemy(EWeaponIndex index, Int32 address, String name)
         {
+            this.Index = index;
             this.Address = address;
             this.WeaponName = name;
         }
@@ -93,25 +99,25 @@ namespace MM2Randomizer.Enums
         /// 
         /// </summary>
         /// <returns></returns>
-        public static List<EDmgVsEnemy> GetTables(Boolean includeBuster)
+        public static Dictionary<EWeaponIndex, EDmgVsEnemy> GetTables(Boolean includeBuster)
         {
-            List<EDmgVsEnemy> list = new List<EDmgVsEnemy>()
+            Dictionary<EWeaponIndex, EDmgVsEnemy> dict = new()
             {
-                DamageH,
-                DamageA,
-                DamageW,
-                DamageB,
-                DamageQ,
-                DamageM,
-                DamageC,
+                { EWeaponIndex.Heat, DamageH },
+                { EWeaponIndex.Air, DamageA },
+                { EWeaponIndex.Wood, DamageW },
+                { EWeaponIndex.Bubble, DamageB },
+                { EWeaponIndex.Quick, DamageQ },
+                { EWeaponIndex.Metal, DamageM },
+                { EWeaponIndex.Crash, DamageC },
             };
 
             if (includeBuster)
             {
-                list.Insert(0, DamageP);
+                dict.Add(EWeaponIndex.Buster, DamageP);
             }
 
-            return list;
+            return dict;
         }
 
         /// <summary>
@@ -126,17 +132,17 @@ namespace MM2Randomizer.Enums
 
             public static readonly Offset PicopicoKun;
             public static readonly Offset Press;
-            public static readonly Offset ClashBarrier_Other;
-            public static readonly Offset ClashBarrier_W4;
-            public static readonly Offset Buebeam;
+            public static readonly Offset CrashBarrier_Other;
+            public static readonly Offset CrashBarrier_W4;
+            public static readonly Offset Boobeam;
 
             static Offset()
             {
-                ClashBarrier_Other  = new Offset(0x2D);
+                CrashBarrier_Other  = new Offset(0x2D);
                 Press               = new Offset(0x30);
-                ClashBarrier_W4     = new Offset(0x57);
+                CrashBarrier_W4     = new Offset(0x57);
                 PicopicoKun         = new Offset(0x6A);
-                Buebeam             = new Offset(0x6D);
+                Boobeam             = new Offset(0x6D);
             }
 
             private Offset(Int32 offset)

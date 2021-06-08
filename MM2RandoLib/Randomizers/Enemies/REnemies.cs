@@ -136,7 +136,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                         sbrg.NewEnemyTypes.Add(newEnemyType); // TODO: This all should be refactored. Use a hashtable of EnemyTypes and abolish "EnemyID".
 
                         // If room contains only this one enemy and it is an activator
-                        // TODO: How does Clash stage work with the Pipis? They don't break normally.
+                        // TODO: How does Crash stage work with the Pipis? They don't break normally.
                         if ((room.EnemyInstances.Count == 1 && instance.HasNewActivator()))
                         {
                             // Try to replace it with a non-activator enemy
@@ -430,7 +430,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             p.Add(0x00b445, 0xa2, "Custom Sprite Bank: Wood 10th room: slot 3->? (0xa2 special slot)");
             p.Add(0x00b446, 0x00, "Custom Sprite Bank: Wood 11th room: slot 3->0");
             p.Add(0x01743e, 0x24, "Custom Sprite Bank: Flash 3rd room: slot 0->2");
-            p.Add(0x01f43d, 0x48, "Custom Sprite Bank: Clash 2nd room: slot 2->7");
+            p.Add(0x01f43d, 0x48, "Custom Sprite Bank: Crash 2nd room: slot 2->7");
         }
 
         private void InitializeRooms()
@@ -506,15 +506,15 @@ namespace MM2Randomizer.Randomizers.Enemies
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Metal, 0x01B482, new Int32[] { 2 }));
             // Metal fight 0x01B494
 
-            // Clash
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Clash, 0x01f494, new Int32[] { 0, 3, 4, 5 },
+            // Crash
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Crash, 0x01f494, new Int32[] { 0, 3, 4, 5 },
                 new Int32[] { 3 }, new Byte[] { 0x95, 0x03 })); // Moving platform sprites
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Clash, 0x01f482, new Int32[] { 2, 8, 9 }));
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Clash, 0x01f4a6, new Int32[] { 6, 7 }));
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Clash, 0x01f470, new Int32[] { 10, 11, 12 }));
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Clash, 0x01f4b8, new Int32[] { 1 })); // Slot 4, changed from empty room 13 to room 1
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Clash, 0x01f4ca, new Int32[] { 14 }));
-            // Clash fight 0x01F4DC
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Crash, 0x01f482, new Int32[] { 2, 8, 9 }));
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Crash, 0x01f4a6, new Int32[] { 6, 7 }));
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Crash, 0x01f470, new Int32[] { 10, 11, 12 }));
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Crash, 0x01f4b8, new Int32[] { 1 })); // Slot 4, changed from empty room 13 to room 1
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.Crash, 0x01f4ca, new Int32[] { 14 }));
+            // Crash fight 0x01F4DC
 
             // Get copy of enemy spawn list to save time
             List <EnemyInstance> usedInstances = new List<EnemyInstance>(EnemyInstances);
@@ -784,7 +784,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                             break;
                         }
 
-                        case EStageID.Clash:
+                        case EStageID.Crash:
                         {
                             // Mole bad GFX
                             if (en.ID == EEnemyID.Mole_Activator)

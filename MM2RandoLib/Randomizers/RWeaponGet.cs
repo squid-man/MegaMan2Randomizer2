@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
 
@@ -8,20 +9,27 @@ namespace MM2Randomizer.Randomizers
 {
     public class RWeaponGet : IRandomizer
     {
-        private List<ERMWeaponValueBit> mNewWeaponOrder;
+        private Dictionary<EBossIndex, ERMWeaponValueBit> mNewWeaponOrder;
+
+        private readonly StringBuilder debug = new();
+        public override String ToString()
+        {
+            return debug.ToString();
+        }
 
         public RWeaponGet()
         {
-            this.mNewWeaponOrder = new List<ERMWeaponValueBit>()
+            this.debug = new();
+            this.mNewWeaponOrder = new()
             {
-                ERMWeaponValueBit.HeatMan,
-                ERMWeaponValueBit.AirMan,
-                ERMWeaponValueBit.WoodMan,
-                ERMWeaponValueBit.BubbleMan,
-                ERMWeaponValueBit.QuickMan,
-                ERMWeaponValueBit.FlashMan,
-                ERMWeaponValueBit.MetalMan,
-                ERMWeaponValueBit.CrashMan
+                { EBossIndex.Heat, ERMWeaponValueBit.HeatMan },
+                { EBossIndex.Air, ERMWeaponValueBit.AirMan },
+                { EBossIndex.Wood, ERMWeaponValueBit.WoodMan },
+                { EBossIndex.Bubble, ERMWeaponValueBit.BubbleMan },
+                { EBossIndex.Quick, ERMWeaponValueBit.QuickMan },
+                { EBossIndex.Flash, ERMWeaponValueBit.FlashMan },
+                { EBossIndex.Metal, ERMWeaponValueBit.MetalMan },
+                { EBossIndex.Crash, ERMWeaponValueBit.CrashMan },
             };
         }
 
@@ -40,14 +48,14 @@ namespace MM2Randomizer.Randomizers
             // Flash Man    0x03C28E   32
             // Metal Man    0x03C28F   64
             // Crash Man    0x03C290   128
-            this.mNewWeaponOrder = in_Context.Seed.Shuffle(this.mNewWeaponOrder).ToList();
+            this.mNewWeaponOrder = in_Context.Seed.Shuffle(this.mNewWeaponOrder);
 
             // Create table for which weapon is awarded by which robot master
             // This also affects which portrait is blacked out on the stage select
             // This also affects which teleporter deactivates after defeating a Wily 5 refight boss
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
-                in_Patch.Add((Int32)(ERMStageWeaponAddress.HeatMan + i), (Byte)this.mNewWeaponOrder[i], $"{(EDmgVsBoss.Offset)i} Weapon Get");
+                in_Patch.Add((Int32)(ERMStageWeaponAddress.HeatMan + i.Offset), (Byte)this.mNewWeaponOrder[i], $"{(EDmgVsBoss.Offset)i} Weapon Get");
             }
 
             // Create a copy of the default weapon order table to be used by teleporter function
@@ -68,33 +76,47 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03843c, 0xf3, "Teleporter Fix Custom Function Call Byte 2");
 
             // Create table for which stage is selectable on the stage select screen (independent of it being blacked out)
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
             {
-                in_Patch.Add((Int32)(ERMStageSelect.FirstStageInMemory + i), (Byte)this.mNewWeaponOrder[i], "Selectable Stage Fix for Random Weapon Get");
+                in_Patch.Add((Int32)(ERMStageSelect.FirstStageInMemory + i.Offset), (Byte)this.mNewWeaponOrder[i], "Selectable Stage Fix for Random Weapon Get");
+            }
+
+            // Dump the boss rewards to the log
+            debug.AppendLine("WeaponGet Table:");
+            debug.AppendLine("-------------------------------------");
+            // This table is just a convenient way to get the weapon names
+            Dictionary<EWeaponIndex, EDmgVsBoss> weaponTable = EDmgVsBoss.GetTables(includeBuster: false, includeTimeStopper: true);
+            foreach (EBossIndex i in EBossIndex.RobotMasters)
+            {
+                String weaponName = weaponTable[GetWeaponIndex(this.mNewWeaponOrder[i])].WeaponName;
+                debug.AppendLine($"{i.Name} stage\t -> {weaponName}");
             }
         }
 
-        public void FixPortraits(ref Byte[] portraitBG_x, ref Byte[] portraitBG_y)
+        public void FixPortraits<T>(ref Dictionary<EBossIndex, T> portraitBG_x, ref Dictionary<EBossIndex, T> portraitBG_y)
         {
             // Since the acquired-weapons table's elements are powers of two, get a new array of their 0-7 index
-            Int32[] newWeaponIndex = GetShuffleIndexPermutation();
+            Dictionary<EBossIndex, EBossIndex> newWeaponIndex = GetShuffleIndexPermutation();
 
             // Permute portrait x/y values via the shuffled acquired-weapons array 
-            Byte[] cpy = new Byte[8];
+            Dictionary<EBossIndex, T> cpy = new();
 
-            for (Int32 i = 0; i < 8; i++)
+            List<EBossIndex> bosses = EBossIndex.RobotMasters.ToList();
+
+            foreach (EBossIndex i in bosses)
             {
                 cpy[newWeaponIndex[i]] = portraitBG_y[i];
             }
 
-            Array.Copy(cpy, portraitBG_y, 8);
+            portraitBG_y = new Dictionary<EBossIndex, T>(cpy);
+            cpy.Clear();
 
-            for (Int32 i = 0; i < 8; i++)
+            foreach (EBossIndex i in bosses)
             {
                 cpy[newWeaponIndex[i]] = portraitBG_x[i];
             }
 
-            Array.Copy(cpy, portraitBG_x, 8);
+            portraitBG_x = new Dictionary<EBossIndex, T>(cpy);
         }
 
         /// <summary>
@@ -104,21 +126,50 @@ namespace MM2Randomizer.Randomizers
         /// <returns>An array of the new locations of the 8 awarded weapons. The index represents the original robot master index,
         /// in the order H A W B Q F M C. The value represents the index of the new location.
         /// </returns>
-        public Int32[] GetShuffleIndexPermutation()
+        public Dictionary<EBossIndex, EBossIndex> GetShuffleIndexPermutation()
         {
-            Int32[] newWeaponIndex = new Int32[8];
-            for (Int32 i = 0; i < 8; i++)
+            Dictionary<EBossIndex, EBossIndex> newWeaponIndex = new();
+
+            foreach (EBossIndex origIndex in EBossIndex.RobotMasters)
             {
-                Int32 j = 0;
-                Byte val = (Byte)this.mNewWeaponOrder[i];
-                while (val != 0)
-                {
-                    val = (Byte)(val >> 1);
-                    j++;
-                }
-                newWeaponIndex[i] = j - 1;
+                EBossIndex newIndex = GetBossIndex(this.mNewWeaponOrder[origIndex]);
+                newWeaponIndex[origIndex] = newIndex;
             }
+
             return newWeaponIndex;
         }
+
+        public static EWeaponIndex GetWeaponIndex(ERMWeaponValueBit in_WeaponValueBit)
+        {
+            return in_WeaponValueBit switch
+            {
+                ERMWeaponValueBit.HeatMan => EWeaponIndex.Heat,
+                ERMWeaponValueBit.AirMan => EWeaponIndex.Air,
+                ERMWeaponValueBit.WoodMan => EWeaponIndex.Wood,
+                ERMWeaponValueBit.BubbleMan => EWeaponIndex.Bubble,
+                ERMWeaponValueBit.QuickMan => EWeaponIndex.Quick,
+                ERMWeaponValueBit.FlashMan => EWeaponIndex.Flash,
+                ERMWeaponValueBit.MetalMan => EWeaponIndex.Metal,
+                ERMWeaponValueBit.CrashMan => EWeaponIndex.Crash,
+                _ => throw new IndexOutOfRangeException(),
+            };
+        }
+
+        public static EBossIndex GetBossIndex(ERMWeaponValueBit in_WeaponValueBit)
+        {
+            return in_WeaponValueBit switch
+            {
+                ERMWeaponValueBit.HeatMan => EBossIndex.Heat,
+                ERMWeaponValueBit.AirMan => EBossIndex.Air,
+                ERMWeaponValueBit.WoodMan => EBossIndex.Wood,
+                ERMWeaponValueBit.BubbleMan => EBossIndex.Bubble,
+                ERMWeaponValueBit.QuickMan => EBossIndex.Quick,
+                ERMWeaponValueBit.FlashMan => EBossIndex.Flash,
+                ERMWeaponValueBit.MetalMan => EBossIndex.Metal,
+                ERMWeaponValueBit.CrashMan => EBossIndex.Crash,
+                _ => throw new IndexOutOfRangeException(),
+            };
+        }
+
     }
 }

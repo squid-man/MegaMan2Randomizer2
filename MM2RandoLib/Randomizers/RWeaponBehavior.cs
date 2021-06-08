@@ -12,47 +12,17 @@ namespace MM2Randomizer.Randomizers
     {
         private List<ESoundID> sounds;
 
-        // Buster Heat Air Wood Bubble Quick Metal Clash
-        public static List<Double> AmmoUsage;
+        // Buster Heat Air Wood Bubble Quick Metal Crash
+        private static IDictionary<EWeaponIndex, Double> AmmoUsage;
 
-        public static Double GetAmmoUsage(EDmgVsEnemy weapon)
+        public static Double GetAmmoUsage(EWeaponIndex weapon)
         {
-            if (weapon == EDmgVsEnemy.DamageP)
+            Double value = 0; // Default for not finding a weapon is 0
+            if (AmmoUsage.ContainsKey(weapon))
             {
-                return AmmoUsage[0];
+                AmmoUsage.TryGetValue(weapon, out value);
             }
-            else if (weapon == EDmgVsEnemy.DamageH)
-            {
-                return AmmoUsage[1];
-            }
-            else if (weapon == EDmgVsEnemy.DamageA)
-            {
-                return AmmoUsage[2];
-            }
-            else if (weapon == EDmgVsEnemy.DamageW)
-            {
-                return AmmoUsage[3];
-            }
-            else if (weapon == EDmgVsEnemy.DamageB)
-            {
-                return AmmoUsage[4];
-            }
-            else if (weapon == EDmgVsEnemy.DamageQ)
-            {
-                return AmmoUsage[5];
-            }
-            else if (weapon == EDmgVsEnemy.DamageM)
-            {
-                return AmmoUsage[6];
-            }
-            else if (weapon == EDmgVsEnemy.DamageC)
-            {
-                return AmmoUsage[7];
-            }
-            else
-            {
-                return 0;
-            }
+            return value;
         }
 
         private StringBuilder debug;
@@ -78,7 +48,7 @@ namespace MM2Randomizer.Randomizers
                 ESoundID.DamageEnemy,
                 ESoundID.Dragon,
                 ESoundID.Tink,
-                ESoundID.ClashAttach,
+                ESoundID.CrashAttach,
                 ESoundID.Cursor,
                 ESoundID.TeleportIn,
                 ESoundID.WeaponW,
@@ -101,8 +71,8 @@ namespace MM2Randomizer.Randomizers
         {
             debug = new StringBuilder();
             sounds = GetSoundList();
-            AmmoUsage = new List<Double>();
-            AmmoUsage.Add(0); // Buster is free
+            AmmoUsage = new Dictionary<EWeaponIndex, Double>();
+            AmmoUsage.Add(EWeaponIndex.Buster, 0); // Buster is free
 
             ChangeHeat(in_Patch, in_Context.Seed);
             ChangeAir(in_Patch, in_Context.Seed);
@@ -117,9 +87,9 @@ namespace MM2Randomizer.Randomizers
             debug.AppendLine("Ammo Usage");
             debug.AppendLine("P     H     A     W     B     Q     M     C");
             debug.AppendLine("-----------------------------------------------");
-            foreach (Double w in AmmoUsage)
+            foreach (KeyValuePair<EWeaponIndex, Double> p in AmmoUsage)
             {
-                debug.Append(String.Format("{0:0.00}  ", w));
+                debug.Append(String.Format("{0:0.00}  ", p.Value));
             }
             debug.Append(Environment.NewLine);
         }
@@ -160,7 +130,7 @@ namespace MM2Randomizer.Randomizers
             Byte[] bytes = new Byte[] { 0x01, 0x01, 0x02, 0x02, 0x02, 0x02, 0x03, 0x03, };
             Int32 rInt = in_Seed.NextInt32(bytes.Length);
             in_Patch.Add(0x03DE57, bytes[rInt], $"(H) | Shot L3 Ammo Cost: {bytes[rInt]}");
-            AmmoUsage.Add(bytes[rInt]);
+            AmmoUsage.Add(EWeaponIndex.Heat, bytes[rInt]);
 
             // Charge Behavior
             // 20% to have old charge behavior, 40% to skip 1 level, 40% to shoot L3 immediately
@@ -246,7 +216,7 @@ namespace MM2Randomizer.Randomizers
             //0x03DAEE - A ammo used(0x02)
             Int32 ammoUse = in_Seed.NextInt32(0x02) + 0x01;
             in_Patch.Add(0x03DAEE, (Byte)ammoUse, "(A) | Ammo Use");
-            AmmoUsage.Add(ammoUse);
+            AmmoUsage.Add(EWeaponIndex.Air, ammoUse);
 
             //0x03DE6E - A projectile y-acceleration fraction(10)
             // Do 0x02 to 0x32, where values above 0x10 are less common
@@ -352,7 +322,7 @@ namespace MM2Randomizer.Randomizers
             //0x03DF72 - W ammo usage (3) (do from 1 to 3)
             Int32 ammoUse = in_Seed.NextInt32(0x03) + 0x01;
             in_Patch.Add(0x03DF72, (Byte)ammoUse, "(W) | Ammo Usage");
-            AmmoUsage.Add(ammoUse);
+            AmmoUsage.Add(EWeaponIndex.Wood, ammoUse);
 
             //0x03DF7D - W y - speed(04)
             in_Patch.Add(0x03DF7D, (Byte)launchVel, "(W) | Launch Y-Velocity Integer");
@@ -383,7 +353,7 @@ namespace MM2Randomizer.Randomizers
             //0x03DB3D - B shots per ammo tick (0x02) (do 1-4)
             Int32 magSize = in_Seed.NextInt32(0x04) + 0x01;
             in_Patch.Add(0x03DB3D, (Byte)magSize, "(B) | Shots Per Ammo Tick");
-            AmmoUsage.Add(1d / (Double)magSize);
+            AmmoUsage.Add(EWeaponIndex.Bubble, 1d / (Double)magSize);
 
             //0x03DFA4 - B y - pos to embed in surface(0xFF)
             // Dumb
@@ -433,7 +403,7 @@ namespace MM2Randomizer.Randomizers
             //    Do from 0x04 to 0x0A ?
             Int32 magSize = in_Seed.NextInt32(0x06) + 0x04;
             in_Patch.Add(0x03DB78, (Byte)magSize, "(Q) | Shots Per Ammo Tick");
-            AmmoUsage.Add(1d / (Double)magSize);
+            AmmoUsage.Add(EWeaponIndex.Quick, 1d / (Double)magSize);
 
             // Q behavior, distance, default 0x12
             //    Do from 0x0A to 0x20 ?
@@ -575,7 +545,7 @@ namespace MM2Randomizer.Randomizers
             //0x03DBD2 - M shots per ammo tick(04) (change to 1-5)
             Int32 magSize = in_Seed.NextInt32(0x05) + 0x01;
             in_Patch.Add(0x03DBD2, (Byte)magSize, "(M) | Shots Per Ammo Tick");
-            AmmoUsage.Add(1d / magSize);
+            AmmoUsage.Add(EWeaponIndex.Metal, 1d / magSize);
 
             // Speeds.  Change each to be 2-7.  Diagonal will be half each, rounded up.
             Int32 velX = in_Seed.NextInt32(0x06) + 0x02;
@@ -645,7 +615,7 @@ namespace MM2Randomizer.Randomizers
             //0x03DB99 - C ammo per shot (04) (do 1-3)
             Int32 ammoUse = in_Seed.NextInt32(0x03) + 0x01;
             in_Patch.Add(0x03DB99, (Byte)ammoUse, "(C) | Ammo Usage");
-            AmmoUsage.Add(ammoUse);
+            AmmoUsage.Add(EWeaponIndex.Crash, ammoUse);
 
             // 0x03DB9F - C explosion type? (02)
             // Change to 03 to "single explosion" type. Most other values break the game.

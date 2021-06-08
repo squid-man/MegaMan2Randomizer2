@@ -467,18 +467,18 @@ namespace MM2Randomizer.Randomizers
             // Unused addresses
             //0x02CDAF - Jump velocity fraction? 0x44 Double check
 
-            // Clashman AI
+            // Crashman AI
 
             // Crash Man's routine for attack
             //0x02CCf2 - Walk x-vel fraction 0x47
-            in_Patch.Add(0x02CCf2, in_Seed.NextUInt8(), "Clashman Walk X-Velocity Fraction");
+            in_Patch.Add(0x02CCf2, in_Seed.NextUInt8(), "Crashman Walk X-Velocity Fraction");
 
             //0x02CCF7 - Walk x-vel integer 0x01, do 0 to 2
-            in_Patch.Add(0x02CCF7, in_Seed.NextUInt8(2), "Clashman Walk X-Velocity Integer");
+            in_Patch.Add(0x02CCF7, in_Seed.NextUInt8(2), "Crashman Walk X-Velocity Integer");
 
             //0x02CD07 - Jump behavior 0x27. 0x17 = always jumping, any other value = doesn't react with a jump.
             // Give 25% chance for each unique behavior, and 50% for default.
-            // UPDATE: One of these two behaviors breaks and clashman goes crazy. I think it's 0x17. disable.
+            // UPDATE: One of these two behaviors breaks and Crashman goes crazy. I think it's 0x17. disable.
             Byte jumpType = 0x27;
 
             if (in_Seed.NextDouble() > 0.75)
@@ -490,19 +490,19 @@ namespace MM2Randomizer.Randomizers
                 jumpType = 0x26;
             }
 
-            in_Patch.Add(0x02CD07, jumpType, "Clashman Special Jump Behavior");
+            in_Patch.Add(0x02CD07, jumpType, "Crashman Special Jump Behavior");
 
             //0x02CD2A - Jump y-vel intger, 6, do from 2 to 10
-            in_Patch.Add(0x02CD2A, in_Seed.NextUInt8(2, 11), "Clashman Jump Y-Velocity Integer");
+            in_Patch.Add(0x02CD2A, in_Seed.NextUInt8(2, 11), "Crashman Jump Y-Velocity Integer");
 
             //0x02CDD3 - Shot behavior, 0x5E, change to have him always shoot when jumping, 20% chance
             if (in_Seed.NextDouble() > 0.80)
             {
-                in_Patch.Add(0x02CDD3, 0x50, "Clashman Disable Single Shot");
+                in_Patch.Add(0x02CDD3, 0x50, "Crashman Disable Single Shot");
             }
 
             //0x02CDEE - Crash Bomber velocity, 0x06, do from 2 to 8
-            in_Patch.Add(0x02CDEE, in_Seed.NextUInt8(2, 9), "Clashman Clash Bomber X-Velocity");
+            in_Patch.Add(0x02CDEE, in_Seed.NextUInt8(2, 9), "Crashman Crash Bomber X-Velocity");
         }
     }
 }

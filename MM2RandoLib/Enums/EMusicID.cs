@@ -4,7 +4,7 @@
     {
         Flash       = 0x00,
         Wood        = 0x01,
-        Clash       = 0x02,
+        Crash       = 0x02,
         Heat        = 0x03,
         Air         = 0x04,
         Metal       = 0x05,

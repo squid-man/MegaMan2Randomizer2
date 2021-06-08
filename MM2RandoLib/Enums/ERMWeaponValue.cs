@@ -27,14 +27,4 @@ namespace MM2Randomizer.Enums
         CrashMan = 0x80
     }
 
-    public enum EWeaponIndex
-    {
-        Heat = 0x01,
-        Air = 0x02,
-        Wood = 0x03,
-        Bubble = 0x04,
-        Quick = 0x05,
-        Clash = 0x06,
-        Metal = 0x07,
-    }
 }

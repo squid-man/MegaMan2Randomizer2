@@ -18,7 +18,5 @@ namespace MM2Randomizer.Enums
         FlashMan = 5,
         MetalMan = 6,
         CrashMan = 7,
-
-        Count = CrashMan + 1
     }
 }
