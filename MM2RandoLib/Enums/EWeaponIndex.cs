@@ -11,7 +11,8 @@ namespace MM2Randomizer.Enums
         private static readonly List<EWeaponIndex> mAll = new();
         private static readonly List<EWeaponIndex> mSpecialWeapons = new();
 
-        public static readonly EWeaponIndex Buster = new(0);
+        private const Int32 BusterValue = 0;
+        public static readonly EWeaponIndex Buster = new(BusterValue);
         public static readonly EWeaponIndex Heat = new(1);
         public static readonly EWeaponIndex Air = new(2);
         public static readonly EWeaponIndex Wood = new(3);
@@ -69,7 +70,7 @@ namespace MM2Randomizer.Enums
             Offset = in_Value;
             mAll.Add(this);
             // We can't use Buster.Offset yet because it hasn't been initialized yet
-            if (/* Buster.Offset */ 0 != in_Value)
+            if (BusterValue != in_Value)
             {
                 mSpecialWeapons.Add(this);
             }

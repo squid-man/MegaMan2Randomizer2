@@ -23,7 +23,8 @@ namespace MM2Randomizer.Enums
         public static readonly EBossIndex Crash = new(7, "Crash");
 
         // Wily castle bosses
-        public static readonly EBossIndex Dragon = new(8, "Dragon");
+        private const Int32 DragonValue = 8;
+        public static readonly EBossIndex Dragon = new(DragonValue, "Dragon");
         public static readonly EBossIndex Pico = new(9, "Picopico-kun");
         public static readonly EBossIndex Guts = new(10, "Guts");
         public static readonly EBossIndex Boobeam = new(11, "Boobeam");
@@ -55,23 +56,27 @@ namespace MM2Randomizer.Enums
 
         public EWeaponIndex ToWeaponIndex()
         {
-            Dictionary<EBossIndex, EWeaponIndex> mapping = new()
+            if (mBossToWeaponMap.TryGetValue(this, out EWeaponIndex weaponIndex))
             {
-                { EBossIndex.Heat, EWeaponIndex.Heat },
-                { EBossIndex.Air, EWeaponIndex.Air },
-                { EBossIndex.Wood, EWeaponIndex.Wood },
-                { EBossIndex.Bubble, EWeaponIndex.Bubble },
-                { EBossIndex.Quick, EWeaponIndex.Quick },
-                { EBossIndex.Flash, EWeaponIndex.Flash },
-                { EBossIndex.Metal, EWeaponIndex.Metal },
-                { EBossIndex.Crash, EWeaponIndex.Crash },
-            };
-            if (!mapping.ContainsKey(this))
+                return weaponIndex;
+            }
+            else
             {
                 throw new IndexOutOfRangeException();
             }
-            return mapping[this];
         }
+
+        private static readonly Dictionary<EBossIndex, EWeaponIndex> mBossToWeaponMap = new()
+        {
+            { EBossIndex.Heat, EWeaponIndex.Heat },
+            { EBossIndex.Air, EWeaponIndex.Air },
+            { EBossIndex.Wood, EWeaponIndex.Wood },
+            { EBossIndex.Bubble, EWeaponIndex.Bubble },
+            { EBossIndex.Quick, EWeaponIndex.Quick },
+            { EBossIndex.Flash, EWeaponIndex.Flash },
+            { EBossIndex.Metal, EWeaponIndex.Metal },
+            { EBossIndex.Crash, EWeaponIndex.Crash },
+        };
 
         private EBossIndex(Int32 in_Value, String in_name)
         {
@@ -80,7 +85,7 @@ namespace MM2Randomizer.Enums
             mAll.Add(this);
             // We can't use Dragon.Offset because it's not guaranteed to
             // be initialized yet
-            if (in_Value < 8 /* Dragon.Offset */)
+            if (in_Value < DragonValue)
             {
                 mRobotMasters.Add(this);
             }

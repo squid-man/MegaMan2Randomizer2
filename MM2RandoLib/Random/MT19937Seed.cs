@@ -169,6 +169,7 @@ namespace MM2Randomizer.Random
             return in_List.OrderBy(x => this.mRandom.Next()).ToList();
         }
 
+
         //
         // Private Data Members
         //
