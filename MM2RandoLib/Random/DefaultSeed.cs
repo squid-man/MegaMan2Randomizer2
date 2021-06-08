@@ -148,6 +148,7 @@ namespace MM2Randomizer.Random
             return this.mRandom.NextDouble();
         }
 
+
         // IEnumerable Methods
         public T NextElement<T>(IEnumerable<T> in_Elements)
         {
