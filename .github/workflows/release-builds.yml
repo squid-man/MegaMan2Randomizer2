@@ -39,10 +39,11 @@ jobs:
           zip -r MegaMan2Randomizer2-win-x64.zip MegaMan2Randomizer2
       - run: |
           dotnet tool install --global aver
-          aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 > version.txt
+          aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
       - id: version
         run: |
-          branch_name=$(echo $(basename ${GITHUB_REF}) | sed -e 's/master/Release/')
+          branch_base=$(basename "${GITHUB_REF}")
+          branch_name=$(echo -n ${branch_base} | sed -e 's/master/Release/')
           echo "::set-output name=name::$branch_name"
           version_number=$(cat version.txt)
           echo "::set-output name=number::$version_number"
