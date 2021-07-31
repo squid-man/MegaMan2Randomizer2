@@ -43,9 +43,9 @@ jobs:
           set -ex
           dotnet tool install --global aver
           aver --help
-          aver MegaMan2Randomizer2/RandomizerHost -a
-          aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 | head -n1 -z
-          aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
+          aver MegaMan2Randomizer2/RandomizerHost.dll -a
+          aver MegaMan2Randomizer2/RandomizerHost.dll -a | cut -d ' ' -f 2 | head -n1 -z
+          aver MegaMan2Randomizer2/RandomizerHost.dll -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
       - id: version
         run: |
           set -ex
