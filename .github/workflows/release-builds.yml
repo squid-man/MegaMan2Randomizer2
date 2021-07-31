@@ -38,10 +38,12 @@ jobs:
           dotnet publish --runtime win-x64 --configuration Release -o MegaMan2Randomizer2
           zip -r MegaMan2Randomizer2-win-x64.zip MegaMan2Randomizer2
       - run: |
+          set -ex
           dotnet tool install --global aver
           aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
       - id: version
         run: |
+          set -ex
           branch_base=$(basename "${GITHUB_REF}")
           branch_name=$(echo -n ${branch_base} | sed -e 's/master/Release/')
           echo "::set-output name=name::$branch_name"
