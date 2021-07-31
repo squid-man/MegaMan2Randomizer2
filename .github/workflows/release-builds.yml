@@ -5,6 +5,10 @@ on:
       - master
       - main
       - develop
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   build:
