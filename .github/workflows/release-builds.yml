@@ -37,9 +37,13 @@ jobs:
       - run: |
           dotnet publish --runtime win-x64 --configuration Release -o MegaMan2Randomizer2
           zip -r MegaMan2Randomizer2-win-x64.zip MegaMan2Randomizer2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.1.0
       - run: |
           set -ex
           dotnet tool install --global aver
+          aver --help
           aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
       - id: version
         run: |
