@@ -51,6 +51,7 @@ jobs:
           draft: false
           prerelease: ${{ github.ref != 'refs/heads/master' }}
           title: ${{ steps.version.outputs.name }} ${{ steps.version.outputs.number }}
+          automatic_release_tag: $${{ steps.version.outputs.name}}-${{ steps.version.outputs.number }}
           files: |
             MegaMan2Randomizer2-osx-64.zip
             MegaMan2Randomizer2-linux-x64.zip
