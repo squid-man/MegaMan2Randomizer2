@@ -44,6 +44,7 @@ jobs:
           set -ex
           dotnet tool install --global aver
           aver --help
+          aver MegaMan2Randomizer2/RandomizerHost -a
           aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
       - id: version
         run: |
@@ -57,9 +58,9 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          draft: false
-          prerelease: ${{ github.ref == 'refs/heads/develop' }}
-          title: "${{ steps.version.outputs.name }} ${{ steps.version.outputs.number }}"
+          draft: true
+          prerelease: ${{ github.ref != 'refs/heads/master' }}
+          title: "Pre-release of ${{ steps.version.outputs.name }} ${{ steps.version.outputs.number }}"
           automatic_release_tag: $${{ steps.version.outputs.name }}-${{ steps.version.outputs.number }}
           files: |
             MegaMan2Randomizer2-osx-64.zip
