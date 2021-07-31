@@ -33,7 +33,7 @@ jobs:
           dotnet publish --runtime linux-x64 --configuration Release -o MegaMan2Randomizer2
           zip -r MegaMan2Randomizer2-linux-x64.zip MegaMan2Randomizer2
           rm -rf MegaMan2Randomizer2
-          dotnet publish --runtime win-x64 --configuration Release -o win-x64/MegaMan2Randomizer2
+          dotnet publish --runtime win-x64 --configuration Release -o MegaMan2Randomizer2
           zip -r MegaMan2Randomizer2-win-x64.zip MegaMan2Randomizer2
           dotnet install -g aver
           aver MegaMan2Randomizer2/RandomizerHost -a | cut -d ' ' -f 2 > version.txt
