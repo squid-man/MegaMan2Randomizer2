@@ -5,10 +5,6 @@ on:
       - master
       - main
       - develop
-  pull_request:
-    types:
-      - opened
-      - synchronize
 
 jobs:
   build:
@@ -58,10 +54,10 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          draft: true
+          draft: ${{ github.ref == 'refs/heads/master' }}
           prerelease: ${{ github.ref != 'refs/heads/master' }}
           title: "Pre-release of ${{ steps.version.outputs.name }} ${{ steps.version.outputs.number }}"
-          automatic_release_tag: $${{ steps.version.outputs.name }}-${{ steps.version.outputs.number }}
+          automatic_release_tag: ${{ steps.version.outputs.name }}-${{ steps.version.outputs.number }}
           files: |
             MegaMan2Randomizer2-osx-64.zip
             MegaMan2Randomizer2-linux-x64.zip
