@@ -1,0 +1,31 @@
+name: Dotnet
+on:
+  push:
+    branches:
+      - master
+      - main
+      - develop
+  pull_request:
+    types:
+      - opened
+      - synchronize
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        dotnet: ['5.0.x']
+    name: Dotnet ${{ matrix.dotnet }} - ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+      - run: dotnet build MM2Randomizer.sln
+      - run: dotnet test MM2Randomizer.sln
+      - run: dotnet publish --runtime osx-x64 --configuration Release
+      - run: dotnet publish --runtime linux-x64 --configuration Release
+      - run: dotnet publish --runtime win-x64 --configuration Release
