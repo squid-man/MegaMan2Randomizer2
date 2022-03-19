@@ -1,11 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using MM2Randomizer.Patcher;
 
 namespace MM2Randomizer.Randomizers
 {
     public class RBossRoom : IRandomizer
     {
+        private readonly StringBuilder debug = new();
+        public override String ToString()
+        {
+            return debug.ToString();
+        }
+
         public class BossRoomRandomComponent
         {
             // This seems to be every table necessary to shuffle for getting a boss
@@ -37,6 +44,9 @@ namespace MM2Randomizer.Randomizers
         
         public RBossRoom()
         {
+
+            debug = new();
+
             // Initialize BossRoomRandomComponents, and add to "Components" list.
             // This list is still needed even if this module isn't enabled; it just won't get shuffled.
             BossRoomRandomComponent HeatManComponent = new BossRoomRandomComponent(
@@ -232,7 +242,7 @@ namespace MM2Randomizer.Randomizers
                 0x0134B8, // Quick room
                 0x0174A6, // Flash room
                 0x01B494, // Metal room
-                0x01F4DC, // Clash room
+                0x01F4DC, // Crash room
             };
 
             for (Int32 i = 0; i < spriteBankBossRoomAddresses.Length; i++)
@@ -258,6 +268,19 @@ namespace MM2Randomizer.Randomizers
 
 
             this.Components = bossRoomComponents;
+
+            // Dump the boss rooms to the log
+            debug.AppendLine("BossRoom Table:");
+            debug.AppendLine("-------------------------------------");
+            // This lookup table is just to help with output, it should be refactored
+            String[] names = { "Heat", "Air", "Wood", "Bubble", "Quick", "Flash", "Metal", "Crash" };
+
+            for (Int32 i = 0; i < bossRoomComponents.Count; i++)
+            {
+                String originalName = names[i];
+                String newName = names[bossRoomComponents[i].OriginalBossIndex];
+                debug.AppendLine($"{originalName} boss room has {newName} man");
+            }
         }
     }
 }

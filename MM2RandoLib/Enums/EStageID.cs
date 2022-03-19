@@ -14,6 +14,6 @@ namespace MM2Randomizer.Enums
         QuickW5     = 0x04,
         FlashW6     = 0x05,
         Metal       = 0x06,
-        Clash       = 0x07
+        Crash       = 0x07
     }
 }

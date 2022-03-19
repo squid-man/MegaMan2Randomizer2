@@ -1,0 +1,64 @@
+name: Release Builds
+on:
+  push:
+    branches:
+      - master
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        dotnet: ['5.0.x']
+    name: Make Release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.1.x'
+      - run: dotnet build MM2Randomizer.sln
+      - run: dotnet test MM2Randomizer.sln
+      - run: |
+          dotnet publish --runtime osx-x64 --configuration Release -o MegaMan2Randomizer2
+          zip -r MegaMan2Randomizer2-osx-64.zip MegaMan2Randomizer2
+          rm -rf MegaMan2Randomizer2
+      - run: |
+          dotnet publish --runtime linux-x64 --configuration Release -o MegaMan2Randomizer2
+          zip -r MegaMan2Randomizer2-linux-x64.zip MegaMan2Randomizer2
+          rm -rf MegaMan2Randomizer2
+      - run: |
+          dotnet publish --runtime win-x64 --configuration Release -o MegaMan2Randomizer2
+          zip -r MegaMan2Randomizer2-win-x64.zip MegaMan2Randomizer2
+          set -ex
+          dotnet tool install --global aver
+          aver --help
+          aver MegaMan2Randomizer2/RandomizerHost.dll -a
+          aver MegaMan2Randomizer2/RandomizerHost.dll -a | cut -d ' ' -f 2 | head -n1 -z
+          aver MegaMan2Randomizer2/RandomizerHost.dll -a | cut -d ' ' -f 2 | head -n1 -z > version.txt
+      - id: version
+        run: |
+          set -ex
+          branch_base=$(basename "${GITHUB_REF}")
+          branch_name=$(echo -n ${branch_base} | sed -e 's/master/Release/')
+          echo "::set-output name=name::$branch_name"
+          version_number=$(cat version.txt)
+          echo "::set-output name=number::$version_number"
+      - name: Release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          draft: ${{ github.ref == 'refs/heads/master' }}
+          prerelease: ${{ github.ref != 'refs/heads/master' }}
+          title: "Pre-release of ${{ steps.version.outputs.name }} ${{ steps.version.outputs.number }}"
+          automatic_release_tag: ${{ steps.version.outputs.name }}-${{ steps.version.outputs.number }}
+          files: |
+            MegaMan2Randomizer2-osx-64.zip
+            MegaMan2Randomizer2-linux-x64.zip
+            MegaMan2Randomizer2-win-x64.zip
