@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Batton_Ghost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\batton\batton_ghost.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Batton_Vader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\batton\batton_vader.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Blocky_Rocky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\blocky\blocky_rocky.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Blocky_TotemPolen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\blocky\blocky_totempolen.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ChangkeyMaker_ConstructionJoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\changkeymaker\changkeymaker_constructionjoe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Claw_Chiko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\claw\claw_chiko.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Claw_MarioFish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\claw\claw_mariofish.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Claw_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\claw\claw_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Friender_Evil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\friender\friender_evil.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KaminariGoro_MetLord" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\kaminarigoro\kaminarigoro_metlord.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KerogAndPetitKerog_Hearts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\kerogandpetitkerog\kerogandpetitkerog_hearts.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KerogAndPetitKerog_Komasaburo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\kerogandpetitkerog\kerogandpetitkerog_komasaburo.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="KerogAndPetitKerog_MetMom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\kerogandpetitkerog\kerogandpetitkerog_metmom.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Kukku_VineCock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\kukku\kukku_vinecock.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="M445_M422A" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\m445\m445_m422a.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="M445_Metroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\m445\m445_metroid.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Matasaburo_EnhancedBlow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\matasaburo\matasaburo_enhancedblow.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Mole_MegaMan9Drill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\mole\mole_megaman9drill.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NeoMetall_1UpMet1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\neometall\neometall_1upmet1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NeoMetall_1UpMet2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\neometall\neometall_1upmet2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PipiAndCopipi_Beat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\pipiandcopipi\pipiandcopipi_beat.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PipiAndCopipi_BomberPipi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\pipiandcopipi\pipiandcopipi_bomberpipi.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PipiAndCopipi_NotTheBees" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\pipiandcopipi\pipiandcopipi_notthebees.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Press_Crusher2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\press\press_crusher2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Press_FlatCrusher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\press\press_flatcrusher.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Robbit_MegaMan1Joe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\robbit\robbit_megaman1joe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Robbit_MetalManRabbit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\robbit\robbit_metalmanrabbit.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Robbit_Turtle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\robbit\robbit_turtle.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Scworm_FlameThrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\scworm\scworm_flamethrow.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Shotman_Turret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\shotman\shotman_turret.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Shrink_MegaMan1Watcher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\shrink\shrink_megaman1watcher.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SniperJoeAndSniperArmor_MegaMan1ContructionJoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\sniperjoeandsniperarmor\sniperjoeandsniperarmor_megaman1contructionjoe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SniperJoeAndSniperArmor_ProtoJoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\sniperjoeandsniperarmor\sniperjoeandsniperarmor_protojoe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SniperJoeAndSniperArmor_ProtoJoeAndMech" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\sniperjoeandsniperarmor\sniperjoeandsniperarmor_protojoeandmech.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SniperJoeAndSniperArmor_SniperMet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\sniperjoeandsniperarmor\sniperjoeandsniperarmor_snipermet.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SniperJoeAndSniperArmor_SpecialJoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\sniperjoeandsniperarmor\sniperjoeandsniperarmor_specialjoe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Springer_BMSpringer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\springer\springer_bmspringer.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Springer_CuteSpringer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\springer\springer_cutespringer.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Springer_MegaMan6Springer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\springer\springer_megaman6springer.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tanishi_HatCrab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\tanishi\tanishi_hatcrab.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tanishi_MetCrab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\tanishi\tanishi_metcrab.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Telly_EyeTelly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\telly\telly_eyetelly.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Telly_Telly2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\enemies\telly\telly_telly2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

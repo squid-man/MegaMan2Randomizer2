@@ -41,9 +41,13 @@ namespace MM2Randomizer
 
         public Boolean EnableRandomizationOfBossWeaknesses { get; set; }
 
+        public Boolean EnableRandomizationOfBossSprites { get; set; }
+
         public Boolean EnableRandomizationOfColorPalettes { get; set; }
 
         public Boolean EnableRandomizationOfEnemySpawns { get; set; }
+
+        public Boolean EnableRandomizationOfEnemySprites { get; set; }
 
         public Boolean EnableRandomizationOfEnemyWeaknesses { get; set; }
 
@@ -66,6 +70,8 @@ namespace MM2Randomizer
         public Boolean EnableRandomizationOfSpecialWeaponBehavior { get; set; }
 
         public Boolean EnableRandomizationOfSpecialWeaponReward { get; set; }
+
+        public Boolean EnableRandomizationOfSpecialWeaponSprites { get; set; }
 
         public Boolean EnableSpoilerFreeMode { get; set; }
 

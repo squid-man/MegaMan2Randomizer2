@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
         <Version>0.6.2</Version>
@@ -38,16 +38,46 @@
       <PackageReference Include="Troschuetz.Random" Version="5.0.1" />
     </ItemGroup>
     <ItemGroup>
+      <Compile Update="Properties\BossSpriteResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>BossSpriteResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Properties\EnemySpriteResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>EnemySpriteResources.resx</DependentUpon>
+      </Compile>
       <Compile Update="Properties\Resources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Resources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\WeaponSpriteResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>WeaponSpriteResources.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
     <ItemGroup>
+      <EmbeddedResource Update="Properties\BossSpriteResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>BossSpriteResources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\EnemySpriteResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>EnemySpriteResources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
       <EmbeddedResource Update="Properties\Resources.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\WeaponSpriteResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>WeaponSpriteResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
     </ItemGroup>

@@ -447,6 +447,26 @@
                             IsChecked="{Binding Path=AppConfigurationSettings.DisableDelayScrolling}"
                         />
 
+                        <Grid x:Name="Grid_BossSprites">
+                            <CheckBox
+                                Content="Randomize Boss Sprites"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfBossSprites}"
+                            />
+                        </Grid>
+
+                        <Grid x:Name="Grid_EnemySprites">
+                            <CheckBox
+                                Content="Randomize Enemy Sprites"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnemySprites}"
+                            />
+                        </Grid>
+
+                        <Grid x:Name="Grid_SpecialWeaponSprites">
+                            <CheckBox
+                                Content="Randomize Special Weapon Sprites"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfSpecialWeaponSprites}"
+                            />
+                        </Grid>
                     </StackPanel>
 
                     <!-- Custom Sprite Selection -->
