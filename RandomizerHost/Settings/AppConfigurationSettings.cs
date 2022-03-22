@@ -563,7 +563,7 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
-        [DefaultSettingValue("Rockman")]
+        [DefaultSettingValue("MegaMan")]
         public PlayerSprite PlayerSprite
         {
             get
@@ -1081,7 +1081,7 @@ namespace RandomizerHost.Settings
         private const ChargingSpeed HIT_POINT_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
 
         private const String PLAYER_SPRITE_SETTING_NAME = @"PlayerSprite";
-        private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.Rockman;
+        private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.MegaMan;
 
         private const String ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RobotMasterEnergyRefillSpeed";
         private const ChargingSpeed ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;

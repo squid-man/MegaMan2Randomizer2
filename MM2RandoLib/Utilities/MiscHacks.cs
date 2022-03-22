@@ -525,19 +525,137 @@ namespace MM2Randomizer.Utilities
         {
             switch (sprite)
             {
-                case PlayerSprite.Bass:
-                    p.ApplyIPSPatch(tempFileName, Properties.Resources.SpriteSwap_Bass);
-                    break;
-                case PlayerSprite.Protoman:
-                    p.ApplyIPSPatch(tempFileName, Properties.Resources.SpriteSwap_Proto);
-                    break;
-                case PlayerSprite.Roll:
-                    p.ApplyIPSPatch(tempFileName, Properties.Resources.SpriteSwap_Roll);
-                    break;
-                case PlayerSprite.Rockman:
-                    break;
+                case PlayerSprite.MegaMan:
                 default:
+                {
                     break;
+                }
+
+                case PlayerSprite.AVGN:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_AVGN);
+                    break;
+                }
+
+                case PlayerSprite.Bass:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Bass);
+                    break;
+                }
+
+                case PlayerSprite.BassReloaded:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BassReloaded);
+                    break;
+                }
+
+                case PlayerSprite.BreakMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BreakMan);
+                    break;
+                }
+
+                case PlayerSprite.CasualTom:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CasualTom);
+                    break;
+                }
+
+                case PlayerSprite.Charlieboy:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Charlieboy);
+                    break;
+                }
+
+                case PlayerSprite.CutMansBadScissorsDay:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CutMansBadScissorsDay);
+                    break;
+                }
+
+                case PlayerSprite.FinalFantasyFighter:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighter);
+                    break;
+                }
+
+                case PlayerSprite.HatsuneMiku:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_HatsuneMiku);
+                    break;
+                }
+
+                case PlayerSprite.JustinBailey:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JustinBailey);
+                    break;
+                }
+
+                case PlayerSprite.LuckyMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuckyMan);
+                    break;
+                }
+
+                case PlayerSprite.LuigiArcade:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuigiArcade);
+                    break;
+                }
+
+                case PlayerSprite.MarioArcade:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
+                    break;
+                }
+
+                case PlayerSprite.MegaRan2Remix:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaRan2Remix);
+                    break;
+                }
+
+                case PlayerSprite.ProtoMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ProtoMan);
+                    break;
+                }
+
+                case PlayerSprite.PrototypeTom:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_PrototypeTom);
+                    break;
+                }
+
+                case PlayerSprite.QuickMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_QuickMan);
+                    break;
+                }
+
+                case PlayerSprite.Quint:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Quint);
+                    break;
+                }
+
+                case PlayerSprite.Remix:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Remix);
+                    break;
+                }
+
+                case PlayerSprite.Roll:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Roll);
+                    break;
+                }
+
+                case PlayerSprite.Samus:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
+                    break;
+                }
             }
         }
 

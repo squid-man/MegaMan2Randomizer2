@@ -50,6 +50,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Claw_Peercast,
         };
 
+        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FORCE_BEAM = new List<Byte[]>()
+        {
+            null,
+            Properties.EnemySpriteResources.ForceBeam_NyanCat,
+        };
+
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FRIENDER = new List<Byte[]>()
         {
             null,
@@ -181,6 +187,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENEMY_SPRITE_LIST_BLOCKY,
             ENEMY_SPRITE_LIST_CHANGKEY_MAKER,
             ENEMY_SPRITE_LIST_CLAW,
+            ENEMY_SPRITE_LIST_FORCE_BEAM,
             ENEMY_SPRITE_LIST_FRIENDER,
             ENEMY_SPRITE_LIST_KAMINARI_GORO,
             ENEMY_SPRITE_LIST_KEROG_AND_PETIT_KEROG,

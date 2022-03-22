@@ -48,6 +48,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>EnemySpriteResources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\PlayerCharacterResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PlayerCharacterResources.resx</DependentUpon>
+      </Compile>
       <Compile Update="Properties\Resources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -68,6 +73,11 @@
       <EmbeddedResource Update="Properties\EnemySpriteResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>EnemySpriteResources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\PlayerCharacterResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PlayerCharacterResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Resources.resx">
