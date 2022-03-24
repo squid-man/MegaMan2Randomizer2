@@ -13,6 +13,7 @@
         FinalFantasyFighter,
         HatsuneMiku,
         JustinBailey,
+        Link,
         LuckyMan,
         LuigiArcade,
         MarioArcade,

@@ -905,7 +905,7 @@ namespace RandomizerHost.Settings
                 {
                     using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
                     {
-                        using (System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed())
+                        using (System.Security.Cryptography.SHA256 sha = System.Security.Cryptography.SHA256.Create())
                         {
                             Byte[] hashSha256 = sha.ComputeHash(fs);
                             this.HashStringSHA256 = BitConverter.ToString(hashSha256).Replace("-", String.Empty).ToLowerInvariant();

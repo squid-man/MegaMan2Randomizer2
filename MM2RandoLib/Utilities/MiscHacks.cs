@@ -591,6 +591,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSprite.Link:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Link);
+                    break;
+                }
+
                 case PlayerSprite.LuckyMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuckyMan);

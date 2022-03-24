@@ -786,7 +786,7 @@ namespace MM2Randomizer.Randomizers
                 rBuster = in_Seed.NextDouble();
                 busterDmg = 0x00;
 
-                if (rBuster > 0.25)
+                if (rBuster > 0.90)
                 {
                     busterDmg = 0x01;
                 }

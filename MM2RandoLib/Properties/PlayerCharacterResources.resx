@@ -151,6 +151,9 @@
   <data name="PlayerCharacter_JustinBailey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\spritepatches\characters\metroid\playercharacter_justinbailey.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PlayerCharacter_Link" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\spritepatches\characters\zelda\playercharacter_link.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="PlayerCharacter_LuckyMan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\spritepatches\characters\luckyman\playercharacter_luckyman.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
