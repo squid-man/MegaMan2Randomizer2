@@ -782,11 +782,11 @@ namespace MM2Randomizer.Randomizers
                 // Phase 2 will re-enable them, but disable 1 other weakness
                 // Mega Man 2 behaves in a similar fashion, disabling Q and A in phase 1, but only disabling H in phase 2
 
-                // 75% chance to have a buster vulnerability
+                // 5% chance to have a buster vulnerability
                 rBuster = in_Seed.NextDouble();
                 busterDmg = 0x00;
 
-                if (rBuster > 0.90)
+                if (rBuster > 0.95)
                 {
                     busterDmg = 0x01;
                 }

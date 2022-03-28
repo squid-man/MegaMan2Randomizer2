@@ -823,5 +823,103 @@ namespace MM2Randomizer.Utilities
             p.Add(AddressOfInitialJump, newJumpAddressFor0x816F);
             p.Add(AddressOfNewGameLoop, newWily5GameLoopSubroutine);
         }
+
+        public static void AddLargeWeaponEnergyRefillPickupsToWily5TeleporterRoom(Patch p)
+        {
+            // The enemy and item spawn information will be made into a data
+            // structure that can be written to the ROM in logical chunks, but,
+            // in the interest of time, these values are being manually added
+            // to the addresses required.
+
+            // Each stage in the game gets a total of 256 respawnable
+            // items/enemies and 64 spawn-once items/enemies.
+            // That is (256 * 4) + (64 * 4) == 1,280 bytes per stage.
+            //
+            // NOTE: pairs of stages share the same data allocation.
+            //
+            // Stage data starts at address 0x3610 in the ROM.
+            //
+            // The sequence per stage is as follows:
+            //  256 bytes for respawnable item (enemies) screen locations.
+            //  256 bytes for respawnable item (enemies) x-coordinate positions.
+            //  256 bytes for respawnable item (enemies) y-coordinate positions.
+            //  256 bytes for respawnable item (enemies) IDs.
+            //  64 bytes for spawn-once item screen locations.
+            //  64 bytes for spawn-once item x-coordinate positions.
+            //  64 bytes for spawn-once item y-coordinate positions.
+            //  64 bytes for spawn-once item IDs.
+
+            const Byte LargeWeaponEnergyRefillType = 0x78;
+
+            // Weapon energy for the initial teleporter room
+            const Int32 LargeWeaponEnergyRefill1_EnemyRoomNumberIndicatorAddress = 0x00013626;
+            const Int32 LargeWeaponEnergyRefill2_EnemyRoomNumberIndicatorAddress = 0x00013627;
+
+            const Byte LargeWeaponEnergyRefill1_RoomNumber = 0x18;
+            const Byte LargeWeaponEnergyRefill2_RoomNumber = 0x18;
+
+            const Int32 LargeWeaponEnergyRefill1_PositionXAddress = 0x00013726;
+            const Int32 LargeWeaponEnergyRefill2_PositionXAddress = 0x00013727;
+
+            const Byte LargeWeaponEnergyRefill1_PositionX = 0x58;
+            const Byte LargeWeaponEnergyRefill2_PositionX = 0xA8;
+
+            const Int32 LargeWeaponEnergyRefill1_PositionYAddress = 0x00013826;
+            const Int32 LargeWeaponEnergyRefill2_PositionYAddress = 0x00013827;
+
+            const Byte LargeWeaponEnergyRefill1_PositionY = 0x69;
+            const Byte LargeWeaponEnergyRefill2_PositionY = 0x69;
+
+            const Int32 LargeWeaponEnergyRefill1_TypeAddress = 0x00013926;
+            const Int32 LargeWeaponEnergyRefill2_TypeAddress = 0x00013927;
+
+            p.Add(LargeWeaponEnergyRefill1_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill1_RoomNumber);
+            p.Add(LargeWeaponEnergyRefill2_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill2_RoomNumber);
+
+            p.Add(LargeWeaponEnergyRefill1_PositionXAddress, LargeWeaponEnergyRefill1_PositionX);
+            p.Add(LargeWeaponEnergyRefill2_PositionXAddress, LargeWeaponEnergyRefill2_PositionX);
+
+            p.Add(LargeWeaponEnergyRefill1_PositionYAddress, LargeWeaponEnergyRefill1_PositionY);
+            p.Add(LargeWeaponEnergyRefill2_PositionYAddress, LargeWeaponEnergyRefill2_PositionY);
+
+            p.Add(LargeWeaponEnergyRefill1_TypeAddress, LargeWeaponEnergyRefillType);
+            p.Add(LargeWeaponEnergyRefill2_TypeAddress, LargeWeaponEnergyRefillType);
+
+
+            // Weapon energy for the teleporter room with Wily Machine teleporter
+            const Int32 LargeWeaponEnergyRefill3_EnemyRoomNumberIndicatorAddress = 0x00013628;
+            const Int32 LargeWeaponEnergyRefill4_EnemyRoomNumberIndicatorAddress = 0x00013629;
+
+            const Byte LargeWeaponEnergyRefill3_RoomNumber = 0x28;
+            const Byte LargeWeaponEnergyRefill4_RoomNumber = 0x28;
+
+            const Int32 LargeWeaponEnergyRefill3_PositionXAddress = 0x00013728;
+            const Int32 LargeWeaponEnergyRefill4_PositionXAddress = 0x00013729;
+
+            const Byte LargeWeaponEnergyRefill3_PositionX = 0x58;
+            const Byte LargeWeaponEnergyRefill4_PositionX = 0xA8;
+
+            const Int32 LargeWeaponEnergyRefill3_PositionYAddress = 0x00013828;
+            const Int32 LargeWeaponEnergyRefill4_PositionYAddress = 0x00013829;
+
+            const Byte LargeWeaponEnergyRefill3_PositionY = 0x69;
+            const Byte LargeWeaponEnergyRefill4_PositionY = 0x69;
+
+            const Int32 LargeWeaponEnergyRefill3_TypeAddress = 0x00013928;
+            const Int32 LargeWeaponEnergyRefill4_TypeAddress = 0x00013929;
+
+
+            p.Add(LargeWeaponEnergyRefill3_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill3_RoomNumber);
+            p.Add(LargeWeaponEnergyRefill4_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill4_RoomNumber);
+
+            p.Add(LargeWeaponEnergyRefill3_PositionXAddress, LargeWeaponEnergyRefill3_PositionX);
+            p.Add(LargeWeaponEnergyRefill4_PositionXAddress, LargeWeaponEnergyRefill4_PositionX);
+
+            p.Add(LargeWeaponEnergyRefill3_PositionYAddress, LargeWeaponEnergyRefill3_PositionY);
+            p.Add(LargeWeaponEnergyRefill4_PositionYAddress, LargeWeaponEnergyRefill4_PositionY);
+
+            p.Add(LargeWeaponEnergyRefill3_TypeAddress, LargeWeaponEnergyRefillType);
+            p.Add(LargeWeaponEnergyRefill4_TypeAddress, LargeWeaponEnergyRefillType);
+        }
     }
 }
