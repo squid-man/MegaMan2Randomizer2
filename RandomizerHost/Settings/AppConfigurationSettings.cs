@@ -205,6 +205,24 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableRandomizationOfBossSprites
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
         [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfColorPalettes
         {
@@ -236,6 +254,24 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableRandomizationOfEnemySprites
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_SETTING_NAME] = value;
             }
         }
 
@@ -397,6 +433,24 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableRandomizationOfSpecialWeaponSprites
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
         [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfInGameText
         {
@@ -509,7 +563,7 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
-        [DefaultSettingValue("Rockman")]
+        [DefaultSettingValue("MegaMan")]
         public PlayerSprite PlayerSprite
         {
             get
@@ -722,8 +776,10 @@ namespace RandomizerHost.Settings
             settings.EnableFasterCutsceneText = this.EnableFasterCutsceneText;
             settings.EnableHiddenStageNames = this.EnableHiddenStageNames;
             settings.EnableRandomizationOfBossWeaknesses = this.EnableRandomizationOfBossWeaknesses;
+            settings.EnableRandomizationOfBossSprites = this.EnableRandomizationOfBossSprites;
             settings.EnableRandomizationOfColorPalettes = this.EnableRandomizationOfColorPalettes;
             settings.EnableRandomizationOfEnemySpawns = this.EnableRandomizationOfEnemySpawns;
+            settings.EnableRandomizationOfEnemySprites = this.EnableRandomizationOfEnemySprites;
             settings.EnableRandomizationOfEnemyWeaknesses = this.EnableRandomizationOfEnemyWeaknesses;
             settings.EnableRandomizationOfFalseFloors = this.EnableRandomizationOfFalseFloors;
             settings.EnableRandomizationOfInGameText = this.EnableRandomizationOfInGameText;
@@ -735,6 +791,7 @@ namespace RandomizerHost.Settings
             settings.EnableRandomizationOfSpecialItemLocations = this.EnableRandomizationOfSpecialItemLocations;
             settings.EnableRandomizationOfSpecialWeaponBehavior = this.EnableRandomizationOfSpecialWeaponBehavior;
             settings.EnableRandomizationOfSpecialWeaponReward = this.EnableRandomizationOfSpecialWeaponReward;
+            settings.EnableRandomizationOfSpecialWeaponSprites = this.EnableRandomizationOfSpecialWeaponSprites;
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
             settings.EnableUnderwaterLagReduction = this.EnableUnderwaterLagReduction;
 
@@ -848,7 +905,7 @@ namespace RandomizerHost.Settings
                 {
                     using (FileStream fs = new FileStream(in_FilePath, FileMode.Open, FileAccess.Read))
                     {
-                        using (System.Security.Cryptography.SHA256Managed sha = new System.Security.Cryptography.SHA256Managed())
+                        using (System.Security.Cryptography.SHA256 sha = System.Security.Cryptography.SHA256.Create())
                         {
                             Byte[] hashSha256 = sha.ComputeHash(fs);
                             this.HashStringSHA256 = BitConverter.ToString(hashSha256).Replace("-", String.Empty).ToLowerInvariant();
@@ -968,11 +1025,17 @@ namespace RandomizerHost.Settings
         private const String ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_SETTING_NAME = @"EnableRandomizationOfBossWeaknesses";
         private const Boolean ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_DEFAULT_VALUE = true;
 
+        private const String ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_SETTING_NAME = @"EnableRandomizationOfBossSprites";
+        private const Boolean ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_DEFAULT_VALUE = true;
+
         private const String ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_SETTING_NAME = @"EnableRandomizationOfColorPalettes";
         private const Boolean ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_DEFAULT_VALUE = true;
 
         private const String ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME = @"EnableRandomizationOfEnemySpawns";
         private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_DEFAULT_VALUE = true;
+
+        private const String ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_SETTING_NAME = @"EnableRandomizationOfEnemySprites";
+        private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_DEFAULT_VALUE = true;
 
         private const String ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_SETTING_NAME = @"EnableRandomizationOfEnemyWeaknesses";
         private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_DEFAULT_VALUE = true;
@@ -995,6 +1058,9 @@ namespace RandomizerHost.Settings
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponBehavior";
         private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE = true;
 
+        private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponSprites";
+        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_DEFAULT_VALUE = true;
+
         private const String ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME = @"EnableRandomizationOfInGameText";
         private const Boolean ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = true;
 
@@ -1015,7 +1081,7 @@ namespace RandomizerHost.Settings
         private const ChargingSpeed HIT_POINT_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
 
         private const String PLAYER_SPRITE_SETTING_NAME = @"PlayerSprite";
-        private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.Rockman;
+        private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.MegaMan;
 
         private const String ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RobotMasterEnergyRefillSpeed";
         private const ChargingSpeed ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;

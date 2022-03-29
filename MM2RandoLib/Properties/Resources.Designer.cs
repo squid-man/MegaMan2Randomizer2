@@ -366,35 +366,5 @@ namespace MM2Randomizer.Properties {
                 return ResourceManager.GetString("SoundTrackConfiguration", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] SpriteSwap_Bass {
-            get {
-                object obj = ResourceManager.GetObject("SpriteSwap_Bass", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] SpriteSwap_Proto {
-            get {
-                object obj = ResourceManager.GetObject("SpriteSwap_Proto", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] SpriteSwap_Roll {
-            get {
-                object obj = ResourceManager.GetObject("SpriteSwap_Roll", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

@@ -2,9 +2,28 @@
 {
     public enum PlayerSprite
     {
-        Rockman,
-        Protoman,
+        MegaMan,
+        AVGN,
+        Bass,
+        BassReloaded,
+        BreakMan,
+        CasualTom,
+        Charlieboy,
+        CutMansBadScissorsDay,
+        FinalFantasyFighter,
+        HatsuneMiku,
+        JustinBailey,
+        Link,
+        LuckyMan,
+        LuigiArcade,
+        MarioArcade,
+        MegaRan2Remix,
+        ProtoMan,
+        PrototypeTom,
+        QuickMan,
+        Quint,
+        Remix,
         Roll,
-        Bass
+        Samus,
     }
 }

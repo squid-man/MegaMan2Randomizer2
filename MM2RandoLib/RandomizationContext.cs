@@ -9,6 +9,7 @@ using MM2Randomizer.Randomizers.Colors;
 using MM2Randomizer.Randomizers.Enemies;
 using MM2Randomizer.Randomizers.Stages;
 using MM2Randomizer.Utilities;
+using MM2Randomizer.Resources.SpritePatches;
 
 namespace MM2Randomizer
 {
@@ -266,6 +267,21 @@ namespace MM2Randomizer
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_musicpatch);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
             MiscHacks.SetNewMegaManSprite(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME, this.Settings.PlayerSprite);
+
+            if (true == this.Settings.EnableRandomizationOfBossSprites)
+            {
+                BossSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
+
+            if (true == this.Settings.EnableRandomizationOfEnemySprites)
+            {
+                EnemySpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
+
+            if (true == this.Settings.EnableRandomizationOfSpecialWeaponSprites)
+            {
+                WeaponSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
 
             // Apply patch with randomized content
             this.Patch.ApplyRandoPatch(RandomizationContext.TEMPORARY_FILE_NAME);
