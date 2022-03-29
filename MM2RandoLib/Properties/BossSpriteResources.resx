@@ -119,105 +119,105 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AirMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\bosses\AirMan\AirMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AirMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\airman\airman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AirMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\airman\airman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Alien_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\alien\alien_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\Alien\Alien_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Alien_Exhaust" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\alien\alien_exhaust.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\Alien\Alien_Exhaust.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\bubbleman\bubbleman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\BubbleMan\BubbleMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\bubbleman\bubbleman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\BubbleMan\BubbleMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleMan_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\bubbleman\bubbleman_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\BubbleMan\BubbleMan_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\bubbleman\bubbleman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\BubbleMan\BubbleMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CrashMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\crashman\crashman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\CrashMan\CrashMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CrashMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\crashman\crashman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\CrashMan\CrashMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CrashMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\crashman\crashman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\CrashMan\CrashMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="FlashMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\flashman\flashman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\FlashMan\FlashMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="FlashMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\flashman\flashman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\FlashMan\FlashMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="FlashMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\flashman\flashman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\FlashMan\FlashMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="GutsTank_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\gutstank\gutstank_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\GutsTank\GutsTank_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HeatMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\heatman\heatman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\HeatMan\HeatMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HeatMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\heatman\heatman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\HeatMan\HeatMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HeatMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\heatman\heatman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\HeatMan\HeatMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MechaDragon_CoolDraga" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\mechadragon\mechadragon_cooldraga.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CoolDraga.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MechaDragon_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\mechadragon\mechadragon_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MechaDragon_Dragocorn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\mechadragon\mechadragon_dragocorn.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Dragocorn.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MetalMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\metalman\metalman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MetalMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\metalman\metalman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MetalMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\metalman\metalman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\MetalMan\MetalMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PicopicoKun_CheatMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\picopicokun\picopicokun_cheatmode.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\PicopicoKun\PicopicoKun_CheatMode.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="QuickMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\quickman\quickman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\QuickMan\QuickMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="QuickMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\quickman\quickman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\QuickMan\QuickMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="QuickMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\quickman\quickman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\QuickMan\QuickMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Wily_DrLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\wily\wily_drlight.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\Wily\Wily_DrLight.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WoodMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\woodman\woodman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WoodMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\woodman\woodman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WoodMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\woodman\woodman_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WoodMan_ToadMan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\woodman\woodman_toadman.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_ToadMan.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

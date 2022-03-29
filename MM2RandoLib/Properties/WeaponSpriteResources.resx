@@ -119,105 +119,105 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AirShooter_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\airshooter\airshooter_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\AirShooter\AirShooter_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AirShooter_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\airshooter\airshooter_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AtomicFire_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\atomicfire\atomicfire_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AtomicFire_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\atomicfire\atomicfire_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleLead_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\bubblelead\bubblelead_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleLead_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\bubblelead\bubblelead_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BubbleLead_SparkShock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\bubblelead\bubblelead_sparkshock.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SparkShock.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CrashBomber_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\crashbomber\crashbomber_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="CrashBomber_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\crashbomber\crashbomber_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item1_MegaMan2Remix" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item1\item1_megaman2remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item1\Item1_MegaMan2Remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item1_MetCarrier" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item1\item1_metcarrier.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item1\Item1_MetCarrier.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item1_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item1\item1_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item1\Item1_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item1_Rollchan2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item1\item1_rollchan2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item1\Item1_Rollchan2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_BulletBill" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_bulletbill.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_BulletBill.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_MegaMan2Remix" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_megaman2remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_MegaMan2Remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_RedSuperArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_redsuperarrow.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_RedSuperArrow.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_Rollchan2Broom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_rollchan2broom.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_Rollchan2Broom.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item2_RushJet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item2\item2_rushjet.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item2\Item2_RushJet.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item3_MegaMan2Remix" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item3\item3_megaman2remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item3\Item3_MegaMan2Remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item3_Met" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item3\item3_met.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item3\Item3_Met.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item3_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item3\item3_peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item3\Item3_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Item3_Rollchan2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\item3\item3_rollchan2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\Item3\Item3_Rollchan2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LeafShield_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\leafshield\leafshield_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\LeafShield\LeafShield_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LeafShield_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\leafshield\leafshield_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\LeafShield\LeafShield_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LeafShield_SkullBarrier" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\leafshield\leafshield_skullbarrier.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\LeafShield\LeafShield_SkullBarrier.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MetalBlade_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\metalblade\metalblade_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MetalBlade_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\metalblade\metalblade_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MetalBlade_ShadowBlade" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\metalblade\metalblade_shadowblade.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_ShadowBlade.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="QuickBoomerang_GodWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\quickboomerang\quickboomerang_godworld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_GodWorld.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="QuickBoomerang_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\quickboomerang\quickboomerang_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TimeStopper_MegaMan5FlashStopper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\timestopper\timestopper_megaman5flashstopper.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\TimeStopper\TimeStopper_MegaMan5FlashStopper.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TimeStopper_NoConstancy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\weapons\timestopper\timestopper_noconstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\Weapons\TimeStopper\TimeStopper_NoConstancy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
