@@ -22,7 +22,7 @@ namespace MM2Randomizer.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MM2Randomizer.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM2RandoLib.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MM2Randomizer.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -128,7 +128,7 @@ namespace MM2Randomizer.Properties {
         ///STONE
         ///C [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string bossnames {
+        internal static string bossnames {
             get {
                 return ResourceManager.GetString("bossnames", resourceCulture);
             }
@@ -161,7 +161,7 @@ namespace MM2Randomizer.Properties {
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
         ///        &lt;Name&gt;3D Re [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string CompanyNameConfig {
+        internal static string CompanyNameConfig {
             get {
                 return ResourceManager.GetString("CompanyNameConfig", resourceCulture);
             }
@@ -192,7 +192,7 @@ namespace MM2Randomizer.Properties {
         ///    &lt;/CountryName&gt;
         ///    &lt;CountryName&gt;        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string CountryNameConfig {
+        internal static string CountryNameConfig {
             get {
                 return ResourceManager.GetString("CountryNameConfig", resourceCulture);
             }
@@ -221,7 +221,7 @@ namespace MM2Randomizer.Properties {
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
         ///        &lt;Valu [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string CreditTextConfig {
+        internal static string CreditTextConfig {
             get {
                 return ResourceManager.GetString("CreditTextConfig", resourceCulture);
             }
@@ -247,7 +247,7 @@ namespace MM2Randomizer.Properties {
         ///        &lt;PositionGround&gt;A4&lt;/PositionGround&gt;
         ///        &lt;FaceRight&gt;false&lt;/Fa [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string EnemySet {
+        internal static string EnemySet {
             get {
                 return ResourceManager.GetString("EnemySet", resourceCulture);
             }
@@ -275,7 +275,7 @@ namespace MM2Randomizer.Properties {
         ///        &lt;Name&gt;Shrink (From Angler)&lt;/Name&gt;
         ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string EnemyWeaknessSet {
+        internal static string EnemyWeaknessSet {
             get {
                 return ResourceManager.GetString("EnemyWeaknessSet", resourceCulture);
             }
@@ -300,7 +300,7 @@ namespace MM2Randomizer.Properties {
         ///            &lt;Line&gt;ZXCVBNM&amp;lt;&amp;gt;?&lt;/Line&gt;
         ///            &lt;Li [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string IntroStoryConfig {
+        internal static string IntroStoryConfig {
             get {
                 return ResourceManager.GetString("IntroStoryConfig", resourceCulture);
             }
@@ -323,7 +323,7 @@ namespace MM2Randomizer.Properties {
         ///              &quot;59&quot;,&quot;23&quot;,&quot;2D&quot;,&quot;10&quot;,&quot;03&quot;,&quot;17&quot;,&quot;09&quot;,&quot;71&quot;, 
         ///              &quot;61&quot;,&quot;29&quot;,&quot;22&quot;,&quot;0D&quot;,&quot;03&quot;,&quot;33&quot;,&quot;0B [rest of stri....
         /// </summary>
-        public static string level_components {
+        internal static string level_components {
             get {
                 return ResourceManager.GetString("level_components", resourceCulture);
             }
@@ -332,7 +332,7 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] mm2rng_musicpatch {
+        internal static byte[] mm2rng_musicpatch {
             get {
                 object obj = ResourceManager.GetObject("mm2rng_musicpatch", resourceCulture);
                 return ((byte[])(obj));
@@ -342,7 +342,7 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] mm2rng_prepatch {
+        internal static byte[] mm2rng_prepatch {
             get {
                 object obj = ResourceManager.GetObject("mm2rng_prepatch", resourceCulture);
                 return ((byte[])(obj));
@@ -361,7 +361,7 @@ namespace MM2Randomizer.Properties {
         ///
         ///    The 11 songs chosen for stages should not exceed 9438 (0x24DE) total bytes. Don&apos;t make too [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string SoundTrackConfiguration {
+        internal static string SoundTrackConfiguration {
             get {
                 return ResourceManager.GetString("SoundTrackConfiguration", resourceCulture);
             }

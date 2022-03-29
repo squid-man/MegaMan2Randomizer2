@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AirMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\spritepatches\bosses\airman\airman_cutmansbadscissorsday.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Resources\SpritePatches\bosses\AirMan\AirMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AirMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\spritepatches\bosses\airman\airman_grayzone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

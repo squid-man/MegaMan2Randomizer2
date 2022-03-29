@@ -81,7 +81,7 @@
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
+        <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
