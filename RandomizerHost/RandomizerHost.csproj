@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>RandomizerHost</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
     <PackageId>Mega Man 2 Randomizer</PackageId>
@@ -13,8 +13,10 @@
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
     <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.2.*</AssemblyVersion>
+    <AssemblyVersion>0.6.3.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
+    <StartupObject>RandomizerHost.Program</StartupObject>
+    <FileVersion>0.6.3</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -22,6 +24,24 @@
   <ItemGroup>
     <None Remove="Assets\header.png" />
     <None Remove="Assets\MegaMan2Randomizer.ico" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_AVGN.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BassReloaded.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BreakMan.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CasualTom.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Charlieboy.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CutMansBadScissorsDay.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyFighter.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_HatsuneMiku.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_JustinBailey.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_LuckyMan.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_LuigiArcade.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MarioArcade.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaRan2Remix.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_PrototypeTom.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_QuickMan.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Quint.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Remix.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Samus.png" />
     <None Remove="Assets\sprite_bass.png" />
     <None Remove="Assets\sprite_proto.png" />
     <None Remove="Assets\sprite_rock.png" />
@@ -32,11 +52,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.6" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="Avalonia" Version="0.10.13" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.13" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.13" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.13" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MM2RandoLib\MM2RandoLib.csproj" />
