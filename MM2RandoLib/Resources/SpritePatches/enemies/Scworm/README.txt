@@ -1,1 +1,0 @@
-https://megaman.fandom.com/wiki/Scworm
