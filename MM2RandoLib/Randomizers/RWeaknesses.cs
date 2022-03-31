@@ -782,11 +782,14 @@ namespace MM2Randomizer.Randomizers
                 // Phase 2 will re-enable them, but disable 1 other weakness
                 // Mega Man 2 behaves in a similar fashion, disabling Q and A in phase 1, but only disabling H in phase 2
 
-                // 75% chance to have a buster vulnerability
+                // 12.5% chance to have a buster vulnerability
+                //
+                // 1 out of 8, since the Wily Machine is never
+                // weak to Time Stopper
                 rBuster = in_Seed.NextDouble();
                 busterDmg = 0x00;
 
-                if (rBuster > 0.25)
+                if (rBuster > 0.875)
                 {
                     busterDmg = 0x01;
                 }
