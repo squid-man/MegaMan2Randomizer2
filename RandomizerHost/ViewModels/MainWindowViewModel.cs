@@ -127,7 +127,7 @@ namespace RandomizerHost.ViewModels
             String[] dialogResult = await openFileDialog.ShowAsync(in_Window);
 
             // Process input if the user clicked OK.
-            if (dialogResult.Length > 0)
+            if (dialogResult?.Length > 0)
             {
                 String fileName = dialogResult[0];
 
