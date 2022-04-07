@@ -143,6 +143,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] FlyBoy_VineMan {
+            get {
+                object obj = ResourceManager.GetObject("FlyBoy_VineMan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] ForceBeam_NyanCat {
             get {
                 object obj = ResourceManager.GetObject("ForceBeam_NyanCat", resourceCulture);
@@ -203,6 +213,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Kukku_DX {
+            get {
+                object obj = ResourceManager.GetObject("Kukku_DX", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Kukku_VineCock {
             get {
                 object obj = ResourceManager.GetObject("Kukku_VineCock", resourceCulture);
@@ -253,6 +273,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Monking_VineMan {
+            get {
+                object obj = ResourceManager.GetObject("Monking_VineMan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] NeoMetall_1UpMet1 {
             get {
                 object obj = ResourceManager.GetObject("NeoMetall_1UpMet1", resourceCulture);
@@ -266,6 +296,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] NeoMetall_1UpMet2 {
             get {
                 object obj = ResourceManager.GetObject("NeoMetall_1UpMet2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Pierobot_VineMan {
+            get {
+                object obj = ResourceManager.GetObject("Pierobot_VineMan", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -336,6 +376,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Robbit_MetalManRabbit {
             get {
                 object obj = ResourceManager.GetObject("Robbit_MetalManRabbit", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Robbit_Shrek {
+            get {
+                object obj = ResourceManager.GetObject("Robbit_Shrek", resourceCulture);
                 return ((byte[])(obj));
             }
         }

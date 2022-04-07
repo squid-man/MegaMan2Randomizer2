@@ -32,6 +32,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.BossSpriteResources.AirMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.AirMan_GrayZone,
+            Properties.BossSpriteResources.Airman_HornetMan,
             Properties.BossSpriteResources.AirMan_Peercast,
         };
 
@@ -48,6 +49,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.BossSpriteResources.CrashMan_CutMansBadScissorsDay,
+            Properties.BossSpriteResources.CrashMan_DX,
             Properties.BossSpriteResources.CrashMan_GrayZone,
             Properties.BossSpriteResources.CrashMan_Peercast,
         };
@@ -64,6 +66,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.BossSpriteResources.HeatMan_CutMansBadScissorsDay,
+            Properties.BossSpriteResources.HeatMan_DX,
             Properties.BossSpriteResources.HeatMan_GrayZone,
             Properties.BossSpriteResources.HeatMan_Peercast,
         };
@@ -72,6 +75,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.BossSpriteResources.MetalMan_CutMansBadScissorsDay,
+            Properties.BossSpriteResources.MetalMan_ElecMan,
             Properties.BossSpriteResources.MetalMan_GrayZone,
             Properties.BossSpriteResources.MetalMan_Peercast,
         };
@@ -82,12 +86,15 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.QuickMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.QuickMan_GrayZone,
             Properties.BossSpriteResources.QuickMan_Peercast,
+            Properties.BossSpriteResources.QuickMan_Sonic,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_WOOD_MAN = new List<Byte[]>()
         {
             null,
             Properties.BossSpriteResources.WoodMan_CutMansBadScissorsDay,
+            Properties.BossSpriteResources.WoodMan_DK,
+            Properties.BossSpriteResources.WoodMan_DX,
             Properties.BossSpriteResources.WoodMan_GrayZone,
             Properties.BossSpriteResources.WoodMan_Peercast,
             Properties.BossSpriteResources.WoodMan_ToadMan,
@@ -105,6 +112,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.BossSpriteResources.PicopicoKun_CheatMode,
+            Properties.BossSpriteResources.PicopicoKun_VineMan,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_GUTS_TANK = new List<Byte[]>()

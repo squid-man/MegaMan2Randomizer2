@@ -609,6 +609,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSprite.MegaManX:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaManX);
+                    break;
+                }
+
                 case PlayerSprite.MarioArcade:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
@@ -618,6 +624,12 @@ namespace MM2Randomizer.Utilities
                 case PlayerSprite.MegaRan2Remix:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaRan2Remix);
+                    break;
+                }
+
+                case PlayerSprite.NewLands:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_NewLands);
                     break;
                 }
 
@@ -660,6 +672,12 @@ namespace MM2Randomizer.Utilities
                 case PlayerSprite.Samus:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
+                    break;
+                }
+
+                case PlayerSprite.VineMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_VineMan);
                     break;
                 }
             }

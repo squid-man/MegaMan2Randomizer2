@@ -17,7 +17,9 @@
         LuckyMan,
         LuigiArcade,
         MarioArcade,
+        MegaManX,
         MegaRan2Remix,
+        NewLands,
         ProtoMan,
         PrototypeTom,
         QuickMan,
@@ -25,5 +27,6 @@
         Remix,
         Roll,
         Samus,
+        VineMan,
     }
 }
