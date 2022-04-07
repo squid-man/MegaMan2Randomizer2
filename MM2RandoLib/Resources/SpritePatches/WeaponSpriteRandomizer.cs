@@ -27,6 +27,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.AirShooter_GodWorld,
             Properties.WeaponSpriteResources.AirShooter_NoConstancy,
+            Properties.WeaponSpriteResources.AirShooter_VineMan,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ATOMIC_FIRE = new List<Byte[]>()
@@ -63,6 +64,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.MetalBlade_GodWorld,
+            Properties.WeaponSpriteResources.MetalBlade_HypnoShot,
             Properties.WeaponSpriteResources.MetalBlade_NoConstancy,
             Properties.WeaponSpriteResources.MetalBlade_ShadowBlade,
         };
@@ -72,6 +74,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.QuickBoomerang_GodWorld,
             Properties.WeaponSpriteResources.QuickBoomerang_NoConstancy,
+            Properties.WeaponSpriteResources.QuickBoomerang_VineMan,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_TIME_STOPPER = new List<Byte[]>()
@@ -125,7 +128,6 @@ namespace MM2Randomizer.Resources.SpritePatches
             WEAPON_SPRITE_LIST_ITEM1,
             WEAPON_SPRITE_LIST_ITEM2,
             WEAPON_SPRITE_LIST_ITEM3,
-
         };
     }
 }

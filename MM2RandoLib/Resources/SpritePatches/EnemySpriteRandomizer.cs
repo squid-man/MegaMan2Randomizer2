@@ -50,6 +50,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Claw_Peercast,
         };
 
+        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FLY_BOY = new List<Byte[]>()
+        {
+            null,
+            Properties.EnemySpriteResources.FlyBoy_VineMan,
+        };
+
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FORCE_BEAM = new List<Byte[]>()
         {
             null,
@@ -79,6 +85,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_KUKKU = new List<Byte[]>()
         {
             null,
+            Properties.EnemySpriteResources.Kukku_DX,
             Properties.EnemySpriteResources.Kukku_VineCock,
         };
 
@@ -101,11 +108,23 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Mole_MegaMan9Drill
         };
 
+        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_MONKING = new List<Byte[]>()
+        {
+            null,
+            Properties.EnemySpriteResources.Monking_VineMan
+        };
+
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_NEO_METALL = new List<Byte[]>()
         {
             null,
             Properties.EnemySpriteResources.NeoMetall_1UpMet1,
             Properties.EnemySpriteResources.NeoMetall_1UpMet2,
+        };
+
+        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_PIEROBOT = new List<Byte[]>()
+        {
+            null,
+            Properties.EnemySpriteResources.Pierobot_VineMan,
         };
 
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_PIPI_AND_COPIPI = new List<Byte[]>()
@@ -128,6 +147,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnemySpriteResources.Robbit_MegaMan1Joe,
             Properties.EnemySpriteResources.Robbit_MetalManRabbit,
+            Properties.EnemySpriteResources.Robbit_Shrek,
             Properties.EnemySpriteResources.Robbit_Turtle,
         };
 
@@ -187,6 +207,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENEMY_SPRITE_LIST_BLOCKY,
             ENEMY_SPRITE_LIST_CHANGKEY_MAKER,
             ENEMY_SPRITE_LIST_CLAW,
+            ENEMY_SPRITE_LIST_FLY_BOY,
             ENEMY_SPRITE_LIST_FORCE_BEAM,
             ENEMY_SPRITE_LIST_FRIENDER,
             ENEMY_SPRITE_LIST_KAMINARI_GORO,
@@ -195,7 +216,9 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENEMY_SPRITE_LIST_M445,
             ENEMY_SPRITE_LIST_MATASABURO,
             ENEMY_SPRITE_LIST_MOLE,
+            ENEMY_SPRITE_LIST_MONKING,
             ENEMY_SPRITE_LIST_NEO_METALL,
+            ENEMY_SPRITE_LIST_PIEROBOT,
             ENEMY_SPRITE_LIST_PIPI_AND_COPIPI,
             ENEMY_SPRITE_LIST_PRESS,
             ENEMY_SPRITE_LIST_ROBBIT,

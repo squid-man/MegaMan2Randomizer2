@@ -603,8 +603,22 @@
                             <Image
                                 Width="168"
                                 Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaManX.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaManX}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaRan2Remix.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaRan2Remix}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_NewLands.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=NewLands}"
                             />
 
                             <Image
@@ -654,6 +668,13 @@
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Samus.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Samus}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_VineMan.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=VineMan}"
                             />
                         </Grid>
                     </StackPanel>

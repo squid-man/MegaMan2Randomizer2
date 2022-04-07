@@ -83,6 +83,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AirShooter_VineMan {
+            get {
+                object obj = ResourceManager.GetObject("AirShooter_VineMan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] AtomicFire_GodWorld {
             get {
                 object obj = ResourceManager.GetObject("AtomicFire_GodWorld", resourceCulture);
@@ -343,6 +353,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] MetalBlade_HypnoShot {
+            get {
+                object obj = ResourceManager.GetObject("MetalBlade_HypnoShot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] MetalBlade_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("MetalBlade_NoConstancy", resourceCulture);
@@ -376,6 +396,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] QuickBoomerang_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("QuickBoomerang_NoConstancy", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] QuickBoomerang_VineMan {
+            get {
+                object obj = ResourceManager.GetObject("QuickBoomerang_VineMan", resourceCulture);
                 return ((byte[])(obj));
             }
         }
