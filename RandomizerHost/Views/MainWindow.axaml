@@ -677,6 +677,24 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=VineMan}"
                             />
                         </Grid>
+
+                        <TextBlock
+                            Text="Customize your Hud Elements"
+                            HorizontalAlignment="Center"/>
+
+                        <!-- NOTE: Changing the binding here may require code behind changes -->
+                        <ComboBox
+                            x:Name="ComboBox_HudElement"
+                            Margin="32,0"
+                            SelectedItem="{Binding Path=AppConfigurationSettings.HudElement}"
+                            >
+
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                 </Grid>
             </TabItem>

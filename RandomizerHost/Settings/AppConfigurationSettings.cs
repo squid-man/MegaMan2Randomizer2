@@ -581,6 +581,24 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
+        [DefaultSettingValue("Default")]
+        public HudElement HudElement
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.HUD_ELEMENT_SETTING_NAME,
+                    AppConfigurationSettings.HUD_ELEMENT_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.HUD_ELEMENT_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
         public ChargingSpeed RobotMasterEnergyRefillSpeed
         {
@@ -799,6 +817,7 @@ namespace RandomizerHost.Settings
             settings.EnergyTankRefillSpeed = this.EnergyTankRefillSpeed;
             settings.HitPointRefillSpeed = this.HitPointRefillSpeed;
             settings.PlayerSprite = this.PlayerSprite;
+            settings.HudElement = this.HudElement;
             settings.RobotMasterEnergyRefillSpeed = this.RobotMasterEnergyRefillSpeed;
             settings.WeaponEnergyRefillSpeed = this.WeaponEnergyRefillSpeed;
 
@@ -1082,6 +1101,9 @@ namespace RandomizerHost.Settings
 
         private const String PLAYER_SPRITE_SETTING_NAME = @"PlayerSprite";
         private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.MegaMan;
+
+        private const String HUD_ELEMENT_SETTING_NAME = @"HudElement";
+        private const HudElement HUD_ELEMENT_DEFAULT_VALUE = HudElement.Default;
 
         private const String ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RobotMasterEnergyRefillSpeed";
         private const ChargingSpeed ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;

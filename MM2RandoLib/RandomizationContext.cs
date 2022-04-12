@@ -267,6 +267,7 @@ namespace MM2Randomizer
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_musicpatch);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
             MiscHacks.SetNewMegaManSprite(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME, this.Settings.PlayerSprite);
+            MiscHacks.SetNewHudElement(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME, this.Settings.HudElement);
 
             if (true == this.Settings.EnableRandomizationOfBossSprites)
             {
