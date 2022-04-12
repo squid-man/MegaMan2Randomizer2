@@ -515,12 +515,9 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// Replace the player's sprite graphics with a different sprite.
-        /// This method applies the graphics patch directly to the ROM at tempFileName. If Rockman
-        /// is the sprite, no patch is applied./>
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'MegaMan' is the sprite, no patch is applied.
         /// </summary>
-        /// <param name="p"></param>
-        /// <param name="tempFileName"></param>
-        /// <param name="sprite"></param>
         public static void SetNewMegaManSprite(Patch p, String tempFileName, PlayerSprite sprite)
         {
             switch (sprite)
@@ -682,6 +679,43 @@ namespace MM2Randomizer.Utilities
                 }
             }
         }
+
+
+        /// <summary>
+        /// Replace the HUD elements in the game with different sprites.
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'Default' is the HUD element, no patch is applied.
+        /// </summary>
+        public static void SetNewHudElement(Patch p, String tempFileName, HudElement hudElement)
+        {
+            switch (hudElement)
+            {
+                case HudElement.Default:
+                default:
+                {
+                    break;
+                }
+
+                case HudElement.CutMansBadScissorsDay:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CutMansBadScissorsDay);
+                    break;
+                }
+
+                case HudElement.Metroid:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Metroid);
+                    break;
+                }
+
+                case HudElement.Remix:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Remix);
+                    break;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Reduces lag in various places (underwater, end of boss fight, and possibly other places) by disabling a subroutine

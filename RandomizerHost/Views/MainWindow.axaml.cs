@@ -35,6 +35,10 @@ namespace RandomizerHost.Views
             ComboBox comboBoxPlayerSprite = this.Find<ComboBox>("ComboBox_PlayerSprite");
             comboBoxPlayerSprite.Items = Enum.GetValues(typeof(PlayerSprite));
 
+            // Set up the custom sprite ComboBox
+            ComboBox comboBoxHudElement = this.Find<ComboBox>("ComboBox_HudElement");
+            comboBoxHudElement.Items = Enum.GetValues(typeof(HudElement));
+
             // Set up the hit point charging speed ComboBox
             ComboBox comboBoxHitPointChargingSpeed = this.Find<ComboBox>("ComboBox_HitPointChargingSpeed");
             comboBoxHitPointChargingSpeed.Items = Enum.GetValues(typeof(ChargingSpeed));

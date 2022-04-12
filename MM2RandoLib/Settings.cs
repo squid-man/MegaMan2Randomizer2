@@ -90,6 +90,8 @@ namespace MM2Randomizer
 
         public PlayerSprite PlayerSprite { get; set; }
 
+        public HudElement HudElement { get; set; }
+
         public ChargingSpeed RobotMasterEnergyRefillSpeed { get; set; }
 
         public ChargingSpeed WeaponEnergyRefillSpeed { get; set; }
