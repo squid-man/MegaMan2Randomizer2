@@ -467,6 +467,13 @@
                                 IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfSpecialWeaponSprites}"
                             />
                         </Grid>
+
+                        <Grid x:Name="Grid_ItemPickupSprites">
+                            <CheckBox
+                                Content="Randomize Item Pickup Sprites"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfItemPickupSprites}"
+                            />
+                        </Grid>
                     </StackPanel>
 
                     <!-- Custom Sprite Selection -->

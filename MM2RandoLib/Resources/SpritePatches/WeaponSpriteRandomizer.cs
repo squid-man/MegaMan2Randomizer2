@@ -25,6 +25,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_AIR_SHOOTER = new List<Byte[]>()
         {
             null,
+            Properties.WeaponSpriteResources.AirShooter_DeusExMachina,
             Properties.WeaponSpriteResources.AirShooter_GodWorld,
             Properties.WeaponSpriteResources.AirShooter_NoConstancy,
             Properties.WeaponSpriteResources.AirShooter_VineMan,
@@ -33,6 +34,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ATOMIC_FIRE = new List<Byte[]>()
         {
             null,
+            Properties.WeaponSpriteResources.AtomicFire_DeusExMachina,
             Properties.WeaponSpriteResources.AtomicFire_GodWorld,
             Properties.WeaponSpriteResources.AtomicFire_NoConstancy,
         };
@@ -42,14 +44,17 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.BubbleLead_GodWorld,
             Properties.WeaponSpriteResources.BubbleLead_NoConstancy,
+            Properties.WeaponSpriteResources.BubbleLead_RockMan2E,
             Properties.WeaponSpriteResources.BubbleLead_SparkShock,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_CRASH_BOMBER = new List<Byte[]>()
         {
             null,
+            Properties.WeaponSpriteResources.CrashBomber_DeusExMachina,
             Properties.WeaponSpriteResources.CrashBomber_GodWorld,
             Properties.WeaponSpriteResources.CrashBomber_NoConstancy,
+            Properties.WeaponSpriteResources.CrashBomber_RockMan2E,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_LEAF_SHIELD = new List<Byte[]>()
@@ -57,29 +62,35 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.LeafShield_GodWorld,
             Properties.WeaponSpriteResources.LeafShield_NoConstancy,
+            Properties.WeaponSpriteResources.LeafShield_RockMan2E,
             Properties.WeaponSpriteResources.LeafShield_SkullBarrier,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_METAL_BLADE = new List<Byte[]>()
         {
             null,
+            Properties.WeaponSpriteResources.MetalBlade_DeusExMachina,
             Properties.WeaponSpriteResources.MetalBlade_GodWorld,
             Properties.WeaponSpriteResources.MetalBlade_HypnoShot,
             Properties.WeaponSpriteResources.MetalBlade_NoConstancy,
+            Properties.WeaponSpriteResources.MetalBlade_RockMan2E,
             Properties.WeaponSpriteResources.MetalBlade_ShadowBlade,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_QUICK_BOOMERANG = new List<Byte[]>()
         {
             null,
+            Properties.WeaponSpriteResources.QuickBoomerang_DeusExMachina,
             Properties.WeaponSpriteResources.QuickBoomerang_GodWorld,
             Properties.WeaponSpriteResources.QuickBoomerang_NoConstancy,
+            Properties.WeaponSpriteResources.QuickBoomerang_RockMan2E,
             Properties.WeaponSpriteResources.QuickBoomerang_VineMan,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_TIME_STOPPER = new List<Byte[]>()
         {
             null,
+            Properties.WeaponSpriteResources.TimeStopper_DeusExMachina,
             Properties.WeaponSpriteResources.TimeStopper_MegaMan5FlashStopper,
             Properties.WeaponSpriteResources.TimeStopper_NoConstancy,
         };

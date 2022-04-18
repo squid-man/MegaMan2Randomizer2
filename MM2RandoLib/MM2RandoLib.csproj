@@ -58,6 +58,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>PlayerCharacterResources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\PickupSpriteResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PickupSpriteResources.resx</DependentUpon>
+      </Compile>
       <Compile Update="Properties\Resources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -88,6 +93,11 @@
       <EmbeddedResource Update="Properties\PlayerCharacterResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>PlayerCharacterResources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\PickupSpriteResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PickupSpriteResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\Resources.resx">

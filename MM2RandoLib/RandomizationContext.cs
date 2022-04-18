@@ -284,6 +284,11 @@ namespace MM2Randomizer
                 WeaponSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
+            if (true == this.Settings.EnableRandomizationOfItemPickupSprites)
+            {
+                PickupSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
+
             // Modify the Wily 5 game loop so that large weapon energy refills
             // can be spawned in the refight teleporter room
             MiscHacks.AddWily5SubroutineWithItemSpawns(this.Patch);

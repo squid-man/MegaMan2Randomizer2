@@ -312,6 +312,24 @@ namespace RandomizerHost.Settings
         }
 
 
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableRandomizationOfItemPickupSprites
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_SETTING_NAME] = value;
+            }
+        }
+
+
         // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfSpecialWeaponReward
         {
@@ -810,6 +828,7 @@ namespace RandomizerHost.Settings
             settings.EnableRandomizationOfSpecialWeaponBehavior = this.EnableRandomizationOfSpecialWeaponBehavior;
             settings.EnableRandomizationOfSpecialWeaponReward = this.EnableRandomizationOfSpecialWeaponReward;
             settings.EnableRandomizationOfSpecialWeaponSprites = this.EnableRandomizationOfSpecialWeaponSprites;
+            settings.EnableRandomizationOfItemPickupSprites = this.EnableRandomizationOfItemPickupSprites;
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
             settings.EnableUnderwaterLagReduction = this.EnableUnderwaterLagReduction;
 
@@ -1079,6 +1098,9 @@ namespace RandomizerHost.Settings
 
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponSprites";
         private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_DEFAULT_VALUE = true;
+
+        private const String ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_SETTING_NAME = @"EnableRandomizationOfItemPickupSprites";
+        private const Boolean ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_DEFAULT_VALUE = true;
 
         private const String ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME = @"EnableRandomizationOfInGameText";
         private const Boolean ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = true;
