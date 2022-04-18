@@ -34,6 +34,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.AirMan_GrayZone,
             Properties.BossSpriteResources.Airman_HornetMan,
             Properties.BossSpriteResources.AirMan_Peercast,
+            Properties.BossSpriteResources.Airman_RockMan2E,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_BUBBLE_MAN = new List<Byte[]>()
@@ -43,6 +44,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.BubbleMan_GrayZone,
             Properties.BossSpriteResources.BubbleMan_NoConstancy,
             Properties.BossSpriteResources.BubbleMan_Peercast,
+            Properties.BossSpriteResources.BubbleMan_RockMan2E,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_CRASH_MAN = new List<Byte[]>()
@@ -52,6 +54,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.CrashMan_DX,
             Properties.BossSpriteResources.CrashMan_GrayZone,
             Properties.BossSpriteResources.CrashMan_Peercast,
+            Properties.BossSpriteResources.CrashMan_RockMan2E,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_FLASH_MAN = new List<Byte[]>()
@@ -60,6 +63,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.FlashMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.FlashMan_GrayZone,
             Properties.BossSpriteResources.FlashMan_Peercast,
+            Properties.BossSpriteResources.FlashMan_RockMan2E,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_HEAT_MAN = new List<Byte[]>()
@@ -69,6 +73,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.HeatMan_DX,
             Properties.BossSpriteResources.HeatMan_GrayZone,
             Properties.BossSpriteResources.HeatMan_Peercast,
+            Properties.BossSpriteResources.HeatMan_RockMan2E,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_METAL_MAN = new List<Byte[]>()
@@ -78,6 +83,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.MetalMan_ElecMan,
             Properties.BossSpriteResources.MetalMan_GrayZone,
             Properties.BossSpriteResources.MetalMan_Peercast,
+            Properties.BossSpriteResources.MetalMan_RockMan2E,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_QUICK_MAN = new List<Byte[]>()
@@ -86,6 +92,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.QuickMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.QuickMan_GrayZone,
             Properties.BossSpriteResources.QuickMan_Peercast,
+            Properties.BossSpriteResources.QuickMan_RockMan2E,
             Properties.BossSpriteResources.QuickMan_Sonic,
         };
 
@@ -97,6 +104,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.WoodMan_DX,
             Properties.BossSpriteResources.WoodMan_GrayZone,
             Properties.BossSpriteResources.WoodMan_Peercast,
+            Properties.BossSpriteResources.WoodMan_RockMan2E,
             Properties.BossSpriteResources.WoodMan_ToadMan,
         };
 
@@ -124,14 +132,19 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_WILY = new List<Byte[]>()
         {
             null,
+            Properties.BossSpriteResources.Wily_CutMansBadScissorsDay,
             Properties.BossSpriteResources.Wily_DrLight,
         };
 
         private static readonly List<Byte[]> BOSS_SPRITE_LIST_ALIEN = new List<Byte[]>()
         {
             null,
+            Properties.BossSpriteResources.Alien_Cray,
             Properties.BossSpriteResources.Alien_CutMansBadScissorsDay,
             Properties.BossSpriteResources.Alien_Exhaust,
+            Properties.BossSpriteResources.Alien_Grayzone,
+            Properties.BossSpriteResources.Alien_NoConstancy,
+            Properties.BossSpriteResources.Alien_RockMan2E,
         };
 
         private static readonly List<List<Byte[]>> BOSS_SPRITE_COLLECTION = new List<List<Byte[]>>()

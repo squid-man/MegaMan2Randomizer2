@@ -65,6 +65,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FRIENDER = new List<Byte[]>()
         {
             null,
+            Properties.EnemySpriteResources.Friender_DeusExMachina,
             Properties.EnemySpriteResources.Friender_Evil,
         };
 
