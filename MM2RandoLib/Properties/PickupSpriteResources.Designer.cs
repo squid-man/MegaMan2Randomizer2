@@ -93,9 +93,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HealthEnergy_Quickman {
+        internal static byte[] HealthAndWeaponEnergy_MegaManX {
             get {
-                object obj = ResourceManager.GetObject("HealthEnergy_Quickman", resourceCulture);
+                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_MegaManX", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] WeaponEnergy_MegaManX {
+        internal static byte[] HealthAndWeaponEnergy_Quickman {
             get {
-                object obj = ResourceManager.GetObject("WeaponEnergy_MegaManX", resourceCulture);
+                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_Quickman", resourceCulture);
                 return ((byte[])(obj));
             }
         }
