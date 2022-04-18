@@ -34,23 +34,17 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.PickupSpriteResources.ETank_Metroid,
         };
 
-        private static readonly List<Byte[]> PICKUP_SPRITE_LIST_HEALTH_ENERGY = new List<Byte[]>()
+        private static readonly List<Byte[]> PICKUP_SPRITE_LIST_HEALTH_AND_WEAPON_ENERGY = new List<Byte[]>()
         {
             null,
-            Properties.PickupSpriteResources.HealthEnergy_Quickman,
-        };
-
-        private static readonly List<Byte[]> PICKUP_SPRITE_LIST_WEAPON_ENERGY = new List<Byte[]>()
-        {
-            null,
-            Properties.PickupSpriteResources.WeaponEnergy_MegaManX,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaManX,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_Quickman,
         };
 
         private static readonly List<List<Byte[]>> PICKUP_SPRITE_COLLECTION = new List<List<Byte[]>>()
         {
             PICKUP_SPRITE_LIST_ETANK,
-            PICKUP_SPRITE_LIST_HEALTH_ENERGY,
-            PICKUP_SPRITE_LIST_WEAPON_ENERGY,
+            PICKUP_SPRITE_LIST_HEALTH_AND_WEAPON_ENERGY,
         };
     }
 }
