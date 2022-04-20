@@ -130,6 +130,9 @@
   <data name="PlayerCharacter_BreakMan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\BreakMan\PlayerCharacter_BreakMan.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PlayerCharacter_Byte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_Byte.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="PlayerCharacter_CasualTom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\CasualTom\PlayerCharacter_CasualTom.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -166,6 +169,9 @@
   <data name="PlayerCharacter_MegaManX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\MegaManX\PlayerCharacter_MegaManX.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PlayerCharacter_MegaMari" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_MegaMari.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="PlayerCharacter_MegaRan2Remix" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -189,6 +195,9 @@
   </data>
   <data name="PlayerCharacter_Roll" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\Roll\PlayerCharacter_Roll.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlayerCharacter_RollFromMegaMan8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Characters\Roll\PlayerCharacter_RollFromMegaMan8.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PlayerCharacter_Samus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

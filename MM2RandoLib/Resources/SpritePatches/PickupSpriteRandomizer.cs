@@ -37,6 +37,10 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> PICKUP_SPRITE_LIST_HEALTH_AND_WEAPON_ENERGY = new List<Byte[]>()
         {
             null,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_Byte,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_Charlieboy1,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_Charlieboy2,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaMan1,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaManX,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_Quickman,
         };

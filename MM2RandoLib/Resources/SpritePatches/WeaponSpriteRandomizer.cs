@@ -75,6 +75,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.MetalBlade_NoConstancy,
             Properties.WeaponSpriteResources.MetalBlade_RockMan2E,
             Properties.WeaponSpriteResources.MetalBlade_ShadowBlade,
+            Properties.WeaponSpriteResources.MetalBlade_Star,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_QUICK_BOOMERANG = new List<Byte[]>()
@@ -114,7 +115,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.Item2_Peercast,
             Properties.WeaponSpriteResources.Item2_RedSuperArrow,
             Properties.WeaponSpriteResources.Item2_Rollchan2Broom,
-            Properties.WeaponSpriteResources.Item2_RushJet,
+            Properties.WeaponSpriteResources.Item2_RushJet1,
+            Properties.WeaponSpriteResources.Item2_RushJet2,
         };
 
         private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ITEM3 = new List<Byte[]>()

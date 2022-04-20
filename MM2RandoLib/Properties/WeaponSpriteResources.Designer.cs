@@ -313,9 +313,19 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Item2_RushJet {
+        internal static byte[] Item2_RushJet1 {
             get {
-                object obj = ResourceManager.GetObject("Item2_RushJet", resourceCulture);
+                object obj = ResourceManager.GetObject("Item2_RushJet1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Item2_RushJet2 {
+            get {
+                object obj = ResourceManager.GetObject("Item2_RushJet2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -456,6 +466,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] MetalBlade_ShadowBlade {
             get {
                 object obj = ResourceManager.GetObject("MetalBlade_ShadowBlade", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MetalBlade_Star {
+            get {
+                object obj = ResourceManager.GetObject("MetalBlade_Star", resourceCulture);
                 return ((byte[])(obj));
             }
         }

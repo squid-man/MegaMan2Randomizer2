@@ -127,6 +127,18 @@
   <data name="ETank_Metroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Pickups\ETank\ETank_Metroid.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="HealthAndWeaponEnergy_Byte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Byte.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HealthAndWeaponEnergy_Charlieboy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Charlieboy1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HealthAndWeaponEnergy_Charlieboy2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Charlieboy2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HealthAndWeaponEnergy_MegaMan1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaMan1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="HealthAndWeaponEnergy_MegaManX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaManX.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

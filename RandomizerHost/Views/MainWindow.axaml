@@ -540,6 +540,13 @@
                             <Image
                                 Width="168"
                                 Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Byte.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Byte}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_CasualTom.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=CasualTom}"
                             />
@@ -617,6 +624,13 @@
                             <Image
                                 Width="168"
                                 Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaMari.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaMari}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaRan2Remix.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaRan2Remix}"
                             />
@@ -668,6 +682,13 @@
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Roll.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Roll}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_RollFromMegaMan8.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=RollFromMegaMan8}"
                             />
 
                             <Image

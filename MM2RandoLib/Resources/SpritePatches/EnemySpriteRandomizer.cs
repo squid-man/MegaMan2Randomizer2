@@ -53,6 +53,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FLY_BOY = new List<Byte[]>()
         {
             null,
+            Properties.EnemySpriteResources.FlyBoy_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.FlyBoy_VineMan,
         };
 
@@ -72,6 +73,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_KAMINARI_GORO = new List<Byte[]>()
         {
             null,
+            Properties.EnemySpriteResources.KaminariGoro_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.KaminariGoro_MetLord,
         };
 
@@ -133,6 +135,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnemySpriteResources.PipiAndCopipi_Beat,
             Properties.EnemySpriteResources.PipiAndCopipi_BomberPipi,
+            Properties.EnemySpriteResources.PipiAndCopipi_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.PipiAndCopipi_NotTheBees,
         };
 
@@ -155,12 +158,14 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SCWORM = new List<Byte[]>()
         {
             null,
+            Properties.EnemySpriteResources.Scworm_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.Scworm_FlameThrow,
         };
 
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SHOTMAN = new List<Byte[]>()
         {
             null,
+            Properties.EnemySpriteResources.Shotman_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.Shotman_Turret,
         };
 
