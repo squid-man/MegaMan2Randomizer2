@@ -103,6 +103,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] PlayerCharacter_Byte {
+            get {
+                object obj = ResourceManager.GetObject("PlayerCharacter_Byte", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] PlayerCharacter_CasualTom {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_CasualTom", resourceCulture);
@@ -223,6 +233,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] PlayerCharacter_MegaMari {
+            get {
+                object obj = ResourceManager.GetObject("PlayerCharacter_MegaMari", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] PlayerCharacter_MegaRan2Remix {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_MegaRan2Remix", resourceCulture);
@@ -296,6 +316,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] PlayerCharacter_Roll {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_Roll", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] PlayerCharacter_RollFromMegaMan8 {
+            get {
+                object obj = ResourceManager.GetObject("PlayerCharacter_RollFromMegaMan8", resourceCulture);
                 return ((byte[])(obj));
             }
         }

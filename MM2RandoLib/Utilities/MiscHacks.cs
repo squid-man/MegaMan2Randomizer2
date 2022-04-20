@@ -552,6 +552,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSprite.Byte:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Byte);
+                    break;
+                }
+
                 case PlayerSprite.CasualTom:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CasualTom);
@@ -606,15 +612,21 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSprite.MarioArcade:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
+                    break;
+                }
+
                 case PlayerSprite.MegaManX:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaManX);
                     break;
                 }
 
-                case PlayerSprite.MarioArcade:
+                case PlayerSprite.MegaMari:
                 {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaMari);
                     break;
                 }
 
@@ -666,6 +678,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSprite.RollFromMegaMan8:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_RollFromMegaMan8);
+                    break;
+                }
+
                 case PlayerSprite.Samus:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
@@ -693,6 +711,12 @@ namespace MM2Randomizer.Utilities
                 case HudElement.Default:
                 default:
                 {
+                    break;
+                }
+
+                case HudElement.Byte:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Byte);
                     break;
                 }
 

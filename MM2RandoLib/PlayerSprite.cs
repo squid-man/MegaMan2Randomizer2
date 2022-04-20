@@ -7,6 +7,7 @@
         Bass,
         BassReloaded,
         BreakMan,
+        Byte,
         CasualTom,
         Charlieboy,
         CutMansBadScissorsDay,
@@ -18,6 +19,7 @@
         LuigiArcade,
         MarioArcade,
         MegaManX,
+        MegaMari,
         MegaRan2Remix,
         NewLands,
         ProtoMan,
@@ -26,6 +28,7 @@
         Quint,
         Remix,
         Roll,
+        RollFromMegaMan8,
         Samus,
         VineMan,
     }
