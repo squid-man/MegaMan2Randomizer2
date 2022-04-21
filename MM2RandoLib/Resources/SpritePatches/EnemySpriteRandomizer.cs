@@ -185,12 +185,29 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.SniperJoeAndSniperArmor_SpecialJoe,
         };
 
+        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SPIKES = new List<Byte[]>()
+        {
+            null,
+            Properties.EnemySpriteResources.Spikes_1UP,
+            Properties.EnemySpriteResources.Spikes_Diamond,
+            Properties.EnemySpriteResources.Spikes_MarioStar,
+            Properties.EnemySpriteResources.Spikes_MegaMan1,
+            Properties.EnemySpriteResources.Spikes_MegaMan3V1,
+            Properties.EnemySpriteResources.Spikes_MegaMan3V2,
+            Properties.EnemySpriteResources.Spikes_MegaMan3V3,
+            Properties.EnemySpriteResources.Spikes_MegaMan3V4,
+            Properties.EnemySpriteResources.Spikes_MegaMan4V1,
+            Properties.EnemySpriteResources.Spikes_MegaMan4V2,
+            Properties.EnemySpriteResources.Spikes_MegaMan4V3,
+        };
+
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SPRINGER = new List<Byte[]>()
         {
             null,
             Properties.EnemySpriteResources.Springer_BMSpringer,
             Properties.EnemySpriteResources.Springer_CuteSpringer,
             Properties.EnemySpriteResources.Springer_MegaMan6Springer,
+            Properties.EnemySpriteResources.Springer_Saw,
         };
 
         private static readonly List<Byte[]> ENEMY_SPRITE_LIST_TANISHI = new List<Byte[]>()
@@ -232,6 +249,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENEMY_SPRITE_LIST_SHOTMAN,
             ENEMY_SPRITE_LIST_SHRINK,
             ENEMY_SPRITE_LIST_SNIPER_JOE_AND_SNIPER_ARMOR,
+            ENEMY_SPRITE_LIST_SPIKES,
             ENEMY_SPRITE_LIST_SPRINGER,
             ENEMY_SPRITE_LIST_TANISHI,
             ENEMY_SPRITE_LIST_TELLY,

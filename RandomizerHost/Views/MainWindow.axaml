@@ -21,6 +21,7 @@
     <!-- Static Resources -->
     <Window.Resources>
         <converters:PlayerSpriteToBooleanConverter x:Key="PlayerSpriteToBooleanConverter"/>
+        <converters:EnumValueToDescriptionConverter x:Key="EnumValueToDescriptionConverter"/>
     </Window.Resources>
 
     <!-- Main Body -->
@@ -491,7 +492,7 @@
 
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}"/>
+                                    <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
@@ -547,6 +548,13 @@
                             <Image
                                 Width="168"
                                 Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_ByteRed.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=ByteRed}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_CasualTom.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=CasualTom}"
                             />
@@ -570,6 +578,13 @@
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyFighter.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyFighter}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyFighterBlue.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyFighterBlue}"
                             />
 
                             <Image
@@ -680,6 +695,13 @@
                             <Image
                                 Width="168"
                                 Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Rock.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Rock}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Roll.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Roll}"
                             />
@@ -719,7 +741,7 @@
 
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}"/>
+                                    <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
@@ -760,7 +782,7 @@
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}"/>
+                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -784,7 +806,7 @@
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}"/>
+                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -808,7 +830,7 @@
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}"/>
+                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -832,7 +854,7 @@
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}"/>
+                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -856,7 +878,7 @@
                     >
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}"/>
+                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>

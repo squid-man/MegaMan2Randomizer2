@@ -38,8 +38,10 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_Byte,
-            Properties.PickupSpriteResources.HealthAndWeaponEnergy_Charlieboy1,
-            Properties.PickupSpriteResources.HealthAndWeaponEnergy_Charlieboy2,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV1,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV2,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV3,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV4,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaMan1,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaManX,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_Quickman,

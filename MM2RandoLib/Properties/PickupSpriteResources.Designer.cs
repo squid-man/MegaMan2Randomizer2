@@ -103,9 +103,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HealthAndWeaponEnergy_Charlieboy1 {
+        internal static byte[] HealthAndWeaponEnergy_CharlieboyV1 {
             get {
-                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_Charlieboy1", resourceCulture);
+                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_CharlieboyV1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -113,9 +113,29 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HealthAndWeaponEnergy_Charlieboy2 {
+        internal static byte[] HealthAndWeaponEnergy_CharlieboyV2 {
             get {
-                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_Charlieboy2", resourceCulture);
+                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_CharlieboyV2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HealthAndWeaponEnergy_CharlieboyV3 {
+            get {
+                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_CharlieboyV3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HealthAndWeaponEnergy_CharlieboyV4 {
+            get {
+                object obj = ResourceManager.GetObject("HealthAndWeaponEnergy_CharlieboyV4", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -61,6 +61,8 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.LeafShield_GodWorld,
+            Properties.WeaponSpriteResources.LeafShield_JewelSatelliteV1,
+            Properties.WeaponSpriteResources.LeafShield_JewelSatelliteV2,
             Properties.WeaponSpriteResources.LeafShield_NoConstancy,
             Properties.WeaponSpriteResources.LeafShield_RockMan2E,
             Properties.WeaponSpriteResources.LeafShield_SkullBarrier,

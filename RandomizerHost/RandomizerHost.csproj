@@ -42,10 +42,6 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Quint.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Remix.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Samus.png" />
-    <None Remove="Assets\sprite_bass.png" />
-    <None Remove="Assets\sprite_proto.png" />
-    <None Remove="Assets\sprite_rock.png" />
-    <None Remove="Assets\sprite_roll.png" />
     <None Include="Assets\MegaMan2Randomizer.ico">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
