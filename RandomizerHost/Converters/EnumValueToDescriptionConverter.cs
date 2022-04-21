@@ -2,7 +2,6 @@
 using System.Globalization;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
-using MM2Randomizer;
 using RandomizerHost.Extensions;
 
 namespace RandomizerHost.Converters
@@ -15,13 +14,6 @@ namespace RandomizerHost.Converters
             {
                 return new BindingNotification(
                     new NotSupportedException(@"Only String target type is allowed"),
-                    BindingErrorType.Error);
-            }
-
-            if (null == in_Value)
-            {
-                return new BindingNotification(
-                    new ArgumentNullException(nameof(in_Value)),
                     BindingErrorType.Error);
             }
 
