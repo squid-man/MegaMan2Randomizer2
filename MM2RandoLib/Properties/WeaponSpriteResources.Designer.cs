@@ -383,6 +383,26 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] LeafShield_JewelSatelliteV1 {
+            get {
+                object obj = ResourceManager.GetObject("LeafShield_JewelSatelliteV1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] LeafShield_JewelSatelliteV2 {
+            get {
+                object obj = ResourceManager.GetObject("LeafShield_JewelSatelliteV2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] LeafShield_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("LeafShield_NoConstancy", resourceCulture);

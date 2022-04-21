@@ -558,6 +558,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSprite.ByteRed:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ByteRed);
+                    break;
+                }
+
                 case PlayerSprite.CasualTom:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CasualTom);
@@ -579,6 +585,12 @@ namespace MM2Randomizer.Utilities
                 case PlayerSprite.FinalFantasyFighter:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighter);
+                    break;
+                }
+
+                case PlayerSprite.FinalFantasyFighterBlue:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighterBlue);
                     break;
                 }
 
@@ -669,6 +681,12 @@ namespace MM2Randomizer.Utilities
                 case PlayerSprite.Remix:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Remix);
+                    break;
+                }
+
+                case PlayerSprite.Rock:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Rock);
                     break;
                 }
 
