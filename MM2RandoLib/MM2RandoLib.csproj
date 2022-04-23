@@ -49,6 +49,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>EnemySpriteResources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\EnvironmentSpriteResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>EnvironmentSpriteResources.resx</DependentUpon>
+      </Compile>
       <Compile Update="Properties\HudElementResources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -86,6 +91,11 @@
         <LastGenOutput>EnemySpriteResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
+      <EmbeddedResource Update="Properties\EnvironmentSpriteResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>EnvironmentSpriteResources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
       <EmbeddedResource Update="Properties\HudElementResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>HudElementResources.Designer.cs</LastGenOutput>
@@ -111,6 +121,10 @@
         <LastGenOutput>WeaponSpriteResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Resources\SpritePatches\Bosses\BoobeamTrap\" />
+      <Folder Include="Resources\SpritePatches\Environment\" />
     </ItemGroup>
     
 </Project>

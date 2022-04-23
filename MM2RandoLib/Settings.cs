@@ -75,6 +75,8 @@ namespace MM2Randomizer
 
         public Boolean EnableRandomizationOfItemPickupSprites { get; set; }
 
+        public Boolean EnableRandomizationOfEnvironmentSprites { get; set; }
+
         public Boolean EnableSpoilerFreeMode { get; set; }
 
         public Boolean EnableUnderwaterLagReduction { get; set; }

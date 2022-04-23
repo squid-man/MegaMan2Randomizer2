@@ -553,6 +553,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Spikes_Ash {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Ash", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Spikes_Diamond {
             get {
                 object obj = ResourceManager.GetObject("Spikes_Diamond", resourceCulture);
@@ -646,6 +656,36 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Spikes_MegaMan4V3 {
             get {
                 object obj = ResourceManager.GetObject("Spikes_MegaMan4V3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Muncher {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Muncher", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_SkullV1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_SkullV1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_SkullV2 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_SkullV2", resourceCulture);
                 return ((byte[])(obj));
             }
         }

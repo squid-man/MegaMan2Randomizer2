@@ -129,11 +129,19 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.GutsTank_CutMansBadScissorsDay,
         };
 
+        private static readonly List<Byte[]?> BOSS_SPRITE_LIST_BOOBEAM_TRAP = new List<Byte[]?>()
+        {
+            null,
+            Properties.BossSpriteResources.BoobeamTrap_MegaMan1TurretV1,
+            Properties.BossSpriteResources.BoobeamTrap_MegaMan1TurretV2,
+        };
+
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_WILY = new List<Byte[]?>()
         {
             null,
             Properties.BossSpriteResources.Wily_CutMansBadScissorsDay,
             Properties.BossSpriteResources.Wily_DrLight,
+            Properties.BossSpriteResources.Wily_RiverCityMan,
         };
 
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_ALIEN = new List<Byte[]?>()
@@ -150,9 +158,21 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_BOSS_DOOR_SIGN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.BossDoorSign_April,
+            Properties.BossSpriteResources.BossDoorSign_BurgerTime,
+            Properties.BossSpriteResources.BossDoorSign_CapnA,
+            Properties.BossSpriteResources.BossDoorSign_Charlieboy,
             Properties.BossSpriteResources.BossDoorSign_CutMansBadScissorsDay,
+            Properties.BossSpriteResources.BossDoorSign_DoubleDragon,
             Properties.BossSpriteResources.BossDoorSign_DrCossack,
+            Properties.BossSpriteResources.BossDoorSign_DrLight,
+            Properties.BossSpriteResources.BossDoorSign_LilMac,
+            Properties.BossSpriteResources.BossDoorSign_MegaMan4Squid,
+            Properties.BossSpriteResources.BossDoorSign_MortalKombat,
             Properties.BossSpriteResources.BossDoorSign_MrX,
+            Properties.BossSpriteResources.BossDoorSign_PizzaHut,
+            Properties.BossSpriteResources.BossDoorSign_Shredder,
+            Properties.BossSpriteResources.BossDoorSign_Squidman,
         };
 
         private static readonly List<List<Byte[]?>> BOSS_SPRITE_COLLECTION = new List<List<Byte[]?>>()
@@ -168,6 +188,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             BOSS_SPRITE_LIST_MECHA_DRAGON,
             BOSS_SPRITE_LIST_PICOPICO_KUN,
             BOSS_SPRITE_LIST_GUTS_TANK,
+            BOSS_SPRITE_LIST_BOOBEAM_TRAP,
             BOSS_SPRITE_LIST_WILY,
             BOSS_SPRITE_LIST_ALIEN,
             BOSS_SPRITE_LIST_BOSS_DOOR_SIGN,
