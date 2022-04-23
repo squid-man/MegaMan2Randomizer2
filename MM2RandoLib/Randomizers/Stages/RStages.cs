@@ -10,7 +10,7 @@ namespace MM2Randomizer.Randomizers.Stages
 {
     public class RStages : IRandomizer
     {
-        private List<StageFromSelect> StageSelect;
+        private List<StageFromSelect>? StageSelect;
         private StringBuilder debug = new StringBuilder();
 
         public RStages() { }
@@ -33,76 +33,83 @@ namespace MM2Randomizer.Randomizers.Stages
             // Metal Man    0x034676   6
             // Heat Man     0x034677   0
 
-            List<StageFromSelect> StageSelect = new List<StageFromSelect>();
-            StageSelect.Add(new StageFromSelect()
+            List<StageFromSelect> StageSelect = new List<StageFromSelect>
             {
-                PortraitName = "Bubble Man",
-                PortraitAddress = ERMPortraitAddress.BubbleMan,
-                InitialPortraitDestination = ERMPortraitDestination.BubbleMan,
-                TextAddress = ERMPortraitText.BubbleMan,
-                TextValues = "BUBBLE",
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Air Man",
-                PortraitAddress = ERMPortraitAddress.AirMan,
-                InitialPortraitDestination = ERMPortraitDestination.AirMan,
-                TextAddress = ERMPortraitText.AirMan,
-                TextValues = "`AIR```"
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Quick Man",
-                PortraitAddress = ERMPortraitAddress.QuickMan,
-                InitialPortraitDestination = ERMPortraitDestination.QuickMan,
-                TextAddress = ERMPortraitText.QuickMan,
-                TextValues = "QUICK`"
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Wood Man",
-                PortraitAddress = ERMPortraitAddress.WoodMan,
-                InitialPortraitDestination = ERMPortraitDestination.WoodMan,
-                TextAddress = ERMPortraitText.WoodMan,
-                TextValues = "WOOD``",
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Crash Man",
-                PortraitAddress = ERMPortraitAddress.CrashMan,
-                InitialPortraitDestination = ERMPortraitDestination.CrashMan,
-                TextAddress = ERMPortraitText.CrashMan,
-                TextValues = "CRASH`",
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Flash Man",
-                PortraitAddress = ERMPortraitAddress.FlashMan,
-                InitialPortraitDestination = ERMPortraitDestination.FlashMan,
-                TextAddress = ERMPortraitText.FlashMan,
-                TextValues = "FLASH`",
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Metal Man",
-                PortraitAddress = ERMPortraitAddress.MetalMan,
-                InitialPortraitDestination = ERMPortraitDestination.MetalMan,
-                TextAddress = ERMPortraitText.MetalMan,
-                TextValues = "METAL`",
-            });
-            StageSelect.Add(new StageFromSelect()
-            {
-                PortraitName = "Heat Man",
-                PortraitAddress = ERMPortraitAddress.HeatMan,
-                InitialPortraitDestination = ERMPortraitDestination.HeatMan,
-                TextAddress = ERMPortraitText.HeatMan,
-                TextValues = "HEAT``",
-            });
+                new StageFromSelect(
+                    in_PortraitName: "Bubble Man",
+                    in_PortraitAddress: ERMPortraitAddress.BubbleMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.BubbleMan,
+                    in_TextAddress: ERMPortraitText.BubbleMan,
+                    in_TextValues: "BUBBLE"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Air Man",
+                    in_PortraitAddress: ERMPortraitAddress.AirMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.AirMan,
+                    in_TextAddress: ERMPortraitText.AirMan,
+                    in_TextValues: "`AIR```"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Quick Man",
+                    in_PortraitAddress: ERMPortraitAddress.QuickMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.QuickMan,
+                    in_TextAddress: ERMPortraitText.QuickMan,
+                    in_TextValues: "QUICK`"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Wood Man",
+                    in_PortraitAddress: ERMPortraitAddress.WoodMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.WoodMan,
+                    in_TextAddress: ERMPortraitText.WoodMan,
+                    in_TextValues: "WOOD``"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Crash Man",
+                    in_PortraitAddress: ERMPortraitAddress.CrashMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.CrashMan,
+                    in_TextAddress: ERMPortraitText.CrashMan,
+                    in_TextValues: "CRASH`"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Flash Man",
+                    in_PortraitAddress: ERMPortraitAddress.FlashMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.FlashMan,
+                    in_TextAddress: ERMPortraitText.FlashMan,
+                    in_TextValues: "FLASH`"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Metal Man",
+                    in_PortraitAddress: ERMPortraitAddress.MetalMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.MetalMan,
+                    in_TextAddress: ERMPortraitText.MetalMan,
+                    in_TextValues: "METAL`"
+                ),
+
+                new StageFromSelect(
+                    in_PortraitName: "Heat Man",
+                    in_PortraitAddress: ERMPortraitAddress.HeatMan,
+                    in_InitialPortraitDestination: ERMPortraitDestination.HeatMan,
+                    in_TextAddress: ERMPortraitText.HeatMan,
+                    in_TextValues: "HEAT``"
+                ),
+            };
+
             return StageSelect;
         }
 
         public void FixPortraits<T>(ref Dictionary<EBossIndex, T> portraitBG_x, ref Dictionary<EBossIndex, T> portraitBG_y)
         {
+            if (null == this.StageSelect)
+            {
+                throw new NullReferenceException(@"Object has not been initialized. Call Randomize() first");
+            }
+
             // Get the new stage order
             Dictionary<EBossIndex, EBossIndex> newOrder = new();
 

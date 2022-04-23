@@ -9,37 +9,37 @@ namespace MM2Randomizer.Data
     public class EnemyWeakness
     {
         [XmlElement("Enabled")]
-        public Boolean Enabled { get; set; }
+        public Boolean Enabled { get; set; } = false;
 
         [XmlElement("Name")]
-        public String Name { get; set; }
+        public String Name { get; set; } = "UNKNOWN";
 
         [XmlElement("Offset")]
-        public String Offset { get; set; }
+        public String Offset { get; set; } = "0";
 
         [XmlElement("Buster")]
-        public String Buster { get; set; }
+        public String Buster { get; set; } = "0";
 
         [XmlElement("Heat")]
-        public String Heat { get; set; }
+        public String Heat { get; set; } = "0";
 
         [XmlElement("Air")]
-        public String Air { get; set; }
+        public String Air { get; set; } = "0";
 
         [XmlElement("Wood")]
-        public String Wood { get; set; }
+        public String Wood { get; set; } = "0";
 
         [XmlElement("Bubble")]
-        public String Bubble { get; set; }
+        public String Bubble { get; set; } = "0";
 
         [XmlElement("Quick")]
-        public String Quick { get; set; }
+        public String Quick { get; set; } = "0";
 
         [XmlElement("Crash")]
-        public String Crash { get; set; }
+        public String Crash { get; set; } = "0";
 
         [XmlElement("Metal")]
-        public String Metal { get; set; }
+        public String Metal { get; set; } = "0";
     }
 
 

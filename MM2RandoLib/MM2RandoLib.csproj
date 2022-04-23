@@ -20,6 +20,7 @@
         <ApplicationIcon />
         <OutputType>Library</OutputType>
         <StartupObject />
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
       <DefineConstants>DEBUG;TRACE</DefineConstants>

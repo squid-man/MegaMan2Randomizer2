@@ -9,34 +9,34 @@ namespace MM2Randomizer.Data
     public class Enemy
     {
         [XmlElement("Index")]
-        public String Index { get; set; }
+        public String? Index { get; set; }
 
         [XmlElement("StageNumber")]
-        public String StageNumber { get; set; }
+        public String? StageNumber { get; set; }
 
         [XmlElement("RoomNumber")]
-        public String RoomNumber { get; set; }
+        public String? RoomNumber { get; set; }
 
         [XmlElement("ScreenNumber")]
-        public String ScreenNumber { get; set; }
+        public String? ScreenNumber { get; set; }
 
         [XmlElement("IsActive")]
         public Boolean IsActive { get; set; }
 
         [XmlElement("EnemyId")]
-        public String EnemyId { get; set; }
+        public String? EnemyId { get; set; }
 
         [XmlElement("PositionX")]
-        public String PositionX { get; set; }
+        public String? PositionX { get; set; }
 
         [XmlElement("PositionY")]
-        public String PositionY { get; set; }
+        public String? PositionY { get; set; }
 
         [XmlElement("PositionAir")]
-        public String PositionAir { get; set; }
+        public String? PositionAir { get; set; }
 
         [XmlElement("PositionGround")]
-        public String PositionGround { get; set; }
+        public String? PositionGround { get; set; }
 
         [XmlElement("FaceRight")]
         public Boolean FaceRight { get; set; }

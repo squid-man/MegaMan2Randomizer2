@@ -9,9 +9,9 @@ namespace MM2Randomizer.Resources.SpritePatches
     {
         public static void ApplySprites(ISeed in_Seed, Patch in_Patch, String in_TargetFileName)
         {
-            foreach (List<Byte[]> weaponSpriteList in WeaponSpriteRandomizer.WEAPON_SPRITE_COLLECTION)
+            foreach (List<Byte[]?> weaponSpriteList in WeaponSpriteRandomizer.WEAPON_SPRITE_COLLECTION)
             {
-                Byte[] weaponSpritePatch = in_Seed.NextElement(weaponSpriteList);
+                Byte[]? weaponSpritePatch = in_Seed.NextElement(weaponSpriteList);
 
                 // Each boss sprite list contians a null entry, which is used
                 // to indicate the default sprite will be retained
@@ -22,7 +22,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             }
         }
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_AIR_SHOOTER = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_AIR_SHOOTER = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.AirShooter_DeusExMachina,
@@ -31,7 +31,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.AirShooter_VineMan,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ATOMIC_FIRE = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_ATOMIC_FIRE = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.AtomicFire_DeusExMachina,
@@ -39,7 +39,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.AtomicFire_NoConstancy,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_BUBBLE_LEAD = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_BUBBLE_LEAD = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.BubbleLead_GodWorld,
@@ -48,7 +48,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.BubbleLead_SparkShock,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_CRASH_BOMBER = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_CRASH_BOMBER = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.CrashBomber_DeusExMachina,
@@ -57,7 +57,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.CrashBomber_RockMan2E,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_LEAF_SHIELD = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_LEAF_SHIELD = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.LeafShield_GodWorld,
@@ -68,7 +68,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.LeafShield_SkullBarrier,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_METAL_BLADE = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_METAL_BLADE = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.MetalBlade_DeusExMachina,
@@ -80,7 +80,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.MetalBlade_Star,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_QUICK_BOOMERANG = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_QUICK_BOOMERANG = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.QuickBoomerang_DeusExMachina,
@@ -90,7 +90,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.QuickBoomerang_VineMan,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_TIME_STOPPER = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_TIME_STOPPER = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.TimeStopper_DeusExMachina,
@@ -98,7 +98,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.TimeStopper_NoConstancy,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ITEM1 = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_ITEM1 = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.Item1_MegaMan2Remix,
@@ -108,7 +108,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.Item2_BulletBill,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ITEM2 = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_ITEM2 = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.Item2_BulletBill,
@@ -121,7 +121,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.Item2_RushJet2,
         };
 
-        private static readonly List<Byte[]> WEAPON_SPRITE_LIST_ITEM3 = new List<Byte[]>()
+        private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_ITEM3 = new List<Byte[]?>()
         {
             null,
             Properties.WeaponSpriteResources.Item3_MegaMan2Remix,
@@ -130,7 +130,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.Item3_Rollchan2,
         };
 
-        private static readonly List<List<Byte[]>> WEAPON_SPRITE_COLLECTION = new List<List<Byte[]>>()
+        private static readonly List<List<Byte[]?>> WEAPON_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
             WEAPON_SPRITE_LIST_AIR_SHOOTER,
             WEAPON_SPRITE_LIST_ATOMIC_FIRE,

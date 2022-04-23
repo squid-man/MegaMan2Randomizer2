@@ -9,18 +9,26 @@ namespace MM2Randomizer.Randomizers.Stages
     /// </summary>
     public class StageFromSelect
     {
-        public String PortraitName;
-        public ERMPortraitText TextAddress;
-        public String TextValues;
-        public ERMPortraitAddress PortraitAddress;
-        public DestinationPair PortraitDestination;
+        public readonly String PortraitName;
+        public readonly ERMPortraitText TextAddress;
+        public readonly String TextValues;
+        public readonly ERMPortraitAddress PortraitAddress;
+        public readonly DestinationPair PortraitDestination;
 
-        public ERMPortraitDestination InitialPortraitDestination
+        //
+        // Constructors
+        //
+
+        public StageFromSelect(String in_PortraitName, ERMPortraitText in_TextAddress, String in_TextValues, ERMPortraitAddress in_PortraitAddress, ERMPortraitDestination in_InitialPortraitDestination)
         {
-            set => PortraitDestination = new DestinationPair()
+            this.PortraitName = in_PortraitName;
+            this.TextAddress = in_TextAddress;
+            this.TextValues = in_TextValues;
+            this.PortraitAddress = in_PortraitAddress;
+            this.PortraitDestination = new DestinationPair()
             {
-                Old = value,
-                New = value
+                Old = in_InitialPortraitDestination,
+                New = in_InitialPortraitDestination,
             };
         }
 

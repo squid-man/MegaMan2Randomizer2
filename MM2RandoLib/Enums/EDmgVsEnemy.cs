@@ -85,7 +85,7 @@ namespace MM2Randomizer.Enums
             return (a != b.Address);
         }
 
-        public override Boolean Equals(Object obj)
+        public override Boolean Equals(Object? obj)
         {
             return base.Equals(obj);
         }
@@ -175,7 +175,7 @@ namespace MM2Randomizer.Enums
                 return (a != b.Value);
             }
 
-            public override Boolean Equals(Object obj)
+            public override Boolean Equals(Object? obj)
             {
                 return base.Equals(obj);
             }

@@ -12,7 +12,7 @@ namespace MM2Randomizer.Data
         public Boolean Enabled { get; set; }
 
         [XmlElement("Name")]
-        public String Name { get; set; }
+        public String? Name { get; set; }
 
         public String GetCompanyName()
         {

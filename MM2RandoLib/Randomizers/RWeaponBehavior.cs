@@ -10,10 +10,8 @@ namespace MM2Randomizer.Randomizers
 {
     public class RWeaponBehavior : IRandomizer
     {
-        private List<ESoundID> sounds;
-
         // Buster Heat Air Wood Bubble Quick Metal Crash
-        private static IDictionary<EWeaponIndex, Double> AmmoUsage;
+        private static IDictionary<EWeaponIndex, Double> AmmoUsage = new Dictionary<EWeaponIndex, Double>();
 
         public static Double GetAmmoUsage(EWeaponIndex weapon)
         {
@@ -25,13 +23,16 @@ namespace MM2Randomizer.Randomizers
             return value;
         }
 
-        private StringBuilder debug;
+        private StringBuilder debug = new StringBuilder();
+
         public override String ToString()
         {
             return debug.ToString();
         }
 
-        public RWeaponBehavior() { }
+        public RWeaponBehavior()
+        {
+        }
 
         private static List<ESoundID> GetSoundList()
         {
@@ -69,20 +70,20 @@ namespace MM2Randomizer.Randomizers
 
         public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
-            debug = new StringBuilder();
-            sounds = GetSoundList();
-            AmmoUsage = new Dictionary<EWeaponIndex, Double>();
+            debug.Clear();
+            List<ESoundID> sounds = GetSoundList();
+            AmmoUsage.Clear();
             AmmoUsage.Add(EWeaponIndex.Buster, 0); // Buster is free
 
-            ChangeHeat(in_Patch, in_Context.Seed);
-            ChangeAir(in_Patch, in_Context.Seed);
-            ChangeWood(in_Patch, in_Context.Seed);
-            ChangeBubble(in_Patch, in_Context.Seed);
-            ChangeQuick(in_Patch, in_Context.Seed);
-            ChangeFlash(in_Patch, in_Context.Seed);
-            ChangeMetal(in_Patch, in_Context.Seed);
-            ChangeCrash(in_Patch, in_Context.Seed);
-            ChangeItem1(in_Patch, in_Context.Seed);
+            this.ChangeHeat(in_Patch, in_Context.Seed, sounds);
+            this.ChangeAir(in_Patch, in_Context.Seed, sounds);
+            this.ChangeWood(in_Patch, in_Context.Seed, sounds);
+            this.ChangeBubble(in_Patch, in_Context.Seed, sounds);
+            this.ChangeQuick(in_Patch, in_Context.Seed, sounds);
+            this.ChangeFlash(in_Patch, in_Context.Seed, sounds);
+            this.ChangeMetal(in_Patch, in_Context.Seed, sounds);
+            this.ChangeCrash(in_Patch, in_Context.Seed, sounds);
+            this.ChangeItem1(in_Patch, in_Context.Seed);
 
             debug.AppendLine("Ammo Usage");
             debug.AppendLine("P     H     A     W     B     Q     M     C");
@@ -99,11 +100,11 @@ namespace MM2Randomizer.Randomizers
         /// </summary>
         /// <param name="r"></param>
         /// <returns>Sound ID Byte</returns>
-        private ESoundID GetRandomSound(ISeed in_Seed)
+        private ESoundID GetRandomSound(ISeed in_Seed, List<ESoundID> in_Sounds)
         {
-            Int32 i = in_Seed.NextInt32(sounds.Count);
-            ESoundID sound = sounds.ElementAt(i);
-            sounds.RemoveAt(i);
+            Int32 i = in_Seed.NextInt32(in_Sounds.Count);
+            ESoundID sound = in_Sounds.ElementAt(i);
+            in_Sounds.RemoveAt(i);
 
             // Pick a random charge level if charge sound is chosen
             if (sound == ESoundID.WeaponH_Charge0)
@@ -114,7 +115,7 @@ namespace MM2Randomizer.Randomizers
             return sound;
         }
 
-        protected void ChangeHeat(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeHeat(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03DE55 - H L1 Ammo use(01)
             //0x03DE56 - H L2 Ammo use(06)
@@ -166,7 +167,7 @@ namespace MM2Randomizer.Randomizers
             }
 
             //0x03DDEC - H shot sound effect(38)
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DDEC, (Byte)sound, "(H) | Shot Sound");
 
             //0x03DDF1 - H x - speed (04, all levels)
@@ -176,19 +177,19 @@ namespace MM2Randomizer.Randomizers
 
             //0x03DE45 - H charge sound 1(35) Unused
             //0x03DE46 - H charge sound 2(35)
-            sound = this.GetRandomSound(in_Seed);
+            sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DE46, (Byte)sound, "(H) | L1 Sound");
 
             //0x03DE47 - H charge sound 3(36)
-            sound = this.GetRandomSound(in_Seed);
+            sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DE47, (Byte)sound, "(H) | L2 Sound");
 
             //0x03DE48 - H charge sound 4(37)
-            sound = this.GetRandomSound(in_Seed);
+            sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DE48, (Byte)sound, "(H) | L3 Sound");
         }
 
-        protected void ChangeAir(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeAir(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03DAD6 - A num projectiles, default 0x04
             //  Values 0x02 and 0x03 work, but larger values behave strangely
@@ -210,7 +211,7 @@ namespace MM2Randomizer.Randomizers
             //  Can use this to change behavior completely!Buggy though.
 
             //0x03DAE6 - A sound effect (0x3F)
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DAE6, (Byte)sound, "(A) | Sound");
 
             //0x03DAEE - A ammo used(0x02)
@@ -265,7 +266,7 @@ namespace MM2Randomizer.Randomizers
             }
         }
 
-        protected void ChangeWood(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeWood(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03DEDA - W deploy time (0C)
             //    Can change from 06 to 12
@@ -283,7 +284,7 @@ namespace MM2Randomizer.Randomizers
             // TODO
 
             //0x03DF1F - W deploy sound effect
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DF1F, (Byte)sound, "(W) | Deploy Sound");
 
             //0x03DF41 - W which directions the shield is allowed to launch in (F0)
@@ -328,7 +329,7 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03DF7D, (Byte)launchVel, "(W) | Launch Y-Velocity Integer");
         }
 
-        protected void ChangeBubble(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeBubble(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03D4AB - B x - speed on shoot (0x01) (do 1-3)
             Int32 xVelShoot = in_Seed.NextInt32(0x03) + 0x01;
@@ -347,7 +348,7 @@ namespace MM2Randomizer.Randomizers
             // Don't do
 
             //0x03DB34 - B sound effect
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DB34, (Byte)sound, "(B) | Sound");
 
             //0x03DB3D - B shots per ammo tick (0x02) (do 1-4)
@@ -383,7 +384,7 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03DFC8, (Byte)yFallVel, "(B) | Y-Velocity Fall (Integer)");
         }
 
-        protected void ChangeQuick(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeQuick(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             // Q autofire delay, default 0x0B
             //    Do from 0x05 to 0x12
@@ -396,7 +397,7 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03DB5C, (Byte)maxShots, "(Q) | Max Shots");
 
             // 0x03DB6F - Q sound effect
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DB6F, (Byte)sound, "(Q) | Sound");
             
             // Q shots per ammo tick, default 0x08
@@ -444,10 +445,10 @@ namespace MM2Randomizer.Randomizers
             //    Change to 0x01 for interesting effects
         }
 
-        protected void ChangeFlash(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeFlash(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03DC59 - F sound (21)
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DC59, (Byte)sound, "(F) | Sound");
 
             //0x03E172 - F custom subroutine for reusable weapon
@@ -532,14 +533,14 @@ namespace MM2Randomizer.Randomizers
             }
         }
 
-        protected void ChangeMetal(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeMetal(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03DBB6 - M max shots (04) (change to 0x02-0x05, or 1-4)
             Int32 maxShots = in_Seed.NextInt32(0x04) + 0x02;
             in_Patch.Add(0x03DBB6, (Byte)maxShots, "(M) | Max Shots");
 
             //0x03DBC9 - M sound effect(23)
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DBC9, (Byte)sound, "(M) | Sound");
 
             //0x03DBD2 - M shots per ammo tick(04) (change to 1-5)
@@ -593,7 +594,7 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03DC3B, (Byte)halfX, "(M) | X-Velocity Down+Right");
         }
 
-        protected void ChangeCrash(Patch in_Patch, ISeed in_Seed)
+        protected void ChangeCrash(Patch in_Patch, ISeed in_Seed, List<ESoundID> in_Sounds)
         {
             //0x03D4AD - C x-speed on shoot (04) (do 2-7)
             Int32 xVel = in_Seed.NextInt32(0x06) + 0x02;
@@ -631,11 +632,11 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03DB9F, (Byte)multiExplode, "(C) | Explosion Type");
 
             //0x03DBA6 - C shoot sound effect (24)
-            ESoundID sound = this.GetRandomSound(in_Seed);
+            ESoundID sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03DBA6, (Byte)sound, "(C) | Sound Shoot");
 
             //0x03E089 - C attach sound effect (2E)
-            sound = this.GetRandomSound(in_Seed);
+            sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03E089, (Byte)sound, "(C) | Sound Attach");
 
             //0x03E09C - C delay before explosion (7E) (do 01 to C0)
@@ -643,7 +644,7 @@ namespace MM2Randomizer.Randomizers
             in_Patch.Add(0x03E09C, (Byte)delayExplosion, "(C) | Explode Delay");
 
             //0x03E0DA - C explode sound effect
-            sound = this.GetRandomSound(in_Seed);
+            sound = this.GetRandomSound(in_Seed, in_Sounds);
             in_Patch.Add(0x03E0DA, (Byte)sound, "(C) | Sound Explode");
         }
 

@@ -66,9 +66,9 @@ namespace MM2Randomizer.Random
             return element;
         }
 
-        public Dictionary<TKey, TValue> Shuffle<TKey, TValue>(IDictionary<TKey, TValue> in_Dict)
+        public Dictionary<TKey, TValue> Shuffle<TKey, TValue>(IDictionary<TKey, TValue> in_Dict) where TKey : notnull
         {
-            List<TValue> values = Shuffle(in_Dict.Values).ToList();
+            List<TValue> values =this.Shuffle(in_Dict.Values).ToList();
 
             return in_Dict.Keys
                 .Zip(values, (key, value) => new KeyValuePair<TKey, TValue>(key, value))
