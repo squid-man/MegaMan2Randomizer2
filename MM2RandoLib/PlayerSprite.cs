@@ -30,7 +30,7 @@ namespace MM2Randomizer
         FinalFantasyFighterBlue,
         [Description("Hatsune Miku")]
         HatsuneMiku,
-        [Description("Justine Bailey")]
+        [Description("Justin Bailey")]
         JustinBailey,
         [Description("Link")]
         Link,

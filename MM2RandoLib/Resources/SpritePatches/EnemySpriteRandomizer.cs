@@ -189,6 +189,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnemySpriteResources.Spikes_1UP,
+            Properties.EnemySpriteResources.Spikes_Ash,
             Properties.EnemySpriteResources.Spikes_Diamond,
             Properties.EnemySpriteResources.Spikes_MarioStar,
             Properties.EnemySpriteResources.Spikes_MegaMan1,
@@ -199,6 +200,9 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Spikes_MegaMan4V1,
             Properties.EnemySpriteResources.Spikes_MegaMan4V2,
             Properties.EnemySpriteResources.Spikes_MegaMan4V3,
+            Properties.EnemySpriteResources.Spikes_Muncher,
+            Properties.EnemySpriteResources.Spikes_SkullV1,
+            Properties.EnemySpriteResources.Spikes_SkullV2,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SPRINGER = new List<Byte[]?>()

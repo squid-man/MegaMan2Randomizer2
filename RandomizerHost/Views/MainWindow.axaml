@@ -475,6 +475,13 @@
                                 IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfItemPickupSprites}"
                             />
                         </Grid>
+
+                        <Grid x:Name="Grid_EnvironmentSprites">
+                            <CheckBox
+                                Content="Randomize Environment Sprites"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnvironmentSprites}"
+                            />
+                        </Grid>
                     </StackPanel>
 
                     <!-- Custom Sprite Selection -->
