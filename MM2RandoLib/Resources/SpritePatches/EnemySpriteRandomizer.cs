@@ -9,9 +9,9 @@ namespace MM2Randomizer.Resources.SpritePatches
     {
         public static void ApplySprites(ISeed in_Seed, Patch in_Patch, String in_TargetFileName)
         {
-            foreach (List<Byte[]> enemySpriteList in EnemySpriteRandomizer.ENEMY_SPRITE_COLLECTION)
+            foreach (List<Byte[]?> enemySpriteList in EnemySpriteRandomizer.ENEMY_SPRITE_COLLECTION)
             {
-                Byte[] enemySpritePatch = in_Seed.NextElement(enemySpriteList);
+                Byte[]? enemySpritePatch = in_Seed.NextElement(enemySpriteList);
 
                 // Each boss sprite list contians a null entry, which is used
                 // to indicate the default sprite will be retained
@@ -22,27 +22,27 @@ namespace MM2Randomizer.Resources.SpritePatches
             }
         }
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_BATTON = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_BATTON = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Batton_Ghost,
             Properties.EnemySpriteResources.Batton_Vader,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_BLOCKY = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_BLOCKY = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Blocky_Rocky,
             Properties.EnemySpriteResources.Blocky_TotemPolen,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_CHANGKEY_MAKER = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_CHANGKEY_MAKER = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.ChangkeyMaker_ConstructionJoe,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_CLAW = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_CLAW = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Claw_Chiko,
@@ -50,34 +50,34 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Claw_Peercast,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FLY_BOY = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FLY_BOY = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.FlyBoy_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.FlyBoy_VineMan,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FORCE_BEAM = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FORCE_BEAM = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.ForceBeam_NyanCat,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_FRIENDER = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FRIENDER = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Friender_DeusExMachina,
             Properties.EnemySpriteResources.Friender_Evil,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_KAMINARI_GORO = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_KAMINARI_GORO = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.KaminariGoro_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.KaminariGoro_MetLord,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_KEROG_AND_PETIT_KEROG = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_KEROG_AND_PETIT_KEROG = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Hearts,
@@ -85,52 +85,52 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.KerogAndPetitKerog_MetMom,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_KUKKU = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_KUKKU = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Kukku_DX,
             Properties.EnemySpriteResources.Kukku_VineCock,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_M445 = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_M445 = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.M445_M422A,
             Properties.EnemySpriteResources.M445_Metroid,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_MATASABURO = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_MATASABURO = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Matasaburo_EnhancedBlow,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_MOLE = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_MOLE = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Mole_MegaMan9Drill
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_MONKING = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_MONKING = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Monking_VineMan
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_NEO_METALL = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_NEO_METALL = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.NeoMetall_1UpMet1,
             Properties.EnemySpriteResources.NeoMetall_1UpMet2,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_PIEROBOT = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_PIEROBOT = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Pierobot_VineMan,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_PIPI_AND_COPIPI = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_PIPI_AND_COPIPI = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.PipiAndCopipi_Beat,
@@ -139,14 +139,14 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.PipiAndCopipi_NotTheBees,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_PRESS = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_PRESS = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Press_Crusher2,
             Properties.EnemySpriteResources.Press_FlatCrusher,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_ROBBIT = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_ROBBIT = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Robbit_MegaMan1Joe,
@@ -155,27 +155,27 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Robbit_Turtle,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SCWORM = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SCWORM = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Scworm_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.Scworm_FlameThrow,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SHOTMAN = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SHOTMAN = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Shotman_CutMansBadScissorsDay,
             Properties.EnemySpriteResources.Shotman_Turret,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SHRINK = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SHRINK = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Shrink_MegaMan1Watcher,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SNIPER_JOE_AND_SNIPER_ARMOR = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SNIPER_JOE_AND_SNIPER_ARMOR = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.SniperJoeAndSniperArmor_MegaMan1ContructionJoe,
@@ -185,7 +185,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.SniperJoeAndSniperArmor_SpecialJoe,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SPIKES = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SPIKES = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Spikes_1UP,
@@ -201,7 +201,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Spikes_MegaMan4V3,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_SPRINGER = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SPRINGER = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Springer_BMSpringer,
@@ -210,21 +210,21 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Springer_Saw,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_TANISHI = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_TANISHI = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Tanishi_HatCrab,
             Properties.EnemySpriteResources.Tanishi_MetCrab,
         };
 
-        private static readonly List<Byte[]> ENEMY_SPRITE_LIST_TELLY = new List<Byte[]>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_TELLY = new List<Byte[]?>()
         {
             null,
             Properties.EnemySpriteResources.Telly_EyeTelly,
             Properties.EnemySpriteResources.Telly_Telly2,
         };
 
-        private static readonly List<List<Byte[]>> ENEMY_SPRITE_COLLECTION = new List<List<Byte[]>>()
+        private static readonly List<List<Byte[]?>> ENEMY_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
             ENEMY_SPRITE_LIST_BATTON,
             ENEMY_SPRITE_LIST_BLOCKY,

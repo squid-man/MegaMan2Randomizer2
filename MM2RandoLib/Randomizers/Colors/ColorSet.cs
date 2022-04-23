@@ -8,7 +8,7 @@ namespace MM2Randomizer.Randomizers.Colors
 {
     public class ColorSet
     {
-        public Int32[] addresses;
+        public Int32[]? addresses;
         public List<EColorsHex[]> ColorBytes;
         public Int32 Index;
 
@@ -20,6 +20,11 @@ namespace MM2Randomizer.Randomizers.Colors
 
         public void RandomizeAndWrite(Patch in_Patch, ISeed in_Seed, Int32 setNumber)
         {
+            if (null == this.addresses)
+            {
+                throw new NullReferenceException(@"Addresses has not been initialized");
+            }
+
             this.Index = in_Seed.NextInt32(ColorBytes.Count);
 
             for (Int32 i = 0; i < this.addresses.Length; i++)

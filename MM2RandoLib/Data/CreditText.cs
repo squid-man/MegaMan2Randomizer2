@@ -9,13 +9,13 @@ namespace MM2Randomizer.Data
     public class CreditText
     {
         [XmlElement("Enabled")]
-        public Boolean Enabled { get; set; }
+        public Boolean Enabled { get; set; } = false;
 
         [XmlElement("Value")]
-        public String Value { get; set; }
+        public String Value { get; set; } = "0";
 
         [XmlElement("Text")]
-        public String Text { get; set; }
+        public String Text { get; set; } = "UNKNOWN";
     }
 
 

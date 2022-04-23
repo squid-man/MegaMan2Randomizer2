@@ -18,9 +18,9 @@ namespace MM2Randomizer
         // Variable Properties
         //
 
-        public String SeedString { get; set; }
+        public String? SeedString { get; set; }
 
-        public String RomSourcePath { get; set; }
+        public String RomSourcePath { get; set; } = String.Empty;
 
 
         //

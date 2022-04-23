@@ -14,10 +14,10 @@ namespace MM2Randomizer.Data
         public Boolean Enabled { get; set; }
 
         [XmlElement("Title")]
-        public String Title { get; set; }
+        public String? Title { get; set; }
 
         [XmlArrayItem("Line", typeof(String))]
-        public List<String> Lines { get; set; }
+        public List<String>? Lines { get; set; }
 
         public Byte[] GetFormattedString()
         {

@@ -33,7 +33,7 @@ namespace MM2Randomizer
         {
             get
             {
-                return Assembly.GetAssembly(typeof(RandomMM2)).GetName().Version;
+                return Assembly.GetAssembly(typeof(RandomMM2))?.GetName().Version ?? new Version(0, 0, 0, 0);
             }
         }
     }

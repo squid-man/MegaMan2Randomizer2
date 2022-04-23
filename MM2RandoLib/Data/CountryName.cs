@@ -16,7 +16,7 @@ namespace MM2Randomizer.Data
         public String Prefix { get; set; } = "in";
 
         [XmlElement("Name")]
-        public String Name { get; set; }
+        public String? Name { get; set; }
 
         public Byte[] GetFormattedPrefix()
         {

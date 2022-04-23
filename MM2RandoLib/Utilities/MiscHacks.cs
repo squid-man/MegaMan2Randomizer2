@@ -18,11 +18,13 @@ namespace MM2Randomizer.Utilities
             p.Add(0x0362D5, 0xA0, "Title screen Cursor bottom position"); // default 0xA8
 
             // Draw version number
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetAssembly(typeof(RandomMM2));
-            String version = assembly.GetName().Version.ToString();
-            for (Int32 i = 0; i < version.Length; i++)
+            System.Reflection.Assembly assembly = typeof(RandomMM2).Assembly;
+            Version version = assembly.GetName().Version ?? throw new NullReferenceException(@"Assembly version cannot be null");
+            String stringVersion = version.ToString();
+
+            for (Int32 i = 0; i < stringVersion.Length; i++)
             {
-                Byte value = version[i].AsIntroCharacter();
+                Byte value = stringVersion[i].AsIntroCharacter();
                 p.Add(0x037407 + i, value, "Title Screen Version Number");
             }
 
@@ -31,8 +33,8 @@ namespace MM2Randomizer.Utilities
             p.Add(0x0373C2, hash, "Title Screen hash");
 
 
-            string seedAlpha = in_SeedBase26;
-            for (int i = 0; i < seedAlpha.Length; i++)
+            String seedAlpha = in_SeedBase26;
+            for (Int32 i = 0; i < seedAlpha.Length; i++)
             {
                 Byte value = seedAlpha[i].AsIntroCharacter();
                 p.Add(0x0373C7 + i, value, "Title Screen Seed");

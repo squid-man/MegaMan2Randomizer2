@@ -8,7 +8,7 @@ namespace MM2Randomizer.Utilities
         // Constructors
         //
 
-        public WeaponName(String in_Name, String in_ExtendedName, String in_FullName, Char in_WeaponLetter)
+        public WeaponName(String in_Name, String? in_ExtendedName, String in_FullName, Char in_WeaponLetter)
         {
             this.mName = in_Name ?? throw new ArgumentNullException(nameof(in_Name));
             this.mFullName = in_FullName ?? throw new ArgumentNullException(nameof(in_ExtendedName));
@@ -29,7 +29,7 @@ namespace MM2Randomizer.Utilities
             }
         }
 
-        public String ExtendedName
+        public String? ExtendedName
         {
             get
             {
@@ -59,7 +59,7 @@ namespace MM2Randomizer.Utilities
         //
 
         private String mName;
-        private String mExtendedName;
+        private String? mExtendedName;
         private String mFullName;
         private Char mLetter;
     }
