@@ -163,6 +163,26 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] BubbleLead_SearchSnakeV1 {
+            get {
+                object obj = ResourceManager.GetObject("BubbleLead_SearchSnakeV1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BubbleLead_SearchSnakeV2 {
+            get {
+                object obj = ResourceManager.GetObject("BubbleLead_SearchSnakeV2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] BubbleLead_SparkShock {
             get {
                 object obj = ResourceManager.GetObject("BubbleLead_SparkShock", resourceCulture);

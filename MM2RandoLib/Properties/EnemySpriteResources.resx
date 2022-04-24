@@ -262,51 +262,6 @@
   <data name="SniperJoeAndSniperArmor_SpecialJoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Enemies\SniperJoeAndSniperArmor\SniperJoeAndSniperArmor_SpecialJoe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Spikes_1UP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_1UP.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_Ash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_Ash.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_Diamond" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_Diamond.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MarioStar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MarioStar.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan3V1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan3V1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan3V2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan3V2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan3V3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan3V3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan3V4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan3V4.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan4V1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan4V1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan4V2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan4V2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_MegaMan4V3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_MegaMan4V3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_Muncher" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_Muncher.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_SkullV1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_SkullV1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Spikes_SkullV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\Spikes\Spikes_SkullV2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Springer_BMSpringer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Enemies\Springer\Springer_BMSpringer.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

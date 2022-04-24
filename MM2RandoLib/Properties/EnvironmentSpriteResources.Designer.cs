@@ -189,5 +189,165 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_1UP {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_1UP", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Ash {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Ash", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Diamond {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Diamond", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_DIE {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_DIE", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MarioStar {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MarioStar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan3V1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan3V1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan3V2 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan3V2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan3V3 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan3V3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan3V4 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan3V4", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan4V1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan4V1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan4V2 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan4V2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_MegaMan4V3 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_MegaMan4V3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Muncher {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Muncher", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_SkullV1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_SkullV1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_SkullV2 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_SkullV2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

@@ -55,11 +55,32 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.DragonBlock_SuperMarioBros2V2,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_SPIKES = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.Spikes_1UP,
+            Properties.EnvironmentSpriteResources.Spikes_Ash,
+            Properties.EnvironmentSpriteResources.Spikes_Diamond,
+            Properties.EnvironmentSpriteResources.Spikes_MarioStar,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan1,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan3V1,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan3V2,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan3V3,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan3V4,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan4V1,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan4V2,
+            Properties.EnvironmentSpriteResources.Spikes_MegaMan4V3,
+            Properties.EnvironmentSpriteResources.Spikes_Muncher,
+            Properties.EnvironmentSpriteResources.Spikes_SkullV1,
+            Properties.EnvironmentSpriteResources.Spikes_SkullV2,
+        };
+
         private static readonly List<List<Byte[]?>> ENVIRONMENT_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
             ENVIRONMENT_SPRITE_LIST_CASTLE,
             ENVIRONMENT_SPRITE_LIST_DESTRUCTIBLE_BLOCK,
             ENVIRONMENT_SPRITE_LIST_DRAGON_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_SPIKES,
         };
     }
 }
