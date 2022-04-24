@@ -172,7 +172,9 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.BossDoorSign_MrX,
             Properties.BossSpriteResources.BossDoorSign_PizzaHut,
             Properties.BossSpriteResources.BossDoorSign_Shredder,
+            Properties.BossSpriteResources.BossDoorSign_SiberianBull,
             Properties.BossSpriteResources.BossDoorSign_Squidman,
+            Properties.BossSpriteResources.BossDoorSign_WWF,
         };
 
         private static readonly List<List<Byte[]?>> BOSS_SPRITE_COLLECTION = new List<List<Byte[]?>>()

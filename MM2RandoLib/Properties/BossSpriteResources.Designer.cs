@@ -333,9 +333,29 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] BossDoorSign_SiberianBull {
+            get {
+                object obj = ResourceManager.GetObject("BossDoorSign_SiberianBull", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] BossDoorSign_Squidman {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_Squidman", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BossDoorSign_WWF {
+            get {
+                object obj = ResourceManager.GetObject("BossDoorSign_WWF", resourceCulture);
                 return ((byte[])(obj));
             }
         }
