@@ -45,6 +45,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.WeaponSpriteResources.BubbleLead_GodWorld,
             Properties.WeaponSpriteResources.BubbleLead_NoConstancy,
             Properties.WeaponSpriteResources.BubbleLead_RockMan2E,
+            Properties.WeaponSpriteResources.BubbleLead_SearchSnakeV1,
+            Properties.WeaponSpriteResources.BubbleLead_SearchSnakeV1,
             Properties.WeaponSpriteResources.BubbleLead_SparkShock,
         };
 
