@@ -866,6 +866,7 @@
                             x:Name="ToggleSwitch_DisableFlashingEffects"
                             OffContent=""
                             OnContent=""
+                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableFlashingEffects}"
                         />
 
                         <CheckBox
@@ -908,6 +909,7 @@
                             x:Name="ToggleSwitch_DisableDelayScrolling"
                             OffContent=""
                             OnContent=""
+                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableDelayScrolling}"
                         />
 
                         <CheckBox

@@ -115,6 +115,24 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_DisableDelayScrolling
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_DELAY_SCROLLING_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_DELAY_SCROLLING_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_DELAY_SCROLLING_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
         [DefaultSettingValue("True")]
         public Boolean DisableFlashingEffects
         {
@@ -128,6 +146,24 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.DISABLE_FLASHING_EFFECTS_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_DisableFlashingEffects
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_SETTING_NAME] = value;
             }
         }
 
@@ -1067,8 +1103,14 @@ namespace RandomizerHost.Settings
         private const String DISABLE_DELAY_SCROLLING_SETTING_NAME = @"DisableDelayScrolling";
         private const Boolean DISABLE_DELAY_SCROLLING_DEFAULT_VALUE = true;
 
+        private const String RANDOMLY_CHOOSE_SETTING_DISABLE_DELAY_SCROLLING_SETTING_NAME = @"RandomlyChooseSetting_DisableDelayScrolling";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_DELAY_SCROLLING_DEFAULT_VALUE = false;
+
         private const String DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"DisableFlashingEffects";
         private const Boolean DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE = true;
+
+        private const String RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"RandomlyChooseSetting_DisableFlashingEffects";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE = false;
 
         private const String ENABLE_BURST_CHASER_MODE_SETTING_NAME = @"EnableBurstChaserMode";
         private const Boolean ENABLE_BURST_CHASER_MODE_DEFAULT_VALUE = false;
