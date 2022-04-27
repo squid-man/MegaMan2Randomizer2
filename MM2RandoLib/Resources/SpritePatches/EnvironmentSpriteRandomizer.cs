@@ -39,6 +39,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.DestructibleBlock_DoctorMarioV1,
             Properties.EnvironmentSpriteResources.DestructibleBlock_DoctorMarioV2,
+            Properties.EnvironmentSpriteResources.DestructibleBlock_SuperMarioBros3,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_DRAGON_BLOCK = new List<Byte[]?>()
@@ -61,6 +62,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.Spikes_1UP,
             Properties.EnvironmentSpriteResources.Spikes_Ash,
             Properties.EnvironmentSpriteResources.Spikes_Diamond,
+            Properties.EnvironmentSpriteResources.Spikes_DIE,
+            Properties.EnvironmentSpriteResources.Spikes_Jelectro,
             Properties.EnvironmentSpriteResources.Spikes_MarioStar,
             Properties.EnvironmentSpriteResources.Spikes_MegaMan1,
             Properties.EnvironmentSpriteResources.Spikes_MegaMan3V1,
