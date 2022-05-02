@@ -155,13 +155,21 @@ namespace MM2Randomizer.Random
         }
 
 
+        // IEnumerator Methods
+        public Object? NextArrayElement(Array in_Array)
+        {
+            Int32 count = in_Array.Length;
+            Int32 index = this.mRandom.Next(count);
+            return in_Array.GetValue(index);
+        }
+
+
         // IEnumerable Methods
         public T NextElement<T>(IEnumerable<T> in_Elements)
         {
             Int32 count = in_Elements.Count();
             Int32 index = this.mRandom.Next(count);
             return in_Elements.ElementAt(index);
-
         }
 
         public IList<T> Shuffle<T>(IEnumerable<T> in_List)

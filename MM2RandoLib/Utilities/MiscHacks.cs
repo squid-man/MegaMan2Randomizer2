@@ -6,18 +6,25 @@ using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Randomizers;
 using MM2Randomizer.Randomizers.Stages;
+using MM2Randomizer.Settings;
 
 namespace MM2Randomizer.Utilities
 {
     public static class MiscHacks
     {
-        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, Settings settings)
+        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, RandomizationSettings settings)
         {
             // Adjust cursor positions
             p.Add(0x0362D4, 0x90, "Title screen Cursor top position"); // default 0x98
             p.Add(0x0362D5, 0xA0, "Title screen Cursor bottom position"); // default 0xA8
 
-            // Draw version number
+            //
+            // Draw version header and value onto the title screen
+            //
+
+            Byte[] versionHeader = "VER. ".AsIntroString();
+            p.Add(0x037402, versionHeader, "Title Screen Version Header");
+
             System.Reflection.Assembly assembly = typeof(RandomMM2).Assembly;
             Version version = assembly.GetName().Version ?? throw new NullReferenceException(@"Assembly version cannot be null");
             String stringVersion = version.ToString();
@@ -25,23 +32,32 @@ namespace MM2Randomizer.Utilities
             for (Int32 i = 0; i < stringVersion.Length; i++)
             {
                 Byte value = stringVersion[i].AsIntroCharacter();
-                p.Add(0x037407 + i, value, "Title Screen Version Number");
+                p.Add(0x037407 + i, value, "Title Screen Version Value");
             }
 
-            // Draw seed
-            Byte[] hash = "HASH".AsIntroString();
-            p.Add(0x0373C2, hash, "Title Screen hash");
 
+            //
+            // Draw the hash header and value onto the title screen
+            //
+
+            Byte[] hashHeader = "HASH ".AsIntroString();
+            p.Add(0x0373C2, hashHeader, "Title Screen Hash Header");
 
             String seedAlpha = in_SeedBase26;
             for (Int32 i = 0; i < seedAlpha.Length; i++)
             {
                 Byte value = seedAlpha[i].AsIntroCharacter();
-                p.Add(0x0373C7 + i, value, "Title Screen Seed");
+                p.Add(0x0373C7 + i, value, "Title Screen Hash Value");
             }
 
-            // Draw flags
-            String flags = settings.GetFlagsString();
+            //
+            // Draw the flags string onto the game start screen
+            //
+
+            Byte[] flagHeader = "FLAG ".AsIntroString();
+            p.Add(0x037382, flagHeader, "Title Screen hash");
+
+            String flags = settings.GetBehaviorFlagsString();
             for (Int32 i = 0; i < flags.Length; i++)
             {
                 Byte value = flags[i].AsIntroCharacter();
@@ -228,11 +244,11 @@ namespace MM2Randomizer.Utilities
             }
         }
 
-        internal static void DisableScreenFlashing(Patch p, Settings settings)
+        internal static void DisableScreenFlashing(Patch p, Boolean enableFasterCutsceneText, Boolean enableRandomizationOfColorPalettes)
         {
             p.Add(0x3412E, 0x1F, "Disable Stage Select Flashing");
             p.Add(0x3596D, 0x0F, "Wily Map Flash Color");
-            if (!settings.EnableFasterCutsceneText)
+            if (!enableFasterCutsceneText)
             {
                 // This sequence is disabled by FastText, and the patch conflicts with it.
                 p.Add(0x37C98, 0x0F, "Item Get Flash Color");
@@ -247,7 +263,7 @@ namespace MM2Randomizer.Utilities
             // Dragon
             p.Add(0x2D1B2, 0x63, "Dragon Hit Flash Palette Index");
             p.Add(0x2D187, 0x63, "Dragon Hit Restore Palette Index");
-            if (!settings.EnableRandomizationOfColorPalettes)
+            if (!enableRandomizationOfColorPalettes)
             {
                 p.Add(0x2D1B0, 0x37, "Dragon Hit Flash Color");
                 p.Add(0x2D185, 0x27, "Dragon Hit Restore Color");
@@ -261,7 +277,7 @@ namespace MM2Randomizer.Utilities
             // Wily Machine
             p.Add(0x2DA96, 0x63, "Wily Machine Flash Palette Index");
             p.Add(0x2DA23, 0x63, "Wily Machine Restore Palette Index");
-            if (!settings.EnableRandomizationOfColorPalettes)
+            if (!enableRandomizationOfColorPalettes)
             {
                 p.Add(0x2DA94, 0x25, "Wily Machine Flash Color");
                 p.Add(0x2DA21, 0x35, "Wily Machine Restore Color");

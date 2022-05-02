@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using MM2Randomizer.Random;
+using MM2Randomizer.Settings;
 
 namespace MM2Randomizer
 {
@@ -10,7 +11,7 @@ namespace MM2Randomizer
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static void RandomizerCreate(Settings in_Settings, out RandomizationContext out_Context)
+        public static void RandomizerCreate(RandomizationSettings in_Settings, out RandomizationContext out_Context)
         {
             ISeed seed;
 
