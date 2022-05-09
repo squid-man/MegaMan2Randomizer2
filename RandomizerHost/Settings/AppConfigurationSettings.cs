@@ -8,6 +8,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using MM2Randomizer;
 using MM2Randomizer.Extensions;
+using MM2Randomizer.Settings.Options;
 
 namespace RandomizerHost.Settings
 {
@@ -942,7 +943,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
-        public ChargingSpeed CastleBossEnergyRefillSpeed
+        public ChargingSpeedOption CastleBossEnergyRefillSpeed
         {
             get
             {
@@ -978,7 +979,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
-        public ChargingSpeed EnergyTankRefillSpeed
+        public ChargingSpeedOption EnergyTankRefillSpeed
         {
             get
             {
@@ -1014,7 +1015,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
-        public ChargingSpeed HitPointRefillSpeed
+        public ChargingSpeedOption HitPointRefillSpeed
         {
             get
             {
@@ -1050,7 +1051,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("MegaMan")]
-        public PlayerSprite PlayerSprite
+        public PlayerSpriteOption PlayerSprite
         {
             get
             {
@@ -1086,7 +1087,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("Default")]
-        public HudElement HudElement
+        public HudElementOption HudElement
         {
             get
             {
@@ -1122,7 +1123,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
-        public ChargingSpeed RobotMasterEnergyRefillSpeed
+        public ChargingSpeedOption RobotMasterEnergyRefillSpeed
         {
             get
             {
@@ -1158,7 +1159,7 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
-        public ChargingSpeed WeaponEnergyRefillSpeed
+        public ChargingSpeedOption WeaponEnergyRefillSpeed
         {
             get
             {
@@ -1350,33 +1351,33 @@ namespace RandomizerHost.Settings
 
             // Gameplay options
             settings.GameplayOption.BurstChaserMode.Randomize = this.RandomlyChooseSetting_EnableBurstChaserMode;
-            settings.GameplayOption.BurstChaserMode.Value = this.EnableBurstChaserMode;
+            settings.GameplayOption.BurstChaserMode.Value = (BooleanOption)Convert.ToInt32(this.EnableBurstChaserMode);
             settings.GameplayOption.FasterCutsceneText.Randomize = this.RandomlyChooseSetting_EnableFasterCutsceneText;
-            settings.GameplayOption.FasterCutsceneText.Value = this.EnableFasterCutsceneText;
+            settings.GameplayOption.FasterCutsceneText.Value = (BooleanOption)Convert.ToInt32(this.EnableFasterCutsceneText);
             settings.GameplayOption.HideStageNames.Randomize = this.RandomlyChooseSetting_EnableHiddenStageNames;
-            settings.GameplayOption.HideStageNames.Value = this.EnableHiddenStageNames;
+            settings.GameplayOption.HideStageNames.Value = (BooleanOption)Convert.ToInt32(this.EnableHiddenStageNames);
             settings.GameplayOption.RandomizeBossWeaknesses.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfBossWeaknesses;
-            settings.GameplayOption.RandomizeBossWeaknesses.Value = this.EnableRandomizationOfBossWeaknesses;
+            settings.GameplayOption.RandomizeBossWeaknesses.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfBossWeaknesses);
             settings.GameplayOption.RandomizeEnemySpawns.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfEnemySpawns;
-            settings.GameplayOption.RandomizeEnemySpawns.Value = this.EnableRandomizationOfEnemySpawns;
+            settings.GameplayOption.RandomizeEnemySpawns.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfEnemySpawns);
             settings.GameplayOption.RandomizeEnemyWeaknesses.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses;
-            settings.GameplayOption.RandomizeEnemyWeaknesses.Value = this.EnableRandomizationOfEnemyWeaknesses;
+            settings.GameplayOption.RandomizeEnemyWeaknesses.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfEnemyWeaknesses);
             settings.GameplayOption.RandomizeFalseFloors.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfFalseFloors;
-            settings.GameplayOption.RandomizeFalseFloors.Value = this.EnableRandomizationOfFalseFloors;
+            settings.GameplayOption.RandomizeFalseFloors.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfFalseFloors);
             settings.GameplayOption.RandomizeRefightTeleporters.Randomize = false; // Not an exposed option yet
-            settings.GameplayOption.RandomizeRefightTeleporters.Value = this.EnableRandomizationOfRefightTeleporters;
+            settings.GameplayOption.RandomizeRefightTeleporters.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfRefightTeleporters);
             settings.GameplayOption.RandomizeRobotMasterBehavior.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior;
-            settings.GameplayOption.RandomizeRobotMasterBehavior.Value = this.EnableRandomizationOfRobotMasterBehavior;
+            settings.GameplayOption.RandomizeRobotMasterBehavior.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfRobotMasterBehavior);
             settings.GameplayOption.RandomizeRobotMasterLocations.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations;
-            settings.GameplayOption.RandomizeRobotMasterLocations.Value = this.EnableRandomizationOfRobotMasterLocations;
+            settings.GameplayOption.RandomizeRobotMasterLocations.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfRobotMasterLocations);
             settings.GameplayOption.RandomizeRobotMasterStageSelection.Randomize = false; // Not an exposed option yet
-            settings.GameplayOption.RandomizeRobotMasterStageSelection.Value = this.EnableRandomizationOfRobotMasterStageSelection;
+            settings.GameplayOption.RandomizeRobotMasterStageSelection.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfRobotMasterStageSelection);
             settings.GameplayOption.RandomizeSpecialItemLocations.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations;
-            settings.GameplayOption.RandomizeSpecialItemLocations.Value = this.EnableRandomizationOfSpecialItemLocations;
+            settings.GameplayOption.RandomizeSpecialItemLocations.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialItemLocations);
             settings.GameplayOption.RandomizeSpecialWeaponBehavior.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior;
-            settings.GameplayOption.RandomizeSpecialWeaponBehavior.Value = this.EnableRandomizationOfSpecialWeaponBehavior;
+            settings.GameplayOption.RandomizeSpecialWeaponBehavior.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialWeaponBehavior);
             settings.GameplayOption.RandomizeSpecialWeaponReward.Randomize = false; // Not an exposed option yet
-            settings.GameplayOption.RandomizeSpecialWeaponReward.Value = this.EnableRandomizationOfSpecialWeaponReward;
+            settings.GameplayOption.RandomizeSpecialWeaponReward.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialWeaponReward);
 
             // Charging speed options
             settings.ChargingSpeedOption.CastleBossEnergy.Randomize = this.RandomlyChooseSetting_CastleBossEnergyRefillSpeed;
@@ -1392,23 +1393,23 @@ namespace RandomizerHost.Settings
 
             // Sprite options
             settings.SpriteOption.RandomizeBossSprites.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfBossSprites;
-            settings.SpriteOption.RandomizeBossSprites.Value = this.EnableRandomizationOfBossSprites;
+            settings.SpriteOption.RandomizeBossSprites.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfBossSprites);
             settings.SpriteOption.RandomizeEnemySprites.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfEnemySprites;
-            settings.SpriteOption.RandomizeEnemySprites.Value = this.EnableRandomizationOfEnemySprites;
+            settings.SpriteOption.RandomizeEnemySprites.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfEnemySprites);
             settings.SpriteOption.RandomizeEnvironmentSprites.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfEnvironmentSprites;
-            settings.SpriteOption.RandomizeEnvironmentSprites.Value = this.EnableRandomizationOfEnvironmentSprites;
+            settings.SpriteOption.RandomizeEnvironmentSprites.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfEnvironmentSprites);
             settings.SpriteOption.RandomizeItemPickupSprites.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites;
-            settings.SpriteOption.RandomizeItemPickupSprites.Value = this.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites;
+            settings.SpriteOption.RandomizeItemPickupSprites.Value = (BooleanOption)Convert.ToInt32(this.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites);
             settings.SpriteOption.RandomizeSpecialWeaponSprites.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites;
-            settings.SpriteOption.RandomizeSpecialWeaponSprites.Value = this.EnableRandomizationOfSpecialWeaponSprites;
+            settings.SpriteOption.RandomizeSpecialWeaponSprites.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialWeaponSprites);
 
             // Quality of life options
             settings.QualityOfLifeOption.DisableDelayScrolling.Randomize = this.RandomlyChooseSetting_DisableDelayScrolling;
-            settings.QualityOfLifeOption.DisableDelayScrolling.Value = this.DisableDelayScrolling;
+            settings.QualityOfLifeOption.DisableDelayScrolling.Value = (BooleanOption)Convert.ToInt32(this.DisableDelayScrolling);
             settings.QualityOfLifeOption.DisableFlashingEffects.Randomize = this.RandomlyChooseSetting_DisableFlashingEffects;
-            settings.QualityOfLifeOption.DisableFlashingEffects.Value = this.DisableFlashingEffects;
+            settings.QualityOfLifeOption.DisableFlashingEffects.Value = (BooleanOption)Convert.ToInt32(this.DisableFlashingEffects);
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize = this.RandomlyChooseSetting_EnableUnderwaterLagReduction;
-            settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Value = this.EnableUnderwaterLagReduction;
+            settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Value = (BooleanOption)Convert.ToInt32(this.EnableUnderwaterLagReduction);
 
             // Cosmetic options
             settings.CosmeticOption.HudElement.Randomize = this.RandomlyChooseSetting_HudElement;
@@ -1416,11 +1417,11 @@ namespace RandomizerHost.Settings
             settings.CosmeticOption.PlayerSprite.Randomize = this.RandomlyChooseSetting_PlayerSprite;
             settings.CosmeticOption.PlayerSprite.Value = this.PlayerSprite;
             settings.CosmeticOption.RandomizeColorPalettes.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfColorPalettes;
-            settings.CosmeticOption.RandomizeColorPalettes.Value = this.EnableRandomizationOfColorPalettes;
+            settings.CosmeticOption.RandomizeColorPalettes.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfColorPalettes);
             settings.CosmeticOption.RandomizeInGameText.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfInGameText;
-            settings.CosmeticOption.RandomizeInGameText.Value = this.EnableRandomizationOfInGameText;
+            settings.CosmeticOption.RandomizeInGameText.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfInGameText);
             settings.CosmeticOption.RandomizeMusicTracks.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfMusicTracks;
-            settings.CosmeticOption.RandomizeMusicTracks.Value = this.EnableRandomizationOfMusicTracks;
+            settings.CosmeticOption.RandomizeMusicTracks.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfMusicTracks);
 
             return settings;
         }
@@ -1791,49 +1792,49 @@ namespace RandomizerHost.Settings
 
         // Castle Boss Energy Refill Speed
         private const String CASTLE_BOSS_ENERGY_REFILL_SPEED_SETTING_NAME = @"CastleBossEnergyRefillSpeed";
-        private const ChargingSpeed CASTLE_BOSS_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const ChargingSpeedOption CASTLE_BOSS_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeedOption.Fastest;
 
         private const String RANDOMLY_CHOOSE_SETTING_CASTLE_BOSS_ENERGY_REFILL_SPEED_SETTING_NAME = @"RandomlyChooseSetting_CastleBossEnergyRefillSpeed";
         private const Boolean RANDOMLY_CHOOSE_SETTING_CASTLE_BOSS_ENERGY_REFILL_SPEED_DEFAULT_VALUE = false;
 
         // Energy Tank Refill Speed
         private const String ENERGY_TANK_REFILL_SPEED_SETTING_NAME = @"EnergyTankRefillSpeed";
-        private const ChargingSpeed ENERGY_TANK_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const ChargingSpeedOption ENERGY_TANK_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeedOption.Fastest;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENERGY_TANK_REFILL_SPEED_SETTING_NAME = @"RandomlyChooseSetting_EnergyTankRefillSpeed";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENERGY_TANK_REFILL_SPEED_DEFAULT_VALUE = false;
 
         // Hit Point Refill Speed
         private const String HIT_POINT_REFILL_SPEED_SETTING_NAME = @"HitPointRefillSpeed";
-        private const ChargingSpeed HIT_POINT_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const ChargingSpeedOption HIT_POINT_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeedOption.Fastest;
 
         private const String RANDOMLY_CHOOSE_SETTING_HIT_POINT_REFILL_SPEED_SETTING_NAME = @"RandomlyChooseSetting_HitPointRefillSpeed";
         private const Boolean RANDOMLY_CHOOSE_SETTING_HIT_POINT_REFILL_SPEED_DEFAULT_VALUE = false;
 
         // Player Sprite
         private const String PLAYER_SPRITE_SETTING_NAME = @"PlayerSprite";
-        private const PlayerSprite PLAYER_SPRITE_DEFAULT_VALUE = PlayerSprite.MegaMan;
+        private const PlayerSpriteOption PLAYER_SPRITE_DEFAULT_VALUE = PlayerSpriteOption.MegaMan;
 
         private const String RANDOMLY_CHOOSE_SETTING_PLAYER_SPRITE_SETTING_NAME = @"RandomlyChooseSetting_PlayerSprite";
         private const Boolean RANDOMLY_CHOOSE_SETTING_PLAYER_SPRITE_DEFAULT_VALUE = false;
 
         // HUD Element
         private const String HUD_ELEMENT_SETTING_NAME = @"HudElement";
-        private const HudElement HUD_ELEMENT_DEFAULT_VALUE = HudElement.Default;
+        private const HudElementOption HUD_ELEMENT_DEFAULT_VALUE = HudElementOption.Default;
 
         private const String RANDOMLY_CHOOSE_SETTING_HUD_ELEMENT_SETTING_NAME = @"RandomlyChooseSetting_HudElement";
         private const Boolean RANDOMLY_CHOOSE_SETTING_HUD_ELEMENT_DEFAULT_VALUE = false;
 
         // Robot Master Energy Refill Speed
         private const String ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RobotMasterEnergyRefillSpeed";
-        private const ChargingSpeed ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const ChargingSpeedOption ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeedOption.Fastest;
 
         private const String RANDOMLY_CHOOSE_SETTING_ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RandomlyChooseSetting_RobotMasterEnergyRefillSpeed";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ROBOT_MASTER_ENERGY_REFILL_SPEED_DEFAULT_VALUE = false;
 
         // Weapon Dnergy Refill Speed
         private const String WEAPON_ENERGY_REFILL_SPEED_SETTING_NAME = @"WeaponEnergyRefillSpeed";
-        private const ChargingSpeed WEAPON_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeed.Fastest;
+        private const ChargingSpeedOption WEAPON_ENERGY_REFILL_SPEED_DEFAULT_VALUE = ChargingSpeedOption.Fastest;
 
         private const String RANDOMLY_CHOOSE_SETTING_WEAPON_ENERGY_REFILL_SPEED_SETTING_NAME = @"RandomlyChooseSetting_WeaponEnergyRefillSpeed";
         private const Boolean RANDOMLY_CHOOSE_SETTING_WEAPON_ENERGY_REFILL_SPEED_DEFAULT_VALUE = false;

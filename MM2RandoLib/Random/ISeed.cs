@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MM2Randomizer.Random
 {
@@ -85,7 +84,7 @@ namespace MM2Randomizer.Random
                 throw new Exception("The generic type must be an enum");
             }
 
-            Object? retval = this.NextElement(Enum.GetValues(typeof(T)));
+            Object? retval = this.NextElement(Enum.GetValues(typeof(T)).Cast<T>());
 
             return (T?)retval ?? throw new NullReferenceException();
         }

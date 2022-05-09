@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace MM2Randomizer
+namespace MM2Randomizer.Settings.Options
 {
-    public enum ChargingSpeed
+    public enum ChargingSpeedOption
     {
         [Description("Fastest")]
         Fastest = 0x0,

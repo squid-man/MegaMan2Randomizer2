@@ -1,5 +1,6 @@
 ﻿using System;
-using MM2Randomizer.Settings.Options;
+using MM2Randomizer.Random;
+using MM2Randomizer.Settings.OptionGroups;
 
 namespace MM2Randomizer.Settings
 {
@@ -52,16 +53,72 @@ namespace MM2Randomizer.Settings
         // Public Methods
         //
 
+        public dynamic ActualizeSettings(ISeed in_Seed)
+        {
+            // TODO: This can be simplified with an ExpandoObject
+
+            return new
+            {
+                GameplayOption = new
+                {
+                    BurstChaserMode = this.GameplayOption.BurstChaserMode.NextValue(in_Seed),
+                    FasterCutsceneText = this.GameplayOption.FasterCutsceneText.NextValue(in_Seed),
+                    HideStageNames = this.GameplayOption.HideStageNames.NextValue(in_Seed),
+                    RandomizeBossWeaknesses = this.GameplayOption.RandomizeBossWeaknesses.NextValue(in_Seed),
+                    RandomizeEnemySpawns = this.GameplayOption.RandomizeEnemySpawns.NextValue(in_Seed),
+                    RandomizeEnemyWeaknesses = this.GameplayOption.RandomizeEnemyWeaknesses.NextValue(in_Seed),
+                    RandomizeFalseFloors = this.GameplayOption.RandomizeFalseFloors.NextValue(in_Seed),
+                    RandomizeRefightTeleporters = this.GameplayOption.RandomizeRefightTeleporters.NextValue(in_Seed),
+                    RandomizeRobotMasterBehavior = this.GameplayOption.RandomizeRobotMasterBehavior.NextValue(in_Seed),
+                    RandomizeRobotMasterLocations = this.GameplayOption.RandomizeRobotMasterLocations.NextValue(in_Seed),
+                    RandomizeRobotMasterStageSelection = this.GameplayOption.RandomizeRobotMasterStageSelection.NextValue(in_Seed),
+                    RandomizeSpecialItemLocations = this.GameplayOption.RandomizeSpecialItemLocations.NextValue(in_Seed),
+                    RandomizeSpecialWeaponBehavior = this.GameplayOption.RandomizeSpecialWeaponBehavior.NextValue(in_Seed),
+                    RandomizeSpecialWeaponReward = this.GameplayOption.RandomizeSpecialWeaponReward.NextValue(in_Seed),
+                },
+                ChargingSpeedOption = new
+                {
+                    CastleBossEnergy = this.ChargingSpeedOption.CastleBossEnergy.NextValue(in_Seed),
+                    EnergyTank = this.ChargingSpeedOption.EnergyTank.NextValue(in_Seed),
+                    HitPoints = this.ChargingSpeedOption.HitPoints.NextValue(in_Seed),
+                    RobotMasterEnergy = this.ChargingSpeedOption.RobotMasterEnergy.NextValue(in_Seed),
+                    WeaponEnergy = this.ChargingSpeedOption.WeaponEnergy.NextValue(in_Seed),
+                },
+                CosmeticOption = new
+                {
+                    HudElement = this.CosmeticOption.HudElement.NextValue(in_Seed),
+                    PlayerSprite = this.CosmeticOption.PlayerSprite.NextValue(in_Seed),
+                    RandomizeColorPalettes = this.CosmeticOption.RandomizeColorPalettes.NextValue(in_Seed),
+                    RandomizeInGameText = this.CosmeticOption.RandomizeInGameText.NextValue(in_Seed),
+                    RandomizeMusicTracks = this.CosmeticOption.RandomizeMusicTracks.NextValue(in_Seed),
+                },
+                SpriteOption = new
+                {
+                    RandomizeBossSprites = this.SpriteOption.RandomizeBossSprites.NextValue(in_Seed),
+                    RandomizeEnemySprites = this.SpriteOption.RandomizeEnemySprites.NextValue(in_Seed),
+                    RandomizeEnvironmentSprites = this.SpriteOption.RandomizeEnvironmentSprites.NextValue(in_Seed),
+                    RandomizeItemPickupSprites = this.SpriteOption.RandomizeItemPickupSprites.NextValue(in_Seed),
+                    RandomizeSpecialWeaponSprites = this.SpriteOption.RandomizeSpecialWeaponSprites.NextValue(in_Seed),
+                },
+                QualityOfLifeOption = new
+                {
+                    DisableDelayScrolling = this.QualityOfLifeOption.DisableDelayScrolling.NextValue(in_Seed),
+                    DisableFlashingEffects = this.QualityOfLifeOption.DisableFlashingEffects.NextValue(in_Seed),
+                    EnableUnderwaterLagReduction = this.QualityOfLifeOption.EnableUnderwaterLagReduction.NextValue(in_Seed),
+                },
+            };
+        }
+
         public void SetFromFlagString(String in_OptionsFlagString, String in_CosmeticFlagString)
         {
         }
 
         public String GetBehaviorFlagsString()
         {
-            // TODO: Work out a way to bind options to a randomization flags
-            // instance such that updating the property will automatically
-            // update the flags value
-            RandomizationFlags flags = new RandomizationFlags(14);
+            // TODO: The settings class can inherit from the flags class. Flags
+            // can be dynamically tracked by reflecting the properties of the class.
+            // Flag properties can be differentiated with Attributes
+            RandomizationFlags flags = new RandomizationFlags(28);
 
             // Gameplay options
             flags.PushValue(this.GameplayOption.BurstChaserMode.Randomize);
