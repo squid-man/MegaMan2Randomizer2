@@ -148,8 +148,17 @@
   <data name="FlyBoy_VineMan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Enemies\FlyBoy\FlyBoy_VineMan.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ForceBeam_NyanCat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Enemies\ForceBeam\ForceBeam_NyanCat.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ForceBeamBody_Block" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ForceBeamBody_Invisible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ForceBeamEnd_Invisible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ForceBeamEnd_NyanCat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Friender_DeusExMachina" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -246,6 +255,9 @@
   </data>
   <data name="Shrink_MegaMan1Watcher" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Enemies\Shrink\Shrink_MegaMan1Watcher.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Shrink_Metall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Enemies\Shrink\Shrink_Metall.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="SniperJoeAndSniperArmor_MegaMan1ContructionJoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Enemies\SniperJoeAndSniperArmor\SniperJoeAndSniperArmor_MegaMan1ContructionJoe.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

@@ -632,6 +632,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.JavaIslandIndonesia:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JavaIslandIndonesia);
+                    break;
+                }
+
                 case PlayerSpriteOption.JustinBailey:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JustinBailey);
@@ -776,9 +782,21 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case HudElementOption.JavaIslandIndonesia:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_JavaIslandIndonesia);
+                    break;
+                }
+
                 case HudElementOption.Metroid:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Metroid);
+                    break;
+                }
+
+                case HudElementOption.Paperboy:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Paperboy);
                     break;
                 }
 

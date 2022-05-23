@@ -30,6 +30,8 @@ namespace MM2Randomizer
         FinalFantasyFighterBlue,
         [Description("Hatsune Miku")]
         HatsuneMiku,
+        [Description("Java Island Indonesia")]
+        JavaIslandIndonesia,
         [Description("Justin Bailey")]
         JustinBailey,
         [Description("Link")]

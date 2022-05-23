@@ -30,6 +30,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.PickupSpriteResources.ETank_FinalFantasy,
+            Properties.PickupSpriteResources.ETank_JavaIslandIndonesia,
             Properties.PickupSpriteResources.ETank_MegaManX,
             Properties.PickupSpriteResources.ETank_Metroid,
         };

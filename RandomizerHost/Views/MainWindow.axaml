@@ -1196,6 +1196,13 @@
                             <Image
                                 Width="168"
                                 Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_JavaIslandIndonesia.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=JavaIslandIndonesia}"
+                            />
+
+                            <Image
+                                Width="168"
+                                Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_JustinBailey.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=JustinBailey}"
                             />
