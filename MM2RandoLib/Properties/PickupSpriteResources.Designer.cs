@@ -73,6 +73,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] ETank_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("ETank_JavaIslandIndonesia", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] ETank_MegaManX {
             get {
                 object obj = ResourceManager.GetObject("ETank_MegaManX", resourceCulture);

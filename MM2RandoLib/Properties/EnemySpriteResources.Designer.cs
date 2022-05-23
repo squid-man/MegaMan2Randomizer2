@@ -163,9 +163,39 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] ForceBeam_NyanCat {
+        internal static byte[] ForceBeamBody_Block {
             get {
-                object obj = ResourceManager.GetObject("ForceBeam_NyanCat", resourceCulture);
+                object obj = ResourceManager.GetObject("ForceBeamBody_Block", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ForceBeamBody_Invisible {
+            get {
+                object obj = ResourceManager.GetObject("ForceBeamBody_Invisible", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ForceBeamEnd_Invisible {
+            get {
+                object obj = ResourceManager.GetObject("ForceBeamEnd_Invisible", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ForceBeamEnd_NyanCat {
+            get {
+                object obj = ResourceManager.GetObject("ForceBeamEnd_NyanCat", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -486,6 +516,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Shrink_MegaMan1Watcher {
             get {
                 object obj = ResourceManager.GetObject("Shrink_MegaMan1Watcher", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Shrink_Metall {
+            get {
+                object obj = ResourceManager.GetObject("Shrink_Metall", resourceCulture);
                 return ((byte[])(obj));
             }
         }

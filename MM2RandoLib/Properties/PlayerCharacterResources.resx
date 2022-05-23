@@ -157,6 +157,9 @@
   <data name="PlayerCharacter_HatsuneMiku" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\HatsuneMiku\PlayerCharacter_HatsuneMiku.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="PlayerCharacter_JavaIslandIndonesia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_JavaIslandIndonesia.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="PlayerCharacter_JustinBailey" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

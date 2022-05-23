@@ -27,6 +27,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.AirShooter_DeusExMachina,
             Properties.WeaponSpriteResources.AirShooter_GodWorld,
+            Properties.WeaponSpriteResources.AirShooter_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.AirShooter_NoConstancy,
             Properties.WeaponSpriteResources.AirShooter_VineMan,
         };
@@ -36,6 +37,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.AtomicFire_DeusExMachina,
             Properties.WeaponSpriteResources.AtomicFire_GodWorld,
+            Properties.WeaponSpriteResources.AtomicFire_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.AtomicFire_NoConstancy,
         };
 
@@ -43,6 +45,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.BubbleLead_GodWorld,
+            Properties.WeaponSpriteResources.BubbleLead_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.BubbleLead_NoConstancy,
             Properties.WeaponSpriteResources.BubbleLead_RockMan2E,
             Properties.WeaponSpriteResources.BubbleLead_SearchSnakeV1,
@@ -55,6 +58,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.CrashBomber_DeusExMachina,
             Properties.WeaponSpriteResources.CrashBomber_GodWorld,
+            Properties.WeaponSpriteResources.CrashBomber_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.CrashBomber_NoConstancy,
             Properties.WeaponSpriteResources.CrashBomber_RockMan2E,
         };
@@ -63,6 +67,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.LeafShield_GodWorld,
+            Properties.WeaponSpriteResources.LeafShield_JavaIslandIndonesia_,
             Properties.WeaponSpriteResources.LeafShield_JewelSatelliteV1,
             Properties.WeaponSpriteResources.LeafShield_JewelSatelliteV2,
             Properties.WeaponSpriteResources.LeafShield_NoConstancy,
@@ -75,6 +80,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.MetalBlade_DeusExMachina,
             Properties.WeaponSpriteResources.MetalBlade_GodWorld,
+            Properties.WeaponSpriteResources.MetalBlade_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.MetalBlade_HypnoShot,
             Properties.WeaponSpriteResources.MetalBlade_NoConstancy,
             Properties.WeaponSpriteResources.MetalBlade_RockMan2E,
@@ -87,6 +93,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.QuickBoomerang_DeusExMachina,
             Properties.WeaponSpriteResources.QuickBoomerang_GodWorld,
+            Properties.WeaponSpriteResources.QuickBoomerang_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.QuickBoomerang_NoConstancy,
             Properties.WeaponSpriteResources.QuickBoomerang_RockMan2E,
             Properties.WeaponSpriteResources.QuickBoomerang_VineMan,
@@ -96,6 +103,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.TimeStopper_DeusExMachina,
+            Properties.WeaponSpriteResources.TimeStopper_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.TimeStopper_MegaMan5FlashStopper,
             Properties.WeaponSpriteResources.TimeStopper_NoConstancy,
         };

@@ -57,10 +57,18 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.FlyBoy_VineMan,
         };
 
-        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FORCE_BEAM = new List<Byte[]?>()
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FORCE_BEAM_BODY = new List<Byte[]?>()
         {
             null,
-            Properties.EnemySpriteResources.ForceBeam_NyanCat,
+            Properties.EnemySpriteResources.ForceBeamBody_Block,
+            Properties.EnemySpriteResources.ForceBeamBody_Invisible,
+        };
+
+        private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FORCE_BEAM_END = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnemySpriteResources.ForceBeamEnd_Invisible,
+            Properties.EnemySpriteResources.ForceBeamEnd_NyanCat,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_FRIENDER = new List<Byte[]?>()
@@ -173,6 +181,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnemySpriteResources.Shrink_MegaMan1Watcher,
+            Properties.EnemySpriteResources.Shrink_Metall,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SNIPER_JOE_AND_SNIPER_ARMOR = new List<Byte[]?>()
@@ -215,7 +224,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENEMY_SPRITE_LIST_CHANGKEY_MAKER,
             ENEMY_SPRITE_LIST_CLAW,
             ENEMY_SPRITE_LIST_FLY_BOY,
-            ENEMY_SPRITE_LIST_FORCE_BEAM,
+            ENEMY_SPRITE_LIST_FORCE_BEAM_BODY,
+            ENEMY_SPRITE_LIST_FORCE_BEAM_END,
             ENEMY_SPRITE_LIST_FRIENDER,
             ENEMY_SPRITE_LIST_KAMINARI_GORO,
             ENEMY_SPRITE_LIST_KEROG_AND_PETIT_KEROG,

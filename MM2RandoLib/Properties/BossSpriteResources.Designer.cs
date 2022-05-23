@@ -153,6 +153,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Alien_Gyotot {
+            get {
+                object obj = ResourceManager.GetObject("Alien_Gyotot", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Alien_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("Alien_NoConstancy", resourceCulture);
@@ -713,6 +723,26 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Wily_Abobo {
+            get {
+                object obj = ResourceManager.GetObject("Wily_Abobo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Wily_Cossack {
+            get {
+                object obj = ResourceManager.GetObject("Wily_Cossack", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Wily_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("Wily_CutMansBadScissorsDay", resourceCulture);
@@ -726,6 +756,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Wily_DrLight {
             get {
                 object obj = ResourceManager.GetObject("Wily_DrLight", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Wily_DrM {
+            get {
+                object obj = ResourceManager.GetObject("Wily_DrM", resourceCulture);
                 return ((byte[])(obj));
             }
         }

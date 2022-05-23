@@ -139,8 +139,11 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_WILY = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.Wily_Abobo,
+            Properties.BossSpriteResources.Wily_Cossack,
             Properties.BossSpriteResources.Wily_CutMansBadScissorsDay,
             Properties.BossSpriteResources.Wily_DrLight,
+            Properties.BossSpriteResources.Wily_DrM,
             Properties.BossSpriteResources.Wily_RiverCityMan,
         };
 
@@ -151,6 +154,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.Alien_CutMansBadScissorsDay,
             Properties.BossSpriteResources.Alien_Exhaust,
             Properties.BossSpriteResources.Alien_Grayzone,
+            Properties.BossSpriteResources.Alien_Gyotot,
             Properties.BossSpriteResources.Alien_NoConstancy,
             Properties.BossSpriteResources.Alien_RockMan2E,
         };

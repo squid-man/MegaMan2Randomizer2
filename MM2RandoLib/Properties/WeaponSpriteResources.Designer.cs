@@ -83,6 +83,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AirShooter_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("AirShooter_JavaIslandIndonesia", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] AirShooter_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("AirShooter_NoConstancy", resourceCulture);
@@ -123,6 +133,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AtomicFire_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("AtomicFire_JavaIslandIndonesia", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] AtomicFire_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("AtomicFire_NoConstancy", resourceCulture);
@@ -136,6 +156,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] BubbleLead_GodWorld {
             get {
                 object obj = ResourceManager.GetObject("BubbleLead_GodWorld", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BubbleLead_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("BubbleLead_JavaIslandIndonesia", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -206,6 +236,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] CrashBomber_GodWorld {
             get {
                 object obj = ResourceManager.GetObject("CrashBomber_GodWorld", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CrashBomber_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("CrashBomber_JavaIslandIndonesia", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -403,6 +443,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] LeafShield_JavaIslandIndonesia_ {
+            get {
+                object obj = ResourceManager.GetObject("LeafShield_JavaIslandIndonesia_", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] LeafShield_JewelSatelliteV1 {
             get {
                 object obj = ResourceManager.GetObject("LeafShield_JewelSatelliteV1", resourceCulture);
@@ -483,6 +533,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] MetalBlade_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("MetalBlade_JavaIslandIndonesia", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] MetalBlade_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("MetalBlade_NoConstancy", resourceCulture);
@@ -543,6 +603,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] QuickBoomerang_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("QuickBoomerang_JavaIslandIndonesia", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] QuickBoomerang_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("QuickBoomerang_NoConstancy", resourceCulture);
@@ -576,6 +646,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] TimeStopper_DeusExMachina {
             get {
                 object obj = ResourceManager.GetObject("TimeStopper_DeusExMachina", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] TimeStopper_JavaIslandIndonesia {
+            get {
+                object obj = ResourceManager.GetObject("TimeStopper_JavaIslandIndonesia", resourceCulture);
                 return ((byte[])(obj));
             }
         }
