@@ -2,7 +2,7 @@
 
 namespace MM2Randomizer
 {
-    public enum PlayerSprite
+    public enum PlayerSpriteOption
     {
         [Description("Mega Man")]
         MegaMan,

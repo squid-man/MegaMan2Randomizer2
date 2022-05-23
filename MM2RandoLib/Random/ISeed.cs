@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MM2Randomizer.Random
 {
@@ -32,7 +31,6 @@ namespace MM2Randomizer.Random
         // Boolean Methods
         Boolean NextBoolean();
 
-
         // UInt8 Methods
         Byte NextUInt8();
         Byte NextUInt8(Int32 in_MaxValue);
@@ -45,6 +43,9 @@ namespace MM2Randomizer.Random
 
         // Double Methods
         Double NextDouble();
+
+        // Array Methods
+        Object? NextArrayElement(Array in_Array);
 
         // IEnumerable Methods
         T NextElement<T>(IEnumerable<T> in_Elements);
@@ -75,5 +76,17 @@ namespace MM2Randomizer.Random
                 .ToDictionary(x => x.Key, x => x.Value);
         }
 
+        // Enum Methods
+        T NextEnum<T>()
+        {
+            if (false == typeof(T).IsEnum)
+            {
+                throw new Exception("The generic type must be an enum");
+            }
+
+            Object? retval = this.NextElement(Enum.GetValues(typeof(T)).Cast<T>());
+
+            return (T?)retval ?? throw new NullReferenceException();
+        }
     }
 }

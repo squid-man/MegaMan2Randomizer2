@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace MM2Randomizer
+namespace MM2Randomizer.Settings.Options
 {
-    public enum HudElement
+    public enum HudElementOption
     {
         [Description("Default")]
         Default,

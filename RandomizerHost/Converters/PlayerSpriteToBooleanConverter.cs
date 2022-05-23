@@ -33,7 +33,7 @@ namespace RandomizerHost.Converters
 
             if (in_Parameter is String stringParameter)
             {
-                Object parameter = Enum.Parse(typeof(PlayerSprite), stringParameter);
+                Object parameter = Enum.Parse(typeof(PlayerSpriteOption), stringParameter);
 
                 Boolean retval = parameter.Equals(in_Value);
                 return retval;

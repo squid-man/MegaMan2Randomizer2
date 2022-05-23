@@ -5,6 +5,7 @@ using System.Text;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Settings.Options;
 
 namespace MM2Randomizer.Randomizers.Stages
 {
@@ -164,7 +165,7 @@ namespace MM2Randomizer.Randomizers.Stages
                 stage.PortraitDestination.New = StageSelect[newStageOrder[i]].PortraitDestination.Old;
 
                 // Erase the portrait text if StageNameHidden flag is set
-                if (in_Context.Settings.EnableHiddenStageNames)
+                if (BooleanOption.True == in_Context.ActualizedSettings?.GameplayOption.HideStageNames)
                 {
                     for (Int32 k = 0; k < 6; k++)
                     {

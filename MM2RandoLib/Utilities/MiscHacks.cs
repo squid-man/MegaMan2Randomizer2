@@ -6,18 +6,26 @@ using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Randomizers;
 using MM2Randomizer.Randomizers.Stages;
+using MM2Randomizer.Settings;
+using MM2Randomizer.Settings.Options;
 
 namespace MM2Randomizer.Utilities
 {
     public static class MiscHacks
     {
-        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, Settings settings)
+        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, RandomizationSettings settings)
         {
             // Adjust cursor positions
             p.Add(0x0362D4, 0x90, "Title screen Cursor top position"); // default 0x98
             p.Add(0x0362D5, 0xA0, "Title screen Cursor bottom position"); // default 0xA8
 
-            // Draw version number
+            //
+            // Draw version header and value onto the title screen
+            //
+
+            Byte[] versionHeader = "VER. ".AsIntroString();
+            p.Add(0x037402, versionHeader, "Title Screen Version Header");
+
             System.Reflection.Assembly assembly = typeof(RandomMM2).Assembly;
             Version version = assembly.GetName().Version ?? throw new NullReferenceException(@"Assembly version cannot be null");
             String stringVersion = version.ToString();
@@ -25,35 +33,57 @@ namespace MM2Randomizer.Utilities
             for (Int32 i = 0; i < stringVersion.Length; i++)
             {
                 Byte value = stringVersion[i].AsIntroCharacter();
-                p.Add(0x037407 + i, value, "Title Screen Version Number");
+                p.Add(0x037407 + i, value, "Title Screen Version Value");
             }
 
-            // Draw seed
-            Byte[] hash = "HASH".AsIntroString();
-            p.Add(0x0373C2, hash, "Title Screen hash");
 
+            //
+            // Draw the hash header and value onto the title screen
+            //
+
+            Byte[] hashHeader = "HASH ".AsIntroString();
+            p.Add(0x0373C2, hashHeader, "Title Screen Hash Header");
 
             String seedAlpha = in_SeedBase26;
             for (Int32 i = 0; i < seedAlpha.Length; i++)
             {
                 Byte value = seedAlpha[i].AsIntroCharacter();
-                p.Add(0x0373C7 + i, value, "Title Screen Seed");
+                p.Add(0x0373C7 + i, value, "Title Screen Hash Value");
             }
 
-            // Draw flags
-            String flags = settings.GetFlagsString();
-            for (Int32 i = 0; i < flags.Length; i++)
+            //
+            // Draw the flags string onto the game start screen
+            //
+
+            Byte[] behaviorFlagHeader = "FLAG ".AsIntroString();
+            p.Add(0x0373A2, behaviorFlagHeader, "Title Screen flags");
+
+            String behaviorFlags = settings.GetBehaviorFlagsString();
+            for (Int32 i = 0; i < 14; i++)
             {
-                Byte value = flags[i].AsIntroCharacter();
-                if (i < 14)
-                {
-                    p.Add(0x037387 + i, value, $"Title Screen Flags: {flags[i]}");
-                }
-                else
-                {
-                    p.Add(0x037367 + i - 14, value, $"Title Screen Flags: {flags[i]}");
-                }
+                Byte value = behaviorFlags[i].AsIntroCharacter();
+                p.Add(0x0373A7 + i, value, $"Title Screen Flags: {behaviorFlags[i]}");
             }
+
+            Byte[] behaviorFlagHeader2 = "     ".AsIntroString();
+            p.Add(0x037382, behaviorFlagHeader2, "Title Screen flags 2");
+
+            for (Int32 i = 0; i < 14; i++)
+            {
+                Byte value = behaviorFlags[14 + i].AsIntroCharacter();
+                p.Add(0x037387 + i, value, $"Title Screen Flags: {behaviorFlags[i]}");
+            }
+
+            Byte[] cosmeticFlagHeader = "COSM ".AsIntroString();
+            p.Add(0x037362, cosmeticFlagHeader, "Title Screen hash");
+
+            String cosmeticFlags = settings.GetCosmeticFlagsString();
+            for (Int32 i = 0; i < cosmeticFlags.Length; i++)
+            {
+                Byte value = cosmeticFlags[i].AsIntroCharacter();
+                p.Add(0x037367 + i , value, $"Title Screen Flags: {cosmeticFlags[i]}");
+            }
+
 
             // Draw tournament mode/spoiler free information
             if (settings.EnableSpoilerFreeMode)
@@ -125,7 +155,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetHitPointChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetHitPointChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x03831B;
             p.Add(address, (Byte)chargingSpeed, "Hit Point Charging Speed");
@@ -133,7 +163,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetWeaponEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetWeaponEnergyChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x03835A;
             p.Add(address, (Byte)chargingSpeed, "Weapon Energy Charging Speed");
@@ -141,7 +171,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetEnergyTankChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetEnergyTankChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x0352B2;
             p.Add(address, (Byte)chargingSpeed, "Energy Tank Charging Speed");
@@ -149,7 +179,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetRobotMasterEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetRobotMasterEnergyChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x02C142;
             p.Add(address, (Byte)chargingSpeed, "Robot Master Energy Charging Speed");
@@ -157,7 +187,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetCastleBossEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetCastleBossEnergyChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x02E12B;
             p.Add(address, (Byte)chargingSpeed, "Castle Boss Energy Charging Speed");
@@ -228,11 +258,11 @@ namespace MM2Randomizer.Utilities
             }
         }
 
-        internal static void DisableScreenFlashing(Patch p, Settings settings)
+        internal static void DisableScreenFlashing(Patch p, Boolean enableFasterCutsceneText, Boolean enableRandomizationOfColorPalettes)
         {
             p.Add(0x3412E, 0x1F, "Disable Stage Select Flashing");
             p.Add(0x3596D, 0x0F, "Wily Map Flash Color");
-            if (!settings.EnableFasterCutsceneText)
+            if (!enableFasterCutsceneText)
             {
                 // This sequence is disabled by FastText, and the patch conflicts with it.
                 p.Add(0x37C98, 0x0F, "Item Get Flash Color");
@@ -247,7 +277,7 @@ namespace MM2Randomizer.Utilities
             // Dragon
             p.Add(0x2D1B2, 0x63, "Dragon Hit Flash Palette Index");
             p.Add(0x2D187, 0x63, "Dragon Hit Restore Palette Index");
-            if (!settings.EnableRandomizationOfColorPalettes)
+            if (!enableRandomizationOfColorPalettes)
             {
                 p.Add(0x2D1B0, 0x37, "Dragon Hit Flash Color");
                 p.Add(0x2D185, 0x27, "Dragon Hit Restore Color");
@@ -261,7 +291,7 @@ namespace MM2Randomizer.Utilities
             // Wily Machine
             p.Add(0x2DA96, 0x63, "Wily Machine Flash Palette Index");
             p.Add(0x2DA23, 0x63, "Wily Machine Restore Palette Index");
-            if (!settings.EnableRandomizationOfColorPalettes)
+            if (!enableRandomizationOfColorPalettes)
             {
                 p.Add(0x2DA94, 0x25, "Wily Machine Flash Color");
                 p.Add(0x2DA21, 0x35, "Wily Machine Restore Color");
@@ -520,197 +550,197 @@ namespace MM2Randomizer.Utilities
         /// This method applies the graphics patch directly to the ROM at
         /// tempFileName. If 'MegaMan' is the sprite, no patch is applied.
         /// </summary>
-        public static void SetNewMegaManSprite(Patch p, String tempFileName, PlayerSprite sprite)
+        public static void SetNewMegaManSprite(Patch p, String tempFileName, PlayerSpriteOption sprite)
         {
             switch (sprite)
             {
-                case PlayerSprite.MegaMan:
+                case PlayerSpriteOption.MegaMan:
                 default:
                 {
                     break;
                 }
 
-                case PlayerSprite.AVGN:
+                case PlayerSpriteOption.AVGN:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_AVGN);
                     break;
                 }
 
-                case PlayerSprite.Bass:
+                case PlayerSpriteOption.Bass:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Bass);
                     break;
                 }
 
-                case PlayerSprite.BassReloaded:
+                case PlayerSpriteOption.BassReloaded:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BassReloaded);
                     break;
                 }
 
-                case PlayerSprite.BreakMan:
+                case PlayerSpriteOption.BreakMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BreakMan);
                     break;
                 }
 
-                case PlayerSprite.Byte:
+                case PlayerSpriteOption.Byte:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Byte);
                     break;
                 }
 
-                case PlayerSprite.ByteRed:
+                case PlayerSpriteOption.ByteRed:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ByteRed);
                     break;
                 }
 
-                case PlayerSprite.CasualTom:
+                case PlayerSpriteOption.CasualTom:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CasualTom);
                     break;
                 }
 
-                case PlayerSprite.Charlieboy:
+                case PlayerSpriteOption.Charlieboy:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Charlieboy);
                     break;
                 }
 
-                case PlayerSprite.CutMansBadScissorsDay:
+                case PlayerSpriteOption.CutMansBadScissorsDay:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CutMansBadScissorsDay);
                     break;
                 }
 
-                case PlayerSprite.FinalFantasyFighter:
+                case PlayerSpriteOption.FinalFantasyFighter:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighter);
                     break;
                 }
 
-                case PlayerSprite.FinalFantasyFighterBlue:
+                case PlayerSpriteOption.FinalFantasyFighterBlue:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighterBlue);
                     break;
                 }
 
-                case PlayerSprite.HatsuneMiku:
+                case PlayerSpriteOption.HatsuneMiku:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_HatsuneMiku);
                     break;
                 }
 
-                case PlayerSprite.JustinBailey:
+                case PlayerSpriteOption.JustinBailey:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JustinBailey);
                     break;
                 }
 
-                case PlayerSprite.Link:
+                case PlayerSpriteOption.Link:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Link);
                     break;
                 }
 
-                case PlayerSprite.LuckyMan:
+                case PlayerSpriteOption.LuckyMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuckyMan);
                     break;
                 }
 
-                case PlayerSprite.LuigiArcade:
+                case PlayerSpriteOption.LuigiArcade:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuigiArcade);
                     break;
                 }
 
-                case PlayerSprite.MarioArcade:
+                case PlayerSpriteOption.MarioArcade:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
                     break;
                 }
 
-                case PlayerSprite.MegaManX:
+                case PlayerSpriteOption.MegaManX:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaManX);
                     break;
                 }
 
-                case PlayerSprite.MegaMari:
+                case PlayerSpriteOption.MegaMari:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaMari);
                     break;
                 }
 
-                case PlayerSprite.MegaRan2Remix:
+                case PlayerSpriteOption.MegaRan2Remix:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaRan2Remix);
                     break;
                 }
 
-                case PlayerSprite.NewLands:
+                case PlayerSpriteOption.NewLands:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_NewLands);
                     break;
                 }
 
-                case PlayerSprite.ProtoMan:
+                case PlayerSpriteOption.ProtoMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ProtoMan);
                     break;
                 }
 
-                case PlayerSprite.PrototypeTom:
+                case PlayerSpriteOption.PrototypeTom:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_PrototypeTom);
                     break;
                 }
 
-                case PlayerSprite.QuickMan:
+                case PlayerSpriteOption.QuickMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_QuickMan);
                     break;
                 }
 
-                case PlayerSprite.Quint:
+                case PlayerSpriteOption.Quint:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Quint);
                     break;
                 }
 
-                case PlayerSprite.Remix:
+                case PlayerSpriteOption.Remix:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Remix);
                     break;
                 }
 
-                case PlayerSprite.Rock:
+                case PlayerSpriteOption.Rock:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Rock);
                     break;
                 }
 
-                case PlayerSprite.Roll:
+                case PlayerSpriteOption.Roll:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Roll);
                     break;
                 }
 
-                case PlayerSprite.RollFromMegaMan8:
+                case PlayerSpriteOption.RollFromMegaMan8:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_RollFromMegaMan8);
                     break;
                 }
 
-                case PlayerSprite.Samus:
+                case PlayerSpriteOption.Samus:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
                     break;
                 }
 
-                case PlayerSprite.VineMan:
+                case PlayerSpriteOption.VineMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_VineMan);
                     break;
@@ -724,35 +754,35 @@ namespace MM2Randomizer.Utilities
         /// This method applies the graphics patch directly to the ROM at
         /// tempFileName. If 'Default' is the HUD element, no patch is applied.
         /// </summary>
-        public static void SetNewHudElement(Patch p, String tempFileName, HudElement hudElement)
+        public static void SetNewHudElement(Patch p, String tempFileName, HudElementOption hudElement)
         {
             switch (hudElement)
             {
-                case HudElement.Default:
+                case HudElementOption.Default:
                 default:
                 {
                     break;
                 }
 
-                case HudElement.Byte:
+                case HudElementOption.Byte:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Byte);
                     break;
                 }
 
-                case HudElement.CutMansBadScissorsDay:
+                case HudElementOption.CutMansBadScissorsDay:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CutMansBadScissorsDay);
                     break;
                 }
 
-                case HudElement.Metroid:
+                case HudElementOption.Metroid:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Metroid);
                     break;
                 }
 
-                case HudElement.Remix:
+                case HudElementOption.Remix:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Remix);
                     break;
