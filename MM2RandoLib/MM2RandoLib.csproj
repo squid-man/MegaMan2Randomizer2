@@ -125,7 +125,22 @@
     <ItemGroup>
       <Folder Include="Resources\SpritePatches\Bosses\BoobeamTrap\" />
       <Folder Include="Resources\SpritePatches\Enemies\ForceBeamBody\" />
-      <Folder Include="Resources\SpritePatches\Environment\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\DaylightBackground\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Pipe\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\FlashMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\HeatMan\Lava\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\HeatMan\Background\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\HeatMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Conveyor\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\QuickMan\Background\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\QuickMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveBackground\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Block\" />
     </ItemGroup>
     
 </Project>
