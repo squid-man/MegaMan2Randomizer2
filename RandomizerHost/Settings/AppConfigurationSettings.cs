@@ -1122,6 +1122,42 @@ namespace RandomizerHost.Settings
 
 
         [UserScopedSetting]
+        [DefaultSettingValue("Default")]
+        public FontOption Font
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.FONT_SETTING_NAME,
+                    AppConfigurationSettings.FONT_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.FONT_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_Font
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_FONT_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_FONT_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_FONT_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
         public ChargingSpeedOption RobotMasterEnergyRefillSpeed
         {
@@ -1412,6 +1448,8 @@ namespace RandomizerHost.Settings
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Value = (BooleanOption)Convert.ToInt32(this.EnableUnderwaterLagReduction);
 
             // Cosmetic options
+            settings.CosmeticOption.Font.Randomize = this.RandomlyChooseSetting_Font;
+            settings.CosmeticOption.Font.Value = this.Font;
             settings.CosmeticOption.HudElement.Randomize = this.RandomlyChooseSetting_HudElement;
             settings.CosmeticOption.HudElement.Value = this.HudElement;
             settings.CosmeticOption.PlayerSprite.Randomize = this.RandomlyChooseSetting_PlayerSprite;
@@ -1824,6 +1862,13 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_HUD_ELEMENT_SETTING_NAME = @"RandomlyChooseSetting_HudElement";
         private const Boolean RANDOMLY_CHOOSE_SETTING_HUD_ELEMENT_DEFAULT_VALUE = false;
+
+        // Font
+        private const String FONT_SETTING_NAME = @"Font";
+        private const FontOption FONT_DEFAULT_VALUE = FontOption.Default;
+
+        private const String RANDOMLY_CHOOSE_SETTING_FONT_SETTING_NAME = @"RandomlyChooseSetting_Font";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_FONT_DEFAULT_VALUE = false;
 
         // Robot Master Energy Refill Speed
         private const String ROBOT_MASTER_ENERGY_REFILL_SPEED_SETTING_NAME = @"RobotMasterEnergyRefillSpeed";

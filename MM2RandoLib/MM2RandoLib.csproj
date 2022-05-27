@@ -54,6 +54,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>EnvironmentSpriteResources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\FontSpriteResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FontSpriteResources.resx</DependentUpon>
+      </Compile>
       <Compile Update="Properties\HudElementResources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -94,6 +99,11 @@
       <EmbeddedResource Update="Properties\EnvironmentSpriteResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>EnvironmentSpriteResources.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Properties\FontSpriteResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>FontSpriteResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\HudElementResources.resx">
@@ -141,6 +151,7 @@
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveBackground\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Fonts\" />
     </ItemGroup>
     
 </Project>

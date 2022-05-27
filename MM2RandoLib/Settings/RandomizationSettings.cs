@@ -86,6 +86,7 @@ namespace MM2Randomizer.Settings
                 },
                 CosmeticOption = new
                 {
+                    Font = this.CosmeticOption.Font.NextValue(in_Seed),
                     HudElement = this.CosmeticOption.HudElement.NextValue(in_Seed),
                     PlayerSprite = this.CosmeticOption.PlayerSprite.NextValue(in_Seed),
                     RandomizeColorPalettes = this.CosmeticOption.RandomizeColorPalettes.NextValue(in_Seed),
@@ -194,6 +195,8 @@ namespace MM2Randomizer.Settings
             RandomizationFlags flags = new RandomizationFlags(14);
 
             // Cosmetic options
+            flags.PushValue(this.CosmeticOption.Font.Randomize);
+            flags.PushValue(this.CosmeticOption.Font.Value);
             flags.PushValue(this.CosmeticOption.HudElement.Randomize);
             flags.PushValue(this.CosmeticOption.HudElement.Value);
             flags.PushValue(this.CosmeticOption.PlayerSprite.Randomize);

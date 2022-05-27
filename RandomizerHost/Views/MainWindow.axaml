@@ -1092,7 +1092,42 @@
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                         </StackPanel>
+
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="0,4"
+                        >
+                            <!-- Friendly emoji header -->
+                            <Label FontSize="18">🎲</Label>
+
+                            <!-- Toggle to randomize the option -->
+                            <ToggleSwitch
+                                Name="ToggleSwitch_Font"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_Font}"
+                                OffContent=""
+                                OnContent=""
+                            />
+
+                            <!-- NOTE: Changing the binding here may require code behind changes -->
+                            <ComboBox
+                                Name="ComboBox_Font"
+                                IsEnabled="{Binding !#ToggleSwitch_Font.IsChecked}"
+                                SelectedItem="{Binding Path=AppConfigurationSettings.Font}"
+                                Width="200"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Font: "/>
+                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
                     </StackPanel>
+
+
 
                     <!-- Custom Sprite Selection -->
                     <StackPanel Grid.Column="2">

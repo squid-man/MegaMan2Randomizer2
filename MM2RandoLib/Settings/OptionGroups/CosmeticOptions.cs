@@ -4,6 +4,8 @@ namespace MM2Randomizer.Settings.OptionGroups
 {
     public class CosmeticOptions
     {
+        public RandomizationOption<FontOption> Font { get; } = new RandomizationOption<FontOption>();
+
         public RandomizationOption<HudElementOption> HudElement { get; } = new RandomizationOption<HudElementOption>();
 
         public RandomizationOption<PlayerSpriteOption> PlayerSprite { get; } = new RandomizationOption<PlayerSpriteOption>();
