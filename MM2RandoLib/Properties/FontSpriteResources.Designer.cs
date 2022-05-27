@@ -63,6 +63,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Font_Batman {
+            get {
+                object obj = ResourceManager.GetObject("Font_Batman", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Font_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("Font_CutMansBadScissorsDay", resourceCulture);
@@ -93,9 +103,29 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Font_Krustys {
+            get {
+                object obj = ResourceManager.GetObject("Font_Krustys", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Font_Paperboy {
             get {
                 object obj = ResourceManager.GetObject("Font_Paperboy", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Font_TMNT2 {
+            get {
+                object obj = ResourceManager.GetObject("Font_TMNT2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
