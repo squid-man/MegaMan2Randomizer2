@@ -32,13 +32,17 @@ namespace RandomizerHost.Views
         {
             AvaloniaXamlLoader.Load(this);
 
-            // Set up the custom sprite ComboBox
+            // Set up the player sprite ComboBox
             ComboBox comboBoxPlayerSprite = this.Find<ComboBox>("ComboBox_PlayerSprite");
             comboBoxPlayerSprite.Items = Enum.GetValues(typeof(PlayerSpriteOption));
 
-            // Set up the custom sprite ComboBox
+            // Set up the HUD element ComboBox
             ComboBox comboBoxHudElement = this.Find<ComboBox>("ComboBox_HudElement");
             comboBoxHudElement.Items = Enum.GetValues(typeof(HudElementOption));
+
+            // Set up the font ComboBox
+            ComboBox comboBoxFont = this.Find<ComboBox>("ComboBox_Font");
+            comboBoxFont.Items = Enum.GetValues(typeof(FontOption));
 
             // Set up the hit point charging speed ComboBox
             ComboBox comboBoxHitPointChargingSpeed = this.Find<ComboBox>("ComboBox_HitPointChargingSpeed");

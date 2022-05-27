@@ -810,6 +810,48 @@ namespace MM2Randomizer.Utilities
 
 
         /// <summary>
+        /// Replace the font in the game with different sprites.
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'Default' is the font , no patch is applied.
+        /// </summary>
+        public static void SetNewFont(Patch p, String tempFileName, FontOption font)
+        {
+            switch (font)
+            {
+                case FontOption.Default:
+                default:
+                {
+                    break;
+                }
+
+                case FontOption.CutMansBadScissorsDay:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_CutMansBadScissorsDay);
+                    break;
+                }
+
+                case FontOption.DoubleDragon2:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_DoubleDragon2);
+                    break;
+                }
+
+                case FontOption.JavaIslandIndonesia:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_JavaIslandIndonesia);
+                    break;
+                }
+
+                case FontOption.Paperboy:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Paperboy);
+                    break;
+                }
+            }
+        }
+
+
+        /// <summary>
         /// Reduces lag in various places (underwater, end of boss fight, and possibly other places) by disabling a subroutine
         /// that just delays until an NMI occurs.
         /// </summary>

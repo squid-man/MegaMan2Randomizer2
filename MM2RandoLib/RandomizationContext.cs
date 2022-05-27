@@ -319,6 +319,11 @@ namespace MM2Randomizer
                 RandomizationContext.TEMPORARY_FILE_NAME,
                 this.ActualizedSettings.CosmeticOption.HudElement);
 
+            MiscHacks.SetNewFont(
+                this.Patch,
+                RandomizationContext.TEMPORARY_FILE_NAME,
+                this.ActualizedSettings.CosmeticOption.Font);
+
             if (BooleanOption.True == this.ActualizedSettings.SpriteOption.RandomizeBossSprites)
             {
                 BossSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
