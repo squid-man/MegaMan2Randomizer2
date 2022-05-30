@@ -824,6 +824,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case FontOption.Batman:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Batman);
+                    break;
+                }
+
                 case FontOption.CutMansBadScissorsDay:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_CutMansBadScissorsDay);
@@ -842,9 +848,21 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case FontOption.Krustys:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Krustys);
+                    break;
+                }
+
                 case FontOption.Paperboy:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Paperboy);
+                    break;
+                }
+
+                case FontOption.TMNT2:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_TMNT2);
                     break;
                 }
             }
