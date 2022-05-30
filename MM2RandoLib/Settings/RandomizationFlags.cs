@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using MM2Randomizer.Extensions;
 
 namespace MM2Randomizer.Settings
 {
@@ -13,19 +14,9 @@ namespace MM2Randomizer.Settings
         // Constructors
         //
 
-        public RandomizationFlags(Int32 in_FlagCharacters)
+        public RandomizationFlags()
         {
-            if (in_FlagCharacters <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(in_FlagCharacters), "Cannot be less than or equal to zero");
-            }
-
-            Int32 length = RandomizationFlags.BITS_PER_FLAG_CHARACTER * in_FlagCharacters;
-
-            this.mMaxLength = length;
-            this.mMaxFlagCharacters = in_FlagCharacters;
-            this.mBitArray = new BitArray(length);
-            this.mCurrentIndex = 0;
+            this.mBitArray = new BitArray(0);
         }
 
 
@@ -35,31 +26,25 @@ namespace MM2Randomizer.Settings
 
         public void PushValue(Boolean in_Value)
         {
-            if (this.mCurrentIndex >= this.mMaxLength)
-            {
-                throw new IndexOutOfRangeException();
-            }
-
-            this.mBitArray[this.mCurrentIndex++] = in_Value;
+            Int32 currentIndex = this.mBitArray.Length;
+            this.mBitArray.Length = currentIndex + 1;
+            this.mBitArray[currentIndex] = in_Value;
         }
 
         public void PushValue<T>(T in_Value) where T : Enum
         {
             Array enumValues = Enum.GetValues(typeof(T));
 
-            Int32 newIndex = this.mCurrentIndex + enumValues.Length;
-
-            if (newIndex > this.mMaxLength)
-            {
-                throw new IndexOutOfRangeException();
-            }
+            Int32 currentIndex = this.mBitArray.Length;
+            this.mBitArray.Length = currentIndex + enumValues.Length;
 
             foreach (T enumValue in enumValues)
             {
-                this.mBitArray[this.mCurrentIndex++] = in_Value.Equals(enumValue);
+                this.mBitArray[currentIndex++] = in_Value.Equals(enumValue);
             }
         }
 
+        /*
         public Boolean PopValue()
         {
             if (this.mCurrentIndex <= 0)
@@ -69,7 +54,9 @@ namespace MM2Randomizer.Settings
 
             return this.mBitArray[this.mCurrentIndex--];
         }
+        */
 
+        /*
         public T PopValue<T>() where T : Enum
         {
             Array enumValues = Enum.GetValues(typeof(T));
@@ -95,37 +82,49 @@ namespace MM2Randomizer.Settings
 
             return (1 == assignedCount) ? retval : throw new Exception($"More than one value was read for {typeof(T)}");
         }
+        */
 
 
         public String ToFlagString()
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            Int32 flagCharacterIndex = 0;
+            Byte flagFieldValue = 0;
+            Int32 currentCharacterBit = 0;
 
-            while (flagCharacterIndex < this.mMaxLength)
+            for (Int32 index = 0; index < this.mBitArray.Length; ++index)
             {
-                Byte flagFieldValue = 0;
+                flagFieldValue |= (this.mBitArray[index] ? (Byte)0b_0000_0001 : (Byte)0b_0000_0000);
+                currentCharacterBit++;
 
-                for (Int32 count = 0; count < RandomizationFlags.BITS_PER_FLAG_CHARACTER; count++)
+                if (RandomizationFlags.BITS_PER_FLAG_CHARACTER == currentCharacterBit)
+                {
+                    stringBuilder.Append(RandomizationFlags.FlagValueToAsciiCharacterLookup[flagFieldValue]);
+                    currentCharacterBit = 0;
+                    flagFieldValue = 0;
+                }
+                else
                 {
                     flagFieldValue <<= 1;
-                    flagFieldValue |= (this.mBitArray[flagCharacterIndex++] ? (Byte)0b_0000_0001 : (Byte)0b_0000_0000);
                 }
+            }
 
+            if (currentCharacterBit > 0)
+            {
                 stringBuilder.Append(RandomizationFlags.FlagValueToAsciiCharacterLookup[flagFieldValue]);
             }
 
             return stringBuilder.ToString();
         }
 
+        public String ToHashString()
+        {
+            return this.ToFlagString().ToUInt64Hash().ToAlphaBase26();
+        }
+
+        /*
         public void FromFlagString(String in_FlagString)
         {
-            if (in_FlagString.Length > this.mMaxFlagCharacters)
-            {
-                throw new ArgumentException(nameof(in_FlagString), $"The flag string cannot be longer than the maximum length of {this.mMaxFlagCharacters}");
-            }
-
             BitArray bitArray = new BitArray(this.mMaxLength);
 
             Int32 index = 0;
@@ -146,6 +145,7 @@ namespace MM2Randomizer.Settings
                 }
             }
         }
+        */
 
 
         //
@@ -153,16 +153,15 @@ namespace MM2Randomizer.Settings
         //
 
         private readonly BitArray mBitArray;
-        private readonly Int32 mMaxLength;
-        private readonly Int32 mMaxFlagCharacters;
-        private Int32 mCurrentIndex;
+        //private readonly Int32 mCurrentLength;
+        //private Int32 mCurrentIndex;
 
 
         //
         // Constants
         //
 
-        private const Int32 BITS_PER_FLAG_CHARACTER = 5;
+        private const Int32 BITS_PER_FLAG_CHARACTER = 6;
 
         private static readonly Dictionary<Byte, Char> FlagValueToAsciiCharacterLookup = new Dictionary<Byte, Char>()
         {
@@ -192,44 +191,44 @@ namespace MM2Randomizer.Settings
             { 0x17, 'X' },
             { 0x18, 'Y' },
             { 0x19, 'Z' },
-            { 0x1A, '1' },
-            { 0x1B, '2' },
-            { 0x1C, '3' },
-            { 0x1D, '4' },
-            { 0x1E, '5' },
-            { 0x1F, '6' },
-            { 0x20, '7' },
-            { 0x21, '8' },
-            { 0x22, '9' },
-            { 0x23, '0' },
-            { 0x24, 'a' },
-            { 0x25, 'b' },
-            { 0x26, 'c' },
-            { 0x27, 'd' },
-            { 0x28, 'e' },
-            { 0x29, 'f' },
-            { 0x2A, 'g' },
-            { 0x2B, 'h' },
-            { 0x2C, 'i' },
-            { 0x2D, 'j' },
-            { 0x2E, 'k' },
-            { 0x2F, 'l' },
-            { 0x30, 'm' },
-            { 0x31, 'n' },
-            { 0x32, 'o' },
-            { 0x33, 'p' },
-            { 0x34, 'q' },
-            { 0x35, 'r' },
-            { 0x36, 's' },
-            { 0x37, 't' },
-            { 0x38, 'u' },
-            { 0x39, 'v' },
-            { 0x3A, 'w' },
-            { 0x3B, 'x' },
-            { 0x3C, 'y' },
-            { 0x3D, 'z' },
-            { 0x3E, '!' },
-            { 0x3F, '?' },
+            { 0x1A, 'a' },
+            { 0x1B, 'b' },
+            { 0x1C, 'c' },
+            { 0x1D, 'd' },
+            { 0x1E, 'e' },
+            { 0x1F, 'f' },
+            { 0x20, 'g' },
+            { 0x21, 'h' },
+            { 0x22, 'i' },
+            { 0x23, 'j' },
+            { 0x24, 'k' },
+            { 0x25, 'l' },
+            { 0x26, 'm' },
+            { 0x27, 'n' },
+            { 0x28, 'o' },
+            { 0x29, 'p' },
+            { 0x2A, 'q' },
+            { 0x2B, 'r' },
+            { 0x2C, 's' },
+            { 0x2D, 't' },
+            { 0x2E, 'u' },
+            { 0x2F, 'v' },
+            { 0x30, 'w' },
+            { 0x31, 'x' },
+            { 0x32, 'y' },
+            { 0x33, 'z' },
+            { 0x34, '0' },
+            { 0x35, '1' },
+            { 0x36, '2' },
+            { 0x37, '3' },
+            { 0x38, '4' },
+            { 0x39, '4' },
+            { 0x3A, '6' },
+            { 0x3B, '7' },
+            { 0x3C, '8' },
+            { 0x3D, '9' },
+            { 0x3E, '+' },
+            { 0x3F, '/' },
         };
 
         private static readonly Dictionary<Char, Byte> AsciiCharacterToFlagValueLookup = new Dictionary<Char, Byte>()
@@ -260,44 +259,44 @@ namespace MM2Randomizer.Settings
             { 'X', 0x17 },
             { 'Y', 0x18 },
             { 'Z', 0x19 },
-            { '1', 0x1A },
-            { '2', 0x1B },
-            { '3', 0x1C },
-            { '4', 0x1D },
-            { '5', 0x1E },
-            { '6', 0x1F },
-            { '7', 0x20 },
-            { '8', 0x21 },
-            { '9', 0x22 },
-            { '0', 0x23 },
-            { 'a', 0x24 },
-            { 'b', 0x25 },
-            { 'c', 0x26 },
-            { 'd', 0x27 },
-            { 'e', 0x28 },
-            { 'f', 0x29 },
-            { 'g', 0x2A },
-            { 'h', 0x2B },
-            { 'i', 0x2C },
-            { 'j', 0x2D },
-            { 'k', 0x2E },
-            { 'l', 0x2F },
-            { 'm', 0x30 },
-            { 'n', 0x31 },
-            { 'o', 0x32 },
-            { 'p', 0x33 },
-            { 'q', 0x34 },
-            { 'r', 0x35 },
-            { 's', 0x36 },
-            { 't', 0x37 },
-            { 'u', 0x38 },
-            { 'v', 0x39 },
-            { 'w', 0x3A },
-            { 'x', 0x3B },
-            { 'y', 0x3C },
-            { 'z', 0x3D },
-            { '!', 0x3E },
-            { '?', 0x3F },
+            { 'a', 0x1A },
+            { 'b', 0x1B },
+            { 'c', 0x1C },
+            { 'd', 0x1D },
+            { 'e', 0x1E },
+            { 'f', 0x1F },
+            { 'g', 0x20 },
+            { 'h', 0x21 },
+            { 'i', 0x22 },
+            { 'j', 0x23 },
+            { 'k', 0x24 },
+            { 'l', 0x25 },
+            { 'm', 0x26 },
+            { 'n', 0x27 },
+            { 'o', 0x28 },
+            { 'p', 0x29 },
+            { 'q', 0x2A },
+            { 'r', 0x2B },
+            { 's', 0x2C },
+            { 't', 0x2D },
+            { 'u', 0x2E },
+            { 'v', 0x2F },
+            { 'w', 0x30 },
+            { 'x', 0x31 },
+            { 'y', 0x32 },
+            { 'z', 0x33 },
+            { '0', 0x34 },
+            { '1', 0x35 },
+            { '2', 0x36 },
+            { '3', 0x37 },
+            { '4', 0x38 },
+            { '5', 0x39 },
+            { '6', 0x3A },
+            { '7', 0x3B },
+            { '8', 0x3C },
+            { '9', 0x3D },
+            { '+', 0x3E },
+            { '/', 0x3F },
         };
 
     }

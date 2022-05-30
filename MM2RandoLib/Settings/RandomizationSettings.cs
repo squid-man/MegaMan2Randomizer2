@@ -114,12 +114,22 @@ namespace MM2Randomizer.Settings
         {
         }
 
+        public String GetBehaviorFlagsHashString()
+        {
+            return this.GetBehaviorFlags().ToHashString();
+        }
+
         public String GetBehaviorFlagsString()
+        {
+            return this.GetBehaviorFlags().ToFlagString();
+        }
+
+        private RandomizationFlags GetBehaviorFlags()
         {
             // TODO: The settings class can inherit from the flags class. Flags
             // can be dynamically tracked by reflecting the properties of the class.
             // Flag properties can be differentiated with Attributes
-            RandomizationFlags flags = new RandomizationFlags(28);
+            RandomizationFlags flags = new RandomizationFlags();
 
             // Gameplay options
             flags.PushValue(this.GameplayOption.BurstChaserMode.Randomize);
@@ -183,16 +193,25 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize);
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Value);
 
-            return flags.ToFlagString();
+            return flags;
         }
 
+        public String GetCosmeticFlagsHashString()
+        {
+            return this.GetCosmeticFlags().ToHashString();
+        }
 
         public String GetCosmeticFlagsString()
+        {
+            return this.GetCosmeticFlags().ToFlagString();
+        }
+
+        private RandomizationFlags GetCosmeticFlags()
         {
             // TODO: Work out a way to bind options to a randomization flags
             // instance such that updating the property will automatically
             // update the flags value
-            RandomizationFlags flags = new RandomizationFlags(14);
+            RandomizationFlags flags = new RandomizationFlags();
 
             // Cosmetic options
             flags.PushValue(this.CosmeticOption.Font.Randomize);
@@ -208,7 +227,7 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Randomize);
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Value);
 
-            return flags.ToFlagString();
+            return flags;
         }
     }
 }
