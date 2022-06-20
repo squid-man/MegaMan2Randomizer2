@@ -66,6 +66,13 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.DragonBlock_WB,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_ROBOT_MASTER_INTRO_SCREEN = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.RobotMasterIntroScreen_Background1,
+            Properties.EnvironmentSpriteResources.RobotMasterIntroScreen_Background2,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_SPIKES = new List<Byte[]?>()
         {
             null,
@@ -87,6 +94,16 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.Spikes_Muncher,
             Properties.EnvironmentSpriteResources.Spikes_SkullV1,
             Properties.EnvironmentSpriteResources.Spikes_SkullV2,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_SELECT_SCREEN = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageSelectScreen_BasicMaster,
+            Properties.EnvironmentSpriteResources.StageSelectScreen_Claw,
+            Properties.EnvironmentSpriteResources.StageSelectScreen_Exile,
+            Properties.EnvironmentSpriteResources.StageSelectScreen_None,
+            Properties.EnvironmentSpriteResources.StageSelectScreen_Ultra,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK = new List<Byte[]?>()
@@ -114,12 +131,19 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_CrashMan_Block_SuperMarioBrosBlock,
             Properties.EnvironmentSpriteResources.StageTile_CrashMan_Block_SuperMarioBrosBrick,
+            Properties.EnvironmentSpriteResources.StageTile_CrashMan_Block_TMNT2,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_DAYLIGHT_BACKGROUND = new List<Byte[]?>()
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_CrashMan_DaylightBackground_SuperMarioBrosClouds,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_CrashMan_Globe_TMNT2,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_NIGHT_BACKGROUND = new List<Byte[]?>()
@@ -132,6 +156,13 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_CrashMan_Pipe_SuperMarioBros,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_FLASH_MAN_BACKGROUND = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_FlashMan_Background_DDBrick,
+            Properties.EnvironmentSpriteResources.StageTile_FlashMan_Background_FinalMix,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_FLASH_MAN_BLOCK = new List<Byte[]?>()
@@ -162,12 +193,27 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_HeatMan_Lava_SpikeV1,
             Properties.EnvironmentSpriteResources.StageTile_HeatMan_Lava_SpikeV2,
             Properties.EnvironmentSpriteResources.StageTile_HeatMan_Lava_SuperMarioBros,
+            Properties.EnvironmentSpriteResources.StageTile_HeatMan_Lava_TMNT2,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BACKGROUND = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Background_None,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BLOCK = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Block_Sand,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_CONVEYOR = new List<Byte[]?>()
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CB,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CB2,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CB3,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BACKGROUND = new List<Byte[]?>()
@@ -194,6 +240,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_CaveBackground_None,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_WoodMan_CaveGround_Sand,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS = new List<Byte[]?>()
         {
             null,
@@ -204,28 +256,47 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_Grass_SuperMarioBros3V3,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_WEAPON_GET_SCREEN = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.WeaponGetScreen_Claw,
+            Properties.EnvironmentSpriteResources.WeaponGetScreen_FinalMix,
+            Properties.EnvironmentSpriteResources.WeaponGetScreen_MissingTile,
+            Properties.EnvironmentSpriteResources.WeaponGetScreen_None,
+            Properties.EnvironmentSpriteResources.WeaponGetScreen_Remix,
+            Properties.EnvironmentSpriteResources.WeaponGetScreen_Ultra,
+        };
+
         private static readonly List<List<Byte[]?>> ENVIRONMENT_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
             ENVIRONMENT_SPRITE_LIST_CASTLE,
             ENVIRONMENT_SPRITE_LIST_DESTRUCTIBLE_BLOCK,
             ENVIRONMENT_SPRITE_LIST_DRAGON_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_ROBOT_MASTER_INTRO_SCREEN,
             ENVIRONMENT_SPRITE_LIST_SPIKES,
+            ENVIRONMENT_SPRITE_LIST_STAGE_SELECT_SCREEN,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_DAYLIGHT_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_NIGHT_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_PIPE,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_FLASH_MAN_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_FLASH_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_LAVA,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_CONVEYOR,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_WEAPON_GET_SCREEN,
         };
     }
 }

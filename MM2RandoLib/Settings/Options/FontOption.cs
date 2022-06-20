@@ -14,6 +14,8 @@ namespace MM2Randomizer.Settings.Options
         DoubleDragon2,
         [Description("Java Island Indonesia")]
         JavaIslandIndonesia,
+        [Description("Karnov")]
+        Karnov,
         [Description("Krusty's")]
         Krustys,
         [Description("Paperboy")]

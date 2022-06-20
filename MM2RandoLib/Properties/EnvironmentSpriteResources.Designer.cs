@@ -303,6 +303,26 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] RobotMasterIntroScreen_Background1 {
+            get {
+                object obj = ResourceManager.GetObject("RobotMasterIntroScreen_Background1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RobotMasterIntroScreen_Background2 {
+            get {
+                object obj = ResourceManager.GetObject("RobotMasterIntroScreen_Background2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Spikes_1UP {
             get {
                 object obj = ResourceManager.GetObject("Spikes_1UP", resourceCulture);
@@ -483,6 +503,56 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageSelectScreen_BasicMaster {
+            get {
+                object obj = ResourceManager.GetObject("StageSelectScreen_BasicMaster", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageSelectScreen_Claw {
+            get {
+                object obj = ResourceManager.GetObject("StageSelectScreen_Claw", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageSelectScreen_Exile {
+            get {
+                object obj = ResourceManager.GetObject("StageSelectScreen_Exile", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageSelectScreen_None {
+            get {
+                object obj = ResourceManager.GetObject("StageSelectScreen_None", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageSelectScreen_Ultra {
+            get {
+                object obj = ResourceManager.GetObject("StageSelectScreen_Ultra", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_AirMan_Block_Clear {
             get {
                 object obj = ResourceManager.GetObject("StageTile_AirMan_Block_Clear", resourceCulture);
@@ -603,9 +673,29 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_CrashMan_Block_TMNT2 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_CrashMan_Block_TMNT2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_CrashMan_DaylightBackground_SuperMarioBrosClouds {
             get {
                 object obj = ResourceManager.GetObject("StageTile_CrashMan_DaylightBackground_SuperMarioBrosClouds", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_CrashMan_Globe_TMNT2 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_CrashMan_Globe_TMNT2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -626,6 +716,26 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_CrashMan_Pipe_SuperMarioBros {
             get {
                 object obj = ResourceManager.GetObject("StageTile_CrashMan_Pipe_SuperMarioBros", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_FlashMan_Background_DDBrick {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_FlashMan_Background_DDBrick", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_FlashMan_Background_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_FlashMan_Background_FinalMix", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -733,9 +843,59 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_HeatMan_Lava_TMNT2 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_HeatMan_Lava_TMNT2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_MetalMan_Background_None {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_MetalMan_Background_None", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_MetalMan_Block_Sand {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_MetalMan_Block_Sand", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_MetalMan_Conveyor_CB {
             get {
                 object obj = ResourceManager.GetObject("StageTile_MetalMan_Conveyor_CB", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_MetalMan_Conveyor_CB2 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_MetalMan_Conveyor_CB2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_MetalMan_Conveyor_CB3 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_MetalMan_Conveyor_CB3", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -776,6 +936,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_WoodMan_CaveBackground_None {
             get {
                 object obj = ResourceManager.GetObject("StageTile_WoodMan_CaveBackground_None", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_WoodMan_CaveGround_Sand {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_WoodMan_CaveGround_Sand", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -826,6 +996,66 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_WoodMan_Grass_SuperMarioBros3V3 {
             get {
                 object obj = ResourceManager.GetObject("StageTile_WoodMan_Grass_SuperMarioBros3V3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WeaponGetScreen_Claw {
+            get {
+                object obj = ResourceManager.GetObject("WeaponGetScreen_Claw", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WeaponGetScreen_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("WeaponGetScreen_FinalMix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WeaponGetScreen_MissingTile {
+            get {
+                object obj = ResourceManager.GetObject("WeaponGetScreen_MissingTile", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WeaponGetScreen_None {
+            get {
+                object obj = ResourceManager.GetObject("WeaponGetScreen_None", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WeaponGetScreen_Remix {
+            get {
+                object obj = ResourceManager.GetObject("WeaponGetScreen_Remix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WeaponGetScreen_Ultra {
+            get {
+                object obj = ResourceManager.GetObject("WeaponGetScreen_Ultra", resourceCulture);
                 return ((byte[])(obj));
             }
         }

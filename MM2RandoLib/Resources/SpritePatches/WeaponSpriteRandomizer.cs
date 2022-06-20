@@ -26,6 +26,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.AirShooter_DeusExMachina,
+            Properties.WeaponSpriteResources.AirShooter_FinalMix,
             Properties.WeaponSpriteResources.AirShooter_GodWorld,
             Properties.WeaponSpriteResources.AirShooter_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.AirShooter_NoConstancy,
@@ -36,6 +37,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.AtomicFire_DeusExMachina,
+            Properties.WeaponSpriteResources.AtomicFire_FinalMix,
             Properties.WeaponSpriteResources.AtomicFire_GodWorld,
             Properties.WeaponSpriteResources.AtomicFire_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.AtomicFire_NoConstancy,
@@ -57,6 +59,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.CrashBomber_DeusExMachina,
+            Properties.WeaponSpriteResources.CrashBomber_FinalMix,
             Properties.WeaponSpriteResources.CrashBomber_GodWorld,
             Properties.WeaponSpriteResources.CrashBomber_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.CrashBomber_NoConstancy,
@@ -66,8 +69,9 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_LEAF_SHIELD = new List<Byte[]?>()
         {
             null,
+            Properties.WeaponSpriteResources.LeafShield_FinalMix,
             Properties.WeaponSpriteResources.LeafShield_GodWorld,
-            Properties.WeaponSpriteResources.LeafShield_JavaIslandIndonesia_,
+            Properties.WeaponSpriteResources.LeafShield_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.LeafShield_JewelSatelliteV1,
             Properties.WeaponSpriteResources.LeafShield_JewelSatelliteV2,
             Properties.WeaponSpriteResources.LeafShield_NoConstancy,
@@ -79,6 +83,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.MetalBlade_DeusExMachina,
+            Properties.WeaponSpriteResources.MetalBlade_FinalMix,
             Properties.WeaponSpriteResources.MetalBlade_GodWorld,
             Properties.WeaponSpriteResources.MetalBlade_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.MetalBlade_HypnoShot,
@@ -92,6 +97,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.WeaponSpriteResources.QuickBoomerang_DeusExMachina,
+            Properties.WeaponSpriteResources.QuickBoomerang_FinalMix,
             Properties.WeaponSpriteResources.QuickBoomerang_GodWorld,
             Properties.WeaponSpriteResources.QuickBoomerang_JavaIslandIndonesia,
             Properties.WeaponSpriteResources.QuickBoomerang_NoConstancy,

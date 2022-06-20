@@ -30,6 +30,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_AIR_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.AirMan_Another,
             Properties.BossSpriteResources.AirMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.AirMan_GrayZone,
             Properties.BossSpriteResources.Airman_HornetMan,
@@ -40,6 +41,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_BUBBLE_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.BubbleMan_Another,
             Properties.BossSpriteResources.BubbleMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.BubbleMan_GrayZone,
             Properties.BossSpriteResources.BubbleMan_NoConstancy,
@@ -50,6 +52,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_CRASH_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.CrashMan_Another,
             Properties.BossSpriteResources.CrashMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.CrashMan_DX,
             Properties.BossSpriteResources.CrashMan_GrayZone,
@@ -60,6 +63,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_FLASH_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.FlashMan_Another,
             Properties.BossSpriteResources.FlashMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.FlashMan_GrayZone,
             Properties.BossSpriteResources.FlashMan_Peercast,
@@ -69,6 +73,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_HEAT_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.HeatMan_Another,
             Properties.BossSpriteResources.HeatMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.HeatMan_DX,
             Properties.BossSpriteResources.HeatMan_GrayZone,
@@ -89,6 +94,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_QUICK_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.QuickMan_Another,
             Properties.BossSpriteResources.QuickMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.QuickMan_GrayZone,
             Properties.BossSpriteResources.QuickMan_Peercast,
@@ -99,6 +105,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_WOOD_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.WoodMan_Another,
             Properties.BossSpriteResources.WoodMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.WoodMan_DK,
             Properties.BossSpriteResources.WoodMan_DX,
@@ -167,14 +174,18 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.BossDoorSign_CapnA,
             Properties.BossSpriteResources.BossDoorSign_Charlieboy,
             Properties.BossSpriteResources.BossDoorSign_CutMansBadScissorsDay,
+            Properties.BossSpriteResources.BossDoorSign_Don,
             Properties.BossSpriteResources.BossDoorSign_DoubleDragon,
             Properties.BossSpriteResources.BossDoorSign_DrCossack,
             Properties.BossSpriteResources.BossDoorSign_DrLight,
+            Properties.BossSpriteResources.BossDoorSign_Leo,
             Properties.BossSpriteResources.BossDoorSign_LilMac,
             Properties.BossSpriteResources.BossDoorSign_MegaMan4Squid,
+            Properties.BossSpriteResources.BossDoorSign_Mikey,
             Properties.BossSpriteResources.BossDoorSign_MortalKombat,
             Properties.BossSpriteResources.BossDoorSign_MrX,
             Properties.BossSpriteResources.BossDoorSign_PizzaHut,
+            Properties.BossSpriteResources.BossDoorSign_Raph,
             Properties.BossSpriteResources.BossDoorSign_Shredder,
             Properties.BossSpriteResources.BossDoorSign_SiberianBull,
             Properties.BossSpriteResources.BossDoorSign_Squidman,
