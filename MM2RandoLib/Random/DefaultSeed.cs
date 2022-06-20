@@ -23,13 +23,16 @@ namespace MM2Randomizer.Random
                 throw new ArgumentNullException(nameof(in_SeedString));
             }
 
-            Int32 int32Seed = in_SeedString.ToInt32Hash();
-            String alpha26Seed = int32Seed.ToAlphaBase26();
-            System.Random random = new System.Random(int32Seed);
-
-            this.mRandom = random;
-            this.mSeedAlphaBase26 = alpha26Seed;
             this.mSeedString = in_SeedString;
+
+            Int32 int32Seed = in_SeedString.ToInt32Hash();
+            this.mSeed = int32Seed;
+
+            String alpha26Seed = int32Seed.ToAlphaBase26();
+            this.mSeedAlphaBase26 = alpha26Seed;
+
+            System.Random random = new System.Random(int32Seed);
+            this.mRandom = random;
         }
 
         private DefaultSeed()
@@ -47,14 +50,16 @@ namespace MM2Randomizer.Random
             }
 
             String seedString = sb.ToString();
+            this.mSeedString = seedString;
 
             Int32 int32Seed = seedString.ToInt32Hash();
-            String alpha26Seed = int32Seed.ToAlphaBase26();
-            System.Random random = new System.Random(int32Seed);
+            this.mSeed = int32Seed;
 
-            this.mRandom = random;
+            String alpha26Seed = int32Seed.ToAlphaBase26();
             this.mSeedAlphaBase26 = alpha26Seed;
-            this.mSeedString = seedString;
+
+            System.Random random = new System.Random(int32Seed);
+            this.mRandom = random;
         }
 
 
@@ -83,6 +88,12 @@ namespace MM2Randomizer.Random
         //
         // Public Methods
         //
+
+        public void Reset()
+        {
+            System.Random random = new System.Random(this.mSeed);
+            this.mRandom = random;
+        }
 
         public void Next()
         {
@@ -179,5 +190,6 @@ namespace MM2Randomizer.Random
         private System.Random mRandom;
         private String mSeedAlphaBase26;
         private String mSeedString;
+        private Int32 mSeed;
     }
 }

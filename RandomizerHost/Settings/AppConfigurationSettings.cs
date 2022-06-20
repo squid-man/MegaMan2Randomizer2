@@ -647,6 +647,42 @@ namespace RandomizerHost.Settings
         }
 
 
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableRandomizationOfMenusAndTransitionScreens
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME] = value;
+            }
+        }
+
+
         // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfRefightTeleporters
         {
@@ -1460,6 +1496,8 @@ namespace RandomizerHost.Settings
             settings.CosmeticOption.RandomizeInGameText.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfInGameText);
             settings.CosmeticOption.RandomizeMusicTracks.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfMusicTracks;
             settings.CosmeticOption.RandomizeMusicTracks.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfMusicTracks);
+            settings.CosmeticOption.RandomizeMenusAndTransitionScreens.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens;
+            settings.CosmeticOption.RandomizeMenusAndTransitionScreens.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfMenusAndTransitionScreens);
 
             return settings;
         }
@@ -1706,7 +1744,7 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfBossWeaknesses";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_BOSS_WEAKNESSES_DEFAULT_VALUE = false;
 
         // Enable Randomization of Boss Sprites
         private const String ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_SETTING_NAME = @"EnableRandomizationOfBossSprites";
@@ -1720,14 +1758,14 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfColorPalettes";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_COLOR_PALETTES_DEFAULT_VALUE = false;
 
         // Enable Randomization of Enemy Spawns
         private const String ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME = @"EnableRandomizationOfEnemySpawns";
         private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfEnemySpawns";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_SPAWNS_DEFAULT_VALUE = false;
 
         // Enable Randomization of Enemy Sprites
         private const String ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_SETTING_NAME = @"EnableRandomizationOfEnemySprites";
@@ -1741,7 +1779,7 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_WEAKNESSES_DEFAULT_VALUE = false;
 
         // Enable Randomization of Environment Sprites
         private const String ENABLE_RANDOMIZATION_OF_ENVIRONMENT_SPRITES_SETTING_NAME = @"EnableRandomizationOfEnvironmentSprites";
@@ -1755,7 +1793,7 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfFalseFloors";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_FALSE_FLOORS_DEFAULT_VALUE = false;
 
         // Enable Randomization of Item Pickup Sprites
         private const String ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_SETTING_NAME = @"EnableRandomizationOfItemPickupSprites";
@@ -1769,35 +1807,42 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfMusicTracks";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_DEFAULT_VALUE = false;
+
+        // Enable Randomization of Menus and Transition Screens
+        private const String ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME = @"EnableRandomizationOfMenusAndTransitionScreens";
+        private const Boolean ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_DEFAULT_VALUE = true;
+
+        private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_DEFAULT_VALUE = false;
 
         // Enable Randomization of Robot Master Behavior
         private const String ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_SETTING_NAME = @"EnableRandomizationOfRobotMasterBehavior";
         private const Boolean ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_BEHAVIOR_DEFAULT_VALUE = false;
 
         // Enable Randomization of Robot Master Locations
         private const String ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_SETTING_NAME = @"EnableRandomizationOfRobotMasterLocations";
         private const Boolean ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_DEFAULT_VALUE = false;
 
         // Enable Randomization of Special Item Locations
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_SETTING_NAME = @"EnableRandomizationOfSpecialItemLocations";
         private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_ITEM_LOCATIONS_DEFAULT_VALUE = false;
 
         // Enable Randomization of Special Weapon Behavior
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponBehavior";
         private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_BEHAVIOR_DEFAULT_VALUE = false;
 
         // Enable Randomization of Special Weapon Sprites
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponSprites";
@@ -1811,7 +1856,7 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfInGameText";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = false;
 
         // Enable Spoiler-Free Mode
         private const String ENABLE_SPOILER_FREE_MODE_SETTING_NAME = @"EnableSpoilerFreeMode";
@@ -1822,7 +1867,7 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME = @"RandomlyChooseSetting_EnableUnderwaterLagReduction";
-        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = true;
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = false;
 
         //
         // Scalar Property Constants

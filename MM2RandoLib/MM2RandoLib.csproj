@@ -64,6 +64,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>HudElementResources.resx</DependentUpon>
       </Compile>
+      <Compile Update="Properties\MenusAndTransitionScreenRandomizer.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>MenusAndTransitionScreenRandomizer.resx</DependentUpon>
+      </Compile>
       <Compile Update="Properties\PlayerCharacterResources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -111,6 +116,11 @@
         <LastGenOutput>HudElementResources.Designer.cs</LastGenOutput>
         <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
       </EmbeddedResource>
+      <EmbeddedResource Update="Properties\MenusAndTransitionScreenRandomizer.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>MenusAndTransitionScreenRandomizer.Designer.cs</LastGenOutput>
+        <CustomToolNamespace>MM2Randomizer.Properties</CustomToolNamespace>
+      </EmbeddedResource>
       <EmbeddedResource Update="Properties\PlayerCharacterResources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>PlayerCharacterResources.Designer.cs</LastGenOutput>
@@ -135,13 +145,10 @@
     <ItemGroup>
       <Folder Include="Resources\SpritePatches\Bosses\BoobeamTrap\" />
       <Folder Include="Resources\SpritePatches\Enemies\ForceBeamBody\" />
-      <Folder Include="Resources\SpritePatches\Environment\RobotMasterIntroScreen\" />
-      <Folder Include="Resources\SpritePatches\Environment\StageSelectScreen\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Background\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Block\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveGround\" />
-      <Folder Include="Resources\SpritePatches\Environment\WeaponGetScreen\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\DaylightBackground\" />

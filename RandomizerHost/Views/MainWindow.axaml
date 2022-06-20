@@ -1029,6 +1029,28 @@
 
                         <StackPanel
                             Orientation="Horizontal"
+                        >
+                            <!-- Friendly emoji header -->
+                            <Label FontSize="18">🎲</Label>
+
+                            <!-- Toggle to randomize the option -->
+                            <ToggleSwitch
+                                Name="ToggleSwitch_MenusAndTransitionScreens"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens}"
+                                OffContent=""
+                                OnContent=""
+                            />
+
+                            <CheckBox
+                                Name="CheckBox_MenusAndTransitionScreens"
+                                Content="Randomize Menus and Transition Screens"
+                                IsEnabled="{Binding !#ToggleSwitch_MenusAndTransitionScreens.IsChecked}"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMenusAndTransitionScreens}"
+                            />
+                        </StackPanel>
+
+                        <StackPanel
+                            Orientation="Horizontal"
                             Margin="0,4"
                         >
                             <!-- Friendly emoji header -->

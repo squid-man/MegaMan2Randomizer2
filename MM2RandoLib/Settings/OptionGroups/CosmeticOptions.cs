@@ -15,5 +15,7 @@ namespace MM2Randomizer.Settings.OptionGroups
         public RandomizationOption<BooleanOption> RandomizeInGameText { get; } = new RandomizationOption<BooleanOption>();
 
         public RandomizationOption<BooleanOption> RandomizeMusicTracks { get; } = new RandomizationOption<BooleanOption>();
+
+        public RandomizationOption<BooleanOption> RandomizeMenusAndTransitionScreens { get; } = new RandomizationOption<BooleanOption>();
     }
 }

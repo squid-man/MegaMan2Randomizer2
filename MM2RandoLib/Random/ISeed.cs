@@ -26,6 +26,8 @@ namespace MM2Randomizer.Random
         // Public Methods
         //
 
+        void Reset();
+
         void Next();
 
         // Boolean Methods
