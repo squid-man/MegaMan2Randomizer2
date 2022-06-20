@@ -53,7 +53,7 @@ namespace MM2Randomizer.Settings
         // Public Methods
         //
 
-        public dynamic ActualizeSettings(ISeed in_Seed)
+        public dynamic ActualizeBehaviorSettings(ISeed in_Seed)
         {
             // TODO: This can be simplified with an ExpandoObject
 
@@ -84,15 +84,6 @@ namespace MM2Randomizer.Settings
                     RobotMasterEnergy = this.ChargingSpeedOption.RobotMasterEnergy.NextValue(in_Seed),
                     WeaponEnergy = this.ChargingSpeedOption.WeaponEnergy.NextValue(in_Seed),
                 },
-                CosmeticOption = new
-                {
-                    Font = this.CosmeticOption.Font.NextValue(in_Seed),
-                    HudElement = this.CosmeticOption.HudElement.NextValue(in_Seed),
-                    PlayerSprite = this.CosmeticOption.PlayerSprite.NextValue(in_Seed),
-                    RandomizeColorPalettes = this.CosmeticOption.RandomizeColorPalettes.NextValue(in_Seed),
-                    RandomizeInGameText = this.CosmeticOption.RandomizeInGameText.NextValue(in_Seed),
-                    RandomizeMusicTracks = this.CosmeticOption.RandomizeMusicTracks.NextValue(in_Seed),
-                },
                 SpriteOption = new
                 {
                     RandomizeBossSprites = this.SpriteOption.RandomizeBossSprites.NextValue(in_Seed),
@@ -106,6 +97,25 @@ namespace MM2Randomizer.Settings
                     DisableDelayScrolling = this.QualityOfLifeOption.DisableDelayScrolling.NextValue(in_Seed),
                     DisableFlashingEffects = this.QualityOfLifeOption.DisableFlashingEffects.NextValue(in_Seed),
                     EnableUnderwaterLagReduction = this.QualityOfLifeOption.EnableUnderwaterLagReduction.NextValue(in_Seed),
+                },
+            };
+        }
+
+        public dynamic ActualizeCosmeticSettings(ISeed in_Seed)
+        {
+            // TODO: This can be simplified with an ExpandoObject
+
+            return new
+            {
+                CosmeticOption = new
+                {
+                    Font = this.CosmeticOption.Font.NextValue(in_Seed),
+                    HudElement = this.CosmeticOption.HudElement.NextValue(in_Seed),
+                    PlayerSprite = this.CosmeticOption.PlayerSprite.NextValue(in_Seed),
+                    RandomizeColorPalettes = this.CosmeticOption.RandomizeColorPalettes.NextValue(in_Seed),
+                    RandomizeInGameText = this.CosmeticOption.RandomizeInGameText.NextValue(in_Seed),
+                    RandomizeMusicTracks = this.CosmeticOption.RandomizeMusicTracks.NextValue(in_Seed),
+                    RandomizeMenusAndTransitionScreens = this.CosmeticOption.RandomizeMenusAndTransitionScreens.NextValue(in_Seed),
                 },
             };
         }
