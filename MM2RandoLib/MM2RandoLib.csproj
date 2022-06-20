@@ -135,9 +135,11 @@
     <ItemGroup>
       <Folder Include="Resources\SpritePatches\Bosses\BoobeamTrap\" />
       <Folder Include="Resources\SpritePatches\Enemies\ForceBeamBody\" />
+      <Folder Include="Resources\SpritePatches\Environment\RobotMasterIntroScreen\" />
       <Folder Include="Resources\SpritePatches\Environment\StageSelectScreen\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Background\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Block\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveGround\" />
       <Folder Include="Resources\SpritePatches\Environment\WeaponGetScreen\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\" />

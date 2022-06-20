@@ -303,6 +303,26 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] RobotMasterIntroScreen_Background1 {
+            get {
+                object obj = ResourceManager.GetObject("RobotMasterIntroScreen_Background1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RobotMasterIntroScreen_Background2 {
+            get {
+                object obj = ResourceManager.GetObject("RobotMasterIntroScreen_Background2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Spikes_1UP {
             get {
                 object obj = ResourceManager.GetObject("Spikes_1UP", resourceCulture);
@@ -836,6 +856,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_MetalMan_Background_None {
             get {
                 object obj = ResourceManager.GetObject("StageTile_MetalMan_Background_None", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_MetalMan_Block_Sand {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_MetalMan_Block_Sand", resourceCulture);
                 return ((byte[])(obj));
             }
         }

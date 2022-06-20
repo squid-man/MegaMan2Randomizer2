@@ -66,6 +66,13 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.DragonBlock_WB,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_ROBOT_MASTER_INTRO_SCREEN = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.RobotMasterIntroScreen_Background1,
+            Properties.EnvironmentSpriteResources.RobotMasterIntroScreen_Background2,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_SPIKES = new List<Byte[]?>()
         {
             null,
@@ -195,6 +202,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Background_None,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BLOCK = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Block_Sand,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_CONVEYOR = new List<Byte[]?>()
         {
             null,
@@ -259,6 +272,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_CASTLE,
             ENVIRONMENT_SPRITE_LIST_DESTRUCTIBLE_BLOCK,
             ENVIRONMENT_SPRITE_LIST_DRAGON_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_ROBOT_MASTER_INTRO_SCREEN,
             ENVIRONMENT_SPRITE_LIST_SPIKES,
             ENVIRONMENT_SPRITE_LIST_STAGE_SELECT_SCREEN,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK,
@@ -274,6 +288,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_LAVA,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_CONVEYOR,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BLOCK,
