@@ -770,9 +770,21 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case HudElementOption.Batman:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Batman);
+                    break;
+                }
+
                 case HudElementOption.Byte:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Byte);
+                    break;
+                }
+
+                case HudElementOption.CB:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CB);
                     break;
                 }
 
@@ -845,6 +857,12 @@ namespace MM2Randomizer.Utilities
                 case FontOption.JavaIslandIndonesia:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_JavaIslandIndonesia);
+                    break;
+                }
+
+                case FontOption.Karnov:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Karnov);
                     break;
                 }
 

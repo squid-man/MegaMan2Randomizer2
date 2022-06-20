@@ -6,8 +6,12 @@ namespace MM2Randomizer.Settings.Options
     {
         [Description("Default")]
         Default,
+        [Description("Batman")]
+        Batman,
         [Description("Byte")]
         Byte,
+        [Description("CB")]
+        CB,
         [Description("Cut Man's Bad Scissors Day")]
         CutMansBadScissorsDay,
         [Description("Java Island Indonesia")]

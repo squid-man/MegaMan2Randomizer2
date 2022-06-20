@@ -73,6 +73,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AirShooter_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("AirShooter_FinalMix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] AirShooter_GodWorld {
             get {
                 object obj = ResourceManager.GetObject("AirShooter_GodWorld", resourceCulture);
@@ -116,6 +126,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] AtomicFire_DeusExMachina {
             get {
                 object obj = ResourceManager.GetObject("AtomicFire_DeusExMachina", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] AtomicFire_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("AtomicFire_FinalMix", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -226,6 +246,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] CrashBomber_DeusExMachina {
             get {
                 object obj = ResourceManager.GetObject("CrashBomber_DeusExMachina", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CrashBomber_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("CrashBomber_FinalMix", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -433,6 +463,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] LeafShield_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("LeafShield_FinalMix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] LeafShield_GodWorld {
             get {
                 object obj = ResourceManager.GetObject("LeafShield_GodWorld", resourceCulture);
@@ -443,9 +483,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] LeafShield_JavaIslandIndonesia_ {
+        internal static byte[] LeafShield_JavaIslandIndonesia {
             get {
-                object obj = ResourceManager.GetObject("LeafShield_JavaIslandIndonesia_", resourceCulture);
+                object obj = ResourceManager.GetObject("LeafShield_JavaIslandIndonesia", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -506,6 +546,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] MetalBlade_DeusExMachina {
             get {
                 object obj = ResourceManager.GetObject("MetalBlade_DeusExMachina", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MetalBlade_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("MetalBlade_FinalMix", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -586,6 +636,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] QuickBoomerang_DeusExMachina {
             get {
                 object obj = ResourceManager.GetObject("QuickBoomerang_DeusExMachina", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] QuickBoomerang_FinalMix {
+            get {
+                object obj = ResourceManager.GetObject("QuickBoomerang_FinalMix", resourceCulture);
                 return ((byte[])(obj));
             }
         }

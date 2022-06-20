@@ -63,9 +63,29 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] HudElements_Batman {
+            get {
+                object obj = ResourceManager.GetObject("HudElements_Batman", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] HudElements_Byte {
             get {
                 object obj = ResourceManager.GetObject("HudElements_Byte", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HudElements_CB {
+            get {
+                object obj = ResourceManager.GetObject("HudElements_CB", resourceCulture);
                 return ((byte[])(obj));
             }
         }

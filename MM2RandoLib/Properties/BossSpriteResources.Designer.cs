@@ -63,6 +63,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AirMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("AirMan_Another", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] AirMan_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("AirMan_CutMansBadScissorsDay", resourceCulture);
@@ -253,6 +263,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] BossDoorSign_Don {
+            get {
+                object obj = ResourceManager.GetObject("BossDoorSign_Don", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] BossDoorSign_DoubleDragon {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_DoubleDragon", resourceCulture);
@@ -283,6 +303,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] BossDoorSign_Leo {
+            get {
+                object obj = ResourceManager.GetObject("BossDoorSign_Leo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] BossDoorSign_LilMac {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_LilMac", resourceCulture);
@@ -296,6 +326,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] BossDoorSign_MegaMan4Squid {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_MegaMan4Squid", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BossDoorSign_Mikey {
+            get {
+                object obj = ResourceManager.GetObject("BossDoorSign_Mikey", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -326,6 +366,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] BossDoorSign_PizzaHut {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_PizzaHut", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BossDoorSign_Raph {
+            get {
+                object obj = ResourceManager.GetObject("BossDoorSign_Raph", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -366,6 +416,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] BossDoorSign_WWF {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_WWF", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BubbleMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("BubbleMan_Another", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -423,6 +483,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] CrashMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("CrashMan_Another", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] CrashMan_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("CrashMan_CutMansBadScissorsDay", resourceCulture);
@@ -473,6 +543,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] FlashMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("FlashMan_Another", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] FlashMan_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("FlashMan_CutMansBadScissorsDay", resourceCulture);
@@ -516,6 +596,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] GutsTank_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("GutsTank_CutMansBadScissorsDay", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HeatMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("HeatMan_Another", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -673,6 +763,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] QuickMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("QuickMan_Another", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] QuickMan_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("QuickMan_CutMansBadScissorsDay", resourceCulture);
@@ -776,6 +876,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Wily_RiverCityMan {
             get {
                 object obj = ResourceManager.GetObject("Wily_RiverCityMan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WoodMan_Another {
+            get {
+                object obj = ResourceManager.GetObject("WoodMan_Another", resourceCulture);
                 return ((byte[])(obj));
             }
         }
