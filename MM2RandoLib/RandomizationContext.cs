@@ -344,15 +344,12 @@ namespace MM2Randomizer
                 MiscHacks.ReduceUnderwaterLag(this.Patch);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisableDelayScrolling)
-            {
-                MiscHacks.DisableDelayScroll(this.Patch);
-            }
-
 
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_musicpatch);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
+            this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2spritelag);
+            this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2mmc3);
 
 
             MiscHacks.SetNewMegaManSprite(

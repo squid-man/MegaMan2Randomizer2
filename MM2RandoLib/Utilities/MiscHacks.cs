@@ -898,18 +898,6 @@ namespace MM2Randomizer.Utilities
         }
 
         /// <summary>
-        /// This disables delay scrolling by preventing the audio subsystem from running at certain times.
-        /// More details can be found here: http://www.yuko2ch.net/rockman/howtodelayscroll_eng.htm
-        /// </summary>
-        /// <param name="p"></param>
-        public static void DisableDelayScroll(Patch p)
-        {
-            p.Add((Int32)ESubroutineAddress.ChangeBankBNE, Opcode6502.NOP, "Disable the delayed audio processing branch");
-            p.Add((Int32)ESubroutineAddress.ChangeBankBNE + 1, Opcode6502.NOP, "The branch instruction is 2 bytes");
-        }
-
-
-        /// <summary>
         /// This method will add a new subroutine to the ROM which triggers
         /// enemy and item spawns in Wily 5.
         ///

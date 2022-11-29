@@ -924,28 +924,6 @@
                             IsChecked="{Binding Path=AppConfigurationSettings.EnableUnderwaterLagReduction}"
                         />
                     </StackPanel>
-
-                    <StackPanel
-                        Orientation="Horizontal"
-                    >
-                        <!-- Friendly emoji header -->
-                        <Label FontSize="18">🎲</Label>
-
-                        <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_DisableDelayScrolling"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableDelayScrolling}"
-                            OffContent=""
-                            OnContent=""
-                        />
-
-                        <CheckBox
-                            Name="CheckBox_DisableDelayScrolling"
-                            Content="Disable Delay Scrolling"
-                            IsEnabled="{Binding !#ToggleSwitch_DisableDelayScrolling.IsChecked}"
-                            IsChecked="{Binding Path=AppConfigurationSettings.DisableDelayScrolling}"
-                        />
-                    </StackPanel>
                 </StackPanel>
             </TabItem>
 
