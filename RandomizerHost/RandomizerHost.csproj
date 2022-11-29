@@ -4,19 +4,19 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>RandomizerHost</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
-    <PackageId>Mega Man 2 Randomizer</PackageId>
+    <PackageId>Mega Man 2 Randomizer mm2ft Test</PackageId>
     <Authors>Duckfist, Squidman, Dagit</Authors>
     <Company />
-    <Product>Mega Man 2 Randomizer</Product>
-    <Version>0.6.4</Version>
-    <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
+    <Product>Mega Man 2 Randomizer mm2ft Test</Product>
+    <Version>0.1.0</Version>
+    <PackageProjectUrl>https://github.com/TheRealQuantam/MegaMan2Randomizer2-mm2ft</PackageProjectUrl>
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
-    <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
+    <RepositoryUrl>https://github.com/TheRealQuantam/MegaMan2Randomizer2-mm2ft</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.4.*</AssemblyVersion>
+    <AssemblyVersion>0.1.0.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
     <StartupObject>RandomizerHost.Program</StartupObject>
-    <FileVersion>0.6.4</FileVersion>
+    <FileVersion>0.1.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
