@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MM2Randomizer.Randomizers.Stages.Components
 {
+    /*
     public class LevelComponent
     {
         public String Name { get; set; }
@@ -24,4 +25,5 @@ namespace MM2Randomizer.Randomizers.Stages.Components
     {
         public IList<LevelComponent> LevelComponents { get; set; }
     }
+    */
 }

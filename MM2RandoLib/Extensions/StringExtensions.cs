@@ -16,7 +16,7 @@ namespace MM2Randomizer.Extensions
         // Public Methods
         //
 
-        public static String RemoveNonAlphanumericCharacters(this String in_String, Boolean in_KeepSpaces = true)
+        public static String? RemoveNonAlphanumericCharacters(this String? in_String, Boolean in_KeepSpaces = true)
         {
             if (null == in_String)
             {
@@ -29,25 +29,30 @@ namespace MM2Randomizer.Extensions
 
         public static T Deserialize<T>(this String in_Resource)
         {
-            T returnValue;
+            Object? deserializedObject;
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
 
             using (MemoryStream memoryStream = new MemoryStream())
+            using (StreamWriter streamWriter = new StreamWriter(memoryStream))
             {
-                using (StreamWriter streamWriter = new StreamWriter(memoryStream))
-                {
-                    streamWriter.Write(in_Resource);
-                    streamWriter.Flush();
-                    memoryStream.Position = 0;
+                streamWriter.Write(in_Resource);
+                streamWriter.Flush();
+                memoryStream.Position = 0;
 
-                    returnValue = (T)xmlSerializer.Deserialize(memoryStream);
+                deserializedObject = xmlSerializer.Deserialize(memoryStream);
 
-                    streamWriter.Close();
-                }
+                streamWriter.Close();
             }
 
-            return returnValue;
+            if (null != deserializedObject)
+            {
+                return (T)deserializedObject;
+            }
+            else
+            {
+                throw new NullReferenceException(@"The specified resource could not be deserialized.");
+            }
         }
 
 
@@ -106,11 +111,6 @@ namespace MM2Randomizer.Extensions
 
         public static Byte[] AsIntroString(this String in_String)
         {
-            if (null == in_String)
-            {
-                return null;
-            }
-
             Byte[] convertedString = new Byte[in_String.Length];
             Int32 index = 0;
 
@@ -159,9 +159,9 @@ namespace MM2Randomizer.Extensions
 
         public static Byte[] AsPauseScreenString(this Char in_Char)
         {
-            if (true == StringExtensions.PauseScreenLookup.TryGetValue(in_Char, out Byte[] retval))
+            if (true == StringExtensions.PauseScreenLookup.TryGetValue(in_Char, out Byte[]? retval))
             {
-                return retval;
+                return retval ?? throw new NullReferenceException(@"Pause screen character lookup cannot be null");
             }
             else
             {
@@ -171,11 +171,6 @@ namespace MM2Randomizer.Extensions
 
         public static Byte[] AsCreditsString(this String in_String)
         {
-            if (null == in_String)
-            {
-                return null;
-            }
-
             Byte[] convertedString = new Byte[in_String.Length];
             Int32 index = 0;
 

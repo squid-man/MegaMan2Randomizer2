@@ -112,62 +112,102 @@ namespace MM2Randomizer.Patcher
         /// </summary>
         /// <param name="romname"></param>
         /// <param name="patchBytes"></param>
-        public void ApplyIPSPatch(String romname, Byte[] patchBytes)
+        public void ApplyIPSPatch(String in_FileName, Byte[] in_IpsPatch)
         {
-            // Noobish Noobsicle wrote this IPS patching code
-            // romname is the original ROM, patchname is the patch to apply
-            FileStream romstream = new FileStream(romname, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
-            Int32 lint = patchBytes.Length;
-            Byte[] ipsbyte = patchBytes;
-            Byte[] rombyte = new Byte[romstream.Length];
-            IAsyncResult romresult;
-            Int32 ipson = 5;
-            Int32 totalrepeats = 0;
-            Int32 offset = 0;
-            Boolean keepgoing = true;
-
-            while (keepgoing == true)
+            if (in_IpsPatch.Length < 5)
             {
-                offset = ipsbyte[ipson] * 0x10000 + ipsbyte[ipson + 1] * 0x100 + ipsbyte[ipson + 2];
-                ipson++;
-                ipson++;
-                ipson++;
-                if (ipsbyte[ipson] * 256 + ipsbyte[ipson + 1] == 0)
-                {
-                    ipson++;
-                    ipson++;
-                    totalrepeats = ipsbyte[ipson] * 256 + ipsbyte[ipson + 1];
-                    ipson++;
-                    ipson++;
-                    Byte[] repeatbyte = new Byte[totalrepeats];
+                throw new ArgumentException(@"The IPS patch data is not valid", nameof(in_IpsPatch));
+            }
 
-                    for (Int32 ontime = 0; ontime < totalrepeats; ontime++)
+            // Read the first 5 bytes of the patch. An IPS patch will always
+            // begin with "PATCH"
+            String ipsPatchHeader = Encoding.ASCII.GetString(in_IpsPatch, 0, 5);
+
+            if (@"PATCH" != ipsPatchHeader)
+            {
+                throw new ArgumentException(@"The IPS patch header is not valid", nameof(in_IpsPatch));
+            }
+
+            FileStream romStream = new FileStream(
+                in_FileName,
+                FileMode.Open,
+                FileAccess.ReadWrite,
+                FileShare.ReadWrite);
+
+            Boolean endOfFile = false;
+
+            using (romStream)
+            {
+                Int64 romLength = romStream.Length;
+
+                Int32 currentIndex = 5;
+
+                while (currentIndex < in_IpsPatch.Length && false == endOfFile)
+                {
+                    // Get the next three bytes. These combine to make the next
+                    // 24-bit offset into the file
+                    Byte offsetHighByte = in_IpsPatch[currentIndex++];
+                    Byte offsetMiddleByte = in_IpsPatch[currentIndex++];
+                    Byte offsetLowByte = in_IpsPatch[currentIndex++];
+
+                    Int32 offset =
+                        (0x10000 * offsetHighByte) +
+                        (0x100 * offsetMiddleByte) +
+                        offsetLowByte;
+
+                    Byte recordHighByte = in_IpsPatch[currentIndex++];
+                    Byte recordLowByte = in_IpsPatch[currentIndex++];
+
+                    Int32 recordSize = (0x100 * recordHighByte) + recordLowByte;
+
+                    // IPS Record
+                    if (recordSize > 0)
                     {
-                        repeatbyte[ontime] = ipsbyte[ipson];
+                        // This is the simple case. Seek into the file at the
+                        // specified offset, write the data that comes after
+                        // the record size, and increment the current patch
+                        // index by the size of the record
+                        romStream.Seek(offset, SeekOrigin.Begin);
+                        romStream.Write(in_IpsPatch, currentIndex, recordSize);
+                        currentIndex = currentIndex + recordSize;
+                    }
+                    // IPS RLE Record
+                    else
+                    {
+                        // This is the repeat value case. Read the repeat count
+                        // and the value to repeat. Seek into the file at the
+                        // specified offset, and write the value the number of
+                        // times specified by the repeat count.
+                        Byte repeatCountHighByte = in_IpsPatch[currentIndex++];
+                        Byte repeatCountLowByte = in_IpsPatch[currentIndex++];
+
+                        Int32 repeatCount =
+                            (0x100 * repeatCountHighByte) +
+                            repeatCountLowByte;
+
+                        Byte repeatByteValue = in_IpsPatch[currentIndex++];
+
+                        // Initialize an array of bytes to the specified value
+                        Byte[] repeatBuffer = new Byte[repeatCount];
+                        Array.Fill(repeatBuffer, repeatByteValue);
+
+                        romStream.Seek(offset, SeekOrigin.Begin);
+                        romStream.Write(repeatBuffer);
                     }
 
-                    romstream.Seek(offset, SeekOrigin.Begin);
-                    romresult = romstream.BeginWrite(repeatbyte, 0, totalrepeats, null, null);
-                    romstream.EndWrite(romresult);
-                    ipson++;
-                }
-                else
-                {
-                    totalrepeats = ipsbyte[ipson] * 256 + ipsbyte[ipson + 1];
-                    ipson++;
-                    ipson++;
-                    romstream.Seek(offset, SeekOrigin.Begin);
-                    romresult = romstream.BeginWrite(ipsbyte, ipson, totalrepeats, null, null);
-                    romstream.EndWrite(romresult);
-                    ipson = ipson + totalrepeats;
+                    // Check for the end-of-file
+                    String ipsPatchEof = Encoding.ASCII.GetString(in_IpsPatch, currentIndex, 3);
+                    endOfFile = (@"EOF" == ipsPatchEof);
                 }
 
-                if (ipsbyte[ipson] == 69 && ipsbyte[ipson + 1] == 79 && ipsbyte[ipson + 2] == 70)
-                {
-                    keepgoing = false;
-                }
+                romStream.Close();
             }
-            romstream.Close();
+
+            // The IPS patch was not properly terminated
+            if (false == endOfFile)
+            {
+                throw new ArgumentException(@"The IPS patch data is not properly terminated", nameof(in_IpsPatch));
+            }
         }
     }
 }

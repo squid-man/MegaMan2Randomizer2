@@ -6,52 +6,84 @@ using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Randomizers;
 using MM2Randomizer.Randomizers.Stages;
+using MM2Randomizer.Settings;
+using MM2Randomizer.Settings.Options;
 
 namespace MM2Randomizer.Utilities
 {
     public static class MiscHacks
     {
-        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, Settings settings)
+        public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, RandomizationSettings settings)
         {
             // Adjust cursor positions
             p.Add(0x0362D4, 0x90, "Title screen Cursor top position"); // default 0x98
             p.Add(0x0362D5, 0xA0, "Title screen Cursor bottom position"); // default 0xA8
 
-            // Draw version number
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetAssembly(typeof(RandomMM2));
-            String version = assembly.GetName().Version.ToString();
-            for (Int32 i = 0; i < version.Length; i++)
+            //
+            // Draw version header and value onto the title screen
+            //
+
+            Byte[] versionHeader = "VER. ".AsIntroString();
+            p.Add(0x037402, versionHeader, "Title Screen Version Header");
+
+            System.Reflection.Assembly assembly = typeof(RandomMM2).Assembly;
+            Version version = assembly.GetName().Version ?? throw new NullReferenceException(@"Assembly version cannot be null");
+            String stringVersion = version.ToString();
+
+            for (Int32 i = 0; i < stringVersion.Length; i++)
             {
-                Byte value = version[i].AsIntroCharacter();
-                p.Add(0x037407 + i, value, "Title Screen Version Number");
+                Byte value = stringVersion[i].AsIntroCharacter();
+                p.Add(0x037407 + i, value, "Title Screen Version Value");
             }
 
-            // Draw seed
-            Byte[] hash = "HASH".AsIntroString();
-            p.Add(0x0373C2, hash, "Title Screen hash");
 
+            //
+            // Draw the hash header and value onto the title screen
+            //
 
-            string seedAlpha = in_SeedBase26;
-            for (int i = 0; i < seedAlpha.Length; i++)
+            Byte[] hashHeader = "HASH ".AsIntroString();
+            p.Add(0x0373C2, hashHeader, "Title Screen Hash Header");
+
+            String seedAlpha = in_SeedBase26;
+            for (Int32 i = 0; i < seedAlpha.Length; i++)
             {
                 Byte value = seedAlpha[i].AsIntroCharacter();
-                p.Add(0x0373C7 + i, value, "Title Screen Seed");
+                p.Add(0x0373C7 + i, value, "Title Screen Hash Value");
             }
 
-            // Draw flags
-            String flags = settings.GetFlagsString();
-            for (Int32 i = 0; i < flags.Length; i++)
+            //
+            // Draw the flags string onto the game start screen
+            //
+
+            Byte[] behaviorFlagHeader = "FLAG ".AsIntroString();
+            p.Add(0x0373A2, behaviorFlagHeader, "Title Screen flags");
+
+            String behaviorFlags = settings.GetBehaviorFlagsString();
+            for (Int32 i = 0; i < 14; i++)
             {
-                Byte value = flags[i].AsIntroCharacter();
-                if (i < 14)
-                {
-                    p.Add(0x037387 + i, value, $"Title Screen Flags: {flags[i]}");
-                }
-                else
-                {
-                    p.Add(0x037367 + i - 14, value, $"Title Screen Flags: {flags[i]}");
-                }
+                Byte value = behaviorFlags[i].AsIntroCharacter();
+                p.Add(0x0373A7 + i, value, $"Title Screen Flags: {behaviorFlags[i]}");
             }
+
+            Byte[] behaviorFlagHeader2 = "     ".AsIntroString();
+            p.Add(0x037382, behaviorFlagHeader2, "Title Screen flags 2");
+
+            for (Int32 i = 0; i < 14; i++)
+            {
+                Byte value = behaviorFlags[14 + i].AsIntroCharacter();
+                p.Add(0x037387 + i, value, $"Title Screen Flags: {behaviorFlags[i]}");
+            }
+
+            Byte[] cosmeticFlagHeader = "COSM ".AsIntroString();
+            p.Add(0x037362, cosmeticFlagHeader, "Title Screen hash");
+
+            String cosmeticFlags = settings.GetCosmeticFlagsString();
+            for (Int32 i = 0; i < cosmeticFlags.Length; i++)
+            {
+                Byte value = cosmeticFlags[i].AsIntroCharacter();
+                p.Add(0x037367 + i , value, $"Title Screen Flags: {cosmeticFlags[i]}");
+            }
+
 
             // Draw tournament mode/spoiler free information
             if (settings.EnableSpoilerFreeMode)
@@ -123,7 +155,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetHitPointChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetHitPointChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x03831B;
             p.Add(address, (Byte)chargingSpeed, "Hit Point Charging Speed");
@@ -131,7 +163,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetWeaponEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetWeaponEnergyChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x03835A;
             p.Add(address, (Byte)chargingSpeed, "Weapon Energy Charging Speed");
@@ -139,7 +171,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetEnergyTankChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetEnergyTankChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x0352B2;
             p.Add(address, (Byte)chargingSpeed, "Energy Tank Charging Speed");
@@ -147,7 +179,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetRobotMasterEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetRobotMasterEnergyChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x02C142;
             p.Add(address, (Byte)chargingSpeed, "Robot Master Energy Charging Speed");
@@ -155,7 +187,7 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// </summary>
-        public static void SetCastleBossEnergyChargingSpeed(Patch p, ChargingSpeed chargingSpeed)
+        public static void SetCastleBossEnergyChargingSpeed(Patch p, ChargingSpeedOption chargingSpeed)
         {
             Int32 address = 0x02E12B;
             p.Add(address, (Byte)chargingSpeed, "Castle Boss Energy Charging Speed");
@@ -226,11 +258,11 @@ namespace MM2Randomizer.Utilities
             }
         }
 
-        internal static void DisableScreenFlashing(Patch p, Settings settings)
+        internal static void DisableScreenFlashing(Patch p, Boolean enableFasterCutsceneText, Boolean enableRandomizationOfColorPalettes)
         {
             p.Add(0x3412E, 0x1F, "Disable Stage Select Flashing");
             p.Add(0x3596D, 0x0F, "Wily Map Flash Color");
-            if (!settings.EnableFasterCutsceneText)
+            if (!enableFasterCutsceneText)
             {
                 // This sequence is disabled by FastText, and the patch conflicts with it.
                 p.Add(0x37C98, 0x0F, "Item Get Flash Color");
@@ -245,7 +277,7 @@ namespace MM2Randomizer.Utilities
             // Dragon
             p.Add(0x2D1B2, 0x63, "Dragon Hit Flash Palette Index");
             p.Add(0x2D187, 0x63, "Dragon Hit Restore Palette Index");
-            if (!settings.EnableRandomizationOfColorPalettes)
+            if (!enableRandomizationOfColorPalettes)
             {
                 p.Add(0x2D1B0, 0x37, "Dragon Hit Flash Color");
                 p.Add(0x2D185, 0x27, "Dragon Hit Restore Color");
@@ -259,7 +291,7 @@ namespace MM2Randomizer.Utilities
             // Wily Machine
             p.Add(0x2DA96, 0x63, "Wily Machine Flash Palette Index");
             p.Add(0x2DA23, 0x63, "Wily Machine Restore Palette Index");
-            if (!settings.EnableRandomizationOfColorPalettes)
+            if (!enableRandomizationOfColorPalettes)
             {
                 p.Add(0x2DA94, 0x25, "Wily Machine Flash Color");
                 p.Add(0x2DA21, 0x35, "Wily Machine Restore Color");
@@ -515,31 +547,345 @@ namespace MM2Randomizer.Utilities
 
         /// <summary>
         /// Replace the player's sprite graphics with a different sprite.
-        /// This method applies the graphics patch directly to the ROM at tempFileName. If Rockman
-        /// is the sprite, no patch is applied./>
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'MegaMan' is the sprite, no patch is applied.
         /// </summary>
-        /// <param name="p"></param>
-        /// <param name="tempFileName"></param>
-        /// <param name="sprite"></param>
-        public static void SetNewMegaManSprite(Patch p, String tempFileName, PlayerSprite sprite)
+        public static void SetNewMegaManSprite(Patch p, String tempFileName, PlayerSpriteOption sprite)
         {
             switch (sprite)
             {
-                case PlayerSprite.Bass:
-                    p.ApplyIPSPatch(tempFileName, Properties.Resources.SpriteSwap_Bass);
-                    break;
-                case PlayerSprite.Protoman:
-                    p.ApplyIPSPatch(tempFileName, Properties.Resources.SpriteSwap_Proto);
-                    break;
-                case PlayerSprite.Roll:
-                    p.ApplyIPSPatch(tempFileName, Properties.Resources.SpriteSwap_Roll);
-                    break;
-                case PlayerSprite.Rockman:
-                    break;
+                case PlayerSpriteOption.MegaMan:
                 default:
+                {
                     break;
+                }
+
+                case PlayerSpriteOption.AVGN:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_AVGN);
+                    break;
+                }
+
+                case PlayerSpriteOption.Bass:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Bass);
+                    break;
+                }
+
+                case PlayerSpriteOption.BassReloaded:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BassReloaded);
+                    break;
+                }
+
+                case PlayerSpriteOption.BreakMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BreakMan);
+                    break;
+                }
+
+                case PlayerSpriteOption.Byte:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Byte);
+                    break;
+                }
+
+                case PlayerSpriteOption.ByteRed:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ByteRed);
+                    break;
+                }
+
+                case PlayerSpriteOption.CasualTom:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CasualTom);
+                    break;
+                }
+
+                case PlayerSpriteOption.Charlieboy:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Charlieboy);
+                    break;
+                }
+
+                case PlayerSpriteOption.CutMansBadScissorsDay:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CutMansBadScissorsDay);
+                    break;
+                }
+
+                case PlayerSpriteOption.FinalFantasyFighter:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighter);
+                    break;
+                }
+
+                case PlayerSpriteOption.FinalFantasyFighterBlue:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighterBlue);
+                    break;
+                }
+
+                case PlayerSpriteOption.HatsuneMiku:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_HatsuneMiku);
+                    break;
+                }
+
+                case PlayerSpriteOption.JavaIslandIndonesia:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JavaIslandIndonesia);
+                    break;
+                }
+
+                case PlayerSpriteOption.JustinBailey:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JustinBailey);
+                    break;
+                }
+
+                case PlayerSpriteOption.Link:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Link);
+                    break;
+                }
+
+                case PlayerSpriteOption.LuckyMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuckyMan);
+                    break;
+                }
+
+                case PlayerSpriteOption.LuigiArcade:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuigiArcade);
+                    break;
+                }
+
+                case PlayerSpriteOption.MarioArcade:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
+                    break;
+                }
+
+                case PlayerSpriteOption.MegaManX:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaManX);
+                    break;
+                }
+
+                case PlayerSpriteOption.MegaMari:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaMari);
+                    break;
+                }
+
+                case PlayerSpriteOption.MegaRan2Remix:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaRan2Remix);
+                    break;
+                }
+
+                case PlayerSpriteOption.NewLands:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_NewLands);
+                    break;
+                }
+
+                case PlayerSpriteOption.ProtoMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ProtoMan);
+                    break;
+                }
+
+                case PlayerSpriteOption.PrototypeTom:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_PrototypeTom);
+                    break;
+                }
+
+                case PlayerSpriteOption.QuickMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_QuickMan);
+                    break;
+                }
+
+                case PlayerSpriteOption.Quint:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Quint);
+                    break;
+                }
+
+                case PlayerSpriteOption.Remix:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Remix);
+                    break;
+                }
+
+                case PlayerSpriteOption.Rock:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Rock);
+                    break;
+                }
+
+                case PlayerSpriteOption.Roll:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Roll);
+                    break;
+                }
+
+                case PlayerSpriteOption.RollFromMegaMan8:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_RollFromMegaMan8);
+                    break;
+                }
+
+                case PlayerSpriteOption.Samus:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
+                    break;
+                }
+
+                case PlayerSpriteOption.VineMan:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_VineMan);
+                    break;
+                }
             }
         }
+
+
+        /// <summary>
+        /// Replace the HUD elements in the game with different sprites.
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'Default' is the HUD element, no patch is applied.
+        /// </summary>
+        public static void SetNewHudElement(Patch p, String tempFileName, HudElementOption hudElement)
+        {
+            switch (hudElement)
+            {
+                case HudElementOption.Default:
+                default:
+                {
+                    break;
+                }
+
+                case HudElementOption.Batman:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Batman);
+                    break;
+                }
+
+                case HudElementOption.Byte:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Byte);
+                    break;
+                }
+
+                case HudElementOption.CB:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CB);
+                    break;
+                }
+
+                case HudElementOption.CutMansBadScissorsDay:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CutMansBadScissorsDay);
+                    break;
+                }
+
+                case HudElementOption.JavaIslandIndonesia:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_JavaIslandIndonesia);
+                    break;
+                }
+
+                case HudElementOption.Metroid:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Metroid);
+                    break;
+                }
+
+                case HudElementOption.Paperboy:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Paperboy);
+                    break;
+                }
+
+                case HudElementOption.Remix:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Remix);
+                    break;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Replace the font in the game with different sprites.
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'Default' is the font , no patch is applied.
+        /// </summary>
+        public static void SetNewFont(Patch p, String tempFileName, FontOption font)
+        {
+            switch (font)
+            {
+                case FontOption.Default:
+                default:
+                {
+                    break;
+                }
+
+                case FontOption.Batman:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Batman);
+                    break;
+                }
+
+                case FontOption.CutMansBadScissorsDay:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_CutMansBadScissorsDay);
+                    break;
+                }
+
+                case FontOption.DoubleDragon2:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_DoubleDragon2);
+                    break;
+                }
+
+                case FontOption.JavaIslandIndonesia:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_JavaIslandIndonesia);
+                    break;
+                }
+
+                case FontOption.Karnov:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Karnov);
+                    break;
+                }
+
+                case FontOption.Krustys:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Krustys);
+                    break;
+                }
+
+                case FontOption.Paperboy:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Paperboy);
+                    break;
+                }
+
+                case FontOption.TMNT2:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_TMNT2);
+                    break;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Reduces lag in various places (underwater, end of boss fight, and possibly other places) by disabling a subroutine
@@ -548,7 +894,7 @@ namespace MM2Randomizer.Utilities
         /// <param name="p"></param>
         public static void ReduceUnderwaterLag(Patch p)
         {
-            p.Add((Int32)ESubroutineAddress.WasteAFrame, (Byte)EInstruction.RTS, "Turn the 'waste a frame' subroutine into a NOP");
+            p.Add((Int32)ESubroutineAddress.WasteAFrame, Opcode6502.RTS, "Turn the 'waste a frame' subroutine into a NOP");
         }
 
         /// <summary>
@@ -558,8 +904,244 @@ namespace MM2Randomizer.Utilities
         /// <param name="p"></param>
         public static void DisableDelayScroll(Patch p)
         {
-            p.Add((Int32)ESubroutineAddress.ChangeBankBNE, (Byte)EInstruction.NOP, "Disable the delayed audio processing branch");
-            p.Add((Int32)ESubroutineAddress.ChangeBankBNE + 1, (Byte)EInstruction.NOP, "The branch instruction is 2 bytes");
+            p.Add((Int32)ESubroutineAddress.ChangeBankBNE, Opcode6502.NOP, "Disable the delayed audio processing branch");
+            p.Add((Int32)ESubroutineAddress.ChangeBankBNE + 1, Opcode6502.NOP, "The branch instruction is 2 bytes");
+        }
+
+
+        /// <summary>
+        /// This method will add a new subroutine to the ROM which triggers
+        /// enemy and item spawns in Wily 5.
+        ///
+        /// At 0x0E:816A (bank E, 0x3817A in the ROM), there is a CMP
+        /// instruction to value 0x0C (CMP #0x0C). This is checking if the
+        /// current stage is Wily 5 (0x0C).  If the current stage is Wily 5,
+        /// it jumps to a special game loop at 0x0E:8223 (bank E, 0x38233
+        /// in the ROM), which has a special setup routine for the teleport
+        /// room, otherwise, it jumps to 0x0E:8171, which is the normal game loop.
+        /// The special Wily 5 game loop does not include the jump instruction
+        /// to the subroutine that spawns items or enemies.
+        ///
+        /// This method will insert a new special Wily 5 game loop at the end
+        /// of the data in bank E, which does include the item spawn routine,
+        /// so that weapon energy pickups will spawn.
+        ///
+        /// The jump to the special Wily 5 routine will be changed from
+        /// 0x0E:8223 to 0x0E:BD24 (bank E, 0x3BD37 in the ROM).
+        ///
+        /// The new special Wily 5 routine will have the jump to the item spawn
+        /// routine at 0x0E:D658.
+        /// </summary>
+        public static void AddWily5SubroutineWithItemSpawns(Patch p)
+        {
+            // This is the new address of the new special Wily 5 game loop,
+            // to be placed at 0E:0x816F (bank E, 0x3817F in the ROM)
+            Byte[] newJumpAddressFor0x816F = new Byte[]
+            {
+                0x24, 0xBD
+            };
+
+            // This new subroutine exists at the end of the bank.
+            // 0x0E:BD24 (bank E, 0x3BD34 in the ROM)
+            Byte[] newWily5GameLoopSubroutine = new Byte[]
+            {
+                // This is the jump instruction to the setup routine for the
+                // Wily 5 teleporter room
+                Opcode6502.JSR, 0xDE, 0x81,
+
+                // Load accumulator 0xAD
+                Opcode6502.LDA_ZeroPage, 0xAD,
+
+                // Branch on equal to three bytes ahead
+                Opcode6502.BEQ, 0x03,
+
+                // Jump to subroutine 0x82D5
+                Opcode6502.JSR, 0xD5, 0x82,
+
+                // Load accumulator 0x27
+                Opcode6502.LDA_ZeroPage, 0x27,
+
+                // Bitwise AND accumulator & 0x08
+                Opcode6502.AND, 0x08,
+
+                // Branch on equal to three bytes ahead
+                Opcode6502.BEQ, 0x03,
+
+                // Jump to subroutine 0xC573
+                Opcode6502.JSR, 0x73, 0xC5,
+
+                // Jump to subroutine 0xCB8C
+                Opcode6502.JSR, 0x8C, 0xCB,
+
+                // Jump to subroutine 0x84EE
+                Opcode6502.JSR, 0xEE, 0x84,
+
+                // Jump to subroutine 0xDCD0
+                Opcode6502.JSR, 0xD0, 0xDC,
+
+                // Jump to subroutine 0xD658 (this is the item spawn routine)
+                Opcode6502.JSR, 0x58, 0xD6,
+
+                // Jump to subroutine 0xC5A9
+                Opcode6502.JSR, 0xA9, 0xC5,
+
+                // Jump to subroutine 0x925B
+                Opcode6502.JSR, 0x5B, 0x92,
+
+                // Jump to subroutine 0xCC77 (rendering subroutine)
+                Opcode6502.JSR, 0x77, 0xCC,
+
+                // Load accumulator 0x37
+                Opcode6502.LDA_ZeroPage, 0x37,
+
+                // Break on equal to three bytes ahead
+                Opcode6502.BEQ, 0x03,
+
+                // Jump to subroutine 0x8278
+                Opcode6502.JSR, 0x78, 0x82,
+
+                // Load accumulator 0xFB
+                Opcode6502.LDA_ZeroPage, 0xFB,
+
+                // Break on equal fifteen bytes ahead
+                Opcode6502.BEQ, 0x0F,
+
+                // Increment memory 0xFC
+                Opcode6502.INC, 0xFC,
+
+                // Compare accumulator 0xFC
+                Opcode6502.CMP, 0xFC,
+
+                // Branch on equal to two bytes ahead
+                Opcode6502.BEQ, 0x02,
+
+                // Branch on carry set seven bytes ahead
+                Opcode6502.BCS, 0x07,
+
+                // Jump to subroutine 0xC0D7 (rendering subroutine)
+                Opcode6502.JSR, 0xD7, 0xC0,
+
+                // Load accumulator #0x00
+                Opcode6502.LDA_Immediate, 0x00,
+
+                // Store accumulator 0xFC
+                Opcode6502.STA_ZeroPage, 0xFC,
+
+                // Jump to subroutine 0xC07F (rendering subroutine)
+                Opcode6502.JSR, 0x7F, 0xC0,
+
+                // Jump back to the beginning of this subroutine
+                // 
+                // NOTE: This is the instruction DIRECTLY AFTER the jump to the
+                // special teleporter room setup
+                //
+                // 0x0E:BD27 (bank E, 0x3BD37 in the ROM)
+                Opcode6502.JMP_Absolute, 0x27, 0xBD
+            };
+
+            const Int32 AddressOfInitialJump = 0x3817F;
+            const Int32 AddressOfNewGameLoop = 0x3BD34;
+
+            p.Add(AddressOfInitialJump, newJumpAddressFor0x816F);
+            p.Add(AddressOfNewGameLoop, newWily5GameLoopSubroutine);
+        }
+
+        public static void AddLargeWeaponEnergyRefillPickupsToWily5TeleporterRoom(Patch p)
+        {
+            // The enemy and item spawn information will be made into a data
+            // structure that can be written to the ROM in logical chunks, but,
+            // in the interest of time, these values are being manually added
+            // to the addresses required.
+
+            // Each stage in the game gets a total of 256 respawnable
+            // items/enemies and 64 spawn-once items/enemies.
+            // That is (256 * 4) + (64 * 4) == 1,280 bytes per stage.
+            //
+            // NOTE: pairs of stages share the same data allocation.
+            //
+            // Stage data starts at address 0x3610 in the ROM.
+            //
+            // The sequence per stage is as follows:
+            //  256 bytes for respawnable item (enemies) screen locations.
+            //  256 bytes for respawnable item (enemies) x-coordinate positions.
+            //  256 bytes for respawnable item (enemies) y-coordinate positions.
+            //  256 bytes for respawnable item (enemies) IDs.
+            //  64 bytes for spawn-once item screen locations.
+            //  64 bytes for spawn-once item x-coordinate positions.
+            //  64 bytes for spawn-once item y-coordinate positions.
+            //  64 bytes for spawn-once item IDs.
+
+            const Byte LargeWeaponEnergyRefillType = 0x78;
+
+            // Weapon energy for the initial teleporter room
+            const Int32 LargeWeaponEnergyRefill1_EnemyRoomNumberIndicatorAddress = 0x00013626;
+            const Int32 LargeWeaponEnergyRefill2_EnemyRoomNumberIndicatorAddress = 0x00013627;
+
+            const Byte LargeWeaponEnergyRefill1_RoomNumber = 0x18;
+            const Byte LargeWeaponEnergyRefill2_RoomNumber = 0x18;
+
+            const Int32 LargeWeaponEnergyRefill1_PositionXAddress = 0x00013726;
+            const Int32 LargeWeaponEnergyRefill2_PositionXAddress = 0x00013727;
+
+            const Byte LargeWeaponEnergyRefill1_PositionX = 0x58;
+            const Byte LargeWeaponEnergyRefill2_PositionX = 0xA8;
+
+            const Int32 LargeWeaponEnergyRefill1_PositionYAddress = 0x00013826;
+            const Int32 LargeWeaponEnergyRefill2_PositionYAddress = 0x00013827;
+
+            const Byte LargeWeaponEnergyRefill1_PositionY = 0x69;
+            const Byte LargeWeaponEnergyRefill2_PositionY = 0x69;
+
+            const Int32 LargeWeaponEnergyRefill1_TypeAddress = 0x00013926;
+            const Int32 LargeWeaponEnergyRefill2_TypeAddress = 0x00013927;
+
+            p.Add(LargeWeaponEnergyRefill1_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill1_RoomNumber);
+            p.Add(LargeWeaponEnergyRefill2_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill2_RoomNumber);
+
+            p.Add(LargeWeaponEnergyRefill1_PositionXAddress, LargeWeaponEnergyRefill1_PositionX);
+            p.Add(LargeWeaponEnergyRefill2_PositionXAddress, LargeWeaponEnergyRefill2_PositionX);
+
+            p.Add(LargeWeaponEnergyRefill1_PositionYAddress, LargeWeaponEnergyRefill1_PositionY);
+            p.Add(LargeWeaponEnergyRefill2_PositionYAddress, LargeWeaponEnergyRefill2_PositionY);
+
+            p.Add(LargeWeaponEnergyRefill1_TypeAddress, LargeWeaponEnergyRefillType);
+            p.Add(LargeWeaponEnergyRefill2_TypeAddress, LargeWeaponEnergyRefillType);
+
+
+            // Weapon energy for the teleporter room with Wily Machine teleporter
+            const Int32 LargeWeaponEnergyRefill3_EnemyRoomNumberIndicatorAddress = 0x00013628;
+            const Int32 LargeWeaponEnergyRefill4_EnemyRoomNumberIndicatorAddress = 0x00013629;
+
+            const Byte LargeWeaponEnergyRefill3_RoomNumber = 0x28;
+            const Byte LargeWeaponEnergyRefill4_RoomNumber = 0x28;
+
+            const Int32 LargeWeaponEnergyRefill3_PositionXAddress = 0x00013728;
+            const Int32 LargeWeaponEnergyRefill4_PositionXAddress = 0x00013729;
+
+            const Byte LargeWeaponEnergyRefill3_PositionX = 0x58;
+            const Byte LargeWeaponEnergyRefill4_PositionX = 0xA8;
+
+            const Int32 LargeWeaponEnergyRefill3_PositionYAddress = 0x00013828;
+            const Int32 LargeWeaponEnergyRefill4_PositionYAddress = 0x00013829;
+
+            const Byte LargeWeaponEnergyRefill3_PositionY = 0x69;
+            const Byte LargeWeaponEnergyRefill4_PositionY = 0x69;
+
+            const Int32 LargeWeaponEnergyRefill3_TypeAddress = 0x00013928;
+            const Int32 LargeWeaponEnergyRefill4_TypeAddress = 0x00013929;
+
+
+            p.Add(LargeWeaponEnergyRefill3_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill3_RoomNumber);
+            p.Add(LargeWeaponEnergyRefill4_EnemyRoomNumberIndicatorAddress, LargeWeaponEnergyRefill4_RoomNumber);
+
+            p.Add(LargeWeaponEnergyRefill3_PositionXAddress, LargeWeaponEnergyRefill3_PositionX);
+            p.Add(LargeWeaponEnergyRefill4_PositionXAddress, LargeWeaponEnergyRefill4_PositionX);
+
+            p.Add(LargeWeaponEnergyRefill3_PositionYAddress, LargeWeaponEnergyRefill3_PositionY);
+            p.Add(LargeWeaponEnergyRefill4_PositionYAddress, LargeWeaponEnergyRefill4_PositionY);
+
+            p.Add(LargeWeaponEnergyRefill3_TypeAddress, LargeWeaponEnergyRefillType);
+            p.Add(LargeWeaponEnergyRefill4_TypeAddress, LargeWeaponEnergyRefillType);
         }
     }
 }

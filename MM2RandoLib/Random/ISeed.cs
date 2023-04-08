@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MM2Randomizer.Random
 {
@@ -27,11 +26,12 @@ namespace MM2Randomizer.Random
         // Public Methods
         //
 
+        void Reset();
+
         void Next();
 
         // Boolean Methods
         Boolean NextBoolean();
-
 
         // UInt8 Methods
         Byte NextUInt8();
@@ -45,6 +45,9 @@ namespace MM2Randomizer.Random
 
         // Double Methods
         Double NextDouble();
+
+        // Array Methods
+        Object? NextArrayElement(Array in_Array);
 
         // IEnumerable Methods
         T NextElement<T>(IEnumerable<T> in_Elements);
@@ -66,14 +69,26 @@ namespace MM2Randomizer.Random
             return element;
         }
 
-        public Dictionary<TKey, TValue> Shuffle<TKey, TValue>(IDictionary<TKey, TValue> in_Dict)
+        public Dictionary<TKey, TValue> Shuffle<TKey, TValue>(IDictionary<TKey, TValue> in_Dict) where TKey : notnull
         {
-            List<TValue> values = Shuffle(in_Dict.Values).ToList();
+            List<TValue> values =this.Shuffle(in_Dict.Values).ToList();
 
             return in_Dict.Keys
                 .Zip(values, (key, value) => new KeyValuePair<TKey, TValue>(key, value))
                 .ToDictionary(x => x.Key, x => x.Value);
         }
 
+        // Enum Methods
+        T NextEnum<T>()
+        {
+            if (false == typeof(T).IsEnum)
+            {
+                throw new Exception("The generic type must be an enum");
+            }
+
+            Object? retval = this.NextElement(Enum.GetValues(typeof(T)).Cast<T>());
+
+            return (T?)retval ?? throw new NullReferenceException();
+        }
     }
 }

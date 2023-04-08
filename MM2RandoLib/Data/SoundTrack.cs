@@ -12,13 +12,13 @@ namespace MM2Randomizer.Data
         public Boolean Enabled { get; set; }
 
         [XmlElement("Title")]
-        public String Title { get; set; }
+        public String Title { get; set; } = "UNKNOWN";
 
         [XmlElement("StartAddress")]
-        public String StartAddress { get; set; }
+        public String StartAddress { get; set; } = "0";
 
         [XmlElement("TrackData")]
-        public String TrackData { get; set; }
+        public String TrackData { get; set; } = String.Empty;
     }
 
 

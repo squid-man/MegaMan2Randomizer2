@@ -20,32 +20,52 @@ namespace MM2Randomizer.Randomizers.Enemies
         public List<Byte> PatternTableAddressesRestriction { get; set; }
 
         public SpriteBankRoomGroup (EStageID stage, Int32 patternAddressStart, Int32[] roomNums)
+            : this(stage, patternAddressStart, roomNums, null, null, false)
+        {
+        }
+
+        public SpriteBankRoomGroup (EStageID stage, Int32 patternAddressStart, Int32[] roomNums, Int32[] spriteBankRowsRestriction, Byte[] patternTableAddressesRestriction/*, params EnemyInstance[] enemyInstances*/)
+            : this(stage, patternAddressStart, roomNums, spriteBankRowsRestriction, patternTableAddressesRestriction, true)
+        {
+        }
+
+        private SpriteBankRoomGroup(EStageID stage, Int32 patternAddressStart, Int32[] roomNums, Int32[]? spriteBankRowsRestriction, Byte[]? patternTableAddressesRestriction, Boolean isSpriteRestricted)
         {
             this.Stage = stage;
             this.PatternAddressStart = patternAddressStart;
 
-            Rooms = new List<Room>();
+            this.Rooms = new List<Room>();
             for (Int32 i = 0; i < roomNums.Length; i++)
             {
-                Rooms.Add(new Room(roomNums[i]));
+                this.Rooms.Add(new Room(roomNums[i]));
             }
 
             //EnemyInstances = new List<EnemyInstance>();
-            NewEnemyTypes = new List<EnemyType>();
-            IsSpriteRestricted = false;
-        }
+            this.NewEnemyTypes = new List<EnemyType>();
+            this.IsSpriteRestricted = isSpriteRestricted;
 
-        public SpriteBankRoomGroup (EStageID stage, Int32 patternAddressStart, Int32[] roomNums, Int32[] spriteBankRowsRestriction, Byte[] patternTableAddressesRestriction/*, params EnemyInstance[] enemyInstances*/)
-            : this(stage, patternAddressStart, roomNums)
-        {
-            SpriteBankRowsRestriction = new List<Int32>(spriteBankRowsRestriction);
-            PatternTableAddressesRestriction = new List<Byte>(patternTableAddressesRestriction);
-            IsSpriteRestricted = true;
+            if (null != spriteBankRowsRestriction)
+            {
+                this.SpriteBankRowsRestriction = new List<Int32>(spriteBankRowsRestriction);
+            }
+            else
+            {
+                this.SpriteBankRowsRestriction = new List<Int32>();
+            }
+
+            if (null != patternTableAddressesRestriction)
+            {
+                this.PatternTableAddressesRestriction = new List<Byte>(patternTableAddressesRestriction);
+            }
+            else
+            {
+                this.PatternTableAddressesRestriction = new List<Byte>();
+            }
         }
 
         public Boolean ContainsRoom(Int32 roomNum)
         {
-            foreach (Room room in Rooms)
+            foreach (Room room in this.Rooms)
             {
                 if (room.RoomNum == roomNum)
                 {

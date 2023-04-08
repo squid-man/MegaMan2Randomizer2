@@ -94,8 +94,8 @@ namespace MM2Randomizer.Randomizers
             const Int32 INTRO_LINE2_OFFSET = 0x036EBE;
             const Int32 INTRO_LINE2_MAXLENGTH = 31;
 
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetEntryAssembly();
-            Version appVersion = assembly.GetName().Version;
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetEntryAssembly() ?? throw new NullReferenceException(@"The entry point for the process is unmanaged code rather than a managed assembly");
+            Version appVersion = assembly.GetName().Version ?? throw new NullReferenceException(@"The assembly version cannot be null");
             String version = appVersion.ToString(2);
 
             String line = APP_NAME + version;
@@ -197,15 +197,18 @@ namespace MM2Randomizer.Randomizers
                         characterIndex++;
                     }
 
-                    characterIndex = 0;
-                    foreach (Char c in weaponName.ExtendedName)
+                    if (null != weaponName.ExtendedName)
                     {
-                        in_Patch.Add(
-                            WEAPON_GET_EXTENDED_NAME_ADDRESS + characterIndex,
-                            c.AsPrintCharacter(),
-                            String.Format("Extended Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)weaponIndex.ToBossIndex()).Name, characterIndex, c.ToString()));
+                        characterIndex = 0;
+                        foreach (Char c in weaponName.ExtendedName)
+                        {
+                            in_Patch.Add(
+                                WEAPON_GET_EXTENDED_NAME_ADDRESS + characterIndex,
+                                c.AsPrintCharacter(),
+                                String.Format("Extended Weapon Name {0} Char #{1}: {2}", ((EDmgVsBoss.Offset)weaponIndex.ToBossIndex()).Name, characterIndex, c.ToString()));
 
-                        characterIndex++;
+                            characterIndex++;
+                        }
                     }
                 }
                 else
@@ -248,7 +251,7 @@ namespace MM2Randomizer.Randomizers
                 { EWeaponIndex.Crash, WEAPON_GET_LETTERS_ADDRESS + 7},
             };
 
-            foreach (KeyValuePair<EWeaponIndex, char> weaponLetter in weaponLetters)
+            foreach (KeyValuePair<EWeaponIndex, Char> weaponLetter in weaponLetters)
             {
                 in_Patch.Add(
                     weaponGetLetterAddress[weaponLetter.Key],

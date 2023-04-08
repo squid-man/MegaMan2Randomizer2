@@ -4,7 +4,7 @@ namespace MM2Randomizer.Extensions
 {
     public static class ArrayExtensions
     {
-        public static UInt32[] ToUInt32Array(this Byte[] in_Array)
+        public static UInt32[]? ToUInt32Array(this Byte[]? in_Array)
         {
             if (null == in_Array)
             {

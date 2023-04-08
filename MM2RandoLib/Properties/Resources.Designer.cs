@@ -19,10 +19,10 @@ namespace MM2Randomizer.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,9 +36,9 @@ namespace MM2Randomizer.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (Object.ReferenceEquals(resourceMan, null)) {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MM2RandoLib.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
@@ -51,7 +51,7 @@ namespace MM2Randomizer.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,7 +61,7 @@ namespace MM2Randomizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to # Also randomize the &quot;Dr. WILY&quot;?
+        ///   Looks up a localized string similar to # Also randomize the &quot;Dr. WILY&quot;?
         ///# DR. COSSACK
         ///# DR. LIGHT
         ///# MR. X
@@ -126,47 +126,58 @@ namespace MM2Randomizer.Properties {
         ///CRYSTAL
         ///NAPALM
         ///STONE
-        ///C [rest of String was truncated]&quot;;.
+        ///C [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String bossnames {
+        internal static string bossnames {
             get {
                 return ResourceManager.GetString("bossnames", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
+        ///&lt;!--
+        ///Name must not exceed 13 characters
+        ///--&gt;
         ///&lt;CompanyNameSet&gt;
+        ///    &lt;!-- # --&gt;
         ///    &lt;CompanyName&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
-        ///        &lt;Name&gt;HUDSON SOFT&lt;/Name&gt;
+        ///        &lt;Name&gt;0verflow&lt;/Name&gt;
         ///    &lt;/CompanyName&gt;
+        ///
         ///    &lt;CompanyName&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
-        ///        &lt;Name&gt;NINTENDO&lt;/Name&gt;
+        ///        &lt;Name&gt;1up Studio&lt;/Name&gt;
         ///    &lt;/CompanyName&gt;
+        ///
         ///    &lt;CompanyName&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
-        ///        &lt;Name&gt;TREASURE&lt;/Name&gt;
+        ///        &lt;Name&gt;2K Games&lt;/Name&gt;
         ///    &lt;/CompanyName&gt;
+        ///
         ///    &lt;CompanyName&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
-        ///        &lt;Name&gt;KONAMI&lt;/Name&gt;
-        ///    &lt;/CompanyName&gt;
-        ///    &lt;CompanyName&gt;
-        ///        &lt;Enabled&gt;tr [rest of String was truncated]&quot;;.
+        ///        &lt;Name&gt;3D Re [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String CompanyNameConfig {
+        internal static string CompanyNameConfig {
             get {
                 return ResourceManager.GetString("CompanyNameConfig", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
+        ///&lt;!--
+        ///Prefix must not exceed 3 characters
+        ///Name must not exceed 25 characters
+        ///--&gt;
         ///&lt;CountryNameSet&gt;
+        ///    &lt;!--
+        ///    Real Countries
+        ///    --&gt;
         ///    &lt;CountryName&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
         ///        &lt;Name&gt;AFGHANISTAN&lt;/Name&gt;
@@ -179,21 +190,16 @@ namespace MM2Randomizer.Properties {
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
         ///        &lt;Name&gt;ALGERIA&lt;/Name&gt;
         ///    &lt;/CountryName&gt;
-        ///    &lt;CountryName&gt;
-        ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
-        ///        &lt;Name&gt;ANDORRA&lt;/Name&gt;
-        ///    &lt;/CountryName&gt;
-        ///    &lt;CountryName&gt;
-        ///        &lt;Enabled&gt;tru [rest of String was truncated]&quot;;.
+        ///    &lt;CountryName&gt;        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String CountryNameConfig {
+        internal static string CountryNameConfig {
             get {
                 return ResourceManager.GetString("CountryNameConfig", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;CreditTextSet&gt;
         ///    &lt;CreditText&gt;
@@ -209,20 +215,20 @@ namespace MM2Randomizer.Properties {
         ///    &lt;CreditText&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
         ///        &lt;Value&gt;61&lt;/Value&gt;
-        ///        &lt;Text&gt;f&lt;/Text&gt;
+        ///        &lt;Text&gt;`&lt;/Text&gt;
         ///    &lt;/CreditText&gt;
         ///    &lt;CreditText&gt;
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
-        ///        &lt;Valu [rest of String was truncated]&quot;;.
+        ///        &lt;Valu [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String CreditTextConfig {
+        internal static string CreditTextConfig {
             get {
                 return ResourceManager.GetString("CreditTextConfig", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;EnemySet&gt;
         ///    &lt;!--
@@ -239,16 +245,16 @@ namespace MM2Randomizer.Properties {
         ///        &lt;PositionY&gt;10&lt;/PositionY&gt;
         ///        &lt;PositionAir&gt;24&lt;/PositionAir&gt;
         ///        &lt;PositionGround&gt;A4&lt;/PositionGround&gt;
-        ///        &lt;FaceRight&gt;false&lt;/Fa [rest of String was truncated]&quot;;.
+        ///        &lt;FaceRight&gt;false&lt;/Fa [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String EnemySet {
+        internal static string EnemySet {
             get {
                 return ResourceManager.GetString("EnemySet", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;EnemyWeaknessSet&gt;
         ///    &lt;EnemyWeakness&gt;
@@ -267,38 +273,41 @@ namespace MM2Randomizer.Properties {
         ///    &lt;EnemyWeakness&gt;
         ///        &lt;Enabled&gt;false&lt;/Enabled&gt;
         ///        &lt;Name&gt;Shrink (From Angler)&lt;/Name&gt;
-        ///         [rest of String was truncated]&quot;;.
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String EnemyWeaknessSet {
+        internal static string EnemyWeaknessSet {
             get {
                 return ResourceManager.GetString("EnemyWeaknessSet", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;IntroStorySet&gt;
-        ///    &lt;!-- Castlevania III: Dracula&apos;s Curse --&gt;
+        ///    &lt;!-- Test --&gt;
         ///    &lt;IntroStory&gt;
-        ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        ///        &lt;Enabled&gt;false&lt;/Enabled&gt;
+        ///        &lt;Title&gt;Test&lt;/Title&gt;
         ///        &lt;Lines&gt;
-        ///            &lt;Line&gt;DURING 15TH CENTURY EUROPE &lt;/Line&gt;
-        ///            &lt;Line&gt;  THERE LIVED A PERSON     &lt;/Line&gt;
-        ///            &lt;Line&gt;    NAMED DRACULA. HE      &lt;/Line&gt;
-        ///            &lt;Line&gt;PRACTICED SORCERY IN ORDER &lt;/Line&gt;
-        ///            &lt;Line&gt;   TO CREATE A BAD WORLD   &lt;/Line&gt;
-        ///            &lt;Line&gt;     FILLED WITH EVIL.     &lt;/Line&gt;
-        ///            &lt; [rest of String was truncated]&quot;;.
+        ///            &lt;Line&gt;`1234567890-=&lt;/Line&gt;
+        ///            &lt;Line&gt;~!@#$%^&amp;amp;*()_+&lt;/Line&gt;
+        ///            &lt;Line&gt;qwertyuiop[]\&lt;/Line&gt;
+        ///            &lt;Line&gt;QWERTYUIOP{}|&lt;/Line&gt;
+        ///            &lt;Line&gt;asdfghjkl;&apos;&lt;/Line&gt;
+        ///            &lt;Line&gt;ASDFGHJKL:&quot;&lt;/Line&gt;
+        ///            &lt;Line&gt;zxcvbnm,./&lt;/Line&gt;
+        ///            &lt;Line&gt;ZXCVBNM&amp;lt;&amp;gt;?&lt;/Line&gt;
+        ///            &lt;Li [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String IntroStoryConfig {
+        internal static string IntroStoryConfig {
             get {
                 return ResourceManager.GetString("IntroStoryConfig", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to {
+        ///   Looks up a localized string similar to {
         ///  &quot;LevelComponents&quot;: [
         ///      {
         ///        &quot;Name&quot;: &quot;flash_room0_screen2&quot;,
@@ -314,7 +323,7 @@ namespace MM2Randomizer.Properties {
         ///              &quot;59&quot;,&quot;23&quot;,&quot;2D&quot;,&quot;10&quot;,&quot;03&quot;,&quot;17&quot;,&quot;09&quot;,&quot;71&quot;, 
         ///              &quot;61&quot;,&quot;29&quot;,&quot;22&quot;,&quot;0D&quot;,&quot;03&quot;,&quot;33&quot;,&quot;0B [rest of stri....
         /// </summary>
-        public static String level_components {
+        internal static string level_components {
             get {
                 return ResourceManager.GetString("level_components", resourceCulture);
             }
@@ -323,68 +332,38 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static Byte[] mm2rng_musicpatch {
+        internal static byte[] mm2rng_musicpatch {
             get {
-                Object obj = ResourceManager.GetObject("mm2rng_musicpatch", resourceCulture);
-                return ((Byte[])(obj));
+                object obj = ResourceManager.GetObject("mm2rng_musicpatch", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static Byte[] mm2rng_prepatch {
+        internal static byte[] mm2rng_prepatch {
             get {
-                Object obj = ResourceManager.GetObject("mm2rng_prepatch", resourceCulture);
-                return ((Byte[])(obj));
+                object obj = ResourceManager.GetObject("mm2rng_prepatch", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized String similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;!--
         ///    Mega Man 2 Sound Track Config File
         ///
-        ///    SongName = Any String to identify the song, such as the name and what game/hack it comes from
-        ///    OriginalStartAddress = The address of the first Byte of the song&apos;s header (value 0F) in the song&apos;s original ROM
-        ///    SongData = Stream of bytes representing the song, each Byte a pair of adjacent characters in the String
+        ///    SongName = Any string to identify the song, such as the name and what game/hack it comes from
+        ///    OriginalStartAddress = The address of the first byte of the song&apos;s header (value 0F) in the song&apos;s original ROM
+        ///    SongData = Stream of bytes representing the song, each byte a pair of adjacent characters in the string
         ///
-        ///    The 11 songs chosen for stages should not exceed 9438 (0x24DE) total bytes. Don&apos;t make too [rest of String was truncated]&quot;;.
+        ///    The 11 songs chosen for stages should not exceed 9438 (0x24DE) total bytes. Don&apos;t make too [rest of string was truncated]&quot;;.
         /// </summary>
-        public static String SoundTrackConfiguration {
+        internal static string SoundTrackConfiguration {
             get {
                 return ResourceManager.GetString("SoundTrackConfiguration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static Byte[] SpriteSwap_Bass {
-            get {
-                Object obj = ResourceManager.GetObject("SpriteSwap_Bass", resourceCulture);
-                return ((Byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static Byte[] SpriteSwap_Proto {
-            get {
-                Object obj = ResourceManager.GetObject("SpriteSwap_Proto", resourceCulture);
-                return ((Byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static Byte[] SpriteSwap_Roll {
-            get {
-                Object obj = ResourceManager.GetObject("SpriteSwap_Roll", resourceCulture);
-                return ((Byte[])(obj));
             }
         }
     }

@@ -24,7 +24,7 @@ namespace MM2Randomizer.Random
                         BindingFlags.NonPublic | BindingFlags.Instance,
                         null,
                         new Object[] { in_SeedString },
-                        null) as ISeed;
+                        null) as ISeed ?? throw new NullReferenceException(@"Unable to create instance of DefaultSeed");
                 }
 
                 case GeneratorType.MT19937:
@@ -34,7 +34,7 @@ namespace MM2Randomizer.Random
                         BindingFlags.NonPublic | BindingFlags.Instance,
                         null,
                         new Object[] { in_SeedString },
-                        null) as ISeed;
+                        null) as ISeed ?? throw new NullReferenceException(@"Unable to create instance of MT19937Seed");
                 }
 
                 default:
@@ -54,12 +54,12 @@ namespace MM2Randomizer.Random
             {
                 case GeneratorType.Default:
                 {
-                    return Activator.CreateInstance(typeof(DefaultSeed), true) as ISeed;
+                    return Activator.CreateInstance(typeof(DefaultSeed), true) as ISeed ?? throw new NullReferenceException(@"Unable to create instance of DefaultSeed"); ;
                 }
 
                 case GeneratorType.MT19937:
                 {
-                    return Activator.CreateInstance(typeof(MT19937Seed), true) as ISeed;
+                    return Activator.CreateInstance(typeof(MT19937Seed), true) as ISeed ?? throw new NullReferenceException(@"Unable to create instance of MT19937Seed"); ;
                 }
 
                 default:

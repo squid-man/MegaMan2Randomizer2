@@ -11,7 +11,7 @@ namespace MM2Randomizer
         /// <summary>
         /// The name of the weapon.
         /// </summary>
-        public String Name { get; set; }
+        public String? Name { get; set; }
 
         /// <summary>
         /// The unique ID of the weapon, which is referred to by the rest of the ROM.
@@ -31,7 +31,7 @@ namespace MM2Randomizer
         ///   Address + 6: Metal
         ///   Address + 7: Clash
         /// </summary>
-        public EDmgVsBoss Address { get; set; }
+        public EDmgVsBoss? Address { get; set; }
 
         /// <summary>
         /// The damage values used by this weapon against each Robot Master.  They will be
@@ -45,7 +45,7 @@ namespace MM2Randomizer
         ///   [6] = Metal
         ///   [7] = Clash
         /// </summary>
-        public Int32[] RobotMasters { get; set; }
+        public Int32[]? RobotMasters { get; set; }
 
 
     }

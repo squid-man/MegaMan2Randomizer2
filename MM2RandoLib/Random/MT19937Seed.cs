@@ -25,15 +25,19 @@ namespace MM2Randomizer.Random
                 throw new ArgumentNullException(nameof(in_SeedString));
             }
 
+            this.mSeedString = in_SeedString;
+
             Byte[] seedStringArray = Encoding.ASCII.GetBytes(in_SeedString);
             Byte[] hashArray = MT19937Seed.mSha512.ComputeHash(seedStringArray);
 
-            MT19937Generator random = new MT19937Generator(hashArray.ToUInt32Array());
-            String alpha26Seed = in_SeedString.ToUInt64Hash().ToAlphaBase26();
+            UInt32[]? seed = hashArray.ToUInt32Array();
+            this.mSeed = seed;
 
-            this.mRandom = random;
+            String alpha26Seed = in_SeedString.ToUInt64Hash().ToAlphaBase26();
             this.mSeedAlphaBase26 = alpha26Seed;
-            this.mSeedString = in_SeedString;
+
+            MT19937Generator random = new MT19937Generator(seed);
+            this.mRandom = random;
         }
 
         private MT19937Seed()
@@ -51,16 +55,19 @@ namespace MM2Randomizer.Random
             }
 
             String seedString = sb.ToString();
+            this.mSeedString = seedString;
 
             Byte[] seedStringArray = Encoding.ASCII.GetBytes(seedString);
             Byte[] hashArray = MT19937Seed.mSha512.ComputeHash(seedStringArray);
 
-            MT19937Generator random = new MT19937Generator(hashArray.ToUInt32Array());
-            String alpha26Seed = seedString.ToUInt64Hash().ToAlphaBase26();
+            UInt32[]? seed = hashArray.ToUInt32Array();
+            this.mSeed = seed;
 
-            this.mRandom = random;
+            String alpha26Seed = seedString.ToUInt64Hash().ToAlphaBase26();
             this.mSeedAlphaBase26 = alpha26Seed;
-            this.mSeedString = seedString;
+
+            MT19937Generator random = new MT19937Generator(seed);
+            this.mRandom = random;
         }
 
 
@@ -89,6 +96,12 @@ namespace MM2Randomizer.Random
         //
         // Public Methods
         //
+
+        public void Reset()
+        {
+            MT19937Generator random = new MT19937Generator(this.mSeed);
+            this.mRandom = random;
+        }
 
         public void Next()
         {
@@ -155,13 +168,21 @@ namespace MM2Randomizer.Random
         }
 
 
+        // IEnumerator Methods
+        public Object? NextArrayElement(Array in_Array)
+        {
+            Int32 count = in_Array.Length;
+            Int32 index = this.mRandom.Next(count);
+            return in_Array.GetValue(index);
+        }
+
+
         // IEnumerable Methods
         public T NextElement<T>(IEnumerable<T> in_Elements)
         {
             Int32 count = in_Elements.Count();
             Int32 index = this.mRandom.Next(count);
             return in_Elements.ElementAt(index);
-
         }
 
         public IList<T> Shuffle<T>(IEnumerable<T> in_List)
@@ -177,6 +198,7 @@ namespace MM2Randomizer.Random
         private MT19937Generator mRandom;
         private String mSeedAlphaBase26;
         private String mSeedString;
+        private UInt32[]? mSeed;
 
         private static readonly SHA512 mSha512 = SHA512.Create();
     }

@@ -56,7 +56,7 @@ namespace MM2Randomizer.Enums
 
         public EWeaponIndex ToWeaponIndex()
         {
-            if (mBossToWeaponMap.TryGetValue(this, out EWeaponIndex weaponIndex))
+            if (mBossToWeaponMap.TryGetValue(this, out EWeaponIndex? weaponIndex))
             {
                 return weaponIndex;
             }
