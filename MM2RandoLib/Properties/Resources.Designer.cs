@@ -350,6 +350,16 @@ namespace MM2Randomizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mm2scrollfix {
+            get {
+                object obj = ResourceManager.GetObject("mm2scrollfix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;!--
