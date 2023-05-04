@@ -898,20 +898,8 @@ namespace MM2Randomizer.Utilities
         }
 
         /// <summary>
-        /// This disables delay scrolling by preventing the audio subsystem from running at certain times.
-        /// More details can be found here: http://www.yuko2ch.net/rockman/howtodelayscroll_eng.htm
-        /// </summary>
-        /// <param name="p"></param>
-        public static void DisableDelayScroll(Patch p)
-        {
-            p.Add((Int32)ESubroutineAddress.ChangeBankBNE, Opcode6502.NOP, "Disable the delayed audio processing branch");
-            p.Add((Int32)ESubroutineAddress.ChangeBankBNE + 1, Opcode6502.NOP, "The branch instruction is 2 bytes");
-        }
-
-
-        /// <summary>
-        /// This method will add a new subroutine to the ROM which triggers
-        /// enemy and item spawns in Wily 5.
+        /// This method will modify the game loop to spawn weapon energy
+        /// pickups in Wily 5.
         ///
         /// At 0x0E:816A (bank E, 0x3817A in the ROM), there is a CMP
         /// instruction to value 0x0C (CMP #0x0C). This is checking if the
@@ -919,131 +907,26 @@ namespace MM2Randomizer.Utilities
         /// it jumps to a special game loop at 0x0E:8223 (bank E, 0x38233
         /// in the ROM), which has a special setup routine for the teleport
         /// room, otherwise, it jumps to 0x0E:8171, which is the normal game loop.
-        /// The special Wily 5 game loop does not include the jump instruction
-        /// to the subroutine that spawns items or enemies.
+        /// The special Wily 5 game loop does not include the call instruction to 
+        /// the subroutine that spawns items or enemies, but the loop itself is 
+        /// otherwise identical to the base game loop.
         ///
-        /// This method will insert a new special Wily 5 game loop at the end
-        /// of the data in bank E, which does include the item spawn routine,
-        /// so that weapon energy pickups will spawn.
-        ///
-        /// The jump to the special Wily 5 routine will be changed from
-        /// 0x0E:8223 to 0x0E:BD24 (bank E, 0x3BD37 in the ROM).
-        ///
-        /// The new special Wily 5 routine will have the jump to the item spawn
-        /// routine at 0x0E:D658.
+        /// This method changes the jump to 0x0E:8223 to call the subroutine 
+        /// that sets up the teleporters. Because of the convenient ordering 
+        /// of instructions, this function will return directly to 0x0E:8171
+        /// - the start of the normal game loop - exactly as desired. As a 
+        /// result, 0x0E:8223-8267 is now unused space that may be otherwise used.
         /// </summary>
         public static void AddWily5SubroutineWithItemSpawns(Patch p)
         {
-            // This is the new address of the new special Wily 5 game loop,
-            // to be placed at 0E:0x816F (bank E, 0x3817F in the ROM)
-            Byte[] newJumpAddressFor0x816F = new Byte[]
+            Byte[] newJsrFor0x816E = new Byte[]
             {
-                0x24, 0xBD
+                Opcode6502.JSR, 0xDE, 0x81
             };
 
-            // This new subroutine exists at the end of the bank.
-            // 0x0E:BD24 (bank E, 0x3BD34 in the ROM)
-            Byte[] newWily5GameLoopSubroutine = new Byte[]
-            {
-                // This is the jump instruction to the setup routine for the
-                // Wily 5 teleporter room
-                Opcode6502.JSR, 0xDE, 0x81,
+            const Int32 AddressOfInitialJump = 0x3817E;
 
-                // Load accumulator 0xAD
-                Opcode6502.LDA_ZeroPage, 0xAD,
-
-                // Branch on equal to three bytes ahead
-                Opcode6502.BEQ, 0x03,
-
-                // Jump to subroutine 0x82D5
-                Opcode6502.JSR, 0xD5, 0x82,
-
-                // Load accumulator 0x27
-                Opcode6502.LDA_ZeroPage, 0x27,
-
-                // Bitwise AND accumulator & 0x08
-                Opcode6502.AND, 0x08,
-
-                // Branch on equal to three bytes ahead
-                Opcode6502.BEQ, 0x03,
-
-                // Jump to subroutine 0xC573
-                Opcode6502.JSR, 0x73, 0xC5,
-
-                // Jump to subroutine 0xCB8C
-                Opcode6502.JSR, 0x8C, 0xCB,
-
-                // Jump to subroutine 0x84EE
-                Opcode6502.JSR, 0xEE, 0x84,
-
-                // Jump to subroutine 0xDCD0
-                Opcode6502.JSR, 0xD0, 0xDC,
-
-                // Jump to subroutine 0xD658 (this is the item spawn routine)
-                Opcode6502.JSR, 0x58, 0xD6,
-
-                // Jump to subroutine 0xC5A9
-                Opcode6502.JSR, 0xA9, 0xC5,
-
-                // Jump to subroutine 0x925B
-                Opcode6502.JSR, 0x5B, 0x92,
-
-                // Jump to subroutine 0xCC77 (rendering subroutine)
-                Opcode6502.JSR, 0x77, 0xCC,
-
-                // Load accumulator 0x37
-                Opcode6502.LDA_ZeroPage, 0x37,
-
-                // Break on equal to three bytes ahead
-                Opcode6502.BEQ, 0x03,
-
-                // Jump to subroutine 0x8278
-                Opcode6502.JSR, 0x78, 0x82,
-
-                // Load accumulator 0xFB
-                Opcode6502.LDA_ZeroPage, 0xFB,
-
-                // Break on equal fifteen bytes ahead
-                Opcode6502.BEQ, 0x0F,
-
-                // Increment memory 0xFC
-                Opcode6502.INC, 0xFC,
-
-                // Compare accumulator 0xFC
-                Opcode6502.CMP, 0xFC,
-
-                // Branch on equal to two bytes ahead
-                Opcode6502.BEQ, 0x02,
-
-                // Branch on carry set seven bytes ahead
-                Opcode6502.BCS, 0x07,
-
-                // Jump to subroutine 0xC0D7 (rendering subroutine)
-                Opcode6502.JSR, 0xD7, 0xC0,
-
-                // Load accumulator #0x00
-                Opcode6502.LDA_Immediate, 0x00,
-
-                // Store accumulator 0xFC
-                Opcode6502.STA_ZeroPage, 0xFC,
-
-                // Jump to subroutine 0xC07F (rendering subroutine)
-                Opcode6502.JSR, 0x7F, 0xC0,
-
-                // Jump back to the beginning of this subroutine
-                // 
-                // NOTE: This is the instruction DIRECTLY AFTER the jump to the
-                // special teleporter room setup
-                //
-                // 0x0E:BD27 (bank E, 0x3BD37 in the ROM)
-                Opcode6502.JMP_Absolute, 0x27, 0xBD
-            };
-
-            const Int32 AddressOfInitialJump = 0x3817F;
-            const Int32 AddressOfNewGameLoop = 0x3BD34;
-
-            p.Add(AddressOfInitialJump, newJumpAddressFor0x816F);
-            p.Add(AddressOfNewGameLoop, newWily5GameLoopSubroutine);
+            p.Add(AddressOfInitialJump, newJsrFor0x816E);
         }
 
         public static void AddLargeWeaponEnergyRefillPickupsToWily5TeleporterRoom(Patch p)
