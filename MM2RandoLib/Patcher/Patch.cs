@@ -162,7 +162,7 @@ namespace MM2Randomizer.Patcher
 
                     if (in_RebasePatch)
                     {
-                        if (offset + recordSize > 0x7c010)
+                        if (offset + recordSize > 0x40010)
                             throw new ArgumentException(@"The IPS patch contains unrebasable changes");
 
                         if (offset >= 0x3c010)
