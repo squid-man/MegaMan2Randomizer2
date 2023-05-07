@@ -61,14 +61,14 @@ namespace MM2Randomizer.Randomizers
             // Create a copy of the default weapon order table to be used by teleporter function
             // This is needed to fix teleporters breaking from the new weapon order.
             // Unused space at end of bank
-            in_Patch.Add(0x03f310, (Byte)ERMWeaponValueBit.HeatMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f311, (Byte)ERMWeaponValueBit.AirMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f312, (Byte)ERMWeaponValueBit.WoodMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f313, (Byte)ERMWeaponValueBit.BubbleMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f314, (Byte)ERMWeaponValueBit.QuickMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f315, (Byte)ERMWeaponValueBit.FlashMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f316, (Byte)ERMWeaponValueBit.MetalMan, "Custom Array of Default Weapon Order");
-            in_Patch.Add(0x03f317, (Byte)ERMWeaponValueBit.CrashMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f310, (Byte)ERMWeaponValueBit.HeatMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f311, (Byte)ERMWeaponValueBit.AirMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f312, (Byte)ERMWeaponValueBit.WoodMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f313, (Byte)ERMWeaponValueBit.BubbleMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f314, (Byte)ERMWeaponValueBit.QuickMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f315, (Byte)ERMWeaponValueBit.FlashMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f316, (Byte)ERMWeaponValueBit.MetalMan, "Custom Array of Default Weapon Order");
+            in_Patch.Add(0x07f317, (Byte)ERMWeaponValueBit.CrashMan, "Custom Array of Default Weapon Order");
 
             // Change function to call $f300 instead of $c279 when looking up defeated refight boss to
             // get our default weapon table, fixing the teleporter softlock
