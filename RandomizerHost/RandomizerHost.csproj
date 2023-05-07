@@ -5,18 +5,18 @@
     <AssemblyName>RandomizerHost</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
     <PackageId>Mega Man 2 Randomizer</PackageId>
-    <Authors>Duckfist, Squidman, Dagit</Authors>
+    <Authors>Duckfist, Squidman, Dagit, Charlieboy</Authors>
     <Company />
     <Product>Mega Man 2 Randomizer</Product>
-    <Version>0.6.4</Version>
+    <Version>0.6.5</Version>
     <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
     <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.4.*</AssemblyVersion>
+    <AssemblyVersion>0.6.5.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
     <StartupObject>RandomizerHost.Program</StartupObject>
-    <FileVersion>0.6.4</FileVersion>
+    <FileVersion>0.6.5</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -26,11 +26,17 @@
     <None Remove="Assets\MegaMan2Randomizer.ico" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_AVGN.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BassReloaded.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BatMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BreakMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CasualTom.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Charlieboy.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CharlieboyAlt.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CutMansBadScissorsDay.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackBelt.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackMage.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyFighter.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyWhiteMage.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Guard.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_HatsuneMiku.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_JustinBailey.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_LuckyMan.png" />

@@ -18,20 +18,20 @@ namespace MM2Randomizer.Enums
         // Metal Man    0x03C28F   64
         // Crash Man    0x03C290   128
 
-        HeatMan = 0x07C289,
+        HeatMan = 0x03C289,
 
-        AirMan = 0x07C28A,
+        AirMan = 0x03C28A,
 
-        WoodMan = 0x07C28B,
+        WoodMan = 0x03C28B,
 
-        BubbleMan = 0x07C28C,
+        BubbleMan = 0x03C28C,
 
-        QuickMan = 0x07C28D,
+        QuickMan = 0x03C28D,
 
-        FlashMan = 0x07C28E,
+        FlashMan = 0x03C28E,
 
-        MetalMan = 0x07C28F,
+        MetalMan = 0x03C28F,
 
-        CrashMan = 0x07C290,
+        CrashMan = 0x03C290,
     }
 }

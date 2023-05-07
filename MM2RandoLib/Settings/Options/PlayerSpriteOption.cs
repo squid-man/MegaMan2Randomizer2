@@ -12,6 +12,8 @@ namespace MM2Randomizer
         Bass,
         [Description("Bass Reloaded")]
         BassReloaded,
+        [Description("Batman")]
+        BatMan,
         [Description("Break Man")]
         BreakMan,
         [Description("Byte (Blue)")]
@@ -22,12 +24,22 @@ namespace MM2Randomizer
         CasualTom,
         [Description("Charlieboy")]
         Charlieboy,
+        [Description("Charlieboy Alt")]
+        CharlieboyAlt,
         [Description("Cut Man's Bad Scissors Day")]
         CutMansBadScissorsDay,
-        [Description("Fighter (Red)")]
+        [Description("FF Black Belt")]
+        FinalFantasyBlackBelt,
+        [Description("FF Black Mage")]
+        FinalFantasyBlackMage,
+        [Description("FF Fighter (Red)")]
         FinalFantasyFighter,
-        [Description("Fighter (Blue)")]
+        [Description("FF Fighter (Blue)")]
         FinalFantasyFighterBlue,
+        [Description("FF White Mage")]
+        FinalFantasyWhiteMage,
+        [Description("Guard")]
+        Guard,
         [Description("Hatsune Miku")]
         HatsuneMiku,
         [Description("Java Island Indonesia")]

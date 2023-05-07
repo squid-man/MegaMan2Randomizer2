@@ -27,6 +27,16 @@ namespace MM2Randomizer.Resources.SpritePatches
         // Constants
         //
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_BOSSDOORS = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.BossDoors_CB,
+            Properties.EnvironmentSpriteResources.BossDoors_CB2,
+            Properties.EnvironmentSpriteResources.BossDoors_DD,
+            Properties.EnvironmentSpriteResources.BossDoors_DK,
+            Properties.EnvironmentSpriteResources.BossDoors_Link,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_DESTRUCTIBLE_BLOCK = new List<Byte[]?>()
         {
             null,
@@ -54,6 +64,20 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.DragonBlock_SuperMarioBros2V2,
             Properties.EnvironmentSpriteResources.DragonBlock_SuperMarioBrosBrick,
             Properties.EnvironmentSpriteResources.DragonBlock_WB,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_LADDERS = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.Ladders_CB,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan1,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan1_2,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan3,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan4,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan4_2,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan5,
+            Properties.EnvironmentSpriteResources.Ladders_MegaMan6,
+            Properties.EnvironmentSpriteResources.Ladders_Vine,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_SPIKES = new List<Byte[]?>()
@@ -85,6 +109,13 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Block_Clear,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_CutmanBadScissorsDay,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Platform,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL = new List<Byte[]?>()
         {
             null,
@@ -92,6 +123,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_CBv2,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_CoinfallV1,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_CoinfallV2,
+            Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_FinalFantasy,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_None,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_QBlock,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_Rain,
@@ -136,6 +168,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Background_DDBrick,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Background_FinalMix,
+            Properties.EnvironmentSpriteResources.StageTile_FlashMan_Background_Guard,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_FLASH_MAN_BLOCK = new List<Byte[]?>()
@@ -172,6 +205,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_BACKGROUND = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Background_CutmansBadScissorsDay,
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Background_None,
         };
 
@@ -187,6 +221,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CB,
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CB2,
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CB3,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Conveyor_CutmansBadScissorsDay,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BACKGROUND = new List<Byte[]?>()
@@ -199,6 +234,62 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_QuickMan_Block_HeatBrick,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY1_CLIMB = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily1_Climb_Checkered,
+            Properties.EnvironmentSpriteResources.StageTile_Wily1_Climb_DDBricks,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY1_FLOOR = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily1_Floor_Checkered,
+            Properties.EnvironmentSpriteResources.StageTile_Wily1_Floor_DDBricks,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_ANIMATEDTILE = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay2,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyTV,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_FLOOR = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Floor_Waffle,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Floor_Pico,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_AdventureIsland,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_Snake,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Background_DarkRoom,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Background_Cog,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan1,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan1_2,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan1_3,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan3,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan4,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan4_2,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan5,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan6,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_BLOCK = new List<Byte[]?>()
@@ -216,12 +307,14 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_WoodMan_CaveGround_FinalFantasy,
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_CaveGround_Sand,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_WoodMan_Grass_FinalFantasy,
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_Grass_SuperMarioBros2V1,
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_Grass_SuperMarioBros2V1,
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_Grass_SuperMarioBros3V1,
@@ -231,10 +324,13 @@ namespace MM2Randomizer.Resources.SpritePatches
 
         private static readonly List<List<Byte[]?>> ENVIRONMENT_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
+            ENVIRONMENT_SPRITE_LIST_BOSSDOORS,
             ENVIRONMENT_SPRITE_LIST_DESTRUCTIBLE_BLOCK,
             ENVIRONMENT_SPRITE_LIST_DRAGON_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_LADDERS,
             ENVIRONMENT_SPRITE_LIST_SPIKES,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_DAYLIGHT_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE,
@@ -251,6 +347,13 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_CONVEYOR,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY1_CLIMB,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY1_FLOOR,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_ANIMATEDTILE,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_FLOOR,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS,

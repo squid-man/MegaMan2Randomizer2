@@ -112,7 +112,7 @@ namespace MM2Randomizer.Patcher
         /// </summary>
         /// <param name="romname"></param>
         /// <param name="patchBytes"></param>
-        public void ApplyIPSPatch(String in_FileName, Byte[] in_IpsPatch, Boolean in_RebasePatch = true)
+        public void ApplyIPSPatch(String in_FileName, Byte[] in_IpsPatch)
         {
             if (in_IpsPatch.Length < 5)
             {
@@ -159,18 +159,6 @@ namespace MM2Randomizer.Patcher
                     Byte recordLowByte = in_IpsPatch[currentIndex++];
 
                     Int32 recordSize = (0x100 * recordHighByte) + recordLowByte;
-
-                    if (in_RebasePatch)
-                    {
-                        if (offset + recordSize > 0x40010)
-                            throw new ArgumentException(@"The IPS patch contains unrebasable changes");
-
-                        if (offset >= 0x3c010)
-                            offset += 0x40000;
-                        else if (offset + recordSize > 0x3c010)
-                            // If any such patches appear this will need to be implemented
-                            throw new NotImplementedException(@"Patches with changes that cross the bank $e/f boundary are not supported");
-                    }
 
                     // IPS Record
                     if (recordSize > 0)

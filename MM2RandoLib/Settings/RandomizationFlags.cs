@@ -162,7 +162,7 @@ namespace MM2Randomizer.Settings
         // Constants
         //
 
-        private const Int32 BITS_PER_FLAG_CHARACTER = 5;
+        private const Int32 BITS_PER_FLAG_CHARACTER = 6;
 
         private static readonly Dictionary<Byte, Char> FlagValueToAsciiCharacterLookup = new Dictionary<Byte, Char>()
         {

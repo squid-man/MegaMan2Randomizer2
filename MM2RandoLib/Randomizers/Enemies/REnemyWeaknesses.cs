@@ -10,14 +10,14 @@ namespace MM2Randomizer.Randomizers.Enemies
 {
     public class REnemyWeaknesses : IRandomizer
     {
-        private readonly static Int32 EnemyDamageAddressP = 0x07E9A8;
-        private readonly static Int32 EnemyDamageAddressH = 0x07EA24;
-        private readonly static Int32 EnemyDamageAddressA = 0x07EA9C;
-        private readonly static Int32 EnemyDamageAddressW = 0x07EB14;
-        private readonly static Int32 EnemyDamageAddressB = 0x07EB8C;
-        private readonly static Int32 EnemyDamageAddressQ = 0x07EC04;
-        private readonly static Int32 EnemyDamageAddressC = 0x07EC7C;
-        private readonly static Int32 EnemyDamageAddressM = 0x07ECF4;
+        private readonly static Int32 EnemyDamageAddressP = 0x03E9A8;
+        private readonly static Int32 EnemyDamageAddressH = 0x03EA24;
+        private readonly static Int32 EnemyDamageAddressA = 0x03EA9C;
+        private readonly static Int32 EnemyDamageAddressW = 0x03EB14;
+        private readonly static Int32 EnemyDamageAddressB = 0x03EB8C;
+        private readonly static Int32 EnemyDamageAddressQ = 0x03EC04;
+        private readonly static Int32 EnemyDamageAddressC = 0x03EC7C;
+        private readonly static Int32 EnemyDamageAddressM = 0x03ECF4;
 
         // NOTE: Will have to change these indices if enemies are added/removed from enemyweaknesses.csv!
         private readonly static Int32 EnemyIndexInShotArray_Friender = 8;

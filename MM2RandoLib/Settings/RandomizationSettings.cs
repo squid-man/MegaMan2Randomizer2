@@ -32,6 +32,8 @@ namespace MM2Randomizer.Settings
 
         public Boolean EnableSpoilerFreeMode { get; set; }
 
+        public Boolean SetTheme { get; set; }
+
 
 
         //
@@ -94,6 +96,7 @@ namespace MM2Randomizer.Settings
                 },
                 QualityOfLifeOption = new
                 {
+                    DisableWaterfall = this.QualityOfLifeOption.DisableWaterfall.NextValue(in_Seed),
                     DisableFlashingEffects = this.QualityOfLifeOption.DisableFlashingEffects.NextValue(in_Seed),
                     EnableUnderwaterLagReduction = this.QualityOfLifeOption.EnableUnderwaterLagReduction.NextValue(in_Seed),
                 },
@@ -185,6 +188,8 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.SpriteOption.RandomizeSpecialWeaponSprites.Value);
 
             // Quality of life options
+            flags.PushValue(this.QualityOfLifeOption.DisableWaterfall.Randomize);
+            flags.PushValue(this.QualityOfLifeOption.DisableWaterfall.Value);
             flags.PushValue(this.QualityOfLifeOption.DisableFlashingEffects.Randomize);
             flags.PushValue(this.QualityOfLifeOption.DisableFlashingEffects.Value);
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize);

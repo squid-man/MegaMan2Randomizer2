@@ -278,7 +278,7 @@ namespace MM2Randomizer.Randomizers
             //0x03D8F6 - 0x02, change to 0x06 for an interesting leaf shield pattern 20% of the time
             if (in_Seed.NextDouble() > 0.8)
             {
-                in_Patch.Add(0x07D8F6, 0x06, "Woodman Leaf Shield Pattern");
+                in_Patch.Add(0x03D8F6, 0x06, "Woodman Leaf Shield Pattern");
             }
 
             //0x03B855 - Leaf fall speed(sort of ?) 0x20.
@@ -334,28 +334,28 @@ namespace MM2Randomizer.Randomizers
             ////0x03DA19 - X-Vel water gun, Int 0x04
             //bytes = new Byte[] { 0x02, 0x03, 0x04, 0x05, };
             //rInt = in_Seed.Next(bytes.Length);
-            //in_Patch.Add(0x07DA19, bytes[rInt], "Bubbleman X-Vel Water Gun, Int");
+            //in_Patch.Add(0x03DA19, bytes[rInt], "Bubbleman X-Vel Water Gun, Int");
 
             ////0x03DA1A - X-Vel water gun, Frac 0x40
             //bytes = new Byte[] { 0x40, 0x80, 0xC0, 0x00, };
             //rInt = in_Seed.Next(bytes.Length);
-            //in_Patch.Add(0x07DA1A, bytes[rInt], "Bubbleman X-Vel Water Gun, Frac");
+            //in_Patch.Add(0x03DA1A, bytes[rInt], "Bubbleman X-Vel Water Gun, Frac");
 
             //0x03DA25 - X-Vel bubble shot, Int 0x01
             Byte[] BUBBLEMAN_BUBBLE_LEAD_SHOT_X_VELOCITY_TABLE = { 0, 0, 1, 1, 2 };
-            in_Patch.Add(0x07DA25, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_X_VELOCITY_TABLE), "Bubbleman X-Vel Bubble, Int");
+            in_Patch.Add(0x03DA25, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_X_VELOCITY_TABLE), "Bubbleman X-Vel Bubble, Int");
 
             //0x03DA26 - X-Vel bubble shot, Frac 0x00
             Byte[] BUBBLEMAN_BUBBLE_LEAD_SHOT_X_VELOCITY_FRACTION_TABLE = { 128, 192, 255 };
-            in_Patch.Add(0x07DA26, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_X_VELOCITY_FRACTION_TABLE), "Bubbleman X-Vel Bubble, Frac");
+            in_Patch.Add(0x03DA26, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_X_VELOCITY_FRACTION_TABLE), "Bubbleman X-Vel Bubble, Frac");
 
             //0x03DA4D - Y-Vel bubble shot initial, Int (0x03)
             Byte[] BUBBLEMAN_BUBBLE_LEAD_SHOT_Y_VELOCITY_TABLE = { 2, 3, 4, 5 };
-            in_Patch.Add(0x07DA4D, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_Y_VELOCITY_TABLE), "Bubbleman Y-Vel Bubble Initial, Int");
+            in_Patch.Add(0x03DA4D, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_Y_VELOCITY_TABLE), "Bubbleman Y-Vel Bubble Initial, Int");
 
             //0x03DA4E - Y-Vel bubble shot initial, Frac (0x76)
             Byte[] BUBBLEMAN_BUBBLE_LEAD_SHOT_Y_VELOCITY_FRACTION_TABLE = { 0, 64, 128, 192 };
-            in_Patch.Add(0x07DA4E, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_Y_VELOCITY_FRACTION_TABLE), "Bubbleman Y-Vel Bubble Initial, Frac");
+            in_Patch.Add(0x03DA4E, in_Seed.NextElement(BUBBLEMAN_BUBBLE_LEAD_SHOT_Y_VELOCITY_FRACTION_TABLE), "Bubbleman Y-Vel Bubble Initial, Frac");
 
             //0x03B747 - Y-Vel bubble shot bounce, Int (0x03)
             Byte[] BUBBLEMAN_BUBBLE_LEAD_BOUNCE_Y_VELOCITY_TABLE = { 2, 3, 4, 5 };

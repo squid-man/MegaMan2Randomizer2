@@ -25,14 +25,14 @@ namespace MM2Randomizer.Enums
 
         public static Dictionary<Int32, EDmgVsEnemy> Addresses { get; }
 
-        public static readonly EDmgVsEnemy DamageP = new(EWeaponIndex.Buster, 0x07E9A8, "Buster");
-        public static readonly EDmgVsEnemy DamageH = new(EWeaponIndex.Heat, 0x07EA24, "Atomic Fire");
-        public static readonly EDmgVsEnemy DamageA = new(EWeaponIndex.Air, 0x07EA9C, "Air Shooter");
-        public static readonly EDmgVsEnemy DamageW = new(EWeaponIndex.Wood, 0x07EB14, "Leaf Shield");
-        public static readonly EDmgVsEnemy DamageB = new(EWeaponIndex.Bubble, 0x07EB8C, "Bubble Lead");
-        public static readonly EDmgVsEnemy DamageQ = new(EWeaponIndex.Quick, 0x07EC04, "Quick Boomerang");
-        public static readonly EDmgVsEnemy DamageM = new(EWeaponIndex.Metal, 0x07ECF4, "Metal Blade");
-        public static readonly EDmgVsEnemy DamageC = new(EWeaponIndex.Crash, 0x07EC7C, "Crash Bomber");
+        public static readonly EDmgVsEnemy DamageP = new(EWeaponIndex.Buster, 0x03E9A8, "Buster");
+        public static readonly EDmgVsEnemy DamageH = new(EWeaponIndex.Heat, 0x03EA24, "Atomic Fire");
+        public static readonly EDmgVsEnemy DamageA = new(EWeaponIndex.Air, 0x03EA9C, "Air Shooter");
+        public static readonly EDmgVsEnemy DamageW = new(EWeaponIndex.Wood, 0x03EB14, "Leaf Shield");
+        public static readonly EDmgVsEnemy DamageB = new(EWeaponIndex.Bubble, 0x03EB8C, "Bubble Lead");
+        public static readonly EDmgVsEnemy DamageQ = new(EWeaponIndex.Quick, 0x03EC04, "Quick Boomerang");
+        public static readonly EDmgVsEnemy DamageM = new(EWeaponIndex.Metal, 0x03ECF4, "Metal Blade");
+        public static readonly EDmgVsEnemy DamageC = new(EWeaponIndex.Crash, 0x03EC7C, "Crash Bomber");
 
         static EDmgVsEnemy()
         {
