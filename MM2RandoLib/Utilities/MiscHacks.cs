@@ -121,8 +121,8 @@ namespace MM2Randomizer.Utilities
         /// </summary>
         public static void SetETankKeep(Patch p)
         {
-            p.Add(0x03C1CC, 0xEA, "Disable ETank clear on Game Over 1");
-            p.Add(0x03C1CD, 0xEA, "Disable ETank clear on Game Over 2");
+            p.Add(0x07C1CC, 0xEA, "Disable ETank clear on Game Over 1");
+            p.Add(0x07C1CD, 0xEA, "Disable ETank clear on Game Over 2");
         }
 
         /// <summary>
@@ -320,8 +320,8 @@ namespace MM2Randomizer.Utilities
             p.Add(0x0386EF, 0x01, "Mega Man Ladder Climb Up Integer");
             p.Add(0x03872E, 0xFE, "Mega Man Ladder Climb Down Integer");
 
-            //Int32 address = (jVersion) ? 0x03D4A4 : 0x03D4A7;
-            Int32 address = 0x03D4A7;
+            //Int32 address = (jVersion) ? 0x07D4A4 : 0x07D4A7;
+            Int32 address = 0x07D4A7;
             p.Add(address, 0x08, "Buster Projectile X-Velocity Integer");
         }
 
@@ -451,7 +451,7 @@ namespace MM2Randomizer.Utilities
         /// <param name="p"></param>
         public static void NerfDamageValues(Patch p)
         {
-            p.Add(0x3ED6C + 0x61, 0x04, "Woodman's Leaf Shield Attack Nerf");
+            p.Add(0x7ED6C + 0x61, 0x04, "Woodman's Leaf Shield Attack Nerf");
         }
 
         public static void DisableChangkeyMakerPaletteSwap(Patch p)

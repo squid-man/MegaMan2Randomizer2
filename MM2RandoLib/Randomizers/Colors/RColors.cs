@@ -503,8 +503,8 @@ namespace MM2Randomizer.Randomizers.Colors
                     //    31 15 - flash lv 1(outline only; keep 15 from weapon color)
                     //    35 2C - flash lv 2
                     //    30 30 - flash lv 3
-                    in_Patch.Add(0x03DE4A, dark, "Heat Weapon Charge Color 1");
-                    in_Patch.Add(0x03DE4C, dark, "Heat Weapon Charge Color 2");
+                    in_Patch.Add(0x07DE4A, dark, "Heat Weapon Charge Color 1");
+                    in_Patch.Add(0x07DE4C, dark, "Heat Weapon Charge Color 2");
                 }
             }
 
@@ -2872,6 +2872,6 @@ namespace MM2Randomizer.Randomizers.Colors
         // Private Data Members
         //
 
-        private const Int32 MEGA_MAN_COLOR_ADDRESS = 0x03d314;
+        private const Int32 MEGA_MAN_COLOR_ADDRESS = 0x07d314;
     }
 }
