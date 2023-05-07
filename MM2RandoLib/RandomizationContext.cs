@@ -348,6 +348,7 @@ namespace MM2Randomizer
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_musicpatch);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
+            this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2spritelag);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2scrollfix);
 
 
