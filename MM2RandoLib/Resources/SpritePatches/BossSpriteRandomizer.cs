@@ -33,10 +33,10 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.AirMan_Another,
             Properties.BossSpriteResources.AirMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.AirMan_GrayZone,
-            Properties.BossSpriteResources.Airman_HornetMan,
+            Properties.BossSpriteResources.AirMan_HornetMan,
             Properties.BossSpriteResources.AirMan_Peercast,
-            Properties.BossSpriteResources.Airman_RockMan2E,
-            Properties.BossSpriteResources.Airman_RockMan2Plus,
+            Properties.BossSpriteResources.AirMan_RockMan2E,
+            Properties.BossSpriteResources.AirMan_RockMan2Plus,
         };
 
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_BUBBLE_MAN = new List<Byte[]?>()

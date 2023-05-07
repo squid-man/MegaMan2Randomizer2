@@ -89,7 +89,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -99,8 +99,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -150,7 +149,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -160,7 +159,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -180,31 +179,27 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayerCharacter_FinalFantasyBlackBelt
-        {
-            get
-            {
+        internal static byte[] PlayerCharacter_FinalFantasyBlackBelt {
+            get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_FinalFantasyBlackBelt", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayerCharacter_FinalFantasyBlackMage
-        {
-            get
-            {
+        internal static byte[] PlayerCharacter_FinalFantasyBlackMage {
+            get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_FinalFantasyBlackMage", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -224,7 +219,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -234,7 +229,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -244,7 +239,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>

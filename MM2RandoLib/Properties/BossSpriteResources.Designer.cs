@@ -93,9 +93,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Airman_HornetMan {
+        internal static byte[] AirMan_HornetMan {
             get {
-                object obj = ResourceManager.GetObject("Airman_HornetMan", resourceCulture);
+                object obj = ResourceManager.GetObject("AirMan_HornetMan", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -113,23 +113,23 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Airman_RockMan2E {
+        internal static byte[] AirMan_RockMan2E {
             get {
-                object obj = ResourceManager.GetObject("Airman_RockMan2E", resourceCulture);
+                object obj = ResourceManager.GetObject("AirMan_RockMan2E", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Airman_RockMan2Plus {
+        internal static byte[] AirMan_RockMan2Plus {
             get {
-                object obj = ResourceManager.GetObject("Airman_RockMan2Plus", resourceCulture);
+                object obj = ResourceManager.GetObject("AirMan_RockMan2Plus", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -199,7 +199,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -209,7 +209,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -229,7 +229,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -239,7 +239,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -389,7 +389,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -399,7 +399,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -409,7 +409,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -449,7 +449,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -459,7 +459,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -539,7 +539,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -549,7 +549,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -609,7 +609,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -619,7 +619,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -669,7 +669,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -679,7 +679,17 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] GutsTank_Cray {
+            get {
+                object obj = ResourceManager.GetObject("GutsTank_Cray", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -689,19 +699,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] GutsTank_Cray
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("GutsTank_Cray", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -761,7 +759,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -771,7 +769,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -801,7 +799,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -811,7 +809,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -821,7 +819,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -871,7 +869,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -881,7 +879,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -891,7 +889,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -901,7 +899,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -961,7 +959,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -971,7 +969,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -1031,7 +1029,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -1041,7 +1039,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -1121,7 +1119,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -1131,7 +1129,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>

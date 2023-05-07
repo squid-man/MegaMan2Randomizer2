@@ -127,13 +127,13 @@
   <data name="AirMan_GrayZone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_GrayZone.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Airman_HornetMan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Bosses\AirMan\Airman_HornetMan.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="AirMan_HornetMan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_HornetMan.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AirMan_Peercast" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_Peercast.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Airman_RockMan2E" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="AirMan_RockMan2E" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\AirMan\Airman_RockMan2E.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="AirMan_RockMan2Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -283,7 +283,7 @@
   <data name="CrashMan_RockMan2E" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\CrashMan\CrashMan_RockMan2E.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Crashman_RockMan2Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="CrashMan_RockMan2Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\CrashMan\Crashman_RockMan2Plus.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="FlashMan_Another" type="System.Resources.ResXFileRef, System.Windows.Forms">
