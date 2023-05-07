@@ -151,7 +151,13 @@
   <data name="IntroStoryConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IntroStoryConfig.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="mm2spritelag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mm2spritelag.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="mm2scrollfix" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mm2scrollfix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mm2512k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mm2512k.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
