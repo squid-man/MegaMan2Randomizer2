@@ -256,6 +256,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay2,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyTV,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_Snake,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_FLOOR = new List<Byte[]?>()
@@ -277,6 +278,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily5_Background_DarkRoom,
             Properties.EnvironmentSpriteResources.StageTile_Wily5_Background_Cog,
+            Properties.EnvironmentSpriteResources.StageTile_Wily5_Background_Karnath,
+
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER = new List<Byte[]?>()

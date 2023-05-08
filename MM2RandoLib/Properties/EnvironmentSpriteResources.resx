@@ -202,7 +202,7 @@
   <data name="Ladders_MegaMan3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\Ladders\Ladders_MegaMan3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Ladders_MegaMan4_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Ladders_MegaMan4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\Ladders\Ladders_MegaMan4_.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Ladders_MegaMan4_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -430,6 +430,9 @@
   <data name="StageTile_Wily2_Animated_CutmansBadScissorsDay2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_CutmansBadScissorsDay2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="StageTile_Wily2_Animated_Snake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Snake.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="StageTile_Wily2_Animated_WilyTV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyTV.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -438,6 +441,9 @@
   </data>
   <data name="StageTile_Wily5_Background_DarkRoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 5\Background\StageTile_Wily5_Background_DarkRoom.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StageTile_Wily5_Background_Karnath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 5\Background\StageTile_Wily5_Background_Karnath.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StageTile_Wily5_Teleporter_MegaMan1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 5\Teleporter\StageTile_Wily5_Teleporter_MegaMan1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
