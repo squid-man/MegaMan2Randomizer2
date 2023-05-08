@@ -190,8 +190,7 @@ namespace MM2Randomizer.Properties {
         ///        &lt;Enabled&gt;true&lt;/Enabled&gt;
         ///        &lt;Name&gt;ALGERIA&lt;/Name&gt;
         ///    &lt;/CountryName&gt;
-        ///    &lt;CountryName&gt;
-        /// [rest of string was truncated]&quot;;.
+        ///    &lt;CountryName&gt;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CountryNameConfig {
             get {
@@ -333,6 +332,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] mm2512k {
+            get {
+                object obj = ResourceManager.GetObject("mm2512k", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] mm2rng_musicpatch {
             get {
                 object obj = ResourceManager.GetObject("mm2rng_musicpatch", resourceCulture);
@@ -349,7 +358,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -359,8 +368,17 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
-
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mm2spritelag {
+            get {
+                object obj = ResourceManager.GetObject("mm2spritelag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///

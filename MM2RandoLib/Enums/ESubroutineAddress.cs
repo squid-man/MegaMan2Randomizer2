@@ -9,6 +9,6 @@ namespace MM2Randomizer.Enums
         // This subroutine appears to just
         // busy loop to waste a frame, used for example
         // under water to waste every 5th frame.
-        WasteAFrame = 0x03c0e7,
+        WasteAFrame = 0x07c0e7,
     }
 }
