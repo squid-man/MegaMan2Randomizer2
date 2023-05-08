@@ -1103,9 +1103,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] StageTile_Wily2_Animated_Snake {
+        internal static byte[] StageTile_Wily2_Animated_Karnath {
             get {
-                object obj = ResourceManager.GetObject("StageTile_Wily2_Animated_Snake", resourceCulture);
+                object obj = ResourceManager.GetObject("StageTile_Wily2_Animated_Karnath", resourceCulture);
                 return ((byte[])(obj));
             }
         }

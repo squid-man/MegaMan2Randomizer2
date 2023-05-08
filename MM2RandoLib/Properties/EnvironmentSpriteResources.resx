@@ -430,8 +430,8 @@
   <data name="StageTile_Wily2_Animated_CutmansBadScissorsDay2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_CutmansBadScissorsDay2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StageTile_Wily2_Animated_Snake" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Snake.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="StageTile_Wily2_Animated_Karnath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Karnath.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StageTile_Wily2_Animated_WilyTV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyTV.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
