@@ -177,18 +177,7 @@
                 />
             </Border>
         </Grid>
-		<ToggleSwitch
-									Name="ToggleSwitch_SetTheme"
-									IsChecked="{Binding Path=AppConfigurationSettings.SetTheme}"
-									OffContent="🔅"
-									OnContent="🌑"
-                        />
-		<TextBlock
-                Text="Set Theme"
-                DockPanel.Dock="Left"
-                VerticalAlignment="Center"
-				Margin="75,0,0,0"
-            />
+
         <!-- Seed textbox -->
         <DockPanel
             Grid.Row="2"
