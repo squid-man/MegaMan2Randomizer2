@@ -178,7 +178,6 @@
             </Border>
         </Grid>
 	
-            />
         <!-- Seed textbox -->
         <DockPanel
             Grid.Row="2"
