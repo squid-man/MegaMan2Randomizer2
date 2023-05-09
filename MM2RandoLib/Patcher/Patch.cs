@@ -36,14 +36,36 @@ namespace MM2Randomizer.Patcher
             }
         }
 
-
         /// <summary>
         /// TODO
         /// </summary>
         /// <param name="address"></param>
         /// <param name="value"></param>
         /// <param name="note"></param>
-        public Int32 Add(Int32 in_StartAddress, Byte[] in_Value, String note = "")
+        /// <param name="bigEndian"></param>
+        public Int32 AddWord(Int32 address, Int32 value, String note = "", Boolean bigEndian = false)
+        {
+            if (bigEndian)
+            {
+                this.Add(address++, (byte)(value >> 8), $"{note}[0]");
+                this.Add(address++, (byte)(value), $"{note}[1]");
+            }
+            else
+            {
+                this.Add(address++, (byte)(value), $"{note}[0]");
+                this.Add(address++, (byte)(value >> 8), $"{note}[1]");
+            }
+
+            return address;
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="in_StartAddress"></param>
+        /// <param name="in_Value"></param>
+        /// <param name="note"></param>
+        public Int32 Add(Int32 in_StartAddress, IEnumerable<byte> in_Value, String note = "")
         {
             Int32 index = 0;
 
