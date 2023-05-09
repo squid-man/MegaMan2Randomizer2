@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Random;
 using MM2Randomizer.Randomizers;
@@ -344,6 +346,12 @@ namespace MM2Randomizer
                 MiscHacks.ReduceUnderwaterLag(this.Patch);
             }
 
+            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisableWaterfall)
+            {
+                this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_None);
+            }
+
+
 
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2ft, false);
@@ -382,7 +390,6 @@ namespace MM2Randomizer
             // Finish the copy/rename and open Explorer at that location
             File.Move(RandomizationContext.TEMPORARY_FILE_NAME, this.FileName);
         }
-
 
         //
         // Private Data Members

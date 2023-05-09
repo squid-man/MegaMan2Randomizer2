@@ -22,5 +22,7 @@ namespace MM2Randomizer.Settings.Options
         Paperboy,
         [Description("Remix")]
         Remix,
+        [Description("Rock Man 2 Guard")]
+        RockMan2Guard,
     }
 }

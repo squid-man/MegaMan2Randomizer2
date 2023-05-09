@@ -578,6 +578,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.BatMan:
+                {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BatMan);
+                        break;
+                }
+
                 case PlayerSpriteOption.BreakMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BreakMan);
@@ -608,11 +614,29 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.CharlieboyAlt:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CharlieboyAlt);
+                    break;
+                }
+
                 case PlayerSpriteOption.CutMansBadScissorsDay:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CutMansBadScissorsDay);
                     break;
                 }
+
+                case PlayerSpriteOption.FinalFantasyBlackBelt:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyBlackBelt);
+                        break;
+                    }
+
+                case PlayerSpriteOption.FinalFantasyBlackMage:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyBlackMage);
+                        break;
+                    }
 
                 case PlayerSpriteOption.FinalFantasyFighter:
                 {
@@ -625,6 +649,18 @@ namespace MM2Randomizer.Utilities
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighterBlue);
                     break;
                 }
+
+                case PlayerSpriteOption.FinalFantasyWhiteMage:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyWhiteMage);
+                        break;
+                    }
+
+                case PlayerSpriteOption.Guard:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Guard);
+                        break;
+                    }
 
                 case PlayerSpriteOption.HatsuneMiku:
                 {
@@ -817,6 +853,12 @@ namespace MM2Randomizer.Utilities
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Remix);
                     break;
                 }
+                    
+                case HudElementOption.RockMan2Guard:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_RockMan2Guard);
+                        break;
+                    }
             }
         }
 
@@ -854,6 +896,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case FontOption.FinalFantasy:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_FinalFantasy);
+                        break;
+                    }
+
                 case FontOption.JavaIslandIndonesia:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_JavaIslandIndonesia);
@@ -872,11 +920,29 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case FontOption.MegaMan6:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_MegaMan6);
+                        break;
+                    }
+
                 case FontOption.Paperboy:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Paperboy);
                     break;
                 }
+
+                case FontOption.SimonsQuest:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_SimonsQuest);
+                        break;
+                    }
+
+                case FontOption.SuperMarioWorld:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_SuperMarioWorld);
+                        break;
+                    }
 
                 case FontOption.TMNT2:
                 {
@@ -897,9 +963,20 @@ namespace MM2Randomizer.Utilities
             p.Add((Int32)ESubroutineAddress.WasteAFrame, Opcode6502.RTS, "Turn the 'waste a frame' subroutine into a NOP");
         }
 
+
+        /// <summary>
+        /// This disables the waterfall by using StageTile_BubbleMan_Waterfall_None.ips patch.
+        /// </summary>
+        /// <param name="p"></param>
+        public static void DisableWaterfall(Patch p, String tempFileName, BooleanOption waterfall)
+        {
+            p.ApplyIPSPatch(tempFileName, Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_None);
+        }
+
         /// <summary>
         /// This method will modify the game loop to spawn weapon energy
         /// pickups in Wily 5.
+        /// 
         ///
         /// At 0x0E:816A (bank E, 0x3817A in the ROM), there is a CMP
         /// instruction to value 0x0C (CMP #0x0C). This is checking if the
@@ -907,10 +984,11 @@ namespace MM2Randomizer.Utilities
         /// it jumps to a special game loop at 0x0E:8223 (bank E, 0x38233
         /// in the ROM), which has a special setup routine for the teleport
         /// room, otherwise, it jumps to 0x0E:8171, which is the normal game loop.
+        /// 
         /// The special Wily 5 game loop does not include the call instruction to 
         /// the subroutine that spawns items or enemies, but the loop itself is 
         /// otherwise identical to the base game loop.
-        ///
+        /// 
         /// This method changes the jump to 0x0E:8223 to call the subroutine 
         /// that sets up the teleporters. Because of the convenient ordering 
         /// of instructions, this function will return directly to 0x0E:8171

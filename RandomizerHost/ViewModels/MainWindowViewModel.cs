@@ -65,6 +65,7 @@ namespace RandomizerHost.ViewModels
         public ICommand OpenContainingFolderCommand { get; }
         public ICommand ImportSettingsCommand { get; }
         public ICommand ExportSettingsCommand { get; }
+        public ICommand SetThemeCommand { get; }
 
 
         //

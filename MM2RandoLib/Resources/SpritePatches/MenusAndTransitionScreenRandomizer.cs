@@ -30,6 +30,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_CASTLE = new List<Byte[]?>()
         {
             null,
+            Properties.MenusAndTransitionScreenRandomizer.Castle_FinalFantasy,
             Properties.MenusAndTransitionScreenRandomizer.Castle_MegaMan5MiniCastle,
             Properties.MenusAndTransitionScreenRandomizer.Castle_None,
             Properties.MenusAndTransitionScreenRandomizer.Castle_OnlyHills,

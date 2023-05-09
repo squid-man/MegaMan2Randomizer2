@@ -74,10 +74,43 @@ namespace RandomizerHost.Settings
             }
         }
 
-
         //
         // Flag Properties
         //
+        [UserScopedSetting]
+        [DefaultSettingValue("True")]
+        public Boolean SetTheme
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.SETTHEME_SETTING_NAME,
+                    AppConfigurationSettings.SETTHEME_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.SETTHEME_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        [DefaultSettingValue("True")]
+        public Boolean CheckboxOn
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.CHECKBOXON_SETTING_NAME,
+                    AppConfigurationSettings.CHECKBOXON_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.CHECKBOXON_SETTING_NAME] = value;
+            }
+        }
+
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -95,6 +128,7 @@ namespace RandomizerHost.Settings
                 this[AppConfigurationSettings.CREATE_LOG_FILE_SETTING_NAME] = value;
             }
         }
+
 
 
         [UserScopedSetting]
@@ -936,6 +970,40 @@ namespace RandomizerHost.Settings
             }
         }
 
+        [UserScopedSetting]
+        [DefaultSettingValue("True")]
+        public Boolean DisableWaterfall
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.DISABLE_WATERFALL_SETTING_NAME,
+                    AppConfigurationSettings.DISABLE_WATERFALL_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.DISABLE_WATERFALL_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_DisableWaterfall
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_SETTING_NAME] = value;
+            }
+        }
 
         //
         // Scalar Properties
@@ -1384,6 +1452,7 @@ namespace RandomizerHost.Settings
 
             settings.CreateLogFile = this.CreateLogFile;
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
+            settings.SetTheme = this.SetTheme;
 
             // Gameplay options
             settings.GameplayOption.BurstChaserMode.Randomize = this.RandomlyChooseSetting_EnableBurstChaserMode;
@@ -1440,6 +1509,8 @@ namespace RandomizerHost.Settings
             settings.SpriteOption.RandomizeSpecialWeaponSprites.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialWeaponSprites);
 
             // Quality of life options
+            settings.QualityOfLifeOption.DisableWaterfall.Randomize = this.RandomlyChooseSetting_DisableWaterfall;
+            settings.QualityOfLifeOption.DisableWaterfall.Value = (BooleanOption)Convert.ToInt32(this.DisableWaterfall);
             settings.QualityOfLifeOption.DisableFlashingEffects.Randomize = this.RandomlyChooseSetting_DisableFlashingEffects;
             settings.QualityOfLifeOption.DisableFlashingEffects.Value = (BooleanOption)Convert.ToInt32(this.DisableFlashingEffects);
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize = this.RandomlyChooseSetting_EnableUnderwaterLagReduction;
@@ -1663,8 +1734,22 @@ namespace RandomizerHost.Settings
         private const String ROM_SOURCE_PATH_DEFAULT_VALUE = @"";
 
         // Flag Property Constants
+        private const String SETTHEME_SETTING_NAME = @"SetTheme";
+        private const Boolean SETTHEME_DEFAULT_VALUE = true;
+
+        private const String CHECKBOXON_SETTING_NAME = @"CheckboxOn";
+        private const Boolean CHECKBOXON_DEFAULT_VALUE = true;
+
+        // Flag Property Constants
         private const String CREATE_LOG_FILE_SETTING_NAME = @"CreateLogFile";
         private const Boolean CREATE_LOG_FILE_DEFAULT_VALUE = false;
+
+        // Disable Waterfall
+        private const String DISABLE_WATERFALL_SETTING_NAME = @"DisableWaterfall";
+        private const Boolean DISABLE_WATERFALL_DEFAULT_VALUE = true;
+
+        private const String RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_SETTING_NAME = @"RandomlyChooseSetting_DisableWaterfall";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_DEFAULT_VALUE = false;
 
         // Disable Flashing Effects
         private const String DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"DisableFlashingEffects";
