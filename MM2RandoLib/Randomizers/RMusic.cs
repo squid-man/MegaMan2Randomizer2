@@ -246,6 +246,10 @@ namespace MM2Randomizer.Randomizers
                     in_Patch.Add(BossSongMapOffs + bossIdx, (byte)musicIdx, $"Boss {bossIdx} Song Index");
                 }
             }
+
+            Boolean testRebase = false;
+            if (testRebase)
+                TestRebaseSongs(songs);
         }
 
         private Dictionary<EMusicID, Int32> SelectSongs(ISeed in_Seed, List<Song> in_Songs, Dictionary<String, List<Int32>> in_UsesSongIdcs)
@@ -425,7 +429,7 @@ namespace MM2Randomizer.Randomizers
             {
                 // Do not parse loop pointers for vibrato
                 // TODO: Check the length of the vibrato String, or even better, use separate lists for each channel!
-                if (i >= song.VibratoIndex && i < song.VibratoLength)
+                if (i >= song.VibratoIndex && i < song.VibratoIndex + song.VibratoLength)
                 {
                     continue;
                 }
@@ -564,6 +568,21 @@ namespace MM2Randomizer.Randomizers
                     {
                         break;
                     }
+                }
+            }
+        }
+
+        private void TestRebaseSongs(List<Song> in_Songs)
+        {
+            foreach (Song song in in_Songs)
+            {
+                try 
+                {
+                    RebaseC2Song(song, 0, 0x8001);
+                }
+                catch (Exception e)
+                {
+                    System.Diagnostics.Debug.Assert(false, $"ERROR: Rebase failed on '{song.SongName}'");
                 }
             }
         }
