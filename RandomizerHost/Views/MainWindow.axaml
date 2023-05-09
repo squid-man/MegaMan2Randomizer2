@@ -179,7 +179,7 @@
         </Grid>
 		<ToggleSwitch
 									Name="ToggleSwitch_SetTheme"
-									IsChecked="{Binding Path=AppConfigurationSettings.Set_Theme}"
+									IsChecked="{Binding Path=AppConfigurationSettings.SetTheme}"
 									OffContent="🔅"
 									OnContent="🌑"
                         />
