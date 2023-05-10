@@ -481,7 +481,7 @@ namespace MM2Randomizer.Utilities
             // $9281: Menu Page and Menu Position Checking.        
             // $9292:A5 A7     LDA $00A7 ;$00A7 is ETankCount
             // $9294:F0 DE     BEQ $9274 ;Return if ETankCount == 0          
-            // $9296:C6 A7     DEC $00A7 ;Decrement ETankCount <=== Replacing this line.
+            // $9296:C6 A7     DEC $00A7 ;Decrement ETankCount
             // $9298:AD C0 06  LDA $06C0 ;$06C0 is Life
             // $929B:C9 1C     CMP #$1C
             // $929D:F0 D5     BEQ $9274 ;Return if Life == 28
@@ -500,49 +500,54 @@ namespace MM2Randomizer.Utilities
             //      ; Not sure what the next 2 commands are doing.
             //      ; Seem like part of the reglar game/draw loop since FrameCounter is updated.
             //      $92AD: 20 96 93 JSR $9396
-            //      $92B0: 20 AB C0 JSR $C0AB
+            //      $92B0: 20 AB C0 JSR $C0AB ;Wait for next frame and update controller
             //      $92B3: 4C 98 92 JMP $9298 ;Loop while (Life != 28)
             // }
 
-            // Change $9296 to call a subroutine. Choosing $BF77 for the location.
-            // $9296:20 77 BF   JSR $BF77
-            // ---
-            // $BF77:AD C0 06   LDA $06C0 ;$06C0 is Life
-            // $BF7A:C9 1C      CMP #$1C
-            // $BF7C:F0 02      BEQ $BF81 ;if(Life == 28) goto RTS
-            // $BF7E:C6 A7      DEC $00A7 ;Decrement ETankCount
-            // $BF81:60         RTS 
-
             Int32 prgOffset = 0x30010 - 0x4000;
-            // Inject new jump subroutine at 0D:9296 (should be 0x352A6).
-            Int32 jsrLocation = 0x9296 + prgOffset;
-
-            Byte[] jsrBytes = new Byte[]
+            Int32 patchLocation = 0x9296 + prgOffset;
+            Byte[] patchBytes = new Byte[]
             {
-                0x20, 0x77, 0xBF,   // JSR $BF77
+                0xAD, 0xC0, 0x06,   // LDA $6C0 ; Do not proceed if life is full
+                0xC9, 0x1C,         // CMP #$1C
+                0xF0, 0xD7,         // BEQ $9274
+
+                0xC6, 0xA7,         // DEC $A7 ; Decrement e-tanks
+            
+                0xA5, 0x1C,         // LDA $1C ; 929F: Load frame counter
+                0x29, 0x03,         // AND #$3 ; If multiple of 4 frames increase life - THIS WILL BE PATCHED OVER
+
+                0x20, 0x77, 0xBF,   // JSR $BF77 ; Call code that wouldn't fit here
+                0x20, 0x96, 0x93,   // JSR $9396 ; Do mostly ordinary stuff
+                0x20, 0xAB, 0xC0,   // JSR $C0AB
+
+                0xAD, 0xC0, 0x06,   // LDA $6C0 ; If life not full loop, else done
+                0xC9, 0x1C,         // CMP #$1C
+                0xF0, 0xC1,         // BEQ $9274
+                0x4C, 0x9F, 0x92,   // JMP $929F
             };
 
-            for(Int32 offset = 0; offset < jsrBytes.Length; ++offset)
-            {
-                p.Add(jsrLocation + offset, jsrBytes[offset], "Prevent E-Tank Use at Full Life");
-            }
+            p.Add(patchLocation, patchBytes, "Prevent E-Tank Use at Full Life");
 
-            // Subroutine to decrement E-Tank Count. Skips decrement if Life == 28.
             Byte[] eTankSubroutineBytes = new Byte[]
             {
-                0xAD, 0xC0, 0x06,       // LDA $06C0 ;$06C0 is Life
-                0xC9, 0x1C,             // CMP #$1C
-                0xF0, 0x02,             // BEQ 2 ;if(Life == 28) goto RTS
-                0xC6, 0xA7,             // DEC $00A7 ;Decrement ETankCount
-                0x60,                   // RTS 
+                0xD0, 0x03,         // BNE $BF7C ; Skip life increase if nonzero
+
+                0xEE, 0xC0, 0x06,   // INC $6C0 ; Increase life
+
+                0xA5, 0x1C,         // LDA $1C ; BF7C: If multiple of 4 frames...
+                0x29, 0x03,         // AND #$3
+                0xD0, 0x05,         // BNE $BF87
+
+                0xA9, 0x28,         // LDA #$28 ; ...play life filling sound
+                0x4C, 0x51, 0xC0,   // JMP $C051
+
+                0x60,               // RTS ; BF87
             };
 
             // Start at 0D:BF77 (should be 0x37F87).
-            Int32 etankLocation = 0xBF77 + prgOffset;
-            for(Int32 offset = 0; offset < eTankSubroutineBytes.Length; ++offset)
-            {
-                p.Add(etankLocation + offset, eTankSubroutineBytes[offset], "Prevent E-Tank Use at Full Life");
-            }
+            Int32 etankSubLocation = 0xBF77 + prgOffset;
+            p.Add(etankSubLocation, eTankSubroutineBytes, "Prevent E-Tank Use at Full Life");
         }
 
         /// <summary>
