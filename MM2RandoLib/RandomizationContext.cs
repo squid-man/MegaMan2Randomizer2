@@ -321,6 +321,8 @@ namespace MM2Randomizer
                 this.Patch,
                 this.ActualizedBehaviorSettings.ChargingSpeedOption.WeaponEnergy);
 
+            // PreventETankUseAtFullLife must be applied before SetEnergyTankChargingSpeed
+            MiscHacks.PreventETankUseAtFullLife(this.Patch);
             MiscHacks.SetEnergyTankChargingSpeed(
                 this.Patch,
                 this.ActualizedBehaviorSettings.ChargingSpeedOption.EnergyTank);
@@ -337,7 +339,6 @@ namespace MM2Randomizer
             MiscHacks.SetWily5NoMusicChange(this.Patch);
             MiscHacks.NerfDamageValues(this.Patch);
             MiscHacks.SetETankKeep(this.Patch);
-            MiscHacks.PreventETankUseAtFullLife(this.Patch);
             MiscHacks.SetFastBossDefeatTeleport(this.Patch);
 
 
