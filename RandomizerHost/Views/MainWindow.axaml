@@ -6,9 +6,9 @@
         xmlns:converters="using:RandomizerHost.Converters"
         mc:Ignorable="d"
         d:DesignWidth="650"
-        d:DesignHeight="850"
+        d:DesignHeight="800"
         Width="650"
-        Height="850"
+        Height="800"
         x:Class="RandomizerHost.Views.MainWindow"
         Icon="/Assets/MegaMan2Randomizer.ico"
         Title="RandomizerHost"
@@ -177,7 +177,18 @@
                 />
             </Border>
         </Grid>
-
+		<ToggleSwitch
+									Name="ToggleSwitch_SetTheme"
+									IsChecked="{Binding Path=AppConfigurationSettings.SetTheme}"
+									OffContent="🔅"
+									OnContent="🌑"
+                        />
+		<TextBlock
+                Text="Set Theme"
+                DockPanel.Dock="Left"
+                VerticalAlignment="Center"
+				Margin="75,0,0,0"
+            />
         <!-- Seed textbox -->
         <DockPanel
             Grid.Row="2"
