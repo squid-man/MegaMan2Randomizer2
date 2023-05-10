@@ -500,7 +500,7 @@ namespace MM2Randomizer.Utilities
             //      ; Not sure what the next 2 commands are doing.
             //      ; Seem like part of the reglar game/draw loop since FrameCounter is updated.
             //      $92AD: 20 96 93 JSR $9396
-            //      $92B0: 20 AB C0 JSR $C0AB ;Wait for next frame
+            //      $92B0: 20 AB C0 JSR $C0AB ;Wait for next frame and update controller
             //      $92B3: 4C 98 92 JMP $9298 ;Loop while (Life != 28)
             // }
 
@@ -532,10 +532,10 @@ namespace MM2Randomizer.Utilities
             // Subroutine to play sound on ever 4th frame
             Byte[] eTankSubroutineBytes = new Byte[]
             {
-                0x29, 0x03,         // AND #$3
+                0x29, 0x03,         // AND #$3 ; If every 4th frame
                 0xD0, 0x05,         // BNE $BF80
 
-                0xA9, 0x28,         // LDA #$28
+                0xA9, 0x28,         // LDA #$28 ; Play life filling sound
                 0x4C, 0x51, 0xC0,   // JMP $C051
 
                 0x60,               // RTS
