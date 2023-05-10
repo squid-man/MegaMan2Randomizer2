@@ -513,32 +513,36 @@ namespace MM2Randomizer.Utilities
                 0xF0, 0xD7,         // BEQ $9274
 
                 0xC6, 0xA7,         // DEC $A7 ; Decrement e-tanks
+            
+                0xA5, 0x1C,         // LDA $1C ; 929F: Load frame counter
+                0x29, 0x03,         // AND #$3 ; If multiple of 4 frames increase life - THIS WILL BE PATCHED OVER
 
-                0xEE, 0xC0, 0x06,   // INC $6C0 ; Loop point: Increase life
-
-                0xA5, 0x1C,         // LDA $1C ; Load frame counter
                 0x20, 0x77, 0xBF,   // JSR $BF77 ; Call code that wouldn't fit here
                 0x20, 0x96, 0x93,   // JSR $9396 ; Do mostly ordinary stuff
                 0x20, 0xAB, 0xC0,   // JSR $C0AB
 
                 0xAD, 0xC0, 0x06,   // LDA $6C0 ; If life not full loop, else done
                 0xC9, 0x1C,         // CMP #$1C
-                0xF0, 0xC0,         // BEQ $9274
-                0xD0, 0xE9,         // BNE $929F
+                0xF0, 0xC1,         // BEQ $9274
+                0x4C, 0x9F, 0x92,   // JMP $929F
             };
 
             p.Add(patchLocation, patchBytes, "Prevent E-Tank Use at Full Life");
 
-            // Subroutine to play sound on ever 4th frame
             Byte[] eTankSubroutineBytes = new Byte[]
             {
-                0x29, 0x03,         // AND #$3 ; If every 4th frame
-                0xD0, 0x05,         // BNE $BF80
+                0xD0, 0x03,         // BNE $BF7C ; Skip life increase if nonzero
 
-                0xA9, 0x28,         // LDA #$28 ; Play life filling sound
+                0xEE, 0xC0, 0x06,   // INC $6C0 ; Increase life
+
+                0xA5, 0x1C,         // LDA $1C ; BF7C: If multiple of 4 frames...
+                0x29, 0x03,         // AND #$3
+                0xD0, 0x05,         // BNE $BF87
+
+                0xA9, 0x28,         // LDA #$28 ; ...play life filling sound
                 0x4C, 0x51, 0xC0,   // JMP $C051
 
-                0x60,               // RTS
+                0x60,               // RTS ; BF87
             };
 
             // Start at 0D:BF77 (should be 0x37F87).
