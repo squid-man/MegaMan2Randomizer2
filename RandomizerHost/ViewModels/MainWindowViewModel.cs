@@ -319,12 +319,12 @@ namespace RandomizerHost.ViewModels
 
         public void SetTheme()
         {
-            if (false == this.mAppConfigurationSettings.EnableAppUiDarkTheme)
+            if (true == this.mAppConfigurationSettings.EnableAppUiDarkTheme)
             {
                 Avalonia.Application.Current.Styles[0] =
                     new FluentTheme(new Uri("avares://Dummy/App.xaml"))
                     {
-                        Mode = FluentThemeMode.Light
+                        Mode = FluentThemeMode.Dark
                     };
             }
             else
@@ -332,7 +332,7 @@ namespace RandomizerHost.ViewModels
                 Avalonia.Application.Current.Styles[0] =
                     new FluentTheme(new Uri("avares://Dummy/App.xaml"))
                     {
-                        Mode = FluentThemeMode.Dark
+                        Mode = FluentThemeMode.Light
                     };
             }
         }

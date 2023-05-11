@@ -7,6 +7,20 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <FluentTheme Mode="Light"/>
+		<FluentTheme Mode="Dark"/>
+		<Style Selector = "Button">
+			<Setter Property = "Background" Value = "Salmon"/>
+				<Setter Property="FontSize" Value="14"/>
+				<Setter Property="FontWeight" Value="Bold"/>
+		</Style>
+		<Style Selector="TextBlock">
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+		<Style Selector="Button:pressed /template/ ContentPresenter">
+			<Setter Property="TextBlock.Foreground" Value="Maroon"/>
+		</Style>
+		<Style Selector="CheckBox">
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
     </Application.Styles>
 </Application>

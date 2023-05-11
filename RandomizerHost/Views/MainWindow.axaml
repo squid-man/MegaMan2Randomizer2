@@ -34,8 +34,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="148"/>
-            <RowDefinition Height="32"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="75"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -213,11 +213,13 @@
         <!-- Buttons -->
         <StackPanel
             Grid.Row="3"
+			Margin="10"
             Orientation="Vertical"
         >
             <Button
                 Name="Button_CreateFromGivenSeed"
                 Height="30"
+				Width="315"
                 Margin="2"
                 Command="{Binding CreateFromGivenSeedCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
@@ -228,6 +230,7 @@
             <Button
                 Name="Button_CreateFromRandomSeed"
                 Height="30"
+				Width="315"
                 Margin="2"
                 Command="{Binding CreateFromRandomSeedCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
@@ -238,39 +241,25 @@
             <Button
                 Name="Button_OpenContainingFolder"
                 Height="30"
+				Width="315"
                 Margin="2"
                 Command="{Binding OpenContainingFolderCommand}"
             >
                 Open Containing Folder
             </Button>
-
-            <CheckBox
-                Name="CheckBox_CreateLogFile"
-                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
-            >
-                Create Log File
-            </CheckBox>
-            <TextBlock
-                Text="🎲 = Randomize Option"
-                DockPanel.Dock="Left"
-                VerticalAlignment="Bottom"
-            />
-            <TextBlock
-                Text="☑️ = Option Enabled"
-                DockPanel.Dock="Left"
-                VerticalAlignment="Bottom"
-            />
         </StackPanel>
 
         <!-- Export and Import Buttons -->
         <StackPanel
             Grid.Row="3"
             Grid.Column="1"
+			Margin="12"
             Orientation="Vertical"
         >
             <Button
                 Name="Button_ImportSettings"
                 Height="30"
+				Width="300"
                 Margin="2"
                 Command="{Binding ImportSettingsCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
@@ -281,19 +270,31 @@
             <Button
                 Name="Button_ExportSettings"
                 Height="30"
+				Width="300"
                 Margin="2"
                 Command="{Binding ExportSettingsCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
             >
                 Export Settings
             </Button>
+			<CheckBox
+	            Name="CheckBox_CreateLogFile"
+	            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+            >
+				Create Log File     🎲 = Randomize Option
+			</CheckBox>
+			<TextBlock
+                Text="☑️ = Option Enabled"
+                DockPanel.Dock="Left"
+                VerticalAlignment="Bottom"
+            />
         </StackPanel>
 
         <!--Settings Tabs-->
         <TabControl
             Grid.Row="4"
             Grid.ColumnSpan="2"
-            Margin="-1,50,-1,-1"
+            Margin="-1,25,-1,-1"
         >
             <!--
                 Gameplay
@@ -542,7 +543,6 @@
                             />
                         </Grid>
                     </StackPanel>
-
                     <StackPanel
                         Name="StackPanel_BurstChaserMode"
                         Orientation="Horizontal"
@@ -901,7 +901,7 @@
                 Quality of Life Patches
             -->
             <TabItem Header="QoL Patches">
-                <StackPanel>
+				<StackPanel>
                     <StackPanel
                         Orientation="Horizontal"
                     >
