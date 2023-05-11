@@ -103,7 +103,6 @@
                     />
                 </DockPanel>
             </Border>
-			
 
             <!-- Row 2 -->
             <Border
@@ -177,17 +176,18 @@
                 />
             </Border>
         </Grid>
-		<ToggleSwitch
-									Name="ToggleSwitch_SetTheme"
-									IsChecked="{Binding Path=AppConfigurationSettings.SetTheme}"
-									OffContent="🔅"
-									OnContent="🌑"
-                        />
-		<TextBlock
+        <ToggleSwitch
+            Name="ToggleSwitch_EnableAppUiDarkTheme"
+            IsChecked="{Binding AppConfigurationSettings.EnableAppUiDarkTheme}"
+            Command="{Binding SetThemeCommand}"
+            OffContent="🔅"
+            OnContent="🌑"
+            />
+        <TextBlock
                 Text="Set Theme"
                 DockPanel.Dock="Left"
                 VerticalAlignment="Center"
-				Margin="75,0,0,0"
+                Margin="75,0,0,0"
             />
         <!-- Seed textbox -->
         <DockPanel
@@ -248,49 +248,48 @@
                 Name="CheckBox_CreateLogFile"
                 IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
             >
-				Create Log File
-			</CheckBox>
-			<TextBlock
-							   Text="🎲 = Random"
-							   DockPanel.Dock="Left"
-							   VerticalAlignment="Bottom"
+                Create Log File
+            </CheckBox>
+            <TextBlock
+                Text="🎲 = Randomize Option"
+                DockPanel.Dock="Left"
+                VerticalAlignment="Bottom"
             />
-			<CheckBox
-                Name="CheckBox_= On"
-                IsChecked="{Binding AppConfigurationSettings.CheckboxOn}"
-            >
-				= On
-			</CheckBox>
-		</StackPanel>
+            <TextBlock
+                Text="☑️ = Option Enabled"
+                DockPanel.Dock="Left"
+                VerticalAlignment="Bottom"
+            />
+        </StackPanel>
 
-		<!-- Export and Import Buttons -->
-		<StackPanel
+        <!-- Export and Import Buttons -->
+        <StackPanel
             Grid.Row="3"
             Grid.Column="1"
             Orientation="Vertical"
         >
-			<Button
+            <Button
                 Name="Button_ImportSettings"
                 Height="30"
                 Margin="2"
                 Command="{Binding ImportSettingsCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
             >
-				Import Settings
-			</Button>
+                Import Settings
+            </Button>
 
-			<Button
+            <Button
                 Name="Button_ExportSettings"
                 Height="30"
                 Margin="2"
                 Command="{Binding ExportSettingsCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
             >
-				Export Settings
-			</Button>
-		</StackPanel>
+                Export Settings
+            </Button>
+        </StackPanel>
 
-		<!--Settings Tabs-->
+        <!--Settings Tabs-->
         <TabControl
             Grid.Row="4"
             Grid.ColumnSpan="2"
@@ -946,7 +945,7 @@
                             IsChecked="{Binding Path=AppConfigurationSettings.EnableUnderwaterLagReduction}"
                         />
                     </StackPanel>
-					<StackPanel
+                    <StackPanel
                         Orientation="Horizontal"
                     >
                         <!-- Friendly emoji header -->
@@ -1208,7 +1207,7 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=BassReloaded}"
                             />
 
-							<Image
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_BatMan.png"
@@ -1249,35 +1248,35 @@
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Charlieboy.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Charlieboy}"
                             />
-							
-							<Image
+                            
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_CharlieboyAlt.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=CharlieboyAlt}"
                             />
 
-							<Image
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_CutMansBadScissorsDay.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=CutMansBadScissorsDay}"
                             />
-							
-							<Image
-								Width="168"
-							    Height="168"
-							    Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyBlackBelt.png"
-								IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyBlackBelt}"
+                            
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyBlackBelt.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyBlackBelt}"
                             />
-							
-							<Image
-								Width="168"
-								Height="168"
-								Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyBlackMage.png"
-								IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyBlackMage}"
+                            
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyBlackMage.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyBlackMage}"
                             />
-							
+                            
                             <Image
                                 Width="168"
                                 Height="168"
@@ -1292,21 +1291,21 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyFighterBlue}"
                             />
 
-							<Image
-						        Width="168"
-							    Height="168"
-								Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyWhiteMage.png"
-								IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyWhiteMage}"
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_FinalFantasyWhiteMage.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=FinalFantasyWhiteMage}"
                             />
 
-							<Image
-							   Width="168"
-							   Height="168"
-							   Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Guard.png"
-							   IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Guard}"
+                            <Image
+                               Width="168"
+                               Height="168"
+                               Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Guard.png"
+                               IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Guard}"
                             />
 
-							<Image
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_HatsuneMiku.png"
@@ -1456,7 +1455,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-			
+            
 
             <!-- Make invisible for now -->
             <TabItem Header="Experimental" IsEnabled="True" IsVisible="False">
@@ -1489,5 +1488,5 @@
             </TabItem>
         </TabControl>
     </Grid>
-	
+    
 </Window>

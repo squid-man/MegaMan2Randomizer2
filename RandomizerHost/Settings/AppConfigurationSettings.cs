@@ -75,42 +75,30 @@ namespace RandomizerHost.Settings
         }
 
         //
+        // Theme Properties
+        //
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableAppUiDarkTheme
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_APP_UI_DARK_THEME_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_APP_UI_DARK_THEME_SETTING_NAME] = value;
+            }
+        }
+
+
+        //
         // Flag Properties
         //
-        [UserScopedSetting]
-        [DefaultSettingValue("True")]
-        public Boolean SetTheme
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.SETTHEME_SETTING_NAME,
-                    AppConfigurationSettings.SETTHEME_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.SETTHEME_SETTING_NAME] = value;
-            }
-        }
-
-        [UserScopedSetting]
-        [DefaultSettingValue("True")]
-        public Boolean CheckboxOn
-        {
-            get
-            {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.CHECKBOXON_SETTING_NAME,
-                    AppConfigurationSettings.CHECKBOXON_DEFAULT_VALUE);
-            }
-
-            set
-            {
-                this[AppConfigurationSettings.CHECKBOXON_SETTING_NAME] = value;
-            }
-        }
-
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1452,7 +1440,6 @@ namespace RandomizerHost.Settings
 
             settings.CreateLogFile = this.CreateLogFile;
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
-            settings.SetTheme = this.SetTheme;
 
             // Gameplay options
             settings.GameplayOption.BurstChaserMode.Randomize = this.RandomlyChooseSetting_EnableBurstChaserMode;
@@ -1733,12 +1720,9 @@ namespace RandomizerHost.Settings
         private const String ROM_SOURCE_PATH_SETTING_NAME = @"RomSourcePath";
         private const String ROM_SOURCE_PATH_DEFAULT_VALUE = @"";
 
-        // Flag Property Constants
-        private const String SETTHEME_SETTING_NAME = @"SetTheme";
-        private const Boolean SETTHEME_DEFAULT_VALUE = true;
-
-        private const String CHECKBOXON_SETTING_NAME = @"CheckboxOn";
-        private const Boolean CHECKBOXON_DEFAULT_VALUE = true;
+        // Theme Property Constants
+        private const String ENABLE_APP_UI_DARK_THEME_SETTING_NAME = @"EnableAppUiDarkTheme";
+        private const Boolean ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE = false;
 
         // Flag Property Constants
         private const String CREATE_LOG_FILE_SETTING_NAME = @"CreateLogFile";

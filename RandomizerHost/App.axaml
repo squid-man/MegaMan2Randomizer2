@@ -7,15 +7,6 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-        <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
-		<StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml"/>
-		<Style Selector = "Button">
-			<Setter Property = "Background" Value = "Blue"> </Setter>
-		</Style>
-        <!--
         <FluentTheme Mode="Light"/>
-		<FluentTheme Mode="Dark"/>
-        -->
-	</Application.Styles>
+    </Application.Styles>
 </Application>
