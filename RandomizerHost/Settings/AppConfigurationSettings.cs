@@ -79,7 +79,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableAppUiDarkTheme
         {
             get
@@ -1722,7 +1722,7 @@ namespace RandomizerHost.Settings
 
         // Theme Property Constants
         private const String ENABLE_APP_UI_DARK_THEME_SETTING_NAME = @"EnableAppUiDarkTheme";
-        private const Boolean ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE = true;
 
         // Flag Property Constants
         private const String CREATE_LOG_FILE_SETTING_NAME = @"CreateLogFile";
