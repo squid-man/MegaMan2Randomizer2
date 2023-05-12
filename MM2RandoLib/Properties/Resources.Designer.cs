@@ -19,7 +19,7 @@ namespace MM2Randomizer.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -284,6 +284,23 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
+        ///&lt;!--
+        ///    Mega Man 2 FamiTracker Module Sound Track Config File
+        ///
+        ///    Enabled = Whether the track should be used in the randomizer. Defaults to true.
+        ///    Title = Any string to identify the song, such as the name and what game/hack it comes from
+        ///	Author = A string identifying the author of the song, if known. By convention if the song is a cover the format is Cover Author (Original Author).
+        ///    Uses = List of Usage entries indicating where the track may be used  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FtSoundTrackConfiguration {
+            get {
+                return ResourceManager.GetString("FtSoundTrackConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///
         ///&lt;IntroStorySet&gt;
         ///    &lt;!-- Test --&gt;
         ///    &lt;IntroStory&gt;
@@ -355,11 +372,10 @@ namespace MM2Randomizer.Properties {
         ///&lt;!--
         ///    Mega Man 2 Sound Track Config File
         ///
-        ///    SongName = Any string to identify the song, such as the name and what game/hack it comes from
-        ///    OriginalStartAddress = The address of the first byte of the song&apos;s header (value 0F) in the song&apos;s original ROM
-        ///    SongData = Stream of bytes representing the song, each byte a pair of adjacent characters in the string
-        ///
-        ///    The 11 songs chosen for stages should not exceed 9438 (0x24DE) total bytes. Don&apos;t make too [rest of string was truncated]&quot;;.
+        ///    Enabled = Whether the track should be used in the randomizer
+        ///    Title = Any string to identify the song, such as the name and what game/hack it comes from
+        ///    Uses = List of Usage entries indicating where the track may be used in game. Intro, Title, StageSelect, Stage, Boss, Credits. Defaults to Stage and Credits.
+        ///    StartAddress = The address of the first byte of the song&apos;s header (value 0F) in the song&apos;s or [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SoundTrackConfiguration {
             get {

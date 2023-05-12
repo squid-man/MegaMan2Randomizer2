@@ -2,21 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using MM2Randomizer.Enums;
 
 namespace MM2Randomizer.Data
 {
-    [Flags]
-    public enum SoundTrackUsage
-    {
-        Intro = 1,
-        Title = 2,
-        StageSelect = 4,
-        Stage = 8,
-        Boss = 16,
-        Ending = 32,
-        Credits = 64,
-    }
-
     [Serializable]
     public class SoundTrack
     {
@@ -26,21 +15,21 @@ namespace MM2Randomizer.Data
         [XmlElement("Title")]
         public String Title { get; set; } = "UNKNOWN";
 
-        [XmlIgnore]
-        public static String[] DefaultUses = new String[]{"Stage", "Credits"};
-
         [XmlArray(ElementName = "Uses")]
         [XmlArrayItem(ElementName = "Usage")]
-        public String[] Uses { get; set; } = DefaultUses;
+        public String[]? Uses { get; set; } = null;
 
         [XmlIgnore]
-        public SoundTrackUsage Usage
+        public ESoundTrackUsage? Usage
         {
             get
             {
-                SoundTrackUsage usage = (SoundTrackUsage)0;
+                if (Uses is null)
+                    return null;
+                
+                ESoundTrackUsage usage = (ESoundTrackUsage)0;
                 foreach (String str in Uses)
-                    usage |= Enum.Parse<SoundTrackUsage>(str);
+                    usage |= Enum.Parse<ESoundTrackUsage>(str);
 
                 return usage;
             }

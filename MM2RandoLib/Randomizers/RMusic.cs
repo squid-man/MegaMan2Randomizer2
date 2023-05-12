@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,44 @@ using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class Song
+    using FtXmlModule = MM2Randomizer.Data.FtModule;
+    using FtXmlSong = MM2Randomizer.Data.FtSong;
+
+    public enum ESoundEngine
     {
-        public Song(String in_SongName, Int32 in_OriginalStartAddress, String in_SongBytesStr, SoundTrack? in_SoundTrack = null)
+        C2,
+        Ft,
+    }
+
+    public interface ISong
+    {
+        ESoundEngine Engine { get; }
+
+        ESoundTrackUsage? Usage { get; }
+        IList<String>? Uses { get; }
+
+        Int32 Bank { get; set; }
+        Int32 Index { get; set; }
+    }
+
+    public class C2Song : ISong
+    {
+        public C2Song(String in_SongName, Int32 in_OriginalStartAddress, String in_SongBytesStr, SoundTrack? in_SoundTrack = null)
         {
             this.SoundTrack = in_SoundTrack;
             this.OriginalStartAddress = in_OriginalStartAddress;
             this.SongName = in_SongName;
+
+            if (in_SoundTrack is not null)
+            {
+                this.Usage = in_SoundTrack.Usage;
+                this.Uses = in_SoundTrack.Uses;
+            }
+            else
+            {
+                this.Usage = null;
+                this.Uses = null;
+            }
 
             // Parse song bytes from hex String
             List<Byte> songBytes = new List<Byte>();
@@ -84,7 +116,8 @@ namespace MM2Randomizer.Randomizers
 
         public SoundTrack? SoundTrack { get; set; }
         public String SongName { get; set; }
-        public Int32 SongBank { get; set; }
+        public Int32 Bank { get; set; }
+        public Int32 Index { get; set; }
         public Int32 StartAddress { get; set; }
         public List<Byte> SongHeader { get; set; }
         public List<Byte> SongData { get; set; }
@@ -104,23 +137,314 @@ namespace MM2Randomizer.Randomizers
                 return SongHeader.Count + SongData.Count;
             }
         }
+
+        public ESoundEngine Engine { get { return ESoundEngine.C2; } }
+
+        public ESoundTrackUsage? Usage { get; set; }
+        public IList<String>? Uses { get; set; }
     }
 
+    public class FtModule
+    {
+        public class Instrument
+        {
+            public int Flags = 0;
+            public int?[] SeqAddrs = new int?[5];
+
+            public Instrument(BinaryBuffer buffer)
+            {
+                Flags = buffer.ReadByte();
+
+                byte chanMask = buffer.ReadByte();
+                for (int i = 0; i < SeqAddrs.Length; i++)
+                {
+                    SeqAddrs[i] = (chanMask & 1) != 0 ? buffer.ReadUInt16() : null;
+                    chanMask >>= 1;
+                }
+            }
+        }
+
+        public class Song
+        {
+            public int BaseAddr;
+
+            public int FrameListAddr;
+
+            public int PatternLength;
+            public int Speed;
+            public int Tempo;
+            public int GroovePos;
+            public int InitialBank;
+
+            public List<int> FrameAddrs;
+            public List<int[]> FramePatAddrs;
+
+            public Song(BinaryBuffer buffer, int baseAddr, int numChans)
+            {
+                BaseAddr = baseAddr;
+
+                FrameListAddr = buffer.ReadUInt16();
+
+                int numFrames = buffer.ReadByte();
+                PatternLength = buffer.ReadByte();
+                Speed = buffer.ReadByte();
+                Tempo = buffer.ReadByte();
+                GroovePos = buffer.ReadByte();
+                InitialBank = buffer.ReadByte();
+
+                buffer.Seek(FrameListAddr - baseAddr);
+                UInt16[] frameAddrs = new UInt16[numFrames];
+                buffer.Read(frameAddrs, 0, numFrames);
+                FrameAddrs = new List<int>(from x in frameAddrs select (int)x);
+
+                FramePatAddrs = new List<int[]>();
+                UInt16[] frame = new UInt16[numChans];
+                foreach (int frameAddr in FrameAddrs)
+                {
+                    buffer.Seek(frameAddr - baseAddr);
+
+                    buffer.Read(frame, 0, numChans);
+                    FramePatAddrs.Add(Array.ConvertAll<UInt16, int>(frame, x => (int)x));
+                }
+            }
+        }
+
+        private int baseAddr;
+        private BinaryBuffer buffer;
+
+        private int songListAddr;
+        private int instrListAddr;
+        private int sampleMapAddr;
+        private int samplesAddr;
+        private int groovesAddr;
+
+        private byte flags;
+
+        private int ntscSpeed;
+        private int palSpeed;
+
+        private List<int> songAddrs;
+        private List<int> instrAddrs;
+
+        private List<Song> songs;
+        private List<Instrument> instrs;
+
+        public FtModule(IList<Byte> in_Buffer, Int32 in_BaseAddress = 0, Int32 in_NumChannels = 5)
+        {
+            buffer = new BinaryBuffer(in_Buffer);
+            baseAddr = in_BaseAddress;
+
+            songListAddr = buffer.ReadUInt16();
+            instrListAddr = buffer.ReadUInt16();
+            sampleMapAddr = buffer.ReadUInt16();
+            samplesAddr = buffer.ReadUInt16();
+            groovesAddr = buffer.ReadUInt16();
+
+            flags = buffer.ReadByte();
+
+            ntscSpeed = buffer.ReadUInt16();
+            palSpeed = buffer.ReadUInt16();
+
+            // Parse instruments
+            instrAddrs = new List<int>();
+            instrs = new List<Instrument>();
+            if (instrListAddr != sampleMapAddr)
+            {
+                buffer.Seek(instrListAddr - in_BaseAddress);
+
+                int firstInstrAddr = buffer.ReadUInt16(false, false);
+                UInt16[] instrAddrs16 = new ushort[(firstInstrAddr - instrListAddr) / 2];
+                buffer.Read(instrAddrs16, 0, instrAddrs16.Length);
+                instrAddrs = new List<int>(from x in instrAddrs16 select (int)x);
+
+                foreach (int instrAddr in instrAddrs)
+                {
+                    buffer.Seek(instrAddr - in_BaseAddress);
+                    instrs.Add(new Instrument(buffer));
+                }
+            }
+
+            // Parse songs
+            songAddrs = new List<int>();
+            songs = new List<Song>();
+            if (songListAddr != instrListAddr)
+            {
+                buffer.Seek(songListAddr - in_BaseAddress);
+
+                int firstSongAddr = buffer.ReadUInt16(false, false);
+                for (int i = 0; i < (firstSongAddr - songListAddr) / 2; i++)
+                    songAddrs.Add(buffer.ReadUInt16());
+
+                songs = new List<Song>();
+                foreach (int songAddr in songAddrs)
+                {
+                    buffer.Seek(songAddr - in_BaseAddress);
+                    songs.Add(new Song(buffer, in_BaseAddress, in_NumChannels));
+                }
+            }
+        }
+
+        public void Rebase(Int32 in_NewAddress)
+        {
+            int addrDelta = in_NewAddress - baseAddr;
+
+            // Update the instruments
+            for (int instrIdx = 0; instrIdx < instrAddrs.Count; instrIdx++)
+            {
+                buffer.Seek(instrAddrs[instrIdx] + 2 - baseAddr);
+
+                IList<int?> seqAddrs = instrs[instrIdx].SeqAddrs;
+                for (int seqIdx = 0; seqIdx < seqAddrs.Count; seqIdx++)
+                {
+                    int? seqAddr = seqAddrs[seqIdx];
+                    if (seqAddr is not null)
+                    {
+                        seqAddrs[seqIdx] = (seqAddr += addrDelta);
+                        buffer.Write((UInt16)seqAddr);
+                    }
+                }
+
+                instrAddrs[instrIdx] += addrDelta;
+            }
+
+            buffer.Seek(instrListAddr - baseAddr);
+            buffer.Write((from addr in instrAddrs select (UInt16)addr).ToList(), 0, instrAddrs.Count);
+
+            // Update the songs
+            for (int songIdx = 0; songIdx < songAddrs.Count; songIdx++)
+            {
+                int songAddr = songAddrs[songIdx];
+                Song song = songs[songIdx];
+
+                for (int frameIdx = 0; frameIdx < song.FrameAddrs.Count; frameIdx++)
+                {
+                    int frameAddr = song.FrameAddrs[frameIdx];
+                    int[] patAddrs = song.FramePatAddrs[frameIdx];
+
+                    for (int chanIdx = 0; chanIdx < patAddrs.Length; chanIdx++)
+                        patAddrs[chanIdx] += addrDelta;
+
+                    buffer.Seek(frameAddr - baseAddr);
+                    buffer.Write((from addr in patAddrs select (UInt16)addr).ToList(), 0, patAddrs.Length);
+
+                    song.FrameAddrs[frameIdx] = frameAddr + addrDelta;
+                }
+
+                buffer.Seek(song.FrameListAddr);
+                buffer.Write((from addr in song.FrameAddrs select (UInt16)addr).ToList(), 0, song.FrameAddrs.Count);
+
+                song.FrameListAddr += addrDelta;
+                buffer.Seek(songAddr - baseAddr);
+                buffer.Write((UInt16)song.FrameListAddr);
+
+                song.BaseAddr += addrDelta;
+
+                songAddrs[songIdx] += addrDelta;
+            }
+
+            buffer.Seek(songListAddr - baseAddr);
+            buffer.Write((from addr in songAddrs select (UInt16)addr).ToList(), 0, songAddrs.Count);
+
+            // Update the header
+            songListAddr += addrDelta;
+            instrListAddr += addrDelta;
+            sampleMapAddr += addrDelta;
+            samplesAddr += addrDelta;
+            groovesAddr += addrDelta;
+
+            buffer.Seek(0);
+
+            buffer.Write((UInt16)songListAddr);
+            buffer.Write((UInt16)instrListAddr);
+            buffer.Write((UInt16)sampleMapAddr);
+            buffer.Write((UInt16)samplesAddr);
+            buffer.Write((UInt16)groovesAddr);
+
+            baseAddr = in_NewAddress;
+        }
+
+        public void SwapSquareChans(int songIdx)
+        {
+            Song song = songs[songIdx];
+            var doneFrameAddrs = new HashSet<int>();
+
+            for (int frameIdx = 0; frameIdx < song.FrameAddrs.Count; frameIdx++)
+            {
+                int frameAddr = song.FrameAddrs[frameIdx];
+                if (!doneFrameAddrs.Add(frameAddr))
+                    continue;
+
+                int[] frame = song.FramePatAddrs[frameIdx];
+                int square1Addr = frame[0];
+                frame[0] = frame[1];
+                frame[1] = square1Addr;
+
+                buffer.Seek(frameAddr - baseAddr);
+                buffer.Write((from addr in frame select (UInt16)addr).ToList(), 0, 2);
+            }
+        }
+    }
+
+    public class FtSongEntry : ISong
+    {
+        public ESoundEngine Engine { get { return ESoundEngine.Ft; } }
+
+        public ESoundTrackUsage? Usage { get; private set; }
+        public IList<String>? Uses { get; private set; }
+
+        public Int32 Bank { get; set; }
+        public Int32 Index { get; set; }
+
+        public readonly FtXmlModule ModuleInfo;
+        public readonly FtXmlSong? Info;
+
+        public readonly Int32 Number;
+        public readonly String Title;
+        public readonly Boolean SwapSquareChans;
+
+        public String Author { get { return ModuleInfo.Author; } }
+        public Byte[] TrackData { get { return ModuleInfo.TrackData; } }
+
+        public FtSongEntry(FtXmlModule in_Mod, Int32 in_SongIdx)
+        {
+            ModuleInfo = in_Mod;
+            
+            if (in_Mod.Songs.Count > 0)
+            {
+                // in_SongIdx is the index in in_Mod.Songs, NOT the index in the FTM itself
+                Info = in_Mod.Songs[in_SongIdx];
+
+                Number = Info.Number;
+                Title = Info.Title;
+                Usage = (Info.Usage is not null) ? Info.Usage : in_Mod.Usage;
+                SwapSquareChans = (Info.SwapSquareChans is not null) ? (bool)Info.SwapSquareChans : in_Mod.SwapSquareChans;
+            }
+            else
+            {
+                Info = null;
+
+                Number = 0;
+                Title = in_Mod.Title;
+                Usage = in_Mod.Usage;
+                SwapSquareChans = in_Mod.SwapSquareChans;
+            }
+        }
+    }
 
     public class RMusic : IRandomizer
     {
         /// <summary>
         /// Map of which game songs belong to which music uses.
         /// </summary>
-        private Dictionary<SoundTrackUsage, EMusicID[]> UsesMusicIds = new Dictionary<SoundTrackUsage, EMusicID[]>
+        private Dictionary<ESoundTrackUsage, EMusicID[]> UsesMusicIds = new Dictionary<ESoundTrackUsage, EMusicID[]>
         {
-            { SoundTrackUsage.Intro, new EMusicID[]{EMusicID.Intro} },
-            { SoundTrackUsage.Title, new EMusicID[]{EMusicID.Title} },
-            { SoundTrackUsage.StageSelect, new EMusicID[]{EMusicID.StageSelect} },
-            { SoundTrackUsage.Stage, new EMusicID[]{EMusicID.Flash, EMusicID.Wood, EMusicID.Crash, EMusicID.Heat, EMusicID.Air, EMusicID.Metal, EMusicID.Quick, EMusicID.Bubble, EMusicID.Wily1, EMusicID.Wily2, EMusicID.Wily3, EMusicID.Wily4, EMusicID.Wily5, EMusicID.Wily6 } },
-            { SoundTrackUsage.Boss, new EMusicID[]{EMusicID.Boss} },
-            { SoundTrackUsage.Ending, new EMusicID[]{EMusicID.Ending} },
-            { SoundTrackUsage.Credits, new EMusicID[]{EMusicID.Credits} },
+            { ESoundTrackUsage.Intro, new EMusicID[]{EMusicID.Intro} },
+            { ESoundTrackUsage.Title, new EMusicID[]{EMusicID.Title} },
+            { ESoundTrackUsage.StageSelect, new EMusicID[]{EMusicID.StageSelect} },
+            { ESoundTrackUsage.Stage, new EMusicID[]{EMusicID.Flash, EMusicID.Wood, EMusicID.Crash, EMusicID.Heat, EMusicID.Air, EMusicID.Metal, EMusicID.Quick, EMusicID.Bubble, EMusicID.Wily1, EMusicID.Wily2, EMusicID.Wily3, EMusicID.Wily4, EMusicID.Wily5, EMusicID.Wily6 } },
+            { ESoundTrackUsage.Boss, new EMusicID[]{EMusicID.Boss} },
+            { ESoundTrackUsage.Ending, new EMusicID[]{EMusicID.Ending} },
+            { ESoundTrackUsage.Credits, new EMusicID[]{EMusicID.Credits} },
         };
 
         /// <summary>
@@ -163,6 +487,9 @@ namespace MM2Randomizer.Randomizers
         /// </summary>
         private const Int32 LastFreeBank = 0x3d;
 
+        private String[] DefaultUses = new string[] { "Stage", "Credits" };
+        private ESoundTrackUsage DefaultUsage = ESoundTrackUsage.Stage | ESoundTrackUsage.Credits;
+
         private StringBuilder debug = new StringBuilder();
 
         public RMusic()
@@ -188,25 +515,38 @@ namespace MM2Randomizer.Randomizers
         {
             // Read songs from file, parse and add to list
             SoundTrackSet soundTrackSet = Properties.Resources.SoundTrackConfiguration.Deserialize<SoundTrackSet>();
-            var songs =
+            List<ISong> songs =
                 (from soundTrack in soundTrackSet
                  where soundTrack.Enabled
-                 select new Song(soundTrack.Title, Int32.Parse(soundTrack.StartAddress, NumberStyles.HexNumber), soundTrack.TrackData, soundTrack)).ToList();
+                 select new C2Song(soundTrack.Title, Int32.Parse(soundTrack.StartAddress, NumberStyles.HexNumber), soundTrack.TrackData, soundTrack)).ToList<ISong>();
 
-            debug.AppendLine($"{songs.Count} stage songs loaded.");
+            FtModuleSet moduleSet = Properties.Resources.FtSoundTrackConfiguration.Deserialize<FtModuleSet>();
+            var ftmSongs = new List<FtSongEntry>();
+            foreach (FtXmlModule xmlMod in moduleSet)
+            {
+                Debug.Assert(xmlMod.Size <= BankSize, $"FTM {xmlMod.Title} is larger than a bank");
+                
+                for (int i = 0; i < Math.Max(xmlMod.Songs.Count, 1); i++)
+                {
+                    FtSongEntry song = new FtSongEntry(xmlMod, i);
+
+                    ftmSongs.Add(song);
+                    songs.Add(song);
+                }
+            }
+
+            debug.AppendLine($"{songs.Count} C2 and {ftmSongs.Count} FT songs loaded.");
 
             // Create the usage type lists of songs
             var usesSongIdcs = new Dictionary<String, List<Int32>>();
-            foreach (String name in Enum.GetNames(typeof(SoundTrackUsage)))
+            foreach (String name in Enum.GetNames(typeof(ESoundTrackUsage)))
                 usesSongIdcs[name] = new List<Int32>();
 
             for (Int32 songIdx = 0; songIdx < songs.Count; songIdx++)
             {
-                SoundTrack? soundTrack = songs[songIdx].SoundTrack;
-                if (soundTrack is null)
-                    continue;
-
-                foreach (String useStr in soundTrack.Uses)
+                ISong song = songs[songIdx];
+                IList<String> uses = (song.Uses is not null) ? song.Uses : DefaultUses;
+                foreach (String useStr in uses)
                     usesSongIdcs[useStr].Add(songIdx);
             }
 
@@ -214,7 +554,7 @@ namespace MM2Randomizer.Randomizers
             Dictionary<EMusicID, Int32>? selSongMap = null;
             while (selSongMap is null)
             {
-                selSongMap = SelectSongs(in_Seed, songs, usesSongIdcs);
+                selSongMap = SelectSongs(in_Seed, usesSongIdcs);
 
                 var selSongIdcs = new HashSet<int>(selSongMap.Values);
                 var banksSongs = PlaceSongsInBanks((from idx in selSongIdcs select songs[idx]).ToList());
@@ -224,35 +564,55 @@ namespace MM2Randomizer.Randomizers
                     selSongMap = null;
             }
 
-            // For boss tracks, update the boss song table
+            // Update the sound tables
             foreach (EMusicID musicId in selSongMap.Keys)
             {
                 Int32 songIdx = selSongMap[musicId];
-                Song song = songs[songIdx];
                 Int32 musicIdx = (Int32)musicId;
-                Int32 TblPtrOffset = C2SongTblOffs + musicIdx * 2;
+                Int32 tblMusicIdx = musicIdx;
                 Int32 SongMapPtrOffs = SongMapOffs + musicIdx * 2;
 
-                // Update the song address and map tables
-                in_Patch.AddWord(TblPtrOffset, song.StartAddress, $"Song {musicIdx} Pointer Offset");
-                debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.SongName}, {song.OriginalStartAddress}");
-
-                in_Patch.Add(SongMapPtrOffs++, (byte)song.SongBank, $"Song {musicIdx} Bank Index");
-                in_Patch.Add(SongMapPtrOffs++, (byte)musicIdx, $"Song {musicIdx} Song Index");
-
-                if ((Int32)musicId >= FirstBossMusicId && (Int32)musicId < FirstBossMusicId + BossSongMapLen)
+                ISong isong = songs[songIdx];
+                int bankIdx = isong.Bank;
+                if (isong.Engine == ESoundEngine.C2)
                 {
-                    Int32 bossIdx = (Int32)musicId - FirstBossMusicId;
+                    C2Song song = (C2Song)isong;
+                    Int32 TblPtrOffset = C2SongTblOffs + musicIdx * 2;
+
+                    // Update the song address table
+                    in_Patch.AddWord(TblPtrOffset, song.StartAddress, $"Song {musicIdx} Pointer Offset");
+                    debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.SongName}, {song.OriginalStartAddress}");
+                }
+                else
+                {
+                    FtSongEntry song = (FtSongEntry)isong;
+
+                    bankIdx = ~song.Bank;
+                    tblMusicIdx = song.Number;
+
+                    debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.ModuleInfo.Title} - {song.Title}");
+                }
+
+                in_Patch.Add(SongMapPtrOffs++, (byte)bankIdx, $"Song {musicIdx} Bank Index");
+                in_Patch.Add(SongMapPtrOffs++, (byte)tblMusicIdx, $"Song {musicIdx} Song Index");
+
+                // For boss tracks, update the boss song table
+                if (musicIdx >= FirstBossMusicId && musicIdx < FirstBossMusicId + BossSongMapLen)
+                {
+                    Int32 bossIdx = musicIdx - FirstBossMusicId;
                     in_Patch.Add(BossSongMapOffs + bossIdx, (byte)musicIdx, $"Boss {bossIdx} Song Index");
                 }
             }
 
             Boolean testRebase = false;
             if (testRebase)
-                TestRebaseSongs(songs);
+            {
+                //TestRebaseSongs(songs);
+                TestRebaseFtms(moduleSet.Modules);
+            }
         }
 
-        private Dictionary<EMusicID, Int32> SelectSongs(ISeed in_Seed, List<Song> in_Songs, Dictionary<String, List<Int32>> in_UsesSongIdcs)
+        private Dictionary<EMusicID, Int32> SelectSongs(ISeed in_Seed, IReadOnlyDictionary<String, List<Int32>> in_UsesSongIdcs)
         {
             var selSongMap = new Dictionary<EMusicID, int>();
 
@@ -264,7 +624,7 @@ namespace MM2Randomizer.Randomizers
 
                 EMusicID[]? usageMusicIds;
                 if (usageStr != "Boss")
-                    usageMusicIds = UsesMusicIds[Enum.Parse<SoundTrackUsage>(usageStr)];
+                    usageMusicIds = UsesMusicIds[Enum.Parse<ESoundTrackUsage>(usageStr)];
                 else
                     usageMusicIds = (from idx in Enumerable.Range(FirstBossMusicId, BossSongMapLen) select (EMusicID)idx).ToArray();
 
@@ -286,29 +646,73 @@ namespace MM2Randomizer.Randomizers
             return selSongMap;
         }
 
-        private Dictionary<int, List<Song>>? PlaceSongsInBanks(List<Song> in_Songs)
+        private Dictionary<int, List<ISong>>? PlaceSongsInBanks(IReadOnlyList<ISong> in_Songs)
         {
-            // Allocate space for all the songs in the free banks
-            Int32 numTracks = in_Songs.Count;
-            var banksSongs = new Dictionary<int, List<Song>>();
-            Int32 songsLeft = numTracks;
-            var songs = new List<Song?>(in_Songs);
-            songs.Sort((a, b) => -a.TotalLength.CompareTo(b.TotalLength));
+            // Separate FT and C2 songs, as the former must be at the start of banks
+            var ftmsSongs = new Dictionary<FtXmlModule, List<FtSongEntry>>(ReferenceEqualityComparer.Instance);
+            var ftSongs = new List<FtSongEntry>();
+            var c2Songs = new List<C2Song?>();
+            foreach (ISong isong in in_Songs)
+            {
+                if (isong.Engine == ESoundEngine.Ft)
+                {
+                    FtSongEntry song = (FtSongEntry)isong;
+                    FtXmlModule mod = song.ModuleInfo;
 
+                    List<FtSongEntry>? ftmSongs = null;
+                    if (!ftmsSongs.TryGetValue(mod, out ftmSongs))
+                    {
+                        ftmSongs = new List<FtSongEntry>();
+                        ftmsSongs[mod] = ftmSongs;
+                    }
+                    
+                    ftmSongs.Add(song);
+                    ftSongs.Add(song);
+                }
+                else
+                    c2Songs.Add((C2Song)isong);
+            }
+
+            if (ftmsSongs.Count > LastFreeBank - FirstFreeBank + 1)
+                // Not enough banks for all the FTMs
+                return null;
+
+            var ftmsBySize = new List<FtXmlModule>(ftmsSongs.Keys);
+            ftmsBySize.Sort((a, b) => -a.Size.CompareTo(b.Size));
+
+            c2Songs.Sort((a, b) => -a.TotalLength.CompareTo(b.TotalLength));
+
+            // Place the songs in each bank
+            var banksSongs = new Dictionary<int, List<ISong>>();
+            int ftModIdx = 0;
+            int numTracks = c2Songs.Count + ftmsBySize.Count;
+            int songsLeft = numTracks;
             for (Int32 bankIdx = FirstFreeBank; bankIdx <= LastFreeBank && songsLeft > 0; bankIdx++)
             {
-                banksSongs[bankIdx] = new List<Song>();
+                List<ISong> bankSongs = banksSongs[bankIdx] = new List<ISong>();
 
+                // Place an FTM (if any) at the start of the bank
                 Int32 sizeLeft = BankSize;
-                for (Int32 listIdx = 0; listIdx < numTracks && songsLeft > 0; listIdx++)
+                if (ftModIdx < ftmsBySize.Count)
                 {
-                    Song? song = songs[listIdx];
+                    FtXmlModule mod = ftmsBySize[ftModIdx++];
+
+                    bankSongs.AddRange(ftmsSongs[mod]);
+
+                    songsLeft--;
+                    sizeLeft -= mod.Size;
+                }
+
+                // Then fill it in with C2 songs
+                for (Int32 listIdx = 0; listIdx < c2Songs.Count && songsLeft > 0; listIdx++)
+                {
+                    C2Song? song = c2Songs[listIdx];
                     if (song is not null && song.TotalLength <= sizeLeft)
                     {
                         banksSongs[bankIdx].Add(song);
                         sizeLeft -= song.TotalLength;
 
-                        songs[listIdx] = null;
+                        c2Songs[listIdx] = null;
                         songsLeft--;
                     }
                 }
@@ -327,18 +731,63 @@ namespace MM2Randomizer.Randomizers
             return banksSongs;
         }
 
-        private void ImportSongs(Patch in_Patch, ISeed in_Seed, Dictionary<int, List<Song>> in_BanksSongs)
+        private void ImportSongs(Patch in_Patch, ISeed in_Seed, Dictionary<int, List<ISong>> in_BanksSongs)
         {
             // Rebase and write the songs
             foreach (var bankAndSongs in in_BanksSongs)
             {
-                Int32 bankIdx = bankAndSongs.Key;
+                int bankIdx = bankAndSongs.Key;
                 var bankSongs = bankAndSongs.Value;
-                Int32 songStartRom = bankIdx * BankSize + 0x10;
+                int songStartRom = bankIdx * BankSize + 0x10;
+                int slotIdx = 0;
 
-                foreach (Song song in bankSongs)
+                // Import the FTM if any
+                FtXmlModule? modInfo = null;
+                FtModule? ftm = null;
+                for (; slotIdx < bankSongs.Count; slotIdx++)
                 {
-                    Int32 songAddr = (songStartRom - 0x10) % BankSize + 0xa000;
+                    ISong isong = bankSongs[slotIdx];
+                    if (isong.Engine != ESoundEngine.Ft)
+                        break;
+
+                    FtSongEntry song = (FtSongEntry)isong;
+
+                    if (slotIdx == 0)
+                    {
+                        modInfo = song.ModuleInfo;
+                        ftm = new FtModule(song.TrackData, modInfo.StartAddress);
+                    }
+
+                    if (song.SwapSquareChans)
+                    {
+                        Debug.Assert(ftm is not null);
+                        ftm.SwapSquareChans(Math.Max(song.Number - 1, 0));
+                    }
+
+                    song.Bank = bankIdx;
+                }
+
+                if (modInfo is not null)
+                {
+                    // Import the module
+                    Debug.Assert(ftm is not null);
+
+                    int songAddr = (songStartRom - 0x10) % BankSize + 0xa000;
+
+                    ftm.Rebase(songAddr);
+
+                    in_Patch.Add(songStartRom, modInfo.TrackData, $"FTM {modInfo.Title}");
+
+                    modInfo.StartAddress = songAddr;
+
+                    songStartRom += modInfo.Size;
+                }
+
+                // Import the C2 songs if any
+                for (; slotIdx < bankSongs.Count; slotIdx++)
+                {
+                    C2Song song = (C2Song)bankSongs[slotIdx];
+                    int songAddr = (songStartRom - 0x10) % BankSize + 0xa000;
 
                     RebaseC2Song(song, bankIdx, songAddr);
 
@@ -349,9 +798,9 @@ namespace MM2Randomizer.Randomizers
             }
         }
 
-        private void RebaseC2Song(Song song, Int32 songBank, Int32 songAddr)
+        private void RebaseC2Song(C2Song song, Int32 songBank, Int32 songAddr)
         {
-            song.SongBank = songBank;
+            song.Bank = songBank;
             song.StartAddress = songAddr;
 
             // Header: Calculate 4 channel addresses and vibrato address
@@ -572,9 +1021,9 @@ namespace MM2Randomizer.Randomizers
             }
         }
 
-        private void TestRebaseSongs(List<Song> in_Songs)
+        private void TestRebaseSongs(IEnumerable<C2Song> in_Songs)
         {
-            foreach (Song song in in_Songs)
+            foreach (C2Song song in in_Songs)
             {
                 try 
                 {
@@ -582,9 +1031,25 @@ namespace MM2Randomizer.Randomizers
                 }
                 catch (Exception e)
                 {
-                    System.Diagnostics.Debug.Assert(false, $"ERROR: Rebase failed on '{song.SongName}'");
+                    Debug.Assert(false, $"ERROR: Rebase failed on '{song.SongName}'");
                 }
             }
+        }
+
+        private void TestRebaseFtms(IEnumerable<FtXmlModule> in_Mods)
+        {
+            foreach (FtXmlModule xmlMod in in_Mods)
+            {
+                try
+                {
+                    FtModule ftm = new FtModule(xmlMod.TrackData, xmlMod.StartAddress);
+                }
+                catch (Exception e)
+                {
+                    System.Diagnostics.Debug.Assert(false, $"ERROR: Rebase failed on FTM '{xmlMod.Title}'");
+                }
+            }
+
         }
     }
 }
