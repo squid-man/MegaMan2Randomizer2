@@ -733,6 +733,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.Pikachu:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Pikachu);
+                        break;
+                    }
+
                 case PlayerSpriteOption.ProtoMan:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ProtoMan);

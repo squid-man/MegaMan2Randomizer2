@@ -1383,7 +1383,14 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=NewLands}"
                             />
 
-                            <Image
+							<Image
+	                            Width="168"
+	                            Height="168"
+	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Pikachu.png"
+	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Pikachu}"
+                            />
+
+							<Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_ProtoMan.png"

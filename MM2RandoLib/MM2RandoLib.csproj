@@ -144,6 +144,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Resources\SpritePatches\Bosses\BoobeamTrap\" />
+      <Folder Include="Resources\SpritePatches\Characters\Pikachu\" />
       <Folder Include="Resources\SpritePatches\Enemies\ForceBeamBody\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Background\" />

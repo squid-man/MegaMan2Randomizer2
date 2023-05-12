@@ -62,6 +62,8 @@ namespace MM2Randomizer
         MegaRan2Remix,
         [Description("New Lands")]
         NewLands,
+        [Description("Pikachu")]
+        Pikachu,
         [Description("Proto Man")]
         ProtoMan,
         [Description("Prototype Tom")]
