@@ -64,6 +64,8 @@ namespace MM2Randomizer
         NewLands,
         [Description("Pikachu")]
         Pikachu,
+        [Description("Pit")]
+        Pit,
         [Description("Proto Man")]
         ProtoMan,
         [Description("Prototype Tom")]
