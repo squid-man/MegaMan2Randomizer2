@@ -693,6 +693,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] GutsTank_Bowser {
+            get {
+                object obj = ResourceManager.GetObject("GutsTank_Bowser", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] GutsTank_Cray {
             get {
                 object obj = ResourceManager.GetObject("GutsTank_Cray", resourceCulture);
