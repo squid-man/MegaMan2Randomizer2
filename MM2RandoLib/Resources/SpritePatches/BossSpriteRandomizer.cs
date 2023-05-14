@@ -144,8 +144,11 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_GUTS_TANK = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.GutsTank_Bowser,
             Properties.BossSpriteResources.GutsTank_CutMansBadScissorsDay,
             Properties.BossSpriteResources.GutsTank_Cray,
+            Properties.BossSpriteResources.GutsTank_Technodrome,
+
         };
 
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_BOOBEAM_TRAP = new List<Byte[]?>()
@@ -176,6 +179,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.Alien_Exhaust,
             Properties.BossSpriteResources.Alien_Grayzone,
             Properties.BossSpriteResources.Alien_Gyotot,
+            Properties.BossSpriteResources.Alien_ManII,
             Properties.BossSpriteResources.Alien_NoConstancy,
             Properties.BossSpriteResources.Alien_RockMan2E,
             Properties.BossSpriteResources.Alien_RockMan2Hardcore,
