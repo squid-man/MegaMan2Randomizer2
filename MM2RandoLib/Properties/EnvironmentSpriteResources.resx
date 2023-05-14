@@ -382,6 +382,9 @@
   <data name="StageTile_MetalMan_Block_Sand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\MetalMan\Block\StageTile_MetalMan_Block_Sand.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="StageTile_MetalMan_Block_Snakeman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\MetalMan\Block\StageTile_MetalMan_Block_Snakeman.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="StageTile_MetalMan_Conveyor_CB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\MetalMan\Conveyor\StageTile_MetalMan_Conveyor_CB.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -426,9 +429,6 @@
   </data>
   <data name="StageTile_Wily2_Animated_CutmansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_CutmansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="StageTile_Wily2_Animated_CutmansBadScissorsDay2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_CutmansBadScissorsDay2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StageTile_Wily2_Animated_Karnath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Karnath.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
