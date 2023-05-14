@@ -270,7 +270,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND = new List<Byte[]?>()
         {
             null,
-            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_AdventureIsland,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_CrissCross,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_Snake,
         };
 
