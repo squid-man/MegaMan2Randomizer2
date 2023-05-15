@@ -76,7 +76,7 @@ namespace MM2Randomizer.Randomizers
                     EItemNumber.One => "Item 1",
                     EItemNumber.Two => "Item 2",
                     EItemNumber.Three => "Item 3",
-                    EItemNumber.None => "",
+                    _ => "",
                 };
                 debug.AppendLine($"{i.Key.Name} stage\t -> {itemName}");
             }
