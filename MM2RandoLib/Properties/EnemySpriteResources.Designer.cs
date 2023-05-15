@@ -363,6 +363,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] NeoMetall_Chungus {
+            get {
+                object obj = ResourceManager.GetObject("NeoMetall_Chungus", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Pierobot_VineMan {
             get {
                 object obj = ResourceManager.GetObject("Pierobot_VineMan", resourceCulture);

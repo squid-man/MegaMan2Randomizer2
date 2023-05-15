@@ -128,6 +128,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_NEO_METALL = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.NeoMetall_Chungus,
             Properties.EnemySpriteResources.NeoMetall_1UpMet1,
             Properties.EnemySpriteResources.NeoMetall_1UpMet2,
         };

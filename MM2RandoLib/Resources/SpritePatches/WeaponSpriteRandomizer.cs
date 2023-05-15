@@ -125,6 +125,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_ITEM1 = new List<Byte[]?>()
         {
             null,
+            Properties.WeaponSpriteResources.Item1_ManII,
             Properties.WeaponSpriteResources.Item1_MegaMan2Remix,
             Properties.WeaponSpriteResources.Item1_MegaRan,
             Properties.WeaponSpriteResources.Item1_MetCarrier,
@@ -138,6 +139,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.WeaponSpriteResources.Item2_BulletBill,
             Properties.WeaponSpriteResources.Item2_CutMansBadScissorsDay,
+            Properties.WeaponSpriteResources.Item2_ManII,
             Properties.WeaponSpriteResources.Item2_MegaMan2Remix,
             Properties.WeaponSpriteResources.Item2_MegaRan,
             Properties.WeaponSpriteResources.Item2_Peercast,
@@ -150,6 +152,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_ITEM3 = new List<Byte[]?>()
         {
             null,
+            Properties.WeaponSpriteResources.Item3_ManII,
             Properties.WeaponSpriteResources.Item3_MegaMan2Remix,
             Properties.WeaponSpriteResources.Item3_MegaRan,
             Properties.WeaponSpriteResources.Item3_Met,
