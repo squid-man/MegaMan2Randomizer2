@@ -349,7 +349,7 @@ namespace MM2Randomizer
 
             if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisableWaterfall)
             {
-                this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_None);
+                this.Patch.Add(0xFE10, (byte)1, "Disable Bubble Man stage palette animation");
             }
 
 

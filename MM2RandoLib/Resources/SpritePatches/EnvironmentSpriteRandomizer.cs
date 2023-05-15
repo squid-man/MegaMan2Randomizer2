@@ -213,6 +213,8 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_MetalMan_Block_Sand,
+            Properties.EnvironmentSpriteResources.StageTile_MetalMan_Block_Snakeman,
+
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_METAL_MAN_CONVEYOR = new List<Byte[]?>()
@@ -254,7 +256,6 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay,
-            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay2,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyTV,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_Karnath,
         };
@@ -269,7 +270,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND = new List<Byte[]?>()
         {
             null,
-            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_AdventureIsland,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_CrissCross,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_Snake,
         };
 

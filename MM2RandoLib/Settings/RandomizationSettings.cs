@@ -32,9 +32,6 @@ namespace MM2Randomizer.Settings
 
         public Boolean EnableSpoilerFreeMode { get; set; }
 
-        public Boolean SetTheme { get; set; }
-
-
 
         //
         // Option Categories

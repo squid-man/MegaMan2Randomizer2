@@ -183,6 +183,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Alien_ManII {
+            get {
+                object obj = ResourceManager.GetObject("Alien_ManII", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Alien_NoConstancy {
             get {
                 object obj = ResourceManager.GetObject("Alien_NoConstancy", resourceCulture);
@@ -683,6 +693,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] GutsTank_Bowser {
+            get {
+                object obj = ResourceManager.GetObject("GutsTank_Bowser", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] GutsTank_Cray {
             get {
                 object obj = ResourceManager.GetObject("GutsTank_Cray", resourceCulture);
@@ -696,6 +716,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] GutsTank_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("GutsTank_CutMansBadScissorsDay", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] GutsTank_Technodrome {
+            get {
+                object obj = ResourceManager.GetObject("GutsTank_Technodrome", resourceCulture);
                 return ((byte[])(obj));
             }
         }

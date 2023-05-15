@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Input;
 using System.Xml;
 using Avalonia.Controls;
+using Avalonia.Themes.Fluent;
 using MM2Randomizer;
 using RandomizerHost.Settings;
 using RandomizerHost.Views;
@@ -47,6 +48,7 @@ namespace RandomizerHost.ViewModels
 
             this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
             this.ExportSettingsCommand = ReactiveCommand.Create<Window>(this.ExportSettings);
+            this.SetThemeCommand = ReactiveCommand.Create(this.SetTheme);
         }
 
         private void AppConfigurationSettings_PropertyChanged(Object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -312,6 +314,26 @@ namespace RandomizerHost.ViewModels
                         this.AppConfigurationSettings.WriteXml(xmlWriter);
                     }
                 }
+            }
+        }
+
+        public void SetTheme()
+        {
+            if (true == this.mAppConfigurationSettings.EnableAppUiDarkTheme)
+            {
+                Avalonia.Application.Current.Styles[0] =
+                    new FluentTheme(new Uri("avares://Dummy/App.xaml"))
+                    {
+                        Mode = FluentThemeMode.Dark
+                    };
+            }
+            else
+            {
+                Avalonia.Application.Current.Styles[0] =
+                    new FluentTheme(new Uri("avares://Dummy/App.xaml"))
+                    {
+                        Mode = FluentThemeMode.Light
+                    };
             }
         }
 
