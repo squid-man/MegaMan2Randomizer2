@@ -967,6 +967,27 @@
                             IsChecked="{Binding Path=AppConfigurationSettings.DisableWaterfall}"
                         />
                     </StackPanel>
+                    <StackPanel
+                        Orientation="Horizontal"
+                    >
+                        <!-- Friendly emoji header -->
+                        <Label FontSize="18">🎲</Label>
+
+                        <!-- Toggle to randomize the option -->
+                        <ToggleSwitch
+                            Name="ToggleSwitch_DisablePauseLock"
+                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisablePauseLock}"
+                            OffContent=""
+                            OnContent=""
+                        />
+
+                        <CheckBox
+                            Name="CheckBox_DisablePauseLock"
+                            Content="Allow Pause During Item Use"
+                            IsEnabled="{Binding !#ToggleSwitch_DisablePauseLock.IsChecked}"
+                            IsChecked="{Binding Path=AppConfigurationSettings.DisablePauseLock}"
+                        />
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
 
