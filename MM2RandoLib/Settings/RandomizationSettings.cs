@@ -74,6 +74,7 @@ namespace MM2Randomizer.Settings
                     RandomizeSpecialItemLocations = this.GameplayOption.RandomizeSpecialItemLocations.NextValue(in_Seed),
                     RandomizeSpecialWeaponBehavior = this.GameplayOption.RandomizeSpecialWeaponBehavior.NextValue(in_Seed),
                     RandomizeSpecialWeaponReward = this.GameplayOption.RandomizeSpecialWeaponReward.NextValue(in_Seed),
+                    MercilessMode = this.GameplayOption.MercilessMode.NextValue(in_Seed),
                 },
                 ChargingSpeedOption = new
                 {
@@ -160,6 +161,8 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.GameplayOption.RandomizeSpecialWeaponBehavior.Value);
             flags.PushValue(this.GameplayOption.RandomizeSpecialWeaponReward.Randomize);
             flags.PushValue(this.GameplayOption.RandomizeSpecialWeaponReward.Value);
+            flags.PushValue(this.GameplayOption.MercilessMode.Randomize);
+            flags.PushValue(this.GameplayOption.MercilessMode.Value);
 
             // Charging speed options
             flags.PushValue(this.ChargingSpeedOption.CastleBossEnergy.Randomize);
