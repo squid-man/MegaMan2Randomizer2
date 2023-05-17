@@ -352,11 +352,15 @@ namespace MM2Randomizer
                 this.Patch.Add(0xFE10, (byte)1, "Disable Bubble Man stage palette animation");
             }
 
-
-
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2ft, false);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
+
+            // Must come after mm2ft as IPS patches are applied immediately, not deferred like other patches
+            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisablePauseLock)
+            {
+                MiscHacks.DisablePauseLock(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
 
             MiscHacks.SetNewMegaManSprite(
                 this.Patch,

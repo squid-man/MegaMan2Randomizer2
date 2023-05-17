@@ -1133,5 +1133,10 @@ namespace MM2Randomizer.Utilities
             p.Add(LargeWeaponEnergyRefill3_TypeAddress, LargeWeaponEnergyRefillType);
             p.Add(LargeWeaponEnergyRefill4_TypeAddress, LargeWeaponEnergyRefillType);
         }
+
+        public static void DisablePauseLock(Patch p, String tempFileName)
+        {
+            p.ApplyIPSPatch(tempFileName, Properties.Resources.pausepatch);
+        }
     }
 }

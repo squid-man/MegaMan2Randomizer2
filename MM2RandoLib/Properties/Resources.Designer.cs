@@ -288,9 +288,9 @@ namespace MM2Randomizer.Properties {
         ///    Mega Man 2 FamiTracker Module Sound Track Config File
         ///
         ///    Enabled = Whether the track should be used in the randomizer. Defaults to true.
-        ///    Title = Any string to identify the song, such as the name and what game/hack it comes from
+        ///    Title = Any string to identify the song, such as the name and what game/hack it comes from.
         ///	Author = A string identifying the author of the song, if known. By convention if the song is a cover the format is Cover Author (Original Author).
-        ///    Uses = List of Usage entries indicating where the track may be used  [rest of string was truncated]&quot;;.
+        ///    Uses = List of Usage entries indicating where the track may be used [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string FtSoundTrackConfiguration {
             get {
@@ -362,6 +362,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] mm2rng_prepatch {
             get {
                 object obj = ResourceManager.GetObject("mm2rng_prepatch", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] pausepatch {
+            get {
+                object obj = ResourceManager.GetObject("pausepatch", resourceCulture);
                 return ((byte[])(obj));
             }
         }

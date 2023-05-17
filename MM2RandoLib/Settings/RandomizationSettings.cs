@@ -96,6 +96,7 @@ namespace MM2Randomizer.Settings
                     DisableWaterfall = this.QualityOfLifeOption.DisableWaterfall.NextValue(in_Seed),
                     DisableFlashingEffects = this.QualityOfLifeOption.DisableFlashingEffects.NextValue(in_Seed),
                     EnableUnderwaterLagReduction = this.QualityOfLifeOption.EnableUnderwaterLagReduction.NextValue(in_Seed),
+                    DisablePauseLock = this.QualityOfLifeOption.DisablePauseLock.NextValue(in_Seed),
                 },
             };
         }
@@ -191,6 +192,8 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.QualityOfLifeOption.DisableFlashingEffects.Value);
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize);
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Value);
+            flags.PushValue(this.QualityOfLifeOption.DisablePauseLock.Randomize);
+            flags.PushValue(this.QualityOfLifeOption.DisablePauseLock.Value);
 
             return flags.ToFlagString();
         }
