@@ -553,6 +553,42 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
+        public Boolean MercilessMode
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.MERCILESS_MODE_SETTING_NAME,
+                    AppConfigurationSettings.MERCILESS_MODE_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.MERCILESS_MODE_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_MercilessMode
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_MERCILESS_MODE_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_MERCILESS_MODE_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_MERCILESS_MODE_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
         public Boolean EnableRandomizationOfItemPickupSprites
         {
             get
@@ -1505,6 +1541,8 @@ namespace RandomizerHost.Settings
             settings.GameplayOption.RandomizeSpecialWeaponBehavior.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialWeaponBehavior);
             settings.GameplayOption.RandomizeSpecialWeaponReward.Randomize = false; // Not an exposed option yet
             settings.GameplayOption.RandomizeSpecialWeaponReward.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfSpecialWeaponReward);
+            settings.GameplayOption.MercilessMode.Randomize = this.RandomlyChooseSetting_MercilessMode;
+            settings.GameplayOption.MercilessMode.Value = (BooleanOption)Convert.ToInt32(this.MercilessMode);
 
             // Charging speed options
             settings.ChargingSpeedOption.CastleBossEnergy.Randomize = this.RandomlyChooseSetting_CastleBossEnergyRefillSpeed;
@@ -1936,6 +1974,13 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME = @"RandomlyChooseSetting_EnableUnderwaterLagReduction";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_UNDERWATER_LAG_REDUCTION_DEFAULT_VALUE = false;
+
+        // Enable Merciless Mode
+        private const String MERCILESS_MODE_SETTING_NAME = @"MercilessMode";
+        private const Boolean MERCILESS_MODE_DEFAULT_VALUE = true;
+
+        private const String RANDOMLY_CHOOSE_SETTING_MERCILESS_MODE_SETTING_NAME = @"RandomlyChooseSetting_MercilessMode";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_MERCILESS_MODE_DEFAULT_VALUE = false;
 
         //
         // Scalar Property Constants

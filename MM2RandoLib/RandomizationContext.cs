@@ -356,10 +356,15 @@ namespace MM2Randomizer
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2ft, false);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
 
-            // Must come after mm2ft as IPS patches are applied immediately, not deferred like other patches
+            // IPS patches should/must come after mm2ft as IPS patches are applied immediately and may be overwritten by deferred patches
             if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisablePauseLock)
             {
                 MiscHacks.DisablePauseLock(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
+
+            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.MercilessMode)
+            {
+                MiscHacks.EnableMercilessMode(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
             MiscHacks.SetNewMegaManSprite(

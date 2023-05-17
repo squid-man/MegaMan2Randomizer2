@@ -591,6 +591,30 @@
                             />
                         </Grid>
                     </StackPanel>
+
+                  <StackPanel
+                      Name="StackPanel_MercilessMode"
+                      Orientation="Horizontal"
+                    >
+                    <!-- Friendly emoji header -->
+                    <Label FontSize="18">🎲</Label>
+
+                    <!-- Toggle to randomize the option -->
+                    <ToggleSwitch
+                        Name="ToggleSwitch_MercilessMode"
+                        IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_MercilessMode}"
+                        OffContent=""
+                        OnContent=""
+                        />
+
+                    <Grid Name="Grid_MercilessMode">
+                      <CheckBox
+                          Content="Merciless One Hit Kill Mode"
+                          IsEnabled="{Binding !#ToggleSwitch_MercilessMode.IsChecked}"
+                          IsChecked="{Binding AppConfigurationSettings.MercilessMode}"
+                            />
+                    </Grid>
+                  </StackPanel>
                 </StackPanel>
             </TabItem>
 

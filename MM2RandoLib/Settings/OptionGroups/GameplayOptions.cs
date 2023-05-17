@@ -31,5 +31,7 @@ namespace MM2Randomizer.Settings.OptionGroups
         public RandomizationOption<BooleanOption> RandomizeSpecialWeaponBehavior { get; set; } = new RandomizationOption<BooleanOption>();
 
         public RandomizationOption<BooleanOption> RandomizeSpecialWeaponReward { get; set; } = new RandomizationOption<BooleanOption>();
+
+        public RandomizationOption<BooleanOption> MercilessMode { get; set; } = new RandomizationOption<BooleanOption>();
     }
 }

@@ -1126,5 +1126,10 @@ namespace MM2Randomizer.Utilities
         {
             p.ApplyIPSPatch(tempFileName, Properties.Resources.pausepatch);
         }
+
+        public static void EnableMercilessMode(Patch p, String tempFileName)
+        {
+            p.ApplyIPSPatch(tempFileName, Properties.Resources.mercilesspatch);
+        }
     }
 }
