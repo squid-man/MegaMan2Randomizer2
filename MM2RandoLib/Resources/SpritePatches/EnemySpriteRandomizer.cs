@@ -76,6 +76,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnemySpriteResources.Friender_DeusExMachina,
             Properties.EnemySpriteResources.Friender_Evil,
+            Properties.EnemySpriteResources.Friender_MM3Cat,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_KAMINARI_GORO = new List<Byte[]?>()
@@ -111,6 +112,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnemySpriteResources.Matasaburo_EnhancedBlow,
+            Properties.EnemySpriteResources.Matasaburo_MM6BenK,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_MOLE = new List<Byte[]?>()
