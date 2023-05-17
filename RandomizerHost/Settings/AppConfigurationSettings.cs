@@ -993,6 +993,41 @@ namespace RandomizerHost.Settings
             }
         }
 
+        [UserScopedSetting]
+        [DefaultSettingValue("True")]
+        public Boolean DisablePauseLock
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.DISABLE_PAUSE_LOCK_SETTING_NAME,
+                    AppConfigurationSettings.DISABLE_PAUSE_LOCK_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.DISABLE_PAUSE_LOCK_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_DisablePauseLock
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_SETTING_NAME] = value;
+            }
+        }
+
         //
         // Scalar Properties
         //
@@ -1502,6 +1537,8 @@ namespace RandomizerHost.Settings
             settings.QualityOfLifeOption.DisableFlashingEffects.Value = (BooleanOption)Convert.ToInt32(this.DisableFlashingEffects);
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize = this.RandomlyChooseSetting_EnableUnderwaterLagReduction;
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Value = (BooleanOption)Convert.ToInt32(this.EnableUnderwaterLagReduction);
+            settings.QualityOfLifeOption.DisablePauseLock.Randomize = this.RandomlyChooseSetting_DisablePauseLock;
+            settings.QualityOfLifeOption.DisablePauseLock.Value = (BooleanOption)Convert.ToInt32(this.DisablePauseLock);
 
             // Cosmetic options
             settings.CosmeticOption.Font.Randomize = this.RandomlyChooseSetting_Font;
@@ -1741,6 +1778,13 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"RandomlyChooseSetting_DisableFlashingEffects";
         private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_FLASHING_EFFECTS_DEFAULT_VALUE = false;
+
+        // Disable Pause Lock
+        private const String DISABLE_PAUSE_LOCK_SETTING_NAME = @"DisablePauseLock";
+        private const Boolean DISABLE_PAUSE_LOCK_DEFAULT_VALUE = true;
+
+        private const String RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_SETTING_NAME = @"RandomlyChooseSetting_DisablePauseLock";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_DEFAULT_VALUE = false;
 
         // Enable Burst Chaser Mode
         private const String ENABLE_BURST_CHASER_MODE_SETTING_NAME = @"EnableBurstChaserMode";
