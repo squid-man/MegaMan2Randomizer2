@@ -16,6 +16,8 @@ namespace MM2Randomizer.Settings.Options
         CutMansBadScissorsDay,
         [Description("Java Island Indonesia")]
         JavaIslandIndonesia,
+        [Description("Man II")]
+        ManII,
         [Description("Metroid")]
         Metroid,
         [Description("Paperboy")]

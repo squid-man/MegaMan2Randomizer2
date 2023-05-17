@@ -223,6 +223,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Friender_MM3Cat {
+            get {
+                object obj = ResourceManager.GetObject("Friender_MM3Cat", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] KaminariGoro_CutMansBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("KaminariGoro_CutMansBadScissorsDay", resourceCulture);
@@ -323,6 +333,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Matasaburo_MM6BenK {
+            get {
+                object obj = ResourceManager.GetObject("Matasaburo_MM6BenK", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Mole_MegaMan9Drill {
             get {
                 object obj = ResourceManager.GetObject("Mole_MegaMan9Drill", resourceCulture);
@@ -356,6 +376,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] NeoMetall_1UpMet2 {
             get {
                 object obj = ResourceManager.GetObject("NeoMetall_1UpMet2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NeoMetall_Chungus {
+            get {
+                object obj = ResourceManager.GetObject("NeoMetall_Chungus", resourceCulture);
                 return ((byte[])(obj));
             }
         }

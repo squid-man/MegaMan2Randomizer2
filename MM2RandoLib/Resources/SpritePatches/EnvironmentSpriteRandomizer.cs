@@ -107,6 +107,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Block_Clear,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Block_Cloud,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN = new List<Byte[]?>()
@@ -114,6 +115,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_CutmanBadScissorsDay,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Platform,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_BLOCK = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_DiveMan,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL = new List<Byte[]?>()
@@ -148,12 +155,16 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_CrashMan_Globe_GutsMan,
+            Properties.EnvironmentSpriteResources.StageTile_CrashMan_Globe_MegaMan1,
             Properties.EnvironmentSpriteResources.StageTile_CrashMan_Globe_TMNT2,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_NIGHT_BACKGROUND = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_CrashMan_NightBackground_MegaMan3,
+            Properties.EnvironmentSpriteResources.StageTile_CrashMan_NightBackground_MegaMan4,
             Properties.EnvironmentSpriteResources.StageTile_CrashMan_NightBackground_SuperMarioBros3Stars,
         };
 
@@ -174,18 +185,21 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_FLASH_MAN_BLOCK = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_GeminiMan,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_SuperMarioBrosBlock,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_BACKGROUND = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_HeatMan_Background_FireMan,
             Properties.EnvironmentSpriteResources.StageTile_HeatMan_Background_None,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_HEAT_MAN_BLOCK = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_HeatMan_Block_FireMan,
             Properties.EnvironmentSpriteResources.StageTile_HeatMan_Block_JavaIslandIndonesia,
         };
 
@@ -229,6 +243,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_QUICK_MAN_BACKGROUND = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_QuickMan_Background_CB,
             Properties.EnvironmentSpriteResources.StageTile_QuickMan_Background_None,
         };
 
@@ -236,6 +251,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_QuickMan_Block_HeatBrick,
+            Properties.EnvironmentSpriteResources.StageTile_QuickMan_Block_MM1,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY1_CLIMB = new List<Byte[]?>()
@@ -335,6 +351,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_SPIKES,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_DAYLIGHT_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE,

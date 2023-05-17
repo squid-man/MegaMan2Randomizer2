@@ -31,6 +31,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.PickupSpriteResources.ETank_FinalFantasy,
             Properties.PickupSpriteResources.ETank_JavaIslandIndonesia,
+            Properties.PickupSpriteResources.ETank_ManII,
             Properties.PickupSpriteResources.ETank_MegaManX,
             Properties.PickupSpriteResources.ETank_Metroid,
         };
@@ -43,6 +44,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV2,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV3,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_CharlieboyV4,
+            Properties.PickupSpriteResources.HealthAndWeaponEnergy_ManII,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaMan1,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_MegaManX,
             Properties.PickupSpriteResources.HealthAndWeaponEnergy_Quickman,

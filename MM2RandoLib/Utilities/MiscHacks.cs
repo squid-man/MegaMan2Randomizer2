@@ -703,6 +703,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.ManII:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ManII);
+                        break;
+                    }
+
                 case PlayerSpriteOption.MarioArcade:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
@@ -852,6 +858,12 @@ namespace MM2Randomizer.Utilities
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_JavaIslandIndonesia);
                     break;
                 }
+
+                case HudElementOption.ManII:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_ManII);
+                        break;
+                    }
 
                 case HudElementOption.Metroid:
                 {

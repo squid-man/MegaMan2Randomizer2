@@ -113,6 +113,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] HudElements_ManII {
+            get {
+                object obj = ResourceManager.GetObject("HudElements_ManII", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] HudElements_Metroid {
             get {
                 object obj = ResourceManager.GetObject("HudElements_Metroid", resourceCulture);
@@ -139,14 +149,12 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HudElements_RockMan2Guard
-        {
-            get
-            {
+        internal static byte[] HudElements_RockMan2Guard {
+            get {
                 object obj = ResourceManager.GetObject("HudElements_RockMan2Guard", resourceCulture);
                 return ((byte[])(obj));
             }

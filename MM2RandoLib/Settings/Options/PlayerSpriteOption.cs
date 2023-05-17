@@ -52,6 +52,8 @@ namespace MM2Randomizer
         LuckyMan,
         [Description("Luigi (Arcade)")]
         LuigiArcade,
+        [Description("Man II")]
+        ManII,
         [Description("Mario (Arcade)")]
         MarioArcade,
         [Description("Mega Man X")]
