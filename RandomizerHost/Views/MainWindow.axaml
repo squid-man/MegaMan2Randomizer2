@@ -6,9 +6,9 @@
         xmlns:converters="using:RandomizerHost.Converters"
         mc:Ignorable="d"
         d:DesignWidth="650"
-        d:DesignHeight="800"
+        d:DesignHeight="700"
         Width="650"
-        Height="800"
+        Height="700"
         x:Class="RandomizerHost.Views.MainWindow"
         Icon="/Assets/MegaMan2Randomizer.ico"
         Title="RandomizerHost"
@@ -301,10 +301,9 @@
                 Gameplay
             -->
             <TabItem Header="Gameplay">
-                <StackPanel
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
+                <WrapPanel 
                     Orientation="Vertical"
+                    Margin="0,0,0,16"
                 >
                     <!--
                         CheckBoxes are placed inside Grids, so we can have
@@ -615,7 +614,7 @@
                             />
                     </Grid>
                   </StackPanel>
-                </StackPanel>
+                </WrapPanel>
             </TabItem>
 
 
@@ -624,7 +623,10 @@
             -->
             <TabItem Header="Sprites">
                 <Grid>
-                    <StackPanel>
+                    <WrapPanel
+                          Orientation="Vertical"
+                          Margin="0,0,0,16"
+                    >
                         <!-- BossSprites -->
                         <StackPanel
                             Name="StackPanel_BossSprites"
@@ -744,7 +746,7 @@
                                 IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnvironmentSprites}"
                             />
                         </StackPanel>
-                    </StackPanel>
+                    </WrapPanel>
                 </Grid>
             </TabItem>
 
@@ -926,7 +928,10 @@
                 Quality of Life Patches
             -->
             <TabItem Header="QoL Patches">
-				<StackPanel>
+                <WrapPanel
+                    Orientation="Vertical"
+                    Margin="0,0,0,16"
+                >
                     <StackPanel
                         Orientation="Horizontal"
                     >
@@ -1012,7 +1017,7 @@
                             IsChecked="{Binding Path=AppConfigurationSettings.DisablePauseLock}"
                         />
                     </StackPanel>
-                </StackPanel>
+                </WrapPanel>
             </TabItem>
 
 
