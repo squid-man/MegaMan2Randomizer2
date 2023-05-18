@@ -353,16 +353,6 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BossDoorSign_LilMac {
-            get {
-                object obj = ResourceManager.GetObject("BossDoorSign_LilMac", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] BossDoorSign_MegaMan4Squid {
             get {
                 object obj = ResourceManager.GetObject("BossDoorSign_MegaMan4Squid", resourceCulture);
@@ -853,16 +843,6 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] MetalMan_CutMansBadScissorsDay {
-            get {
-                object obj = ResourceManager.GetObject("MetalMan_CutMansBadScissorsDay", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] MetalMan_ElecMan {
             get {
                 object obj = ResourceManager.GetObject("MetalMan_ElecMan", resourceCulture);
@@ -1056,6 +1036,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Wily_DrM {
             get {
                 object obj = ResourceManager.GetObject("Wily_DrM", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Wily_MegaMan1 {
+            get {
+                object obj = ResourceManager.GetObject("Wily_MegaMan1", resourceCulture);
                 return ((byte[])(obj));
             }
         }

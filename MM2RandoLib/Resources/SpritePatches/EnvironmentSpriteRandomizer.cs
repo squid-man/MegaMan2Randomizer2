@@ -41,7 +41,6 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.DestructibleBlock_DoctorMarioV1,
-            Properties.EnvironmentSpriteResources.DestructibleBlock_DoctorMarioV2,
             Properties.EnvironmentSpriteResources.DestructibleBlock_SuperMarioBros3,
             Properties.EnvironmentSpriteResources.DestructibleBlock_SuperMarioBros3V2,
             Properties.EnvironmentSpriteResources.DestructibleBlock_SuperMarioBros3V3,
@@ -312,6 +311,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_Wily5_Teleporter_MegaMan6,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY6 = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_Wily6_MegaMan1,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_BLOCK = new List<Byte[]?>()
         {
             null,
@@ -375,6 +380,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY6,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS,

@@ -123,16 +123,6 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] DestructibleBlock_DoctorMarioV2 {
-            get {
-                object obj = ResourceManager.GetObject("DestructibleBlock_DoctorMarioV2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] DestructibleBlock_SuperMarioBros3 {
             get {
                 object obj = ResourceManager.GetObject("DestructibleBlock_SuperMarioBros3", resourceCulture);
@@ -1336,6 +1326,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_Wily5_Teleporter_MegaMan6 {
             get {
                 object obj = ResourceManager.GetObject("StageTile_Wily5_Teleporter_MegaMan6", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_Wily6_MegaMan1 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily6_MegaMan1", resourceCulture);
                 return ((byte[])(obj));
             }
         }

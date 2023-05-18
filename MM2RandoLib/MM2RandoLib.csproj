@@ -149,6 +149,7 @@
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Background\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\MetalMan\Block\" />
+      <Folder Include="Resources\SpritePatches\Environment\StageTiles\Wily 6\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveGround\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\" />
