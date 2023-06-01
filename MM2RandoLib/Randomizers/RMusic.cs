@@ -525,7 +525,7 @@ namespace MM2Randomizer.Randomizers
                     if (song.SwapSquareChans)
                     {
                         Debug.Assert(ftm is not null);
-                        ftm.SwapSquareChans(Math.Max(song.Number - 1, 0));
+                        ftm.SwapSquareChans(Math.Max(song.Number, 0));
                     }
 
                     song.Bank = bankIdx;
