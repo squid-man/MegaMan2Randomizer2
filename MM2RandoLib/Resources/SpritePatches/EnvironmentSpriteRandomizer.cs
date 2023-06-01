@@ -323,12 +323,6 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_Block_SuperMarioBros,
         };
 
-        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_BACKGROUND = new List<Byte[]?>()
-        {
-            null,
-            Properties.EnvironmentSpriteResources.StageTile_WoodMan_CaveBackground_None,
-        };
-
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND = new List<Byte[]?>()
         {
             null,
@@ -381,7 +375,6 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY6,
-            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_BLOCK,

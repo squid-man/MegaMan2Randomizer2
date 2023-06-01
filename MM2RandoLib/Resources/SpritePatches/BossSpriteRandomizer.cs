@@ -145,7 +145,6 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.BossSpriteResources.GutsTank_Bowser,
             Properties.BossSpriteResources.GutsTank_CutMansBadScissorsDay,
-            Properties.BossSpriteResources.GutsTank_Cray,
             Properties.BossSpriteResources.GutsTank_Technodrome,
 
         };
