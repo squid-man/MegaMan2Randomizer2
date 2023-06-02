@@ -1353,16 +1353,6 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] StageTile_WoodMan_CaveBackground_None {
-            get {
-                object obj = ResourceManager.GetObject("StageTile_WoodMan_CaveBackground_None", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] StageTile_WoodMan_CaveGround_FinalFantasy {
             get {
                 object obj = ResourceManager.GetObject("StageTile_WoodMan_CaveGround_FinalFantasy", resourceCulture);

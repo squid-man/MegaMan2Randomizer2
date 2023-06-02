@@ -166,7 +166,6 @@
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\QuickMan\Background\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\QuickMan\Block\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\" />
-      <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveBackground\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Block\" />
       <Folder Include="Resources\SpritePatches\Fonts\" />
     </ItemGroup>

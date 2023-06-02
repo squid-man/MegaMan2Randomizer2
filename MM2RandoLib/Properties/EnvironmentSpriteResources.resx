@@ -505,9 +505,6 @@
   <data name="StageTile_WoodMan_Block_SuperMarioBros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\WoodMan\Block\StageTile_WoodMan_Block_SuperMarioBros.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StageTile_WoodMan_CaveBackground_None" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveBackground\StageTile_WoodMan_CaveBackground_None.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="StageTile_WoodMan_CaveGround_FinalFantasy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\WoodMan\CaveGround\StageTile_WoodMan_CaveGround_FinalFantasy.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
