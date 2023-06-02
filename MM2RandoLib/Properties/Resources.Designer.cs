@@ -19,7 +19,7 @@ namespace MM2Randomizer.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -400,6 +400,15 @@ namespace MM2Randomizer.Properties {
         internal static string SoundTrackConfiguration {
             get {
                 return ResourceManager.GetString("SoundTrackConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Settings&gt;&lt;RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites&gt;False&lt;/RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites&gt;&lt;RandomlyChooseSetting_CastleBossEnergyRefillSpeed&gt;False&lt;/RandomlyChooseSetting_CastleBossEnergyRefillSpeed&gt;&lt;RandomlyChooseSetting_EnableRandomizationOfEnemySpawns&gt;False&lt;/RandomlyChooseSetting_EnableRandomizationOfEnemySpawns&gt;&lt;RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses&gt;False&lt;/RandomlyChooseSetting_EnableRandomization [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TournamentMode {
+            get {
+                return ResourceManager.GetString("TournamentMode", resourceCulture);
             }
         }
     }

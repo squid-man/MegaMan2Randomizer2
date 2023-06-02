@@ -102,6 +102,23 @@ namespace RandomizerHost.Settings
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
+        public Boolean TournamentMode
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.TOURNAMENT_MODE_SETTING_NAME,
+                    AppConfigurationSettings.TOURNAMENT_MODE_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.TOURNAMENT_MODE_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
         public Boolean CreateLogFile
         {
             get
@@ -1509,6 +1526,7 @@ namespace RandomizerHost.Settings
             settings.SeedString = (true == in_DefaultSeed) ? null : this.SeedString;
             settings.RomSourcePath = this.RomSourcePath;
 
+            settings.TournamentMode = this.TournamentMode;
             settings.CreateLogFile = this.CreateLogFile;
             settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
 
@@ -1800,6 +1818,9 @@ namespace RandomizerHost.Settings
         private const Boolean ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE = true;
 
         // Flag Property Constants
+        private const String TOURNAMENT_MODE_SETTING_NAME = @"TournamentMode";
+        private const Boolean TOURNAMENT_MODE_DEFAULT_VALUE = false;
+
         private const String CREATE_LOG_FILE_SETTING_NAME = @"CreateLogFile";
         private const Boolean CREATE_LOG_FILE_DEFAULT_VALUE = false;
 
