@@ -1133,6 +1133,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_Wily1_Climb_MM3 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily1_Climb_MM3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_Wily1_Floor_Checkered {
             get {
                 object obj = ResourceManager.GetObject("StageTile_Wily1_Floor_Checkered", resourceCulture);
@@ -1146,6 +1156,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_Wily1_Floor_DDBricks {
             get {
                 object obj = ResourceManager.GetObject("StageTile_Wily1_Floor_DDBricks", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_Wily1_Floor_MM3 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily1_Floor_MM3", resourceCulture);
                 return ((byte[])(obj));
             }
         }
