@@ -210,8 +210,22 @@
                 Text="{Binding Path=AppConfigurationSettings.SeedString}"
             />
         </DockPanel>
-
-        <!-- Buttons -->
+		<DockPanel
+		   Grid.Row="2"
+		   Grid.ColumnSpan="2"
+		   HorizontalAlignment="Center"
+		   >
+			<CheckBox
+		Name="CheckBox_TournamentMode"
+		Content="Tournament Mode"
+		DockPanel.Dock="Right"
+		HorizontalAlignment="Right"
+		Margin="160,3,3,3"
+		IsVisible="True"
+		IsChecked="{Binding Path=AppConfigurationSettings.EnableSpoilerFreeMode}{Binding Path=AppConfigurationSettings.TournamentMode}">
+			</CheckBox>
+		</DockPanel>
+		<!-- Buttons -->
         <StackPanel
             Grid.Row="3"
 			Margin="10"
@@ -256,7 +270,7 @@
             Grid.Column="1"
 			Margin="12"
             Orientation="Vertical"
-        >
+        >		
             <Button
                 Name="Button_ImportSettings"
                 Height="30"
@@ -282,15 +296,15 @@
 	            Name="CheckBox_CreateLogFile"
 	            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
             >
-				Create Log File     🎲 = Randomize Option
+				Create Log File
 			</CheckBox>
 			<TextBlock
-                Text="☑️ = Option Enabled"
+                Text="🎲 = Randomize Option ☑️ = Option Enabled "
                 DockPanel.Dock="Left"
                 VerticalAlignment="Bottom"
             />
         </StackPanel>
-
+		
         <!--Settings Tabs-->
         <TabControl
             Grid.Row="4"
@@ -509,16 +523,6 @@
                             />
                         </Grid>
                     </StackPanel>
-
-                    <!-- Might remove in a subsequent version -->
-                    <CheckBox
-                        Name="CheckBox_TournamentMode"
-                        Content="Tournament Mode"
-                        DockPanel.Dock="Bottom"
-                        HorizontalAlignment="Right"
-                        IsVisible="False"
-                        IsChecked="{Binding Path=AppConfigurationSettings.EnableSpoilerFreeMode}">
-                    </CheckBox>
 
                     <StackPanel
                         Name="StackPanel_FasterCutsceneText"

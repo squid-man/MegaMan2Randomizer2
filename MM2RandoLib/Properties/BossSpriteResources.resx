@@ -139,6 +139,9 @@
   <data name="AirMan_RockMan2Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\AirMan\AirMan_RockMan2Plus.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Alien_Casino" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Bosses\Alien\Alien_Casino.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Alien_Cray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\Alien\Alien_Cray.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -165,6 +168,9 @@
   </data>
   <data name="Alien_RockMan2Hardcore" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\Alien\Alien_RockMan2Hardcore.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Alien_Wily" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Bosses\Alien\Alien_Wily.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BoobeamTrap_MegaMan1TurretV1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\BoobeamTrap\BoobeamTrap_MegaMan1TurretV1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

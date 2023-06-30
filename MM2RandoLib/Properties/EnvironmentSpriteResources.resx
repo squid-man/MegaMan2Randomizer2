@@ -439,11 +439,17 @@
   <data name="StageTile_Wily1_Climb_DDBricks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 1\Climb\StageTile_Wily1_Climb_DDBricks.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="StageTile_Wily1_Climb_MM3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 1\Climb\StageTile_Wily1_Climb_MM3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="StageTile_Wily1_Floor_Checkered" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_Checkered.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StageTile_Wily1_Floor_DDBricks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_DDBricks.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StageTile_Wily1_Floor_MM3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_MM3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StageTile_Wily2_4_Background_CrissCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 2_4\Background\StageTile_Wily2_4_Background_CrissCross.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -501,6 +507,18 @@
   </data>
   <data name="StageTile_Wily6_MegaMan1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 6\StageTile_Wily6_MegaMan1.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StageTile_Wily6_MegaMan3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 6\StageTile_Wily6_MegaMan3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StageTile_Wily6_MegaMan4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 6\StageTile_Wily6_MegaMan4.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StageTile_Wily6_MegaMan5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 6\StageTile_Wily6_MegaMan5.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StageTile_Wily6_MegaMan6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\StageTiles\Wily 6\StageTile_Wily6_MegaMan6.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="StageTile_WoodMan_Block_SuperMarioBros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\WoodMan\Block\StageTile_WoodMan_Block_SuperMarioBros.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

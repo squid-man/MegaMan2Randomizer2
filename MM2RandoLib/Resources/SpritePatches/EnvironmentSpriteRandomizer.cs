@@ -258,6 +258,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily1_Climb_Checkered,
             Properties.EnvironmentSpriteResources.StageTile_Wily1_Climb_DDBricks,
+            Properties.EnvironmentSpriteResources.StageTile_Wily1_Climb_MM3,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY1_FLOOR = new List<Byte[]?>()
@@ -265,6 +266,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily1_Floor_Checkered,
             Properties.EnvironmentSpriteResources.StageTile_Wily1_Floor_DDBricks,
+            Properties.EnvironmentSpriteResources.StageTile_Wily1_Floor_MM3,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_ANIMATEDTILE = new List<Byte[]?>()

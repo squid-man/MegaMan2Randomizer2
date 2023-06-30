@@ -28,6 +28,8 @@ namespace MM2Randomizer.Settings
         // Flag Options
         //
 
+        public Boolean TournamentMode { get; set; }
+
         public Boolean CreateLogFile { get; set; }
 
         public Boolean EnableSpoilerFreeMode { get; set; }
