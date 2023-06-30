@@ -1363,6 +1363,46 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_Wily6_MegaMan3 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily6_MegaMan3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_Wily6_MegaMan4 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily6_MegaMan4", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_Wily6_MegaMan5 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily6_MegaMan5", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_Wily6_MegaMan6 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily6_MegaMan6", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_WoodMan_Block_SuperMarioBros {
             get {
                 object obj = ResourceManager.GetObject("StageTile_WoodMan_Block_SuperMarioBros", resourceCulture);

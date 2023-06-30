@@ -402,14 +402,5 @@ namespace MM2Randomizer.Properties {
                 return ResourceManager.GetString("SoundTrackConfiguration", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Settings&gt;&lt;RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites&gt;False&lt;/RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites&gt;&lt;RandomlyChooseSetting_CastleBossEnergyRefillSpeed&gt;False&lt;/RandomlyChooseSetting_CastleBossEnergyRefillSpeed&gt;&lt;RandomlyChooseSetting_EnableRandomizationOfEnemySpawns&gt;False&lt;/RandomlyChooseSetting_EnableRandomizationOfEnemySpawns&gt;&lt;RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses&gt;False&lt;/RandomlyChooseSetting_EnableRandomization [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string TournamentMode {
-            get {
-                return ResourceManager.GetString("TournamentMode", resourceCulture);
-            }
-        }
     }
 }

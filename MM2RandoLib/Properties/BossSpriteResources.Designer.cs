@@ -133,6 +133,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Alien_Casino {
+            get {
+                object obj = ResourceManager.GetObject("Alien_Casino", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Alien_Cray {
             get {
                 object obj = ResourceManager.GetObject("Alien_Cray", resourceCulture);
@@ -216,6 +226,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Alien_RockMan2Hardcore {
             get {
                 object obj = ResourceManager.GetObject("Alien_RockMan2Hardcore", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Alien_Wily {
+            get {
+                object obj = ResourceManager.GetObject("Alien_Wily", resourceCulture);
                 return ((byte[])(obj));
             }
         }

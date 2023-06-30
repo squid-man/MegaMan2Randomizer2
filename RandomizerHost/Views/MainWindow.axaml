@@ -222,7 +222,7 @@
 		HorizontalAlignment="Right"
 		Margin="160,3,3,3"
 		IsVisible="True"
-		IsChecked="{Binding Path=AppConfigurationSettings.EnableSpoilerFreeMode}">
+		IsChecked="{Binding Path=AppConfigurationSettings.EnableSpoilerFreeMode}{XmlDocument.Load("TournamentMode.xml")}">
 			</CheckBox>
 		</DockPanel>
 		<!-- Buttons -->
