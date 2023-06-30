@@ -567,74 +567,28 @@ namespace MM2Randomizer.Randomizers
             song.Bank = songBank;
             song.StartAddress = songAddr;
 
-            // Header: Calculate 4 channel addresses and vibrato address
-            Byte origChannel1ByteSmall = song.SongHeader[1];
-            Byte origChannel1ByteLarge = song.SongHeader[2];
-            Int32 origChannel1Offset = origChannel1ByteSmall + (origChannel1ByteLarge * 256);
-            Int32 relChannel1Offset = origChannel1Offset - song.OriginalStartAddress;
-            Int32 newChannel1Offset = songAddr + relChannel1Offset;
-            song.SongHeader[1] = (Byte)(newChannel1Offset % 256);
-            song.SongHeader[2] = (Byte)(newChannel1Offset / 256);
+            // Header: Calculate 4 channel addresses and instrument table address
+            BinaryBuffer hdrBuff = new(song.SongHeader);
+            hdrBuff.Seek(1);
 
-            Byte origChannel2ByteSmall = song.SongHeader[3];
-            Byte origChannel2ByteLarge = song.SongHeader[4];
-            Int32 origChannel2Offset = origChannel2ByteSmall + (origChannel2ByteLarge * 256);
-            Int32 relChannel2Offset = origChannel2Offset - song.OriginalStartAddress;
-            Int32 newChannel2Offset = songAddr + relChannel2Offset;
-            song.SongHeader[3] = (Byte)(newChannel2Offset % 256);
-            song.SongHeader[4] = (Byte)(newChannel2Offset / 256);
-
-            Byte origChannel3ByteSmall = song.SongHeader[5];
-            Byte origChannel3ByteLarge = song.SongHeader[6];
-            Int32 origChannel3Offset = origChannel3ByteSmall + (origChannel3ByteLarge * 256);
-            Int32 relChannel3Offset = origChannel3Offset - song.OriginalStartAddress;
-            Int32 newChannel3Offset = songAddr + relChannel3Offset;
-            song.SongHeader[5] = (Byte)(newChannel3Offset % 256);
-            song.SongHeader[6] = (Byte)(newChannel3Offset / 256);
-
-            Byte origChannel4ByteSmall = song.SongHeader[7];
-            Byte origChannel4ByteLarge = song.SongHeader[8];
-
-            if (origChannel4ByteSmall > 0 || origChannel4ByteLarge > 0)
+            for (Int32 chanIdx = 0; chanIdx < 5; chanIdx++)
             {
-                Int32 origChannel4Offset = origChannel4ByteSmall + (origChannel4ByteLarge * 256);
-                Int32 relChannel4Offset = origChannel4Offset - song.OriginalStartAddress;
-                Int32 newChannel4Offset = songAddr + relChannel4Offset;
-                song.SongHeader[7] = (Byte)(newChannel4Offset % 256);
-                song.SongHeader[8] = (Byte)(newChannel4Offset / 256);
-
-                if (relChannel4Offset > song.TotalLength || relChannel4Offset < 0)
+                Int32 origAddr = hdrBuff.ReadUInt16LE(false);
+                if (origAddr == 0 || origAddr == 0xffff)
                 {
-                    debug.AppendLine($"WARNING: Song {song.SongName} channel 4 points to a shared location.");
+                    if (chanIdx == 4)
+                        debug.AppendLine($"WARNING: Song {song.SongName} has a null instrument table pointer.");
+
+                    hdrBuff.Seek(2, System.IO.SeekOrigin.Current);
+
+                    continue;
                 }
-            }
 
-            Byte origVibratoByteSmall = song.SongHeader[9];
-            Byte origVibratoByteLarge = song.SongHeader[10];
-            Int32 origVibratoOffset = origVibratoByteSmall + (origVibratoByteLarge * 256);
-            Int32 relVibratoOffset = origVibratoOffset - song.OriginalStartAddress;
-            Int32 newVibratoOffset = songAddr + relVibratoOffset;
-            song.SongHeader[9] = (Byte)(newVibratoOffset % 256);
-            song.SongHeader[10] = (Byte)(newVibratoOffset / 256);
+                Int32 offs = origAddr - song.OriginalStartAddress;
+                if (offs >= song.TotalLength || offs < 0)
+                    debug.AppendLine($"WARNING: Song {song.SongName} channel {chanIdx} points to an external location.");
 
-            if (relChannel1Offset > song.TotalLength || relChannel1Offset < 0)
-            {
-                debug.AppendLine($"WARNING: Song {song.SongName} channel 1 points to a shared location.");
-            }
-
-            if (relChannel2Offset > song.TotalLength || relChannel2Offset < 0)
-            {
-                debug.AppendLine($"WARNING: Song {song.SongName} channel 2 points to a shared location.");
-            }
-
-            if (relChannel3Offset > song.TotalLength || relChannel3Offset < 0)
-            {
-                debug.AppendLine($"WARNING: Song {song.SongName} channel 3 points to a shared location.");
-            }
-
-            if (relVibratoOffset > song.TotalLength || relVibratoOffset < 0)
-            {
-                debug.AppendLine($"WARNING: Song {song.SongName} vibrato points to a shared location.");
+                hdrBuff.WriteLE(checked((UInt16)(offs + songAddr)));
             }
 
             // Song Data: Traverse stream and change loop pointers
@@ -814,7 +768,9 @@ namespace MM2Randomizer.Randomizers
                     C2Song song = (C2Song)isong;
                     try
                     {
-                        RebaseC2Song(song, 0, 0x8001);
+                        // Don't rebase it if it's already been rebased cause it was used in the seed
+                        if (song.StartAddress == 0 || song.StartAddress == song.OriginalStartAddress)
+                            RebaseC2Song(song, 0, 0x8001);
                     }
                     catch
                     {
