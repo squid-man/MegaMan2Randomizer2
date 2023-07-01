@@ -324,6 +324,16 @@ namespace MM2Randomizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] leftwardwallejectionpatch {
+            get {
+                object obj = ResourceManager.GetObject("leftwardwallejectionpatch", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;LevelComponents&quot;: [
         ///      {

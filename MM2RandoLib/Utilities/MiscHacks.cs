@@ -1124,6 +1124,11 @@ namespace MM2Randomizer.Utilities
             p.Add(LargeWeaponEnergyRefill4_TypeAddress, LargeWeaponEnergyRefillType);
         }
 
+        public static void EnableLeftwardWallEjection(Patch p, String tempFileName)
+        {
+            p.ApplyIPSPatch(tempFileName, Properties.Resources.leftwardwallejectionpatch);
+        }
+
         public static void DisablePauseLock(Patch p, String tempFileName)
         {
             p.ApplyIPSPatch(tempFileName, Properties.Resources.pausepatch);
