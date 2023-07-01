@@ -354,7 +354,7 @@ namespace MM2Randomizer
 
             if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.EnableLeftwardWallEjection)
             {
-                this.Patch.Add(0x8986, (byte)1, "Pushes Mega Man out of the wall on the left side");
+                this.Patch.Add(0x008986, (byte)1, "Pushes Mega Man out of the wall on the left side");
             }
 
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)

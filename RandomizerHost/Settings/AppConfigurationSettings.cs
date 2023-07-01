@@ -1624,8 +1624,8 @@ namespace RandomizerHost.Settings
             // Quality of life options
             settings.QualityOfLifeOption.DisableWaterfall.Randomize = this.RandomlyChooseSetting_DisableWaterfall;
             settings.QualityOfLifeOption.DisableWaterfall.Value = (BooleanOption)Convert.ToInt32(this.DisableWaterfall);
-            settings.QualityOfLifeOption.DisableWaterfall.Randomize = this.RandomlyChooseSetting_EnableLeftwardWallEjection;
-            settings.QualityOfLifeOption.DisableWaterfall.Value = (BooleanOption)Convert.ToInt32(this.EnableLeftwardWallEjection);
+            settings.QualityOfLifeOption.EnableLeftwardWallEjection.Randomize = this.RandomlyChooseSetting_EnableLeftwardWallEjection;
+            settings.QualityOfLifeOption.EnableLeftwardWallEjection.Value = (BooleanOption)Convert.ToInt32(this.EnableLeftwardWallEjection);
             settings.QualityOfLifeOption.DisableFlashingEffects.Randomize = this.RandomlyChooseSetting_DisableFlashingEffects;
             settings.QualityOfLifeOption.DisableFlashingEffects.Value = (BooleanOption)Convert.ToInt32(this.DisableFlashingEffects);
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize = this.RandomlyChooseSetting_EnableUnderwaterLagReduction;
