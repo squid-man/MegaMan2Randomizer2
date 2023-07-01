@@ -352,6 +352,11 @@ namespace MM2Randomizer
                 this.Patch.Add(0xFE10, (byte)1, "Disable Bubble Man stage palette animation");
             }
 
+            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.EnableLeftwardWallEjection)
+            {
+                this.Patch.Add(0x8986, (byte)1, "Pushes Mega Man out of the wall on the left side");
+            }
+
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2ft, false);
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);

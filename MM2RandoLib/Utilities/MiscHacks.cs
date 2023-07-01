@@ -992,16 +992,6 @@ namespace MM2Randomizer.Utilities
             p.Add((Int32)ESubroutineAddress.WasteAFrame, Opcode6502.RTS, "Turn the 'waste a frame' subroutine into a NOP");
         }
 
-
-        /// <summary>
-        /// This disables the waterfall by using StageTile_BubbleMan_Waterfall_None.ips patch.
-        /// </summary>
-        /// <param name="p"></param>
-        public static void DisableWaterfall(Patch p, String tempFileName, BooleanOption waterfall)
-        {
-            p.ApplyIPSPatch(tempFileName, Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Waterfall_None);
-        }
-
         /// <summary>
         /// This method will modify the game loop to spawn weapon energy
         /// pickups in Wily 5.

@@ -1047,6 +1047,41 @@ namespace RandomizerHost.Settings
         }
 
         [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean EnableLeftwardWallEjection
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_LEFTWARD_WALL_EJECTION_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_LEFTWARD_WALL_EJECTION_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_LEFTWARD_WALL_EJECTION_SETTING_NAME] = value;
+            }
+        }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_EnableLeftwardWallEjection
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_LEFTWARD_WALL_EJECTION_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_LEFTWARD_WALL_EJECTION_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_LEFTWARD_WALL_EJECTION_SETTING_NAME] = value;
+            }
+        }
+
+        [UserScopedSetting]
         [DefaultSettingValue("True")]
         public Boolean DisablePauseLock
         {
@@ -1589,6 +1624,8 @@ namespace RandomizerHost.Settings
             // Quality of life options
             settings.QualityOfLifeOption.DisableWaterfall.Randomize = this.RandomlyChooseSetting_DisableWaterfall;
             settings.QualityOfLifeOption.DisableWaterfall.Value = (BooleanOption)Convert.ToInt32(this.DisableWaterfall);
+            settings.QualityOfLifeOption.DisableWaterfall.Randomize = this.RandomlyChooseSetting_EnableLeftwardWallEjection;
+            settings.QualityOfLifeOption.DisableWaterfall.Value = (BooleanOption)Convert.ToInt32(this.EnableLeftwardWallEjection);
             settings.QualityOfLifeOption.DisableFlashingEffects.Randomize = this.RandomlyChooseSetting_DisableFlashingEffects;
             settings.QualityOfLifeOption.DisableFlashingEffects.Value = (BooleanOption)Convert.ToInt32(this.DisableFlashingEffects);
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize = this.RandomlyChooseSetting_EnableUnderwaterLagReduction;
@@ -1830,6 +1867,13 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_SETTING_NAME = @"RandomlyChooseSetting_DisableWaterfall";
         private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_WATERFALL_DEFAULT_VALUE = false;
+
+        // Enable Leftward Wall Ejection
+        private const String ENABLE_LEFTWARD_WALL_EJECTION_SETTING_NAME = @"EnableLeftwardWallEjection";
+        private const Boolean ENABLE_LEFTWARD_WALL_EJECTION_DEFAULT_VALUE = false;
+
+        private const String RANDOMLY_CHOOSE_SETTING_ENABLE_LEFTWARD_WALL_EJECTION_SETTING_NAME = @"RandomlyChooseSetting_EnableLeftwardWallEjection";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_LEFTWARD_WALL_EJECTION_DEFAULT_VALUE = false;
 
         // Disable Flashing Effects
         private const String DISABLE_FLASHING_EFFECTS_SETTING_NAME = @"DisableFlashingEffects";

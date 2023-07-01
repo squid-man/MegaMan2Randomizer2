@@ -1021,6 +1021,27 @@
                             IsChecked="{Binding Path=AppConfigurationSettings.DisablePauseLock}"
                         />
                     </StackPanel>
+					<StackPanel
+                        Orientation="Horizontal"
+                    >
+						<!-- Friendly emoji header -->
+						<Label FontSize="18">🎲</Label>
+
+						<!-- Toggle to randomize the option -->
+						<ToggleSwitch
+                            Name="ToggleSwitch_EnableLeftwardWallEjection"
+                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableLeftwardWallEjection}"
+                            OffContent=""
+                            OnContent=""
+                        />
+
+						<CheckBox
+                            Name="CheckBox_EnableLeftwardWallEjection"
+                            Content="Enable Leftward Wall Ejection"
+                            IsEnabled="{Binding !#ToggleSwitch_EnableLeftwardWallEjection.IsChecked}"
+                            IsChecked="{Binding Path=AppConfigurationSettings.EnableLeftwardWallEjection}"
+                        />
+					</StackPanel>
                 </WrapPanel>
             </TabItem>
 
