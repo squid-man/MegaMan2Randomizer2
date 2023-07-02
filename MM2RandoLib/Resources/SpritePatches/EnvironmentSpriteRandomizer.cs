@@ -317,6 +317,10 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily6_MegaMan1,
+            Properties.EnvironmentSpriteResources.StageTile_Wily6_MegaMan3,
+            Properties.EnvironmentSpriteResources.StageTile_Wily6_MegaMan4,
+            Properties.EnvironmentSpriteResources.StageTile_Wily6_MegaMan5,
+            Properties.EnvironmentSpriteResources.StageTile_Wily6_MegaMan6,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_BLOCK = new List<Byte[]?>()
