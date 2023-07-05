@@ -97,6 +97,7 @@ namespace MM2Randomizer.Settings
                 QualityOfLifeOption = new
                 {
                     DisableWaterfall = this.QualityOfLifeOption.DisableWaterfall.NextValue(in_Seed),
+                    EnableLeftwardWallEjection = this.QualityOfLifeOption.EnableLeftwardWallEjection.NextValue(in_Seed),
                     DisableFlashingEffects = this.QualityOfLifeOption.DisableFlashingEffects.NextValue(in_Seed),
                     EnableUnderwaterLagReduction = this.QualityOfLifeOption.EnableUnderwaterLagReduction.NextValue(in_Seed),
                     DisablePauseLock = this.QualityOfLifeOption.DisablePauseLock.NextValue(in_Seed),
@@ -193,6 +194,8 @@ namespace MM2Randomizer.Settings
             // Quality of life options
             flags.PushValue(this.QualityOfLifeOption.DisableWaterfall.Randomize);
             flags.PushValue(this.QualityOfLifeOption.DisableWaterfall.Value);
+            flags.PushValue(this.QualityOfLifeOption.EnableLeftwardWallEjection.Randomize);
+            flags.PushValue(this.QualityOfLifeOption.EnableLeftwardWallEjection.Value);
             flags.PushValue(this.QualityOfLifeOption.DisableFlashingEffects.Randomize);
             flags.PushValue(this.QualityOfLifeOption.DisableFlashingEffects.Value);
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Randomize);

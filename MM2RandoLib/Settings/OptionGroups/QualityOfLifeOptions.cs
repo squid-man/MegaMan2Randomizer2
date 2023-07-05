@@ -6,6 +6,8 @@ namespace MM2Randomizer.Settings.OptionGroups
     {
         public RandomizationOption<BooleanOption> DisableWaterfall { get; } = new RandomizationOption<BooleanOption>();
 
+        public RandomizationOption<BooleanOption> EnableLeftwardWallEjection { get; } = new RandomizationOption<BooleanOption>();
+
         public RandomizationOption<BooleanOption> DisableFlashingEffects { get; } = new RandomizationOption<BooleanOption>();
 
         public RandomizationOption<BooleanOption> EnableUnderwaterLagReduction { get; } = new RandomizationOption<BooleanOption>();
