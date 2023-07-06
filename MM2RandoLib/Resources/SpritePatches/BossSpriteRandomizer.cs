@@ -173,6 +173,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_ALIEN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.Alien_Casino,
             Properties.BossSpriteResources.Alien_Cray,
             Properties.BossSpriteResources.Alien_CutMansBadScissorsDay,
             Properties.BossSpriteResources.Alien_Exhaust,
@@ -182,6 +183,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.Alien_NoConstancy,
             Properties.BossSpriteResources.Alien_RockMan2E,
             Properties.BossSpriteResources.Alien_RockMan2Hardcore,
+            Properties.BossSpriteResources.Alien_Wily,
         };
 
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_BOSS_DOOR_SIGN = new List<Byte[]?>()
