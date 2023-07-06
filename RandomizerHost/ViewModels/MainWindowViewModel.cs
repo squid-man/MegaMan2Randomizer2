@@ -344,6 +344,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableRandomizationOfRobotMasterLocations = true;
                 this.mAppConfigurationSettings.RobotMasterEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
                 this.mAppConfigurationSettings.DisableWaterfall = true;
+                this.mAppConfigurationSettings.EnableLeftwardWallEjection = true;
                 this.mAppConfigurationSettings.EnergyTankRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
                 this.mAppConfigurationSettings.EnableRandomizationOfInGameText = true;
                 this.mAppConfigurationSettings.DisableFlashingEffects = true;
