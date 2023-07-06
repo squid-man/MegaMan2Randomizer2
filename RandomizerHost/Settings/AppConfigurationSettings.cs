@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -153,6 +154,25 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_DisableFlashingEffects = true;
+
+        public Boolean EnableSetting_DisableFlashingEffects
+        {
+            get
+            {
+                return this.mEnableSetting_DisableFlashingEffects;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_DisableFlashingEffects)
+                {
+                    this.mEnableSetting_DisableFlashingEffects = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -171,6 +191,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_DisableFlashingEffects = true;
+
+        public Boolean Enable_RandomChoiceSetting_DisableFlashingEffects
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_DisableFlashingEffects;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_DisableFlashingEffects)
+                {
+                    this.mEnable_RandomChoiceSetting_DisableFlashingEffects = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -189,6 +232,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableBurstChaserMode = true;
+
+        public Boolean EnableSetting_EnableBurstChaserMode
+        {
+            get
+            {
+                return this.mEnableSetting_EnableBurstChaserMode;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableBurstChaserMode)
+                {
+                    this.mEnableSetting_EnableBurstChaserMode = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -207,6 +268,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableBurstChaserMode = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableBurstChaserMode
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableBurstChaserMode;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableBurstChaserMode)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableBurstChaserMode = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -225,6 +309,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableFasterCutsceneText = true;
+
+        public Boolean EnableSetting_EnableFasterCutsceneText
+        {
+            get
+            {
+                return this.mEnableSetting_EnableFasterCutsceneText;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableFasterCutsceneText)
+                {
+                    this.mEnableSetting_EnableFasterCutsceneText = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -243,6 +345,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableFasterCutsceneText = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableFasterCutsceneText
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableFasterCutsceneText;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableFasterCutsceneText)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableFasterCutsceneText = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -261,6 +386,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableHiddenStageNames = true;
+
+        public Boolean EnableSetting_EnableHiddenStageNames
+        {
+            get
+            {
+                return this.mEnableSetting_EnableHiddenStageNames;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableHiddenStageNames)
+                {
+                    this.mEnableSetting_EnableHiddenStageNames = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -279,6 +422,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableHiddenStageNames = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableHiddenStageNames
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableHiddenStageNames;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableHiddenStageNames)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableHiddenStageNames = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -297,6 +463,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfBossWeaknesses = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfBossWeaknesses
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfBossWeaknesses;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfBossWeaknesses)
+                {
+                    this.mEnableSetting_EnableRandomizationOfBossWeaknesses = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -315,6 +499,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -333,6 +540,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfBossSprites = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfBossSprites
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfBossSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfBossSprites)
+                {
+                    this.mEnableSetting_EnableRandomizationOfBossSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -351,6 +576,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfBossSprites = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfBossSprites
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfBossSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfBossSprites)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfBossSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -369,6 +617,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfColorPalettes = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfColorPalettes
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfColorPalettes;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfColorPalettes)
+                {
+                    this.mEnableSetting_EnableRandomizationOfColorPalettes = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -387,6 +653,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfColorPalettes = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfColorPalettes
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfColorPalettes;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfColorPalettes)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfColorPalettes = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -405,6 +694,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfEnemySpawns = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfEnemySpawns
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfEnemySpawns;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfEnemySpawns)
+                {
+                    this.mEnableSetting_EnableRandomizationOfEnemySpawns = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -423,6 +730,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -441,6 +771,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfEnemySprites = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfEnemySprites
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfEnemySprites;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfEnemySprites)
+                {
+                    this.mEnableSetting_EnableRandomizationOfEnemySprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -459,6 +807,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySprites = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfEnemySprites
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySprites;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySprites)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemySprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -477,6 +848,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfEnemyWeaknesses = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfEnemyWeaknesses
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfEnemyWeaknesses;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfEnemyWeaknesses)
+                {
+                    this.mEnableSetting_EnableRandomizationOfEnemyWeaknesses = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -495,6 +884,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -513,6 +925,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfEnvironmentSprites = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfEnvironmentSprites
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfEnvironmentSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfEnvironmentSprites)
+                {
+                    this.mEnableSetting_EnableRandomizationOfEnvironmentSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -531,6 +961,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -549,6 +1002,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfFalseFloors = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfFalseFloors
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfFalseFloors;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfFalseFloors)
+                {
+                    this.mEnableSetting_EnableRandomizationOfFalseFloors = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -567,6 +1038,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfFalseFloors = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfFalseFloors
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfFalseFloors;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfFalseFloors)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfFalseFloors = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -585,6 +1079,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_MercilessMode = true;
+
+        public Boolean EnableSetting_MercilessMode
+        {
+            get
+            {
+                return this.mEnableSetting_MercilessMode;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_MercilessMode)
+                {
+                    this.mEnableSetting_MercilessMode = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -603,6 +1115,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_MercilessMode = true;
+
+        public Boolean Enable_RandomChoiceSetting_MercilessMode
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_MercilessMode;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_MercilessMode)
+                {
+                    this.mEnable_RandomChoiceSetting_MercilessMode = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -621,6 +1156,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfItemPickupSprites = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfItemPickupSprites
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfItemPickupSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfItemPickupSprites)
+                {
+                    this.mEnableSetting_EnableRandomizationOfItemPickupSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -639,6 +1192,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfSpecialWeaponReward
@@ -667,6 +1243,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfMusicTracks = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfMusicTracks
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfMusicTracks;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfMusicTracks)
+                {
+                    this.mEnableSetting_EnableRandomizationOfMusicTracks = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -685,6 +1279,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfMusicTracks;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfMusicTracks)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -703,6 +1320,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfMenusAndTransitionScreens
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfMenusAndTransitionScreens;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfMenusAndTransitionScreens)
+                {
+                    this.mEnableSetting_EnableRandomizationOfMenusAndTransitionScreens = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -721,6 +1356,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfRefightTeleporters
@@ -731,6 +1389,10 @@ namespace RandomizerHost.Settings
             }
         }
 
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -749,6 +1411,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfRobotMasterBehavior = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfRobotMasterBehavior
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfRobotMasterBehavior;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfRobotMasterBehavior)
+                {
+                    this.mEnableSetting_EnableRandomizationOfRobotMasterBehavior = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -767,6 +1447,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -782,6 +1485,25 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_ROBOT_MASTER_LOCATIONS_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnableSetting_EnableRandomizationOfRobotMasterLocations = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfRobotMasterLocations
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfRobotMasterLocations;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfRobotMasterLocations)
+                {
+                    this.mEnableSetting_EnableRandomizationOfRobotMasterLocations = value;
+                    this.NotifyPropertyChanged();
+                }
             }
         }
 
@@ -803,6 +1525,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         // This property has a constant value; it does not access the app configuration
         public Boolean EnableRandomizationOfRobotMasterStageSelection
@@ -813,6 +1558,10 @@ namespace RandomizerHost.Settings
             }
         }
 
+
+        //
+        // EnableRandomizationOfSpecialItemLocations
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -831,6 +1580,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfSpecialItemLocations = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfSpecialItemLocations
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfSpecialItemLocations;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfSpecialItemLocations)
+                {
+                    this.mEnableSetting_EnableRandomizationOfSpecialItemLocations = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -849,6 +1616,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // EnableRandomizationOfSpecialWeaponBehavior
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -868,6 +1658,25 @@ namespace RandomizerHost.Settings
         }
 
 
+        private Boolean mEnableSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfSpecialWeaponBehavior
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfSpecialWeaponBehavior;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfSpecialWeaponBehavior)
+                {
+                    this.mEnableSetting_EnableRandomizationOfSpecialWeaponBehavior = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
         [UserScopedSetting]
         [DefaultSettingValue("False")]
         public Boolean RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior
@@ -885,6 +1694,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // EnableRandomizationOfSpecialWeaponSprites Setting
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -900,6 +1732,25 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnableSetting_EnableRandomizationOfSpecialWeaponSprites = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfSpecialWeaponSprites
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfSpecialWeaponSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfSpecialWeaponSprites)
+                {
+                    this.mEnableSetting_EnableRandomizationOfSpecialWeaponSprites = value;
+                    this.NotifyPropertyChanged();
+                }
             }
         }
 
@@ -921,6 +1772,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -939,6 +1813,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableRandomizationOfInGameText = true;
+
+        public Boolean EnableSetting_EnableRandomizationOfInGameText
+        {
+            get
+            {
+                return this.mEnableSetting_EnableRandomizationOfInGameText;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableRandomizationOfInGameText)
+                {
+                    this.mEnableSetting_EnableRandomizationOfInGameText = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -957,24 +1849,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableRandomizationOfInGameText = true;
 
-        [UserScopedSetting]
-        [DefaultSettingValue("False")]
-        public Boolean EnableSpoilerFreeMode
+        public Boolean Enable_RandomChoiceSetting_EnableRandomizationOfInGameText
         {
             get
             {
-                return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_SPOILER_FREE_MODE_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_SPOILER_FREE_MODE_DEFAULT_VALUE);
+                return this.mEnable_RandomChoiceSetting_EnableRandomizationOfInGameText;
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_SPOILER_FREE_MODE_SETTING_NAME] = value;
+                if (value != this.mEnable_RandomChoiceSetting_EnableRandomizationOfInGameText)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableRandomizationOfInGameText = value;
+                    this.NotifyPropertyChanged();
+                }
             }
         }
 
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("True")]
@@ -993,6 +1890,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableUnderwaterLagReduction = true;
+
+        public Boolean EnableSetting_EnableUnderwaterLagReduction
+        {
+            get
+            {
+                return this.mEnableSetting_EnableUnderwaterLagReduction;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableUnderwaterLagReduction)
+                {
+                    this.mEnableSetting_EnableUnderwaterLagReduction = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1011,6 +1926,30 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableUnderwaterLagReduction = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableUnderwaterLagReduction
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableUnderwaterLagReduction;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableUnderwaterLagReduction)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableUnderwaterLagReduction = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
+
         [UserScopedSetting]
         [DefaultSettingValue("True")]
         public Boolean DisableWaterfall
@@ -1028,6 +1967,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_DisableWaterfall = true;
+
+        public Boolean EnableSetting_DisableWaterfall
+        {
+            get
+            {
+                return this.mEnableSetting_DisableWaterfall;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_DisableWaterfall)
+                {
+                    this.mEnableSetting_DisableWaterfall = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1046,6 +2003,30 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_DisableWaterfall = true;
+
+        public Boolean Enable_RandomChoiceSetting_DisableWaterfall
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_DisableWaterfall;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_DisableWaterfall)
+                {
+                    this.mEnable_RandomChoiceSetting_DisableWaterfall = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
+
         [UserScopedSetting]
         [DefaultSettingValue("False")]
         public Boolean EnableLeftwardWallEjection
@@ -1063,6 +2044,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnableLeftwardWallEjection = true;
+
+        public Boolean EnableSetting_EnableLeftwardWallEjection
+        {
+            get
+            {
+                return this.mEnableSetting_EnableLeftwardWallEjection;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableLeftwardWallEjection)
+                {
+                    this.mEnableSetting_EnableLeftwardWallEjection = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1081,6 +2080,30 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnableLeftwardWallEjection = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableLeftwardWallEjection
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableLeftwardWallEjection;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableLeftwardWallEjection)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableLeftwardWallEjection = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
+
         [UserScopedSetting]
         [DefaultSettingValue("True")]
         public Boolean DisablePauseLock
@@ -1098,6 +2121,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_DisablePauseLock = true;
+
+        public Boolean EnableSetting_DisablePauseLock
+        {
+            get
+            {
+                return this.mEnableSetting_DisablePauseLock;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_DisablePauseLock)
+                {
+                    this.mEnableSetting_DisablePauseLock = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1115,6 +2156,26 @@ namespace RandomizerHost.Settings
                 this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_SETTING_NAME] = value;
             }
         }
+
+        private Boolean mEnable_RandomChoiceSetting_DisablePauseLock = true;
+
+        public Boolean Enable_RandomChoiceSetting_DisablePauseLock
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_DisablePauseLock;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_DisablePauseLock)
+                {
+                    this.mEnable_RandomChoiceSetting_DisablePauseLock = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
 
         //
         // Scalar Properties
@@ -1137,6 +2198,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_CastleBossEnergyRefillSpeed = true;
+
+        public Boolean EnableSetting_CastleBossEnergyRefillSpeed
+        {
+            get
+            {
+                return this.mEnableSetting_CastleBossEnergyRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_CastleBossEnergyRefillSpeed)
+                {
+                    this.mEnableSetting_CastleBossEnergyRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1155,6 +2234,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_CastleBossEnergyRefillSpeed = true;
+
+        public Boolean Enable_RandomChoiceSetting_CastleBossEnergyRefillSpeed
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_CastleBossEnergyRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_CastleBossEnergyRefillSpeed)
+                {
+                    this.mEnable_RandomChoiceSetting_CastleBossEnergyRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
@@ -1173,6 +2275,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_EnergyTankRefillSpeed = true;
+
+        public Boolean EnableSetting_EnergyTankRefillSpeed
+        {
+            get
+            {
+                return this.mEnableSetting_EnergyTankRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnergyTankRefillSpeed)
+                {
+                    this.mEnableSetting_EnergyTankRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1191,6 +2311,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_EnergyTankRefillSpeed = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnergyTankRefillSpeed
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnergyTankRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnergyTankRefillSpeed)
+                {
+                    this.mEnable_RandomChoiceSetting_EnergyTankRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
@@ -1209,6 +2352,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_HitPointRefillSpeed = true;
+
+        public Boolean EnableSetting_HitPointRefillSpeed
+        {
+            get
+            {
+                return this.mEnableSetting_HitPointRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_HitPointRefillSpeed)
+                {
+                    this.mEnableSetting_HitPointRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1227,6 +2388,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_HitPointRefillSpeed = true;
+
+        public Boolean Enable_RandomChoiceSetting_HitPointRefillSpeed
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_HitPointRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_HitPointRefillSpeed)
+                {
+                    this.mEnable_RandomChoiceSetting_HitPointRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        //
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("MegaMan")]
@@ -1245,6 +2429,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_PlayerSprite = true;
+
+        public Boolean EnableSetting_PlayerSprite
+        {
+            get
+            {
+                return this.mEnableSetting_PlayerSprite;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_PlayerSprite)
+                {
+                    this.mEnableSetting_PlayerSprite = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1263,6 +2465,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_PlayerSprite = true;
+
+        public Boolean Enable_RandomChoiceSetting_PlayerSprite
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_PlayerSprite;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_PlayerSprite)
+                {
+                    this.mEnable_RandomChoiceSetting_PlayerSprite = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // HudElement Setting
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("Default")]
@@ -1281,6 +2506,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_HudElement = true;
+
+        public Boolean EnableSetting_HudElement
+        {
+            get
+            {
+                return this.mEnableSetting_HudElement;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_HudElement)
+                {
+                    this.mEnableSetting_HudElement = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1299,6 +2542,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_HudElement = true;
+
+        public Boolean Enable_RandomChoiceSetting_HudElement
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_HudElement;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_HudElement)
+                {
+                    this.mEnable_RandomChoiceSetting_HudElement = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // Font Setting
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("Default")]
@@ -1317,6 +2583,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_Font = true;
+
+        public Boolean EnableSetting_Font
+        {
+            get
+            {
+                return this.mEnableSetting_Font;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_Font)
+                {
+                    this.mEnableSetting_Font = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1335,6 +2619,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_Font = true;
+
+        public Boolean Enable_RandomChoiceSetting_Font
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_Font;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_Font)
+                {
+                    this.mEnable_RandomChoiceSetting_Font = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // RobotMasterEnergyRefillSpeed Setting
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
@@ -1353,6 +2660,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_RobotMasterEnergyRefillSpeed = true;
+
+        public Boolean EnableSetting_RobotMasterEnergyRefillSpeed
+        {
+            get
+            {
+                return this.mEnableSetting_RobotMasterEnergyRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_RobotMasterEnergyRefillSpeed)
+                {
+                    this.mEnableSetting_RobotMasterEnergyRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1371,6 +2696,29 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed = true;
+
+        public Boolean Enable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed)
+                {
+                    this.mEnable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // WeaponEnergyRefillSpeed Setting
+        //
 
         [UserScopedSetting]
         [DefaultSettingValue("Fastest")]
@@ -1389,6 +2737,24 @@ namespace RandomizerHost.Settings
             }
         }
 
+        private Boolean mEnableSetting_WeaponEnergyRefillSpeed = true;
+
+        public Boolean EnableSetting_WeaponEnergyRefillSpeed
+        {
+            get
+            {
+                return this.mEnableSetting_WeaponEnergyRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_WeaponEnergyRefillSpeed)
+                {
+                    this.mEnableSetting_WeaponEnergyRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         [UserScopedSetting]
         [DefaultSettingValue("False")]
@@ -1404,6 +2770,87 @@ namespace RandomizerHost.Settings
             set
             {
                 this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_WEAPON_ENERGY_REFILL_SPEED_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnable_RandomChoiceSetting_WeaponEnergyRefillSpeed = true;
+
+        public Boolean Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_WeaponEnergyRefillSpeed;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_WeaponEnergyRefillSpeed)
+                {
+                    this.mEnable_RandomChoiceSetting_WeaponEnergyRefillSpeed = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        //
+        // Buttons
+        //
+
+        private Boolean mEnable_ImportSettings = true;
+
+        public Boolean Enable_ImportSettings
+        {
+            get
+            {
+                return this.mEnable_ImportSettings;
+            }
+
+            set
+            {
+                if (value != this.mEnable_ImportSettings)
+                {
+                    this.mEnable_ImportSettings = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private Boolean mEnable_ExportSettings = true;
+
+        public Boolean Enable_ExportSettings
+        {
+            get
+            {
+                return this.mEnable_ExportSettings;
+            }
+
+            set
+            {
+                if (value != this.mEnable_ExportSettings)
+                {
+                    this.mEnable_ExportSettings = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private Boolean mEnable_CreateLogFile = true;
+
+        public Boolean Enable_CreateLogFile
+        {
+            get
+            {
+                return this.mEnable_CreateLogFile;
+            }
+
+            set
+            {
+                if (value != this.mEnable_CreateLogFile)
+                {
+                    this.mEnable_CreateLogFile = value;
+                    this.NotifyPropertyChanged();
+                }
             }
         }
 
@@ -1423,7 +2870,7 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mIsRomSourcePathValid = value;
-                this.OnPropertyChanged(this, new PropertyChangedEventArgs("IsRomSourcePathValid"));
+                this.NotifyPropertyChanged();
             }
         }
 
@@ -1439,7 +2886,7 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mIsSeedValid = value;
-                this.OnPropertyChanged(this, new PropertyChangedEventArgs("IsSeedValid"));
+                this.NotifyPropertyChanged();
             }
         }
 
@@ -1455,7 +2902,7 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mIsRomValid = value;
-                this.OnPropertyChanged(this, new PropertyChangedEventArgs("IsRomValid"));
+                this.NotifyPropertyChanged();
             }
         }
 
@@ -1471,7 +2918,7 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mHashStringMD5 = value;
-                this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashStringMD5"));
+                this.NotifyPropertyChanged();
             }
         }
 
@@ -1487,7 +2934,7 @@ namespace RandomizerHost.Settings
             private set
             {
                 this.mHashStringSHA256 = value;
-                this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashStringSHA256"));
+                this.NotifyPropertyChanged();
             }
         }
 
@@ -1503,7 +2950,7 @@ namespace RandomizerHost.Settings
             set
             {
                 this.mHashValidationMessage = value;
-                this.OnPropertyChanged(this, new PropertyChangedEventArgs("HashValidationMessage"));
+                this.NotifyPropertyChanged();
             }
         }
 
@@ -1563,7 +3010,6 @@ namespace RandomizerHost.Settings
 
             settings.TournamentMode = this.TournamentMode;
             settings.CreateLogFile = this.CreateLogFile;
-            settings.EnableSpoilerFreeMode = this.EnableSpoilerFreeMode;
 
             // Gameplay options
             settings.GameplayOption.BurstChaserMode.Randomize = this.RandomlyChooseSetting_EnableBurstChaserMode;
@@ -1787,6 +3233,11 @@ namespace RandomizerHost.Settings
                 this.IsRomValid = false;
                 this.HashValidationMessage = "File does not exist.";
             }
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            this.OnPropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
 
@@ -2028,10 +3479,6 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfInGameText";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_IN_GAME_TEXT_DEFAULT_VALUE = false;
-
-        // Enable Spoiler-Free Mode
-        private const String ENABLE_SPOILER_FREE_MODE_SETTING_NAME = @"EnableSpoilerFreeMode";
-        private const Boolean ENABLE_SPOILER_FREE_MODE_DEFAULT_VALUE = false;
 
         // Enable Underwater Lag Reduction
         private const String ENABLE_UNDERWATER_LAG_REDUCTION_SETTING_NAME = @"EnableUnderwaterLagReduction";

@@ -32,8 +32,6 @@ namespace MM2Randomizer.Settings
 
         public Boolean CreateLogFile { get; set; }
 
-        public Boolean EnableSpoilerFreeMode { get; set; }
-
 
         //
         // Option Categories
