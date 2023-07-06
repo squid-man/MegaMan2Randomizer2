@@ -98,7 +98,7 @@
                         Name="TextBox_RomFile"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-						Width="580"
+                        Width="580"
                         Margin="0,0,0,0"
                         Text="{Binding AppConfigurationSettings.RomSourcePath}"
                     />
@@ -210,31 +210,32 @@
                 Text="{Binding Path=AppConfigurationSettings.SeedString}"
             />
         </DockPanel>
-		<DockPanel
-		   Grid.Row="2"
-		   Grid.ColumnSpan="2"
-		   HorizontalAlignment="Center"
-		   >
-			<CheckBox
-		Name="CheckBox_TournamentMode"
-		Content="Tournament Mode"
-		DockPanel.Dock="Right"
-		HorizontalAlignment="Right"
-		Margin="160,3,3,3"
-		IsVisible="True"
-		IsChecked="{Binding Path=AppConfigurationSettings.EnableSpoilerFreeMode}{Binding Path=AppConfigurationSettings.TournamentMode}">
-			</CheckBox>
-		</DockPanel>
-		<!-- Buttons -->
+        <DockPanel
+           Grid.Row="2"
+           Grid.ColumnSpan="2"
+           HorizontalAlignment="Center"
+        >
+            <CheckBox
+                Name="CheckBox_TournamentMode"
+                Content="Tournament Mode"
+                DockPanel.Dock="Right"
+                HorizontalAlignment="Right"
+                Margin="160,3,3,3"
+                IsChecked="{Binding Path=AppConfigurationSettings.TournamentMode}"
+                Command="{Binding ToggleTournamentMode}"
+                CommandParameter="{Binding ElementName=MainWindow}"
+            />
+        </DockPanel>
+        <!-- Buttons -->
         <StackPanel
             Grid.Row="3"
-			Margin="10"
+            Margin="10"
             Orientation="Vertical"
         >
             <Button
                 Name="Button_CreateFromGivenSeed"
                 Height="30"
-				Width="315"
+                Width="315"
                 Margin="2"
                 Command="{Binding CreateFromGivenSeedCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
@@ -245,7 +246,7 @@
             <Button
                 Name="Button_CreateFromRandomSeed"
                 Height="30"
-				Width="315"
+                Width="315"
                 Margin="2"
                 Command="{Binding CreateFromRandomSeedCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
@@ -256,7 +257,7 @@
             <Button
                 Name="Button_OpenContainingFolder"
                 Height="30"
-				Width="315"
+                Width="315"
                 Margin="2"
                 Command="{Binding OpenContainingFolderCommand}"
             >
@@ -268,16 +269,17 @@
         <StackPanel
             Grid.Row="3"
             Grid.Column="1"
-			Margin="12"
+            Margin="12"
             Orientation="Vertical"
-        >		
+        >
             <Button
                 Name="Button_ImportSettings"
                 Height="30"
-				Width="300"
+                Width="300"
                 Margin="2"
                 Command="{Binding ImportSettingsCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
+                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ImportSettings}"
             >
                 Import Settings
             </Button>
@@ -285,26 +287,30 @@
             <Button
                 Name="Button_ExportSettings"
                 Height="30"
-				Width="300"
+                Width="300"
                 Margin="2"
                 Command="{Binding ExportSettingsCommand}"
                 CommandParameter="{Binding ElementName=MainWindow}"
+                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ExportSettings}"
             >
                 Export Settings
             </Button>
-			<CheckBox
-	            Name="CheckBox_CreateLogFile"
-	            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+
+            <CheckBox
+                Name="CheckBox_CreateLogFile"
+                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_CreateLogFile}"
             >
-				Create Log File
-			</CheckBox>
-			<TextBlock
+                Create Log File
+            </CheckBox>
+
+            <TextBlock
                 Text="🎲 = Randomize Option ☑️ = Option Enabled "
                 DockPanel.Dock="Left"
                 VerticalAlignment="Bottom"
             />
         </StackPanel>
-		
+        
         <!--Settings Tabs-->
         <TabControl
             Grid.Row="4"
@@ -340,14 +346,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_SpecialWeaponBehavior"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_SpecialWeaponBehavior"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_SpecialWeaponBehavior"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_SpecialWeaponBehavior">
+                        <Grid
+                            Name="Grid_SpecialWeaponBehavior"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior}"
+                        >
                             <CheckBox
                                 Content="Randomize Special Weapon Behavior"
                                 IsEnabled="{Binding !#ToggleSwitch_SpecialWeaponBehavior.IsChecked}"
@@ -364,14 +378,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_BossWeaknesses"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossWeaknesses}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_BossWeaknesses"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_BossWeaknesses"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossWeaknesses}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_BossWeaknesses">
+                        <Grid
+                            Name="Grid_BossWeaknesses"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfBossWeaknesses}"
+                        >
                             <CheckBox
                                 Content="Randomize Boss Weaknesses"
                                 IsEnabled="{Binding !#ToggleSwitch_BossWeaknesses.IsChecked}"
@@ -388,14 +410,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_RobotMasterLocations"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_RobotMasterLocations"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_RobotMasterLocations"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_RobotMasterLocations">
+                        <Grid
+                            Name="Grid_RobotMasterLocations"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations}"
+                        >
                             <CheckBox
                                 Content="Randomize Robot Master Locations"
                                 IsEnabled="{Binding !#ToggleSwitch_RobotMasterLocations.IsChecked}"
@@ -412,14 +442,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_RobotMasterBehavior"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_RobotMasterBehavior"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_RobotMasterBehavior"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_RobotMasterBehavior">
+                        <Grid
+                            Name="Grid_RobotMasterBehavior"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior}"
+                        >
                             <CheckBox
                                 Content="Randomize Robot Master Behavior"
                                 IsEnabled="{Binding !#ToggleSwitch_RobotMasterBehavior.IsChecked}"
@@ -436,14 +474,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_SpecialItemLocations"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_SpecialItemLocations"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_SpecialItemLocations"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_SpecialItemLocations">
+                        <Grid
+                            Name="Grid_SpecialItemLocations"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations}"
+                        >
                             <CheckBox
                                 Content="Randomize Special Item Locations"
                                 IsEnabled="{Binding !#ToggleSwitch_SpecialItemLocations.IsChecked}"
@@ -460,14 +506,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_EnemySpawns"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySpawns}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_EnemySpawns"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_EnemySpawns"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySpawns}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_EnemySpawns">
+                        <Grid
+                            Name="Grid_EnemySpawns"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySpawns}"
+                        >
                             <CheckBox
                                 Content="Randomize Enemy Spawns"
                                 IsEnabled="{Binding !#ToggleSwitch_EnemySpawns.IsChecked}"
@@ -484,14 +538,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_EnemyWeaknesses"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_EnemyWeaknesses"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_EnemyWeaknesses"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_EnemyWeaknesses">
+                        <Grid
+                            Name="Grid_EnemyWeaknesses"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemyWeaknesses}"
+                        >
                             <CheckBox
                                 Content="Randomize Enemy Weaknesses"
                                 IsEnabled="{Binding !#ToggleSwitch_EnemyWeaknesses.IsChecked}"
@@ -508,14 +570,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_FalseFloors"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfFalseFloors}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_FalseFloors"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfFalseFloors}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_FalseFloors"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfFalseFloors}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_FalseFloors">
+                        <Grid
+                            Name="Grid_FalseFloors"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfFalseFloors}"
+                        >
                             <CheckBox
                                 Content="Randomize False Floors"
                                 IsEnabled="{Binding !#ToggleSwitch_FalseFloors.IsChecked}"
@@ -532,14 +602,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_FasterCutsceneText"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableFasterCutsceneText}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_FasterCutsceneText"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableFasterCutsceneText}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_FasterCutsceneText"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableFasterCutsceneText}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_FasterCutsceneText">
+                        <Grid
+                            Name="Grid_FasterCutsceneText"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableFasterCutsceneText}"
+                        >
                             <CheckBox
                                 Content="Enable Faster Cutscene Text"
                                 IsEnabled="{Binding !#ToggleSwitch_FasterCutsceneText.IsChecked}"
@@ -547,6 +625,7 @@
                             />
                         </Grid>
                     </StackPanel>
+
                     <StackPanel
                         Name="StackPanel_BurstChaserMode"
                         Orientation="Horizontal"
@@ -555,14 +634,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_BurstChaserMode"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableBurstChaserMode}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_BurstChaserMode"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableBurstChaserMode}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_BurstChaserMode"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableBurstChaserMode}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_BurstChaserMode">
+                        <Grid
+                            Name="Grid_BurstChaserMode"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableBurstChaserMode}"
+                        >
                             <CheckBox
                                 Content="Enable Burst Chaser Mode"
                                 IsEnabled="{Binding !#ToggleSwitch_BurstChaserMode.IsChecked}"
@@ -579,14 +666,22 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_HideStageNames"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableHiddenStageNames}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_HideStageNames"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableHiddenStageNames}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_HideStageNames"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableHiddenStageNames}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <Grid Name="Grid_HideStageNames">
+                        <Grid
+                            Name="Grid_HideStageNames"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableHiddenStageNames}"
+                        >
                             <CheckBox
                                 Content="Hide Stage Names"
                                 IsEnabled="{Binding !#ToggleSwitch_HideStageNames.IsChecked}"
@@ -595,29 +690,37 @@
                         </Grid>
                     </StackPanel>
 
-                  <StackPanel
-                      Name="StackPanel_MercilessMode"
-                      Orientation="Horizontal"
+                    <StackPanel
+                        Name="StackPanel_MercilessMode"
+                        Orientation="Horizontal"
                     >
-                    <!-- Friendly emoji header -->
-                    <Label FontSize="18">🎲</Label>
+                        <!-- Friendly emoji header -->
+                        <Label FontSize="18">🎲</Label>
 
-                    <!-- Toggle to randomize the option -->
-                    <ToggleSwitch
-                        Name="ToggleSwitch_MercilessMode"
-                        IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_MercilessMode}"
-                        OffContent=""
-                        OnContent=""
-                        />
-
-                    <Grid Name="Grid_MercilessMode">
-                      <CheckBox
-                          Content="Merciless One Hit Kill Mode"
-                          IsEnabled="{Binding !#ToggleSwitch_MercilessMode.IsChecked}"
-                          IsChecked="{Binding AppConfigurationSettings.MercilessMode}"
+                        <!-- Toggle to randomize the option -->
+                        <Grid
+                            Name="Grid_ToggleSwitch_MercilessMode"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_MercilessMode}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_MercilessMode"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_MercilessMode}"
+                                OffContent=""
+                                OnContent=""
                             />
-                    </Grid>
-                  </StackPanel>
+                        </Grid>
+
+                        <Grid
+                            Name="Grid_MercilessMode"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_MercilessMode}"
+                        >
+                            <CheckBox
+                                Content="Merciless One Hit Kill Mode"
+                                IsEnabled="{Binding !#ToggleSwitch_MercilessMode.IsChecked}"
+                                IsChecked="{Binding AppConfigurationSettings.MercilessMode}"
+                            />
+                        </Grid>
+                    </StackPanel>
                 </WrapPanel>
             </TabItem>
 
@@ -640,19 +743,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_BossSprites"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossSprites}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_BossSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossSprites}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_BossSprites"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossSprites}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- The option -->
-                            <CheckBox
-                                Content="Randomize Boss Sprites"
-                                IsEnabled="{Binding !#ToggleSwitch_BossSprites.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfBossSprites}"
-                            />
+                            <Grid
+                                Name="Grid_RandomizeBossSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfBossSprites}"
+                            >
+                                <CheckBox
+                                    Content="Randomize Boss Sprites"
+                                    IsEnabled="{Binding !#ToggleSwitch_BossSprites.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfBossSprites}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <!-- EnemySprites -->
@@ -664,19 +777,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_EnemySprites"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySprites}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_EnemySprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySprites}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_EnemySprites"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySprites}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- The option -->
-                            <CheckBox
-                                Content="Randomize Enemy Sprites"
-                                IsEnabled="{Binding !#ToggleSwitch_EnemySprites.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnemySprites}"
-                            />
+                            <Grid
+                                Name="Grid_RandomizeEnemySprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySprites}"
+                            >
+                                <CheckBox
+                                    Content="Randomize Enemy Sprites"
+                                    IsEnabled="{Binding !#ToggleSwitch_EnemySprites.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnemySprites}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <!-- SpecialWeaponSprites -->
@@ -688,19 +811,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_SpecialWeaponSprites"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_SpecialWeaponSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_SpecialWeaponSprites"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- The option -->
-                            <CheckBox
-                                Content="Randomize Special Weapon Sprites"
-                                IsEnabled="{Binding !#ToggleSwitch_SpecialWeaponSprites.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfSpecialWeaponSprites}"
-                            />
+                            <Grid
+                                Name="Grid_RandomizeSpecialWeaponSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites}"
+                            >
+                                <CheckBox
+                                    Content="Randomize Special Weapon Sprites"
+                                    IsEnabled="{Binding !#ToggleSwitch_SpecialWeaponSprites.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfSpecialWeaponSprites}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <!-- ItemPickupSprites -->
@@ -712,19 +845,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_ItemPickupSprites"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_ItemPickupSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_ItemPickupSprites"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- The option -->
-                            <CheckBox
-                                Content="Randomize Item Pickup Sprites"
-                                IsEnabled="{Binding !#ToggleSwitch_ItemPickupSprites.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfItemPickupSprites}"
-                            />
+                            <Grid
+                                Name="Grid_RandomizeItemPickupSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites}"
+                            >
+                                <CheckBox
+                                    Content="Randomize Item Pickup Sprites"
+                                    IsEnabled="{Binding !#ToggleSwitch_ItemPickupSprites.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfItemPickupSprites}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <!-- EnvironmentSprites -->
@@ -736,19 +879,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_EnvironmentSprites"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnvironmentSprites}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_EnvironmentSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_EnvironmentSprites"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnvironmentSprites}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- The option -->
-                            <CheckBox
-                                Content="Randomize Environment Sprites"
-                                IsEnabled="{Binding !#ToggleSwitch_EnvironmentSprites.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnvironmentSprites}"
-                            />
+                            <Grid
+                                Name="Grid_RandomizeEnvironmentSprites"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfEnvironmentSprites}"
+                            >
+                                <CheckBox
+                                    Content="Randomize Environment Sprites"
+                                    IsEnabled="{Binding !#ToggleSwitch_EnvironmentSprites.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfEnvironmentSprites}"
+                                />
+                            </Grid>
                         </StackPanel>
                     </WrapPanel>
                 </Grid>
@@ -769,28 +922,38 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_HitPointChargingSpeed"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_HitPointRefillSpeed}"
-                            OffContent=""
-                            OnContent=""
-                        />
-
-                        <ComboBox
-                            Name="ComboBox_HitPointChargingSpeed"
-                            IsEnabled="{Binding !#ToggleSwitch_HitPointChargingSpeed.IsChecked}"
-                            SelectedItem="{Binding Path=AppConfigurationSettings.HitPointRefillSpeed}"
-                            Width="350"
+                        <Grid
+                            Name="Grid_ToggleSwitch_HitPointChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed}"
                         >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        <TextBlock Text=" Hit Point Charging Speed"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                            <ToggleSwitch
+                                Name="ToggleSwitch_HitPointChargingSpeed"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_HitPointRefillSpeed}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
+
+                        <Grid
+                            Name="Grid_HitPointChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_HitPointRefillSpeed}"
+                        >
+                            <ComboBox
+                                Name="ComboBox_HitPointChargingSpeed"
+                                IsEnabled="{Binding !#ToggleSwitch_HitPointChargingSpeed.IsChecked}"
+                                SelectedItem="{Binding Path=AppConfigurationSettings.HitPointRefillSpeed}"
+                                Width="350"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            <TextBlock Text=" Hit Point Charging Speed"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
                     </StackPanel>
 
                     <!-- NOTE: Changing the binding here may require code behind changes -->
@@ -802,28 +965,38 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_WeaponEnergyChargingSpeed"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_WeaponEnergyRefillSpeed}"
-                            OffContent=""
-                            OnContent=""
-                        />
-
-                        <ComboBox
-                            Name="ComboBox_WeaponEnergyChargingSpeed"
-                            IsEnabled="{Binding !#ToggleSwitch_WeaponEnergyChargingSpeed.IsChecked}"
-                            SelectedItem="{Binding Path=AppConfigurationSettings.WeaponEnergyRefillSpeed}"
-                            Width="350"
+                        <Grid
+                            Name="Grid_ToggleSwitch_WeaponEnergyChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed}"
                         >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        <TextBlock Text=" Weapon Energy Charging Speed"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                            <ToggleSwitch
+                                Name="ToggleSwitch_WeaponEnergyChargingSpeed"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_WeaponEnergyRefillSpeed}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
+
+                        <Grid
+                            Name="Grid_WeaponEnergyChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_WeaponEnergyRefillSpeed}"
+                        >
+                            <ComboBox
+                                Name="ComboBox_WeaponEnergyChargingSpeed"
+                                IsEnabled="{Binding !#ToggleSwitch_WeaponEnergyChargingSpeed.IsChecked}"
+                                SelectedItem="{Binding Path=AppConfigurationSettings.WeaponEnergyRefillSpeed}"
+                                Width="350"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            <TextBlock Text=" Weapon Energy Charging Speed"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
                     </StackPanel>
 
                     <!-- NOTE: Changing the binding here may require code behind changes -->
@@ -835,28 +1008,38 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_EnergyTankChargingSpeed"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnergyTankRefillSpeed}"
-                            OffContent=""
-                            OnContent=""
-                        />
-
-                        <ComboBox
-                            Name="ComboBox_EnergyTankChargingSpeed"
-                            IsEnabled="{Binding !#ToggleSwitch_EnergyTankChargingSpeed.IsChecked}"
-                            SelectedItem="{Binding Path=AppConfigurationSettings.EnergyTankRefillSpeed}"
-                            Width="350"
+                        <Grid
+                            Name="Grid_ToggleSwitch_EnergyTankChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed}"
                         >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        <TextBlock Text=" Energy Tank Charging Speed"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                            <ToggleSwitch
+                                Name="ToggleSwitch_EnergyTankChargingSpeed"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnergyTankRefillSpeed}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
+
+                        <Grid
+                            Name="Grid_EnergyTankChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed}"
+                        >
+                            <ComboBox
+                                Name="ComboBox_EnergyTankChargingSpeed"
+                                IsEnabled="{Binding !#ToggleSwitch_EnergyTankChargingSpeed.IsChecked}"
+                                SelectedItem="{Binding Path=AppConfigurationSettings.EnergyTankRefillSpeed}"
+                                Width="350"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            <TextBlock Text=" Energy Tank Charging Speed"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
                     </StackPanel>
 
                     <!-- NOTE: Changing the binding here may require code behind changes -->
@@ -868,28 +1051,38 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_RobotMasterEnergyChargingSpeed"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_RobotMasterEnergyRefillSpeed}"
-                            OffContent=""
-                            OnContent=""
-                        />
-
-                        <ComboBox
-                            Name="ComboBox_RobotMasterEnergyChargingSpeed"
-                            IsEnabled="{Binding !#ToggleSwitch_RobotMasterEnergyChargingSpeed.IsChecked}"
-                            SelectedItem="{Binding Path=AppConfigurationSettings.RobotMasterEnergyRefillSpeed}"
-                            Width="350"
+                        <Grid
+                            Name="Grid_ToggleSwitch_RobotMasterEnergyChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed}"
                         >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        <TextBlock Text=" Robot Master Energy Charging Speed"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                            <ToggleSwitch
+                                Name="ToggleSwitch_RobotMasterEnergyChargingSpeed"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_RobotMasterEnergyRefillSpeed}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
+
+                        <Grid
+                            Name="Grid_RobotMasterEnergyChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_RobotMasterEnergyRefillSpeed}"
+                        >
+                            <ComboBox
+                                Name="ComboBox_RobotMasterEnergyChargingSpeed"
+                                IsEnabled="{Binding !#ToggleSwitch_RobotMasterEnergyChargingSpeed.IsChecked}"
+                                SelectedItem="{Binding Path=AppConfigurationSettings.RobotMasterEnergyRefillSpeed}"
+                                Width="350"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            <TextBlock Text=" Robot Master Energy Charging Speed"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
                     </StackPanel>
 
                     <!-- NOTE: Changing the binding here may require code behind changes -->
@@ -901,28 +1094,38 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_CastleBossEnergyChargingSpeed"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_CastleBossEnergyRefillSpeed}"
-                            OffContent=""
-                            OnContent=""
-                        />
-
-                        <ComboBox
-                            Name="ComboBox_CastleBossEnergyChargingSpeed"
-                            IsEnabled="{Binding !#ToggleSwitch_CastleBossEnergyChargingSpeed.IsChecked}"
-                            SelectedItem="{Binding Path=AppConfigurationSettings.CastleBossEnergyRefillSpeed}"
-                            Width="350"
+                        <Grid
+                            Name="Grid_ToggleSwitch_CastleBossEnergyChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_CastleBossEnergyRefillSpeed}"
                         >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        <TextBlock Text=" Castle Boss Energy Charging Speed"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                            <ToggleSwitch
+                                Name="ToggleSwitch_CastleBossEnergyChargingSpeed"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_CastleBossEnergyRefillSpeed}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
+
+                        <Grid
+                            Name="Grid_CastleBossEnergyChargingSpeed"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed}"
+                        >
+                            <ComboBox
+                                Name="ComboBox_CastleBossEnergyChargingSpeed"
+                                IsEnabled="{Binding !#ToggleSwitch_CastleBossEnergyChargingSpeed.IsChecked}"
+                                SelectedItem="{Binding Path=AppConfigurationSettings.CastleBossEnergyRefillSpeed}"
+                                Width="350"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            <TextBlock Text=" Castle Boss Energy Charging Speed"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
@@ -943,19 +1146,29 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_DisableFlashingEffects"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableFlashingEffects}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_DisableFlashingEffects"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_DisableFlashingEffects}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_DisableFlashingEffects"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableFlashingEffects}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <CheckBox
-                            Name="CheckBox_DisableFlashingEffects"
-                            Content="Disable Flashing Effects"
-                            IsEnabled="{Binding !#ToggleSwitch_DisableFlashingEffects.IsChecked}"
-                            IsChecked="{Binding Path=AppConfigurationSettings.DisableFlashingEffects}"
-                        />
+                        <Grid
+                            Name="Grid_DisableFlashingEffects"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_DisableFlashingEffects}"
+                        >
+                            <CheckBox
+                                Name="CheckBox_DisableFlashingEffects"
+                                Content="Disable Flashing Effects"
+                                IsEnabled="{Binding !#ToggleSwitch_DisableFlashingEffects.IsChecked}"
+                                IsChecked="{Binding Path=AppConfigurationSettings.DisableFlashingEffects}"
+                            />
+                        </Grid>
                     </StackPanel>
 
                     <StackPanel
@@ -965,20 +1178,31 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_ReduceUnderwaterLag"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableUnderwaterLagReduction}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_ReduceUnderwaterLag"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_ReduceUnderwaterLag"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableUnderwaterLagReduction}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <CheckBox
-                            Name="CheckBox_ReduceUnderwaterLag"
-                            Content="Reduce Underwater Lag"
-                            IsEnabled="{Binding !#ToggleSwitch_ReduceUnderwaterLag.IsChecked}"
-                            IsChecked="{Binding Path=AppConfigurationSettings.EnableUnderwaterLagReduction}"
-                        />
+                        <Grid
+                            Name="Grid_ReduceUnderwaterLag"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction}"
+                        >
+                            <CheckBox
+                                Name="CheckBox_ReduceUnderwaterLag"
+                                Content="Reduce Underwater Lag"
+                                IsEnabled="{Binding !#ToggleSwitch_ReduceUnderwaterLag.IsChecked}"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableUnderwaterLagReduction}"
+                            />
+                        </Grid>
                     </StackPanel>
+
                     <StackPanel
                         Orientation="Horizontal"
                     >
@@ -986,20 +1210,31 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_DisableWaterfall"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableWaterfall}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_DisableWaterfall"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_DisableWaterfall}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_DisableWaterfall"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisableWaterfall}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <CheckBox
-                            Name="CheckBox_DisableWaterfall"
-                            Content="Disable Waterfall"
-                            IsEnabled="{Binding !#ToggleSwitch_DisableWaterfall.IsChecked}"
-                            IsChecked="{Binding Path=AppConfigurationSettings.DisableWaterfall}"
-                        />
+                        <Grid
+                            Name="Grid_DisableWaterfall"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_DisableWaterfall}"
+                        >
+                            <CheckBox
+                                Name="CheckBox_DisableWaterfall"
+                                Content="Disable Waterfall"
+                                IsEnabled="{Binding !#ToggleSwitch_DisableWaterfall.IsChecked}"
+                                IsChecked="{Binding Path=AppConfigurationSettings.DisableWaterfall}"
+                            />
+                        </Grid>
                     </StackPanel>
+
                     <StackPanel
                         Orientation="Horizontal"
                     >
@@ -1007,41 +1242,62 @@
                         <Label FontSize="18">🎲</Label>
 
                         <!-- Toggle to randomize the option -->
-                        <ToggleSwitch
-                            Name="ToggleSwitch_DisablePauseLock"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisablePauseLock}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <Grid
+                            Name="Grid_ToggleSwitch_DisablePauseLock"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_DisablePauseLock}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_DisablePauseLock"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_DisablePauseLock}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-                        <CheckBox
-                            Name="CheckBox_DisablePauseLock"
-                            Content="Allow Pause During Item Use"
-                            IsEnabled="{Binding !#ToggleSwitch_DisablePauseLock.IsChecked}"
-                            IsChecked="{Binding Path=AppConfigurationSettings.DisablePauseLock}"
-                        />
+                        <Grid
+                            Name="Grid_DisablePauseLock"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_DisablePauseLock}"
+                        >
+                            <CheckBox
+                                Name="CheckBox_DisablePauseLock"
+                                Content="Allow Pause During Item Use"
+                                IsEnabled="{Binding !#ToggleSwitch_DisablePauseLock.IsChecked}"
+                                IsChecked="{Binding Path=AppConfigurationSettings.DisablePauseLock}"
+                            />
+                        </Grid>
                     </StackPanel>
-					<StackPanel
+
+                    <StackPanel
                         Orientation="Horizontal"
                     >
-						<!-- Friendly emoji header -->
-						<Label FontSize="18">🎲</Label>
+                        <!-- Friendly emoji header -->
+                        <Label FontSize="18">🎲</Label>
 
-						<!-- Toggle to randomize the option -->
-						<ToggleSwitch
-                            Name="ToggleSwitch_EnableLeftwardWallEjection"
-                            IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableLeftwardWallEjection}"
-                            OffContent=""
-                            OnContent=""
-                        />
+                        <!-- Toggle to randomize the option -->
+                        <Grid
+                            Name="Grid_ToggleSwitch_EnableLeftwardWallEjection"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableLeftwardWallEjection}"
+                        >
+                            <ToggleSwitch
+                                Name="ToggleSwitch_EnableLeftwardWallEjection"
+                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableLeftwardWallEjection}"
+                                OffContent=""
+                                OnContent=""
+                            />
+                        </Grid>
 
-						<CheckBox
-                            Name="CheckBox_EnableLeftwardWallEjection"
-                            Content="Enable Leftward Wall Ejection"
-                            IsEnabled="{Binding !#ToggleSwitch_EnableLeftwardWallEjection.IsChecked}"
-                            IsChecked="{Binding Path=AppConfigurationSettings.EnableLeftwardWallEjection}"
-                        />
-					</StackPanel>
+                        <Grid
+                            Name="Grid_EnableLeftwardWallEjection"
+                            IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableLeftwardWallEjection}"
+                        >
+                            <CheckBox
+                                Name="CheckBox_EnableLeftwardWallEjection"
+                                Content="Enable Leftward Wall Ejection"
+                                IsEnabled="{Binding !#ToggleSwitch_EnableLeftwardWallEjection.IsChecked}"
+                                IsChecked="{Binding Path=AppConfigurationSettings.EnableLeftwardWallEjection}"
+                            />
+                        </Grid>
+                    </StackPanel>
                 </WrapPanel>
             </TabItem>
 
@@ -1064,19 +1320,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_ColorPalettes"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfColorPalettes}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_ColorPalettes"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfColorPalettes}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_ColorPalettes"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfColorPalettes}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
-                            <CheckBox
-                                Name="CheckBox_ColorPalettes"
-                                Content="Randomize Color Palettes"
-                                IsEnabled="{Binding !#ToggleSwitch_ColorPalettes.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfColorPalettes}"
-                            />
+                            <Grid
+                                Name="Grid_ColorPalettes"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfColorPalettes}"
+                            >
+                                <CheckBox
+                                    Name="CheckBox_ColorPalettes"
+                                    Content="Randomize Color Palettes"
+                                    IsEnabled="{Binding !#ToggleSwitch_ColorPalettes.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfColorPalettes}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel
@@ -1086,19 +1352,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_MusicTracks"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMusicTracks}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_MusicTracks"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_MusicTracks"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMusicTracks}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
-                            <CheckBox
-                                Name="CheckBox_MusicTracks"
-                                Content="Randomize Music Tracks"
-                                IsEnabled="{Binding !#ToggleSwitch_MusicTracks.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMusicTracks}"
-                            />
+                            <Grid
+                                Name="Grid_MusicTracks"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks}"
+                            >
+                                <CheckBox
+                                    Name="CheckBox_MusicTracks"
+                                    Content="Randomize Music Tracks"
+                                    IsEnabled="{Binding !#ToggleSwitch_MusicTracks.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMusicTracks}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel
@@ -1108,19 +1384,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_InGameText"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfInGameText}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_InGameText"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfInGameText}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_InGameText"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfInGameText}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
-                            <CheckBox
-                                Name="CheckBox_InGameText"
-                                Content="Randomize In Game Text"
-                                IsEnabled="{Binding !#ToggleSwitch_InGameText.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfInGameText}"
-                            />
+                            <Grid
+                                Name="Grid_InGameText"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfInGameText}"
+                            >
+                                <CheckBox
+                                    Name="CheckBox_InGameText"
+                                    Content="Randomize In Game Text"
+                                    IsEnabled="{Binding !#ToggleSwitch_InGameText.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfInGameText}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel
@@ -1130,19 +1416,29 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_MenusAndTransitionScreens"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_MenusAndTransitionScreens"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_MenusAndTransitionScreens"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
-                            <CheckBox
-                                Name="CheckBox_MenusAndTransitionScreens"
-                                Content="Randomize Menus and Transition Screens"
-                                IsEnabled="{Binding !#ToggleSwitch_MenusAndTransitionScreens.IsChecked}"
-                                IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMenusAndTransitionScreens}"
-                            />
+                            <Grid
+                                Name="Grid_MenusAndTransitionScreens"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens}"
+                            >
+                                <CheckBox
+                                    Name="CheckBox_MenusAndTransitionScreens"
+                                    Content="Randomize Menus and Transition Screens"
+                                    IsEnabled="{Binding !#ToggleSwitch_MenusAndTransitionScreens.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMenusAndTransitionScreens}"
+                                />
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel
@@ -1153,29 +1449,39 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_PlayerSprite"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_PlayerSprite}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_PlayerSprite"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_PlayerSprite}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_PlayerSprite"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_PlayerSprite}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- NOTE: Changing the binding here may require code behind changes -->
-                            <ComboBox
-                                Name="ComboBox_PlayerSprite"
-                                IsEnabled="{Binding !#ToggleSwitch_PlayerSprite.IsChecked}"
-                                SelectedItem="{Binding Path=AppConfigurationSettings.PlayerSprite}"
-                                Width="200"
+                            <Grid
+                                Name="Grid_PlayerSprite"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_PlayerSprite}"
                             >
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Character: "/>
-                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                                <ComboBox
+                                    Name="ComboBox_PlayerSprite"
+                                    IsEnabled="{Binding !#ToggleSwitch_PlayerSprite.IsChecked}"
+                                    SelectedItem="{Binding Path=AppConfigurationSettings.PlayerSprite}"
+                                    Width="200"
+                                >
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Character: "/>
+                                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel
@@ -1186,29 +1492,39 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_HudElement"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_HudElement}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_HudElement"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_HudElement}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_HudElement"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_HudElement}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- NOTE: Changing the binding here may require code behind changes -->
-                            <ComboBox
-                                Name="ComboBox_HudElement"
-                                IsEnabled="{Binding !#ToggleSwitch_HudElement.IsChecked}"
-                                SelectedItem="{Binding Path=AppConfigurationSettings.HudElement}"
-                                Width="200"
+                            <Grid
+                                Name="Grid_HudElement"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_HudElement}"
                             >
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="HUD: "/>
-                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                                <ComboBox
+                                    Name="ComboBox_HudElement"
+                                    IsEnabled="{Binding !#ToggleSwitch_HudElement.IsChecked}"
+                                    SelectedItem="{Binding Path=AppConfigurationSettings.HudElement}"
+                                    Width="200"
+                                >
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="HUD: "/>
+                                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel
@@ -1219,29 +1535,39 @@
                             <Label FontSize="18">🎲</Label>
 
                             <!-- Toggle to randomize the option -->
-                            <ToggleSwitch
-                                Name="ToggleSwitch_Font"
-                                IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_Font}"
-                                OffContent=""
-                                OnContent=""
-                            />
+                            <Grid
+                                Name="Grid_ToggleSwitch_Font"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_Font}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_Font"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_Font}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
 
                             <!-- NOTE: Changing the binding here may require code behind changes -->
-                            <ComboBox
-                                Name="ComboBox_Font"
-                                IsEnabled="{Binding !#ToggleSwitch_Font.IsChecked}"
-                                SelectedItem="{Binding Path=AppConfigurationSettings.Font}"
-                                Width="200"
+                            <Grid
+                                Name="Grid_Font"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_Font}"
                             >
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Font: "/>
-                                            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                                <ComboBox
+                                    Name="ComboBox_Font"
+                                    IsEnabled="{Binding !#ToggleSwitch_Font.IsChecked}"
+                                    SelectedItem="{Binding Path=AppConfigurationSettings.Font}"
+                                    Width="200"
+                                >
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Font: "/>
+                                                <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
                         </StackPanel>
                     </StackPanel>
 
@@ -1423,14 +1749,14 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=LuigiArcade}"
                             />
 
-							<Image
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_ManII.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=ManII}"
                             />
 
-							<Image
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MarioArcade.png"
@@ -1465,21 +1791,21 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=NewLands}"
                             />
 
-							<Image
-	                            Width="168"
-	                            Height="168"
-	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Pikachu.png"
-	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Pikachu}"
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Pikachu.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Pikachu}"
                             />
-							
-							<Image
-	                            Width="168"
-	                            Height="168"
-	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Pit.png"
-	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Pit}"
+                            
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Pit.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Pit}"
                             />
 
-							<Image
+                            <Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_ProtoMan.png"

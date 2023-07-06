@@ -86,7 +86,7 @@ namespace MM2Randomizer.Utilities
 
 
             // Draw tournament mode/spoiler free information
-            if (settings.EnableSpoilerFreeMode)
+            if (settings.TournamentMode)
             {
                 // 0x037367 = Start of row beneath "seed"
                 String flagsAlpha = "TOURNAMENT";
