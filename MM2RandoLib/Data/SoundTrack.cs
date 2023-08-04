@@ -17,7 +17,7 @@ namespace MM2Randomizer.Data
 
         [XmlArray(ElementName = "Uses")]
         [XmlArrayItem(ElementName = "Usage")]
-        public HashSet<String> Uses { get; set; } = new();
+        public HashSet<String> Uses { get; set; } = new(StringComparer.InvariantCultureIgnoreCase);
 
         [XmlIgnore]
         public ESoundTrackUsage Usage
