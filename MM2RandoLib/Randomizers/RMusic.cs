@@ -199,8 +199,9 @@ namespace MM2Randomizer.Randomizers
             { ESoundTrackUsage.Intro, new EMusicID[]{EMusicID.Intro} },
             { ESoundTrackUsage.Title, new EMusicID[]{EMusicID.Title} },
             { ESoundTrackUsage.StageSelect, new EMusicID[]{EMusicID.StageSelect} },
-            { ESoundTrackUsage.Stage, new EMusicID[]{EMusicID.Flash, EMusicID.Wood, EMusicID.Crash, EMusicID.Heat, EMusicID.Air, EMusicID.Metal, EMusicID.Quick, EMusicID.Bubble, EMusicID.Wily1, EMusicID.Wily2, EMusicID.Wily3, EMusicID.Wily4, EMusicID.Wily5, EMusicID.Wily6 } },
+            { ESoundTrackUsage.Stage, new EMusicID[]{EMusicID.Flash, EMusicID.Wood, EMusicID.Crash, EMusicID.Heat, EMusicID.Air, EMusicID.Metal, EMusicID.Quick, EMusicID.Bubble, EMusicID.Wily1, EMusicID.Wily2, EMusicID.Wily3, EMusicID.Wily4, EMusicID.Wily6 } },
             { ESoundTrackUsage.Boss, new EMusicID[]{EMusicID.Boss} },
+            { ESoundTrackUsage.Refights, new EMusicID[]{EMusicID.Wily5} },
             { ESoundTrackUsage.Ending, new EMusicID[]{EMusicID.Ending} },
             { ESoundTrackUsage.Credits, new EMusicID[]{EMusicID.Credits} },
         };
@@ -253,7 +254,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// The default uses for tracks that have no uses specified on the song or module.
         /// </summary>
-        private HashSet<String> DefaultUses = new(){ "Stage", "Credits" };
+        private HashSet<String> DefaultUses = new(StringComparer.InvariantCultureIgnoreCase){ "Stage", "Credits" };
 
         private StringBuilder debug = new();
 
@@ -305,7 +306,7 @@ namespace MM2Randomizer.Randomizers
             debug.AppendLine($"{songs.Count} C2 and {ftmSongs.Count} FT songs loaded.");
 
             // Create the usage type lists of songs
-            Dictionary<String, List<Int32>> usesSongIdcs = new();
+            Dictionary<String, List<Int32>> usesSongIdcs = new(StringComparer.InvariantCultureIgnoreCase);
             foreach (String name in Enum.GetNames(typeof(ESoundTrackUsage)))
                 usesSongIdcs[name] = new List<Int32>();
 
@@ -387,8 +388,8 @@ namespace MM2Randomizer.Randomizers
                     continue; // Nothing to randomize
 
                 EMusicID[]? usageMusicIds;
-                if (usageStr != "Boss")
-                    usageMusicIds = UsesMusicIds[Enum.Parse<ESoundTrackUsage>(usageStr)];
+                if (!StringComparer.InvariantCultureIgnoreCase.Equals(usageStr, "Boss"))
+                    usageMusicIds = UsesMusicIds[SoundTrackUsage.Values[usageStr]];
                 else
                     usageMusicIds = (from idx in Enumerable.Range(FirstBossMusicId, BossSongMapLen) select (EMusicID)idx).ToArray();
 
