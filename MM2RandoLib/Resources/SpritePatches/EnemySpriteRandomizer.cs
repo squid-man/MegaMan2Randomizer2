@@ -32,6 +32,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_BLOCKY = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.Blocky_Pokey,
             Properties.EnemySpriteResources.Blocky_Rocky,
             Properties.EnemySpriteResources.Blocky_TotemPolen,
         };
