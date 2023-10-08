@@ -123,6 +123,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] ChangkeyMaker_PokemonRocketTrainer {
+            get {
+                object obj = ResourceManager.GetObject("ChangkeyMaker_PokemonRocketTrainer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Claw_Chiko {
             get {
                 object obj = ResourceManager.GetObject("Claw_Chiko", resourceCulture);
@@ -276,6 +286,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] KerogAndPetitKerog_Komasaburo {
             get {
                 object obj = ResourceManager.GetObject("KerogAndPetitKerog_Komasaburo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] KerogAndPetitKerog_Mean {
+            get {
+                object obj = ResourceManager.GetObject("KerogAndPetitKerog_Mean", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -466,6 +486,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Press_FlatCrusher {
             get {
                 object obj = ResourceManager.GetObject("Press_FlatCrusher", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Press_Thwomp {
+            get {
+                object obj = ResourceManager.GetObject("Press_Thwomp", resourceCulture);
                 return ((byte[])(obj));
             }
         }

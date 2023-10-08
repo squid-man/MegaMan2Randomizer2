@@ -41,6 +41,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnemySpriteResources.ChangkeyMaker_ConstructionJoe,
+            Properties.EnemySpriteResources.ChangkeyMaker_PokemonRocketTrainer,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_CLAW = new List<Byte[]?>()
@@ -92,6 +93,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Hearts,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Komasaburo,
+            Properties.EnemySpriteResources.KerogAndPetitKerog_Mean,
             Properties.EnemySpriteResources.KerogAndPetitKerog_MetMom,
         };
 
@@ -156,6 +158,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnemySpriteResources.Press_Crusher2,
             Properties.EnemySpriteResources.Press_FlatCrusher,
+            Properties.EnemySpriteResources.Press_Thwomp,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_ROBBIT = new List<Byte[]?>()

@@ -89,6 +89,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> BOSS_SPRITE_LIST_METAL_MAN = new List<Byte[]?>()
         {
             null,
+            Properties.BossSpriteResources.MetalMan_CutMan,
             Properties.BossSpriteResources.MetalMan_ElecMan,
             Properties.BossSpriteResources.MetalMan_GrayZone,
             Properties.BossSpriteResources.MetalMan_Peercast,
@@ -200,7 +201,9 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.BossDoorSign_DrLight,
             Properties.BossSpriteResources.BossDoorSign_Leo,
             Properties.BossSpriteResources.BossDoorSign_MegaMan4Squid,
+            Properties.BossSpriteResources.BossDoorSign_Metroid,
             Properties.BossSpriteResources.BossDoorSign_Mikey,
+            Properties.BossSpriteResources.BossDoorSign_MM5ProtoMan,
             Properties.BossSpriteResources.BossDoorSign_MortalKombat,
             Properties.BossSpriteResources.BossDoorSign_MrX,
             Properties.BossSpriteResources.BossDoorSign_NoReset,
