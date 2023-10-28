@@ -112,7 +112,9 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_BabyMetroid,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_CutmanBadScissorsDay,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Gamma,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Platform,
         };
 
@@ -185,6 +187,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_GeminiMan,
+            Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_GWD_DuckTales,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_SuperMarioBrosBlock,
         };
 
@@ -273,6 +276,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyCastle,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyTV,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_Karnath,
         };

@@ -102,6 +102,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> WEAPON_SPRITE_LIST_QUICK_BOOMERANG = new List<Byte[]?>()
         {
             null,
+            Properties.WeaponSpriteResources.QuickBoomerang_Dagger,
             Properties.WeaponSpriteResources.QuickBoomerang_DeusExMachina,
             Properties.WeaponSpriteResources.QuickBoomerang_FinalMix,
             Properties.WeaponSpriteResources.QuickBoomerang_GodWorld,
