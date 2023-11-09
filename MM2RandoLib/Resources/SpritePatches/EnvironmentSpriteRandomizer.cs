@@ -69,6 +69,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.Ladders_CB,
+            Properties.EnvironmentSpriteResources.Ladders_Ducktales,
             Properties.EnvironmentSpriteResources.Ladders_MegaMan1,
             Properties.EnvironmentSpriteResources.Ladders_MegaMan1_2,
             Properties.EnvironmentSpriteResources.Ladders_MegaMan3,
@@ -86,6 +87,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.Spikes_Ash,
             Properties.EnvironmentSpriteResources.Spikes_Diamond,
             Properties.EnvironmentSpriteResources.Spikes_DIE,
+            Properties.EnvironmentSpriteResources.Spikes_Ducktales1,
+            Properties.EnvironmentSpriteResources.Spikes_Ducktales2,
             Properties.EnvironmentSpriteResources.Spikes_JavaIslandIndonesia,
             Properties.EnvironmentSpriteResources.Spikes_Jelectro,
             Properties.EnvironmentSpriteResources.Spikes_MarioStar,

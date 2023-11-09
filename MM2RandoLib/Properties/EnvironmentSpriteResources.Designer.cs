@@ -303,6 +303,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Ladders_Ducktales {
+            get {
+                object obj = ResourceManager.GetObject("Ladders_Ducktales", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Ladders_MegaMan1 {
             get {
                 object obj = ResourceManager.GetObject("Ladders_MegaMan1", resourceCulture);
@@ -416,6 +426,26 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Spikes_DIE {
             get {
                 object obj = ResourceManager.GetObject("Spikes_DIE", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Ducktales1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Ducktales1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Ducktales2 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Ducktales2", resourceCulture);
                 return ((byte[])(obj));
             }
         }

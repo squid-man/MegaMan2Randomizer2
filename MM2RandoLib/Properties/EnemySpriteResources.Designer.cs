@@ -303,6 +303,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] KerogAndPetitKerog_CBSD {
+            get {
+                object obj = ResourceManager.GetObject("KerogAndPetitKerog_CBSD", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] KerogAndPetitKerog_Hearts {
             get {
                 object obj = ResourceManager.GetObject("KerogAndPetitKerog_Hearts", resourceCulture);
@@ -356,6 +366,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Kukku_VineCock {
             get {
                 object obj = ResourceManager.GetObject("Kukku_VineCock", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] M445_CBSD {
+            get {
+                object obj = ResourceManager.GetObject("M445_CBSD", resourceCulture);
                 return ((byte[])(obj));
             }
         }

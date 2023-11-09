@@ -94,6 +94,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_KEROG_AND_PETIT_KEROG = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.KerogAndPetitKerog_CBSD,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Hearts,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Komasaburo,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Mean,
@@ -110,6 +111,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_M445 = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.M445_CBSD,
             Properties.EnemySpriteResources.M445_M422A,
             Properties.EnemySpriteResources.M445_Metroid,
         };
