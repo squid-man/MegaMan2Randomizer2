@@ -127,6 +127,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_DiveMan,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_PLATFORM = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Platform_SMB3,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL = new List<Byte[]?>()
         {
             null,
@@ -298,6 +304,11 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_Snake,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY3_SPIKES = new List<Byte[]?>()
+        {
+            null,
+        };
+
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND = new List<Byte[]?>()
         {
             null,
@@ -364,6 +375,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_PLATFORM,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_DAYLIGHT_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE,
@@ -385,6 +397,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_ANIMATEDTILE,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_FLOOR,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY3_SPIKES,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY6,
