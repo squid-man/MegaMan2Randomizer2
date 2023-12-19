@@ -58,6 +58,8 @@ namespace MM2Randomizer
         MarioArcade,
         [Description("Mega Man X")]
         MegaManX,
+        [Description("Mega Claus")]
+        MegaClaus,
         [Description("Mega Mari")]
         MegaMari,
         [Description("Mega Ran")]
