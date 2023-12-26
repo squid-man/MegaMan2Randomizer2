@@ -59,7 +59,7 @@ namespace MM2Randomizer.Properties {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -69,7 +69,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -116,6 +116,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Castle_What {
             get {
                 object obj = ResourceManager.GetObject("Castle_What", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] DrLight_CBSD {
+            get {
+                object obj = ResourceManager.GetObject("DrLight_CBSD", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -199,7 +209,7 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>

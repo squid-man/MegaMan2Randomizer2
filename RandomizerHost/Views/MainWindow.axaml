@@ -39,7 +39,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!-- The main header image for the host -->
+		<TextBlock
+	Grid.Row="0"
+	Grid.Column="0"
+	Grid.ColumnSpan="2"
+	TextAlignment="Center"
+	FontSize="9"
+	Text="Version 0.6.6.*"
+	IsVisible="{Binding IsShowingHint}"
+            />
+
+		<!-- The main header image for the host -->
         <Image
             Grid.Row="0"
             Grid.Column="0"
@@ -1763,6 +1773,13 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MarioArcade}"
                             />
 
+							<Image
+							   Width="168"
+							   Height="168"
+							   Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaClaus.png"
+							   IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaClaus}"
+                            />
+							
                             <Image
                                 Width="168"
                                 Height="168"

@@ -303,6 +303,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Ladders_Ducktales {
+            get {
+                object obj = ResourceManager.GetObject("Ladders_Ducktales", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Ladders_MegaMan1 {
             get {
                 object obj = ResourceManager.GetObject("Ladders_MegaMan1", resourceCulture);
@@ -416,6 +426,26 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Spikes_DIE {
             get {
                 object obj = ResourceManager.GetObject("Spikes_DIE", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Ducktales1 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Ducktales1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Spikes_Ducktales2 {
+            get {
+                object obj = ResourceManager.GetObject("Spikes_Ducktales2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -583,9 +613,29 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_AirMan_Goblin_BabyMetroid {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_AirMan_Goblin_BabyMetroid", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_AirMan_Goblin_CutmanBadScissorsDay {
             get {
                 object obj = ResourceManager.GetObject("StageTile_AirMan_Goblin_CutmanBadScissorsDay", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_AirMan_Goblin_Gamma {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_AirMan_Goblin_Gamma", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -606,6 +656,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_BubbleMan_Block_DiveMan {
             get {
                 object obj = ResourceManager.GetObject("StageTile_BubbleMan_Block_DiveMan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_BubbleMan_Platform_SMB3 {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_BubbleMan_Platform_SMB3", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -856,6 +916,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_FlashMan_Block_GeminiMan {
             get {
                 object obj = ResourceManager.GetObject("StageTile_FlashMan_Block_GeminiMan", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_FlashMan_Block_GWD_DuckTales {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_FlashMan_Block_GWD_DuckTales", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -1226,6 +1296,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] StageTile_Wily2_Animated_Karnath {
             get {
                 object obj = ResourceManager.GetObject("StageTile_Wily2_Animated_Karnath", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StageTile_Wily2_Animated_WilyCastle {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_Wily2_Animated_WilyCastle", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -524,7 +524,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfBossSprites
         {
             get
@@ -755,7 +755,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfEnemySprites
         {
             get
@@ -909,7 +909,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfEnvironmentSprites
         {
             get
@@ -1140,7 +1140,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfItemPickupSprites
         {
             get
@@ -1304,7 +1304,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfMenusAndTransitionScreens
         {
             get
@@ -1719,7 +1719,7 @@ namespace RandomizerHost.Settings
         //
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public Boolean EnableRandomizationOfSpecialWeaponSprites
         {
             get
@@ -3370,7 +3370,7 @@ namespace RandomizerHost.Settings
 
         // Enable Randomization of Boss Sprites
         private const String ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_SETTING_NAME = @"EnableRandomizationOfBossSprites";
-        private const Boolean ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfBossSprites";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_BOSS_SPRITES_DEFAULT_VALUE = false;
@@ -3391,7 +3391,7 @@ namespace RandomizerHost.Settings
 
         // Enable Randomization of Enemy Sprites
         private const String ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_SETTING_NAME = @"EnableRandomizationOfEnemySprites";
-        private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfEnemySprites";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENEMY_SPRITES_DEFAULT_VALUE = false;
@@ -3405,7 +3405,7 @@ namespace RandomizerHost.Settings
 
         // Enable Randomization of Environment Sprites
         private const String ENABLE_RANDOMIZATION_OF_ENVIRONMENT_SPRITES_SETTING_NAME = @"EnableRandomizationOfEnvironmentSprites";
-        private const Boolean ENABLE_RANDOMIZATION_OF_ENVIRONMENT_SPRITES_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_RANDOMIZATION_OF_ENVIRONMENT_SPRITES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENVIRONMENT_SPRITES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfEnvironmentSprites";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ENVIRONMENT_SPRITES_DEFAULT_VALUE = false;
@@ -3419,7 +3419,7 @@ namespace RandomizerHost.Settings
 
         // Enable Randomization of Item Pickup Sprites
         private const String ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_SETTING_NAME = @"EnableRandomizationOfItemPickupSprites";
-        private const Boolean ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_ITEM_PICKUP_SPRITES_DEFAULT_VALUE = false;
@@ -3468,7 +3468,7 @@ namespace RandomizerHost.Settings
 
         // Enable Randomization of Special Weapon Sprites
         private const String ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME = @"EnableRandomizationOfSpecialWeaponSprites";
-        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_DEFAULT_VALUE = false;
+        private const Boolean ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_DEFAULT_VALUE = true;
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_SPECIAL_WEAPON_SPRITES_DEFAULT_VALUE = false;

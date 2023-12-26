@@ -753,6 +753,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] QuickBoomerang_Dagger {
+            get {
+                object obj = ResourceManager.GetObject("QuickBoomerang_Dagger", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] QuickBoomerang_DeusExMachina {
             get {
                 object obj = ResourceManager.GetObject("QuickBoomerang_DeusExMachina", resourceCulture);

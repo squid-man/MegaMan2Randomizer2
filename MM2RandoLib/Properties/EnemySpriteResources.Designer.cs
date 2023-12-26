@@ -83,6 +83,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Blocky_Etank {
+            get {
+                object obj = ResourceManager.GetObject("Blocky_Etank", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Blocky_Pokey {
             get {
                 object obj = ResourceManager.GetObject("Blocky_Pokey", resourceCulture);
@@ -106,6 +116,26 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Blocky_TotemPolen {
             get {
                 object obj = ResourceManager.GetObject("Blocky_TotemPolen", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Blocky_TotemPolen2 {
+            get {
+                object obj = ResourceManager.GetObject("Blocky_TotemPolen2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Blocky_YIPokey {
+            get {
+                object obj = ResourceManager.GetObject("Blocky_YIPokey", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -273,6 +303,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] KerogAndPetitKerog_CBSD {
+            get {
+                object obj = ResourceManager.GetObject("KerogAndPetitKerog_CBSD", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] KerogAndPetitKerog_Hearts {
             get {
                 object obj = ResourceManager.GetObject("KerogAndPetitKerog_Hearts", resourceCulture);
@@ -326,6 +366,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Kukku_VineCock {
             get {
                 object obj = ResourceManager.GetObject("Kukku_VineCock", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] M445_CBSD {
+            get {
+                object obj = ResourceManager.GetObject("M445_CBSD", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -683,6 +733,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Springer_Met {
+            get {
+                object obj = ResourceManager.GetObject("Springer_Met", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Springer_Saw {
             get {
                 object obj = ResourceManager.GetObject("Springer_Saw", resourceCulture);
@@ -706,6 +766,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] Tanishi_MetCrab {
             get {
                 object obj = ResourceManager.GetObject("Tanishi_MetCrab", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Telly_BlankTank {
+            get {
+                object obj = ResourceManager.GetObject("Telly_BlankTank", resourceCulture);
                 return ((byte[])(obj));
             }
         }

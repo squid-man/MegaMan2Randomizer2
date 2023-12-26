@@ -38,6 +38,12 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.MenusAndTransitionScreenRandomizer.Castle_What,
         };
 
+        private static readonly List<Byte[]?> MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_DR_LIGHT = new List<Byte[]?>()
+        {
+            null,
+            Properties.MenusAndTransitionScreenRandomizer.DrLight_CBSD,
+        };
+
         private static readonly List<Byte[]?> MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_ROBOT_MASTER_INTRO_SCREEN = new List<Byte[]?>()
         {
             null,
@@ -87,6 +93,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<List<Byte[]?>> MENUS_AND_TRANSITION_SCREENS_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
             MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_CASTLE,
+            MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_DR_LIGHT,
             MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_ROBOT_MASTER_INTRO_SCREEN,
             MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_STAGE_SELECT_SCREEN,
             MENUS_AND_TRANSITION_SCREENS_SPRITE_LIST_WEAPON_GET_SCREEN,

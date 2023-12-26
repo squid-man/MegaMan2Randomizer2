@@ -69,6 +69,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.Ladders_CB,
+            Properties.EnvironmentSpriteResources.Ladders_Ducktales,
             Properties.EnvironmentSpriteResources.Ladders_MegaMan1,
             Properties.EnvironmentSpriteResources.Ladders_MegaMan1_2,
             Properties.EnvironmentSpriteResources.Ladders_MegaMan3,
@@ -86,6 +87,8 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.Spikes_Ash,
             Properties.EnvironmentSpriteResources.Spikes_Diamond,
             Properties.EnvironmentSpriteResources.Spikes_DIE,
+            Properties.EnvironmentSpriteResources.Spikes_Ducktales1,
+            Properties.EnvironmentSpriteResources.Spikes_Ducktales2,
             Properties.EnvironmentSpriteResources.Spikes_JavaIslandIndonesia,
             Properties.EnvironmentSpriteResources.Spikes_Jelectro,
             Properties.EnvironmentSpriteResources.Spikes_MarioStar,
@@ -112,7 +115,9 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_BabyMetroid,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_CutmanBadScissorsDay,
+            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Gamma,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Platform,
         };
 
@@ -120,6 +125,12 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_DiveMan,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_PLATFORM = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Platform_SMB3,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL = new List<Byte[]?>()
@@ -185,6 +196,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_GeminiMan,
+            Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_GWD_DuckTales,
             Properties.EnvironmentSpriteResources.StageTile_FlashMan_Block_SuperMarioBrosBlock,
         };
 
@@ -273,6 +285,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_CutmansBadScissorsDay,
+            Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyCastle,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_WilyTV,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_Animated_Karnath,
         };
@@ -289,6 +302,11 @@ namespace MM2Randomizer.Resources.SpritePatches
             null,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_CrissCross,
             Properties.EnvironmentSpriteResources.StageTile_Wily2_4_Background_Snake,
+        };
+
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY3_SPIKES = new List<Byte[]?>()
+        {
+            null,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND = new List<Byte[]?>()
@@ -357,6 +375,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_BLOCK,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_AIR_MAN_GOBLIN,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_PLATFORM,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_WATERFALL,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_DAYLIGHT_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_CRASH_MAN_GLOBE,
@@ -378,6 +397,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_ANIMATEDTILE,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_FLOOR,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY2_4_BACKGROUND,
+            ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY3_SPIKES,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_BACKGROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY5_TELEPORTER,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WILY6,

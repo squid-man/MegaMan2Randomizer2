@@ -32,9 +32,12 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_BLOCKY = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.Blocky_Etank,
             Properties.EnemySpriteResources.Blocky_Pokey,
             Properties.EnemySpriteResources.Blocky_Rocky,
             Properties.EnemySpriteResources.Blocky_TotemPolen,
+            Properties.EnemySpriteResources.Blocky_TotemPolen2,
+            Properties.EnemySpriteResources.Blocky_YIPokey,
         };
 
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_CHANGKEY_MAKER = new List<Byte[]?>()
@@ -91,6 +94,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_KEROG_AND_PETIT_KEROG = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.KerogAndPetitKerog_CBSD,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Hearts,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Komasaburo,
             Properties.EnemySpriteResources.KerogAndPetitKerog_Mean,
@@ -107,6 +111,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_M445 = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.M445_CBSD,
             Properties.EnemySpriteResources.M445_M422A,
             Properties.EnemySpriteResources.M445_Metroid,
         };
@@ -207,6 +212,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnemySpriteResources.Springer_BMSpringer,
             Properties.EnemySpriteResources.Springer_CuteSpringer,
             Properties.EnemySpriteResources.Springer_MegaMan6Springer,
+            Properties.EnemySpriteResources.Springer_Met,
             Properties.EnemySpriteResources.Springer_Saw,
         };
 
@@ -220,6 +226,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_TELLY = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.Telly_BlankTank,
             Properties.EnemySpriteResources.Telly_EyeTelly,
             Properties.EnemySpriteResources.Telly_Telly2,
         };
