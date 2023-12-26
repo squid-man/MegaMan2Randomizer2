@@ -19,6 +19,29 @@
         </Lines>
     </IntroStory>
 
+	<!-- A-Team -->
+	    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>A-Team</Title>
+        <Lines>
+			<Line>In 19XX, a crack robot-</Line>
+			<Line>fighting unit was sent</Line>
+
+			<Line>to prison for a crime he</Line>
+			<Line>didn't commit. He quickly</Line>
+
+			<Line>escaped, and now survives</Line>
+			<Line>as a soldier for fortune.</Line>
+
+			<Line>If you have a problem, if</Line>
+			<Line>no one else can help, and</Line>
+
+			<Line>if you can find him, maybe</Line>
+			<Line>you can hire... Mega Man.</Line>
+            <Line></Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Bad Dudes -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -78,6 +101,28 @@
 
             <Line>who is in fact...</Line>
             <Line>Megaman</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Blue -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Blue</Title>
+        <Lines>
+			<Line>I have a blue house</Line>
+			<Line>With a blue window</Line>
+
+			<Line>Blue is the colour</Line>
+			<Line>of all that I wear</Line>
+
+			<Line>Blue are the streets</Line>
+			<Line>And all the trees are too</Line>
+
+			<Line>I have a girlfriend</Line>
+			<Line>and she is so blue</Line>
+
+			<Line>I'm blue</Line>
+			<Line>pew pew pew, pew pew pew</Line>
         </Lines>
     </IntroStory>
 
@@ -353,6 +398,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- GTA: San Andreas -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>GTA: San Andreas</Title>
+        <Lines>
+			<Line>AFTER FIVE YEARS ON THE</Line>
+			<Line>EAST COAST, IT WAS TIME...</Line>
+
+			<Line>TO GO HOME...</Line>
+			<Line></Line>
+
+			<Line>ROCK, IT'S LIGHT.</Line>
+			<Line></Line>
+
+			<Line>WASSUP LIGHT WHAT YOU WANT?</Line>
+			<Line></Line>
+
+			<Line>IT'S ROLL... SHE'S DEAD.</Line>
+			<Line></Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Half-Life -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -562,6 +629,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- Metroid Prime 2: Echoes -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Metroid Prime 2: Echoes</Title>
+        <Lines>
+			<Line>Galactic Federation troops</Line>
+			<Line>investigating Space Pirate</Line>
+
+			<Line>activity are missing.</Line>
+			<Line>Contact was lost 8 days ago</Line>
+
+			<Line>Locate troopers and render</Line>
+			<Line>assistance if necessary.</Line>
+
+			<Line>Uploading last known</Line>
+			<Line>coordinates of troopers.</Line>
+
+			<Line>Dasha System...</Line>
+			<Line></Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Mortal Kombat -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -682,6 +771,28 @@
 
             <Line>EXCEPT THE ONES</Line>
             <Line>WHO ARE DEAD</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Quantum Leap -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Quantum Leap</Title>
+        <Lines>
+            <Line>Theorizing that one could</Line>
+            <Line>time travel, Mega Man</Line>
+
+            <Line>stepped into the quantum</Line>
+            <Line>accelerator and vanished.</Line>
+
+            <Line>He awoke to find himself</Line>
+            <Line>trapped in the future. His</Line>
+
+            <Line>only guide in this time is</Line>
+            <Line>an AI hologram named Light</Line>
+
+            <Line>Now he leaps from stage to</Line>
+            <Line>stage to fight evil robots</Line>
         </Lines>
     </IntroStory>
 
@@ -935,6 +1046,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- Temco Cup -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Temco Cup</Title>
+        <Lines>
+			<Line>He was born to kill robots.</Line>
+			<Line>It's his entire life.</Line>
+
+			<Line>His name is Mega Man.</Line>
+			<Line>
+
+			<Line>His father was a scientist.</Line>
+			<Line>
+
+			<Line>'Im better than my father!'</Line>
+			<Line>
+
+			<Line>Go for it Mega Man!</Line>
+			<Line>Beat the worlds best robots!</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Terminator 2 -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -950,6 +1083,28 @@
             <Line>       HER SON JOHN.       </Line>
             <Line>  THE BATTLE FOR TOMORROW  </Line>
             <Line>       BEGINS TODAY        </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Toy Story -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Toy Story</Title>
+        <Lines>
+			<Line>RIGHT NOW, AT THE GALAXY'S</Line>
+			<Line>EDGE, EMPEROR ZURG HAS</Line>
+
+			<Line>BEEN SECRETLY BUILDING</Line>
+			<Line>A WEAPON THAT CAN</Line>
+
+			<Line>ANNIHILATE AN ENTIRE PLANET</Line>
+			<Line>I ALONE HAVE INFORMATION</Line>
+
+			<Line>THAT REVEALS THIS</Line>
+			<Line>WEAPON'S ONLY WEAKNESS.</Line>
+
+			<Line>I MUST RENDEZVOUS WITH</Line>
+			<Line>STAR COMMAND!</Line>
         </Lines>
     </IntroStory>
 
@@ -994,6 +1149,28 @@
 
             <Line>and rescue the young</Line>
             <Line>scientist!</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Warriors -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>The Warriors</Title>
+        <Lines>
+			<Line>An army of Greek soldiers</Line>
+			<Line>...isolated in the middle</Line>
+
+			<Line>of the Persian Empire.</Line>
+			<Line>1,000 miles from safety.</Line>
+
+			<Line>1,000 miles from the sea.</Line>
+			<Line>With enemies on all sides.</Line>
+
+			<Line>Theirs was a story</Line>
+			<Line>of courage.  This too...</Line>
+
+			<Line>is a story of courage.</Line>
+			<Line>Sometime in the future...</Line>
         </Lines>
     </IntroStory>
 
