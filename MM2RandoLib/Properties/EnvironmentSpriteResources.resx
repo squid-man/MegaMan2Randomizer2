@@ -571,4 +571,16 @@
   <data name="StageTile_WoodMan_Grass_SuperMarioBros3V3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V3.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="YokuBlock_Mario_Block" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Mario_Block.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="YokuBlock_MM4_Balloon_Adapter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\YokuBlock\YokuBlock_MM4_Balloon_Adapter.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="YokuBlock_MM5_Mtank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\YokuBlock\YokuBlock_MM5_Mtank.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="YokuBlock_Rinka_Spawner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Rinka_Spawner.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

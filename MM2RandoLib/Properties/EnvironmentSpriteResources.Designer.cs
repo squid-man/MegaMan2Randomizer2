@@ -1569,5 +1569,45 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_Mario_Block {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_Mario_Block", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_MM4_Balloon_Adapter {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_MM4_Balloon_Adapter", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_MM5_Mtank {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_MM5_Mtank", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_Rinka_Spawner {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_Rinka_Spawner", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

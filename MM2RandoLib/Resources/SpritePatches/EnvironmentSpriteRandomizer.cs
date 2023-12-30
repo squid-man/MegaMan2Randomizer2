@@ -116,7 +116,6 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_BabyMetroid,
-            Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_CutmanBadScissorsDay,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Gamma,
             Properties.EnvironmentSpriteResources.StageTile_AirMan_Goblin_Platform,
         };
@@ -365,6 +364,16 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.EnvironmentSpriteResources.StageTile_WoodMan_Grass_SuperMarioBros3V3,
         };
 
+        private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_YOKU_BLOCK = new List<Byte[]?>()
+        {
+            null,
+            Properties.EnvironmentSpriteResources.YokuBlock_Mario_Block,
+            Properties.EnvironmentSpriteResources.YokuBlock_MM4_Balloon_Adapter,
+            Properties.EnvironmentSpriteResources.YokuBlock_MM5_Mtank,
+            Properties.EnvironmentSpriteResources.YokuBlock_Rinka_Spawner,
+        };
+
+
         private static readonly List<List<Byte[]?>> ENVIRONMENT_SPRITE_COLLECTION = new List<List<Byte[]?>>()
         {
             ENVIRONMENT_SPRITE_LIST_BOSSDOORS,
@@ -404,6 +413,7 @@ namespace MM2Randomizer.Resources.SpritePatches
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_CAVE_GROUND,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_GRASS,
             ENVIRONMENT_SPRITE_LIST_STAGE_TILE_WOOD_MAN_BLOCK,
+            ENVIRONMENT_SPRITE_LIST_YOKU_BLOCK,
         };
     }
 }
