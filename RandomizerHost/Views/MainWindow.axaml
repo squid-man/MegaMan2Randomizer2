@@ -43,7 +43,7 @@
 	Grid.Row="0"
 	Grid.Column="0"
 	Grid.ColumnSpan="2"
-	TextAlignment="Center"
+	TextAlignment="Left"
 	FontSize="9"
 	Text="Version 0.6.6.*"
 	IsVisible="{Binding IsShowingHint}"
