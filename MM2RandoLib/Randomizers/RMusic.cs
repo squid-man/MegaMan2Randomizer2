@@ -557,7 +557,9 @@ namespace MM2Randomizer.Randomizers
                     RebaseC2Song(song, bankIdx, songAddr);
 
                     // Write song header and data
-                    songStartRom = in_Patch.Add(songStartRom, song.SongHeader, $"Song Header for {song.SongName}");
+                    // Some tracks have priority < 0xf, which will break mm2ft. Force it to 0xf here
+                    var hdr = Enumerable.Prepend<Byte>(song.SongHeader.Skip(1), (Byte)0xf);
+                    songStartRom = in_Patch.Add(songStartRom, hdr, $"Song Header for {song.SongName}");
                     songStartRom = in_Patch.Add(songStartRom, song.SongData, $"Song Data for {song.SongName}");
                 }
             }
