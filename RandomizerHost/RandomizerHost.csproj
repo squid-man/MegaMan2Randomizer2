@@ -36,6 +36,7 @@
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackMage.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyFighter.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyWhiteMage.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Francesca.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Guard.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_HatsuneMiku.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_JustinBailey.png" />

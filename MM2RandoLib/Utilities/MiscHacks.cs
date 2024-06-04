@@ -661,6 +661,12 @@ namespace MM2Randomizer.Utilities
                         break;
                     }
 
+                case PlayerSpriteOption.Francesca:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Francesca);
+                        break;
+                    }
+
                 case PlayerSpriteOption.Guard:
                     {
                         p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Guard);
@@ -865,6 +871,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case HudElementOption.KrionConquest:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_KrionConquest);
+                        break;
+                    }
+
                 case HudElementOption.ManII:
                     {
                         p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_ManII);
@@ -958,6 +970,12 @@ namespace MM2Randomizer.Utilities
                 case FontOption.MegaMan6:
                     {
                         p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_MegaMan6);
+                        break;
+                    }
+
+                case FontOption.Minecraft:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Minecraft);
                         break;
                     }
 

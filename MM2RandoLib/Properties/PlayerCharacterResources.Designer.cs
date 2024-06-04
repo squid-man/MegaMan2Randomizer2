@@ -233,6 +233,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] PlayerCharacter_Francesca {
+            get {
+                object obj = ResourceManager.GetObject("PlayerCharacter_Francesca", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] PlayerCharacter_Guard {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_Guard", resourceCulture);

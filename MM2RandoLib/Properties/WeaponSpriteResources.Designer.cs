@@ -423,6 +423,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Item2_KrionConquest {
+            get {
+                object obj = ResourceManager.GetObject("Item2_KrionConquest", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Item2_ManII {
             get {
                 object obj = ResourceManager.GetObject("Item2_ManII", resourceCulture);
