@@ -227,7 +227,7 @@
         >
             <CheckBox
                 Name="CheckBox_TournamentMode"
-                Content="Tournament Mode"
+                Content="Tournament Flags A"
                 DockPanel.Dock="Right"
                 HorizontalAlignment="Right"
                 Margin="160,3,3,3"
@@ -236,6 +236,22 @@
                 CommandParameter="{Binding ElementName=MainWindow}"
             />
         </DockPanel>
+		<DockPanel
+   Grid.Row="2"
+   Grid.ColumnSpan="2"
+   HorizontalAlignment="Center"
+        >
+			<CheckBox
+                Name="CheckBox_TournamentMode2"
+                Content="Tournament Flags B"
+                DockPanel.Dock="Right"
+                HorizontalAlignment="Right"
+                Margin="475,3,3,3"
+                IsChecked="{Binding Path=AppConfigurationSettings.TournamentMode2}"
+                Command="{Binding ToggleTournamentMode2}"
+                CommandParameter="{Binding ElementName=MainWindow}"
+            />
+		</DockPanel>
         <!-- Buttons -->
         <StackPanel
             Grid.Row="3"
