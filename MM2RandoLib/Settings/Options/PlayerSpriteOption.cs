@@ -38,6 +38,8 @@ namespace MM2Randomizer
         FinalFantasyFighterBlue,
         [Description("FF White Mage")]
         FinalFantasyWhiteMage,
+        [Description("Francesca")]
+        Francesca,
         [Description("Guard")]
         Guard,
         [Description("Hatsune Miku")]

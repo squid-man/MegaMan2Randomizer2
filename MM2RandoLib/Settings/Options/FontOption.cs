@@ -22,6 +22,8 @@ namespace MM2Randomizer.Settings.Options
         Krustys,
         [Description("Mega Man 6")]
         MegaMan6,
+        [Description("Minecraft")]
+        Minecraft,
         [Description("Paperboy")]
         Paperboy,
         [Description("Simon's Quest")]

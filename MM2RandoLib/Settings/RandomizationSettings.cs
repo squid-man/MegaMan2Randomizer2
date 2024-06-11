@@ -30,6 +30,8 @@ namespace MM2Randomizer.Settings
 
         public Boolean TournamentMode { get; set; }
 
+        public Boolean TournamentMode2 { get; set; }
+
         public Boolean CreateLogFile { get; set; }
 
 

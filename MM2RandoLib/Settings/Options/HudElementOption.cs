@@ -16,6 +16,8 @@ namespace MM2Randomizer.Settings.Options
         CutMansBadScissorsDay,
         [Description("Java Island Indonesia")]
         JavaIslandIndonesia,
+        [Description("Krion Conquest")]
+        KrionConquest,
         [Description("Man II")]
         ManII,
         [Description("Metroid")]
