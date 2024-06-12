@@ -741,7 +741,7 @@
                             IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_MercilessMode}"
                         >
                             <CheckBox
-                                Content="Merciless One Hit Kill Mode"
+                                Content="Instant Death Ignores Invincibility"
                                 IsEnabled="{Binding !#ToggleSwitch_MercilessMode.IsChecked}"
                                 IsChecked="{Binding AppConfigurationSettings.MercilessMode}"
                             />
