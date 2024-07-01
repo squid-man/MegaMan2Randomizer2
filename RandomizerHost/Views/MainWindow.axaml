@@ -1324,6 +1324,38 @@
                             />
                         </Grid>
                     </StackPanel>
+
+                  <StackPanel
+                      Orientation="Horizontal"
+                    >
+                    <!-- Friendly emoji header -->
+                    <Label FontSize="18">🎲</Label>
+
+                    <!-- Toggle to randomize the option -->
+                    <Grid
+                        Name="Grid_ToggleSwitch_EnableBirdEggFix"
+                        IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix}"
+                        >
+                      <ToggleSwitch
+                          Name="ToggleSwitch_EnableBirdEggFix"
+                          IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_EnableBirdEggFix}"
+                          OffContent=""
+                          OnContent=""
+                            />
+                    </Grid>
+
+                    <Grid
+                        Name="Grid_EnableBirdEggFix"
+                        IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_EnableBirdEggFix}"
+                        >
+                      <CheckBox
+                          Name="CheckBox_EnableBirdEggFix"
+                          Content="Fix Bird Object Despawn"
+                          IsEnabled="{Binding !#ToggleSwitch_EnableBirdEggFix.IsChecked}"
+                          IsChecked="{Binding Path=AppConfigurationSettings.EnableBirdEggFix}"
+                            />
+                    </Grid>
+                  </StackPanel>
                 </WrapPanel>
             </TabItem>
 

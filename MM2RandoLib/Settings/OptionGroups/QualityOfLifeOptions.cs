@@ -13,5 +13,7 @@ namespace MM2Randomizer.Settings.OptionGroups
         public RandomizationOption<BooleanOption> EnableUnderwaterLagReduction { get; } = new RandomizationOption<BooleanOption>();
 
         public RandomizationOption<BooleanOption> DisablePauseLock { get; } = new RandomizationOption<BooleanOption>();
+
+        public RandomizationOption<BooleanOption> EnableBirdEggFix { get; } = new RandomizationOption<BooleanOption>();
     }
 }

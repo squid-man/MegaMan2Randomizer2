@@ -372,6 +372,13 @@ namespace MM2Randomizer
                 MiscHacks.EnableMercilessMode(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
+            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.EnableBirdEggFix)
+            {
+                MiscHacks.EnableBirdEggFix(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+            }
+
+            MiscHacks.EnableClownBotFix(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
+
             MiscHacks.SetNewMegaManSprite(
                 this.Patch,
                 RandomizationContext.TEMPORARY_FILE_NAME,

@@ -101,6 +101,7 @@ namespace MM2Randomizer.Settings
                     DisableFlashingEffects = this.QualityOfLifeOption.DisableFlashingEffects.NextValue(in_Seed),
                     EnableUnderwaterLagReduction = this.QualityOfLifeOption.EnableUnderwaterLagReduction.NextValue(in_Seed),
                     DisablePauseLock = this.QualityOfLifeOption.DisablePauseLock.NextValue(in_Seed),
+                    EnableBirdEggFix = this.QualityOfLifeOption.EnableBirdEggFix.NextValue(in_Seed),
                 },
             };
         }

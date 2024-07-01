@@ -1192,5 +1192,15 @@ namespace MM2Randomizer.Utilities
         {
             p.ApplyIPSPatch(tempFileName, Properties.Resources.mercilesspatch);
         }
+
+        public static void EnableBirdEggFix(Patch p, String tempFileName)
+        {
+            p.ApplyIPSPatch(tempFileName, Properties.Resources.mm2bird_egg_fix);
+        }
+
+        public static void EnableClownBotFix(Patch p, String tempFileName)
+        {
+            p.ApplyIPSPatch(tempFileName, Properties.Resources.mm2clown_bot_fix);
+        }
     }
 }

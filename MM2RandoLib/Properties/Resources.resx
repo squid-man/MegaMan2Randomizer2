@@ -163,4 +163,10 @@
   <data name="leftwardwallejectionpatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\leftwardwallejectionpatch.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="mm2bird_egg_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mm2bird_egg_fix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mm2clown_bot_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mm2clown_bot_fix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
