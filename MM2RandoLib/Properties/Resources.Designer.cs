@@ -19,7 +19,7 @@ namespace MM2Randomizer.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -369,6 +369,26 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] mm2bird_egg_fix {
+            get {
+                object obj = ResourceManager.GetObject("mm2bird_egg_fix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mm2clown_bot_fix {
+            get {
+                object obj = ResourceManager.GetObject("mm2clown_bot_fix", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] mm2ft {
             get {
                 object obj = ResourceManager.GetObject("mm2ft", resourceCulture);
@@ -404,8 +424,8 @@ namespace MM2Randomizer.Properties {
         ///
         ///    Enabled = Whether the track should be used in the randomizer
         ///    Title = Any string to identify the song, such as the name and what game/hack it comes from
-        ///    Uses = List of Usage entries indicating where the track may be used in game. Intro, Title, StageSelect, Stage, Boss, Credits. Defaults to Stage and Credits.
-        ///    StartAddress = The address of the first byte of the song&apos;s header (value 0F) in the song&apos;s or [rest of string was truncated]&quot;;.
+        ///    Uses = List of Usage entries indicating where the track may be used in game. Intro, Title, StageSelect, Stage, Boss, Refights (Wily 5 stage), Credits. Defaults to Stage and Credits.
+        ///    StartAddress = The address of the first byte of the song&apos;s header (v [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SoundTrackConfiguration {
             get {

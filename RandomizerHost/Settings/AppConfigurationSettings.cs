@@ -2195,6 +2195,81 @@ namespace RandomizerHost.Settings
             }
         }
 
+        //
+        //
+        //
+
+        [UserScopedSetting]
+        [DefaultSettingValue("True")]
+        public Boolean EnableBirdEggFix
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.ENABLE_BIRD_EGG_FIX_SETTING_NAME,
+                    AppConfigurationSettings.ENABLE_BIRD_EGG_FIX_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.ENABLE_BIRD_EGG_FIX_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnableSetting_EnableBirdEggFix = true;
+
+        public Boolean EnableSetting_EnableBirdEggFix
+        {
+            get
+            {
+                return this.mEnableSetting_EnableBirdEggFix;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_EnableBirdEggFix)
+                {
+                    this.mEnableSetting_EnableBirdEggFix = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_EnableBirdEggFix
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_BIRD_EGG_FIX_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_BIRD_EGG_FIX_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_ENABLE_BIRD_EGG_FIX_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnable_RandomChoiceSetting_EnableBirdEggFix = true;
+
+        public Boolean Enable_RandomChoiceSetting_EnableBirdEggFix
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_EnableBirdEggFix;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_EnableBirdEggFix)
+                {
+                    this.mEnable_RandomChoiceSetting_EnableBirdEggFix = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
 
         //
         // Scalar Properties
@@ -3098,6 +3173,8 @@ namespace RandomizerHost.Settings
             settings.QualityOfLifeOption.EnableUnderwaterLagReduction.Value = (BooleanOption)Convert.ToInt32(this.EnableUnderwaterLagReduction);
             settings.QualityOfLifeOption.DisablePauseLock.Randomize = this.RandomlyChooseSetting_DisablePauseLock;
             settings.QualityOfLifeOption.DisablePauseLock.Value = (BooleanOption)Convert.ToInt32(this.DisablePauseLock);
+            settings.QualityOfLifeOption.EnableBirdEggFix.Randomize = this.RandomlyChooseSetting_EnableBirdEggFix;
+            settings.QualityOfLifeOption.EnableBirdEggFix.Value = (BooleanOption)Convert.ToInt32(this.EnableBirdEggFix);
 
             // Cosmetic options
             settings.CosmeticOption.Font.Randomize = this.RandomlyChooseSetting_Font;
@@ -3362,6 +3439,13 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_SETTING_NAME = @"RandomlyChooseSetting_DisablePauseLock";
         private const Boolean RANDOMLY_CHOOSE_SETTING_DISABLE_PAUSE_LOCK_DEFAULT_VALUE = false;
+
+        // Fix Bird Object Despawn
+        private const String ENABLE_BIRD_EGG_FIX_SETTING_NAME = @"EnableBirdEggFix";
+        private const Boolean ENABLE_BIRD_EGG_FIX_DEFAULT_VALUE = true;
+
+        private const String RANDOMLY_CHOOSE_SETTING_ENABLE_BIRD_EGG_FIX_SETTING_NAME = @"RandomlyChooseSetting_EnableBirdEggFix";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_BIRD_EGG_FIX_DEFAULT_VALUE = false;
 
         // Enable Burst Chaser Mode
         private const String ENABLE_BURST_CHASER_MODE_SETTING_NAME = @"EnableBurstChaserMode";
