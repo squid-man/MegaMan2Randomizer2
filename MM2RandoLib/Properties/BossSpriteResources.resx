@@ -223,9 +223,6 @@
   <data name="BossDoorSign_DrLight2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_DrLight2.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BossDoorSign_Elmo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_Elmo.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="BossDoorSign_GameMakerClown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_GameMakerClown.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -492,9 +489,6 @@
   </data>
   <data name="WoodMan_Another" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_Another.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="WoodMan_CutMansBadScissorsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_CutMansBadScissorsDay.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WoodMan_DK" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpritePatches\Bosses\WoodMan\WoodMan_DK.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

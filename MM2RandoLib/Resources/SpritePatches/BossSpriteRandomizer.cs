@@ -113,7 +113,6 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.BossSpriteResources.WoodMan_Another,
-            Properties.BossSpriteResources.WoodMan_CutMansBadScissorsDay,
             Properties.BossSpriteResources.WoodMan_DK,
             Properties.BossSpriteResources.WoodMan_DX,
             Properties.BossSpriteResources.WoodMan_GrayZone,
@@ -204,7 +203,6 @@ namespace MM2Randomizer.Resources.SpritePatches
             Properties.BossSpriteResources.BossDoorSign_DrCossackMugshot,
             Properties.BossSpriteResources.BossDoorSign_DrLight,
             Properties.BossSpriteResources.BossDoorSign_DrLight2,
-            Properties.BossSpriteResources.BossDoorSign_Elmo,
             Properties.BossSpriteResources.BossDoorSign_GameMakerClown,
             Properties.BossSpriteResources.BossDoorSign_GutsMan,
             Properties.BossSpriteResources.BossDoorSign_Leo,
