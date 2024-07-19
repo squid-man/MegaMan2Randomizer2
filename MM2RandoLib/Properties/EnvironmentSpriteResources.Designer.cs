@@ -663,6 +663,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_BubbleMan_Block_SplashWoman {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_BubbleMan_Block_SplashWoman", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_BubbleMan_Platform_SMB3 {
             get {
                 object obj = ResourceManager.GetObject("StageTile_BubbleMan_Platform_SMB3", resourceCulture);

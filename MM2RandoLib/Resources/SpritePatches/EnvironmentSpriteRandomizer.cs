@@ -124,6 +124,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_DiveMan,
+            Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_SplashWoman,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_PLATFORM = new List<Byte[]?>()
