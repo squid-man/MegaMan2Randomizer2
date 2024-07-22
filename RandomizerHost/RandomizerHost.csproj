@@ -44,6 +44,7 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_LuigiArcade.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MarioArcade.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaRan2Remix.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MyLittlePony.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_PrototypeTom.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_QuickMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Quint.png" />
