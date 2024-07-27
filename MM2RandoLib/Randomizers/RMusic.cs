@@ -189,6 +189,27 @@ namespace MM2Randomizer.Randomizers
         }
     }
 
+    public struct BlockInfo
+    {
+        public readonly bool isFtModule;
+        public readonly Object obj;
+        public readonly int size;
+
+        public BlockInfo(FtXmlModule mod)
+        {
+            isFtModule = true;
+            obj = mod;
+            size = mod.Size;
+        }
+
+        public BlockInfo(C2Song song)
+        {
+            isFtModule = false;
+            obj = song;
+            size = song.TotalLength;
+        }
+    }
+
     public class RMusic : IRandomizer
     {
         /// <summary>
@@ -217,6 +238,11 @@ namespace MM2Randomizer.Randomizers
         private const Int32 SongMapOffs = 0x30b60;
 
         /// <summary>
+        /// Offset of the mm2ft song module address table in the ROM.
+        /// </summary>
+        private const Int32 SongModAddrTblOffs = 0x30c60;
+
+        /// <summary>
         /// Offset of the mm2ft boss song map table in the ROM.
         /// </summary>
         private const Int32 BossSongMapOffs = 0x7f2f3;
@@ -237,6 +263,11 @@ namespace MM2Randomizer.Randomizers
         private const Int32 BankSize = 0x2000;
 
         /// <summary>
+        /// The first address of banks for songs
+        /// </summary>
+        private const Int32 BankBaseAddr = 0xa000;
+
+        /// <summary>
         /// The first empty bank available for music.
         /// </summary>
         private const Int32 FirstFreeBank = 0x20;
@@ -245,11 +276,6 @@ namespace MM2Randomizer.Randomizers
         /// The last empty bank available for music.
         /// </summary>
         private const Int32 LastFreeBank = 0x3d;
-
-        /// <summary>
-        /// The address to place FTMs in each bank.
-        /// </summary>
-        private const Int32 FtmBaseAddress = 0xa000;
 
         /// <summary>
         /// The default uses for tracks that have no uses specified on the song or module.
@@ -275,7 +301,6 @@ namespace MM2Randomizer.Randomizers
 
             this.ImportMusic(in_Patch, in_Context.Seed);
         }
-
 
         public void ImportMusic(Patch in_Patch, ISeed in_Seed)
         {
@@ -342,18 +367,23 @@ namespace MM2Randomizer.Randomizers
 
                 ISong isong = songs[songIdx];
                 int bankIdx = isong.Bank;
+                int addrTblOffs, songAddr;
                 if (isong.Engine == ESoundEngine.C2)
                 {
                     C2Song song = (C2Song)isong;
-                    Int32 TblPtrOffset = C2SongTblOffs + musicIdx * 2;
 
-                    // Update the song address table
-                    in_Patch.AddWord(TblPtrOffset, song.StartAddress, $"Song {musicIdx} Pointer Offset");
+                    songAddr = song.StartAddress;
+                    addrTblOffs = C2SongTblOffs;
+
                     debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.SongName}, {song.OriginalStartAddress}");
+
                 }
                 else
                 {
                     FtSong song = (FtSong)isong;
+
+                    songAddr = song.ModuleInfo.StartAddress;
+                    addrTblOffs = SongModAddrTblOffs;
 
                     bankIdx = ~song.Bank;
                     tblMusicIdx = song.Number;
@@ -361,6 +391,10 @@ namespace MM2Randomizer.Randomizers
                     debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.ModuleInfo.Title} - {song.Title}");
                 }
 
+                // Update the song address table
+                in_Patch.AddWord(addrTblOffs + musicIdx * 2, songAddr, $"Song {musicIdx} Pointer Offset");
+
+                // And the track table
                 in_Patch.Add(SongMapPtrOffs++, (byte)bankIdx, $"Song {musicIdx} Bank Index");
                 in_Patch.Add(SongMapPtrOffs++, (byte)tblMusicIdx, $"Song {musicIdx} Song Index");
 
@@ -413,10 +447,9 @@ namespace MM2Randomizer.Randomizers
 
         private Dictionary<int, List<ISong>>? PlaceSongsInBanks(IReadOnlyList<ISong> in_Songs)
         {
-            // Separate FT and C2 songs, as the former must be at the start of banks
             Dictionary<FtXmlModule, List<FtSong>> ftmsSongs = new(ReferenceEqualityComparer.Instance);
-            List<FtSong> ftSongs = new();
-            List<C2Song?> c2Songs = new();
+            List<C2Song> c2Songs = new();
+            Int32 numTracks = 0;
             foreach (ISong isong in in_Songs)
             {
                 if (isong.Engine == ESoundEngine.Ft)
@@ -432,61 +465,51 @@ namespace MM2Randomizer.Randomizers
                     }
                     
                     ftmSongs.Add(song);
-                    ftSongs.Add(song);
                 }
                 else
                     c2Songs.Add((C2Song)isong);
+
+                numTracks++;
             }
 
-            if (ftmsSongs.Count > LastFreeBank - FirstFreeBank + 1)
-                // Not enough banks for all the FTMs
-                return null;
-
-            List<FtXmlModule> ftmsBySize = new(ftmsSongs.Keys);
-            ftmsBySize.Sort((a, b) => ((a is not null && b is not null) ? -a.Size.CompareTo(b.Size) : 0));
-
-            c2Songs.Sort((a, b) => ((a is not null && b is not null) ? -a.TotalLength.CompareTo(b.TotalLength) : 0));
+            List<BlockInfo> blocks = new();
+            blocks.AddRange(from mod in ftmsSongs.Keys select new BlockInfo(mod));
+            blocks.AddRange(from song in c2Songs select new BlockInfo(song));
+            blocks.Sort((a, b) => -a.size.CompareTo(b.size));
 
             // Place the songs in each bank
             Dictionary<int, List<ISong>> banksSongs = new();
-            int ftModIdx = 0;
-            int numTracks = c2Songs.Count + ftmsBySize.Count;
-            int songsLeft = numTracks;
-            for (Int32 bankIdx = FirstFreeBank; bankIdx <= LastFreeBank && songsLeft > 0; bankIdx++)
+            Int32 numBlocks = 0;
+            for (Int32 bankIdx = FirstFreeBank; bankIdx <= LastFreeBank && blocks.Count > 0; bankIdx++)
             {
                 List<ISong> bankSongs = banksSongs[bankIdx] = new();
-
-                // Place an FTM (if any) at the start of the bank
                 Int32 sizeLeft = BankSize;
-                if (ftModIdx < ftmsBySize.Count)
+                Int32 listIdx = 0;
+                while (listIdx < blocks.Count)
                 {
-                    FtXmlModule mod = ftmsBySize[ftModIdx++];
-
-                    bankSongs.AddRange(ftmsSongs[mod]);
-
-                    songsLeft--;
-                    sizeLeft -= mod.Size;
-                }
-
-                // Then fill it in with C2 songs
-                for (Int32 listIdx = 0; listIdx < c2Songs.Count && songsLeft > 0; listIdx++)
-                {
-                    C2Song? song = c2Songs[listIdx];
-                    if (song is not null && song.TotalLength <= sizeLeft)
+                    BlockInfo block = blocks[listIdx];
+                    if (block.size > sizeLeft)
                     {
-                        banksSongs[bankIdx].Add(song);
-                        sizeLeft -= song.TotalLength;
-
-                        c2Songs[listIdx] = null;
-                        songsLeft--;
+                        listIdx++;
+                        continue;
                     }
+
+                    if (block.isFtModule)
+                        bankSongs.AddRange(ftmsSongs[(FtXmlModule)block.obj]);
+                    else
+                        bankSongs.Add((C2Song)block.obj);
+
+                    blocks.RemoveAt(listIdx);
+                    numBlocks++;
+
+                    sizeLeft -= block.size;
                 }
             }
 
             // DEBUG DEBUG
-            if (songsLeft > 0)
+            if (blocks.Count > 0)
             {
-                debug.AppendLine($"{numTracks} songs selected. insufficient space.");
+                debug.AppendLine($"{numBlocks} songs blocks selected. insufficient space.");
 
                 return null;
             }
@@ -503,64 +526,67 @@ namespace MM2Randomizer.Randomizers
             {
                 int bankIdx = bankAndSongs.Key;
                 var bankSongs = bankAndSongs.Value;
-                int songStartRom = bankIdx * BankSize + 0x10;
-                int slotIdx = 0;
+                int songRomOffs = bankIdx * BankSize + (BankBaseAddr % BankSize) + 0x10;
+                Dictionary<FtXmlModule, FtmBinary> modBins = new(ReferenceEqualityComparer.Instance);
 
-                // Import the FTM if any
-                FtXmlModule? modInfo = null;
-                FtmBinary? ftm = null;
-                for (; slotIdx < bankSongs.Count; slotIdx++)
+                foreach (var isong in bankSongs)
                 {
-                    ISong isong = bankSongs[slotIdx];
-                    if (isong.Engine != ESoundEngine.Ft)
-                        break;
-
-                    FtSong song = (FtSong)isong;
-
-                    if (slotIdx == 0)
+                    int songAddr = (songRomOffs - 0x10) % BankSize + BankBaseAddr;
+                    if (isong.Engine == ESoundEngine.Ft)
                     {
-                        modInfo = song.ModuleInfo;
-                        ftm = new FtmBinary(song.TrackData, modInfo.StartAddress);
-                    }
+                        var song = (FtSong)isong;
+                        var modInfo = song.ModuleInfo;
+                        FtmBinary? modBin = null;
 
-                    if (song.SwapSquareChans)
+                        if (!modBins.TryGetValue(modInfo, out modBin))
+                        {
+                            Debug.Assert(BankBaseAddr + BankSize - songAddr >= modInfo.Size);
+
+                            modBin = new(modInfo.TrackData, modInfo.StartAddress);
+                            modBins[modInfo] = modBin;
+
+                            modInfo.StartAddress = songAddr;
+                            songRomOffs += modInfo.Size;
+
+                            // Defer writing the module until all channel swaps are done
+                        }
+
+                        if (song.SwapSquareChans)
+                        {
+                            Debug.Assert(modBin is not null);
+                            modBin.SwapSquareChans(Math.Max(song.Number, 0));
+                        }
+
+                        song.Bank = bankIdx;
+                    }
+                    else
                     {
-                        Debug.Assert(ftm is not null);
-                        ftm.SwapSquareChans(Math.Max(song.Number, 0));
-                    }
+                        var song = (C2Song)isong;
+                        Debug.Assert(BankBaseAddr + BankSize - songAddr >= song.TotalLength);
 
-                    song.Bank = bankIdx;
+                        RebaseC2Song(song, bankIdx, songAddr);
+
+                        // Write song header and data
+                        // Some tracks have priority < 0xf, which will break mm2ft. Force it to 0xf here
+                        var hdr = Enumerable.Prepend<Byte>(song.SongHeader.Skip(1), (Byte)0xf);
+                        songRomOffs = in_Patch.Add(songRomOffs, hdr, $"Song Header for {song.SongName}");
+                        songRomOffs = in_Patch.Add(songRomOffs, song.SongData, $"Song Data for {song.SongName}");
+
+                        song.StartAddress = songAddr;
+                        song.Bank = bankIdx;
+                    }
                 }
 
-                if (modInfo is not null)
+                // Now that all channels have been swapped, rebase and write the FTMs
+                foreach (var modInfoAndBin in modBins)
                 {
-                    // Import the module
-                    Debug.Assert(ftm is not null);
+                    var modInfo = modInfoAndBin.Key;
+                    var modBin = modInfoAndBin.Value;
 
-                    int songAddr = (songStartRom - 0x10) % BankSize + FtmBaseAddress;
+                    modBin.Rebase(modInfo.StartAddress);
 
-                    ftm.Rebase(songAddr);
-
-                    in_Patch.Add(songStartRom, modInfo.TrackData, $"FTM {modInfo.Title}");
-
-                    modInfo.StartAddress = songAddr;
-
-                    songStartRom += modInfo.Size;
-                }
-
-                // Import the C2 songs if any
-                for (; slotIdx < bankSongs.Count; slotIdx++)
-                {
-                    C2Song song = (C2Song)bankSongs[slotIdx];
-                    int songAddr = (songStartRom - 0x10) % BankSize + FtmBaseAddress;
-
-                    RebaseC2Song(song, bankIdx, songAddr);
-
-                    // Write song header and data
-                    // Some tracks have priority < 0xf, which will break mm2ft. Force it to 0xf here
-                    var hdr = Enumerable.Prepend<Byte>(song.SongHeader.Skip(1), (Byte)0xf);
-                    songStartRom = in_Patch.Add(songStartRom, hdr, $"Song Header for {song.SongName}");
-                    songStartRom = in_Patch.Add(songStartRom, song.SongData, $"Song Data for {song.SongName}");
+                    songRomOffs = modInfo.StartAddress - BankBaseAddr + bankIdx * BankSize + 0x10;
+                    in_Patch.Add(songRomOffs, modInfo.TrackData, $"FTM {modInfo.Title}");
                 }
             }
         }
@@ -759,7 +785,7 @@ namespace MM2Randomizer.Randomizers
                     try
                     {
                         FtmBinary mod = new(modInfo.TrackData, modInfo.StartAddress);
-                        mod.Rebase(FtmBaseAddress);
+                        mod.Rebase(BankBaseAddr + 1);
                     }
                     catch
                     {
