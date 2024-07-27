@@ -663,6 +663,16 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] StageTile_BubbleMan_Block_SplashWoman {
+            get {
+                object obj = ResourceManager.GetObject("StageTile_BubbleMan_Block_SplashWoman", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] StageTile_BubbleMan_Platform_SMB3 {
             get {
                 object obj = ResourceManager.GetObject("StageTile_BubbleMan_Platform_SMB3", resourceCulture);
@@ -1573,9 +1583,49 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] YokuBlock_ElecmanMM1 {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_ElecmanMM1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_Iceman_MM1 {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_Iceman_MM1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] YokuBlock_Mario_Block {
             get {
                 object obj = ResourceManager.GetObject("YokuBlock_Mario_Block", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_Mario2Mushroom {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_Mario2Mushroom", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] YokuBlock_MM3 {
+            get {
+                object obj = ResourceManager.GetObject("YokuBlock_MM3", resourceCulture);
                 return ((byte[])(obj));
             }
         }

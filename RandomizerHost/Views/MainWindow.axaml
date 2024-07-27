@@ -1856,6 +1856,13 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaRan2Remix}"
                             />
 
+							<Image
+	                            Width="168"
+	                            Height="168"
+	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MyLittlePony.png"
+	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MyLittlePony}"
+                            />
+
                             <Image
                                 Width="168"
                                 Height="168"

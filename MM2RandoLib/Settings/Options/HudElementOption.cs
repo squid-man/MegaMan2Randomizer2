@@ -22,6 +22,8 @@ namespace MM2Randomizer.Settings.Options
         ManII,
         [Description("Metroid")]
         Metroid,
+        [Description("My Little Pony")]
+        MyLittlePony,
         [Description("Paperboy")]
         Paperboy,
         [Description("Remix")]

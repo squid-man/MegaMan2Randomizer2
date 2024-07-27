@@ -66,6 +66,8 @@ namespace MM2Randomizer
         MegaMari,
         [Description("Mega Ran")]
         MegaRan2Remix,
+        [Description("My Little Pony")]
+        MyLittlePony,
         [Description("New Lands")]
         NewLands,
         [Description("Pikachu")]

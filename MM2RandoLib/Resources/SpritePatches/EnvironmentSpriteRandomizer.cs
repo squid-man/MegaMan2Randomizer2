@@ -124,6 +124,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         {
             null,
             Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_DiveMan,
+            Properties.EnvironmentSpriteResources.StageTile_BubbleMan_Block_SplashWoman,
         };
 
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_STAGE_TILE_BUBBLE_MAN_PLATFORM = new List<Byte[]?>()
@@ -367,7 +368,11 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENVIRONMENT_SPRITE_LIST_YOKU_BLOCK = new List<Byte[]?>()
         {
             null,
+            Properties.EnvironmentSpriteResources.YokuBlock_ElecmanMM1,
+            Properties.EnvironmentSpriteResources.YokuBlock_Iceman_MM1,
             Properties.EnvironmentSpriteResources.YokuBlock_Mario_Block,
+            Properties.EnvironmentSpriteResources.YokuBlock_Mario2Mushroom,
+            Properties.EnvironmentSpriteResources.YokuBlock_MM3,
             Properties.EnvironmentSpriteResources.YokuBlock_MM4_Balloon_Adapter,
             Properties.EnvironmentSpriteResources.YokuBlock_MM5_Mtank,
             Properties.EnvironmentSpriteResources.YokuBlock_Rinka_Spawner,

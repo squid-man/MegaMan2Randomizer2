@@ -775,6 +775,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.MyLittlePony:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MyLittlePony);
+                        break;
+                    }
+
                 case PlayerSpriteOption.NewLands:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_NewLands);
@@ -918,6 +924,12 @@ namespace MM2Randomizer.Utilities
                     p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Metroid);
                     break;
                 }
+
+                case HudElementOption.MyLittlePony:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_MyLittlePony);
+                        break;
+                    }
 
                 case HudElementOption.Paperboy:
                 {
