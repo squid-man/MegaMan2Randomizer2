@@ -203,6 +203,8 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.QualityOfLifeOption.EnableUnderwaterLagReduction.Value);
             flags.PushValue(this.QualityOfLifeOption.DisablePauseLock.Randomize);
             flags.PushValue(this.QualityOfLifeOption.DisablePauseLock.Value);
+            flags.PushValue(this.QualityOfLifeOption.EnableBirdEggFix.Randomize);
+            flags.PushValue(this.QualityOfLifeOption.EnableBirdEggFix.Value);
 
             return flags.ToFlagString();
         }
