@@ -120,6 +120,7 @@ namespace MM2Randomizer.Settings
                     RandomizeColorPalettes = this.CosmeticOption.RandomizeColorPalettes.NextValue(in_Seed),
                     RandomizeInGameText = this.CosmeticOption.RandomizeInGameText.NextValue(in_Seed),
                     RandomizeMusicTracks = this.CosmeticOption.RandomizeMusicTracks.NextValue(in_Seed),
+                    OmitUnsafeMusicTracks = this.CosmeticOption.OmitUnsafeMusicTracks.NextValue(in_Seed),
                     RandomizeMenusAndTransitionScreens = this.CosmeticOption.RandomizeMenusAndTransitionScreens.NextValue(in_Seed),
                 },
             };
@@ -228,6 +229,10 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.CosmeticOption.RandomizeInGameText.Value);
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Randomize);
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Value);
+
+            // This causes overflow in the bit buffer. Needs a fix.
+            //flags.PushValue(this.CosmeticOption.OmitUnsafeMusicTracks.Randomize);
+            //flags.PushValue(this.CosmeticOption.OmitUnsafeMusicTracks.Value);
 
             return flags.ToFlagString();
         }

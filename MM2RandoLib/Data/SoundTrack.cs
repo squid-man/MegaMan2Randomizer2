@@ -15,6 +15,9 @@ namespace MM2Randomizer.Data
         [XmlElement("Title")]
         public String Title { get; set; } = "UNKNOWN";
 
+        [XmlElement("StreamingSafe")]
+        public Boolean StreamingSafe { get; set; } = true;
+
         [XmlArray(ElementName = "Uses")]
         [XmlArrayItem(ElementName = "Usage")]
         public HashSet<String> Uses { get; set; } = new(StringComparer.InvariantCultureIgnoreCase);

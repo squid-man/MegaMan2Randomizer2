@@ -6,9 +6,9 @@
         xmlns:converters="using:RandomizerHost.Converters"
         mc:Ignorable="d"
         d:DesignWidth="650"
-        d:DesignHeight="700"
+        d:DesignHeight="725"
         Width="650"
-        Height="700"
+        Height="725"
         x:Class="RandomizerHost.Views.MainWindow"
         Icon="/Assets/MegaMan2Randomizer.ico"
         Title="RandomizerHost"
@@ -1431,6 +1431,37 @@
                                     Content="Randomize Music Tracks"
                                     IsEnabled="{Binding !#ToggleSwitch_MusicTracks.IsChecked}"
                                     IsChecked="{Binding Path=AppConfigurationSettings.EnableRandomizationOfMusicTracks}"
+                                />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel
+                            Orientation="Horizontal"
+                        >
+                            <!-- Friendly emoji header -->
+                            <Label FontSize="18">🎲</Label>
+
+                            <!-- Toggle to randomize the option -->
+                            <Grid
+                                Name="Grid_ToggleSwitch_OmitUnsafeMusicTracks"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks}"
+                            >
+                                <ToggleSwitch
+                                    Name="ToggleSwitch_OmitUnsafeMusicTracks"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.RandomlyChooseSetting_OmitUnsafeMusicTracks}"
+                                    OffContent=""
+                                    OnContent=""
+                                />
+                            </Grid>
+
+                            <Grid
+                                Name="Grid_OmitUnsafeMusicTracks"
+                                IsEnabled="{Binding Path=AppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks}"
+                            >
+                                <CheckBox
+                                    Name="CheckBox_OmitUnsafeMusicTracks"
+                                    Content="Omit Unfriendly Music Tracks"
+                                    IsEnabled="{Binding !#ToggleSwitch_OmitUnsafeMusicTracks.IsChecked}"
+                                    IsChecked="{Binding Path=AppConfigurationSettings.OmitUnsafeMusicTracks}"
                                 />
                             </Grid>
                         </StackPanel>

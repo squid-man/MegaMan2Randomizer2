@@ -9,6 +9,7 @@ using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Random;
+using MM2Randomizer.Settings.Options;
 
 namespace MM2Randomizer.Randomizers
 {
@@ -25,6 +26,8 @@ namespace MM2Randomizer.Randomizers
     {
         ESoundEngine Engine { get; }
 
+        Boolean StreamingSafe { get; }
+
         ESoundTrackUsage Usage { get; }
         ISet<String> Uses { get; }
 
@@ -34,11 +37,12 @@ namespace MM2Randomizer.Randomizers
 
     public class C2Song : ISong
     {
-        public C2Song(String in_SongName, Int32 in_OriginalStartAddress, String in_SongBytesStr, SoundTrack? in_SoundTrack = null)
+        public C2Song(String in_SongName, Int32 in_OriginalStartAddress, String in_SongBytesStr, Boolean in_streamingSafe = true, SoundTrack? in_SoundTrack = null)
         {
             this.SoundTrack = in_SoundTrack;
             this.OriginalStartAddress = in_OriginalStartAddress;
             this.SongName = in_SongName;
+            this.StreamingSafe = (in_SoundTrack is not null) ? in_SoundTrack.StreamingSafe : in_streamingSafe;
             this.Uses = (in_SoundTrack is not null) ? in_SoundTrack.Uses : new();
 
             // Parse song bytes from hex String
@@ -106,6 +110,7 @@ namespace MM2Randomizer.Randomizers
 
         public SoundTrack? SoundTrack { get; set; }
         public String SongName { get; set; }
+        public Boolean StreamingSafe { get; set; }
         public Int32 Bank { get; set; }
         public Int32 Index { get; set; }
         public Int32 StartAddress { get; set; }
@@ -141,6 +146,8 @@ namespace MM2Randomizer.Randomizers
     {
         public ESoundEngine Engine { get { return ESoundEngine.Ft; } }
 
+        public Boolean StreamingSafe { get; private set; }
+
         public ISet<String> Uses { get; private set; }
         public ESoundTrackUsage Usage
         {
@@ -164,6 +171,8 @@ namespace MM2Randomizer.Randomizers
         public FtSong(FtXmlModule in_Mod, Int32 in_SongIdx)
         {
             ModuleInfo = in_Mod;
+
+            StreamingSafe = in_Mod.StreamingSafe;
             
             if (in_Mod.Songs.Count > 0)
             {
@@ -299,22 +308,25 @@ namespace MM2Randomizer.Randomizers
             debug.AppendLine("Random Music Module");
             debug.AppendLine("--------------------------------------------");
 
-            this.ImportMusic(in_Patch, in_Context.Seed);
+            this.ImportMusic(in_Patch, in_Context.Seed, in_Context.ActualizedCosmeticSettings.CosmeticOption.OmitUnsafeMusicTracks == BooleanOption.True);
         }
 
-        public void ImportMusic(Patch in_Patch, ISeed in_Seed)
+        public void ImportMusic(Patch in_Patch, ISeed in_Seed, Boolean in_SafeOnly = false)
         {
             // Read songs from file, parse and add to list
             SoundTrackSet soundTrackSet = Properties.Resources.SoundTrackConfiguration.Deserialize<SoundTrackSet>();
             List<ISong> songs =
                 (from soundTrack in soundTrackSet
-                 where soundTrack.Enabled
-                 select new C2Song(soundTrack.Title, Int32.Parse(soundTrack.StartAddress, NumberStyles.HexNumber), soundTrack.TrackData, soundTrack)).ToList<ISong>();
+                 where soundTrack.Enabled && (soundTrack.StreamingSafe || !in_SafeOnly)
+                 select new C2Song(soundTrack.Title, Int32.Parse(soundTrack.StartAddress, NumberStyles.HexNumber), soundTrack.TrackData, soundTrack.StreamingSafe, soundTrack)).ToList<ISong>();
 
             FtModuleSet moduleSet = Properties.Resources.FtSoundTrackConfiguration.Deserialize<FtModuleSet>();
             List<FtSong> ftmSongs = new();
             foreach (FtXmlModule xmlMod in moduleSet)
             {
+                if (!xmlMod.StreamingSafe && in_SafeOnly)
+                    continue;
+
                 Debug.Assert(xmlMod.Size <= BankSize, $"FTM {xmlMod.Title} is larger than a bank");
                 
                 for (int i = 0; i < Math.Max(xmlMod.Songs.Count, 1); i++)

@@ -45,6 +45,9 @@ namespace MM2Randomizer.Data
         public String Author { get; set; } = "";
 
         [XmlElement(DataType = "boolean")]
+        public Boolean StreamingSafe { get; set; } = true;
+
+        [XmlElement(DataType = "boolean")]
         public Boolean SwapSquareChans { get; set; } = false;
 
         [XmlArray(ElementName = "Uses")]

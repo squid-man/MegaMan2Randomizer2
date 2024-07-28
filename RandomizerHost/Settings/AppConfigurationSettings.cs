@@ -1318,6 +1318,79 @@ namespace RandomizerHost.Settings
         }
 
 
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean OmitUnsafeMusicTracks
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.OMIT_UNSAFE_MUSIC_TRACKS_SETTING_NAME,
+                    AppConfigurationSettings.OMIT_UNSAFE_MUSIC_TRACKS_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.OMIT_UNSAFE_MUSIC_TRACKS_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnableSetting_OmitUnsafeMusicTracks = true;
+
+        public Boolean EnableSetting_OmitUnsafeMusicTracks
+        {
+            get
+            {
+                return this.mEnableSetting_OmitUnsafeMusicTracks;
+            }
+
+            set
+            {
+                if (value != this.mEnableSetting_OmitUnsafeMusicTracks)
+                {
+                    this.mEnableSetting_OmitUnsafeMusicTracks = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public Boolean RandomlyChooseSetting_OmitUnsafeMusicTracks
+        {
+            get
+            {
+                return this.GetValueOrDefault(
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_OMIT_UNSAFE_MUSIC_TRACKS_SETTING_NAME,
+                    AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_OMIT_UNSAFE_MUSIC_TRACKS_DEFAULT_VALUE);
+            }
+
+            set
+            {
+                this[AppConfigurationSettings.RANDOMLY_CHOOSE_SETTING_OMIT_UNSAFE_MUSIC_TRACKS_SETTING_NAME] = value;
+            }
+        }
+
+        private Boolean mEnable_RandomChoiceSetting_OmitUnsafeMusicTracks = true;
+
+        public Boolean Enable_RandomChoiceSetting_OmitUnsafeMusicTracks
+        {
+            get
+            {
+                return this.mEnable_RandomChoiceSetting_OmitUnsafeMusicTracks;
+            }
+
+            set
+            {
+                if (value != this.mEnable_RandomChoiceSetting_OmitUnsafeMusicTracks)
+                {
+                    this.mEnable_RandomChoiceSetting_OmitUnsafeMusicTracks = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         //
         //
         //
@@ -3189,6 +3262,8 @@ namespace RandomizerHost.Settings
             settings.CosmeticOption.RandomizeInGameText.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfInGameText);
             settings.CosmeticOption.RandomizeMusicTracks.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfMusicTracks;
             settings.CosmeticOption.RandomizeMusicTracks.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfMusicTracks);
+            settings.CosmeticOption.OmitUnsafeMusicTracks.Randomize = this.RandomlyChooseSetting_OmitUnsafeMusicTracks;
+            settings.CosmeticOption.OmitUnsafeMusicTracks.Value = (BooleanOption)Convert.ToInt32(this.OmitUnsafeMusicTracks);
             settings.CosmeticOption.RandomizeMenusAndTransitionScreens.Randomize = this.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens;
             settings.CosmeticOption.RandomizeMenusAndTransitionScreens.Value = (BooleanOption)Convert.ToInt32(this.EnableRandomizationOfMenusAndTransitionScreens);
 
@@ -3537,6 +3612,13 @@ namespace RandomizerHost.Settings
 
         private const String RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_SETTING_NAME = @"RandomlyChooseSetting_EnableRandomizationOfMusicTracks";
         private const Boolean RANDOMLY_CHOOSE_SETTING_ENABLE_RANDOMIZATION_OF_MUSIC_TRACKS_DEFAULT_VALUE = false;
+
+        // Omit Unsafe Music Tracks
+        private const String OMIT_UNSAFE_MUSIC_TRACKS_SETTING_NAME = @"OmitUnsafeMusicTracks";
+        private const Boolean OMIT_UNSAFE_MUSIC_TRACKS_DEFAULT_VALUE = false;
+
+        private const String RANDOMLY_CHOOSE_SETTING_OMIT_UNSAFE_MUSIC_TRACKS_SETTING_NAME = @"RandomlyChooseSetting_OmitUnsafeMusicTracks";
+        private const Boolean RANDOMLY_CHOOSE_SETTING_OMIT_UNSAFE_MUSIC_TRACKS_DEFAULT_VALUE = false;
 
         // Enable Randomization of Menus and Transition Screens
         private const String ENABLE_RANDOMIZATION_OF_MENUS_AND_TRANSITION_SCREENS_SETTING_NAME = @"EnableRandomizationOfMenusAndTransitionScreens";
