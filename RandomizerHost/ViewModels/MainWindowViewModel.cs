@@ -239,6 +239,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = false;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = false;
@@ -275,6 +276,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = false;
+                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = false;
                 this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = false;
                 //this.mAppConfigurationSettings.EnableSetting_Font = false;
                 this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = false;
@@ -311,6 +313,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableUnderwaterLagReduction = false;
+                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableBirdEggFix = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnergyTankRefillSpeed = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_Font = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_HitPointRefillSpeed = false;
@@ -350,6 +353,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnergyTankRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
                 this.mAppConfigurationSettings.EnableRandomizationOfInGameText = true;
                 this.mAppConfigurationSettings.DisableFlashingEffects = true;
+                this.mAppConfigurationSettings.EnableBirdEggFix = true;
                 this.mAppConfigurationSettings.WeaponEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
                 this.mAppConfigurationSettings.EnableRandomizationOfEnvironmentSprites = true;
                 this.mAppConfigurationSettings.EnableRandomizationOfBossSprites = true;
@@ -390,6 +394,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = true;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = true;
@@ -426,6 +431,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = true;
+                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = true;
                 this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = true;
                 //this.mAppConfigurationSettings.EnableSetting_Font = true;
                 this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = true;
@@ -473,6 +479,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = false;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = false;
@@ -509,6 +516,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = false;
+                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = false;
                 this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = false;
                 //this.mAppConfigurationSettings.EnableSetting_Font = false;
                 this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = false;
@@ -545,6 +553,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableUnderwaterLagReduction = false;
+                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableBirdEggFix = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnergyTankRefillSpeed = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_Font = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_HitPointRefillSpeed = false;
@@ -584,6 +593,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnergyTankRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
                 this.mAppConfigurationSettings.EnableRandomizationOfInGameText = true;
                 this.mAppConfigurationSettings.DisableFlashingEffects = true;
+                this.mAppConfigurationSettings.EnableBirdEggFix = true;
                 this.mAppConfigurationSettings.WeaponEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
                 this.mAppConfigurationSettings.EnableRandomizationOfEnvironmentSprites = false;
                 this.mAppConfigurationSettings.EnableRandomizationOfBossSprites = false;
@@ -624,6 +634,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = true;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = true;
@@ -660,6 +671,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = true;
+                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = true;
                 this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = true;
                 //this.mAppConfigurationSettings.EnableSetting_Font = true;
                 this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = true;
