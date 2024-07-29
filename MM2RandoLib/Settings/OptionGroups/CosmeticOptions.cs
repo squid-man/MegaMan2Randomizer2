@@ -16,6 +16,8 @@ namespace MM2Randomizer.Settings.OptionGroups
 
         public RandomizationOption<BooleanOption> RandomizeMusicTracks { get; } = new RandomizationOption<BooleanOption>();
 
+        public RandomizationOption<BooleanOption> OmitUnsafeMusicTracks { get; } = new RandomizationOption<BooleanOption>();
+
         public RandomizationOption<BooleanOption> RandomizeMenusAndTransitionScreens { get; } = new RandomizationOption<BooleanOption>();
     }
 }

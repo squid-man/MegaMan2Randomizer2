@@ -233,6 +233,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = false;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = false;
@@ -270,6 +271,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = false;
+                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = false;
@@ -307,6 +309,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMusicTracks = false;
+                this.mAppConfigurationSettings.RandomlyChooseSetting_OmitUnsafeMusicTracks = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations = false;
@@ -334,6 +337,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableRandomizationOfSpecialItemLocations = true;
                 this.mAppConfigurationSettings.EnableRandomizationOfEnemySpawns = true;
                 this.mAppConfigurationSettings.EnableRandomizationOfMusicTracks = true;
+                this.mAppConfigurationSettings.OmitUnsafeMusicTracks = true;
                 this.mAppConfigurationSettings.EnableUnderwaterLagReduction = true;
                 this.mAppConfigurationSettings.MercilessMode = false;
                 this.mAppConfigurationSettings.DisablePauseLock = true;
@@ -388,6 +392,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = true;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = true;
@@ -425,6 +430,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = true;
+                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = true;
@@ -473,6 +479,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = false;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = false;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = false;
@@ -510,6 +517,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = false;
+                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = false;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = false;
@@ -547,6 +555,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMusicTracks = false;
+                this.mAppConfigurationSettings.RandomlyChooseSetting_OmitUnsafeMusicTracks = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations = false;
                 this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations = false;
@@ -574,6 +583,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableRandomizationOfSpecialItemLocations = true;
                 this.mAppConfigurationSettings.EnableRandomizationOfEnemySpawns = true;
                 this.mAppConfigurationSettings.EnableRandomizationOfMusicTracks = true;
+                this.mAppConfigurationSettings.OmitUnsafeMusicTracks = true;
                 this.mAppConfigurationSettings.EnableUnderwaterLagReduction = true;
                 this.mAppConfigurationSettings.MercilessMode = false;
                 this.mAppConfigurationSettings.DisablePauseLock = true;
@@ -628,6 +638,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = true;
+                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = true;
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = true;
@@ -665,6 +676,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = true;
+                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = true;
                 this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = true;
