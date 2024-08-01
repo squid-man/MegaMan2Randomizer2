@@ -142,17 +142,11 @@
   <data name="EnemyWeaknessSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EnemyWeaknessSet.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="SoundTrackConfiguration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SoundTrackConfiguration.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="IntroStoryConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IntroStoryConfig.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="mm2ft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mm2ft.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FtSoundTrackConfiguration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FtSoundTrackConfiguration.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="mercilesspatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mercilesspatch.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -168,5 +162,11 @@
   </data>
   <data name="mm2clown_bot_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mm2clown_bot_fix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FtSoundTrackConfiguration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FtSoundTrackConfiguration.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SoundTrackConfiguration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SoundTrackConfiguration.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

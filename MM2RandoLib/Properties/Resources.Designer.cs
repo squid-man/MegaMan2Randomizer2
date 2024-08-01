@@ -282,19 +282,12 @@ namespace MM2Randomizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///
-        ///&lt;!--
-        ///    Mega Man 2 FamiTracker Module Sound Track Config File
-        ///
-        ///    Enabled = Whether the track should be used in the randomizer. Defaults to true.
-        ///    Title = Any string to identify the song, such as the name and what game/hack it comes from.
-        ///	Author = A string identifying the author of the song, if known. By convention if the song is a cover the format is Cover Author (Original Author).
-        ///    Uses = List of Usage entries indicating where the track may be used [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string FtSoundTrackConfiguration {
+        internal static byte[] FtSoundTrackConfiguration {
             get {
-                return ResourceManager.GetString("FtSoundTrackConfiguration", resourceCulture);
+                object obj = ResourceManager.GetObject("FtSoundTrackConfiguration", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -417,19 +410,12 @@ namespace MM2Randomizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///
-        ///&lt;!--
-        ///    Mega Man 2 Sound Track Config File
-        ///
-        ///    Enabled = Whether the track should be used in the randomizer
-        ///    Title = Any string to identify the song, such as the name and what game/hack it comes from
-        ///    Uses = List of Usage entries indicating where the track may be used in game. Intro, Title, StageSelect, Stage, Boss, Refights (Wily 5 stage), Credits. Defaults to Stage and Credits.
-        ///    StartAddress = The address of the first byte of the song&apos;s header (v [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static string SoundTrackConfiguration {
+        internal static byte[] SoundTrackConfiguration {
             get {
-                return ResourceManager.GetString("SoundTrackConfiguration", resourceCulture);
+                object obj = ResourceManager.GetObject("SoundTrackConfiguration", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

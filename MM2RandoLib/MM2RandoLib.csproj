@@ -33,6 +33,9 @@
       <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Remove="Data\FtSoundTrack.cs" />
+    </ItemGroup>
+    <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
       <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
