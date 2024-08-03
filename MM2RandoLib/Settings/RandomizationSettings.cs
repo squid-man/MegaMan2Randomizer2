@@ -232,10 +232,6 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Randomize);
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Value);
 
-            // This causes overflow in the bit buffer. Needs a fix.
-            //flags.PushValue(this.CosmeticOption.OmitUnsafeMusicTracks.Randomize);
-            //flags.PushValue(this.CosmeticOption.OmitUnsafeMusicTracks.Value);
-
             return flags.ToFlagString();
         }
     }
