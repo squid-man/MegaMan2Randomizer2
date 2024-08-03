@@ -26,6 +26,8 @@ namespace MM2Randomizer
         Charlieboy,
         [Description("Charlieboy Alt")]
         CharlieboyAlt,
+        [Description("Coda")]
+        Coda,
         [Description("Cut Man's Bad Scissors Day")]
         CutMansBadScissorsDay,
         [Description("FF Black Belt")]

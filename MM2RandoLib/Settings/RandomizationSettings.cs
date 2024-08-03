@@ -216,7 +216,7 @@ namespace MM2Randomizer.Settings
             // TODO: Work out a way to bind options to a randomization flags
             // instance such that updating the property will automatically
             // update the flags value
-            RandomizationFlags flags = new RandomizationFlags(14);
+            RandomizationFlags flags = new RandomizationFlags(15);
 
             // Cosmetic options
             flags.PushValue(this.CosmeticOption.Font.Randomize);

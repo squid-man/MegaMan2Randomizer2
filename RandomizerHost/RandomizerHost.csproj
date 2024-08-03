@@ -31,6 +31,7 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CasualTom.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Charlieboy.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CharlieboyAlt.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Coda.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CutMansBadScissorsDay.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackBelt.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackMage.png" />

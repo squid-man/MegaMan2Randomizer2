@@ -33,10 +33,26 @@ namespace RandomizerHost.ViewModels
                 String tryLocalpath = Path.Combine(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "MM2.nes");
+                String tryLocalpath2 = Path.Combine(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "Mega Man 2.nes");
+                String tryLocalpath3 = Path.Combine(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "Megaman II (U) [!].nes");
 
                 if (File.Exists(tryLocalpath))
                 {
                     this.AppConfigurationSettings.RomSourcePath = tryLocalpath;
+                    this.IsShowingHint = false;
+                }
+                if (File.Exists(tryLocalpath2))
+                {
+                    this.AppConfigurationSettings.RomSourcePath = tryLocalpath2;
+                    this.IsShowingHint = false;
+                }
+                if (File.Exists(tryLocalpath3))
+                {
+                    this.AppConfigurationSettings.RomSourcePath = tryLocalpath3;
                     this.IsShowingHint = false;
                 }
             }
@@ -251,6 +267,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed = false;
 
                 // Disable the check boxes
+                this.mAppConfigurationSettings.TournamentMode2 = false;
                 this.mAppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed = false;
                 this.mAppConfigurationSettings.EnableSetting_DisableFlashingEffects = false;
                 this.mAppConfigurationSettings.EnableSetting_DisablePauseLock = false;
@@ -497,6 +514,7 @@ namespace RandomizerHost.ViewModels
                 this.mAppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed = false;
 
                 // Disable the check boxes
+                this.mAppConfigurationSettings.TournamentMode = false;
                 this.mAppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed = false;
                 this.mAppConfigurationSettings.EnableSetting_DisableFlashingEffects = false;
                 this.mAppConfigurationSettings.EnableSetting_DisablePauseLock = false;

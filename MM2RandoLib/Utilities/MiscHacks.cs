@@ -655,6 +655,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.Coda:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Coda);
+                        break;
+                    }
+
                 case PlayerSpriteOption.CutMansBadScissorsDay:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CutMansBadScissorsDay);

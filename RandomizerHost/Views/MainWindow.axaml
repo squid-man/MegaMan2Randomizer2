@@ -17,7 +17,7 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
+	
     <!-- Static Resources -->
     <Window.Resources>
         <converters:PlayerSpriteToBooleanConverter x:Key="PlayerSpriteToBooleanConverter"/>
@@ -45,10 +45,10 @@
 	Grid.ColumnSpan="2"
 	TextAlignment="Left"
 	FontSize="9"
-	Text="Version 0.6.6.*"
+	Text="Version {Binding Console.Writeline.(version)}"
 	IsVisible="{Binding IsShowingHint}"
             />
-
+		
 		<!-- The main header image for the host -->
         <Image
             Grid.Row="0"
@@ -1747,7 +1747,14 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=CharlieboyAlt}"
                             />
 
-                            <Image
+							<Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Coda.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Coda}"
+                            />
+
+							<Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_CutMansBadScissorsDay.png"
