@@ -216,7 +216,7 @@ namespace MM2Randomizer.Settings
             // TODO: Work out a way to bind options to a randomization flags
             // instance such that updating the property will automatically
             // update the flags value
-            RandomizationFlags flags = new RandomizationFlags(14);
+            RandomizationFlags flags = new RandomizationFlags(15);
 
             // Cosmetic options
             flags.PushValue(this.CosmeticOption.Font.Randomize);
@@ -231,10 +231,6 @@ namespace MM2Randomizer.Settings
             flags.PushValue(this.CosmeticOption.RandomizeInGameText.Value);
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Randomize);
             flags.PushValue(this.CosmeticOption.RandomizeMusicTracks.Value);
-
-            // This causes overflow in the bit buffer. Needs a fix.
-            //flags.PushValue(this.CosmeticOption.OmitUnsafeMusicTracks.Randomize);
-            //flags.PushValue(this.CosmeticOption.OmitUnsafeMusicTracks.Value);
 
             return flags.ToFlagString();
         }
