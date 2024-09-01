@@ -1,547 +1,144 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using MM2Randomizer.Data;
+﻿using FtRandoLib.Importer;
+using FtRandoLib.Library;
+using FtRandoLib.Utility;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Random;
 using MM2Randomizer.Settings.Options;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
+using System.Text;
 
 namespace MM2Randomizer.Randomizers
 {
-    public enum ESoundEngine
+    [JsonObject]
+    public class C2SongInfo : MusicFileInfo
     {
-        C2,
-        Ft,
     }
 
-    public class DataInfo
+    public class C2SongGroupInfo : GroupInfo<C2SongInfo>
     {
-        public ESoundEngine Engine { get; private set; }
-
-        // Primarily for debugging
-        public string Title { get; private set; }
-
-        public int Bank { get; set; }
-        public int Address { get; set; }
-        public int OriginalAddress { get; private set; }
-
-        public byte[] Data { get; private set; }
-        public int Size { get { return Data.Length; } }
-
-        public DataInfo(ESoundEngine engine, string title, int addr, byte[] data)
-        {
-            Engine = engine;
-            Title = title;
-            Address = OriginalAddress = addr;
-            Data = data;
-        }
     }
 
-    public interface ISong
+    [JsonObject]
+    public class C2LibraryInfo : LibraryInfo<C2SongInfo, C2SongGroupInfo>
     {
-        ESoundEngine Engine { get; }
-
-        //int SoundTableIndex { get; set; }
-
-        ESoundTrackUsage Usage { get; }
-        ISet<string> Uses { get; }
-
-        DataInfo DataInfo { get; }
     }
 
-    public class C2Song : ISong
+    enum EBossSongMapIndex
     {
-        public ESoundEngine Engine { get { return ESoundEngine.C2; } }
+		HeatMan = 0,
+		AirMan,
+		WoodMan,
+		BubbleMan,
+		QuickMan,
+		FlashMan,
+		MetalMan,
+		CrashMan,
+		Wily1,
+		Wily2,
+		Wily3,
+		Wily4,
+		Wily5,
+		Wily6,
+		HeatManRefight,
+		AirManRefight,
+		WoodManRefight,
+		BubbleManRefight,
+		QuickManRefight,
+		FlashManRefight,
+		MetalManRefight,
+		CrashManRefight,
+    }
 
-        //public int SoundTableIndex { get; set; }
+    public class C2Song : SongBase
+    {
+        //public readonly C2SongGroupInfo? GroupInfo;
+        //public readonly C2SongInfo Info;
 
-        public ISet<string> Uses { get; set; }
-        public ESoundTrackUsage Usage
+        public C2Song(
+            C2SongGroupInfo? grpInfo, 
+            C2SongInfo songInfo,
+            int defaultStartAddr,
+            IstringSet defaultUses)
+            : base(
+                  "native",
+                  grpInfo,
+                  songInfo,
+                  null,
+                  defaultUses)
         {
-            get { return SoundTrackUsage.FromStrings(Uses); }
-        }
+            //GroupInfo = grpInfo;
+            //Info = songInfo;
 
-        public DataInfo DataInfo { get; private set; }
+            MusicInfo grpFac = grpInfo is not null ? grpInfo : songInfo;
 
-        public C2SongGroupInfo? GroupInfo { get; private set; }
-        public C2SongInfo Info { get; private set; }
-
-        public readonly bool Enabled;
-        public readonly string Title;
-        public readonly string? Author;
-        public readonly bool StreamingSafe;
-        public readonly bool SwapSquareChans;
-
-        public C2Song(C2SongGroupInfo? grpInfo, C2SongInfo songInfo)
-        {
-            GroupInfo = grpInfo;
-            Info = songInfo;
-
-            MusicInfoBase grpFac = grpInfo is not null ? grpInfo : songInfo;
-
-            Enabled = songInfo.Enabled ?? grpFac.Enabled ?? C2SongInfo.EnabledDefault;
-            Author = songInfo.Author ?? grpFac.Author;
-            StreamingSafe = songInfo.StreamingSafe ?? grpFac.StreamingSafe ?? C2SongInfo.StreamingSafeDefault;
-            SwapSquareChans = songInfo.SwapSquareChans ?? grpFac.SwapSquareChans ?? C2SongInfo.SwapSquareChansDefault;
-            Uses = songInfo.Uses.Count > 0 ? songInfo.Uses
-                : grpFac.Uses.Count > 0 ? grpFac.Uses
-                : C2SongInfo.UsesDefault;
-
-            Title = grpInfo is not null ? $"{grpInfo.Title} - " : "";
-            Title = Title + songInfo.Title;
-
-            DataInfo = new(ESoundEngine.C2,
+            Module = new("native",
                 songInfo.Title,
-                songInfo.StartAddr ?? songInfo.StartAddrDefault,
+                songInfo.StartAddr ?? defaultStartAddr,
                 songInfo.UncompressedData);
         }
     }
 
-    public class FtSong : ISong
+    public class RomAccessAdapter : IRomAccess
     {
-        public ESoundEngine Engine { get { return ESoundEngine.Ft; } }
+        Patch Patch;
 
-        public ISet<string> Uses { get; private set; }
-        public ESoundTrackUsage Usage
-        {
-            get { return SoundTrackUsage.FromStrings(Uses); }
-        }
+        public RomAccessAdapter(Patch patch) => Patch = patch;
 
-        //public int SoundTableIndex { get; set; }
+        public byte[] Rom => throw new NotImplementedException();
 
-        public DataInfo DataInfo { get; private set; }
-
-        public readonly FtModuleInfo ModuleInfo;
-        public readonly FtSongInfo? Info;
-
-        public readonly bool Enabled;
-        public readonly int Number;
-        public readonly string Title;
-        public readonly string? Author;
-        public readonly bool StreamingSafe;
-        public readonly bool SwapSquareChans;
-
-        public FtSong(FtModuleGroupInfo? grpInfo, FtModuleInfo modInfo, int songIdx, DataInfo dataInfo)
-        {
-            ModuleInfo = modInfo;
-            Info = modInfo.Songs.Count > 0 ? modInfo.Songs[songIdx] : null;
-
-            MusicInfoBase grpFac = grpInfo is not null ? grpInfo : modInfo,
-                songFac = Info is not null ? Info : modInfo;
-
-            Enabled = songFac.Enabled
-                ?? modInfo.Enabled
-                ?? grpFac.Enabled
-                ?? FtSongInfo.EnabledDefault;
-            Author = songFac.Author ?? modInfo.Author ?? grpFac.Author;
-            StreamingSafe = songFac.StreamingSafe
-                ?? modInfo.StreamingSafe
-                ?? grpFac.StreamingSafe
-                ?? FtSongInfo.StreamingSafeDefault;
-            SwapSquareChans = songFac.SwapSquareChans
-                ?? modInfo.SwapSquareChans
-                ?? grpFac.SwapSquareChans
-                ?? FtSongInfo.SwapSquareChansDefault;
-
-            Uses = songFac.Uses.Count > 0 ? songFac.Uses
-                : modInfo.Uses.Count > 0 ? modInfo.Uses
-                : FtSongInfo.UsesDefault;
-
-            DataInfo = dataInfo;
-
-            Title = grpInfo is not null ? $"{grpInfo.Title} - " : "";
-            Title = Title + modInfo.Title;
-
-            Number = 0;
-
-            if (Info is not null)
-            {
-                Number = Info.Number;
-                Title = Title + $" - {Info.Title}";
-            }
-        }
+        public void Write(int offset, byte data, string comment = "") => Patch.Add(offset, data, comment);
+        public void Write(int offset, IReadOnlyList<byte> data, string comment = "") => Patch.Add(offset, data, comment);
     }
 
-    public class RMusic : IRandomizer
+    public class ShufflerAdapter : IShuffler
     {
-        /// <summary>
-        /// Map of which game songs belong to which music uses.
-        /// </summary>
-        private Dictionary<ESoundTrackUsage, EMusicID[]> UsesMusicIds = new Dictionary<ESoundTrackUsage, EMusicID[]>
-        {
-            { ESoundTrackUsage.Intro, new EMusicID[]{EMusicID.Intro} },
-            { ESoundTrackUsage.Title, new EMusicID[]{EMusicID.Title} },
-            { ESoundTrackUsage.StageSelect, new EMusicID[]{EMusicID.StageSelect} },
-            { ESoundTrackUsage.Stage, new EMusicID[]{EMusicID.Flash, EMusicID.Wood, EMusicID.Crash, EMusicID.Heat, EMusicID.Air, EMusicID.Metal, EMusicID.Quick, EMusicID.Bubble, EMusicID.Wily1, EMusicID.Wily2, EMusicID.Wily3, EMusicID.Wily4, EMusicID.Wily6 } },
-            { ESoundTrackUsage.Boss, new EMusicID[]{EMusicID.Boss} },
-            { ESoundTrackUsage.Refights, new EMusicID[]{EMusicID.Wily5} },
-            { ESoundTrackUsage.Ending, new EMusicID[]{EMusicID.Ending} },
-            { ESoundTrackUsage.Credits, new EMusicID[]{EMusicID.Credits} },
-        };
+        ISeed Seed;
 
-        /// <summary>
-        /// Offset of the Capcom 2 song address table in the ROM.
-        /// </summary>
-        private const int C2SongTblOffs = 0x30a60;
+        public ShufflerAdapter(ISeed seed) => Seed = seed;
 
-        /// <summary>
-        /// Offset of the mm2ft song map table in the ROM.
-        /// </summary>
-        private const int SongMapOffs = 0x30b60;
+        public IList<T> Shuffle<T>(IReadOnlyList<T> items) => Seed.Shuffle(items);
+    }
 
-        /// <summary>
-        /// Offset of the mm2ft song module address table in the ROM.
-        /// </summary>
-        private const int SongModAddrTblOffs = 0x30c60;
+    public class LoggerAdapter: Logger
+    {
+        StringBuilder sb;
 
-        /// <summary>
-        /// Offset of the mm2ft boss song map table in the ROM.
-        /// </summary>
-        private const int BossSongMapOffs = 0x7f2f3;
+        public LoggerAdapter(StringBuilder sb) => this.sb = sb;
 
-        /// <summary>
-        /// Length of the mm2ft boss song map table.
-        /// </summary>
-        private const int BossSongMapLen = 0x16;
+        protected override void InternalWrite(string? message) => sb.Append(message);
+        protected override void InternalWriteLine(string? message) => sb.AppendLine(message);
+    }
 
-        /// <summary>
-        /// First unused song index available for boss music. The last is 0x7f, but there isn't any situation where that will be reached.
-        /// </summary>
-        private const int FirstBossMusicId = 0x43;
-
-        /// <summary>
-        /// The size of each ROM bank.
-        /// </summary>
-        private const int BankSize = 0x2000;
-
-        /// <summary>
-        /// The first address of banks for songs
-        /// </summary>
-        private const int BankBaseAddr = 0xa000;
-
-        /// <summary>
-        /// The first empty bank available for music.
-        /// </summary>
-        private const int FirstFreeBank = 0x20;
-
-        /// <summary>
-        /// The last empty bank available for music.
-        /// </summary>
-        private const int LastFreeBank = 0x3d;
-
-        /// <summary>
-        /// The default uses for tracks that have no uses specified on the song or module.
-        /// </summary>
-        private static HashSet<string> DefaultUses = new(StringComparer.InvariantCultureIgnoreCase){ "Stage", "Credits" };
-
-        private StringBuilder debug = new();
-
-        public RMusic()
+    public class ImportedC2ModuleInfo : ImportedModuleInfo
+    {
+        public ImportedC2ModuleInfo(Module mod)
+            : base(mod)
         {
         }
 
-        public override string ToString()
+        public override byte[] GetData(int address, int primarySquareChan)
         {
-            return debug.ToString();
+            Debug.Assert(Module.IsEngine("native"));
+
+            byte[] buffer = Module.Data.ToArray();
+            RebaseSong(buffer, address, primarySquareChan != 0);
+
+            return buffer;
         }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        void RebaseSong(
+            byte[] data,
+            int address, 
+            bool swapSquareChans)
         {
-            debug.AppendLine();
-            debug.AppendLine("Random Music Module");
-            debug.AppendLine("--------------------------------------------");
-
-            Debug.Assert(in_Context.ActualizedCosmeticSettings is not null);
-
-            this.ImportMusic(in_Patch, in_Context.Seed, in_Context.ActualizedCosmeticSettings.CosmeticOption.OmitUnsafeMusicTracks == BooleanOption.True);
-        }
-
-        public void ParseC2SongList(C2SongGroupInfo? grpInfo, IEnumerable<C2SongInfo> songInfos, bool safeOnly, List<C2Song> songs)
-        {
-            foreach (C2SongInfo songInfo in songInfos)
-            {
-                Debug.Assert(songInfo.Size <= BankSize, $"C2 {songInfo.Title} is larger than a bank");
-
-                C2Song song = new(grpInfo, songInfo);
-                if (song.Enabled && (song.StreamingSafe || !safeOnly))
-                    songs.Add(song);
-            }
-        }
-
-        public void ParseFtModuleList(FtModuleGroupInfo? grpInfo, IEnumerable<FtModuleInfo> modInfos, bool safeOnly, List<FtSong> songs)
-        {
-            foreach (FtModuleInfo modInfo in modInfos)
-            {
-                Debug.Assert(modInfo.Size <= BankSize, $"FTM {modInfo.Title} is larger than a bank");
-
-                DataInfo dataInfo = new(
-                    ESoundEngine.Ft, 
-                    modInfo.Title,
-                    modInfo.StartAddr ?? modInfo.StartAddrDefault, 
-                    modInfo.UncompressedData);
-                for (int i = 0; i < Math.Max(modInfo.Songs.Count, 1); i++)
-                {
-                    FtSong song = new(grpInfo, modInfo, i, dataInfo);
-                    if (song.Enabled && (song.StreamingSafe || !safeOnly))
-                        songs.Add(song);
-                }
-            }
-        }
-
-        public void ImportMusic(Patch patch, ISeed seed, bool safeOnly = false)
-        {
-            // Load C2 songs
-            var c2Lib = JsonConvert.DeserializeObject<C2LibraryInfo>(
-                Encoding.UTF8.GetString(Properties.Resources.SoundTrackConfiguration));
-            Debug.Assert(c2Lib is not null);
-
-            List<C2Song> c2Songs = new();
-            ParseC2SongList(null, c2Lib.Single, safeOnly, c2Songs);
-            foreach (var grpInfo in c2Lib.Groups)
-                ParseC2SongList(grpInfo, grpInfo.Songs, safeOnly, c2Songs);
-
-            // Load FT songs
-            var ftLib = JsonConvert.DeserializeObject<FtLibraryInfo>(
-                Encoding.UTF8.GetString(Properties.Resources.FtSoundTrackConfiguration));
-            Debug.Assert(ftLib is not null);
-
-            List<FtSong> ftSongs = new();
-            ParseFtModuleList(null, ftLib.Single, safeOnly, ftSongs);
-            foreach (var grpInfo in ftLib.Groups)
-                ParseFtModuleList(grpInfo, grpInfo.Modules, safeOnly, ftSongs);
-
-            debug.AppendLine($"{c2Songs.Count} C2 and {ftSongs.Count} FT songs loaded.");
-
-            List<ISong> songs = new(c2Songs);
-            songs.AddRange(ftSongs);
-
-            // Create the usage type lists of songs
-            Dictionary<string, List<int>> usesSongIdcs = new(StringComparer.InvariantCultureIgnoreCase);
-            foreach (string name in Enum.GetNames(typeof(ESoundTrackUsage)))
-                usesSongIdcs[name] = new List<int>();
-
-            for (int songIdx = 0; songIdx < songs.Count; songIdx++)
-            {
-                ISong song = songs[songIdx];
-                foreach (string useStr in song.Uses)
-                    usesSongIdcs[useStr].Add(songIdx);
-            }
-
-            // Pick and import the songs
-            Dictionary<EMusicID, int>? selSongMap = null;
-            while (selSongMap is null)
-            {
-                selSongMap = SelectSongs(seed, usesSongIdcs);
-
-                HashSet<int> selSongIdcs = new(selSongMap.Values);
-                var banksSongs = PlaceSongsInBanks((from idx in selSongIdcs select songs[idx]).ToList());
-                if (banksSongs is not null)
-                    ImportSongs(patch, seed, banksSongs);
-                else 
-                    selSongMap = null;
-            }
-
-            // Update the sound tables
-            foreach (EMusicID musicId in selSongMap.Keys)
-            {
-                int songIdx = selSongMap[musicId];
-                int musicIdx = (int)musicId;
-                int SongMapPtrOffs = SongMapOffs + musicIdx * 2;
-
-                ISong isong = songs[songIdx];
-                DataInfo dataInfo = isong.DataInfo;
-                int tblBankIdx = dataInfo.Bank;
-                int addrTblOffs, tblSongIdx;
-                if (isong.Engine == ESoundEngine.C2)
-                {
-                    addrTblOffs = C2SongTblOffs;
-                    tblSongIdx = musicIdx;
-
-                    var song = (C2Song)isong;
-                    debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.Title}, {dataInfo.OriginalAddress}");
-
-                }
-                else
-                {
-                    addrTblOffs = SongModAddrTblOffs;
-
-                    FtSong song = (FtSong)isong;
-                    tblBankIdx = ~dataInfo.Bank;
-                    tblSongIdx = song.Number;
-
-                    debug.AppendLine($"{Enum.GetName(typeof(EMusicID), musicId)} song: {song.Title}");
-                }
-
-                // Update the song address table
-                patch.AddWord(addrTblOffs + musicIdx * 2, dataInfo.Address, $"Song {musicIdx} Pointer Offset");
-
-                // And the track table
-                patch.Add(SongMapPtrOffs++, (byte)tblBankIdx, $"Song {musicIdx} Bank Index");
-                patch.Add(SongMapPtrOffs++, (byte)tblSongIdx, $"Song {musicIdx} Song Index");
-
-                // For boss tracks, update the boss song table
-                if (musicIdx >= FirstBossMusicId && musicIdx < FirstBossMusicId + BossSongMapLen)
-                {
-                    int bossIdx = musicIdx - FirstBossMusicId;
-                    patch.Add(BossSongMapOffs + bossIdx, (byte)musicIdx, $"Boss {bossIdx} Song Index");
-                }
-            }
-
-            bool testRebase = false;
-            if (testRebase)
-                TestRebaseSongs(songs);
-        }
-
-        private Dictionary<EMusicID, int> SelectSongs(ISeed seed, IReadOnlyDictionary<string, List<int>> usesSongIdcs)
-        {
-            EMusicID[] bossUsageMusicIds = (from idx in Enumerable.Range(FirstBossMusicId, BossSongMapLen) select (EMusicID)idx).ToArray();
-
-            Dictionary<EMusicID, int> selSongMap = new();
-            foreach (string usageStr in usesSongIdcs.Keys)
-            {
-                var usageSongs = usesSongIdcs[usageStr];
-                if (usageSongs.Count == 0)
-                    continue; // Nothing to randomize
-
-                EMusicID[] usageMusicIds;
-                if (!StringComparer.InvariantCultureIgnoreCase.Equals(usageStr, "Boss"))
-                    usageMusicIds = UsesMusicIds[SoundTrackUsage.Values[usageStr]];
-                else
-                    usageMusicIds = bossUsageMusicIds;
-
-                // Duplicate the candidate song list until there's enough for all the song slots
-                var songIdcs = usageSongs;
-                if (songIdcs.Count < usageMusicIds.Length)
-                {
-                    songIdcs = usageSongs.ToList();
-                    while (songIdcs.Count < usageMusicIds.Length)
-                        songIdcs.AddRange(usageSongs);
-                }
-
-                // Finally, make the list
-                var cndIdcs = seed.Shuffle(songIdcs).ToList();
-                for (int i = 0; i < usageMusicIds.Length; i++)
-                    selSongMap[usageMusicIds[i]] = cndIdcs[i];
-            }
-
-            return selSongMap;
-        }
-
-        private Dictionary<int, List<ISong>>? PlaceSongsInBanks(IReadOnlyList<ISong> songs)
-        {
-            Dictionary<DataInfo, List<ISong>> datasSongs = new(ReferenceEqualityComparer.Instance);
-            int numTracks = 0;
-            foreach (ISong isong in songs)
-            {
-                var dataInfo = isong.DataInfo;
-                List<ISong>? dataSongs;
-                if (!datasSongs.TryGetValue(dataInfo, out dataSongs))
-                    dataSongs = datasSongs[dataInfo] = new();
-
-                dataSongs.Add(isong);
-
-                numTracks++;
-            }
-
-            List<DataInfo> dataInfos = new(datasSongs.Keys);
-            dataInfos.Sort((a, b) => -a.Size.CompareTo(b.Size));
-
-            // Place the song data in each bank
-            Dictionary<int, List<ISong>> banksSongs = new();
-            int numData = 0;
-            for (int bankIdx = FirstFreeBank; bankIdx <= LastFreeBank && dataInfos.Count > 0; bankIdx++)
-            {
-                List<ISong> bankSongs = banksSongs[bankIdx] = new();
-                int bankOffs = 0;
-                int listIdx = 0;
-                while (listIdx < dataInfos.Count)
-                {
-                    DataInfo data = dataInfos[listIdx];
-                    if (bankOffs + data.Size > BankSize)
-                    {
-                        listIdx++;
-                        continue;
-                    }
-
-                    data.Bank = bankIdx;
-                    data.Address = BankBaseAddr + bankOffs;
-
-                    bankSongs.AddRange(datasSongs[data]);
-
-                    dataInfos.RemoveAt(listIdx);
-                    numData++;
-
-                    bankOffs += data.Size;
-                }
-            }
-
-            // DEBUG DEBUG
-            if (dataInfos.Count > 0)
-            {
-                debug.AppendLine($"{numData} songs blocks selected. insufficient space.");
-
-                return null;
-            }
-
-            debug.AppendLine($"{numTracks} songs selected.");
-
-            return banksSongs;
-        }
-
-        private void ImportSongs(Patch patch, ISeed seed, Dictionary<int, List<ISong>> banksSongs)
-        {
-            // First pass: Build list of data to store and swap channels
-            Dictionary<DataInfo, FtmBinary?> dataBins = new(ReferenceEqualityComparer.Instance);
-            foreach (var bankSongs in banksSongs.Values)
-            {
-                foreach (var isong in bankSongs)
-                {
-                    DataInfo dataInfo = isong.DataInfo;
-                    FtmBinary? bin = null;
-                    if (!dataBins.TryGetValue(dataInfo, out bin))
-                    {
-                        if (dataInfo.Engine == ESoundEngine.Ft)
-                            bin = new FtmBinary(dataInfo.Data, dataInfo.OriginalAddress);
-
-                        dataBins[dataInfo] = bin;
-                    }
-
-                    if (bin is not null)
-                    {
-                        var song = (FtSong)isong;
-                        if (song.SwapSquareChans)
-                            bin.SwapSquareChans(song.Number);
-                    }
-                }
-            }
-
-            // Second pass: Import it
-            foreach (var dataInfoAndBin in dataBins)
-            {
-                DataInfo dataInfo = dataInfoAndBin.Key;
-                FtmBinary? ftmBin = dataInfoAndBin.Value;
-
-                if (ftmBin is not null)
-                    ftmBin.Rebase(dataInfo.Address);
-                else
-                    RebaseC2Song(dataInfo);
-
-                int romOffs = dataInfo.Bank * BankSize + (dataInfo.Address % BankSize) + 0x10;
-
-                string songType = (Enum.GetName(dataInfo.Engine) ?? "ERROR").ToUpper();
-                patch.Add(romOffs, dataInfo.Data, $"{songType} {dataInfo.Title}");
-            }
-        }
-
-        private void RebaseC2Song(DataInfo dataInfo)
-        {
-            var data = dataInfo.Data;
             BinaryBuffer buff = new(data);
 
             // mm2ft will break if the priority for music is not $f
@@ -555,7 +152,7 @@ namespace MM2Randomizer.Randomizers
                 if (origAddr == 0 || origAddr == 0xffff)
                 {
                     if (chanIdx == 4)
-                        debug.AppendLine($"WARNING: Song {dataInfo.Title} has a null instrument table pointer.");
+                        Log.WriteLine($"WARNING: Song {Module.Title} has a null instrument table pointer.");
 
                     chansOffs.Add(-1);
                     buff.Seek(2, System.IO.SeekOrigin.Current);
@@ -563,14 +160,14 @@ namespace MM2Randomizer.Randomizers
                     continue;
                 }
 
-                int offs = origAddr - dataInfo.OriginalAddress;
-                if (offs >= dataInfo.Size || offs < 0)
+                int offs = origAddr - Module.Address;
+                if (offs >= data.Length || offs < 0)
                 {
-                    debug.AppendLine($"WARNING: Song {dataInfo.Title} channel {chanIdx} points to an external location.");
+                    Log.WriteLine($"WARNING: Song {Module.Title} channel {chanIdx} points to an external location.");
                     offs = -1;
                 }
 
-                buff.WriteLE(checked((UInt16)(offs + dataInfo.Address)));
+                buff.WriteLE(checked((UInt16)(offs + address)));
                 chansOffs.Add(offs);
             }
 
@@ -607,109 +204,109 @@ namespace MM2Randomizer.Randomizers
                     // Two-byte encoding $00 n.  Song speed is set as n
                     // frames per tick.
                     case 0x00:
-                    {
-                        i += 1;
-                        break;
-                    }
+                        {
+                            i += 1;
+                            break;
+                        }
 
                     // Two-byte encoding $01 n. Adjusts vibrato parameters
                     // by n. Affects all following notes.
                     case 0x01:
-                    {
-                        i += 1;
-                        break;
-                    }
+                        {
+                            i += 1;
+                            break;
+                        }
 
                     // Two-byte encoding $02 n. Selects duty cycle settings.
                     // Valid values for n: $00,$40,$80,$C0. Only applicable
                     // for squarewave channels.
                     case 0x02:
-                    {
-                        i += 1;
-                        break;
-                    }
+                        {
+                            i += 1;
+                            break;
+                        }
 
                     // Two-byte encoding $03 n. Selects volume and envelope
                     // settings. Value n is passed directly to the soundchip;
                     // Affects all following notes.
                     case 0x03:
-                    {
-                        i += 1;
-                        break;
-                    }
+                        {
+                            i += 1;
+                            break;
+                        }
 
                     // Four-byte encoding $04 n w. Ends a loop. If n=0, loop is
                     // infinite. Otherwise the marked section plays for n+1 times.
                     // w is a 16-bit pointer to the beginning of the loop.
                     // Finite loops cannot be nested.
                     case 0x04:
-                    {
-                        byte origLoopPtrSmall = data[i + 2];
-                        byte origLoopPtrLarge = data[i + 3];
-
-                        // Get the loop destination pointer by converting the two bytes to a 16-bit int
-                        int origLoopOffset = origLoopPtrSmall + (origLoopPtrLarge * 256);
-                        // Find index of destination of the loop with respect to the start of the song
-                        int relLoopOffset = origLoopOffset - dataInfo.OriginalAddress;
-                        // Make new loop destination with respect to the new starting location of this song
-                        int newLoopOffset = dataInfo.Address + relLoopOffset;
-
-                        // Put new hex bytes back into song data array
-                        data[i + 2] = (byte)(newLoopOffset % 256);
-                        data[i + 3] = (byte)(newLoopOffset / 256);
-
-                        // Validation check when testing out newly ripped songs to make sure I didn't miss any loops
-                        if (relLoopOffset > data.Length || relLoopOffset < 0)
                         {
-                            debug.AppendLine($"WARNING: Song {dataInfo.Title} has external loop point.");
+                            byte origLoopPtrSmall = data[i + 2];
+                            byte origLoopPtrLarge = data[i + 3];
+
+                            // Get the loop destination pointer by converting the two bytes to a 16-bit int
+                            int origLoopOffset = origLoopPtrSmall + (origLoopPtrLarge * 256);
+                            // Find index of destination of the loop with respect to the start of the song
+                            int relLoopOffset = origLoopOffset - Module.Address;
+                            // Make new loop destination with respect to the new starting location of this song
+                            int newLoopOffset = address + relLoopOffset;
+
+                            // Put new hex bytes back into song data array
+                            data[i + 2] = (byte)(newLoopOffset % 256);
+                            data[i + 3] = (byte)(newLoopOffset / 256);
+
+                            // Validation check when testing out newly ripped songs to make sure I didn't miss any loops
+                            if (relLoopOffset > data.Length || relLoopOffset < 0)
+                            {
+                                Log.WriteLine($"WARNING: Song {Module.Title} has external loop point.");
+                            }
+
+                            i += 3;
+
+                            break;
                         }
-
-                        i += 3;
-
-                        break;
-                    }
 
                     // Two-byte encoding $05 n. Sets note base to n. Value
                     // n is added to the note index for any notes
                     // (excluding pauses) played on this channel from now.
                     case 0x05:
-                    {
-                        i += 1;
-                        break;
-                    }
+                        {
+                            i += 1;
+                            break;
+                        }
 
                     // One-byte encoding $06. Dotted note: The next note will
                     // be played 50% longer than otherwise, i.e. 3/2 of its
                     // stated duration.
                     case 0x06:
-                    {
-                        break;
-                    }
+                        {
+                            break;
+                        }
 
                     // Three-byte encoding $07 n m. Sets volume curve settings.
                     // byte n controls the attack, and byte m controls the decay.
                     // Affects all following notes.
                     case 0x07:
-                    {
-                        i += 2;
-                        break;
-                    }
+                        {
+                            i += 2;
+                            break;
+                        }
 
                     // Two-byte encoding $08 n. Select vibrato entry n from the
                     // vibrato table referred to by the song header. Affects all
                     // following notes.
                     case 0x08:
-                    {
-                        i += 1;
-                        break;
-                    }
+                        {
+                            i += 1;
+                            break;
+                        }
 
                     // One-byte encoding $09. Ends the track. Can be omitted if
                     // the track ends in an infinite loop instead.
                     case 0x09:
-                    {
-                        break;
-                    }
+                        {
+                            break;
+                        }
 
                     // One - byte encoding $20 + n.Note delay(n = 0 - 7):
                     //      Delays the next note by n ticks, without affecting
@@ -728,47 +325,386 @@ namespace MM2Randomizer.Randomizers
                     //      the triplet / dotted modifiers.The next event will be
                     //      read only after this note/pause is done playing.
                     default:
-                    {
-                        break;
-                    }
+                        {
+                            break;
+                        }
                 }
             }
         }
+    }
 
-        private void TestRebaseSongs(IEnumerable<ISong> in_Songs)
-        {
-            HashSet<FtModuleInfo> ftmsDone = new(ReferenceEqualityComparer.Instance);
+    public class Mm2Importer : Importer
+    {
+        protected override int BankSize => 0x2000;
 
-            foreach (ISong isong in in_Songs)
+        static readonly BankLayout CommonBankLayout = new(0xa000, 0x2000);
+
+        protected override List<int> FreeBanks { get; } 
+            = new(InRange(0x20, 0x3d));
+
+        protected override int PrimarySquareChan => 0;
+        protected override IstringSet Uses { get; } 
+            = new(Enum.GetNames<ESoundTrackUsage>());
+        protected override IstringSet DefaultUses { get; } 
+            = new(){ "Stage", "Credits" };
+        protected override bool DefaultStreamingSafe => true;
+
+        protected override int SongMapOffs => 0x30b60;
+        protected override int SongModAddrTblOffs => 0x30c60;
+
+        protected override HashSet<int> BuiltinSongIdcs { get; } 
+            = new(from int i in Enum.GetValues<EMusicID>() where i < 0x80 select i);
+        protected override List<int> FreeSongIdcs { get; } 
+            = new(InRange(0x43, 0x7f));
+        protected override int NumSongs => 0x80;
+
+        protected override IReadOnlyDictionary<string, SongMapInfo> SongMapInfos { get; } 
+            = new SongMapInfo[] 
             {
-                DataInfo dataInfo = isong.DataInfo;
-                if (dataInfo.Address != dataInfo.OriginalAddress)
-                    // It was used. No need to rebase it again.
+                new SongMapInfo(BossSongMapName, BossSongMapOffs,
+                    Enum.GetValues<EBossSongMapIndex>().Length),
+            }.ToDictionary(info => info.Name);
+
+        protected override int NumFtChannels => 5;
+        protected override int DefaultFtStartAddr => 0;
+        protected override int DefaultFtPrimarySquareChan => 0;
+
+        const int DefaultC2StartAddr = 0x8000;
+
+        /// <summary>
+        /// Offset of the Capcom 2 song address table in the ROM.
+        /// </summary>
+        const int C2SongTblOffs = 0x30a60;
+
+        /// <summary>
+        /// Offset of the mm2ft boss song map table in the ROM.
+        /// </summary>
+        const int BossSongMapOffs = 0x7f2f3;
+
+        /*/// <summary>
+        /// First unused song index available for boss music. The last is 0x7f, but there isn't any situation where that will be reached.
+        /// </summary>
+        const int FirstBossMusicId = 0x43;*/
+
+        public const string BossSongMapName = "BossSongMap";
+
+        public Mm2Importer(Patch patch, ISeed seed)
+            : base(
+                  new IstringDictionary<BankLayout>()
+                      {
+                          { "native", CommonBankLayout },
+                          { "ft", CommonBankLayout },
+                      },
+                  new RomAccessAdapter(patch),
+                  new ShufflerAdapter(seed))
+        {
+            // Loosely construct the ROM. This only works because we don't need the full ROM, we only need the parts that contain the song mappings, which will have been patched.
+            /*int minSize = patch.Bytes.Keys.Max() + 1;
+            byte[] rom = new byte[minSize];
+            foreach (var (i, rec) in patch.Bytes)
+                rom[i] = rec.Value;
+
+            Rom = new ReadOnlyCollection<byte>(rom);*/
+        }
+
+        IEnumerable<C2Song> LoadC2Songs(
+            C2SongGroupInfo? grpInfo, 
+            IEnumerable<C2SongInfo> songInfos,
+            LibraryParserOptions? opts = null)
+        {
+            opts = opts ?? DefaultParserOptions;
+            foreach (C2SongInfo songInfo in songInfos)
+            {
+                Debug.Assert(songInfo.Size <= BankSize, $"C2 {songInfo.Title} is larger than a bank");
+
+                C2Song song = new(
+                    grpInfo, 
+                    songInfo,
+                    DefaultC2StartAddr,
+                    DefaultUses);
+                if ((song.Enabled || !opts.EnabledOnly)
+                    && (song.StreamingSafe || !opts.SafeOnly))
+                    yield return song;
+            }
+        }
+
+        public IEnumerable<C2Song> LoadC2JsonLibrarySongs(
+            LibraryParserOptions? opts = null)
+        {
+            string jsonData = Encoding.UTF8.GetString(Properties.Resources.SoundTrackConfiguration);
+            return LoadJsonLibrarySongs<C2Song, C2SongInfo, C2SongGroupInfo>(jsonData, LoadC2Songs, opts);
+        }
+
+        public IEnumerable<FtSong> LoadFtJsonLibrarySongs(
+            LibraryParserOptions? opts = null)
+        {
+            string jsonData = Encoding.UTF8.GetString(Properties.Resources.FtSoundTrackConfiguration);
+            return LoadFtJsonLibrarySongs(jsonData, opts);
+        }
+
+        protected override ImportedModuleInfo CreateImportedModuleInfo(Module mod)
+        {
+            if (mod.IsEngine("native"))
+                return new ImportedC2ModuleInfo(mod);
+            else
+                return base.CreateImportedModuleInfo(mod);
+        }
+
+        protected override void WritePrimarySongMap(
+            IReadOnlyDictionary<int, ISong?> songs,
+            Dictionary<Module, ImportedModuleInfo> modInfos)
+        {
+            base.WritePrimarySongMap(songs, modInfos);
+
+            HashSet<int> doneIdcs = new();
+            byte[] writeBuff = new byte[2];
+            BinaryBuffer buff = new(writeBuff);
+            foreach (var (songIdx, song) in songs)
+            {
+                if (song is null
+                    || song.Module is null
+                    || !song.Module.IsEngine("native"))
                     continue;
 
-                try
-                {
-                    if (isong.Engine == ESoundEngine.Ft)
-                    {
-                        var song = (FtSong)isong;
-                        FtModuleInfo modInfo = song.ModuleInfo;
-                        if (!ftmsDone.Add(song.ModuleInfo))
-                            continue;
-
-                        FtmBinary mod = new(modInfo.UncompressedData.ToArray(), isong.DataInfo.OriginalAddress);
-                        mod.Rebase(BankBaseAddr + 1);
-                    }
-                    else
-                    {
-                        dataInfo.Address = 0x8001;
-                        RebaseC2Song(dataInfo);
-                    }
-                }
-                catch
-                {
-                    Debug.Assert(false, $"ERROR: Rebase failed on '{dataInfo.Title}'");
-                }
+                var modInfo = modInfos[song.Module];
+                int romOffs = C2SongTblOffs + songIdx * 2;
+                buff.WriteLE(checked((UInt16)modInfo.Address), false);
+                RomWriter.Write(
+                    romOffs,
+                    writeBuff, 
+                    $"C2 Song Address Map {songIdx:x}");
             }
         }
+
+        /*public IEnumerable<BuiltinSong> CreateBuiltinSongs()
+        {
+            Dictionary<EMusicID, ESoundTrackUsage> songUses = new()
+            {
+                { EMusicID.Intro, ESoundTrackUsage.Intro },
+                { EMusicID.Title, ESoundTrackUsage.Title },
+                { EMusicID.StageSelect, ESoundTrackUsage.StageSelect },
+                { EMusicID.Boss, ESoundTrackUsage.Boss },
+                { EMusicID.Ending, ESoundTrackUsage.Credits },
+                { EMusicID.Credits, ESoundTrackUsage.Credits },
+            };
+            HashSet<EMusicID> stageIds = new(Enum.GetValues<EMusicID>().Take(10));
+
+            List<BuiltinSong> songs = new();
+            foreach (var (songName, songId) in Enumerable.Zip(Enum.GetNames<EMusicID>(), Enum.GetValues<EMusicID>()))
+            {
+                int songIdx = (int)songId;
+                if (songIdx >= MaxSongs)
+                    continue;
+
+                IstringSet uses;
+                if (stageIds.Contains(songId))
+                    uses = defaultUses;
+                else if (songUses.ContainsKey(songId))
+                {
+                    var usageName = Enum.GetName<ESoundTrackUsage>(songUses[songId]);
+                    Debug.Assert(usageName is not null);
+                    uses = new() { usageName };
+                }
+                else
+                    continue;
+
+                BuiltinSong song = new(
+                    "native",
+                    songIdx,
+                    songName,
+                    true,
+                    uses,
+                    true);
+                songs.Add(song);
+            }
+
+            return songs;
+        }*/
+    }
+
+    public class RMusic : IRandomizer
+    {
+        /*/// <summary>
+        /// The default uses for tracks that have no uses specified on the song or module.
+        /// </summary>
+        private static HashSet<string> DefaultUses = new(StringComparer.InvariantCultureIgnoreCase){ "Stage", "Credits" };*/
+
+        /// <summary>
+        /// Map of which game songs belong to which music uses.
+        /// </summary>
+        private Dictionary<ESoundTrackUsage, EMusicID[]> UsesMusicIds = new Dictionary<ESoundTrackUsage, EMusicID[]>
+        {
+            { ESoundTrackUsage.Intro, new EMusicID[]{EMusicID.Intro} },
+            { ESoundTrackUsage.Title, new EMusicID[]{EMusicID.Title} },
+            { ESoundTrackUsage.StageSelect, new EMusicID[]{EMusicID.StageSelect} },
+            { ESoundTrackUsage.Stage, new EMusicID[]{EMusicID.Flash, EMusicID.Wood, EMusicID.Crash, EMusicID.Heat, EMusicID.Air, EMusicID.Metal, EMusicID.Quick, EMusicID.Bubble, EMusicID.Wily1, EMusicID.Wily2, EMusicID.Wily3, EMusicID.Wily4, EMusicID.Wily6 } },
+            { ESoundTrackUsage.Boss, new EMusicID[]{EMusicID.Boss} },
+            { ESoundTrackUsage.Refights, new EMusicID[]{EMusicID.Wily5} },
+            { ESoundTrackUsage.Ending, new EMusicID[]{EMusicID.Ending} },
+            { ESoundTrackUsage.Credits, new EMusicID[]{EMusicID.Credits} },
+        };
+
+        private StringBuilder debug = new();
+
+        public RMusic()
+        {
+        }
+
+        public override string ToString()
+        {
+            return debug.ToString();
+        }
+
+        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        {
+            debug.AppendLine();
+            debug.AppendLine("Random Music Module");
+            debug.AppendLine("--------------------------------------------");
+
+            Debug.Assert(in_Context.ActualizedCosmeticSettings is not null);
+
+            LoggerAdapter loggerAdapter = new(debug);
+            Log.Push(loggerAdapter);
+            try
+            {
+                this.ImportMusic(in_Patch, in_Context.Seed, in_Context.ActualizedCosmeticSettings.CosmeticOption.OmitUnsafeMusicTracks == BooleanOption.True);
+            }
+            finally
+            {
+                Log.Loggers.Remove(loggerAdapter);
+            }
+        }
+
+        public void ImportMusic(
+            Patch patch, 
+            ISeed seed, 
+            bool safeOnly = false)
+        {
+            Mm2Importer imptr = new(patch, seed);
+            imptr.DefaultParserOptions.SafeOnly = safeOnly;
+
+            List<C2Song> c2Songs = new(imptr.LoadC2JsonLibrarySongs());
+            List<FtSong> ftSongs = new(imptr.LoadFtJsonLibrarySongs());
+
+            Log.WriteLine($"{c2Songs.Count} C2 and {ftSongs.Count} FT songs loaded.");
+            Log.WriteLine();
+
+            List<ISong> songs = new();// imptr.CreateBuiltinSongs());
+            songs.AddRange(c2Songs);
+            songs.AddRange(ftSongs);
+
+            var usesSongs = imptr.SplitSongsByUsage(songs);
+
+            // Pick and import the songs
+            Dictionary<EMusicID, ISong?> songMap = new();
+            Dictionary<EBossSongMapIndex, ISong?> bossSongMap = new();
+            int triesLeft = 8;
+            while (triesLeft > 0)
+            {
+                Log.WriteLine("Importing songs...");
+
+                SelectSongs(
+                    seed, 
+                    usesSongs,
+                    songMap,
+                    bossSongMap);
+
+                HashSet<int> freeBanks;
+                try
+                {
+                    imptr.Import(
+                        songMap.ToDictionary(idSong => (int)idSong.Key, idSong => idSong.Value),
+                        new IstringDictionary<IReadOnlyDictionary<int, ISong?>>() { { Mm2Importer.BossSongMapName, bossSongMap.ToDictionary(kvp => (int)kvp.Key, kvp => kvp.Value) } },
+                        out freeBanks);
+
+                    break;
+                }
+                catch (RomFullException)
+                {
+                    Log.WriteLine("WARNING: Attempt to select songs overflowed ROM space");
+
+                    triesLeft--;
+                }
+
+                Log.WriteLine();
+            }
+
+            Debug.Assert(triesLeft > 0); ////
+
+            Log.WriteLine($"{songMap.Count + bossSongMap.Count} songs imported in total");
+            Log.WriteLine();
+
+#if DEBUG
+            LibraryParserOptions opts = new() { EnabledOnly = false, SafeOnly = false };
+            songs.Clear();
+            songs.AddRange(imptr.LoadC2JsonLibrarySongs(opts));
+            songs.AddRange(imptr.LoadFtJsonLibrarySongs(opts));
+
+            imptr.TestRebase(songs);
+#endif
+
+            return;
+        }
+
+        private void SelectSongs(
+            ISeed seed, 
+            IReadOnlyDictionary<string, List<ISong>> usesSongs,
+            Dictionary<EMusicID, ISong?> songMap,
+            Dictionary<EBossSongMapIndex, ISong?> bossSongMap)
+        {
+            songMap.Clear();
+            bossSongMap.Clear();
+
+            foreach (var (usageStr, usageSongs) in usesSongs)
+            {
+                if (usageSongs.Count == 0)
+                    continue; // Nothing to randomize
+
+                int numNeeded;
+                EMusicID[]? usageMusicIds = null;
+                if (!StringComparer.InvariantCultureIgnoreCase.Equals(usageStr, "Boss"))
+                {
+                    usageMusicIds = UsesMusicIds[SoundTrackUsage.Values[usageStr]];
+                    numNeeded = usageMusicIds.Length;
+                }
+                else
+                    numNeeded = Enum.GetValues< EBossSongMapIndex>().Length;
+
+                // Duplicate the candidate song list until there's enough for all the song slots
+                var cndSongs = usageSongs.ToList();
+                while (cndSongs.Count < numNeeded)
+                    cndSongs.AddRange(usageSongs);
+
+                // Finally, make the list
+                cndSongs = seed.Shuffle(cndSongs).ToList();
+                if (usageMusicIds is not null)
+                {
+                    for (int i = 0; i < numNeeded; i++)
+                    {
+                        var musicId = usageMusicIds[i];
+                        var song = cndSongs[i];
+                        songMap[musicId] = song;
+
+                        var musicName = Enum.GetName(musicId);
+                        Log.WriteLine($"{musicName}: {song.Title}");
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < numNeeded; i++)
+                    {
+                        var bossIdx = (EBossSongMapIndex)i;
+                        var song = cndSongs[i];
+                        bossSongMap[bossIdx] = cndSongs[i];
+
+                        var bossName = Enum.GetName(bossIdx);
+                        Log.WriteLine($"{bossIdx} Boss: {song.Title}");
+                    }
+                }
+            }
+
+            return;
+        }
+
     }
 }
