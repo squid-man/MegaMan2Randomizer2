@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
         <Version>0.6.6</Version>
@@ -33,7 +33,7 @@
       <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
       <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
       <PackageReference Include="Troschuetz.Random" Version="5.0.1" />
