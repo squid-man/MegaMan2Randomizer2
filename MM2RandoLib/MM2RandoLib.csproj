@@ -39,6 +39,14 @@
       <Compile Remove="Data\SoundTrack.cs" />
     </ItemGroup>
     <ItemGroup>
+      <None Remove="Resources\FtSoundTrackConfiguration.json5" />
+      <None Remove="Resources\SoundTrackConfiguration.json5" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\FtSoundTrackConfiguration.json5" />
+      <EmbeddedResource Include="Resources\SoundTrackConfiguration.json5" />
+    </ItemGroup>
+    <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
       <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />

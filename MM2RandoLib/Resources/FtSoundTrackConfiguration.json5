@@ -182,832 +182,6 @@
 			data: "deflate:zVZdaFxFFD5n5v7tT3ZtzQ/ZJWu6NcYNIXWpCRpZUvVFUEFEKFgQxfqgpb5oi74YuBcrii9xRcJW3wT7IEJCoYI/oQ/2xQehIOKT+VNbxYdmu9nczcb1nLl37242m5+WBpzde+abb87MnfPdM3PvKYzha+oHd8W+jmANIM4GBKMoEnrxMFsuNb+oBlIRfmGMknkEnQdGDAFhAtGwZehcNIPpsKEJEORW3Qh53jwr1Ng13hEJWaZpGLpGLc2KxyxmQxHT0r1BcRlhJijwiDcsHLLUQMO/FRfpFdEo2FogpuY3dc1iIwXCfTiEI/ggjuMxfAKfwufweXwBTyJgnBbbC3DgWegke0LZV9nefQ7u5Ro/Buj6FN6AJwH0r+AeYi6Qz3fcp1fhbYDTeAYPHZOfAFzCy/gj/oy/4XUs4gaa4oBIigFxRDwsHhdPi+PiJXFKnBGT4n2RF5+JL8SM+Eb8IH4Sv4ol8Y8oC5Sfyy/lHP0uy1e0Uxqj7bhlbcbnjhsz23Dvahe1q+brGvde1Get9wzufcC8EurW6xyjW+fO6metWcsIz8kl463QldB4ZE6OWhfCsxajE6FfIh73cng66vlNRypRj3smyhyjS9HhjqWwa87JVMf3Hd76Tndclt49TsaYY/RmrM55foza+X1LfhhdseakDQt5dI+eF1Bi04Ky3Mpu4os7uo0yYlMc3dRUqDFoj25jDllaoFjr6es9NJ/q6z9km8tul1ecLhMm1PpLYzzVmBrCgwPUmDjg99ftIUZs3HFG40EAyYn59AQcsfHPaqKSWKfLq51KAm38Iy9uPvZobrzEZjVAbThnHEHYSFPeYGqFTTFAWzknB9dyOJ/St1jZj1z361stSYyLlRQurackrTfAd4qn1VdG9AKCLNDRVpB0wRro1NALUBlu24PUk5FDclClLLhDrC+bFpThVmYTX9zRbZgRm+LwpqZCjUF7dBtRT5xlTOt7t39tJOU+ir02iKSgVjDWMkAykoh1ialZzMCqz5DGxGytrWbtSyMswogKlsMOUEOSgN9ft9bTSUk/n9Q/FHD/BwA2Xjsvs1v/Dl3ob0Q3sZbYrXb9zeqQwubvlW5z3lPUUxAXCnBTiVPP0iGZacng1Uy9D8gxK4GnmJosB3tANvkbBSgPt+ugiUoZyQnTg4d3rHtxYNv6VtOnSSg3UVbWhvVE4xRbT2wkNredc+GNBLBKWVapixQqUdgcUxflGyuwwPGXfNFghdOy1JSWHG5IpWZpl9SUXHNsSRyUt1vz9rM52kU3RdGS9fBy12Jqz6y7lXaoQv+wM3nJZTrKdAal+plW5Aj4yNum3993Kl9KjTQjSVf8FvKhWW5NuRsZmneV0+02RLFpF9Fe4stJUutajlBAJdU+s7FdxHdQtHaHFrebDyytNUd8uVR6rWZ9Dct+8tXlidGO9amO3dTgQ0TLtf3bkNtc6F3L66YFIN0FvZT2YVHBpgNCPWZ+bIbqbjkhbPl3Hqcmaz3JVNpNp8vpdK23Dp20DPaWvtAIT29sM93fZjbkYS14bvVHmsdq0qzfIdnH09ZSbqo24A7UBt3BWnAb+rSqpiOHI/1xmrNnpxH0Xph6pxKn2ZsvJy44VeKgLCctTdgtCxZH2gC9OH0QDtgcT0Ft6l1tNenwWPXx91G7r9d5BRf+H9+vKuyGjl67E/3oO00iTaXHQdkp9yaDQ0/wdue5nhfV1FB6YySb+/eoM4H/AQ==",
 		},
 		{
-			title: "Final Fantasy (1)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "0 Prelude",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "1 Opening Theme",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "2 Ending Theme",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "3 Main Theme",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: true,
-					number: 4,
-					title: "4 Sailing Ship",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: true,
-					number: 5,
-					title: "5 Airship",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 6,
-					title: "6 Town",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 7,
-					title: "7 Castle Cornelia",
-					primary_square_chan: 0,
-				},
-				{
-					number: 8,
-					title: "8 Mount Gulg",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy (2)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "9 Matoya's Cave",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "10 Dungeon",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "11 Chaos Shrine",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "12 Floating Fortress",
-					primary_square_chan: 0,
-				},
-				{
-					number: 4,
-					title: "13 Sunken Shrine",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 5,
-					title: "14 Shop",
-					primary_square_chan: 0,
-				},
-				{
-					number: 6,
-					title: "15 Battle",
-					uses: ["Refights"],
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 7,
-					title: "16 Menu Screen",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 8,
-					title: "17 Game Over",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 9,
-					title: "18 Victory",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 10,
-					title: "19 Using a Tent",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 11,
-					title: "20 Prelude Copy",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 12,
-					title: "21 Save Jingle",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 13,
-					title: "22 Use Potion",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 14,
-					title: "23 In the Treasure Chest...",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy II (1)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "0 Prelude",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "1 Sound Effect 1",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "2 Chocobo Theme",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 3,
-					title: "3 Main Theme",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 4,
-					title: "4 Main Theme",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 5,
-					title: "5 Main Theme",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 6,
-					title: "6 Fanfare",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 7,
-					title: "7 Sound Effect 2",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 8,
-					title: "8 Sound Effect 3",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 9,
-					title: "9 Join the Party!",
-					primary_square_chan: 0,
-				},
-				{
-					number: 10,
-					title: "10 Castle Pandemonium",
-					primary_square_chan: 0,
-				},
-				{
-					number: 11,
-					title: "11 Ancient Castle",
-					primary_square_chan: 0,
-				},
-				{
-					number: 12,
-					title: "12 Tower of the Magi",
-					primary_square_chan: 0,
-				},
-				{
-					number: 13,
-					title: "13 Imperial Army Theme",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy II (2)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "14 Dungeon",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "15 Town",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "16 The Rebel Army",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "17 Battle Theme",
-					uses: ["Refights"],
-					primary_square_chan: 0,
-				},
-				{
-					number: 4,
-					title: "18 Battle Theme 2",
-					uses: ["Refights"],
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 5,
-					title: "19 Sound Effect 4",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 6,
-					title: "20 Victory",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 7,
-					title: "21 Game Over",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy II (3)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "22 The Princess's Seduction",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "23 Revival",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "24 Reunion",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "25 Escape!",
-					primary_square_chan: 0,
-				},
-				{
-					number: 4,
-					title: "26 Waltz",
-					primary_square_chan: 0,
-				},
-				{
-					number: 5,
-					title: "27 The Emperor's Rebirth",
-					primary_square_chan: 0,
-				},
-				{
-					number: 6,
-					title: "28 Finale",
-					primary_square_chan: 0,
-				},
-				{
-					number: 7,
-					title: "29 Sound Effect 5",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (1)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "0 Resting at the Inn",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "1 The Prelude",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "2 Crystal Cave",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:1VZ9bBzFFZ/d29mdvfOddy/OOcbBcvxRn4/12WfvWRc7ju8cYxKEXKAtpG6JUZuiFqm0qqiEKnRGcZJerl9IpvxBK9RKqEVVWrWUVukXogiFyEIVQha1IoRSN4UYrBRRf8f0+mb27d1yThyHRI0yo7f329/7mPfezu3sS8qXlL+KSYzQiYBUIKSyrVBJqKoxXff7A4GKimCwsjIUCgYrKgIBv1/XGdM0VaVUUXw+WZYk0rSNXHIUxFUS148VuLCJwP2FxnWB149rUsM1WmozVX2zMLqppdaP4EVGxUXGVfbiuia4mQ7eUoiQ8ocBsXg0Hg8C8pAQE4JCWIbu0pW72huZc3vHg7sIJ8dNInsKsQ381JJ3cVw0zO5C/WXDbJzI/sLdV5CIUhy+4pCLQ/roIGPKuHJM+YHyQ+VHyk+Vnyu/VH6j/E75g/IXhUiVhNAqcitcv0qehutJokuEJqSH4fpjaatMaJ/8e7i+JQd9RKoB2QvyGMgrILpCTimvKdPKGSVk+kYI2ava3/HdRchJ03+/DPdrikoNehNtonGaogP0DnoPvZ8+SB+mWZqDmQf5vkBPCPQkfZr+TKBn6XH6nEDP0xP0BYFepC/TSYFepa/RNwSapm+i3Qx9h54H9D5dpf+lipqjqmqoVSqPd5PqxmtS42qXugu0u9UcdeagSowzhU8YRP62RIJtxj8m5A8TcjZIpJkJeSURShjt/I5kSXtozLAR26FbjE7EnaF2ow1xW6jTiCGOhf7ZivBsa6jZOOw7co+zSgLpRMji7N0OayFrhYAbdjhAtzvoX/FAVuHqtwHIMe43RIwcIcav1T+qL6t/U6fVGXVOXVSJ5teqtDotqnVqu7Qh7U5tRDuoPaQ9oh3Svqs9qf1E+4X2vPaCdkp7XXtTe1t7X1vVFBZi21gDs1g3S7Pb2afZAfZl9g32KDvKHmdPsWfYr9gJ9qKYL7FTiCbZFJsW6C12jr0r0Bxwjn6REd3hZH0K9BxV6BHktgFHdI4adAu5OHARwaX0AeQGgbMEN6zvR25EP6g/KLiH9Ef0Tr9Y1/+B/3jAyeuBivqgg04Hnwg5aLiSGZi/cVKgSWPKKK3xhuCmjRnkzhpTbEpw541lo5TfjOBWDcV0ONWcYsuGk59hlmpTTI7C5nbk6sDOMJ3aomapL9sFFzNts9S/qOn0pRs53mfbdPqXQq4H4nWbTp/d/g0ClzKd5zGMdneabv9GzIPIPQDcsLD7uvkt5B4F7qDgjpqn8Fk+bj5lPiO4Z83nzBMC/dk8NyGv1ZDsMZInBHbmsdr8YenIpxwMG/TYOxPyYk3+sHzkLoe7OZ/lFp9x7oBH23rO3ltkUd/M2c8WWdS3cPZzRRb1rZy9r8ii3uLsaDEfksi1Stkc6O8jEnA5znVJWZIESYH0gfSDZEAGQfbhbwb5PrTj9twvAWKBQFTSAtIMUg9yM0gtSARkG0gNcg0gTWjHfeIgHRiHx+wB2YXr8DWH8LcP+R60S0gWet1w2RPo/ijJO55xjNSMkRtwpRrPyrXI1aNdC/pcrw6IfSTdiPlfm523ucojiOswowa0jWHGcYzVjRX14FoDWPEQ/vL7PnIt/zn/3/z5bulBm270iWOMGMZswDXqPOvXetZtwqdreeru8qy7C3eHu+5ez/r9nvpT6NfhyaHFU389rrtV5DGAFd1w2UPHt+P9DswxivZtWION8XZijWlc71b8TSO/E+1s9GvDOFGMuwPX2Y61V2MOdZhTI+YYw5zbsYZurKkXaxzAmvluqZFuxPxvg3MVauBn7wHnbB3K35YXd+L0HeAn8eeL5zOe1P3cAtlebjHi4B7OI+7m/H4Hd3EecXs+no9xHX5bAPqkgxo5e0dxLWQbOLuvyKK+jrNDRXZfMdae0leD+MrJ1TlfDkOlL4faXK3D7SHSUR/JnTbPmufNZVMOV4Qj4fpwLGyHd4ePhCdhvhp+PRzZ4qCRLa9s2Vs1Gf5i1Veq/l5171bOjmz52tZ/C1TiWKQr8tsIR3+KnI6MVHP0hWqX+161wx2vnp2Q/tPoOV3405p3jwNXseBqXMVimUvHuQ/qyx67iNrg+S/PuxpXsVDm0kFGSRz607EU9bws+bZZdt8ZrmLF1biH4KrteZ/CzupY9Abnbkvl+Sy7GlexUubScYisWany2dXPZ6KvNNt7+Yz38Lne3kpdsFKrVmrFSi1bqSUrtWilFqzUvJUa/zAlw18BpBdktbyB5fleji8v+GJ2G/FnCi1VYzKXKBf9kDQW5XN8TBJ/qFFoRzKzfl5IZlaTmZVkZjmZWUpmFpOZhWRmPpnxlneIZNfs9Pp5wU6v2ukVO71sp5fs9KKdXrDT83Z6fCzgTa/1EmlvxF9tO1qhCa28Ca1ijkexMdf7MV3yIa11k53wufPugD/rm037stJ7/Swrp0FmuwjXzfVVZ9l7vUCUHw/e1/lmePfe+1rYcQV8XWNzoK6xJTBrexIrZtpL5vqBcLbADs8JFi0Ldzn+6tOMQppjgdnNd/YjFQ1ygtfTT+YGREXkALzryf8A",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (2)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "3 Elia, the Maiden of Water",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "4 Lute of Noah",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (3)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "5 Return of the Warrior",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "6 Town of Water",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (4)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "7 Fanfare",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "8 Chocobos!",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "9 Good Ol' Fellows",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:3VdNbBtFFH47O+Osvc76h7TlkKA08cZee+O/OonbhhAEqCcEUiWkCg5IoCJARQX1ABx2wW4KFQipFKSKQBGop4IEQklBgGo4cEIVJygXaEr6k4SWCgGlFZWWN7NrZ9s4Pw7NhYnmm/fevvfmzfdGu06N3k2Piz+Iap+pkgMQyTjrIRLRtPb2cFhVQ6FgUFGUNhwBHIwxikOWZUKIhAN6nHaIaO1hNRQUbs29Sksl5f5uBA8RQW6YBJ1RWDAcgZLAe52RJfIG5rPPbzG/T2O0sCHlFAVlCPI1HGxjMpFgu7P9P1ZBGkNqjGVrGXG6l912aXoTt8Kiw7/Tatu30vwt3rmVpi046dbKXsOaMYhIq4mh3r4lp7SmPVht/p30CfoUfYY+Sy1aofvoq/R1eogepkfoUfoxnaCfU5AiuEkHzrsA2OPwHuLXEMfzFXFukYBtkw4jHpeAAEuRhxFfJp8iniIdMsjD8pOIu+V3ZaBHZGAfymdkkMIUvqEn6Pf0Jxr+ihwAOKvQH8k4wAOa8ra0H+Av6tAgu4V1sSQrsK3sHnYf28EeYbvYi+wg/r3JxtkHnvQFO8GmhHSB/c4uC+kKu8YgwCWCBISEFA6sD3QLKRXIBLJC4hlcqRgoerbBwJ7AJ4F42z9tRBlVLCXe9rNSgV8OSteiVoe1weq0uq3eqjUBsrBe9qzcUoPQSxJMVCBlmVbOKlllayvaK4ARlmdDfRQssCUfTl4tC8WHkxVpyinZOdus2pPTWMex6TJCqjaMWMKZqY0gDuLsr40SjJBHiDVRFtIgSinZllOSPXlmtHamXEsp9jEg1pfTOcUi/TjFKltSEdcirgXfWsC17md6fufTSat9mmtpz5pGa9pbU741hWvdr24/34fRKZYjNlmIfay/Kbbqf/ZKJ27VKVnA5zlnHWpo8/T/0cO9ZOyAA7WWe5nz7OdLq+1lH49O3MReJlimKTpwfJ8KcFH5W5GCanBd8Lngt8FcqBAaCn0X0tVcKBcaU/vD+8Ncuhiutl9qz4Xu1+Ch2Wt5KEARNiFPtpLnSEyBBtYurMRvFbIiZGUmH7bobNb3lCPXXS0tENTZq0kuabqIcjE5j669Y8U+ypRjElupkLxt2tU0y6KCk5gs38C0cMjaaf4+aNm1ilWfxFszDidnTH7G9A1n5Cy43AwInBnULDa71kz6awF2k9j0+5C1IPM612UYLMAmKIGwKAVhdznJIIOuVPDFuEyXXQY3cW7y8z6KFykwifEZX76CrxscC15F9efAFrKlL8XoQnYX81yELl3QZdq6XU02ZTYjMClQJ8s4z+RvHpvZBua9O1nv40yWe5lNvArzGd3syhC+DZuwuhI+FX0pJIavl1n3rPwN3Apdfm7FZSWGQOFNdIE9rEIMO4v3OYOtSqrwwz78MblT2609r+3VXtMOae9rH2rHtHNaKNIb0SOZyK7IGEq9kXcipyJ/CCkYfTD6SpRLR6NT0T+FFI49FnsjxqWPYjOxjXEumfFH43tQsuIQmsMfUjnIY8vs6A1raqEd1NMHpav842bHfGj4LRV1yjHshG1U7Q0JZrOKyrWqocL4XmlsP4yLZF3cmd8Uw1tFMMsKLGLjuVdRaCWBA8h6GaVy3ddI+FAXPv4N69vrqq2WxVMXfy33WurcZsw2hPoAzpL3Hc57urB5u3Mbrwl69Rv3jHVjZsy+IXndnvVzmW7V/Lvvy8Ot/Gtu4Akv8KPPGQ3qFmMDVOHDXEwJTArswywX+Y+A04KpLlFXV4Ul8C7qWE+vXe2J/dbDpnoY7wuWWLXV5chtThaoPqI9NNQ64brdzV8xggpDbYXYFuny8d+1LCsV1evJQkY82u8UAS7eIfB2gcMxi23x8TCIusuUy3Rss1BcHGqUjnSio0ts3u0g6u7ReA+evg0vjKkW0eg+vpQdsGJzIygP49zisY//L0AJZxFnHmcWp4kzjXHuQV/o7tthdW1U+9SMam6zc/AWf1v8Cw==",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (5)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: true,
-					number: 0,
-					title: "10 Go Above the Clouds!",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "11 Cute Little Tozas",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "12 Jinn, the Fire",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "13 Living Forest",
-					primary_square_chan: 0,
-				},
-				{
-					number: 4,
-					title: "14 Hazardous Short Music 3",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (6)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "15 Beneath the Horizon",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "16 Time Remains",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "17 Vegies of Geasal",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "18 In the Covert Town",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (7)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "19 The Requiem",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "20 Opening Theme",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (8)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "21 Deep Under the Water",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "22 Shrine of Nept",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "23 Item Get",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 3,
-					title: "24 Garuda Defeat",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 4,
-					title: "25 Big Chocobo!",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:7Vd9bBxHFZ/dvb2PnfvYtZ312s6H49g+3916vXfnPRsH2ihRXUgrQKiEksZNgBKaQEuQ6Qct2b36kjSRmpQ0QQVTgUAUJD6UIkgoEDVIkKh8tP8QUSkq4MStYzuhhShtU2pY3sztbjbOObk61/4Dc3pv3/72zcxv33szO3eT8IPIaoH8kBh/GjM2QolP2AbiOJ4PhSIRjGOxRIUWr9Bi0KLRKMZYgBaJRMLhcAhaMBjkeT4AjeM4lmUZaOi6HJpHs6lmqL7ejl1Gs8wi6rGIeCyCHgvOY1EDEl+wPzDvWM1u7yLtD9tLq6LtZRR7GQ17GeW9jNaI1Xft7TUN5uyGKzShQqsU/trW7n12HcLRWDwRj0WxEAl7Ib2sBSo0rkJjKzSmQkODdg4lguGIQOevOsIQPIgLIQqcYDoYqV2p7mWX2oJ/xmsbLG8vvhp9yD2kFTIIQYX4QWiqHz5jy4iOQQYho/g2sQqVsBr2IDeHbr04rVIKK6XLl5pqSZJNZ45ZK81/5WKqNbnbYWu5Krl3JUwP2kO1CxN3pXZNNG+1B+ezICttefMu+8/aa2vFodK2O9/FnrXTc6/G4MVceUkgcVftlqt0uvRr2mv3vr1Jykmed7+83TOPfujPkRORschE5GzkXORCZCbCCmEhLtQJirBYaBfSgi4UhAHhOmGlMCggJoEQ34C+BPpX6D+gVzAHGcS/wdzEIn43a3CIuY9D/DnuvQHE3xHYBfongckAYkQe8dfzu0Ef5NNBxH8k+DPQLwZvCyG+FPob6FD43jBivgnyJxAugpjlIMMR9FFhSPi0cJdwj7BVaNgQ3ILQj8SGX7NbERLlwI0MXF+QuW+wDyN0vjH8NfZ+hJ4UDgi/EH4jPCe8IJwUzgivCbYQwfV4EU7iLF6Ob8Afwh/Hn8J34WF8D8iD+CH8YyxFh3FP1Ihuiv4OrGHATkclat0Y2xQ1Y8R6IvbHmBon1ur4A/ET1LoQTyV2JYj1/cTPEy+D9TrITIIVh3EAJC42gJZBWsVO0F0gOYr1U4z4raR+N4P+oHirWO67zuu70eu7RXxALPf9srhD3COOgvUd8eQ+ZqZvPVo/ZicZdQgxDzNoCIXNwCmDNdHJgbDJ5kHGc3GAdAIZcKuDnNLgTmcm9rHnW8BqBWkHSTpXcj8XvsiHd1aBI2aE0/O6mlSJTql6ztMlldnGbd+C1iNkIsJo3JBM/qRKCGbgVgUh1/EcwPQFciB5gvTx7nxtznxts3jMxsn7LJmFL7kCTnhrOQ24Ep3MgM44Gni/41F7uxHpA+ln5iatlnSGDEr8xgfIoKQ0Trndc95cugczLrGUM2vKR/BKeKfDtPMqOGFr9Bm6qpd1rj/n6EwpR9lSWn2EVs6lZbgloBNYIzAZU2OWOCMTNppz7XSSORfupinjS9dcOGU7YOQyOar1fF9eL2s3toTHeH7uhL2U4U2Gsh3XeH+VpGZVSyXcX6OpWbVaCSd08waQ04mGGjCgCqgm6w5hYJlydoOXNWNRFXXr4Xl3Tafomi6lDKTC1pMjMVg0pK6HRX03YgFZR5DWIZ0gn7uItA/lCLL5ItI5BPd3lu/B2li2UsTrDseLMYnPJz2fDZ51e9myiPc6x5ujW+NtdLbyK6xROdgmOfVj4LUWhXewaM1x8a/ipHhOnBGDkig1S+2SJvVLK6WbpTXSBmmz9EXJlHZKj0lPSN+TnpIOSU9Lz4D+LbWelZ53rOMedsLDLvqNVel3LeNNSCvqNtUdkvbXjda9Vreo/hCg768v1n+lgVhHG/7VQCxBnoaYpBkTWYfP7GP+naDWmN3GWofRERSAuP0ySTGCdFKr7JOiutxTpXpqHyIrb5KURNpZV6e7ocSnLoGzBNY92PUky3cqy5mMDqKBdIO8qjWbYQufnUnA9UwTakZ/bwma7CuJZSY+WwErYA1DFXbrhm6U/DcjuJDPGgXNuS8Z3DZ2+1Z0ZKqWjMn11Syweon4na0h52zeKJT6uXEDup/KOvNn6c7iTjeeveyZ7j47Q1PGXmhBFnOeqJn/bWAAgg4boZYv5CGs2CAhV5345+FGS2vwsGTA+fCagm/hmf9H/hIAPbNDQkiR22RVLsgr5I3yQ/Ju+VH5q/Ko/C2wvi3/UD4g/xSsg/IR+aj8B7CekydnyA6jgfQwZM3BUpwkQbY4n5ZQeOrNNHmkUVClOu08GrO1xmyoJ6QtQIOoD7a1+BQcHFZNwfNV3YPbgtvvpR+JVb1wDz1XdRHs82Ws2FowTLHYqoFOD25j4KN0w044jf1FPi3/U35LXt94tPEV3+8fPntyJgufG4vx69PZBWZokrwSkSwNkUF1nuoenz1Adb/Pp2y/j+pi6/JlpoDw5JspOrJfT6WiZmCyA/zIBk63a5Zu1GwS9ikXS5cRqlOAu5jqm7HYmiezNI4wY7ZqkV9J5UfYVFq1slapB6dxFm47kikrbZWWaWgUgjMaUOKKorQpqlJQViirlVuUncph5ZjyrPK8clw5AdaLyoTyhvIWWLYSaUo0LWg6pjQ2LW3a0vR7sF5vmmm6pfmp5mPKWPNEs9ZitRxTnmw50BJa+JmFx5SvLyTfrQIQJhRdsdiCL0T9s5HN0OeCCn3c0Ku+oHRX1pvH7CxWcQ53D6PHkQblcGex/T2sub/Y3gO693Eok2FaJvunySRkul6GHLvNR+DAt6eHV/fCp+ZuJIDLI8XOQsB8rNil8ebeNOm6FvGA753OoTzqpcdYi8s7W0i5hIttGfinNoKmU2bGLNGiDiWppnZL1vVOeFYUsdNlxxTVxXQHLIvpdnrTQTW1ExnnA2dx5F+D7i2YrllYl+uHENvBWYkOLgkazk0ccAGBayLDpUGnuS7QXcRG8Nr3Q8zYCgwpd7+QJdvjzlefdA6WSd+R1z04WyKNVQyxV+Qcmj0GOQJ3OIdVq77dsVzp8B1lrVYUd99jhHELntO4Hk7nLWmESVrkV0pyKS7Dqby1GO2CJMZqlL1ErVMXriplmKZrD7xIGIXekZSFq+B7LWlr8RdgVYlrQnt2hFD4vw==",
-		},
-		{
-			title: "Final Fantasy III (9)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "26 Swift Twist",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "27 Good Morning!",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "28 Dancer's Dance",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "29 The Dungeon",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (10)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "30 Eternal Wind",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "31 My Home Town",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (11)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "32 Battle",
-					uses: ["Refights"],
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "33 The Way to the Top",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "34 Sailing Enterprise",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:rVd/aCRXHf/OzL6Z3Z3sbjbdZM82vUsmszuZbHac7GaTu3BU0fYI/iH+ocd5ygn2ULF6iEK9FpxZdq8ptFpPU3LF2oBHwUNakKhQUYwIVrAqQot/SIW79NTaqyn4i+sRGL/fN29zs3ubZPPjLZ/v9/ve9833ve+P92b2ZVZlv+Y/6E+/pGuBBpmUntBYTAoAMkaQgkw61acnE/G4pmkqNsZYDJuiKLIsS9igP4htztJUFlNkCSQAOdi9wmIZyGTS6VSqb7PpejKZ4OvT4rQyrQvmIdiyBZxKnBpBtpsPLPRBOAEJcrcPHaetxKiTUOBEUIGMGk8k9b5UOtOlpbs03DruGDeMS+EquMIuNjsaJKMr7s9YNTi80/YxzBRdDAwGBQOCwejZfCkY2sxVK0cU4C2q5FRwYi/BvLPtY8sPBacPag93tr0n6oPBxNaRFI21tZgILg9vGODel5veLnHq/u3fF4zs6M7BrDQfTO8icLG2ttc1P8E+xR5kn2VfZF9hjzCfNdnj7En2LXaJPce+x77PXmQ/Yj9lqwykDD5yN+IIgPIAfBzpGfgy0q/CkwDsIvwMdW8gEnj5DUnADkufQ3pR+gnSv0g5GaTjMrCH5N8gfUc+owBbUH6P9L9KOQbsY7FLSFdjOoPfsdfY6+w6G/6uvAxwOqv+Uq4DfD6n1tVFgGG1qLrqnHq/+mH1lPpp9Qvqw6h4Qn1aXVavqCvqz9WX1T+qf1avq+vqTVXW+rQhbUSb0Ka192vz+PuQ9hHttJDOaueEdF5rCOnr2lPaJZSe4/3n+dhupCtdpN1aeQGll7j0K7TyCpdeFdLrmhZfil+PTyfmEmcTbyXSyXnt/uSZ5J+Sh/V57ZS+oJt9J/vmtYt9V/oGUg+k5rVvpl5JTac/mZ7Xfpu+lX4w843MvKb3z/av9q/1fzTbgLWNw96oZza9JVDW/ncYkD8LscclWGqA5U14ZdQ0AGd4Fpdcr+rNcAl1nsulY95x731cQp13DCX/2QbgmNf0L10LDNl/JghtkjiCeGNR2rAlDxBLb27kUUIsXTdQQCy1Bv56DwqIpb85d3txN+7JU8iryGuIOcRRIc8qnlTFyb58dRHeLWDPRrS4hShFOI2VI3yig0+GW4OC4E5H30XQHEvwKcFtwdccWohvx2CO3I2OsnJXOsImN+eYzEVaYA15yrd8q+nL/7g5jM6+GQwi3Y88iPsjXJAfW8Z8j81QaBEOYkaElMJdFnK1pRfOk8NVwV0RIHK8JIJAgXa4/5ymG2B4Y1hDBc/ybK/59wm0tVbmE8piwqhniAnjOMGmCRN8gsVpVIaxCYwLIl4gnreRIuIm8bzLTL3AYCz0t4VoDLqNhbIj/CSf/Mlo0W21Fzv0kgon1FFZcYmKzwznREpxtyUJzNInGHk4zWpI38trYpLXis16r6627Me9Yu8Vs+1xK3ZWzkEdodsn6CBrroczVmyvrZ7OUaFbXUXPEHHnPi/n61V9x7q/aov8W4IXOvo76QkUv/Zz0ZAN//ZvBH+d/aap73RAepeBeayW9dgMooqYopJB1MTmXASN+VzTNspaDnTyspixFef3buuUGZETRf1RqspIf4ROV7bKppjL7HstVmAmM6guZD/dyXd0GG2hLG5VQjiG0MJx0cekEzbHRL99LmQ8jUIWDV9Y2fxeun1DyVOcliJeHUFc3Sp+vcax22VFulY4zHu7hi3ekB3f9M3wRbWdu73U0FYh3S6EQuavKx6a8JuAv8JElc0g5hDHxjy9hrAiZTIZ4Z0xczsuaUqAKS6wUuRKKovraKrDZlWMl8Xc6FVGY2W8gky/4BeaFMdJuoz8Jr7LMLSNvG0VmmZ+O5d3pYsc8TbcEXL4zsIgwGeyX8o+mr2QfSr7TPZy9vnsu0jvGnjPgDOwMEDS8sC/B16963L2ntxoLpQuZ1tjl7OtsbM5WP3nLYMn5D8jnN0y23p70z16LSiE13Un6nACPzrPQ359wxn0tLdLIh2Yzkf2uxFDpJ84aY6E/HxreasddUu8SWcFX6uRHUYV8NYUnu8b0Xogvk5fHzeiL7nwy5I/RkX3jjXWw0Y3qL67yHtxDnpZz46sZ+9zvUgA8XUd0i1yzV/XXBvObEsAfubWYdXT327LwFEeSsrDeg3L4wZJs5SPo5iP44j1uY6qkeAXCwrAw7l67onc07nl3JXcCv5+jPhD7rXc8ODZwZXcDwZ/OJgcOjlEmpWheP5knqTbY9/O/yv/gUMrua8dAr8B1wKH3r94ZTagJTngn4N+LN1zdRP/KNHtVS9W016sbs6KD4sG1A3Hc70K/h2r4d8sVgNypj5S1T2lbsxST5plnlQv1viDi9LNCrfj8i4FoCLslPCPXGgL7VSEHZfbqXI7VW6ngg8aki8hWEMSe91BcnB+QzGqzmTJtppFzVLGFVu5oDy2CL5DGzFc2YMKooqo4TqzxKmPchlRQtkRetIdQ8wJTn3hn1ERfXq2PlLE3VsIm3thoZ0JhIU6G9Gy2fKyLPplobMjcw3FJp8FLUVoeZOanBY5tRRnk9qKu0mLkTkNhUdDCdOAiaS1cU3ycYr2ZVbCcfKf0XecB+ORfVdwjPx1Rd8Vc+pFmye3xJ+mEUtEsW7afGycPEMUUTeMOIKygTDF2Ch5jBjj1ky0ZvLdmxFPQooRURylpDUUyy6ZmNpxjTqOXZpsljUTtebB+SfGqCZqkTrYj6eU36Lok8ejJO/GV0dxFUcrayVUWgp4CzLA/wE=",
-		},
-		{
-			title: "Final Fantasy III (12) - 35 The Invincible",
-			streaming_safe: false,
-			primary_square_chan: 0,
-			data: "deflate:tVW9b9NQED/b7yV2nI8G8SUQCJoQ49oNISZNFEo7ILGwsCFV3QAxILF0QQy2lPIhJKSCQsvQPwAWdhYkhu5MLEhIpV9pkZCQGFClInPnOiF1kiZtw53u3i9n63f3fn52Btln6Swjh4H4e1VwARIaT0AiEY/HYtGGqWokoiiyHA6HQpwzJkmiKAiQPg4dzfWy4GXDPdqgrFMhF7ERHxISJXIiKdJedYc63+4b32HMZ/A4tll6n+7SbtOFDs4/5p7pup3+dBp2E8BDYVlRIhFVjUZjsWDffT7AcTfVQtxqfWn11J3qqVWrxdpYtI2pbexAI99yr/d15AOOsyH9kH5Jv6U/ksQUlmBH2EkGQgKAH4ZxvOkuojn4ipkLVwTgd4Q3mD8JIAI/L97DXBVPS8CvSe8kSDOTyXPiPMAou8ZusAl2m91nD1iFPWcf2E0+w1/y13yBT4RmEL8I/Qw9CxP6GF4P6zKhKXle/uKhjDKqPFQILSjflckIobeRxcghdYZPqrUqbFlJm5txm1VgLWcX7OlaCQtF2RYLGGuWZAsFjCLGupVaqsJmWrDBETUvZ5pwv+rGvuoVcdE1nZ2uBzwd9GlHhNlH4uN5mIWoPeCoNVLjwrYall1CNS5joYxKlEiNEVShhNH7cENe1psq+n+rV8S0k0HX0A30VMCD8uB9KEAZ91Mbod1dJGQh2iikbHVpk/ZBzFmMfAAXArgcwGMY36rCVjHZyy7MlqtDu9ZPYR7EqE/YjLMB3G7y1VQUH7GoOf/8XMAHA2440xluiI5o8/wJW86jTBTei4KMls9Oaw7Vc9SVNMq5msFGKxohnZBByCSkE0oTyhDSGjWDkIlou123bGLWumQ4Vkx2H7uUXM1S7xxNQQLtcQc7WvYy+m7bgCRqmCr7Yxf9FxBCLSo1zdxx0iyhnNpNpt6n9T4IKFnRP0+0WqYdt/zPJsltJQGwd54+oAGll3N4fSXnH0rTX2lewz+shl+v/9aaVjrc6aaVDv/yMDIayd6PRHMexqy3ZJBtubGfdvulvwn/t1W/hiff5jpe0TC6PZCoL4/eYQKdZ/eY4dUT/D/+Cw==",
-		},
-		{
-			title: "Final Fantasy III (13)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "36 Tower of Owen",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "37 The Crystal Tower",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "38 Let Me Know the Truth",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (14)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "39 Forbidden Land",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "40 This is the Last Battle 3",
-					uses: ["Refights"],
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:7VdNjNtEFJ4ZZ5I4TjbZVmkQLaI48XrH+Vmn2c3+AgJOUHGCStx6rsQFVkg9jauEgtRbtUICrqWX3pAQP5e2EkckkDjApYJS+rPlp0VISFt2N+Y9exJ5swlNWgpSRTLvzXtv/uzvs9+MZ7RzrKbhn+QmPjUSfoJkM4ae4DHqE5K1eZZksxMTmUy69zOMVErXk8lEIh7nPBbTNMYoJaVHyNCfH2gaaB3nTcMKGqMkho6ukbK/r7dOd35YAJfARWAVXAcWgpVgrTG7j3ppNf/g8Glx3ujMODXJ+TmSncikjZSeTMR5DO8J5mL++A1R6Af5Od8YNuO4DRV//13uM7xLBeDI+NV9ZxT8gql7EI46+Zfsa/YNu8Qus6tsnd1iv7MN1mExLaXltH3aAc3UpjVCs9D9UUL44+QFsF4H8UDehsjH5BpYGUq0p+lLoF+hr4J+jZ4EfYq+A/p9ehb0OXoe9Of0W9CX6G+U8D+oxQh/kbUYaWjL2nNa7CI7RUhZj19kZwg5rB3RjmrHtFXtC+2rWJ4X+GN8la/G8zzPP4nfjn+QQGtf8uXkh8k8t3RiXNlqUEk8NhfoZlKyBsgCSFOTdA6kG/OMmaBPPdAYmQmig8ZfW6MbNYg4IELV4/ruXfxh4yuRmA1iqXpUvzv+fq+/xX7wbc/0dkpJCdqWV/SciFh9fc22x8iFN9nJU+TCYJzH4akZ+AuBXsJxIP9zNC5Dzk4BhjxDcRLiC6giustYAysLyI6KddlquDLnGTdEWsZa5Jotp6WQ7RtO6ArpyDK4ldCtyRnpynYdhlZAogDY6oaiwAgFlqPqiqpFBMSi8ouqXzESR7+kxpXU/KVI3GIeqxCPooxiC7CLfLe2QYMkkQALYQQLwS4GVhEIKIFVgl5kdHjzMoF+L16U9wYyvi81mCAAHOppEBtkCnwbRGA7yD8FxvQQ3WKmJ7yIYD44/xbsQfP6M/ph/Yh+VD+mr+rLqfdS36eeNZ43Muk30h+l8zyWOZ45PnF2Is/t7Ons6dz5XJ4/NXl88rtJa0+ef7Zne8+7e9f3WnqLXF6jd2rCHFjqFWtgcculgaVRsweWYfPMuWJgGTZPs+4MKm2HkML6Gu0gLzfNINmh/mn/pOReYb0XbpGfhdwWckvITXgY/hQQkb90TLltyi1TbpoQM5kkv3YEl/SWCer2flCYyU3vvv7A3NWNA3A9P3YKcCUo4INWPrT0t7dIQW4X5FZBbhbgwgp4sZ2+kCSdAlxgV2CrOOOTCy3ybzI6jLkoSdE+S3O1XlmcrfbKyrzbLW2XRHmL0mkEYc9AfX2N3ClFEpvos50+u6rssrLdYAcYl8u2adR41XC44DYfgdSeP8D28332lS2X1JmkVUg3mILqanPHfNYi83JBzst2AwOkycKmWewCqe+eB0Zh68I5DNaHsd2Ep8o0WtyyBbynQ00L6Ba8RxaAF9oHwOr5oB90+yJZUgQ21Wa3Qp6EyAr0XQRvGaPAuVxekm0MLAHH9zRo0GlNRGIPe7sND4YNj4BpTdnt4abJLT7F//PHAsQzFqEFWZ5Xkd6xE+P4gQAHHjzmYCbA2oUzkhuMnOtGQTCC5626Ain87DgEEn5aNCLghR8aXQg9duIgnrFOmGV4gE4crAR2FbMMHGlKfLd2jAqAWXOE1S4ZLoQso46ao7aNBmhhzKHmqCO3HqbOwTDtTrHY1t/3Lv7f2HCrKKHfCADELy1XAdhQx1KM1RX0zaAXEjGrCFpBggCgRYDnOiZtPGxWMIGrA6ijuKirpO5220FEJNFjPaM2tGB5XFb1x8UOkQa863XVI9wo3IBDeONn4OTrKkKrGJiGs1E3Vz6BLAd07NYmrwUMuj26wgjsjHC2t3hIZ9je4qIEmbRcbQv+oCkM5t/xhnTlLw==",
-		},
-		{
-			title: "Final Fantasy III (15)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "41 The Dark Crystals",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "42 Boss Battle",
-					uses: ["Refights"],
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "43 Parting with a Companion",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 3,
-					title: "44 Added Companion",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (16)",
-			streaming_safe: false,
-			songs: [
-				{
-					enabled: false,
-					number: 0,
-					title: "45 Hazardous Short Music 2",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "46 Salonia",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:tVQ7b9RAEJ712mdfnJxBIIJACDi/zo84d0nuCFyoaGj4B7QgCkSHRIONzgmpqK4DRKgoaWgoEEj8g0hUVOEhUUGNRNAx44yDdeQCEuDVNzs7O+P5ZrxeS3yBhqABBxrPTTECsJqjGbAaM9PmVN0wdF2v4aNpmoqPlFJRFIEP+JoFltVozMxM7z6mOTVVL4IogtzJGZyjMPEZFVIUMhod2X1l+SoiMIFBMjo12Z38qxEUAl9hG3PVxJQAYaF2GEA7B1dQu4d4AXBIHBe2UB7LlwCfpfFQWQfwRUf0xSvRU64q15QbSkM+lVeVT3IA74fKtp06KSG3T6T1AXTTXkrIu1oqhqKvpLCM6CIWEPOIGBEgPMR5xDnEGcQSooNIEBGihfhdPFg7LII0TAl5gCyGYpK7jTi1TzoX0dwnXRkPJwdia9Rf6a/k/VlPZvpAehkONyfVzXB4eWnNPQkbq3LtJWz8bbn/O/5v+/K/4125R3/37nrFmrsSHt3FX+y71NWD6nHVVefVs+oF9ZJ6U91Uv6nfVan52rr2DfVn2qZ2sUba7dpGLdFJu6zf0d8UGhgrxi2DtPvGW6NRJ61Xv15/gtrr+vuh2I6PpUZipMo8zh2cFxC0biOWeP1hKL4GODe5dIfLzyRJ2okQp7lo8jhZ7JKkHfIIuH2EFkeQfWsUaJnmmDuyhdJm2TQHMgk8J3OyvK03TXiwqqytw4OEmRHDSeyr2ShTi7P9qwqqzCbzT2QgPVntZJX7gp2amV3txV6s3w0h5FPl8cnyeG1X1qcr9j/xH8jdvlZr8fRMengMs+JI4lXwc03Xghlhn+eoDu431THHdXW4g2U6PDVNbrVXYeRwk/eyEzufGxDy7O9jn+N/rlhTI6sxuEbyMpMRfg7P3JEhSpdlgMUFVJyPI/f18WLaXOQizl2ce7Q/ljEcyxgjqpXE/GkjtntspzXFL9J+ySPEkYd6jOx8My4OVFToUaETa/InLsvMp8vvKHgeTDXK18b3LyJ6fINlku6njpkwv4BvM7rVSlvIPB2Ey9zCiu6YHmYfmIkfhFEeW5mMRSbiQzizDo3U+A0D3O2wZZlvz0ySH8UFZfcmMCj3S532qvnHdV//iZLPmV/4JHx7k3WJ+CHaZEdEZb+YBTH72JxO1Q+OTMVHlzSftBZpAWrlT0s53TE4dsuMZp1ZuE9X+w8=",
-		},
-		{
-			title: "Final Fantasy III (17)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "47 The Boundless Ocean",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "48 Fall SFX",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "49 Danger SFX",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 3,
-					title: "50 Shattering SFX",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 4,
-					title: "51 Applause SFX",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 5,
-					title: "52 Boo SFX",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 6,
-					title: "53 Bahamut Flies SFX",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 7,
-					title: "54 Crystal Room",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
-			enabled: true,
-			title: "Final Fantasy III (18) - 55 The Everlasting World 2",
-			streaming_safe: false,
-			primary_square_chan: 0,
-			data: "deflate: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",
-		},
-		{
-			title: "Final Fantasy III (19)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "56 Castle of Hain",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 1,
-					title: "57 Chocobo Forest",
-					primary_square_chan: 0,
-				},
-				{
-					enabled: false,
-					number: 2,
-					title: "58 Let's Play the Piano Again!",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate:tVZdaBxVFD4zO/fO7N7dvZsibvGPZDebza6b2U3WXeJWG4s/edFaEPx5ELEIpRoFRUUEZ0qibQ0FxcWiL9IHRRHEIlbEPqn4IIIiIvRJmiZNbVpsQB9MiYzn3p2ZHTfZbOJmz/Cdc+65956/OzPcU2Qf+Vw+kIh/yRQHgI84HAjVjXA4EmEsGo3FOI/HY7FolLFIJBw2DF2nlBBNC4VUVVFgcCe0JUdyRfIJJ73G8VrallCPOHtAD7M2AdZSbB3qOol7nDHg1AhHWDQW33wmIixGxaAYE0NuIeKAEwlG7M7ZpDOyxR523bFXnIPbcGxria1DXSWadoib6LbU/YBzLbS6Ql/Cm0/EJ82nkE+qT4pPmw5/wMl3DL8e9TClWzbsSDNmM9LW/Peo40+SZ8jz5GVyiBwmx8hb5B3yHnmffExOElA4ALkG7kb+NJxEfgYqCpBHlQ+R/6T8hfwG9YAK5A01EQIyHnoM+ZHQb8ip9qwG5F3tZw2UFQ1Ok2/JD+QXklhWpwCqXN+hHgdY4qF9oasAf5J/iE776PU0Q4v0VnonvY8+RB+nT9EXqE1fp3X6Nv0A+aeIU/RrV/ve136l8652ybdttG6FDuin9TplRp8xacwbdbSWww+Gl8NCuyNyIrKDCe1e9h0rRoV2MPpF1IwJ7bnYJ7GRuND2xo/Gd/I6LXG4cvHvrGKBrQ4jzyjWwlmnoNpqXrUXIXJEgYXGbFHwRW+mYRuRtozUb0Y+hLvFimF/hedzvq6s5tMWWyxfZxm/j6K1hBA+TcSFkUkrOV/A+VTIUgYRQWmT9awDgXEmILOutElwFJwdbmNv9TQovfgrDFvdCPkOyLXgVeW1KbiyWBH9KGMPxhBeXy4URT/a9yuYYWqd2oNV2qS1Zm+cb2Pv7gxa6yx0QKe+Nt+Ndr0q9vLYu2v1Vl+KTs2DpJVcMvsscrEWtbQaRhhHCLlLxq8ZllpBCDmuWlBDCFl17eOIqmdDVHBXGSFkdROvxtKNInYFY4sdNsvLqDn0mkEMieNHmKhnXS9CF7aCq+c93Z1vrTCVnIjb6gSxWZHYxGQ5lmImamk5zrBR5FlWRt7LPpwfk26a3Js0e9KEnPTg+gnom2+Gia0LopGZ8L9QucmKyHpq0iZmFmr4OZ0vyxhN7hVvutLdX022S6/XemtRQUyzQj6XHZopor4RgGL1Zb/6qlf9ubo6hsdYRlRcOVfEoxlFlBHnxtj/S30oYGn8FAprVjZ/Fmn39DPum5B1x8JLsIxpZop6p5OpdCY9zfpT6ZkUA4JJl2SymP5uxARijyvnduHM7YgJsULMzt3maV4I7//njYNyO0vpFA9YP8PaRHEz/fiSp1kqiTIJfxwOA9zF9/KH+X4+xV/kh/gsP8aPIxfPCf6Rq33Gv3K1b/iP/uwZV5vlZxEL/miWQx+wSyuNS4q88BglvLgAa1xm5DWHmMJCpMUAOSoQucNo7CtJS6lxJTLMhoyDdhQgusyvci0RT+xO7JfPE4mXpHzTHYvn8qqJ/54CwtZHiaUIbGQB/fJqBi05F7b+31E/cri/JPUGd30M5FGmEEIG9gyAibn2/ws=",
-		},
-		{
-			enabled: false,
-			title: "Final Fantasy III (20)",
-			streaming_safe: false,
-			songs: [
-				{
-					number: 0,
-					title: "60 The Everlasting World 1",
-					primary_square_chan: 0,
-				},
-				{
-					number: 1,
-					title: "61 Hazardous Short Music 1",
-					primary_square_chan: 0,
-				},
-				{
-					number: 2,
-					title: "62 This is the Last Battle 1",
-					primary_square_chan: 0,
-				},
-				{
-					number: 3,
-					title: "63 This is the Last Battle 2",
-					primary_square_chan: 0,
-				},
-				{
-					number: 4,
-					title: "64 Let's Play the Piano!",
-					primary_square_chan: 0,
-				},
-			],
-			data: "deflate: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",
-		},
-		{
 			title: "Final Fantasy VII - Let the Battles Begin",
 			author: "Trojan Horse (Nobuo Uematsu)",
 			uses: ["Refights"],
@@ -2625,6 +1799,529 @@
 					enabled: false,
 					title: "15 Staff Appears",
 					data: "deflate:vZMNaMxhHMef9+dpNGt/6XZut/Pb+7kwtlnXZlq6zmtazEtLC6G1kJBMh21eQovbWpIkSdJC0pKkJUlLkpYkrbOktST3d7gb4X+3je1eVqR7/j2/vv/v7+n5PfXpa0cZqDDyobTUO5MwQuRHuOhZaAbKRcYiU4w9FSEHKkYXsnEHQjvxftyCW/FZfAl34i7cjXtwL+7DA1jH37EgacRMcsgsUkaqyDJSQ+pIPdlNPOQ48ZLz5Aq5Se6Sh+QpeUn6yXvyhSCaQqdSKy2gc2k5ddGVdD3dTLfTfbSJnqId9CK9Rm/T+/QxfU5f03f0Ix2ijKUyEwPmYKVsIVvCVrENbBvbxQ6wo+w0O8cus+vsDnvAnrAXzMcGWYD9YIqncwvP43O4ky/iK/havpE38L38ED/B2/kFfpXf4vf4I/6Mv+Jv+Qce5ERMFtOETdhFsVgg3KJa1IotYqfYL1pEqzgrLolO0SW6RY/oFX1iQOjiuxAyTZpljpwly2SVXCZrZJ2sl7ulRx6XXnle3pBv5KBUKkUNr/RINRvbYmxb5M8Sqdm/1bAX7uVGeUrlK7tyRHlKzY6o/HFe0YiaN8Yrjbov3CuLmeFUFaoyZkZVRDnHeYtGlGuMtzjqvnBvacyM5Wqlqo6ZsTqilo/z1oyodWO82qj7wr0NMTPq1Ca1NWZGfUTVjfNGeTRMwKMhLo8dBo9dCXjsiMtjzwQ89iTkse+veDROwKMxLg+PweNwAh6e/8SjxeBxMgGPlLg8/i0frUnIR3US8lGZhHw4kpCPM0nIR3sS8tH+3/PxZ3WoJtbvbcPfXO6gyx1wuZv9LtaE3njbyLcMi9XmsBe4g6MiMCr8o6LZZxz8WkS8B7N83gxsRk3Y5/1pzTQFTUbRTQGj+sPS1Oz1awSB78zhNhIoghZ8pOMYRjAdwlUvBgtkQqgErKBrkAU20ItgBgCE5kM2fNIgB3JBL4E8yIdQORRAQINCsIM+H2aCA0IVYIyHIQ3MoJdDyAkhDfQKCBrV0MXwVYPhl8IXDT5r4NdAg6PGe34B",
+				},
+			],
+		},
+		{
+			title: "Final Fantasy",
+			author: "Nobuo Uematsu",
+			streaming_safe: false,
+			primary_square_chan: 0,
+			items: [
+				{
+					enabled: false,
+					title: "00 Prelude",
+					data: "deflate:hZE9T8JQFIbfFlEIBo1bhdxeelIgpdAU8FJaK6RW/QcMTs7OTg4M4NesiZOTg7MjcXLyd2ji5J/AeiGOJSc3ee7Jk/Oem+ujib4sbBdnhcIc2CpuFvK59WxGxd81l9tYz2bXMqoKF3uAspUcBuwjRp7nH4ERznCOC4xxh3s84QWvmMl6wzu+JW0qO4pQFt13nC5p/N97Vj6W9KMU1QW11dGSLtVnSR/q54MyJ2gMOnCrgE1QYmTWLMftiCAcRCfRIAxEx3WsmkmspPGpgQm+HjAnLdWcarjKXz9Cn4BK3KCa3XI6nh8M4kHgex2nZdfI4CUyKDEnSIw0S6auTlyVxaeUOGXGqW7ZTld4wTCKo2Hgia5jW3XirEzGYh9KteQcxg3Tsluu8Pwwio/jKPQ94bZsyzQ403TpGFqqJbN2mU5Vq+G0RS84iA6jg6An2k7DqpLOdqkiHZ1SrcW7eMWs20236/XDYXwUD8O+13Wbdt2s8LImf1rOqmipZuKA3ajALw==",
+				},
+				{
+					enabled: false,
+					title: "01 Opening Theme",
+					data: "deflate:fY+xb9QwGMXfw3WSa9IcAywMLVKJ0vicuOHUa5SQXiemDh0qFcTIH8DAxMJgFzamSsfMzI74Cxj6V5SOnStVTKnvkGACWd/nn2y/9z2/xHO8WC3cT7/HHIDxQ9+SeBQFUgZRKNeCMAzWZBjFy4soGq3HcbKRpuNxmm4kcbw+io5wjBOAY18PfJXAK7xG8DhZAG/wDg6f8Blf8BUXuMYtfmHAI+7y1vMznvLtiv6eveeC31b0g1e88YR7lj/POdSzpnadaNlwxj3MsNxnYk9cnWPIZI4CliovdO4KKGhqVDBCCysuB1Xk2fYTl4XYOks+LLBlOW3aqetFx6XjPlrvN2UrGq+YrLSWRk9qK8xu7Yx3MZWeaFW4TFj+M8z/g/yJMZdz9rJlx85Ptmz2m7ZzPS38lMoZFh4rrbRlpfROnrlcaFY00lBJRSt2cu2UOJSHnMuOPXsc4He37LvWNf5NXRqtLJQuldOi8AFKLyufLv+DzY8E7gA=",
+				},
+				{
+					enabled: false,
+					title: "02 Ending Theme",
+					data: "deflate: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",
+				},
+				{
+					title: "03 Main Theme",
+					data: "deflate:hZGxb9NAFMa/54vtnJ3EHZCyUcmKOV3sGFuWm0pILf8G/DMn+YCpYinqBCsDEyMqEgNDhw4gBgY2Srt17myenahNVVXV6ff5u9O7e5+ef+IzfvQLW5MvIbVAtM0yCgM59D134Hr+na8Mu5JoMu6rZBDeqRYO9rqSaDIZj0ejMAwCKYdDKYMgDG/2vu95rjsYuK7n+f7NXgjHIWx1OUZd6XD9KOEY3/AdJzgFKGIeMUvmJfMe+IU/GDz3joAzXOIKLSQ9pl06oLf0jj7SV3YHNHaeOC+czn1wPjm/2U0FRCP+HVJb5EXJ2PPKz6fd4dkhWpUorZKZjaNGpFrZRPxtMxgwTgNlMpPZ+11q0ged4tew/8p7fYT9PkpZlBVjz2u/mDYi1kpz58TOOMIi1VaJnK/kfQBtcpPb+93CLB50ugvQNa6Xu8u6Kiuegy3kgnIqCHShKSMtVpryYbpWRXNSa52RptlKqUHJI9ik4kSbFGZ+i5p1A2tQho3gIeQZ/41tUMIPJ2KlMe9i0VCcxGq+Xmm/LOe6nkx9PYWaO8x7t7Phnppnt+j72Vxg7w0B/wE=",
+				},
+				{
+					title: "04 Sailing Ship",
+					data: "deflate:tZE/b9QwGMafN75L7kghDEiwUe4a+RyiWFaUcEJAYWRATAwMDAwgRj4BFjHlz0qlTrAhZkbEzFixgDq3MPIJmI43TpFa3QWJAVn+5Xltx378+CFu4YFvOH3qY0wLIDnPWItPjEdROBwMw2jpO45DXjKKhoMAI694QgS4g7u4h/sAJdzPcL/E/QbwCI8RXV/bAZ7gJV7jDd7jAz7hM3Z9+4Jv+IkLtAtHr+gd7VE7Wge3g6dBqw6CP2O/gpPipmjVlngrvrI6NzjYpkVB+io2EbwgXDFnG5rXVe3KWIs8aqiuSlcR6Ps2FhkpysQyJaUkD5nSlNKOtM9/GFgsU1KxklPKVjKlfCWfhVs72DRxIS6y19LowulxTnwjMlEhtADbmHhDLY8anZGk2SEVU3XkdYo3Xmaf5RnpleyzbBIT9WT8r/n+73SP58pC54V2JoFohCkrf4cqMqIQZdLQj1RJ5VKkaIiVzFTmJCRXrHrm/P1o0oYMGzZQtrDKSitdW2VcZXZiJ65nzlm0Xsqq9l7mUSkui7l/+IaOG/hblbtc+EbTNhN0+2s+e92u+9OkzfnkDbtxpHJdSNKze3PliWvPA+A3",
+				},
+				{
+					title: "05 Airship",
+					data: "deflate:hVC9bhQxEJ5Zr+39OTgi8SMqKpTLafeMY5/x7RGClAfgKZCIqHiCk2wgDxAptEgoXR6AgoIiEhQpUlBQgICQS0poqY7ZpQAUELI+z+eZb74Z+QPswfvuwIXzL0pcAPSv0dUrizyTgqdcyDMxLzOSdE+WQMtTkRW9XKaXWt5qSFQUZa9oXVrdsCuknHNBRZllWU6CoixLmkSqPM9IKIUQnKepaDcoMsE6c1JkkjN4Ca9gH97AARzCW3gHgH3CRcJNwgbhLuE+YYfwDOAjnEJ6h9PrK3wHhufwChrcwE18gA/xKT4ntomv8RteTlrWJPeSLWK7SWBftnGhnZ8GbLxromeaWi2f66tBHm/DYlR1J1Yy4KfFUA/1QA3UP2JUCOuP+OMdWCfnP2wtOvR8vrYU4ERpY52fxAaC/N3//+4BT6cTN40TFtC6n5Qaz+aM1IQAR9eXBzWNm8TjX6nKNMujcbwFAZVTrra17WKc8b9lvDM+OnLX1hnlomUKV3Gu5ckYNYzBIwE+r/Xpx27UwzoeKVQ4QkUtaqSqaiVWrMIVrGj/ysxMbWdWUVx1MxeYd2OjFf0Ag9tPEOAH",
+				},
+				{
+					enabled: false,
+					title: "06 Town",
+					data: "deflate:ZY6xSgNBEIb/cXPZJBeMha1eQI+wx3q5ZdnkOEyljYKFhWIlltbWVreaWgjkDXwHG+tg5RMIxjewtDrnDjtZZucf5vtn5hJHuGgetjZfQqqAQcRfP+x1O7IdtIK2/Je7YYeRphQbOMEZzgEacGxzTIEr3KA17C2BW9zhHnM84RmvWOEN7/jAN6sVftCnHaqVpWM6ZXVN6wVVTuTCipLcxFlvpGH5tUCljFYjnY3iVMVKG6+olJ+VyVKvJaKH3uMSURGUVOTWTbwLHfviNIn32dR41YHP2JMk7JWzYEYzJg7/cGHE2skpL85kSc1UKil1hfNWTBnUNudrRCws9+3Y1KdlwpClZKDDhIm9ZGx83R2OdFoPENidE/AL",
+				},
+				{
+					enabled: false,
+					title: "07 Castle Cornelia",
+					data: "deflate:ZY09TsMwGIbfT4njOOFvYIVAWyWNEqUmluXCBbgDYmDowABiZESKAYm5UjdmrgDHYK6Q+DkBJwhfuyLrsZ/heeVrnOFqfbCz9ZpSD2xnfG2kiYplJEIRyX+vSldJGAoRRVLGsVJJkqY8SZSKYymjSIjwAjNcArTN7DIOuMEtwgO1AO7whDme8YI3vGOJD/zgF4KW7Ju0R0drO6ZTOmeb0deceic6clNnjbdBk3b0PUc/qIpqRV4OylGZ+5I6+dkb0/pWIrtXDwtkhnfGmlb7Nqh4N+J+xTDP8sN86HPeaD3xE6lFS11grJue+Ck54rYu6iFTNGUz1iM/5raujdfSBlpoasmQk1Z2pJu68iVLwT+tnVNrG99I7D8S8Ac=",
+				},
+				{
+					title: "08 Mount Gulg",
+					data: "deflate:fVCxbhNBEJ3Zy9pnr2NzKAgJYbCMj0tW5/OdzrZIPiA1DQ0SH8AHUK+0C2kpIuUPLCqaSJGggEBBQYEEBYgysZ1EokQUVJiZs5BsCNHTvH1v3t7O6L7ACD4XgEv1FwpnAA3FVK+pil+SnoCbZGuqWvHLJbkiS+V/zooq8ZWqX/KAVaNWIaUWPqNXrnDQqK/WuMdN+tjzBBbPU1Bf5UhVOfTLHMsVviAQ4QBewit4C+/gPXyATwDYoFqjukW1TXWX6j7VQyoL8BWOQL4RewDf4Af8Ah8v43W8h49whM/wOX7En6RGuCX+qAfiqdgXrL6LjrftjXDHs3K6i7Mo0lHoTjdUpKhBZsOdxizj85NpLE92YdaW7ast1W62ZEu15LI7muXCCKq1TBFfy8ilyorU5CZ3y92UGA4fiyd7cGjl8e1IJ26cD6YpZpiilUl6nKVJrONEu3HUG7ebkxuSB447zQmfHTkOmxM+w4WeFTTKDAk0sG5FxqPNHcKi3yKcl/Nq/1sm0clgOMio36MrbFNa0J2lQSoIBS8FeZDTv5izVSc6bIdW6mgOq5a8i2hzbTRv7ozPemgy4+IgppXiwIrYXBDH8737WTfL+3nmznpBTxAKXgqGwVAQCraqux6uW9nVc/zlnaaduqZrNs1mMZRV3zh+1dDbVvTMBTEzvN5BgN8=",
+				},
+				{
+					title: "09 Matoya's Cave",
+					data: "deflate:rVExi9RQEJ43b2fz9p7eeqDE5lhZ1g0h4ZlLCAlh2dPqGjs7i8Xq/kYgTwURCzk8sFCsRLCzuuLwrKytxcLo/Q1Z52WLhbsTrpDJN/N9L/MyH5O3UMObLuDa5pEWS4DhiNMVvTFQXp961PfO1YF2LcPNq13XYEOf65YIavUV5ZGEG8yVUp7n9ftE1Ov1pEREAc/gBbyEV/AaQAwZ1xkF4yFjH+AdfAD6gocAn+AYvsI3+A6ncFPcFQvxSOyL5+Ijs4X4I8Z4Hx17j8f4o2Ox3JP7ciGOZEO/DsQyyYrElrqgnDLNoDb1+U1WVJmd6YpKKjSDcm4pqaHTA1hOIo54FVMzNYGLZBWsraGfy4kf+rFvdKwDrolvqMGwntZjWyOcPMYnh3DSVn6qc53JVGYy8UuqaOZnmt3IUhYy91mTIbPlEFHUIaGkQ0ppB6ARTbHGCGs1ctUpNSHWmDjmqlPqFgXMY8dcdUqNKWRuHHO1U/NtN3fOhu/tznftbKvbAuXbO7weXhGbNvqsrYbCeB0NmjgKozCwU7y0QbxNOxfmMZkLc/agwd9ZmqS27WiRZzbHRrdREAcNGf4tjY7DtbKxDnXg7ip3PyA3P+lYyiw9c3a5vrZws6uyKG1b7a1spPzYO2zln06i/+YkonWGz08FwF8=",
+				},
+				{
+					enabled: false,
+					title: "10 Dungeon",
+					data: "deflate:nVBNixNBFKzXmTczSUd3A4on2YAOm3R60umYSKJk1f8iLJ78BTIw7cd5WVzw4MGDIngRV2TPgjfPntePf+APiG8mLEZXFJxHDUW9mqrHvMAjPK8Hm2ePNC2BjfPyautmGjPHacJRnCRxxEmqN6tFW7dazTRNYo4airAlWhSJU1xp2my2WlrXlsqTxJIRbdWftbUWWXRZ1JtqFTUaShFhD4/xBE/xDKANwTlBLrgluA28xGtEb9UBcIT3+IhPOMZlWtAu3aG79Io+CNul73RGeVWxe2pPvROGRqm+7dNyYHMrcLntZeu817du5MdeMBn73Kxz73IjvmDVl30su53uxa6upuxk8oRM6PEy40ILLpScFdWYUGjDP1GyKbJQMA7vqwcHOCzV/5zxeTYPsw741Alft6XdMPhvNwjY8oAM9cnwgHHpur6m53qm5mo2XfGF2lELydlmKznG9Pu9XqjD9S+S1etJJ7xk54ej3Nlwevcnnw8jcjQkuJv6ht5ZtU9X3LCTDi+Vzg2Hufz/36WQs+MRe16FrPOSJ1evTMeTk4J/+MKE8eYhAT8A",
+				},
+				{
+					title: "11 Chaos Shrine",
+					data: "deflate:bY/BihQxEIarOt2d2e7FiAh7dGimN8SEkNC03QytozfBixefQB/Ag6AHIdJZRfE4sBfPnr3q2XfwrL27b+DZsWZQltUl/MnHX+GvqnfwBN7uDly98rnEDYC4Qdd+WezNeJ6lWc7/e/fKnL7MeJYmsKWUFwVPd16WJNms/FvFhGX57Ck8gxfwEl7BEQAK0nVSR7pHekB6BPAe1pDezY8BPsBH+ARf4Ct8g19Q4D5ewwXex4LOQ3yM6x2d4E9USYHPkx9r3LR8ZG5Y9l0be94ejHiyhs3CaKOMNJVWWupaz5VUtVqoSs1VpWXU+H2jhBS1qLnksDrKXx/DCtjIWjesbg/LOBz0bMlG/DepoqRDSppTHikqHIWSh7EWAw3S0BhdH1vueFM6Nhl0aNFRjrNOWxMtoTVWGR0NIYVLraJmGhVqnKOBkJDgnCRaInuBFDoid4EWl9DIfEu73OLbXXrRCYWG2vzpbL2LntA7f1pN1lQ2nm1Lkz2VU+NlE888mxqs0VMeCc7p5iUkcYQm+CBDEyi4IcuS1YU22NCF2LKOLLjzBgF+Aw==",
+				},
+				{
+					title: "12 Floating Fortress",
+					data: "deflate:dZCxb9NAFMbf2U197rVNT0JCiAGhUxKH1HGcXBSCqwgmS0zMiK0CCeUfgOlUmzKxpaoYGEBiYGAAdUGClYkZsSDBmXhgRoKhoPDOUOS04Vnv7ntPT7/7nl/CA3hRfLCx/oqRGUD1HB6rbMWlznJlqbLsnLhdZkaq62vFlLvCTkzbFrAS5W9ZXcVZijNLsGHKNea6jLlOpeI4FRsewiN4DE/hGTwHIFXMU5gDzOuYtzHvABzAa6A/yT7AO3gPn+ArfINf4BBOzpI2uUK2yU0yJopMUG2TA/KWfCjUD0KtM5ZRQ+uadatQu9YT602hPlrfrdO2URftq8V9w55OyCyKdV9kAx5xPYx7YjqBWRDrpshaPODajxsioZ9nQjVVoKQ6rxrKV11VqlNF4fAe2d2HQ4iziPe5HohsaICXR1sUewFvct0SmW+Ist/hCT3GKDORF40u0WnZmAhGbTot+0JXC7wc1caT6I3n3IBojOesJPQ/G5kaCYV9YyWP8LUs2oqGqY5EsYHxk0ve47or8pCblY7b8LBKu6JOFa3j47k0ENmX3VTL+B8yHVIdiLzNfa43Rd7iFzgueYQ2P6ozT5pr6Sie5yb0i5QylbQwtYCMA57npR5dQPvT8vHsULWZ0B5GFyNMQzdk4V5CGxh1jFpac2ustgd37xPY+Q0=",
+				},
+				{
+					title: "13 Sunken Shrine",
+					data: "deflate:dZCxa9tQEMbvXnSW7ZfGGQyeTGpkHlIkRcLIuKH5D0ynbF0yNFsg/0JBL+1aisFbhwwdOpSSISFTk6XQuXOHqnE7d8rqfs9VaSHkE7+7++DefaALek3nq482Ny41L4k6Wyjrut1q+g3xpOHf6S3tVjobD1Zbrba+s72mqIGVpi/en8nz223fc8+akA81IIE8aA1SEDO9oVN6S+/oPZ0RcQd0wQQ8BYfgmOiSrsm7VnOiz/SFvtJP+kXMEU/5Ce/zEb/CNOUP/IlvV9OO2lPP1JSPVDXjZd4rdZpnaZzZ9KCUxYyWw9CEjqBmUFN7G8q3ZaqeK2BidGAi9Og/T1cn6sWcrtz5kTs/tsV+yT/C7ThJ7Q6Xcl/KwAwNsEbuy9hGB+Z7huO5u17YUa/QY1308t5NKKEO5F8d1jWSSJu6xhLrsK4JzoFuIY+k+BsKtwuXwYHuRB7LRHK4fOX24AjphUvPbZUdVGl/4TJSqaL+YiAuqUr6+KNBmDwMTJRExgZSZuNRYccZfXzJRL8B",
+				},
+				{
+					enabled: false,
+					title: "14 Shop",
+					data: "deflate:jY8xT9tAFMff8+USO3bsFqGuRGDjnOVAUGTnYtmKKvUjRK1U9RN07drqJF+hQ4cOkdKhiLEjMwMTM3NmaJD6BbqHd0BgYKlPf9/P5/u//3vH8AV+3S144Z+5uAIIbHrZrSZvMAsMe27bbnEGifkZ+B2PDhzHdtpt13MJbXOZN3iz2bJbxkdGhC1TxXbMLdfzOh3fD+jx/Y7xu21T4Rt8hx8wg58AGJA2SV1SSnoPcAK/oZE4c4BTOIMLuIQF/IMNnOJb/IAf8TPRFM9xgX/vKLbeWO+sKX6yljNcSTZCyQqUPGM15rIqJ1WhJRvjzQxWgvVQsAQFj1hMJDAxX7RfrSKsIVWp0v8Le2rv8UQrAPHVOZyDKFiGeWC6GGLm7rJdjF9GLMSIkzDEbXIIJZSO1zUM7Kv9exiogdLdZ4HhUw7NUtBsWT7MRmUhR3JclUWpK9zhJq3mUU/E2gy2s456ntlbg1hnGuirvtIJwYE6oKgaJ9X4j6xe6wmvcVnKssgLOZT5UOdYYz9NrkWS1nxwE0eh7vIHp4pUTGHU7Ksaumpbhabt3hEC3AI=",
+				},
+				{
+					title: "15 Battle",
+					uses: ["Refights"],
+					data: "deflate:pVRPiBtVGH+/9+bNZDK7m8KqEF6SGWYIE5Mw0+yk2bB1aQ9aLAh6aMHqsQfx4FlvgzNVD4KXYi89CEJBTx70YEFPEsTDnkREETSbrH/Sg6cFRSR+b5La0K5bq3z5vvnlve/7fr8332Mu4RE8Wxg7sfGxgzljFUeHjTXHLplScObS3zWnbJcsUxrStO552o6zkrKsqFQ2NtbX19Ycp1y27VLJskxTSsMQgnNg0VTv0jbtU0KRsZpiUophlcuWcUL3W3dsIrItKS1LiqJBqagq6qhQl+piXV40aC9kaBFagl0uO1qOFqN5pKnPoA9hCA5W0opKhjani5PoY4jHcBaP40k8hWdwAQwVxvAQeUB+jvwi+Svk18lvkN8k/468DPY8LqPW59cYu44b+AA38Rn28DXGuIVDzGHzTV7nIe/x0/wJ/jS/xC/zl/jL/FX+Jn+bv8Pf5x/yT/mI7HO+x79com/490t0QKsLNOK3+K9LNOKHD4x+PwId/u9+f/6NmOiIC2LE3xXviT3xm9A554znjCuGRl8YXxl/FGhHnpcvSI0+kiM5KVBsnjdfNDV6y/zE/JZQyTq4inkNLvyYiZ+vsnktZgkz3gCLmmihE9MOqnGEHvrxIm8bO9jVK70f5h5PT2pvkE/bybiLBPtb1jRGhK7oUoxFhqg97ib5/pacRhjHGGD/lPhJQaEuGmhQvIOr4u51D12WMh8RxQAxxSZ6FO9dX+DusflXzNeu0QHtaRv3ESvqImMNVfcadVXNj1f7oCqOz2e4/Z5+ObU5Hcqh3HZWmVdkBQhw0JItGZJypdzcxf3YMhalLbLTO8PtftKLo26nlYdIaaOTdtIojXKSYBW0m4nsywy+HwR5wSIpifLDZuB7boYflQo81fTyGlUnaXJkY9J75uyZ3cWyl3pp3qXsVUCEAyJKrExGcS/OIytDGHhNrxYo33eV76mAHhRdX9Eo7q6/DRQZMWbs34EFcyaT/qCfJ1YkY9mTMTIUZ6odoSD3/pH7v6hhIhP0lrpRTMfOxwkKE7M+adBnnRC5ClS1phrVhmrUPNelCYuZd6eFoplmwguDNlkzY2FaWJ7yJn1hxwNkIplFyXY+7qMwMRuI8ZBYaGA0Iz0m+uUdunUTuhzCnSk/zCceChMzX0wCuJUUTWIKWcp7Yih2qbpVDLtFTC26PK3lbigepQ8U23r9Ycb+Ag==",
+				},
+				{
+					enabled: false,
+					title: "16 Menu Screen",
+					data: "deflate:bYo9TsQwFIRn8O6aJIhQUBMqhFbexJYtYxJxESoKCgoQJRVNwk+NVtqGU9BxA04R8SNxCorgXdEgmNF87+m9ucAxzlfG1uZzxgHIi4iNLE3W5WQ8Gk/kn5lky8roR+K31lYCTnCKM4B5zHbMAXCJK4jddAFc4x4PeMQTXtDjFZ/RX3HrkTPnHnvUfJ9zqETDWjhaEehFRS0/5vjn2vJtqKyvXB1ZWj/TtlNEcZPeLlCAlkYoqWRJzRZGlZ1GS22Vcdr6SBXZueXPOh8Om6OuSWoE1FKxZMswM25q/NSEyH0Tq9i5I/AN",
+				},
+				{
+					enabled: false,
+					title: "17 Game Over",
+					data: "deflate:XYy9SsRAFIXPzWQy+Vk2FgrauIKKbMhOdjNMDGnExkIsLCxcLK2tLcWMP4Xl4rY+gFjZ+AA+grWo+BJWcTbbiFzO5XDuPd8YezhuBwvdl4gaIF6yq9OJwiDwhedxl3NP+H4QRrODbzPOXeY4RI7D5scDHOIIoNhq0WoAnOAUfC2cAmc4xyXucI8HPLbzhGe84s26d3zjBy7N0i6tU9a6bdqlfevG9DmhRlJOivQKevBuCcsFl5SxmspCFzo1UtTsa4JGJmmW9hOzyWrx0ahyZApxFV5P0VM8ob4tDJXKjeYtjWqWbG0MbDsVmdBCiopp9h/NMhrZz7/oOVhxTYrlTMWWI9O+SeKhZdS0U5WVUfyCsHrjAL8=",
+				},
+				{
+					enabled: false,
+					title: "18 Victory",
+					data: "deflate:rY6/ixNBFMffd2az2d1ZEw+uDBqIHEtu496F5Qy7IbOVtfXV1v4FykLiDzgOizu5ytrusLlCsFBUVFRU9NBGxI0RwcLSNr4ZrMxdIcjj++bD4/Mec0h36b0tOtm4pzAnap7mFqrA9+puzam59YXXV0ZpNk5Yyw/Ugi0F2SthqJQKgsD3fc/z6nXXdWs1x5FSCICUuRLyvsd7jt3wrGZFNo1rbOPbjfv0gB7TM3pJb4jQ5CxzznE2OVc420Qf6DOFhbNH9IsHAZZxChH6GOI8LmATF3EJl7HFtY0d3P5Dd7CPA0sP8QhPLD3Fc7yw9Aqv8dbSO3zEJ0szfMcPS+bC3/QTDXFWbOGmuCUOxCFTKsf0dRfzVrvTak86GeHbLs1b1KYOtTLS5NwAZWOK4iQdTHKmdod5kmbTAlz5dACufExf5mmZlPGkzAo90JEe6lSv6pHe0D09K+Qonw3kRh5RKThZVeiKLVEOp4nsSQ76so91m3WYWcyzqrs0jWWXuYsuJ7KJYGaGq5WlCAmVtNhX0Duy/6t/1b22R/rYXybMVXr8L2OZoFr7b788g9UjO42uK6Lf",
+				},
+				{
+					enabled: false,
+					title: "19 Using a Tent",
+					data: "deflate:ZYo9DgFBGIbfMcbMGHa3UG2yUWw7YdYKLrCXcAilQqFQ+ClFaNVuoFdxAiWrE3cYsyrJ5snzvcmXZ4UJlj8QeGdFLOC33WmouhS8xqqsxksrVZH4XvNXyboq1bSCoEiaSkqlJGeMc0YxxQxzLADiO1vOoXMMbLBF5UYOwB5HnHDBHe8/PnjtiDU0oT2ap2EqCp79aBCPMqh8B6tDIzpCi6eOkti458Ma1yXCiG7UiXWG6xq4fgE=",
+				},
+				{
+					enabled: false,
+					title: "20 Lineup Prelude",
+					data: "deflate:hZE9T8JQFIbfFlEIBo1bhdxeelIgpdAU8FJaK6RW/QcMTs7OTg4M4NesiZOTg7MjcXLyd2ji5J/AeiGOJSc3ee7Jk/Oem+ujib4sbBdnhcIc2CpuFvK59WxGxd81l9tYz2bXMqoKF3uAspUcBuwjRp7nH4ERznCOC4xxh3s84QWvmMl6wzu+JW0qO4pQFt13nC5p/N97Vj6W9KMU1QW11dGSLtVnSR/q54MyJ2gMOnCrgE1QYmTWLMftiCAcRCfRIAxEx3WsmkmspPGpgQm+HjAnLdWcarjKXz9Cn4BK3KCa3XI6nh8M4kHgex2nZdfI4CUyKDEnSIw0S6auTlyVxaeUOGXGqW7ZTld4wTCKo2Hgia5jW3XirEzGYh9KteQcxg3Tsluu8Pwwio/jKPQ94bZsyzQ403TpGFqqJbN2mU5Vq+G0RS84iA6jg6An2k7DqpLOdqkiHZ1SrcW7eMWs20236/XDYXwUD8O+13Wbdt2s8LImf1rOqmipZuKA3ajALw==",
+				},
+				{
+					enabled: false,
+					title: "21 Save Jingle",
+					data: "deflate:y2WIYsgBQwYBvh3cjP8ZGPjlgQQPNxcnBzsbKwsrGzsGzckNUsLPxwtWxcnFjaGamYkhgSGFIYOBgZEfiEWA2JyBIZ+hnIHpP+M0BoZqhlaGfoalDJsZDiHBIwxNgo8mM/43NTYCIgPj5od66gb6RmIPJzP813PXcVdVV9fXFGtSfvDfyBQoq6Wuo68nxvCPQa+DgeE8AA==",
+				},
+				{
+					enabled: false,
+					title: "22 Using an Item",
+					data: "deflate:S2IIZUgEQwYBvh3c8v8ZGHh4eLi5ubm4uDg5OTk4ONjZ2djYWFlZWJiZmZgYGRlASjjA4mAZoBRIEiQNUgBWEskQy8DAyA/ERgwMKQw5DEy8LNMYGAoYqhhaGGYyrIXC9WByI0MTw4PJjP+VpeWU1bX0jc2s7Z2a3RkYmJoYHk5mQAg3WwOdZs/TASQB",
+				},
+				{
+					enabled: false,
+					title: "23 In the Treasure Chest...",
+					data: "deflate:82NwZPAFQwYBvh3cov8ZGPj5+Xh5eLi5ODk52NnYWFmYmZkYGUASQEFuLpAwBztCwpXBk4GBkR+INRgYAhgiGBglGKcxMEQxpDAUMtQBYQNDE8uDyYz/LWwcXJo9mJtYHk5m+G9gYmHT7MDMIM4g1sHAwAAA",
+				},
+			],
+		},
+		{
+			title: "Final Fantasy II",
+			author: "Nobuo Uematsu",
+			streaming_safe: false,
+			primary_square_chan: 0,
+			items: [
+				{
+					enabled: false,
+					title: "01 Prelude",
+					data: "deflate:rZIxT9tAFMffvRRFKErTqiXN6UhknJxMgnFychwdRywnkeuWuWJi5UtUipoqV9qtC5X6LTogVHVoxcDQT9AZqk7MMLBU1DZBgJTBQ39vuKen9//r7q/7AV/ge1rw6OG3wuAKoFQqFguFxcV8fiHhwQ25W/Au5D7wPzyexB4JBO5xAF/jWQlg4RV8BjiCn5B/i7sAv+AEzuAc/kKePCaM1NPiZI3spN1H8okcz6YXhON1t417s+4Q/8y6p7mtXHK+zp3u4xVFNoYJ4AcCYyBTrBrcatrC9aQfDMOtcBj40nOF3bS4UWXlCq2aDd50OkJ7OMXf+3hJWVaNFuQd7u3CZIqq7w+jod9Xnug4Td4wq7Qy30h7cURT9DIrtIREMO/Oc03KmkLyci+rQlcw2a8ZJm/ZjuhJ5Y/CKBz5SvaEY7e4adRohRlmw7Kdjiu1ipMq06z7Wsbm/SCMXkZh0FfS7Ti21TANtkSXjRW+aq+LrtzwB+HzcOBvSN1N81GZFbN8xLq9yleMZfqM1cy61XLabk9tBqPoRTQKNlXPbTstq27WWPpLNEsz6mZVaYbw5j0C/AM=",
+				},
+				{
+					enabled: false,
+					title: "03 Chocobo Theme",
+					data: "deflate:lZA/SwNBEMXfTLLeJZfceWBpJYgYlmP1iPgB/BoxNjb6IQbu/NMELNJZWVhZKHZaWVtbC2oTrOxFPWcvioKVv2GGN4/dx7IXOMZ5XZiNryKqgMT6kcRxt9vpRFG73WqFYRAEM4pRmkpDYYUULMzjG73JwMev+Q40gTfgv6knOMUZQAlg5rChage4xDUaWzwCbnCLO9xjUtczXpDQOk2wTbs0VUf0OEblsILVAYagQ8IgZwmdsSy8bArOxYkVV0povZ9mBuZpTK9Luvle/Oq/Fj9UPsTpVrCTnmSlV5lU07wfM9Nje7w/wrBgKzaz6pc27Zl6dbn0pVxLNcq/E9g80D/7BA==",
+				},
+				{
+					enabled: false,
+					title: "04 Main Theme",
+					data: "deflate:xVI9aBRBFH5vZjaXyya5FP6CIF7uiHe5ndvN3l6ioo2QzQlBLUQF/yMakYjpBIvBvYtiHbRUwS51Citra2sLf0CwUywUUc9vdzTCeVjY+C3vve99Mzvz7cxe4+O8lD00NvrEXe4SOQO5wXx+aMh1h4dHRgqFv8cw4AJDQD7FYIpcioEMTgaVQVoIC7agrQXqBWwQI/6bn25/P6UdlgvE9576DaEQXxGneYGvMDkF6uADHtImJlVnus43uHBILRLd50e8xuv8lJ/xc37Bb/k9f2ElRsU2URQ10cyeGXFAxOIk2HlxVdwS98DeiHeC5HaZjl+WK/Jxxj7Ij/ITWFfmVVOMIDarnWqXKoN5ahp5H+KgmleH1VGwY4h5dRZ5QaXvLyEvZ+wmssnYPPJdtaoeqDWwdfVyVXSLVKJyTC3iO0xxIiYqk15b73+1Kj4XZUmW5YSoiEnhNch93dWOme7wyiJtweQpykfSdxNZCXztt2u5Sq6ar7J2/1QTikzTREYbW2s9tWpC5HCjVjbqFPKUmTC+CaCUjW4b6gzAQUtzwImMwplmu+H6MipkGzsw0HdAJpSuUMJKIfYcx3pp3Q1PddOAPomRBnbUqOnevvGyro9zeCCn97tr2DiRQV23PUm5fqOBrEstPU5P4x++PKvjqKnvkvUJJxpXp2NNhnwyszibSyRwO7PEfhxBbVr1olWDls9BXIWurX7h1+ww9n/PPmfVqBW2KmTmoJwhgjKnbXfKdr7tTtgutN0R24HN2lUSLpV//lY4Ntu0vT3kGAe/lDB7OwIXOnZb0swP",
+				},
+				{
+					enabled: false,
+					title: "07 Fanfare",
+					data: "deflate:nU89TwJBFJzh4+BYOCxMTmNCQUJzwSMY4h9Q1pZYUVhYWFNQGAsjBg61NGqsifFHmFhZWFhpLK2UwtpaC5zjOktn83Zn5r3dyb7gHs/zhQXvznAGlOvxVva8UqlYNKZQcN18PpfLOUJWyAhpISVQQDeed/JuwRRLXnLR+9dpjHFdV1FKUUD8tl/GXygNVD3gEU+imuAikN3EBHjFG5wtDoFPfOEbGXpcYpUtWna4zS53uCu2J9ZjX2yfxxwyEjvhOS94JXbNCW/kdnjLYerjkrNqLQhH06bfTA8qc+dnuVKtjaaBH8qBeZ+F8x4sglNipYlBu65qqKLM+AiQ2w6kwsQ5TJw1G9hVGznjA6SkN1q2bhux7id63YY24riH9pm+/As=",
+				},
+				{
+					enabled: false,
+					title: "10 Join the Party!",
+					data: "deflate:nU67TsNAEJyxOfw4fI4iJJpUJJat0/lilCiK+BI+gRJRp4IEkCgoUoEoKakRJTU1HwBSfoI0ZkM6Sna1s7MzK+0+4Bb3v4mOedVsgfxkA7txkuq9zOS5MVlm/tW11kmSRFGklArDkCQOcvwNuQZK3WEpRHy1jzPgEU/YGcZXwDNe8IZ3fGCFtawEjJmyQ7DLHg9ZCbMcc8KpsGN+Ldk2QQmHBqOgKWT+dihRYBBcwJbWlZeD/mfrlK3gkV4T/akvUMG52s/jxQwUzU0wxpGrMRS0G/18q498452fc3GK+kYe/wE=",
+				},
+				{
+					title: "11 Castle Pandemonium",
+					data: "deflate:XZK/b9NAFMffO8d1kpcfRELygBoS15Z7sXFsjNMmYkRC8A/AZjFFTIyMV9mFqVsZmGDvX4AY2goxMIGQurABYgCJjQUJofDOobThnb73Pjp9791Xlt/BS3hbLbjQeUG4AOiGeut2Ou12q0XUbDYa9bplWWtcJleNy+ASXMgFd9hvNait76yq3SbqdFqtZlNTo6GpXtdkWZrW1jSZpqZaTZNhaBJCE4+2u/B/8WOArGN4DW8Y2YEXAcwb8BzgPXyA+jHuAXyDH/AbLOzhJfRwjFO8hfdwjvfxAe7gE6Y5PsUDPKzoFZ7g14q+4090hKbb4q7YqeiZOBDLsxPxRbSMOcbG532xiMaxndjpOLMndkGf9vGXI33pSVe64SiUoV+G9HHh5IMcjnbx0R4cZRsJRQ9VvRBhFCdlKgo6veKwPOmXkvp8IZNbuM2hZ+PCns6ul1P7zDlcdnY6+TCfyW3cwglmeUEqTcuMChqczgzcwAv8MqBB7ucTnpVEVzL22Ioc8kxljkzVc7h7pGlILrPUxN0lJrOvfT1vhda1r+euULIRU6QzRFEZE/ydL//N1+RTYUrlq4AVKr9UplOd63fOyCfPdm3HHlDCiaORTJMytoH6VE1iV7/ya1qnKqkm7sv8yc2UEorlVUzxGmbjwhwpOfLPKVCbnuN6m5zFLYwhI393ozB95ajzctXlSpJ3FueFw8f88/0B",
+				},
+				{
+					title: "12 Ancient Castle",
+					data: "deflate:fZG9jtNAEMdn1p7Y8doOQUiRrkDI58TnfKztsxzSIlFBQUGBKKg4UVJRM5J9oNTcA8BjICQ4Kp6Bko/jIZCQwmwEJ3LS8V/N7s8z652/10d4Cx9vB1yJ32rcAAzmdhrEcRSFodZB0O/7vud5PRGJXJEjUiIUwQPZ7/V1ZN/ZjSjSOo7DMAgs9fuWfN+S51nq9SwRWXJdS45jSSlLcvRoABclzQAl9gR0GMWDOAp10Pc96846s67gjlR7Ts8PQmsjDgd/58t08XN3TvuPjbt4D+/jQ3yEgLILrwHQbXgt9E7oM0wQnuBTdD6qNcAzfI5rfIXv8QcGKlRX1UodqUDGG/VJ/ZS1clr6dqI2pqyartaGSqp0SYbmutSm4FFDTCtip4EltPT9BH4l43xuZll6XSBLb6RJPs3/iS6ndvRlk6TjrMsVK4k4kVUiblXOOSecdLwHp8fqxRpObzaHULs1NbSCpdtQTUtqdEWmqaS1tHcqOASmr5k+wBynOFPsG4mzaSHZsZ5ghlKRzNxm86JVGWds2EiXVu3zPhdcdOxbLuRJ+p9Xz9keqRJdN3Mwrr2GGirXXkRF5dDoWlZDZrhQRpWjS90c/Mm2NOMD7vJhimOc4Fk22jU15SlXXG055ZRLLrdsr0eYbW7Bi44VfHgpv/03",
+				},
+				{
+					title: "13 Tower of the Magi",
+					data: "deflate:hVNNb9NAEJ1Ze+M4mzgIWSoI1cLUirFJ18XGpmwvSJw5IITKlTNnpN4s2VAhceCARBH/ghs3zvwDjtDcuJXSr7gf7DqkTSIixhr7rWf2vTcr+yqewhVUF1yyPjM8A+jeV7dup8OYaRoGVaGPQ7sIMhk4HdCvOSyr02m3GWu1TLPZNAyjIWPMN+ao+9dlv2GyjtozncqHZbXbrdbIkULN5sibQo3GyKVCuq6QpilEiEKSeqELsyHFAGU2sIUWXkZA2YO2zKcA9DUMAK7hEjY+kA2ACO/hA3yI6/gMn+NH/IoVnqBGQvKYVBJvkk/kZ41MbUlb1xR6ob3RvtTom9bTH+kVPtGBFnT7HQ7FmqhWRSaOU5GIk1hEojzlNocVuA2D2I4hgTuQGmDV7Qdi7VDI9iMh24ciFmVEBlXP7oEPNyGwAwjhFvSNgnw/8zOeJTLnPQva4ymvs+QIWy/Jqw3YgnYKGdyFVbbGCppv/9tgF9p9WAYOEYtZrrzNcdYFraAjlYL8z1HZo5ymGuiz49tTnlaztGBJnJQpA31mcnvCFt2OLC6XfShImAe5n/fygvoRL0MKWFB+Pr/M637fvxHwYCmMZDlj4q9SmUiqJBovDEkQhDwv51CH09WQ5CSQUpI1nFAIz9dlgPKEWJykmZgU9EEyz6W9EC0Hx8vX64lhRVNnPcMv9UrfB/lB/NhZdH653q7v/XadvUVn3/UOfO/QdY4WnaHrVb537DpVjY/q9wd1z17dv1vv3fE9t3QI0BUpN+R2PSEEC4fnFkxV2b+ogJG/hfeb8u/6Aw==",
+				},
+				{
+					title: "14 Imperial Army Theme",
+					data: "deflate:xVI9bxNBEJ3Z9cR2NrYRAtzwUVzsw2df7mTHF4KDQhElEgVVihSU/AIKhISclW4DSBQpyC9ISZcIJEAoClTQ8NVRQkKFRAcCEpQwe+cokCJSEFLe0+zM7M3uvNvd13gfXyWEI8XHCrcBShftUCoUlMrns1myyOxA7kL8CfwbMGP36Mvl+9VAoVgqFYuFQvGfvLIqWIbVwU3t3uUS7AV3A2S7kki3qwcGlOrvz+dzCbIp+nqgHg78W/u0/h+nts/2D/ARPsXn+AIBuQqPAdAMPOTxDQQIdAnnEd7ie8w/E7MAn/ErbmFOHBUnRVWE4ryYYE6yXRbT4q54wlFJHpdT8pq0X17KDVnJ7EQ3k+hdZi3zhaPNDNEJ5oRwyacLNJVE03SVrnM0T7D6YbsKLpxdAbyDsLK2gFuBirGhLU0gdbbJaaAtTUOlE205ItuyWW7Lc9YHvGqzqmLpOE7V6GxNVaWlw95mDRnIhqyVez6o5bSo5WKha0xjsxhru0lqiSo4QOmcuDULqwcXf4jCk0IIWaOvLU3IbVuchtrS+CqdiFhqJFvlSI5aH7gsuVKpuCzZU660rLC3mS9D6Uuv3POBx408q8NjGi/R4e0mqaU6DrE0PbOY1p1B1wsDbUcTdNcXxGk6Q7rtdB0aJK2q5JI+5XT5ru/BJD/YG0Axha1orKOj0Y42na6dSDfxfL71oJvWjdMYjuMYdmiURqizGFMrDPy6cXuRqQst6osxfoyav4bDjebQj9A0lmPUnxYw+tkc/h42vw2ZcNkDDWxij1+a6+PnV7wtYOk3",
+				},
+				{
+					title: "15 Dungeon",
+					data: "deflate:lZM/iNNQHMd/v5e85s9L0g6HBcEiLQotd0mT5oVa4UDQRQcHB3FwEMXRuZOBRMXJUwtOgpuzOMnh6Kyro3o3Oung9ZLmfK/XK9die/UbXr6fl5e83/f9IPfwEt4dX1BxPjA8ACivy1vZcWzbshgzTcPQdU3TSkJUSBVShIgQCsFN8b5mMFt+MztsmzHHsSzTlGQYknRdkqZJKpUkUSpJVSUpiiRCJImtq2WYlygGKMZpAcyynbJjW8w0dE2mk8lkKrgqVktKSTctGcOxykf3RZo/7sxuS2Jcw+t4A2/hbQQUb+EaAL0MbwRtC/oK5xHu4wPUn5M+wEN8ii/xNb7Fd7iNn/Az/sY1EpCQ9EifvBIUkPdT+jWls8oRXVEGyhdF0lCpqXdUSS/UmvpR0E/1x4DkG1C4FY/mbSj8SkDzDhSh9PHco74HekJ3BuTPqTP1ZrXWaM162iAJ/XZQb7q80fKiOU8jCluPyOM+bCXK9wFkPR7mPAxGYeAmWLQDfqG3mf4rxqT84fN1CqJKa0mCxfVdb1yX7nEMsYM5p0PpAY5Cui/dxyKgmY9t9HClhiw8SbqJKxzlvwLtDrC4yLIeifWCT7zLskh6wLKO8GOtEa3ImjQhbuzFbpyegGl8rHFu2iQxqTOPSm8wf+znpvOCNxLcGfL9KON5NOJFlO5ybxJBRusKX732wkQuXZ5jfr2IWMZlhN5hhIJ7cTUhosV7vWF3nDYcdYog9clJW82vw7Mn4o/9Cw==",
+				},
+				{
+					enabled: false,
+					title: "16 Town",
+					data: "deflate:dZLNaxNREMBn3svLbrLJ1mBhBbG2DW+bPN7usmm6pB6KYv2gKOYgFEHtB1kv9SY9hsBuot77BwjexYMX8eRB0JMiePEi2pMHbx5F67xEBSvOMMtvZt587L59A8/g9VjhiPvUwQOAKW0eU65brVYqjlMul0q2bVlWkUSQFEg4CSNBElin81bJqZqav61adRzXrVTKZUOlkiHbNmRZhopFQ0IYKhQMcW6IMUPU2puCw0LDAMmewwt4RUgncBpArMIDgLfwHqq3Kl2Ar/AdLKzhcZQY4TKexcu4jlu4g7vYH+sAR/gY3xHt4xc8ytqsj2fILjCTvcKusRtsg3iL7bD77CHRI/aEvWQfxvnP7Ac7xg3Nc8XbRB2+wk/zVaLzZN1x7iq/yTdJ+7jNb/M7pH3c5ft77ECB7kEKcA+hF/KQdoz5Ii5hwmOe4alOspQnfJEw1mGUhyKCEHSQ4ac9/KZkXTZlU4dKqjAKtVqoLzQpZuJ5M8isjwequeBTIJfBsDjqQofGaECFGv8/zKIAJlGGv1odHkFuFOZRACKzJv1zFU1ahzDeb3tYGF2CAkU2gQ+2wnQmpfEXQVBkgzZXEEALklomknYUt/LYC5xIxKLFgGUiUL6sz+baIYwCrRq+zOsm4/mNOUU4ZPQqKdht0RJxjQpPUKloi8Q25b4KdFPqQMm5eVo6yBWDaekpb8bzbbD/zPxd5CyPp/4zM1C5z8BteHNU67tgd5xEtNeASVEXs0J3wW5ch5P0SueSVILqyXRYGa1NrlJD1CNvdeItpbH5ACvAyNumaze3PjDH6Q+9y6D3Ew==",
+				},
+				{
+					title: "17 The Rebel Army",
+					data: "deflate:bVA9TxwxEJ2xce5juLusQNoSlPWd13jZW3RaQSR+AoqU1FGIolSpUqQg1Uq3fJQUFFQESnoaRIdETUvKQAt1GopjzlnEBfFG43nym9Hz+BfswoEPeN0+JRwBdD6Oj0673WpNTxM1m41G3aP2D68qqApTj5BPEJPA/wFhB56DHQE592CfCetqFn4AHMExND5PbQCcwQVcwm+4gTv4yy1NnMV5H28wxlVcY/YVv+FP3PW3h3iC555d4S3eexZjKCIxZk99b8Vj3zvxRXxndVtA/XoPRxotug+wDq0dhPdJ4EQiUjKU0aC2JDNKibvudTgk1zWpK2P6M7KhIUdJvRCOM+bUnJtiawPWM8ppqAb5IC2zKKOEIyWnjDLUZUGbhTJRtl0IqxyfTiXhQpgHQ8UT2VLJht6W54JEsalJjCl71PWWtrIcW6djHjjVJycXZV9mkZZWOtkLtIqoRzaIVUwF9auZXlV1VTPWJtd6eamcVvjVy/lg8mluxnGNvZ2tbKOZSGpZ1OZoPip4Vct6UdNc+ZYVy3bwiX8dHgA=",
+				},
+				{
+					title: "18 Battle Theme",
+					uses: ["Refights"],
+					data: "deflate:rVJNiCNFFK56r6s7SSVpZVcaf3bdSbptupPuTdvTmUwYGBdEEPW4sDdBEBRBEU97kIIudU8eZGAX9OTBkwdhUaJGjBcP6kFE0NOC67gIenEEGZbRGV8lGWZGx2FW9r18la9fv3rvq1d9L/zG7wHj7I7mh5LvMOY+ZBa30ZCyWnUcYczaNdwz2G/8oLELpoZdqdZkvdF03Waz0Wj+r39pVJAMo4Oamtqey/5p1I1xwv1T6WZ3vS5lrVatViqOY9vmBEYx7X6YUmy34tZc6dbdRvNYuDUVLxIRtlOpVms1Kev1RsOM8yjU60avUWw0V43silHuGPHGxL5rODj/3Ym37tuvAxjb3rf+xZjF2J/04wwsqEETTgLjdAR+krReYO8T+5rY72zImTjPv+TsFARw5jO4zNjT8AJcBA2vwxV4G96FD2ACX8C3cA1+hg3YAoEu3o1tTHAJz+FjeB6fxGfxJXwZL+Eb+Ba+g+/hiPwjnODnc/YVfjNn3+O1OVvHG/jrlJnnjVtmfxzCNm5jvZvoW49aI7xoKetN66pl3nxnbU9jI9yLLYhV8ZwwTIurc7ZO/suUbYvH7Rl7xlb2FduwkV1xdmNtZxYbOo84TzkjfN65vsZ2TvMF7o8ZEt88PWYTZl3i7OOQxzwZ0xsejns85/0xPfPeeJmv8NUxPfPlsZoQ52r8w04L1CcGZwg/rvFUlqKnMpUrXXilyNRA6SUvP5Hzgpeirwp6k2kl1rcCyoxUqhKlu150IqKuHS+kPanqqlhFlNSSqVDClz1aA5nRGspcHBafRV7hr15mk147pSrUhorrVCZeIlJBqXdGXtgJOTUiHnh+x+cBD4kvUHqsDnp00EnMcU92jHOV3k9xmvVLUdAuGn7RL/I5dC6ut6iCH/hBGOnQFIujuJsmKtGqWYrNvWRdwEy4kRiSB+S+8rV6gjqs8VkPU5/a6AhT7GEJxXDlXImrK8tUg06UxDoUW0e03Dxso+6JRIRQyla79QAhJEQEHUuTWAx1gUMssBRDtawoNCgGFBpMQwO1RKG8n/d1jn3McTa+ErLFbFFnuIgZhRZVQaO6sQY3s7a56LNtc8VJu0trp53QWko6ZHo2fZCQEwqC7ksTZlv/FtYy34lQp/7rvwQzqtur/Sjp7JDZeWkvo5td0steKekWEkIaxXRPcRinnaCTRL6O6ANKk24chYH2Pfbpa3cx9jc=",
+				},
+				{
+					title: "19 Battle Theme 2",
+					uses: ["Refights"],
+					data: "deflate:nVVPiN5EFJ8k3+TffH+6UhtBbbPJ5pv8z+bLft26OXRXVj4QrIeq9GRBL1LxUC+Cl8iMVvRUWCiiBT14KwpCD70JPYgURUHx7NZ6sIi1tdXWLbu+Sbrt/mm3W2fy5v3mMXm/N+/NJM/JVD5Yd7Sje4ZIKwj1ZsXQ63QIMQxNw6K1Vptyp8lrm7S+oUPCh6obJml3ur1et9vpdP+XJiIKCEPEAaTCt9VDGxuwIQnkaQCqoupmG17udNu91fFeTRC124SYpmHouqapqtis2NzWRPOCqKf3zB7ptWuObciD7eU1AIqCsaYZBiGdDkTbbrc3jOCy2+2aptnpdMA3GHVdByOQgFFVVTACGxiheGAEWjBCwcAI/E1Fm/ptFUshT8ulPCeP5GdkJME6aSdC+BA6DeN36HEJ4X3SWzB+JLVl9IL8orzzpnQCoWPycflD+VP5c/mMfFb+Rv5J/lm+KF+Vl2VdeUh5TOkrk8qMMq8cUI4obyqnoH+mnFXO12hHa6r1Ukug91vHa32idbL1bWsRMMEP4wn8FD6lHMVv4I/xDzUaU+fUl1WBPlBPq2LdUfy9+pu6SxPogPaedrZGK9qj+rQu0LP66/rJGn2p/6jfrNGYMTAOGgIdMZjxSY2+ML42/qiRYrrmvCnQ8+Yr5vEanTG/Mn8H9Ai5sIBWfCmQQinK4izJ0uD2DCPMsl8XpCXqByHlvpjjn1dotb3OKUZLKACXLpPTyXzArCLPUl6MoSDIwozhxQVEnT1O4NleSF0aUYdSh+8BlupBSHBuZVZqMbIo/AthWIzwxPBEPAWP61giGnjU9ZxVLVbB48NDeXQ/fh5ZvuVZDo5xhP1LPqbYu4R2vCuhixcWpOU+ort8KyYMZ1VR8RwNzAxXOLaGaK85BDQgBYwzqDRnSmaddz3qM1LRfpWl1YAXpU0iKTYSEpP7oPJt6Z0T6BwQTzIyvW92/0z5JD8/d3h2xIjYfBT6DAfx+u5HPo+G22QQ6ImGAY0uNIHfbNS/jbreqL8bdXVQMgwMtzvvEwr2G436p1HXGvVXo670y/WsTLYrt7IrD4SCBNUWc14NBPGVhv9yo7aswYwgvdxw/9koZi2JKvCKUNInVSki2MzKt0xWub60jMzcqcirjIjaFpuLwuMhcmcP3y21w9Vla/N5r5xuWdB7JhSSt7F+ZE02mbIcp1k+KPgUZLKo8iqreEpEJlOg3FhGsjmxS6IEYeWLW+PVFk9sTN5GYZuUe80rYwx7YIaA52KwRBa1CislOcmImA+yWg/dupaO60GK65vat1bBSHhiBC5/3e247jwuixFT7rZLcXTSKobbXoothBUPwFkKNh5b67YlKDwInDslI7vDpm+OfExYaImIiJ2RNE+yvJiCM8HTESIufFF8iyl+KDp8bGEtYYpHRa+ducSHe30r/vFkPBE7iHhYRuCvIkyCz+n8/pl9RcrIjTSBgxb4NE1giwjSVUHwi7Ed2aEd2L5N7b7t2fWc28OA+KReQuxxx53w+tQer3dT+1j2ozRfEsN1GHgO+bjjgpEJGibXxXANBp7AW7UHZsWh35/gDgR9Tby8JqY6bEauiLcYHJK7hSXmEJpt7V4XluPyibKOlzBNRBbEWZhMgv84GySTRZrzqWmoSBOcBgyeH/WDGJhWF/PJaQ+uOTiwhE8/4OEo0wbaUPtlQd6bDbMpK7eKg5GWarkGdU7yREhwS/wkq4UCpjwZRlYI1QnrUodwZgMuUACnw6+ROCXwmZpDZCorsuZfBYcOC0+N0DiLhUCYgQvieJEHwr1hc7Q83hwjt3Jr5FZO5dTIaXyPiS8AOncMo8n/AA==",
+				},
+				{
+					enabled: false,
+					title: "21 Victory",
+					data: "deflate:rZDPaxNREMdn5rX76+1uEghEpIdCQ1jSjUvLJl1Q8hbP/gHFv6B4siAIXhaS+uNWqAcR8eBBRIpI/UEVBE8ePQieRRsPXvUkqMR5L67aWiuKM8x3P3kMM9/MPVzHLZNQDR9JHANUci2VIJDSdW17WsdUGeJH0M+BuwNiMyMMg8D3pfQ813Uc27YtjnJeOcP0r3L/tGU7rut5Uvp+EGgHB5Xv68l6tp7u6gWO2THZMtlTOt9tuTTZqMDeYBuAXMvav+W4nvSDcPJHwn/6Sn1FPqO+Izv4w9qreB1v4E3cREDuwjrXMl/mEnxhPYRnEB7gE/Rz2gB4ia/wHX7Az2hRlQ5Tk45QRsfpBJ2kFc5TdJrOfaM1Wqdrhm7Rbdo0dIfu0pah+/SQtg09pqf07Hvfc0N6wl56Qe+pJlZoVZwVV8Q2U2NqgG8u47hab8zMDue6IPjXxyrWsYEzXVDgXURIBxjFSZoNj3YHODvHPEyZ3uYF57DQ+CkrOA2/HqdFUsTMucpUpI6pVM2rvuqpjspFIfpLGWtvKWKNsOhGTtHbSURHcOGiWMQFUwuo32J+G7VrO7FoM7exzRWZilC/aR61ahEmUMCv2sLOvvq3/WvW+Q1Qv3WZMI/Sg1y2cNT8by6bOL+vQv+CBPgK",
+				},
+				{
+					enabled: false,
+					title: "22 Game Over",
+					data: "deflate:XY67TsQwEEXvxHGcxHlQICEhxCIgRDGRE4gSrfgHaiq6LeEnEh4t0jb0/AQVFQUFFYgSiUdNTUGxzG65Hs2dq2Nrrl/xgJdFYSW51zQD0nUWHcVJmsSRDgNfeZ6UriuE4xDhnG+FkFKpINA6jtM0jaJoSbXWSZKEYRjHcRAEDH3fZ6iUYuh5HkMpJUPXdRkKIRg6jsOQiNx5GsdxHmEtxfLhL4C4H/GEZ7b8glYBeYg74A3vEFveBPjGD35BpBYVUEoZHbM7oVM6oxt2t/Q1pZkdYQTnmrDRSEstdyfHOMKYGtGgRY/PKf3lpjC5ycxeacqiZLWlNbawZW3rsjZDjV59zPK9bNhVF9HlBKNO9DTu2q49GJrYUg9T2aqsTFUsZlHlvGKfV8wnrxxK7KhM5XpbYPPKAf4B",
+				},
+				{
+					enabled: false,
+					title: "23 The Princess's Seduction",
+					data: "deflate:xY+9SgNBFIXvmcn+ZX/GgGAVYycxKw47bLaxEMXSWklnLZbWgYxRrIKksBIsfQLxIaysLVR8CW3Wu2tQCfbOci7nfpxZzuwgxXb90UJyH6IkUsc8pHQczwuCMIxjpVQURXMzDMMkSZrNZhzHQRAw9H2foed5DF3XZeg4DsNGo8FQSslQCMEQAEMmvLKnJUXzhysQWP/Spfy7S4Y+NkHghLNIY5431ALtYg/OihwQ7eMQRzjBEBeY4JJ1hWvc4o7dAx7xhDd2E3zAFS1RuVXRF1vsDsTLFGXRoc5z2YNuE85BbYpGUmcmt4V4neK9UPVqc0k0gil62hTdVOeVelbTqRwPqEO+kUXIEvVk/aS/xWny+W9Gp8ZqTn55+zu8tq5NN90wdZibDHOT2bqm0KpebTaL1w1mbfgB1YXlM0H0CQ==",
+				},
+				{
+					enabled: false,
+					title: "24 Revival",
+					data: "deflate:rY2xSsNQFIa/c2OIIcQI9REEh9BckWR3zuLa3amvkah9gKx9gE4ODuKgODo5uzZdnYKDOJR4Eiwme7/Ldzlw+P/zworn/nF89BRIC9Fl90VhGAS+73lux8EO5x8zRMawj45DQGsQ9Z4HHnWM1BNwZyzhlTecc5PDOx/UfNLwpX6zZSKxNFjJ5EqudZpLXdFmFrtuzywshAQKc5HE2cAylcJsKn6y8aKMDdNTuTG3OfYvlw4s+3bNpuNFn9OLeu3OwC8=",
+				},
+				{
+					enabled: false,
+					title: "25 Reunion",
+					data: "deflate:fY27SgNREIb/mezJ7uZkN1HUBfFGSIwhi8RLjNpYKLg2tlqLhYWghYWVAU0UbPMC1uIDiPgaNlp4AS00WIpWcU5EQQv/4Rs+hjNnmrjCS7uQ9s81tYDUijTb1V4q5fu/8TytfT+ZTCSMua4xxzFm28bicWNKGbMsY7GYMWZjRAhS+Bs5BhJCc1queF4yqXUi4bqOY9t2XKIkliQmYQnR/1/d4BaPovJCdWFL+jEugFe8wV3iXcChTuqjYSrRLC3QMq3SGu3RCZ1KndElXbftux7oiZ6pKfYqNNuzd4HZmCXdb1taei8PSM9wyKNSpzTO9w1q5WkKFUzrsppWFT2hKqqsx1SZwfv80KCPbCEsGTL54qhhKFcIhYMQ4LtWIcgHuW5E4Eld0mMdsqknVTkG2ufB7EjR0J/JFQw/mwTKBpkg13NEsonK4mCUjWpc34Elk/lavL4NiC2OROKbX140vvHlJac6B6Gm6utwZDJXjeBXZ+TFOvxDFzOf",
+				},
+				{
+					enabled: false,
+					title: "26 Escape!",
+					data: "deflate:fZBNSgNBEIXfyzhT09PT0wqCCyEz+U9UFMUDeAO3egjPMPh/gNwiF9CNB/AWRly5cOFKyWKsGEQNJK/oovho+iv6Ey/4+C6sZveWFeCPps07Z60xIuE0Kz8JflP7G/4PzvSNIAhDEWOsdc57n6bpXLfWZlmWJIlzzhijMI5jhSKiMIoihSpXqGaFKlWoNoUqma0zk2PDYz66AqjnFW9411FvcB0IT/AITBCwVkQjQLjGTR7zlCXPecs7Pug05njIScEcdbTYRANddtDGgH30sIg/D1ntyYHs+As8Vd1yaV2WQH4VXY+QN9lAgQ7baKHPHrrY5hYGWMT35VB21dEvl9bUUL/RP/gC",
+				},
+				{
+					enabled: false,
+					title: "27 Waltz",
+					data: "deflate:hZG9SgNBEMdnN9l8TXIxIBxomchlufPY4wh3HOcL+AJ2YiV21lYLd2phkYgWKpa+QMBCG2vBztpGEWtrsYizh4IJEmeZnR+zu/+Z3b2AIzgvBixYt8gmAO0Nmqp1bLXbljXtrRaiZTWbjYahet1QrWaoWjVUqRgSwlC5bKhUMsS5IcbAbsOsUTFg5EM4IaB1sQi7AJdwBbVjPga4hju4h0d4gjd4hw8osSWWsk22xbbZHjsj2mQ37IG9FlTiy3yVF8TWeVrk5u3b4S+nbBJjaqcY2ZmIkkQnOh90Kf2pMLRD9CntB4EOdB5CUM6E8j03l+J54nW08AT5d/Qp+r8ijPb5wRhGESZ2ggPSGcSxjkmn69h9lLaLmfCU0krnASiSJmWZO8IhAYcEfuJsoT/6zbDneJ6vAl9Ot/lfk2uYdiKRYNyh9sh0qHMPtZ1hX7okmImALu/mWio6oeiEpJ1aaqcYXm/Fkbkr5r8VDA/pk78A",
+				},
+				{
+					enabled: false,
+					title: "28 The Emperor's Rebirth",
+					data: "deflate:m83QwTALDBkE+HZwM/5nYOB3ABH8vLzc3Jyc7OysIMACA8wIwIQMGFEBgw7YDD4+Xl4eHm5uLi5OTg4OdnZ2NiCAmQczA6y+j2ESwzQGBkZ+IBYB4ggGhrkMSxmYEpgqGBhWMmxm2MvwlUGB0Z3Rk9GfEcJqZmxifDiZ4b+1KXZoZYwVNhszNjE9msz4U1VNQ1NDU1tHW0dPX0/f0AhTqNmIqYnpwX90hf8xlTHEtzC1VjDENzHico2tOVbYbM7IENfGyMAAAA==",
+				},
+				{
+					enabled: false,
+					title: "29 Finale",
+					data: "deflate:3VNdaBxVFD73b+5MZpMYsA5YStJ1JpvJTKaTLOtuw8Y0TTW1JpLdDU2pVaw/bVGobcEHaTGyk9RaKnkIVIP6IKVUH/ogFar1qaCgFCwofZA+9Cf4sEoRqVBL0XruTDK2tRV89Q4z851zv/Odc+7PMOkka+MH7mv5zPRvArS2trQ0N2cyptnUZBi6LqXUcAgcHAfDQXEQHLAb+UKTumE0NZlmJtPc3Nr6728mo5SVtlI3VAI9zpFkSfIkmZJci+kWM6qkVivcObAMIPjqt+D/2ouSvXl32YD0kRIpEyDIEYPwKQA/i+g8mAQeJWNkZELbCXCe/Eh+IdcJo83UoiupRwt0kD5Oa/Rpup3upnvpDJ2l8/QIPU5P0tP0DD1HL9AGvUr/oJK1seXMYavYajbMxtgk28peZq+yKfYWm2MfsGPsE/YF+4qdZT+wBXaFXWOEm3wZb+cuz/MBPsIr/Cn+In+Fv8Yj/jZ/h3/IT/MF3uA/8195s/CEQqtEryggKoohMYz/Bh8RFVGL0aTYKp6P0XaheArtTnl7U95MyptNefMp70jKO57yTqa80ynvTMo7F/MuIF4QV8Q10aQ1+P3ag1qXtlpT80PapLYjRru0SJuNUUXMa/OI3tOOasdiz8faCe1zTcV+rX2nXdauIrqhEblMdkqFAjkoqzHaLJ+VWzHbNrlLKp0G3yP3yUTndXlAHkTc4IfkYfmRPIURX8pv5UV5HRHTK8LQVWyzbunLdbWS7bobexq8Rx8SR+OqivpBOaQr35h+QpvU/18d7dBn9VOIv9G/13/SLaPBOw3fCAyVrc8oG48YiteuH5BrDRXbo5eNx2LfBmPC2GhUUHsz2mtj3wv43Rnz9hj7jDeM/WgfMg7j8y6i9406uTgHN/Kh79769iVv5DoAdbIwB7/fk2Ffvum0Z/NQg+BNAnadLM64d0Qsat1z1oZWZ7ivBtBXzdamtZmXAFCvGqInrKK9LbF9tH1lP5fYLtqusp9JbESbU7QxRdUUPZmi9Slal6I1KSqn6OEU9aXITxCQqQpaXUDRGr80R/70rbwVPnTpum3VRdZ23Chn2qYnXOGbOdOzXCtnTtOZLVALTN902zzhi1AEVk44Ig7paF8RdbRlBZiO1WnlLDBzug+9kIdCW10UiqX+YpQ325Hq5hw7ypqeqWIdy0GybYKJpHxvGAWL4oGwRVasNF3Uy6Kai1/X7DRzao03gYZ1j3o1R1kTiZV0cHv9Sc2jOK2BuK3yNlfcUTu0xZW3LdKtv+sviKIoiX4TsKLbOlDNqvqLIm+l9XfjkoGoCyRlo7gBMyuwQ8zlWt0rAhJC77hDcuCOT2dw0+MtyNfibY8bKSg8nviLtUBZo4lVYkVSIHkWsoJCUCzXWeh7fh18z811uV4UoMd3bNeJ7EFU3wIPYFy5JAssT3pJSAJsCb8DGBGEgYqKfOYxLAY80k1yA650pE8QDyahNnErKLQpKSDAM9wJuSp6JpKT5KlTncFyl07YhqQJXAHAfci5kbd+ms88Bk3oXf+P0zVHb/giT0IWkB5ShyDsDYMer0f9e/OFYnStxPpZ2fvNJjmSRYKtFrWDrCQ2cagD6p8lK6AD2lki5GH/XrerUvte1O3Fi9CNubtAKbE6Gegv9kexrFTS90h8l6qinq46W1TGDJHtJcIDtUBddbVI8SL013CNq3h0qrhDyj+a+Mu1EvrQXrrAmaULHCb+NUuXs1QJ8OD5FYd0sKkxnCmDjjMbpmogp56IL3nL/hFY9xc=",
+				},
+			],
+		},
+		{
+			title: "Final Fantasy III",
+			author: "Nobuo Uematsu",
+			streaming_safe: false,
+			primary_square_chan: 0,
+			items: [
+				{
+					enabled: false,
+					title: "00 Resting at the Inn",
+					data: "deflate:xZA/iBNBFMbfzPc2yWZ3Z0dIOMFCRA0kZg0b0hxHuEJyhYUBBSE2FqnTiGIhRkRFwfK47vDqqw+Oa2wNV1x1XKno6WmhhSIogmGd/WOVCEEDvsd+/Pab2e/tTBmvZAlxk1Y7joiI/CDyycrlC7ZdLDqO63qe7yvlea7rOMWibRcK+XwuZ1nMgJRC0Jnj9MeKEhWJ/lVwNEPwcnR6Iniy5nKGOY2a5VS3ouszjZosb0q5U+of7+K//uAsN/hJfpbf5E8pUYACCZ/IKlHH6ICeGX1BtiArFDeNrouyJKsttyUt4CTUMVwjWkIHXfTQxwC3cR9PsYYNbGILzzEyvWuevYT2EzrASxwl9AEf8SWhr/iOcUIRwDbH5LDP5YQW+ASn+05xhQPjNXiR23zBUIe7fIXjvB7/zuvzgG/wHbN6l0dI+wGTfh1VNMnHgrxAv1mV41AOPRKHq/JHqELdiN9oSA11T7cybqlzuplxUzV0kHGgmrqWcU29rWb4rqrO6od4dDWdEmZ2qOqxezl165lbV8a7lHqGLqZ0dN4Zcrz83oCsxd+tkH5CpH8B",
+				},
+				{
+					enabled: false,
+					title: "01 The Prelude",
+					data: "deflate:1ZZPaNRHFMfnvcnGTWZNJNTosvHHuiYmpuuamHSJa9LENV2bIGm1ttX4Fw8ixV5CCS3YJQ1R11+LlNpD8NBDyaGnIKWHUDyJeOrBUw8eioKnHjyISBGpvpn55re/YwvSklkev/f7zJv37zfLTE19oa64n9rQsmLefNmuWltbWtavT6WMaW5uakomk+tkNMpIJBINMrTWzEwy1L80TyqlXoqQyJfqK1FalUq8rT5VKlTfqcGv9SGlnqsGaqHNlKM8FWmMJukInaLzNEMX6TJ9SzdoiZZphW7Tb/Q7PaA/6Sn9TUlu4w7ezn1c4nGe4qN8li/wLM9xyN/zD/wT/8y3+C7f4/v8iB/zX8y62f1Sug3aGzrQOaf16N160GlFYX5+TE+CHRS222kf6TNgZ4VNOu2CngX7XNgZp83rb8CuCZt12qL+EWxJL+tfnLaib+uLDS5uYjjxLOHzutn4yTqvdSb/SHptselwM/I3G4zL3gSmHiPrWM7kwQom0IFjQ6Zs6vnlHRs3U2Dvi13Z+PymTb22KcdOmHNg58Vu2vjaZky9L+cc+8xUTb1/M8b3ZQ7M9rlqfP/mwRbE35zxfV7t3zVh88Z/j0XY3TCr/Vsyy2A3hS06u1/NHbC7wpYdu2fa4O++eWQeO/bEvDCcslpj6sF1fpFW1auyBdUVUlcz4QJd+sDrSvjD6/wsHS7wpUOebQmr1uJD/yYctllLP44o5rssPRZRzHdbejyimN9h6cmIYj5v6ekoH9Vf20HVmsyfVCSsZtkAVdVbIkMiIyKjIvtExkUm8NwHPgI7a2/X9YvkRcSr6hbpEsmKbBHJiLSLbBZJg+VEOmFn1xRE+uDH+iyJDCOOjVnBcwS8BLt+ymPVmsteSfdPq9CvLMBTFzznECkdi5wBy8KuG2v+rw64fURrMf/Xs/P+WeXt0ANklINtLzIuwFcRFZUQq4yKK3ja9xH1Ov85/23+dreUYFPEmgJ89MJnDjGCWPxMLG4nvm4+VvdALO4wdsdq3Hdj8Udj9Q9hXV8sh+5Y/VnE3ejyKKOiNZe9dLwD71uRYw/sd6KGQfjbgxrHEO8dPMfA98BuEOt2wk8P/G5FnA7Uvgk5BMhpG3LsRc67UEMRNe1FjWXUbHdLmtZi/gfkXJUa7Nl7yp+tlfBA6N7c6Vu2J/GJ6HzGST1qLUD3Wotpr5csh160/KjXByyHvisshL12DncL0d7z2jZLD0axQHOWTkQU84GllYhORL72128N7pZTC/zNoVK/OWRqGc/2K7qsVe0V",
+				},
+				{
+					title: "02 Crystal Cave",
+					data: "deflate:xVTPTxNREJ55u9tfC1QTojdCbUhbeIEiu+RJg90Fzx48GMNB+AM8cNDERLI1FOSoCfHkxYSzZ7nq1ZMHz2iFg1fpb0rqvHa3lC0UCAfny9d9/b43s/Nmt93EFdxoAW4M7erYBIhONG9BNDo0NDg4MKDrkUg4HAqFghQBCk3TVApFURhjSAFGv+1yfztDprSS2mkIi83xPnmBk+xOnFnmfnP0wjL9G3nSfHSFRtROKJ1gncDTAc9wFZ/jS1zD1wgYBcBh4iLxFfErUUXYwrcYWWFLADv4CT/jF/yGP3AP/+AhHmOQPWTbhPfsA9tzV3HlnXJT3WZcvat+VEc1qcYVoe22Vifad62hrQXkaiOwE4gH5Woi6GmPg23tRbCwjYdxdGCMmCCOE4sJV/CMkud4RtmXkv71d5RWd9wcqbaqSsEzip7jGSVfShqWYXILIV1JurfjxClilbuCZ9Q8Z5o4Q6wb9DFLFMQM1Sp3F5dpFX8/Vc/xjJovJb0ODS78mMlKTM+fYCojMTkn0bufiyMu6lzUuKhyUeGizEWJiyIX+WPBHJgjZoh1/wD9/V6k+w981r5++s9mYjjHJJOS4XXMJSXyOdxgm0uwTOMw7V4cmXbdtGumXTXtimmXTbtk2kXT7j7eOjgNw+rFkWHVDatmWFXDqhhW2bBKhlU0rHxO724vdU7b/fTrjiNFQ0jJIaRayCfdwfzvx3TuQ2rMwj2Yh98LEUcpWIqD+9mQwyxiYQakdzB/2wntZ0iQNWPuLzjpXmPuvS6je9+7/xZiV9BH4mP6SDyhF4yuxjqdZuAgS0L7FYi5t+TutbvcRfr120xSmzm9cPnJnjrRAynI82ThYKF1Inj6RgH4Bw==",
+				},
+				{
+					enabled: false,
+					title: "03 Elia, the Maiden of Water",
+					data: "deflate:5VRdaBxVFD4zs7N77/wkDbUVUn2QtcSEdJvpMNN1upvtLmHVptXUB4sgVJAi+Kro2y10k7b0QdEWfLAgglj6UCj4ooJ/0GKaKS2FQkVp2G7TbFr7JvogwvScmd0hZkdos9lW8Az3zHfu/WbPd869d+fZe+x6+MC6vq/0UpAFNZ1hnGuarhuGafYnWF+faRqGrmsa54xlMum0qqZSiiLLkgTj22AVFoReCr2xIl4jUcEDi5KWSdsbbL8vEZ3W0171TFZ33XojmFy1rE7rYf8eotDuOrol6O8Q2uOztaqU3VV5JHh7Tbej0/QE61H//mPFdLczN4Jrj6SYTuMJxhIsk2DpBFvTPf/ftKm70/Qh+5h9wj5jp9gZ9iX7mn3PzjOfXWHXGKj98DJA6gSA+jk00Q9LQgL1B2mDDOo++Tv0oLypgHpa+QX9E6k9KVA/SA2qoL6mNtEPp/syoE5lHAZ1tsQeuyhPAazjg/xpnuN5XuG7+Sv8df4Wf4cLfpR/xE/yL/hZ/g0/xy/xn/k8r+NY4Hf4Bq2izfNXtf3a+9q3iOb5VS3QntEJlfQD+tEQfapf1P8K0YDxrLHfIPSuccI4i+hH4ydjzriM6Eo4/yv66yFqor8dot/R/xHPBTGPm+3V9WZ79UmzvTpkWvjYGDvhHOUomS8g3otjn1k/Lv/t+ODfCEZ8/CeSYA5Mod4sDApW95iQSwNCvZXPCv3gxmYe6i5OOTjoXVQax+U/HSQsEL3Rpi9G9KU8NJbTIXNIt1zPtYbHnLwzNpSzXbuWU6almSnwISVkzOBCneh267MCvQc65WwqMqIvudBIoq+U8zil3jxqOdboSKyg5iiQSSyLBn7n4XApnZ0VCuhJJa2kLtpZShXVlsuO4Mt7amiktgVT1UnZbccRAwd3HIKmLRzhirzwREHU6vQjN4uK0BvEutNmLf2D1SBW1MWoGPL5Qs6iUjZig0hOIW5XoRV5LbFWq1Nu/0KR+tNmR936V7ZOGb1iOcxVpv4VK5trowpI2BoHd7olnlKW8IMyRWWKJjCq4s3DvhAvlB+lbvMWiNeYaB0Ox7bGcpYT56ptVegsVpFYRQrRblUpYSuqhCvLVhdptRFGz9EPYvdLldGtdn5HrTQJx/Bw7/yt6gu4W53L+dOpmZdAwrkLjj+dnnkxOvwe4T0RHie8O8KIJmO0K0bPx6gao4kICX8bfV+O58db10sOr9zssIxXbhZVeCAflmH2Hg==",
+				},
+				{
+					enabled: false,
+					title: "04 Lute of Noah",
+					data: "deflate:1ZJbSJRBFMfn+3au7k19EKEMsVZx+Vz201VDgiJMIqiWLlB2JRQyQsKCROQzRK1EMBB8kB6CJKiHICwyouiCUNCNHqIHAy8lUj0I3lo32+abmU8MlsouD55ldv9zzpkzv3NmX8DL8Ln4gFRfv/t0Ih24PV6f3+f1uFMYJQRjjJIZTGKuJKYnMS2Jga+/ffXPDS7ZXEs2fcmm/cp4/2V/Mfrl2fSP/ef+k/dfpv8JcCCxA/j9Pp/X6/G43SkpjFHKhyDG4FiyjpIRJB3wzkTGf7iAcweXUPYPLrgBb8E78B58CAfgUwg0PwBau700vnS+XED7xNdGCF7Bt7C0GEYBqEBRVImqUC2qR82oA3WjS+gauonuoyfoNRpEY2gCzSGIfTgT52ADl+ANeAvehQ/io7gON+I2fAH34F58HffjR/gZfoOH8Ec8hb9hStLJSpJLwqSMlJNtZA85Qo6TU6SBfxpJM2kTqoN0i98G0kN6lbpK+shtoe4uRAfISzIo1BiZIPNCadRNM6mtVtAAXS/UJupU2U77yF7h20eraYOqV0Nrha6jjfQMlQRt1CFopw5BNXUInOgA6aQXqSS4Qh2CPvpAETym7xTBKHUIxqlD8HmBYIJOK4LlPYMYzWa2KmClrJxJ32a2lckT4+pEHe9cEkRZJdsvoofZMSajJ1iDUk3sPOsUuosNdemzJrCKhrv0mUAERAA4q4GifN0yLW1k0ixs0Vt3A537TINntcDWSpkRM+X2kDrAd0B6qqSHqxqp4kW6BXhFUKBb+cNf1iBLG50KG7xyLUjhCfnzixMAsezQSRlKFKtQiIfmciI8Uq8OmdwbUNF4SAnuyLJcI9OhMM9sBhk8M4uT1EsSK8J1rdQhTju71u58ZpXtjkp3WHUeLLQbjJXwr7jNYPAVFvzZgt8wBHVQhiSnkzMXiAi6oOQG8bCiMxSdGY7Z1+fxFbQxxAPw8S8uCRLmoo2op0qk8RG55gJuUSlTzCqHo6fF7Zw8eSgfYKsgFuZ1Rw27u3Wyu6bI+6lApMXlPNKHWfvh+F696rQht2oYY5NmmpUDVlupLVprBSg6BwD4Dg==",
+				},
+				{
+					enabled: false,
+					title: "05 Return of the Warrior",
+					data: "deflate:tVPNa9RAFJ+ZfO5ONqsoiiKVbkNiSBpDwlKELb1IozdBkJ7Ef0MPCbR+3MR/wGsPHjyq9ODBg0JBxZN4M0mrZ8GD1Gp8LzvC1uzSD9ZZfszsm/de3vvN+72nT+i7+keOmS84rQjpzlZt0lX1VpsbHbPbNTsdg/N2q6VrmqoosiQxSslyFY06NZc5Zo3NFFcz+2XqGAZvt1u6rqmqIssSY5SsVMtHKaC5xuR+VK1OK3dz8TGrPWb9Q9MzukFf0lf0Nd2khHYJoScBlwBrgA3AKUo+0E9U22J3CPlKv9GfVGFddobNsXn2mP1iiZRIV6VN6ZqMp9vyW/mygqeHykflnJpIN9Rb6hs10hJpRbupPdd269OMfkV/qifSFz3/HbKUBAAfUHhmKucenMpQT5kNKJwTqZqx0pFS6gECQBGjW4xuMbhESkpzTFP00Y7JSnTLlABu65tMcvHe5YQXOw56Oejlw30PP2INP3IeonoA/FjhohuGlfPg4qCbjSYbTXad/wLm9+v8Fua3IP/nytEyCWELWAI9gVkBVwBtAcAHeGgzM+YqpCQklUtX9O0Dco+mxAXg7gOK4Hiq1K14gsW4LqYmIzQgPISwCBBjeAQhIQD3GMP7EF4iScUCdraAnUXwt4+mmNcFIBfYrYXcYL8ORNoARxRTemjtQSwCixky7tUPikVg/a6gFd80x3BrJE3pitfGVMj2RXxWAE6Bzy3uACWO4vEet+BkKQ73eACnQFnlbs9z7bk14J5BD1E9PKJj7DwUQ+MJG+7bgZ+aGS99UVgk9m0f7PnoRNbD+LcXYGurdzbV891YUN3Hry1gSz+apu+jpq2dYSTWFwl72a8jG6aMhxI8Is1oeNoRAzJpt/fZpyWpwTR0MziyOJbusnt3yPoDSgaTtG1MVS2LkyRuTF0Ti3uFP2Hek2H3hxWxeUBNLB5emE1tXN+rSWutMcdLB5beAOT8/5WWHFFXS2T9vkwGfwA=",
+				},
+				{
+					enabled: false,
+					title: "06 Town of Water",
+					data: "deflate:3VZfaBxFGJ+9vb1/uzOzFxpPQdrzutft3Y3LXC+5QmlTrcU/t3loqxDQECH64JMPVsGnyXHbNtQHEYJgQcUHUSj4oCKKQlChLyK0+CAKRbxrkzaxaVD8hwjrN3uXI/YOGpNsU5zl+/h29pv9/Zlh2UfwWeNhLC9kkk90xUeIHvR3Ii0WTySTqZSuGwbGtM8gBGPD0PVUKplMJOLxWEzTolFVjUQUBY3sQesYfpCVIG8SCf8/k1BWUTnq710Tid4Rqjeh0dqYW0/57rpp9Y4Q/buFRDfm6L0+7SEa8tma9o9vqje9Q+8zQhLzgv9k6GL+j9Q3dmrP+NNbcoR6Ryg7c9vL29juTfq1VfL6i7sdPuLMJzfyDPnTeMSvrteZEFmd8p/bzP3a0u/1iJ9bi5ZQ/Xzenwjbz5CYv+af2oqTcIs+u98Y3xoXjZZx1bhu/Gr8ZSAcwwYewHfi7djCRcxxFe/HhzBSKELaNjQG+Qy6CHm7clxB2kdKKoK00ciHkH+LjKtIe1M9DzkdfT2KtB+iYxr0awMxpD0W+xlyJX4hjrSBxIsJpH2aWITMkvUk0r5MjqaQ9nLqAuQB/SUdaV/rzxjIxY/iO0bVwwhN4dN4Br+B38Xv48/wOXwef48v4SX8B1aITgbJDlIgFXKAPESOkifIFHmbzJLPyVfkF3I3nSUOHaJVug+q/RCzZAjyg0F1BPIxOk4n6CRUT9Nn6Sv0Axqspdeoacq1E3C/snac5ky51jJ3mUVTrpVvYaZc65hj5mmo3jLfMb8zE2n5ZEf68fSrQSWvyS4DZrYZjAe4xwDjbHooYDBL2lzeS1vmJJUYH6dX5r5IN2cif/OEiJQjAl2qaELhEHMVmGkOy6mqJgaRMj8T+V12tWTb5ZW2ednWkm2Xq3c11B/9rM1sbjOvqBSUhmo7VWef52SQe0I9eRhVpxW0LXhppRPyZXNMQjGonM7MAtdFRiitGzvnZWdrdecidA421KqTZ+XKMCvnAd/jmTaS4yLk1CruidjJB+CHWUE1qA61q5Kcvb9dC+gTNVvO3NeemZNKmzcx5KZu9PeiR/8C04XaLEAllf3EdvZRvih7Wis919g9/9bMvXKm7E6Bjqkad5kbkG2gK1zsEV4gYS9EgMwlBk8LLehZmkF/loLe67YoCG+51JFSzzIiovWchCtBSOiloFO17BKv8JJdYJwNQ1i2V1KD/XV7IK8Ow1u6iruGzvGkUK9wJNCagJeDB5b0oKEG2CAdsMssa9mMe7baQGXBhSOY8Jq8cz4WHOmr09HsdLxbKMjZ3V231TaULWGKEmZXEcyp5yRuFiIPYUHkOvfZTl23LCDDuF10gJFT9PKZ3WpezarLeXmQDnYP3Ei3OgA/AVD9Aw==",
+				},
+				{
+					enabled: false,
+					title: "07 Fanfare",
+					data: "deflate:3VFNa1NBFL33Tqb5eHlJFqkWDFZsiY80ITSEErSErNwJQnfuXAsK/oB5kvrRXalu3Ii4EARXQlJUxFdcKv4AN6KJDQpKF0K1IIx3Ji8f0KJEXXmHOefcM/fOfY/ZwnUM7IJM6rGDGiB9XLuQTrlJJxGPxaLR6BSHlDLCIYQgIuSAqj4E6XQq5brJpOMkEnEuNtW23NT3O0yLbeq3IeQysC+0RbR4Rtd/ce/U6PbRiNGcYUwwMGL+OS4gbjgZj0pBCCt65S+/goaBw/jtt9zBe3gfH+IjbOMTBEzzQRZAnoTLjDehy7lg30GQM3gJ4QW+xOQWbQB08DPuIlCCsnSUPKrQMp2ms3SOLtIVXk1ao9uhekBP6bVVb+gtda3apk/0xaod+krfrNojIVxh1LSYEUesMjf01ayYDb05cV7cFVp8jOxESvKC1OKVbML7W/gjo7LqsMqpY2puVbVAWHc3dI0TQOIGQqsJniqqsqqqmjrFfhO4Q4Ue5w1Q4OMYtvdqNhnDdhPf6apf9ourfrvTiKnNTo3BC5YZq7wXgjrjEu9S0CDuEHVSrZpVS6w84QsP/Xa3EXRrgRfzN4HUs045pqjE27JQWGGuMC+O8SLzoK4Y1vUKJ5TbMVkhdAvsFkL2xthjHtQN/F6euz1ZJp/2Y16WDsRJ6z98z/GoHCowe1tPc8ZemP9Hh1fp2oaGYOK3LId+r/qnb5k33fP/8C3n5cKBqOH5dQfgJw==",
+				},
+				{
+					enabled: false,
+					title: "08 Chocobos!",
+					data: "deflate:tZTPa9swFMefXqxEqVNnhVAGvZRRY+IY117SbaftWEx32X1/Qc87W9Bs+wd2LGOH/Q+jf0nb01hMC91lp44xGLjSU9qobX6y9Bl/eXr6SpY+Ev4N3+GSHnjkHbmsBGj2ynVoNj1vdbXRcN2VlXpdCFFTUdXBdTg6KjpQB9MBW49hYpSkjPRluTll/lH8/5fO4AJ+qUYTgLfgtdJ38A3gjzI5p3gIUGNrbIP5bJt9Yucswz18gz/xVSXDDL9Udp2vjs5q/DOvVzPcr8Lbwb8EUngKXZaDFIlWjEjblZxRFe0q5YJyUSSN3BnEVq9W3TatkBTcwd9AZ55Po4wGIzX11twe8aOMUIoDTGQk+yGPVUO9GPHkRkMyxDKUUX9xa1+t+uQ9fjiEkyLSewzv7FFTMGx2SItnXs4HD03SXgvwJdG0PfgQMG9ZZxBMoQs9oIpIqW6YdBRBk6XWGEP6hSHY1WySkUcMR5IGanzHmi+1TkNrOlzRdT/w+7T8aUTv053knIDLJ1yR9GU/GEu2QxqQ+jjDXCTLoxnfaDK8k9fnWMTaFY1xpaMZzeziucjHUZ2Hp/CnKbats4zNXtW3wkVw2WzpsmKblNzokz7hB9iWsbrPHXVUgQvHH9VP+Qo=",
+				},
+				{
+					enabled: false,
+					title: "09 Good Ol' Fellows",
+					data: "deflate:nVTPTxNBFH7zZqeWDlA2ESuHCkK3sLRC27RQEMUfBxMvXhUPxsSEmwme9LKTtGok8WJIPIBRE2/+Bf4HHj3oyXiA+gP+A2Oirm9mtmQFGyyzed++9/bN9+Z90/QchmwR9QMD/W8kCwHShfAYpNP9/X19vb1SplI9Pclk8gitBC0hhEOLc46IjBZ0WZ47Dh1XaJAZLIeTnWk1r2XW1IYcuyHv8sy0Cdlh9jhR32pY7W4Yw/H/8xyW38VBHMJh9LCAZazhaQSWJtKjAOIi3CFch3cA/DvkGfACW2Lg3GAgltkLmvAtgwt4GZPP2CrAEt7C23gXG/gYn+JLfI0f8Tdm+BAf5jf5PZ6h5wl/z7eN94tfcZSjvefOB2fHeCCui0dCe6/EJzGY0N5I4mpimbyVBKRaa+znNJR4wNTAnvfE/jzIrTX245SO3Bj68UxDboa+yim/qTI5oURD6qjpS9i4zx6swoYhy+riApkfvc1mMWWw0hs4uqpioqrBWjLAOnn1dq2fi6FnauIN2+09qWTdfLX4uT4WyNYcsc1SXCOrkq87laLY5KLuOqfPBGPe3p7uCDETe2b8r57tuYr21ITlGI/OTuqpacIvevSWvytdJzVAmhphccLguME8sXzNk7tllMqac2UbIqc8enJqTDVH3W+jYnNU6HuhIzaVPEjcf4sFMiZ0hL5sC+6pEeU1rRS+7EbYLuWK6Z89UJWGjO5kvyKR7OfNBouLBs8YXHADMR/TYYZiq5RV2p0zgcXZ3aOTnFRohS3ZG6TYjqbvYOUE/WCKskJJ+3l7qha4rbPkL5DNR+rPYABVsgpZiWyKrEg2SfvsoDv5a0H2pMzLgixeUtOw/pD+sv4A",
+				},
+				{
+					enabled: false,
+					title: "10 Go Above the Clouds!",
+					data: "deflate:tVM7bBNBEJ272/H5bxD/AgSEyEri2L6YM8YEKEBIUKShhZoGgaAluUMJH4mGgiYgChQkKtLQQIVAUEFDRBEhkPgE8xWiiJNgknDM7J7J75IAgbfz5t5+b3Z2d0CcEU9kgWXJOzHNA0ht9hKQSibisWgkHDZNM0RAREEwDEPXdY0AW73VkEolk4lEPB6LRaMRGsyj5XAer2bwFDlJTdNgy1qYF570mvS7vI0LrD+Fpf9pn9cGqVA4Eo3FE8lUAJIBoLAoKgqKAqL/04/pjxO07PDwcHW4Wq2OVEcIoyOjjLExsm9kCrVvNYnvXBTGv4+zMSbYJtgYk8omlSn88I0Km6QPz3feVPFNsu59wNTH5zRTRX3qNZjhpkx9/l0mf/fsNnnR6X9c2mIFb8Ni4fNljMp3QTePrhzdtd9evss79jfZmYt4AGIB+NtA93jNiz49nIElvb9ecVVcEzfETXFL3BF3xUPxSICWou6VAFiGk+SvwAvyQuvQADv0Xh3wnl4hnzD2GoBHjS/kV4lDAp6K52LlaaMPwMAErsFN2II27sb9eBAP4xE8gafwLF7Ey3gd+/E23sfHOICDVJ7hSxwKUO//WH2eo76SGpFqkMbVfqnxWW2TpLTQzDYj1Brqp7aEucI8YLIaxEemFr4QZvUpvD5yPDKIDyKva4260/m61kweXNDPa9DJLVxvIqaJby9pE+vcV57lZtwmFzSnK+1WrKQj3uV1ByxigfjeRkeziFn/+yHT4MTcFK0EdTYFMD2NQf1Lnd9oWJqr/T9/xjjbBwvlo0gscz5KnA+zG95lsnmrYBd7Sotubr5EBM1JB3Cx9StlDns7qTKxncPeGXb0Somai9xlU1ORWOKuMnfZ1DzUTOqN3By12/6ObXDA1bqh6NhOwelhycJSkkVeSSnUGnxZWmluliiz568xa3RWSRYZJUn00L7kEcz18x1W2sgG+s3z+ALnoK2+P84Bn2aBuM0/1Uop5hhl4g5iO1HtK8cPgcbn6jeC6jn/cbQQh/I0qhve5GQqLFXJc66G2lTFctqcno8FWrHByFEoC/vpQWfMEifCLMp0sG8ybd6qWZAbZg/OueUAPwE=",
+				},
+				{
+					enabled: false,
+					title: "11 Cute Little Tozas",
+					data: "deflate:vVQ9bNNQEL579kucOj8VAiS2ihIFu4ndyErFHiRGRqQMNBNDBwYGxIBsKaVlAZaMXWFhYUIqc2dmVtwUIYaIKQMSkrl7eU6eojZtBeKs+/G9u3vf3Xv2LvZwoB5YrR66mAHUNrLrUKtVq5VKuey6KyulkuM4RaICkZTSJrIsSwiBRNDO/LPDOX6awSkqibMgyNYukmRk3MtaUCy5ldopVD2FzMpclgtyNSp1pQCaMiVRyU52Y8kGly73CHfwMT7Bp/gcAWvkvkrcJX4GIN/DhKSLdxH28DUW+6IPcIDv8AN+wiP8jF8wxbF6fuIE74uPYozfxVh0raHF3gkeWQ2brQf2W3vq+2F35RvJ1qG8VtgpjPFVIR3i7zbGEGLcg22wXyL0AitG9iUiUnJLyQ5JtkydR7Rnkt+nb00lj4NybKdsB8TpL59qb5DFnhbZwXRv0BhUVIvXaY1jPbJ9/V4n3SD2jLXb2sc6j/2a+bItElFX8iL2C7HXh+1QIZ7LQOPkmsdNs4/Q6HoxctR0YpHINO+IkUcaMWtP86wbo8Pz4niPpowUepae0cNZ/v8x8cvO+19O2v3bAY88KnMyFFukvkUyFuYtv6NthcDJ5xbNbvgcY2D0tGmgblDZ1KeyoYaep7Ct9p43uzB+RspaHRvxugwFgcjH6PAoG/rAB6KT+ImXNJL6biJOzm9GfbrmxxwtXIp8zIwoqdKPIl8cLW1J3RVtLyvJR1NXU1XnuNjbQLSTtebNYD28tUkdOaELD/cFwB8=",
+				},
+				{
+					enabled: false,
+					title: "12 Jinn, the Fire",
+					data: "deflate:rVRPSBRxFH4z+3szszvurlvRpniQHdl/rrvouiKaW3syokMoHoJAiJLAS0GnDjOhVhdPLXXrUvcOCdFBOnkNiQ5BUPhnNa1og7AShen9Zsdx02lzrU++N++3zO/7vvd2sRlnWBPyP2gMPFcFEyDYbR6HYDAQ8PsbGlTV5/N6FUWRCRIHcjAOD4fIIXBA2wn4I0yrClbNm6019Hfx707ttSaxxSvKdckOmh0ge1V/0AUBF1Tbc29uzF3J8ojkZpAzm2oY1C03bA7/deHogDnwOBAdCA4OvK5xc6TOde1Hgwvq2kHejABKsuL1+nyq6ncNc5jdpszAXt1DqGgm2is6xOVL5tmDjHbQRdflfcEs/Ifvti7Ll+wVe8PesWW2zspsg20xAWX041EEIQiAx+Ac1RvwjOp78AuAOeEW1QfCPNUV4aQIeFl8TXVdbPcAFjzXqd71PKE650kywNPsIYMWbEPlqzAN0I15PINDeBHH8BrexCks4iOcxRc4h2Xcom4Ww1KPdF7i3VXpsTRjdfPSgsRk3rXKY3LR6mbkt/J3q2tRRpR7yiw+VWBisShsdMDPtEcXjCvW8Vs7bKSs44IZUw1tQk0bESM+udPFqIPylHB7Gsow5FwuRGE7JutiQtHFJDFN7CTmiFkiDDnC990krW7SUJc6m3VlsdO+nbKVMsTV9LiuwWipCJtJeidGXEmEdCzxU1yNq/vkLAujf7ELsnIlSQ+xjzhALBBPEZcGuOOA/Wmv/UY/zxwgiyhZfIgN6mFj1E1+J/dqH6UzMmu9JLbObUpFsYf6LI+Z4zH5qZufuvjpR1bTVbf9apNGOOlLw1puR2mNX1+3thxa3ixYzz7+URG2e+2hclVPvu4uu8+Qi2X4MVq5XxTyVmOFKIo8xUqG+hQxo02gRhFonlBCTYcjYU2thMloGhr4KZ3TQ0Z4d0b3jJ8T1mslrr3XP0IyxMY4JNQITb9rUG1NKeuc045Wc7yU/dNMVD1jxCgxwn9ovw3s5HGywpc79H/gFw==",
+				},
+				{
+					enabled: false,
+					title: "13 Living Forest",
+					data: "deflate:tZK/b9NAFMe/986Xuk6bVIIQBqAg3CLnR+skTZySwF+AUAX/AGIoiLJUQkJi8EAKiLn8AUgwMDExABMoIzAhJgZo0g5IbAhlMTJ3rhWHEKeiqF/rPb13P9597vne0iN6E3yYSb1MMh9IL/lHkE6nUtPTU1PJpGFMTuq6PiGVUBJKmhJXIiWmhMtj9yWi3VGJqE5ULKq4W/bYDP6SH3gW+Gt+bs9jR+kAUO74l/4BRYyQNk7/Sbfhrx4AHR+nfXE+pqf0jJ7TC3pNYGk5fBgQF/BE+jYWGMRF9l767+wWoU3vSNykFeATfaFv9IN+0QTP8Ky0WT7Hb/O2jD7zLW5p61pGxg+1D1pGqKgo1sUrGX0UnU3WW0IVNXQ95zrWQF99U+SvwnjAcAXM5Z1eBWpF16sZKuuvDrIaHNRltjwwt+05h9xEp2ejhDK8CrnoLWARO56tb23Sz6PcZbPSTGkqPiltPowHx09JOzNi/EQYg+4K2yyUzbxtFivK52yzVaQNurcib5Jy9WHafdxEHyaJo93rFoq2EtL2mVt5ghHTq6ziX8ZZNCRVM6CqQ+VdrxFk/Tk9rkNx7MfDeSuM56Tl+x3NBWiFsmVXrZJjtWzafQcNNHFOnnd+4PRtrxn8a9UtB15d8asu73jV7B/914fPVByFESynY9YMMlatcl3RLQZByZFvVnXyxn0CfgM=",
+				},
+				{
+					enabled: false,
+					title: "14 Hazardous Short Music 3",
+					data: "deflate:jZDBLgNRFIb/M9PSdtoZK/EA0gSljJZSZjqxEE9jYWGBmaTowpa1d5B04UmseQyJZHx39qL/zXf/85/knNzcW13qpjpaCd+DQbmqKArDTqfdDoJWq9lsNBrLaMmp7lRz8p08J3PS+pr+VFndVt1XuqaMpNq5lGsmb+LPpSe96FUfCi2zM7uwO3PVm30+20/Py7UNO9Cv59bHd2EPYnKM78MAhuQhztz3Br4JW9Cjv8ieqX2V3aJb3Mf+1P4vulaY0gf/ca50xPgRHMOYdWP8BE4hISd4ChPIyJl7LhzAIYzoLbJDyYyv/AU=",
+				},
+				{
+					enabled: false,
+					title: "15 Beneath the Horizon",
+					data: "deflate:vVRNaBNBFH6zO5OddNukgWBEECTZbH6VVLZUQuxJ0INe1B49exFE8ORhFxMrnnrRiz315EF6UVG8aD2KgrceRLDG2GjPoYSAMr7ZRrduk23TpH7L92bmy+6+976Z7DN6jT51L5iMvNSJAIha4hBEo5HIxMT4uK6PjYXDnHMNEZJgElRClVAkiAQYh6EvhBuJG2fFsYD3exg+06XATrZl8VJ5+bykXubB0t8SF/fUqL+QXiX1wIiqfCgWDqBKtQeUHiCB2HMT54S1r50e5nTdELNDGneAZ++qyA9Q3H/5O9i0Su/RBfqALtIl+oguUyBRABaH8xhvwguMn2GaALtCPmFUlSUF2FslrgKrqE8wflTPUHhOX1HtDZkDeE9X6RrdoC36i2osxi6wVdZmHSZYKvQ41Mb5u9BG6LomZ4vaB03hchbnFr/Nt7Rl/kdb46Vwm10OQ6Jxn/w8BTOarUxzW7H41rhNUW3i6CWM36ZStt7w1vVOEmMamUMWkG2/sOkXWn6hY2AwkVlksftjpnvDcflOv7DjiS8iyRyGPNpvhJU7ZH4OVtanztoJJ9EI6nfX/Jt+obWjwhH4sltL/bfFbXIEto7AiH7FV1nSSTpVpXSiWKjl1IyaVhsl9L6CLHfH091xRu4O8nv5iM0bcvWjErNZGdnsFFCr57sZm1m5yig2mMg0smlIxcBnvpp4fxZppEw9m6rquUIua9aMRBJPg2vdSWmlJa301usWWlkvumtpT/7vbJ9arMpMp+j04z+ONAdvbpSlurPgcpE1h8Hru/jB+w0=",
+				},
+				{
+					enabled: false,
+					title: "16 Time Remains",
+					data: "deflate:xVZdaBRXFD4zd2funZnNrn/482gaEmfXHcaZjJtdQoJIRWux8QfftCUW4k8gJqsPKo6wmxj6UFQWkZS+9LX40KdSqCDWF5/61BdFJNnoGk3aQh9EQXs9d3ayGDPVxE3qWb7DOffe83O/ewaW08v03+AHKxK/GBIHSHbxZlBUyjRN1w2jqSkZJYlEU1M8bhi6rmmMUaqqihKLESLLkgSrVAiFB1oK9H6+Ft4OxEgRWxelLrG6kLrIdZHqAi3r4T/lzfJn+b73lo9qJKqlCFmiLgd5V4NdLiOFfTy1iOb+l1fdy7NvDGs8Hj2uiQh5x/wutPhFPrSQLyWq9nyJR4gRIYv44rr5JwsiZwmoGOOjH/wOjXAxXxq4xCl+eLnfcxGvd4TvXlJKG3zhH/l3H2PYox54viyQ0tP8y2Wf0oZIvk5/oj/TG/Q3eof+Tv+g9+g4rdIZ+g99TkFKAihr4CDqfriNehqOSaBckVQZFEseQ31LXktA6SJ3UD8gG2Og7IpVUSeUiwoo3ytEBSWt3kX9t3oUMzKNxU+RHoCNLM081s12sf3sEOtjg+wcG2GX2Bj7i32h9Wpfa8e1m9oGvRftVj2lu2hl9W36dkSvtkPvwd8BtA7qX+nf6r/qIuK+vsL41BARfahPIAaMM6jPIc4H66Oov0GUjauorxll1OLED8ajsvTSYb5csWQfHpmKL1XSaGUQYsVBZBHtYtfDXRvx0J0NEMdMhIvYgph0DJ/YpFKWXohUbbjUKiJbhCNyCy8d5rbDBOk5lUW6OXHB6qbZMxYiQ4rJcW5l0mapLXEB2pJW0iRQGCYjPVAA6pOHH3SjIlQ83/VLTthTJuxx0sYHrPUfZFvsrVLhzmZEanZVxKUQYBST4ia2WXIpEH+gEhLQ7xB7AK+0B9RRCfqtwmRrYVgd+RxkdE9iQ4PNwv+s5ldfWXiDqeCS4Z2eOOt8Wo1YXv24DM+2rvSViQ70n+YTfmwiF7LiIR7P3SuStpTlbnWtVLNpOZ5jmS0pG3078Esewa5pVTA+JUbAwbh2xLQnRgHxp4dJptyQekHPtEXnFsyLgp1o5REzOez7aYfoavaACJ7xaJFg8bTlZPPZdtvM2F7OszObbbej1Ek7qImDB+APueANDceRN0BihjKFXI22wPNqlAW2X7CFt7PmobUD/2ig9Ro=",
+				},
+				{
+					enabled: false,
+					title: "17 Vegies of Geasal",
+					data: "deflate:tVLNSsNAEP520tW0aRsPIr6AhJIS2oZYLf1RPHjwoEjxIGJFPEqPHrvSqgev3nwEn6AHn8InsL6FINTddROjvSjohPnmb2cyXzZ72MKufrBQHDtsCrj+dAmuWywWCvm84+Ry2axt2/NS5qRwzjNSLMsiIiYF29gBmCt1EdjHITIn1AdOcY4LXOIWL2izLjtgR+yBZagr/WU6o7H2nqhm3Vtd9mhN7thbiw0g7DWNdT6ghvR0RKHGeoIqG1dVrOpVa8Ci1OlAI/jktSQ9X2pZZ7zkTGQ6Y2t6bIUVNdHYwPQLXjJTdGQP+fN0RZRFSkeCo3dF1330/pSNDf5/LGY5NHTl480diZtS01ZoNoI6ckvFs2kYKKvitqo6HbN5sjX/vlPaJt/FMA9NPua2qmfWzc6eCESsQ/JEKPza+miDfrz5l1zLePrOKGbRTM7H/NT/9Es2qXsVFBkvmrk9QdUUZ0GfDMORR7LKSxIr3JcYcJXB8Q0D3gE=",
+				},
+				{
+					enabled: false,
+					title: "18 In the Covert Town",
+					data: "deflate:rVNPaCNlFH/f981kkkzSiMiuYrcbWsM0yWSyk3Ri7eLO9iAeRKHiRRA8efQiKOzl+yTTatiLh/YmCOJlL4J48iDoRfEiCh4URdhMNwdlEdz+S3e3xPfmm2Rrs0J1/Yb363vfe+/3fm8mfZFX+FrywEMzn9lsBFBqjEpgZqxsLpfP23ahUCyWSjMzxWKhYNv5fC6XzVpWJmOahiEE54zBE4/CP55RgizBcLQwRTx9/pdRb45ePdWo6VO8zync5zygwProDJzcFbmIjfiQkCiRE0mRdm305H/e54G1+jzgF/kqf5Y/x4GVAMxH4BnE1+ETxJ9gjQG7wsC8xo4YvMRf4Q9f5qsAb/OrfIt/wK/xT/nn/Gv+Pf+Z3+B/8CHnoiDOiLKoiSXxguiKnrgqtsTH4lf0tsVv4qb4E70dtCO0nmBGT9gGeSXjMePxxDtvVI1V4w2Det8y3jO+MKj3K+Mb41tD935njHt/mPT+mPb+YpTN18yeeN8cez3xoXndPJ8h7+XMR5nfE2/Oet66YuEMa8v60rqJ3pEVb/K77azkTSFZ32cS2mgDPyvn+pvssImBh+ai1dCc1Ke7k7lFJmevj9yzNQfCdb6xCvPvMpiNPST20WgA+a72z1XSNneaJhlTSf9WdW4W7EW76mjSbS+M6yAvOeF6ZiMEwLtLVYwxelpHjo4u6kiGdR0/peNBBzeOW7TyEtJ3aOUlWrmFnp/u1kgFNdO7k7k6imqebTgxbbeE1jq2KfrnFtPC5nTjZNPxG2gmG9Zt19n2w9hDtbXQJUSjaLBiShZ3eBdkf1muyChe5hL6AUhQbBBgsgv9jgxkW0YK/ab00e1gXUB1HtXlBh0iaSckwb2kr0l8TdLGzqYmcaWHLjLGLaqrJiRdcJSjPOVFKtuFiqooV7mJv6AWVE3VIpXvwryq4oNVal7NRwrWxcZlCMe6ArksU7GaekVL8MYSgjRNUnwZJQlljRX5k1wUe9Tu6vaqbtczKO1JaoiSBLWXVRm1O4la1EUa/678+D2+prH6CemphK8cKwqSl32B/EFLF/2LHTrHii5gUQMtnXWaVegTNPDBT8XnRRdubLLddtAO9gj2CQ4IhgSHBLcJ7iBEQRnLb9U8/ewQ7BLsEewTHBAMESKv3GX0i4jatgMK0Bbxc4cwh/9qSHPXD/zgDsFtgkOCIcEBwT7BHkIy8rDu1b0hwQHBPsEewS7BDsEthHsj/clImHsHx/0F",
+				},
+				{
+					enabled: false,
+					title: "19 The Requiem",
+					data: "deflate:1VJNbBtVEJ63++bte/6JY4UWRASBNFnXXnsdbMA4aoMgqqiUUtQ2bVEuUCQQonBBBcFlLSGnUAQSwgJxKCBxIKCKA+qlghMS9NIDB6gEJyDFcVqJC22aAEXLvLeOG7eibUgujPVmv/k8883OvvmU7+afmB/09pyIsxAgVQhTgMKRSsVi8XgikUymUj09yWQiEY/HYkpJ6ThCIHJu25bFGAzdAv9qofHM+P8kHN6A8P3hpquEr7Z1mWGdWt3IVHeHG+FKKdLSakILotbkWtbWypYWZ6sYZSy84xr6l23tncbD3HU7YZetqd2ecPsq2vGO2R2zum217fesW3vWsf9L+6f5s/x5/hIPeJ2/zt/i7/Kj/CMOLAWAN8E28s/BB+RPgmKAd7FD5I+y78lfYmMW4FPWZ+RPW3kbcNI+Rv47O8fhGD/O+0f4FMBZfp7/zR1MYz8OYxGrOI4P4348gAfxBazhEWzg+ziDn+OX+A1+iz/iGfwNFzFERzhCiZTYIDS6VQyJrEG+uE9sNehBsUPsMmifeFw8adAz4pB42aBAvCbeNOgd8aE4IU4ROi1+EgsC6esmnT5n0jlM6G3nPecHgxxxGUmZkGnpiD55m7xTamZYFmVZVghX5bh8yHATcq+cko8RPiAPyiNyRuoex+VXclbqHuekVDMGDavNqqC0niOKSteWyW9Vkcoy94CaUE+oFwm/ot5QH6svCH2tfmlYC/0sKADMNqzf+30oAnuVQeHMxQFiA/h1wK/z6f0RuThouPODmpuMuCXXcBdcze2KuD8yhlvIaG5nxP3pGe6ip7mJiPvLN9yir7ntEXepZAdewGaXSlaQq1vT24ATnWs1WBkD1iQWRujMlSjyMUjPNWCEYD4KmUvUz2E+VoO87Q3U7ekpuJ3qe3VO06fCvC7WmR5l6qpshNkgxVmqy9qZgaimmWMB0HhQaj/LV8Tedf5vXhgjX7PuNb66Akd8xfjRFdhN1Zhr09lQYzT8FBTX+g6rfYMRCPylDLmhYl1MPwpAX8IvU+zTIWZfxFQoKtDJ6KzJiNtCsRdl7Y6Y+SoG2fkcOVfn7QRB7ObWqL6MKl1Ehc497RvVT+J6mxkCWToeHX1jhTaeo5tKZ+iGMra5p76zlXSAzcpync4ttfNL7ZrlJ+n1ehtr4NnZvjnTfguxo1Fp5zW0zDW7n6sUm3pCr+hGc+6N5hyKokeiCJzAaXVta4u2Vc1vigd297oqSHWWNUXLugNcEpB6PbsWttVeWOW2a1csrQKnvbY3g3s4DvIf",
+				},
+				{
+					enabled: false,
+					title: "20 Opening Theme",
+					data: "deflate:rVVriBtVFL6TmTt3kslDsm7XKmjJTh6TSaZJm900MZuopQqVQu0fawURUX/4o/1TEBHu6ExrLUX8UdeiYMUHUqr0h/gohSrUP1arCFZBRdhHu212o2BB8AXjOTOz6W67TffRs5zZc8+ce75zzr3fZFyypTHvj9wUP64KLiEJw11FEol4PBaLRlU1EgmHFUVhIDIIpVQCEUUxFAoJIKTSKxzj/R24xdvkbxPIRjffY598eXdXFkzTdNdcN03vQra725ZQiNQVsSuhrgjzhZR7NrlATbhpi9tcYUFXdFhwb7tOFcHuoICmmyJUZko4HImoaiyWWEjmp8NcmAZzQAbtFnJNcb2n4D0fczcvBulqiS0gK66m4MavrOaGdLnVHV5ulyvG3u0+ciMnfLWssL7D0tvSe9JR6Zj0ofSJdEL6TDolfSl9K52VfpaIkICwm0E3gj4LegpUEojwKOgo6JRA6KrQ9hChz4Wm4BkXmyKhT4on4Dkh7pDIpDQj3XqXeC8hd1Cdrqcj9D76AH2YPkF30WeoQ1+ih+hb9H36Mf2cnqbf01/pBfoH/ZdSOSGvlgflzfKL8qh8SH5DPin/41kDrMKeYmgdYC+zQ2C9xt5hR9gHYB1jx9lJ+D8qn2Jn2HfsLNg/sjF2zvNdZJdYWtmhjMqPKzuVV5XTYP2g/KKw8O1htPLhh8KveNab4a/Df3mWGDEjD0bQ2hk5HPnJs/6MrFG3qWjtUneriPu0+ry6V90PvgPqGTaqIu7r6hh7Vz0CvqPqR+oltR4dlTdF74/ui34axWq+iLrRTTG0tsZmfaOxb2KDcbS2xPfHvwLr9/jEf7UQJxXQIdAq6OQGyoWJauA5P6RysZKY+rsE3vFCyCbc5CXulOFdCdQELYBOGfDeJuM6N3jBD7EEg8BLwhWbjbl6OpXVDKeUIC0yvE8gChG5OFmGXUOgFyoKD01gwklcQglhzJwD1RFT51nu6AGWgR4DfI6HOl7GdRoiAnCHKxori7aQzupGwSxZhpWzNEu39Kyji2n1fBV6msURLlQRGicwWQfYkgfgQ2vYWAEhZqE1hNJ4BqBzs36IVmzBsAzdMZgP6hQA3dBzAO+YYkksJ0YorxW8bvgGs7VH3HsPkWEKGyYahDdzoEZrj7y3SQg4m+fq4LiYgQf46r6vBisNFeOGfV8V1ik/ap3vaR8USnPOEu0OdCW0a4FnCBuYqfAh7rS9dd/0QUGDCdhkJsNz4MWWMsEADM/GHTkcdxvXM0XCkzbTcxkt5QwOQCsbSQGwkwROu4NTrSDgugAQgdHuNNBbD/HkWohrXznmDp5kO+9hGbwIWGYQkYctRNASJisyg+X7fTC/H4we5rWgFw+mBnmqmKs7hz5vCib41oL+VoLDn4aOk0S0GZyRpju5Pqx9EcMK+R32EWGR40K7yNeCHTScJNRmmXRm0NFW954Tma1iZhgGvqg5+S2YA4TZzCwaeccYqOGw5w2n7Y+tWqs3nOkmnHy7Ca+mG/1z5jOjwzYLmjS7ENin74budZZjGjPhkqe0DNxypxiykkSCXFh03QOod89leE6L2FgD8Vp9NilxzI9MLvL1YF+eGM42310j4bLdC9gp9NlC0SgCoR1DzIoZsSQUBVs09GzG0fqIDGW0EMJrzgfELA0+Ahm6tsO9iuEgg+9Vx5S9pQnfEMM7WYzELw9+W7yTTlpCSTCFkujx21pnmVZKS1tlCynf30Yud3JI0Lt9OiKPCRIcfa2AorrP2BF/aSCH8fWdy2VwaA7tlkbmq25nl44Bv+GWJjyCt657T3tQcTF3di47/csL1HQ01l7JMG7cKDzCJpY7hMuUcxpkLueUJTCmJyeF5ZJpPofJtYjlZMTplrI4Ynm2X/fsMXUK8hKZRjr4+9oOfl+hLs0qmc5CxLPFgpHTnJRImi/0E/I/",
+				},
+				{
+					enabled: false,
+					title: "21 Deep Under the Water",
+					data: "deflate:vVRJiBNBFP3VXdXpJcmoDAhKmFGGNE2atuzQRgZU8OZFPI24xHFDxA31Ih6My7gcBD2IB/HgxYviQRBEEC+CC94ETy6gM1EQBEFEEMX2/94MsTOOw+gP//Wvl19Vr+v/apt/UqucfjCrfMdiIUDfoXAOWMVSua9cKlqmoRcKmqaJPOM5puaYkmMsx2BLGICqClEoGIZllUp9OVbOsRJasVi0LMtEMwxD11F2KjyRlWwKy32YhoURsghXhKXfZMYqipkKI1OhZSrUTMUMiDgQrpr2WXXbf5S9JlwwJdlZRa2sonpWUZFVdIZUXQ1PzehhdpuVY2aO5R3/zPYu4II6L/N+Po8PcmB9+Ec/gDgPnxGXsMMMxF0mFRAHlYeIunpTBYcv5v2btf0A6/g2vpcf4sf5WX6RX+HX+C1+jz/iT/kL/pZ/5F+5KkpirlggbOGgLxKB2CIeYDQh3ouKdkSzMQ7EZY04W3zTKppfoGhN4VjhdRT9KHj6OZ2iG/orfZlB0QZjt3EJo+voN43biHfQ7xuPEZ+gPzOeI75EfxdxHyKO8r5EeWDaQjGLZjx3lpnOnWemc4dMz4znSnPYXGmuxn9GzPEL7HtjFEZfhzZzm8DOMGiC3uITgdKC8WG9pdTR234ZKUlUgEOJPuHhSLI3F5TP8zEaRB9Ct5MnjXvxlQ6+OgUe2AlV1qVru4SOK/0Mx1x2Uj21H0YBWkCK2sHslhh3SWANhy46Pds+0tEL+Oh1Yhoi3W9hst/CLh3dPL3PQBc/MAlPuj3fQ62Edg2xliDq/uen9rcn0kBfynqLdscko0Uprz1Mi1JrTKTT/WwvmdEsFeYkuzodAifjq4nS6h94Uhs0AunKGP2lfoK1MT9SG8lqkCw/lRWkLSCJ9oimNT02kKxMarzkWU2K2YtPy1TrKFcvPlI7HPg1P0JZb9RljOnZko52vXfB3tZEi0Vq257o7BKnq1vy+M4edbp6NY8nufUAxUlC7IEAuyBCundgoUon+Rq884LKFPo24+vpnXaiOz3mBODip8enM6g03VG81PtAQWYjMYNNScyeX8xQ0ydm1y+m2sTxzniM0Y44cihre5LFWpSzNcvZnEWb4ugoZW9MstXo07gh2i1+hRFXxc+k6q7FrPWgn1Zg5Cc=",
+				},
+				{
+					title: "22 Shrine of Nept",
+					data: "deflate:7VRNaNRAFH5Jdt4kme7GQhXbYqFWrK1t3DRk8Y+KCBUFteilKv7iyYMgFD1os7ir9aKX9uJBPRXRmyBCKcV68OBJBC+iF63r2movgojganxJd9OWbu3SXXrRb3lvXt68vPnmm9mcxJ/sBPo/WBEbFpIHYGz0VoFhxGLRaFWVELquaaqqcgISGGMRgqIosixLBOjyOsBAVdNFVTRmFEGsCKg3tabO1JU6UjfqtG41LAgv8FLgGz199orlNbO9hsXo+zqQDCQC7Z/2Thsvuf0OLwqKwhjnmiZENJoXJOqL68tLjYl5QeIZhZVQYejsgCVgNonz3p55JEo7pflYRtrdXmNJtKdZiZCVGrJiISu5Yqz20onSnaMroYWbz4OFiIRQQsghpBAl3yP/CBdYtdj6xZgUQYXIHaeDWpTcssh0yTtWOZmUv6Esmj1e11K+mcX+jUv+Mq3EWlyDTdiCm9DBbbgTd+M+PISHESSDimoA2C64Sf4xvCEvS1skYKekIfJZ6agM7I78lbytXFGAPVAaIsC6IvfJv4wcYMAuslcMTuNZrHkq9wEM4G28hw9xBJ/hC3yN4ziF3xG4zmt4A9/AO/h23sW7+RF+hp/jvfwCv0w+FUT9/EY+Gghzt8LcTN3dEuvK6TfEf/NmtZcfVHvUR+pbino5ap3aft2P0vqw7kfPxftBKdcquZAcnRiUfhlB9M5bKydHYQwi1yUYaQ5yfmZ9EE3XtAR++s22wGcGwVRd+UOz7EIrmUk23l7tssyctOWn42G6UGmTZSzFleJkJlk72ZRZ56pJMZkzaJyohTr4XI+u/MVocsVkkVxCmCKlxNvjTtxJz35IiYRtOQkz/5x2lKvytT4Yy1SSsT9OWcTqk183WUHOlu0k0puVrEOvf7Ty6/tj1i4sl7XmzcULcxPBkck/6iEpffNd7t9ObCXRU4pt2gmbZBWOL3lbXn+bHsxWkybTjrBEWeInRe6/8nMS8KS/GuAP",
+				},
+				{
+					enabled: false,
+					title: "23 Item Get",
+					data: "deflate:nY+9SgNREIXnzP7/Z0FREBRRQULcZTUqwXJxfQTBRsRGsUhlsHG1SDC1lYW1taWlT2FtNk9gKRiuN6tFIBHFc5mPuecwA9PCPs7LRxX/yYEgChaFTYFuWrbjen4Q+J7nOo5tWaZh6JqmKgoDtDxLP0qURMkNMT+6bFy+77muY9uWaRq6rqmqwvz39Wfi4Lf14/ImyJ2g/199iGOcoglCQKRNUUPyiO4knykGXeAa6h4uibq4xT0e8IgXvGEAAY1tDniAkOd4gZdkt8Ix17khux3ufdSQUyQrllUkYa71Es7pShlhSGbxXh1GUWnWSla/o1cRzSRGbETTlNH2Dcgv1jlPC5mna1lb77SIpZvW5V9OpqtDr/nl9bc280o/kqhmbXROaLcrr/0E",
+				},
+				{
+					enabled: false,
+					title: "24 Garuda Defeat",
+					data: "deflate:pZDPSsNAEMZnNv93k0ahoqeC1BISgiUNgihefQgPvoDvkMUG1GeoJ8++gK/guQdPgk2L4EnxpgjrZktxwYhSv2F+TD5mZ3bzgrf4rAJWWjcMBUB4KAYQ2q5HmR+0wga1GhQEPmPU81zHsS3LNAyCCFsb8KOEIipuCqpv/N+wXHR+u37g+4xSz3Ud27ZM0yDk7+NPxNEyf+e7/AYt/+ox3uE9TvEJAUMAqw3HkmdwLTkGimAN8ArhFd/RuCTn8gShpE065JQ8ktD4ilWtrj4yKICjzkm2VjhVigXUmcnkZEcxV+xr9Z7irtYzrw8UZ/vdggKr3mI1WOc09guz6sm2SGas2lPFyChw4SVzRzGW/sJLtYWzvF6yPsQHkfI6ytQakjhJecbLPktYJj97UcwTXna3YXQBMPoE",
+				},
+				{
+					enabled: false,
+					title: "25 Big Chocobo!",
+					data: "deflate:tVJNaBNREJ6Zty/ZZptsS0UqAVFozM9u/to0/ly9Cl4kiKAgIrQBRalCFdmVJq0UaiQaiAcRxEsvXrzowbNnzx6ksdWrV0FhnfealVCq1lrf4/vy7WS+zMxObuNpvKUvjCReWxgA2E6wH2w7kYjHh4ctKxYbGjJNM8onwkdKafARQhAR8oFykPt1usrfdCiLNikXuEHyD6a+o59fCSp/V0T3tnvfVFDchQ/O40W8jLN4Ba/jTQS0AXAf4yRjnrHKWGOMI9zBJpqPiaMdfIqr+BLf4Ft8h+9xA8fpFNXoLF2gSzTDqk43aJGWWd2nLj2hZ6ye0wv6RmdEje6KJfFBnDA4z7hmvDKiskZ5eVQ+kF9YHY70HuH3qvBwGj0I4VNV87EBHojU2fPVZY/LTyF82uT89lxfC8qWa01a+TnoQuEewsz6cfI660WmSrcZWZwD4minp0qoYhUG6xXX9FpF6babtHgVYpyyslE1vIefCtJr55TxHEiOtnuTMAUVmCauJqaYy1q5zB+dhGcsQC/rOV5DBfxoWrPWyXKYbP9Uw0C9zcSs5s+pUU/2JrROadbadphzuk6JuaSVes5siWXCPABKCd9OiTRzWriCW2Hwp+2IHHNOZJgzSgOPPM9vi7ZpULc+iAKjGNYbU+MNQk3h9DP9Ef2m4kC/7Tm69TeOMNTsevKxib4Kkepn6W8PQSKcYwFdX92GKwqiKErSH13AtK9uIy2ywhGu9A/CMq8wvje7s/d4ceaOFmbpZbV4DBOi/2Vh5g76/ZelJQf/fjta2wFoLUXB/AE=",
+				},
+				{
+					enabled: false,
+					title: "26 Swift Twist",
+					data: "deflate:vZQ7SwNBFIXPnZk1m9euhVhYqAjxGSSra59gZ2VrZf6F3a6Fj87G/5BKsFQQYmGhWFoKglFr6xTCesfMiiSYiQRzl2/u3rlzhp0Ds3c4x+3Xg3HvMk8J4K8kk/B9zysWC4V8PpfLZl3XzXCMcTiOoziklEII4kAlKf2+XK/vKLTkWxMm4cAaLerICBe4wjVuAPKZCWaT2QPu8QC1L5vAI97wjjYEKVokQVu0TQ2a5x0a4kx48kQKnvXUjnpSgnYdxK1Tas+KCJo5Q1ddf05KIkYf6pg+JtQxw7t9hKzaYNIcMGVm1eTAoOvAiSjt6bk4U9OjrPJY416192tGXlvO/u8cyMMmYu2LRjvyUvMi1Rq1zyXDguGv9bA+Lw+Jbf9eh9f4bZ1Jc0U7y26FGjMX/HBc59dgKnJtR00tWTJ01/2s1P0BLq31uGULNjutPwUgOhLAJw==",
+				},
+				{
+					enabled: false,
+					title: "27 Good Morning!",
+					data: "deflate:rZG/TsMwEMa/82GSttAwAGJGqFHVErUJUSBUVIiBZ+AZGBiYQJDwn4UNCYmNhYWZARbKzkvAG1QsCAmpXNxSWNhy0e/zZ/ts3Tm72MSO+TBRfihRD3BqvWk4Trk8Pj42VioVi4WCbduWxKiE1npEgpmVUiSBuRn8Gz2jZHQL22IdQE9iDdjDCUae+Ra4wBVucId7dPEuODRF67RPmbumD9pQXTyqjgr4kLt44bdL+vJ0Qj4nFCBBqBL4QqD6PpC9SPYWZS+WeSQsKuMP0HntzVoV7dIRVytu9di1arpOHte4zt4xVs4JBym35GhKLbko5dj42PilzOvIaGg0KyA9RFbU57LJXP7NpCXj/2Rq32jDnKryKqW0yiG73BbXltG35i3Papx70kCT+02GWTMDosF8YTBKXaqBptw3zLQTtSK0hFjI5pEQCoHgC9BVkgrsvrp/NKd15Wlf/WhdN4aa1/qJOr1FJ+dXkspDIRB8oWk68fv9mN7iPN+ukv2JnN6j4pXwdMbANw==",
+				},
+				{
+					enabled: false,
+					title: "28 Dancer's Dance",
+					data: "deflate:rZHNSgMxEMdnkk3T7XZ3PXjQcz113bAsaKlf4Dt48QMPevFgK3hShAR2L3ruuee+Qt/CV3CtDyGIxDS2slCrBZ3h/yPJDJl/yC0e4I1NWAqGHmqAsKEZcNfzwzAIfL9e97xazXWrVc4rFcYch1JCEGFtBeaGtkRLrjmEvudy5mzo1cnNs/Evsw71/g8DZsP/Jv5s4hTP8AIv8RoBQwC2DNumdG5WXRgYPsI6wh3mSE9oF+ABe9jHAb5hm3RMXpEhCWiH7NIOmSY0ih55FyBBYZkjQSVmUMQikfn0MLZMZjhKPptFko6bofHcw9eISPiSqTchgniybxrFZZm6qYIw6wyfdKRStbDGE4+TkvfUsmW5afmSBtIp5pwrWtgdG7WYxLhkW0zsje22SQZyT+7ILdmWeWuhDkUTc6MwyvD3h+QRVTRFxSIOR/fmuz8A",
+				},
+				{
+					title: "29 The Dungeon",
+					data: "deflate:zVQ9TBRBFH47OzO3d3u35x3EEMwRYqhEQsj9sciPxkIsbMAQvWiDorWVBclOANFKLbAx2igx2mhpKEyMmlhZWVgaxDvFWJggHD8xrm9m2ZPjDpTDwnd5b7/3Zt7P93ZzrfS9foDKH+yxZkzNBYi2unshGrWsSCQcNs1QKBg0DCOAwlEYYxRF13VCiIYCqe2uy/tehkxRSV6aBi0NsKW4ymrK9rrN29T/Lbvv1O+m/tiJlYSWSe3s9gPjASMYDIVMMxKJVpPykeQ8sr3st4NOB11rc6d/UveE21vT1vQyqWF1g+7gLhuTkmgl+ev2l904mOGIFbUiYTMUVOvb0I9t9aVUY795nGqD1TDigl7U13SgnIZpnDbQJtpCQYvicT0AOwqjaKehgDaindaAjWmv0H7V9hE8JbfQPiN1OrBD+lMd2miahi6QHMBxOkjP0ov0Eh2lk/QmvU2n6WP6ln6jMVbHEuwYG2Mxdo89ZC/YrELAW/k5LtEEv86nEN3hD/gjhZ6gerEZ/pK/VugNf8cX+Y1AjN0N3A88D/QbMTZk5Ke01SNhh8716Y72sddwSDdqvk+GemQI3fr8ckb6WfQ/d8Yclk9JNy3dTGKczLoZYQupadGpNCWySpMiMyHqYeQKmczBwDUN4l1Yfc7GTMHytl9U+l3yqTkgWBbtvJ0A5rAPS2kVSqL1UAfa5CbUjlZ6wlB3GscJ9hUdOI/UdpxDahtOhirnUZOA5Rj5atQTXi1V26ikjoTXS4kqtGV52LA7sh3hOnXV22NsB2zj42R9u6IKUxyhtMic4jLcRgRJE3EG38MpCCH73Lw9oloMY2jICyE66SEgznDSPx3wYsIsTEEayXz6kZFHzQXlrKp7jV8WEvhsQv3ug0UfLPmg6INlH6z4YNUHaxWRlYqsYkXlxYrupXnAtM0uIpptM0tEo/oQR4AVypj8tKXndivvPyEgTGDe5D3mYbRw/ir+Af0C",
+				},
+				{
+					title: "30 Eternal Wind",
+					data: "deflate:1VRdaBxVFL4zu3fvvfPbQmpdBUmT3W6z2V1nsmyShloEQcE82Af7oKWNoqAgFAkVg8psqLEVKnmIGDTkIQ+1+AcKikgfDFQfAkIf6kOFKtiNNiqCgkVRLOO5s2cmu7PTNFqb6Bm+e745c86cn3tndrELmQKTF9lifaQrPiF2v38TsW3LMk3D0HVNE4JzzkAyIJTSNEgqlVJVVQEhz/qjhGYYF0LTdN0wTNNOECtBzAQxDJlUppWJg9StucPkMnsz/d4B8g/ED1YlWA/4vetsYJMK/Mx/91+ecFz0BNESRCQIT5AbPJAL/if/w4HE5QYO6G3/+H9oQBtwIkZ9O6HhTfxmn/CHrmMHNqHgE/7YBhyZDWzop8wvmd8yVzIpJpjNtrFb2Q5GFBsedxFC7yJnYE0rjyiEvq4cUQn9UH0lRej51LE0oUvp7ZTQB+gSrFrmtQwpsgHmPKROEDLD5tkp9h47zT5lZ9kXrMF+ZL8ywjXexW/ju/gA38Pv5vv4g/xRfphP8KP8JT7LF/hb/AP+MV/i5/iX/BL/mf/B08ISN4seURKD4k5xr7hfHBKPi3FxBDAungFMRmwK2YtiGtmkmEE2JWaRTYs5ZDNiHtmsWEA2F8XOi5PIFiLbdJTtZBS7+r7JyDYf1TIXRazapja9vjfEohjSxsXD2mPaonhSk9ZXgb0TsHPaee0+XbKn9UVxImBJfu/rn+tNv1HjsHHGkOwHg5kHTMmeN980rwQsb1Wso1a73ykr9DttfWXttyV7yn7OvgysawsZu/h7QfEOEuW4Qg6WgMm7i5fl2gfIA3oA9bEKrC7AATReVv+s3uLx5WHuqY2aZC4wCCLwCiI1BBMIJhBM6ioEExetDmrpWYmeXk/s136e1BWAiZp10z61rnbTmD07pb4wQcaqUOs3tb1eVw+YASZq1oNhMXu2ETRbk826kskXFOEZwETN8hDZo8es2W+de7zt8d5ygO6o+rCnSktvTvDUSZjL34ntgyIAJmqWo/1QZI7G7Nhe+16ud6KXnJq3tU5XHNylKqAGGALsbqlK6n7sI7dm/av7Ki3ldceW23pvjGzz2Eot5SkSw4DlEWjrDsAegGw2DA5Ld6Lk8olLPdUBVCB0bc+K9AK44BnbfzOvd5wT6tI8DcoLTtRKFcK+q231aHAbFlZqSVnB+2Y6B9OVsLCre5akl2xDerbvuZnTO0+HQ3N02PDS1bCsKo5veRAsErLCKlZYxHztAykmjO7qnq2jK0AdABM1q+hFGrcVaFH/vtbr6bsB4bEot7y23DGmsnx17Ii0e5alF45pJyQCmKjZTr3Q+bm0711QT/O4jeBRG5QzC2flol77D1fFObmob0deV91r/h3Xju2FsgEm6mz8PvgT1vUCTrPzY3MwhbQOoK60/2hwnuFurMaWr/mh5qCMnDyQTZ2NT5scOraDkL8A",
+				},
+				{
+					enabled: false,
+					title: "31 My Home Town",
+					data: "deflate:xVRNaBNBFJ5NurM/kyYtilEPgm2SZrvZzXbNGgqiqIiKCkovioceqicRKVVEhC0m/h0EhV4EwYPiSdGb6EWLR8Gb6E2bvzatguLJg7C+N53tjy2itcHv8e282cx8882b2ZRoD73Eg3TEnzEpICRRCNaRRCIeb2+PxRjTdU1TVVUBUISMaENEERGEhCC7g97fzKPzs+ewrMyOoJvIVFE1TdcZi8Xa2xPLYPEyuAbKoRBIbHfJChDwp8SfR4LiH5lYipbaGgoOrNjWUrTQ6LVgZFWNLgVbBi3azLlgsOWbaZH1Q8H2v/gm2+YQXYQFX+dAsO8fBSOLEcoOrJqsNIdWyT4M7vyX270U2jJowTXaSffQ/fQQHaDH6CA9SU/RM3SEnqcXKZESMGgt8CAh8hh5B8/10mmJyE+kdREiH43U4JmO3o0SaQLY10ak68CPbUTeKjdkcpneoGwcZ9+jj+hTOk5f07f0A23Sb/QHpUqHskc5rgwrI8oF5b7yGLJh5ZXyRelQMUup29Qhnp1Xb6vPefZG/aoGPFujFbXDGmYntFvaA549195rMR2zDfou/SzPLunX9ZuQ3ddrY5EfjupH+oFFoAcsiNYCusC60+nLSBPoAqtj0ncLWhs47XT7bMbc6ydLbCIwHI9H1ilglB1GXl6WrhwkL52NvlrDleqoUkNd3kONhgEaNQO6JhK0qll4Pbq3xHqcLTwytotRtlk9h0o5GGgDc2IStg20UkdjtbyQbxowuBIq817VEjuZxlVLLJ3r45GyHIyyxep5+NUDFkQ7WfT8ztFkFWfh7LyoA/5WKYgqVR1RkRLrNvM8UqZjdpl22WT1fjTdHxYThRseui0IqSbWp4KW5/3ZMGCBalhb0/Uwyi6bcnJ+nBfVFcdWDy2HxzNjQTU/WeC/anCVrFXgkbFcDCjoZweGjLKaJUoaHruzoM9lRAV6cddZeNkLnBfssbagKNQvFJo0sWysZi8Q80Qb9vnNGWVNE0/GEDsvMXHcdtruwwCXU1a4V09c18nCrDx65Ue8GdgFTAEzQPRoCJ9Nc5Ovl0gl51u+7Zen83j2SSObSZW782Yyk/TErl1hzA5voxDhd9TEE7GFS3SbwVqkxZq4dvqX9TEvJYuea5d786lkNvnZwA0Pzsw2s6daBIoWv5gXV+FP6Cc=",
+				},
+				{
+					title: "32 Battle",
+					uses: ["Refights"],
+					data: "deflate:rVZBbBtVEJ0/uz+79jp2IxpcoEkTZzfLOl5jY2xIQEVUAiGBVAl6AIRAouoJhUsP3P4KG+gBDkgFFxFUuFSIA+LABQ6RkHriUITFAXFAYJJSEPQIFCmSmf/3O1kbJ3FE13oz78+Mfv7MzvzNaTbLXlA/OJT93GE9gFyhNwm57GTGSads27KsCXo45yY9hmEgIqMHTBmaMiAldSZlcQMZWD0LcpMOrcxDPXN7F2uCm9LNALB3cIfPc5DLZbOTk5ntx3HS6ZQ6nzycPJk8F7hHYNenpyRTstCbGpUjj3PUScLdrMFW2HF2gj3CHmdPsKfYc3SkHG1ymLBCOEE4CWA8Ay+RPAvnSL4JHwLwS/AN+W4AnGGr7Oj7eBHgEvuUfcEusyvsO9Zlv7M/WY+l8BacQR+reD8+jCfxaTyNq/gyvoJv4Dv4AX6Mn+E6foUd+n2L3+OGZtfxb82Y4RgxmzbyxhzxRbUODWk7CKuOYAfdpW6ExkOGZI8ZVeOUYs9qdsZ4yzhmrprr5mXzunmWX+AdvMKv8ecnPproYHciZ31i/Wh18Da7aq/ZX9sdPJI6lVpPXU118Ml0K/1H+lang287XzqPZl7M/JBpQndrVswLtyXaYHT/mgXSa2CeY9Bugi+KIiRPEyhC+IpVRE00FCOfqCi2LB4QDypGPrFMLFprAtlEK7rwU6+A0bu9eE9J5whXz7OtgAkgtDe28sQI7V8KRAjtvuHaHUQI7V/Ltwu7Yguskq6RrhNWCPdpfq8hWI2CI9w8D/94tAoIfe0TlhJa2sKELg7pUnw08LQuD60rBBnja13VOtC6W5Z/SB2nwMs4Ss7zcKSc46XtGJdXSHq8idXIj/xWhD/fOErJbvSmSf4fPk3nk3gVX7tI73uhIUtLKBMauqSy3KHmtb5fJy8Trmld0QWSiS/pIshCl1X+SmabUBAL1EOe8EUgWr8Vaa9uqAJCHTAvCjrgTgoIZEBRBfhKJjksFKkuBNuTOh+QJNiu1PkKdx2Pw0Kcbx/JGoyyxbys85Q5RaVk0+12liDOUjZO7JNtpZhsPjeOSbTiQVsSuO8UuczwHl4neZfqiZLqlYCP310Db98Wi+N3zJ7jtjjcOTdrhHYm6Gb23BgztjjYW2PNkTeqr5IzJHX5uDgcOTVn377fDPT797X2htb7+SVk/QbnoomFaOc3R7/hdct19huQ8TlwwetTgjcINUJVtgyhrg9XIUhbpDwDVt5PYFiHOmI3re7d/pQVEhMl1/OyKxPrOTldUzVe5RUezPjc4y4vyL7AKDus902Y9iKub1WJ2EawYrte00uX2Lbp9WAs5IQlS5YsX9zZ6l7auaGwquRSIqtjhM3d6jduHUddVtLXL4c7M7JsdhPLkRu58Ydqr3TH6aHdSrpXCTVXnytVmvh/AvUJ013WIKwQlheEUyf4iTYpJfRwzSpDl7R8Aa6+wJYSV1Kor6Pq0J41bQ91bPIqk7aQriA38iKvJetYkpdR1KJvGZW2mQ98r+Xm90r5QL7EiA/gPyWH916fBvgX",
+				},
+				{
+					enabled: false,
+					title: "33 The Way to the Top",
+					data: "deflate:rVI/T9tQEL93l5c4dmwXlQKiEqUpyKAgp2mEQIgNKZ+hYqFrxRcABuOhwNdAHapODK1UVSBBByYmpi5tVf6EMCOYEOhxzw4oKUZESX/W/e787vn++g9+xN/RA0+c75ZQAG5B9YDrOo5t53KWZZrZrGEYGUaaIaVMMYgIEQUD8soG17FzlpmNriXfqqg34KaNrGnlbMdNgJMAroAL4PwclSNyNI401AcPQkUsIn6pzMaMnQUrq4HHytfTMqMZcP/cOzfecvi3qtLOdO6jgxrm1ez/quE+2p/8F/yGm7iNu7iH+/gTQbjs6maZAZDv4SvzL31Zjog55jVxzGzhEsJfPMX0DwwBzvEaM9RFz2mYilSiVeZ1+kRb9DSlrUIqTL2TRfosN2RsFe/OinR7diZh5/AyLwJYxovBSF0ONb2151s6UMO4bCRICJU1AQvQW7vynwWZkwIFYozFp2Cx00K00g6ttedFrBdu03vNEnpGgGWWibo+GtdxZIn5uNQVyGqZLf32uq5rfn9gVH22xlgKdX3kR595zKfeqxYKvfK44QS7neaglXyjDflGO8zXMEDMy5gf2LWW2BvfbFrAB1wJYSewTpo2MBmNUu+hNs6/R1VbE3ofk7yPaZba1D9/jYDtVQK4AQ==",
+				},
+				{
+					enabled: false,
+					title: "34 Sailing Enterprise",
+					data: "deflate:rVGxbtRAEJ3ZteNLLrmLEEIUkSDGsc/n2DJ2rBMnRENDAS00fEMqRLkGX4APuIqCin9AdIgSUVBRIZ3w5SQQJRUSCDPj21ycAqIkjPXGMzu7b+btfsW3+KX+YL3zuo0VQHenugDdbqeztra62m6vrCwvt1oti2yJzWQz2CSbYEM2cC7CX62qPdb+RnX5H/yHdvZON6v+sZ3MI3amdreqnRO0M47YaXu+xw/4ET9hiYBdAPM83Cb/AF6Rn8AWgnkHnyN8w++49GhpDPAbW+Kc2BCuiMWQvuuEu+K+eCEmFDmyLx/Ld5IrW8ZD443B0eHaT+Oe+dIciokJeQGfqyi3c3uUiwIOogjyXVh/hrA7HeOvrKXELO0oYzqgiLMCykjFKlGpytQoNzNQkJv7aVvJcsAxDkyFs4zPjPFHwgQxJylFyZwgUKGakxBBMieImSCtCVImSOiMjTkSzAL1dMdEEe0vpJ1G24HvjVzLkz3pyz35ZAx5RHxlLBQkhJSQUZcB/zmnOCQEFEe6zrVrhKH+c17LKhOd8cl9l+b2CD7P7xFHn+BRxScc8M3VhToLdcVv7LSlz2K1Dxo+XHin9m7tPRktvC/jhXcbewpZX4Osr76sO1NH1naVME3qVVZN4Bl6jYkTWmOdsc5jvWfm81sGfJRTT1/c1OeVHgsiuFTZIFyi2CY4em2ThRKuMJFDRE49s9OYf+7pHmQkA6uQnh849JI9i5PID7ZHoeVQ1fk/qvQav3/WePPTCuTXdHXOQjc5PonGSMYyskIroKInQT0VAH8A",
+				},
+				{
+					title: "35 The Invincible",
+					data: "deflate:tVXNaxNREJ/dfS/ZzW6SRvwoiqJNzLLdbYxZ04RYWkH04sWbUHpT8CB66UU87ELqB4JQJVYP/Qf0IHj0InjoP+BBEE9t+mErCIKnQmWdSTZtukmT1NQZZt5v572dmffbt7tD7It0hpHCQOyDKngA8REvDjwUlhUlElFVTYtG4/FYLBrVNFWNRBRFlsPhUIhzxiRJFAUBUoOwp3g1L9T8hJdsSdwqB1LK9I5CMBXmomyUDxNSSsyJSTHthU7LaX39DrqldlP9tt7bGfdOd8i/I/1XuuwNd63Ed0lf5XQe3y7XkD4f3RNvuqdT0irRNqK1EbWN9NXyTe/agbbcZzsb0k/pt7Qp/ZEkprA4O8JOMBDiAPwwXEF/F97j0q+IwsKEAPy28Bb9Z2FQBH5JvIO+Ip6SgF+V3kmQYhaTX4nzAGPsKrvOJtktdo/dZ2X2jH1kN/gsf8Ff8wU+GZpF/Dz0K/Q0TOhTeD1syISm5Xn5Ww2llTHlgUJoQfmhTEUIvYksRg6ps3xKrVZgy0443Io5rAxLWSfvzFSLGCjIjphHW7IlR8ijFdDW7eRyBTZTggOuqNd8ugkfVNz8p3hZXPQsd7caAU0FdcYVYe6h+Gge5kBzBly1Smycq7NhO0Vk4yIGSshEkdgYRRaKaL03N1zzRlPE+G/xsphy06g6qomaDGiQHlyHBJRwP9VR2t15QjaijXzSUZc3aR+UOYOWC+B8AJcCeBzte0XYKiR62YXVMjvcMX4S/RBao8NmnAngdp2vJjV8xKLu7ujZgA4F1HRn0twUXdHhueOOnEOayGovCma0/ew0ZpE9V11JIZ2raSy0ohMyCJmELEIGoRShNCF9O2YSshDVy3XzFnq9i4djhUT3touJ1QzVzlIXRNA+d7CrZC+td9oGJJDDZMlvu+C/gBBqYamp5z07zRDKqt1o6r3b2gcBKSv454lG23Jitv/ZJLrtBADWztEHNMD0WhbnV7L+obT8kfo1/cNq+vHGtd400uFONY10+NdGMKOZ6P1INPsR9EaLB9mRt/fTbr/0m/Cv7cYcnnyHGzijo3V7IJpPj7FHBwbP7NPDy8f4P/4L",
+				},
+				{
+					enabled: false,
+					title: "36 Tower of Owen",
+					data: "deflate:5ZLPaxNBFMffm8lkdzP54UFaRaFtNpssSTZmk4pU/HXxX/DqUUR68djDbNlVexOkeFLw5EnxKIJg9eLZo3iqsWcPCsWIuL5JxhAilVgqEXzDZ75v3hse897uY9zAR4MFh4rPJKYApSAtgchatuPkclLm84VCqVQsFgr5vJS5nOPYtmVls0JkMpwzhgiVI7CnpYMdB3sjnYPJUlRLV9P1qKAuSTWpKJW9ktb3vv4bEyPLjIyPjI0MRzZ1B820ODYaPZiDmcwdvIv38AE+RMASgDgMFym1St59sBDECbyM8ASfov2SXQV4jW/wHe7gR/yCjOXZHFtjn5ngFi/wVd7j2vvEdzOXhOBrYl2sZ7Un+HZ2GBN8LGZdt1/Z2ntrX3O099zZ2WTfPK6wTjSI0Kg++0RAtIhlo4HJt83dU0bbJt81d08bpXPY28T+AvmTxLCgFtWSSsp0mCSGsnJVRSX6dZPE4KmqqqnEN88cJwa/VvUqidveTj3XdxtuqxixlmgI/yRswe0NhPbfbnkm7U42S3P/uowKLhCz0i5xfoaqP2ok/MHujfm/xqv7ysbCi/yoTuyhSSRu4M0Ytjr0mnPErDQkzs5Qp5ny/r7N0P/f//R0xVasHwxmMY3//vsiU1AhPKJJBESXOGM0MPEaUSaWzN2qyYVEh1gxGpp41dyLYTdUHfWTJJIx/HHgQ/+Yq+RRIpaNaLiS5nxXNmVddubrsvcvNt47sM6PE/DiFgf4AQ==",
+				},
+				{
+					title: "37 The Crystal Tower",
+					data: "deflate:tVPPaxNBFH67mc1uummiYhsVwZLsst1NsknapK3BX71YBS8eevCiePAXQi96EyfQqD1LT8VbRe1FEIqgCAXPHvwXrDVt8SoeFGF9bztr101SaTFv+b6ZN7uZ+b43L1MM2Fn/gX2pN7rkAaSr3iCk06lUf38yqet9fYmEpmkqRpxCoWAUMQqZQqIA4xB0Dc9nyef8TvuLzbd23tW257zqDrLj2+K3HfyJvVrJeQqoCb0/ei4dSmfQprjdqRHYQ4QPmvKK4qD2SHWInoqpeYd3ENPTo29707usQ3skO0TPBF/yJv+D4J7JO8AG2VGWZcPMZVVWZ2cYSGkA5SBcQL4LT5E/QEYC5bR0HXlJ+oZck2dkUF7Jx2KgXI2txOA8u8jUJbYAcIXdYnfYfTbHHrMn7Blb9p/X7B37yi4ry+ymMqO8VypxWp2M34iv+LOY6qj3VJp9VL+r1zSavdVa2nRimb1MzMKXeemXYVp2vllchBfA5iRYbLn7uVJDrI9qXK4gyggX0SokOVsvxLjkitUNN7M6L/2wcclEZMVIuStGU8wdhCW+Cc8t8Z2BGBKjHRoL4vvw/p+8bMkq2SUn80B+uIDCda439M8/T0oc6ogxRAVxAjGBqCHKkXcuovWLfE6Q13F0M4GgkXxHj3RCVkwhK7weWB3qkucjlqM55Bzd1i3dzCFn8pmNWg495fCKyrzCR3mNj/PjvLlZP8K19TpdBkkPCpUNFdwIzYuhtWKksJSvOQNcXQ2ugLysFQYwkRsyIhWMs7LdsBsGPhY+NHcaTVNx8PXfTD8wBFNZx6i0NVFSX3EFMRpeBWU1OJtquuaSoiAjH0H3FRC2uJlAsRVqpiAPa7CQsx3YRC50YHrrdmD/P1EJ/hMkvUUmNl26jUqQBnduRXrACvXKjsp3+fusr62dc8ilDtx+X1tsIJcFb99WYHmzjCaxD4vc5WU+gr1Y5U2/Pf/lJ5pTzw+LfLhDXox874qxLMawzm4eu9Uk3BVbPCsV87ZlNg0Jnj+SAX4D",
+				},
+				{
+					enabled: false,
+					title: "38 Let Me Know the Truth",
+					data: "deflate:tZPPaxNREMdn972X3fQ1icViVRSEVEPWkM0aNoRGBdGjeivoUQ+CehU8uYK1gmfBf8CT4MWb4B8ggh7ai0IF28YYUC+Wtkna1HW+cStL2oq/MmU+nX3z3pvvzG6kfCGExB/tSj/TRkiUORruoUwmnU6lhoe1HhpKJm3bttgSbEopySaEME3TYKNsqMhK6lT/EezHZuzkbSeP0V9Y2KPRox/uiwpttQGXvh5O/qL0VkttY8Pb2MAEXwxP/QfBA5N3KfRJCKUsK5nUOvVHMntjY2GQFvsyt36Y43t/T8yt8OqAXu5WG9A834g58V40xGfxVbTEhiAjw6lRInWarjGfUIOZMx4apN4avknqpvmOKcW0oIRMS2vWmCQ6II/IkpyQZ+R5eUFels/lqBpVe9QB9VjNKcRNdT/xKIHoaeKsdcVCdMOatb71ot32FfuljWjebtifOPpiL4QVOzA3gHWgA7SAFSD0kQXWgQ7QAlaAsIossA50gBawUlUL3TIHa0AbWAWWgSWg6yELtIFVYBlYArq4fQ1oA6vAMrDkK5q5a0xP0gyZLABXbQDrQAdoASvA4gOjW6KiGRj1gggMhx3/i+wl9sUyeciVYmseexm5CvnIlWNrPnsFuQmqIleJrUFM14VooA2sAsvAEvCxk9sf2A57kb08Rufmw5wu1hztuVW+YYL9OHs1uvVE3/OmElS7Q4t+UAn8YKruRcLRWD7aEn/OsR+Omudj+cAJ8nwMS4t/MBvuz/ZYd4HdZ6+y9/oZIZ3XXu2wLtS4m/y/zHDAUyA7Gv3+vlY0jfBLqEVtZHeY1mZlN5qIGz03y34wcnukXu7rpBJTvLnerCpKB3bzgenwoXoxUuhEKjdfQgMym26exrLa0a4uZ7O1O9o5lCtMuYrcXrmdSsUHjV8i4tvqB2vRgONneh+vZjHx3gqxHhuY1Y5SS1yi0Lu88LPQdjfRQR6t9rSf5UaKXiE3nnWmXP2Bpbz+wJtfezN3E9PHSd4z6NV3",
+				},
+				{
+					title: "39 Forbidden Land",
+					data: "deflate:7VU9b9NQFL3v2U6dOo0r8SGWSCh2cOxaSaqoUQQjO3+AiR/RgeU9KQGGrkxs/AymukywwcDAwEBTMTIiMSDMuS/PlQuNSICRG51777m5J0rOVZIzek0L86Dd9otAlEThXnmdwrDd3tlptYJge7vZ9H1/C9FAeJ7nIhzHkVIKBA3Km6vXeb+uYAklXniuqKJSsowFvI3V+AatjNJkYfJbekfv6QNoCFwF7hJ5h/Sc6BN9JvdEHhF9gaQproiOOBQPZSFfyley43TcAv0D95l7z+PuxPvu3W8U8k2DgrNvY6FIywOTJ76SY2AKTBwlDoBqpoOh2dk3mSdDM71Mf/pUfB1gkgGprZvy0W/4Kn1emyVAz9Z1eaX/2/c/kx/LRHf1RcQW3Pd0pLMaej/tdudaUvFIPj6i4nKfN7nTxPCpybdZB/y/0aYXyi4CF9KBvcnSX7jK7t7hiqtM+Tp2Vl1rPFK7OlikLeXO6DRRfZWq+SJb0lRlag80X9KBGqqRmu9DmgN1AxL7gerGpNaszNbc1rRmYmR5ZPei2px5bHWxff24Nu9JLXPSgrFOn6KPvF9zggz4fIAe24iOzY5MF+EAMboYW7S+vdfUFvPzeaT+zGT+vgzwAsZw1D6QALfAEyDl54F/ZUZ/RZ7Jrk51Dfx7cPwE/wc/AA==",
+				},
+				{
+					title: "40 This is the Last Battle 3",
+					uses: ["Refights"],
+					data: "deflate:3VY9jBtFFH7z1uO/sc+HSGIkX5PFzjL+u9347+w7eqhoQEpLB0UKCirEbOIloaCKToIGCnQ6EA1UkRBIHKBUiI4mBUgkBySEg4gGEe7Oy5v1rrX4bIKDAlLG8759P7NvZt+3M+vP8Un8LPjB8tKHgvkAhYSGjAEZfc1lUtxABjX/BBQKS0v5fC4nRDabyaTT6RS1JDXOeYKaYRiIyKhB+RGY2/wAWYCOX52fVucdZ9apg+S4SPKUn4JCXtATJCxemMwTtWg+PZmeRk+wQPZlfxkKS/mcyGbSqSRP6CpRBP3FA7GFzrSXfTEv46KBul+6S8HDai9Y6+fxLL6AL+JLeB4v4Gt4Cd/At3AL38MP8DJ+jMAKNPQYyQoAl3CG8BxcJvsb0m7CwwyMdfYU4dPsOcKz7DzhRXaJ8HX2NuE77CPCHfYV4VW2x4D/yk4iXMEvMfkpbgFcxeu4h78hGFnjmPG1MUicS+wmbiXe5yeSzyS3k+8mS6lS+on0dvKLdDvTzj6b3U5ey5bEy+KK2E6eyb2Z6+VfzbOlIXy/ye40pTmzO/XKzG7XyjN7q2nN7PPydGw5s8/L03Wqs7pXBSje2GQjmVZ40yRwhcYfSw8p7hZvTNxDuCXVoVQHUu1L5f0hyaN+Gpnq0FQHpto3yWeigr2R5Ir9bBL8UiIY4re+6f6rn+fitd9XaD3XR0VaiRayCUObItPxIRTVYVEdFNV+kRZW1IsdTbkUjIq0wEhewQtbPuwM4b9kdB5zcZLiYwad5qT3241J3+jZUfdsiPMWp1MEbldo3N2EO2WmoEJikcgpvTqlN0K9Fuo2yRAX5dIzRZM3RJVLbvF/QOrEnqH7x6d02PnhwAYHFWsYijVJHJIOyRrJEHpqTfWU19IO6OI41NZDjqvUPd8YL1xU0HmFfRDjJr1XphjyiiVpp85VK0S45BO6qHhjfYW0iU14v+N9GIQEdkkGJBvwOHk2aGyfrHXtJc7V+kB52jEgju/ppma4c+qxXSRjvgc9btGLYdErYFZOWd581eQVfor/768FiSv6FNEs90LPgOw1kq72k7RyKuHoqz4i6Go/qoQd3NmJvCTa06UCOGGRXOwQniZZDaxWrHguOrESuni7SlN8V6PX53Zdaw19wqCLZX4Uq6JOhWxWZcUrC5tcFeFo5Bot0SKUoqORa4w99vjgnF2iowesjk2PvYv9Nzo9ppax3QqK19KlDIunPUExSZyw7N1glCahHZKzocmh+vSpPLv6wK6S1PXhTYMiO0rZDPV6qMvYIa+vq+HnLJheTxuO15OdhhbtcyccMf5I2AF/tNtXbeXZIZkN7XiM/hlF5+RJzXBAx1E0eTNg0J7QNfbQdxEt8ozpHMeHXJbpFK01PMnvN4VB/r/sjkjgk4v0B/5P",
+				},
+				{
+					title: "41 The Dark Crystals",
+					data: "deflate:1VW/b9NAFL673DmOnR9UKiAhASJJ7RinSeQQOU1LADF0qaqKioGFSmyAxH/QsxQDEgsM/Qc6MHRATAyIgXZiYgIxIgq0gJBgYClIReade6miJrRpVCPxTt973z2/2O97Zzmv6X36KlzoUPqpjgOEMnZwBGUy6XQqlUzquqYlEqqqxsEUMMYYBYvFYoQQDIZyAUPxhJ7a+RNRL4pFJZQ1HTSABaHHoZ8MRuWDui3dwyJt5mZweZ/NdFuyh0XW8JXgwgE0HFl788H1iObZbRFJeBDM/0MJ3RaJKJNltj8Gkb+ji/QhXaKP6RP6jK7QF/QlRTgDF4cRYhfRDfCP0Ab4MbyEEfuKJwli94gWQ2wq9g78KTpF0Rv6lqorZBGhb3SDYqazw+wks1iVnWVXWVYpKKeVijKtpOMF4Mfi9fjPkG3Gp5WCKtgZdUZdDVklMZP4nhDsvHZN+6EJdkm/pf/WC8pscn2BbFZOcK2FPjjVmjs27q9N5Lj+sTHE2adajQ+9X8C/8oQjE2ADouAGwAKU+uTZjn1n3pHR6oji+mqQn8vOoeXb5M4iWl7f1strLvfX6kKvK/Q6oLfdV7Gjx4Pk7d7tPnlun7w4Z5et4yYzWI6t73qy//upijPtdZaf3SYfbqEvC9jhkOYur/OGvzWZlm6Zhp/TxSTqMIgJQDPG8TlAU+WkAXOpYI48UoRMCSDiYBknzIhdRWYHyxQJ3Jd4qsl2ZyVgANXagzVAu3jdxYtQB80uPKNq8lQVeA1QCjuwITsKEHGwzOBzLAJMGcU8xL0tGW3QAVANtjvbe2pbEzOYC/MQuoV+R+gHVCDnHW1PRJyEKVWZ8mQ696J3A2DJuHMvdOVlbb6fvdSfl7Gt35AxH+rs9llm9fRFZvbpS2H93yZSBhzULKwd2tt7cZ+crBW8LHXbgDJuIe5wm5fBu3zc398oWsTyRrwR31NbZKSD2bAsWCYswzN8j6Dnd+Hf/A8=",
+				},
+				{
+					title: "42 Boss Battle",
+					uses: ["Refights"],
+					data: "deflate:3VZNiCNFFH71Oj3pTudvwJlx2JmBSSZ20pPOj5lkfoOsqyc9LHjx4HoTRLyoV+2GxF3BkzKg4MGTc1HQkxCE9feyN9mTFwXH/1XB04LLrLRfVXeW3jiZjWYX1Cq+9+rVe/1e5VXVS93Ph+I0y0757MASAVFuPZinXC6bzWTSactKpUzTMIwk2gyarusJNE3TmFmgUUJ+Y2pkSp42k7rGgvJBgnLZTNpKmUZyRk/IOUHEwViFreduRB22YXQZWsaVQRFx7W4a2wJFhaLtYJGSppXJHdNu/nkjAZbyJzsuBnrkeCo3+cAYl6T8OIXxNxVHIhAaJ9niWV7gZS5yhevc5l0mkcNC7gLOAA8RaY/S06DP0Hki/WV6H/Qrmhekd8Q5QdoL4lXQ18TboO+Jz0AviS8FPcAPs/kxHxA9zk/ys/w8X+BX+A1+i9/lAX8ADPhTvsRPafOJxxJvJg4SZ/Tf9NbMgJ+b+WJmN3kuOeDLybPGO8bnxoAfNJ8wj8z7UgNetbrWZWsuPeCr6dnMkSlHB5lPMo9k59KvZ+kjEof74pp9kcRLgi6SDun6huaJtvDI56aiNUXd2Dicb8NuS402FW0p2gl1hhdaGbfVG5dhVVKjiSisbTWqKLquaDWMDZ91ORI23QmvVerx10HBn6r3ff7m9yX4nAYv8vmDAFutb2PhO7G0him+9y/p3oFdV432FA23ZTfUwaGyMm6rN3Zh5ajRRBTW1dgRasQOUgs+N6ItuDNee2z7U3Vs67Sb+uM+nwbrAiqJgLolgDyDDlABSkABWAF+WmaPVoBVoARUAAdwgSbQBjrANtAFEGNS38vAooyxiO9OjcSxR+K0YnEKRVuURSVZqxfYZyA75D1r1Xb6rhX/1d8Gc6A3X4kT57CjS9g1CcxBwlwkn6RDGbTl0ZE3PeI1QB4nXz9u1ol4E2hE880Yl9VtQ30dn90CNoEW0JHXBNiTVtYV1OEKRhUl/SzTjckJZiT9TtYliV8KUH1fwEji11OQerrt2E7N9RV13Gaj1qw12xs+6NZmq9Pt7+kqg9cXYL0QZiWUb2R5Ch3oApaiIO1i4x/26Y+dFS8la4qsFDuznr4FKN72Zg+vyZT1qOq5Xs3rt0ayHJdvadSIjGpe3etLoRopqpGyOqlRjx3f8df8kj+OV9BtvzyOhyX+H57T/4qug32VdV7W/g72swW0i561DdRUmstexXPCNA/vlROleSjf0kjtB9meNOvXoptRjfhQduNG7oiyEfGwwpf8e/xxvDTSK6qvq+76rqzw//M9Pemu/htv6nC9u/H1xs5gvOCPys2IV8fIrZFzdJzciP1VyOIsn43yGSzfGvKlId8ZLfwMr+31bbwxin4RFaTuD3kZvRrj8ryt4TSO4TiB9OEFJvoT",
+				},
+				{
+					enabled: false,
+					title: "43 Parting with a Companion",
+					data: "deflate:jU0xLANhGH3vrldtr+0ZRIwNmitt/6ZRTWOS2FgMLGI0iMlAYpCLSIsYDBgMBjEYJBaJ0MEgQiQWg1lUExGTlUjOd3cdLBLfn/d979773ne3OMGN/9CevDDpAlbW7YRlJZOJRDxumrFYNBqJRNqkwlKGYYSkdF3XNI1SUG7q73Vv/3fCi6Dklv6T8CJByP8RcYY6LnEF0BJ0CEYEi8AdHmAW9CngFR/4QohJdrGbOZY5zFFOcJoznOUc57kg02NLXOaKz1a51tI2ucVtn+3KZqDtcZ8HPjvkUUs75inPhdV5zXv/yiOf2OSbsHc2dvjdpzlZmZ8pmc9uWkFBWyeyOflOC4oCb6dfDUpXgoqgIMioAelDnucpqizdDnyUNMd+SRtOJq+qem0SYTlpF1tGIyNEbttijQdWs9LjxJq90nKqytoY8hsAfgA=",
+				},
+				{
+					enabled: false,
+					title: "44 Added Companion",
+					data: "deflate:tZLPLgNRFMbP/aajt53OjCaibBk0k2k6FGGhia0tCzZWNthoLCWzqQYLq1lYW/cFvIHX8O8NbDQi17k1BjFIhN/Jd3Lvd09yvsVtYQV7/aJB58ISishdVcPkuo5j26WSZRWLhYKUMs8MvGGm5FKMFKSIFPJG6EtUv4t+b6nmj+uzgmTx5+Hm1CjlC5btZvAxss6rA+iFvKA5Q7/g/eoNtfzN6s/YGfxjvDWsYxNb2AEJl8gcol3uMUlBZii2uXeFBO3jALkQJ0RtnOIM5+jiEvfocT1CwTJ6sI2KUTUW+bRk9PBatzGeQhlhChEFrJDV4Lv2rmPxoD39NsHy2POTu5/M67PHulJBxa9QfUFGk3q2+vLu1eqH6LSpeMS/YZ69WdY0665Rjso1PtQT4yZkw7eCcZ5v0dgxUekZ",
+				},
+				{
+					enabled: false,
+					title: "45 Hazardous Short Music 2",
+					data: "deflate:tdKxTsMwEAbg/+ymaRpaMyDBAAKRJhBAIBABRIpYeBeGDkwgJgfFhZElCxPlMZi6VEy8BLwHUrgEFTG0Zajq02dZVn7ZPuUGl7guC/PNV5dyQG1YCko1m43G3O9w3XrdcWo1265WLatSkVIIIrSWMHbk5Uzl3MEVLxVgLeAcuMUdxIvsA1084gnLlNGA3uidOsKVA7qQKT4z8eXpli4Yb0U7KSJ9pAsmsjQnYqFxwiJ2wPbYDgtZwM7YKTtmh2yf7bJttsn+y0P93CLUW7pgQr5FRuM+99jahON8tj7huGEeqyl95HE7bpt4MZCJncog4fJNsfQTrsAMd00g0evK+z560z531vlp+zLrvC9H9Hd01//sGl/i+YH/8m8=",
+				},
+				{
+					title: "46 Salonia",
+					data: "deflate:rVU7bxNBEN6H7xGv7SMCEaAhsc93vocvdhwnERIVBTWigw4JCao0NDR3kg2EPg0iNEg0SHQ0/II0dPwBCKFOnSKRmbnMhpWxgYI9fbPfzs7cfDO+KB4/Yg2OD7vQ+KT4hDEvmVxmntdo1Ou1mlLV6sKC67oOLBuWZVkVWFJKIQSHxZqTOvMa9ZqqLpRhs6OyyfL8l2K8mYEpLLS88wy9dCamYQJGQ6h/hc1dk9Ly0h6zE6AV7nLGPWCXALcAjxmz9tg+Y4v8KnffiB3GIj7gN/ltfoff5w/5Nn/K3/JTHopIrIq74qMI4fkqTsUTiey9/CzvVZC9rHyoMAtZaj2y3pVs37LtGzayB/Yr+wuwI/vHLj9Jr+Vu5uZiFfY+7GsAPPcA63Q+2OXHEexNkbMWwAcsAwqJFm8SwApwHXG9vEWLNxgRYSShQxno/zaJrMLy1ZntgG2RbaqRzKLAL/xi3HOaiu09E8932F5GylDhPPVmNazUoWr/qwNT2Xz9mYxkIM1JmtrXWrkqWuYsZqn+vstiHBkgALRp75BMfV4x/P8SP5LnczV7CZxCBs5IFkH5jI3zOJBMJTDnLvZB88Y+utRXnyaoy8FX06RRB4Yin4Y8y4/qQhpATHv4B38XB6XPOEgzB84gXhYygZ8jUGc2BtsmG0FzETYXwjMOnelmetTkAPYh7Bt4P1UxnqqYAsxOUvppE/IH5Mcz5g/wXuuI4RnHTgrqQpWWH1RS8qTkqBrjUcsW6RnSO0qdi7mF9Xrw/gFgAzAsP+M+2L7KSB/qTQGrAO2LSacPaJO22OC+CqD6SGVhFCfj1CtkygueXoSdOGvk7l8UwG2fPFuAzfIG4zAv0tObo0Dfa453Zv1pHjq/oPVs/qYnw52866gP0EM/INHzIhWo7LBZyysHvsz5YRtZiKyDLAKm/2ixZnsKfqujkiV/ib1+Af8IfgI=",
+				},
+				{
+					title: "47 The Boundless Ocean",
+					data: "deflate:3VZNaBNBFH677TSZ2U1iQSiCgprWJk2z3exPNsZtY7WgtpeC4KWiIAgFsQeVUhS2xbQVj9KLULz0oiB6E4pCK6gHvYo3Fe1vbHvRQxUsrG82qYQSWjXSar/wvX0z896XN/N2Qm7QvXTY+8CO4LgkuACha24HkCqfn1LGJEmWA4FQCQRLIFACMkJCMARF+BE+RBWCICoRFQgRISCgRYM/gOtZwbNdbvgXN7BFBXa4oRIFbmFBF1yrjJZvjxN0f7sgoaisJ+7oX740ayGVACsBWgKb0JFtcADlvQFbcIfKK3gTfibLK3DUvbxFr9Qm3Zn/YIPldfAf+CtR3gbStIW20XbaSU/R0/Qc7aY99Aq9SgcoCCEAshNG0L4BQwDSK7xA6xN7RSDjoq8CyIkKfyWQ9kpKgHSQx2hXSFcVkDtVtg+I49vjB3LW/94PN+ktGngq9ADcp4/oJH1JX9N3dJ5+pt8pYSG2i4VZnHWyS6yPXWUD7DZ7iN5z9opNsW/o9bGg1Cgdl7h3RhqU7nnealxfUdwExr31Vr9gP+pk7h2ST8rdnufIt+UHnvdMnpYrAtzbFWgLXERvKDA9Iq6oggMa0kCaSEt0IIVMI+fsu0BmR8TldYLGoOaDG70Lk7D7hgBjcN4JT6f9jphCWkgbOWeSefuCE55duwDkuqSaVspubatXdNNKZ45m68igMNSDelzJKkrQkTMqmTe50toFrtSY0M1Uc2uREuxxpCm72iFp5EwmXDRasElOxYlPqxO5TPGoSK82pmq6ZWey+wm0OjX9x6bXPzOyaB/jYbPrhXH9qKImzHQz1zcs+3A2ul69M6nimhqURDKVbj6SDedzeEQK+dEyneopNR+fS/EdrS4t8aX+6tzXJk+ooSmhJw9lfn55QSiJkSZPNzCXn0/Sm/+k4FwjcjGGe8spBQk9qTc1oIRhGWosW5+X4Ok6r0XjtfDEGTMvwgUauEiUi8Q9EUVPppO6sj+qaKamRLMH8iIGhmnIBDJeePLxgpGXiqEfRUaQdYVn1KvPU41r5kFTi++LxBNGIh7J1nqt+6g2OsF+aaP+8dClCD8tMru8URMLm7fRKLFIbRYvA4GJYRHgBw==",
+				},
+				{
+					enabled: false,
+					title: "54 Crystal Room",
+					data: "deflate:xdM9S8NQFAbg996baNq0iZOLoCh+F0XRKkqtXyiKinsHI84tuDpYENSKY7s6OzuKs7M/QBzUwamzk1Bfmxu4gwhO94SHnISTc04CucIJau0DXcG9n2t1IwyDIJvNZHw/nU6lPM/rZHQwXNd1GEopKaVg4J/lHoAWCTrFGZMQcIuoANeowz2UEXCDW9zhAY94wnP7eME7jsRP9iGaoizju01ZVjpTcXbsvDbEV6+ool9US4jg1ARKg7wepXGaoCmapTlaoAKt0Bpt0BbtUg/1xb0wTCOUM3rM0LzuUaRlWjd66D3w1hCfSW5rl3N5ESGyNX2AhowvYmuPMV0/SdOU1/WLtESrun6TtmmP9o2d/5pX+GXejn4+ef/kbGsPW3ONvxI4uJTANw==",
+				},
+				{
+					title: "55 The Everlasting World 2",
+					data: "deflate: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",
+				},
+				{
+					title: "56 Castle of Hain",
+					data: "deflate:tVZdiBtVFD4zuWcyM3eStKV0SkHZzmw2m5iddBMSYqqGCloR37SV9sm3orQWafu4M7jr32NpH0rBZ8GnFnzRRfBJFPRBQdQHC+5P190i3cWnIoXx3MnM7JCfJms2Z/nOOffce893z7k3w+6w22w7+IMD2S+55APk5vwcoJJWNU3XOTeMTCaXy2YzGcPgXNc1TVXTaUVBZCyVkmVJgumjMFD8QEuBbvt2T+Je2Reql/0q5BRV07mRyfZn6RXiJVpiJVLiJMo9MB739STjeMle949AdycokWhGLBgLiyUVixyLFMvI9Bf80lD6fjLBI9k+Qlrj+/UUz/mnwnSjPo1eGfsQp/25PR5ibMoF/+19qLtXeB8Z66B32BfsK/YN+5b9wH5mv7F7bI1tMZByAHgYXiJ9Ce6S/h0sCfBV6TLpW9JD0kfk92XAz+WfSD+Sz6QAF1Lfk95JvcfgH/YvO7AjXwQ4htPoYBNfxNfwLL6F7+BVdPETvIGf4md4F5fxa/yR9K+EP3Az9HZi7zHqSsc7pGyOsG5KeUVZJa+abqbfTevqMs2dVxdUUxPeBe077VldeFf0v/WzXHjX+T1+xhDebeMX442M8K5l7mTa2WV8Mwvb9x8VJBc8eZZ0XnLX//TLsieXZG8D9I8lWO/MVoTeiGY6sbkglg/8Z0jP0G6xYjZeEeXcvCk9Ltku36odc9W/5il6giByOoQHc6ddc7NM81bKlaYJSethv+jxxDifsIXQepgcJWdnB8S7M00HWeIVqic/CaUhKHbhA+nDi7C9VRf9qFEPqoSoLw8qoh+D+5U8odWn9mSVHnbXHI1LA+Lj3UF3neUhGNbX3bcxqFeVSV77eK3e66MY1jwwXXPDOeji/ZbhshYxNAnCngz4W6or1wnCNmUXWgRhG2G8SWhEMUKddtUIwjZGeBobTwnuOnGLHR4vBaxFyponzIjrJzjkF8IswhexcuiXIj+c767QMttZT26jxyvoocOL3OIOeXYwzvN50gVeIz3JPqxXgzS7Opp0JtKEYpAhzJPwR2+GQ61LonMykX+t/rSrB/W0gpiYWWvRz2m9FnDs6qh4J7Th/oY56HiT9ruLSmKRl0vFwsxShfwnARSqvhZX34iqX70pV+kaa4R6aFcqdDXzhBphtcr/39FnEpHOR6Hcs3L3Y2GHt58PX0IhHIssyTIWuSPqXTQtO28v8inLXrI40D8aKyeCw9LxXyC0CadCu3KSZp4ntMUKMbvyXORFFNH3Lxon7X6WMowP+BSn2kRxS1P0yG1umWRNePiRBvAf",
+				},
+				{
+					enabled: false,
+					title: "57 Chocobo Forest",
+					data: "deflate:dYyxagJBFEXPTJw466y7bhAxfUQQUQvBIr/g51hYiAuGgI2tjXXqtEltbW2bJXXqkGozb9bY5Ty4c9993HliwSYMreTNqRLSadkhTZOk2Yxj5xqNKLLW1j23ghFqwo2gBSXw0OVfyqAq6JKVtymYNnN4Zkf9Tu/hwAuvvHPkxJmCT768ynz7DyoXqUxV7l711N91fHEFM+8er1sBGa746as1uf4ohzq3E51rXC8kftcDM5LEhMQStqEJDVv1JiERHfj+qHoTaluIfwE=",
+				},
+				{
+					enabled: false,
+					title: "58 Let's Play the Piano Again!",
+					data: "deflate:y2VIY8gBQwYBvh3cwf/FGPj5+fh4eXl4uLm5uDg5OTg42IGADQFY4YAFDpjhgAkOGOGAIYOBgZGfgSGfoZyBOYD5FwNDLUM7w0SG2QynGd6D4UcGVkYQLcv4ngEGH/zRY6pj0AHienZD1jpGEMYnwsD+4I8qUEQTiuvZUXkKQJLB3wDMhpBQMxS1gLQSEINoJD2KDHodDAwKAA==",
+				},
+				{
+					enabled: false,
+					title: "60 The Everlasting World 1",
+					data: "deflate:zVNNaFRXFD5vZs6dN3MnGQOSSZMGJzPTGZOZxNHkMUHwBym2NiK2QrvqKkjddFEEN4EXCokpRckiqyyqoAsL0kIL1kKLtptCjdBCqKtCM0lMGgNdmGpttTzPfe+88fpmhGBS6hnOvd85757v/Nw7VfwY59wfbGn+WvY6SUARNWOxeFzKRKKpKZlsbm5qSiSkjMdjMdOMRoVAjETC4VDIMCDXBs8Ux10Nd93nZOuI62VTUhWdVghSEZdiU3xEqCiJk0iJdsAZePZxdd6LUCFukBdmwJtOZV0d1csm9Fh2Xll30X6jE87J5y64XhINRDaQDbU57AxtaskbLOd5n8q0M/G/TL5eNtD8I+ffF6aJejEbSLSBiAaCDSQSlP/8kVzAT/Fz/BK/wm/xO/wBb+LPeAt/RcAk7AfAE3CZUsyShgzA3cakAcZVQqvGqRDguRCGwegNAx4PhyKAPZEeBOMthAVcxdabxlGAlOgSRWGJfeKQOCbeFe+JD8SIGBeTYlpcFJ+Jq+J7MSN+Eb+JFbEmHopDUfUbir4f9dAX0VlGKbNiemjEPM9owZQxD70TG2V0LXaXUTH+dtxDF+I/MXoQ75IcIYddNELrhy4ap3XSRVM13ye0XnLR5ZrvSu3c9ZrvR1pnXXRLznGGRdrvuPgPCderU6FHRTl/t8O0QxnStSIt3aR/9jG4pzwF0vv+mb/8Mw/8M3/7Z/5RZ2AG0Ma+Fhv7W7y9zHh5MGvLaoXQNuZSQS+R6vZW0jRpju0U21m2O/h8P6mqoJe0zHaFdMV6zU4tWu22mdEiujTGVtJOzpjnHvJsp/lbjv1VS9FSyZZqoJ8aKJO69O6nElej4tUYdpC2abmKXJ0/ohzn13M/Ra9mNEpTIr/FXe3iKWS1mDbO22hK3dxzRquhl7n8aa300ZQoz27Cgzw5i/cerVbF0a7PC20jQ6r2bt6Vrc9A3cpObVe8SwOW3VL1MywOqvmpOtTbsDgu2Nd25Sfu7aQ5lYfsl7mWtHZHv5eyT0jVBewg0kHSURkcY5mvSO22nO8IvC1iYm9wdvpMli06VfLuKUjuv0i1L/fL9Y4v2FIp8CzVWCBly6KXNZixxJWqfVSWtX+J/z7yjJVvIU13cTtNA1roTOnh3Tx0ta8U9tpb5/JhGj3pUj4LnRTUSUHzrdod+I3ptv4dWujaCxR1pzDZ6CzVeRoOThgwtg3sG2Ni/AgAWTcynnXYswi94aGC53+95j9YQ6/W0AEPrXbMjBnj+2EvGWegYk8xStrfwJ6PAM4+Bg==",
+				},
+				{
+					enabled: false,
+					title: "61 Hazardous Short Music 1",
+					data: "deflate:a2NMZ2wFQwYBvh3cjP8ZGPiD/4sx8PPz8fHy8vBwc3NxcXJycHCwAwEbArDCAQscMMMBExwwwgGDigQDTvAfTDKCSeX/rAzsnNy86E4A2Q+yDmQ8CcZF/neEGocJ+LAAXiyAYkfkMxYzVjLWMzIw8jMwsIowZAPJyQy7gOQjBntGhg7GCYxMB5imMTBMYZzHuIJxPdNG5hvMt5hXMD5gBrG0WR5OZvylyljHoAbEGkCsCcTofBitDcQ6WPgwWg+I9bHwYbQhEBth4Q8CJzz8A2IZIKlG55sAsTFUtSEWvjkQmwGxKVQOnW8FxJZAbAGVQ+cPtP1NrA/+q6qpqmloamhq62jr6Onr6aMLNOuzMuxvYWqdxrD/0T9DBjMGC4bHtjJ1nE0MjwzrzOos6pptgSbVs4LMfGwrVcfxiBhFDPvagIkZAA==",
+				},
+				{
+					enabled: false,
+					title: "62 This is the Last Battle 1",
+					data: "deflate:lZE5T8NAEIXfrL1enzFCSHRUDkZxLg4BQgJBQf4D4r+k4Gzo0tJAQUUVhEITjERFQYkoaAitRUEFBZIZjEmRKt7VN3o7ejOa3b3CKbrZxkTpxqEU8GupD2ko07Js23Fc1/N8v1TyPNd1HNu2LNNUyjCk1HVNE4IIkwbylWaRsli4jTvS4BwXuOSDD8gpbHPcxQlwjT60O2oB93jEMwZI8M584BM71KcET/RCW+JMJHgQg474Xpdt2ughfk3LMdQxoQe9TZucXWFWmTVmnllglpiIqTJ1JquW4/tDJsBbR3wVrSzqx+ycv6eiejXaLzeGMjAP6LCF+PeOlXyemvzTzVwv5no519nMcnz/8FVRtLKoHzOhqkw30DT+CcLRDP+ridsjAfwA",
+				},
+				{
+					enabled: false,
+					title: "63 This is the Last Battle 2",
+					data: "deflate:lZG7S8NQFMa/c5ubdxoRwc2pNaXvqqgIikv/Cv+QdErFJ4JbwamTg5OTIro4OjuKi/iYnaOgxNMYWwhKTcLv8N1z7v3ycXOOPs7iFxP5K4siwK1FLqSq6YZhmpZl247juvm849i2ZZmmYei6pqmqlIqSywlBhEkVyRPFleKa2cZOGRzjBKe8cAE5hTbXDRwCF7iGskkd4Aa3uMcLXhHinflEjtp0QCGOqE8PNCNC7raELy5Z3YmnnvhYlQGt+eg+RsUutH2CDyWgde4uMcvMCtNi5pgFpsJUmToTn5ap/XjuibdfJxmcMFtyt7RKvVrZLpZ2aLeD7iDYX8c9psCUE11LdDPR8wONcSHGuUAdhip4nlaebmAQajH5wL9CyNH+4f0jPcnq1FQb+OYn16jDf1ZHsCeALw==",
+				},
+				{
+					enabled: false,
+					title: "64 Let's Play the Piano!",
+					data: "deflate:i2R0Y4wAQwYBvh3cwf/FGPj5+fh4eXl4uLm5uDg5OTg42IGADQFY4YAFDpjhgAkOGOGAIf2/FkFjsQEyrCr8b0eCVax4AdGW+jAGMIYwMjDyMzAwpgHxRQaGaMZkRuYM5goGhkzGYsZaxnbGU1B4Bko/gIsA2X9MmeoYTIAYTjPXMT7UY6tjqud/gCEHxI8MuOuYHxgDWYasQJUG7AzpDAxA1VAxkAo97jpvBrkOBgYPAA==",
 				},
 			],
 		},

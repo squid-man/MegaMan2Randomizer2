@@ -19,7 +19,7 @@ namespace MM2Randomizer.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -282,16 +282,6 @@ namespace MM2Randomizer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] FtSoundTrackConfiguration {
-            get {
-                object obj = ResourceManager.GetObject("FtSoundTrackConfiguration", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///
         ///&lt;IntroStorySet&gt;
@@ -405,16 +395,6 @@ namespace MM2Randomizer.Properties {
         internal static byte[] pausepatch {
             get {
                 object obj = ResourceManager.GetObject("pausepatch", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SoundTrackConfiguration {
-            get {
-                object obj = ResourceManager.GetObject("SoundTrackConfiguration", resourceCulture);
                 return ((byte[])(obj));
             }
         }
