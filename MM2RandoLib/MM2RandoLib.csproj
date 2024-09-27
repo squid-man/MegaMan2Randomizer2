@@ -33,6 +33,20 @@
       <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Remove="Data\BinaryBuffer.cs" />
+      <Compile Remove="Data\FtmBinary.cs" />
+      <Compile Remove="Data\FtSoundTrack.cs" />
+      <Compile Remove="Data\SoundTrack.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Resources\FtSoundTrackConfiguration.json5" />
+      <None Remove="Resources\SoundTrackConfiguration.json5" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\FtSoundTrackConfiguration.json5" />
+      <EmbeddedResource Include="Resources\SoundTrackConfiguration.json5" />
+    </ItemGroup>
+    <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
       <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
@@ -168,6 +182,9 @@
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\" />
       <Folder Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Block\" />
       <Folder Include="Resources\SpritePatches\Fonts\" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\FtRandoLib\FtRandoLib.csproj" />
     </ItemGroup>
     
 </Project>
