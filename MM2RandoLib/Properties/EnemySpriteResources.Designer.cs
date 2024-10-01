@@ -10,8 +10,8 @@
 
 namespace MM2Randomizer.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -59,7 +59,17 @@ namespace MM2Randomizer.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Batton_Batman {
+            get {
+                object obj = ResourceManager.GetObject("Batton_Batman", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
@@ -649,7 +659,19 @@ namespace MM2Randomizer.Properties {
                 return ((byte[])(obj));
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to PATCH�]?C���&lt;fZZ&gt;A@@���&gt;??��@@H4��������������f~fZBZ~B���~��F���~~�����?p`ppx���ѐ��D����de;ԣ?C��ԭ#fZZ&gt;A@@���&gt;??��@@H4��������xf~fZBZ~B���~��F���~~�����|0p`ppx�����D9??fd8�&lt;������|�x ���x88��H���G�7�������?��\$G|��||������G����^@8Ր-���~&lt;};F&lt;���@���࿼?q��@ �����EOF.
+        /// </summary>
+        internal static byte[] SniperJoeAndSniperArmor_CBSDOat
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("SniperJoeAndSniperArmor_CBSDOat", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>

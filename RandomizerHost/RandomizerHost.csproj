@@ -5,18 +5,18 @@
     <AssemblyName>RandomizerHost</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
     <PackageId>Mega Man 2 Randomizer</PackageId>
-    <Authors>Duckfist, Squidman, Dagit, Charlieboy</Authors>
+    <Authors>Duckfist, Squidman, Dagit, Charlieboy, Quantam</Authors>
     <Company />
     <Product>Mega Man 2 Randomizer</Product>
-    <Version>0.6.6</Version>
+    <Version>0.6.7</Version>
     <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
     <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.6.*</AssemblyVersion>
+    <AssemblyVersion>0.6.7.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
     <StartupObject>RandomizerHost.Program</StartupObject>
-    <FileVersion>0.6.6</FileVersion>
+    <FileVersion>0.6.7</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
@@ -25,6 +25,7 @@
     <None Remove="Assets\header.png" />
     <None Remove="Assets\MegaMan2Randomizer.ico" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_AVGN.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BadBoxArt.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BassReloaded.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BatMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BreakMan.png" />
@@ -51,6 +52,7 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Quint.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Remix.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Samus.png" />
+	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Stantler.png" />
     <None Include="Assets\MegaMan2Randomizer.ico">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

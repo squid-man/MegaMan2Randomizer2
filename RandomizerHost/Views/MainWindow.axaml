@@ -45,7 +45,7 @@
 	Grid.ColumnSpan="2"
 	TextAlignment="Left"
 	FontSize="9"
-	Text="Version 0.6.6.* (Tournament 2024)"
+	Text="Version 0.6.7.*"
 	IsVisible="{Binding IsShowingHint}"
             />
 		
@@ -1683,7 +1683,13 @@
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_AVGN.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=AVGN}"
                             />
-
+							
+							<Image
+                                Width="168"
+                                Height="168"
+                                Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_BadBoxArt.png"
+                                IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=BadBoxArt}"
+                            />
                             <Image
                                 Width="168"
                                 Height="168"
@@ -1985,7 +1991,15 @@
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Samus}"
                             />
 
-                            <Image
+							<Image
+	                            Width="168"
+                            	Height="168"
+	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Stantler.png"
+	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Stantler}"
+                            />
+
+
+							<Image
                                 Width="168"
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_VineMan.png"

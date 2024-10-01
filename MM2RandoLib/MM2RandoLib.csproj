@@ -3,16 +3,16 @@
         <TargetFramework>net8.0</TargetFramework>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
-        <Version>0.6.6</Version>
+        <Version>0.6.7</Version>
         <Copyright></Copyright>
         <Description>.NET library that can generate a randomized ROM patch for Mega Man 2.</Description>
-        <Authors>duckfist, squidman, dagit, charlieboy</Authors>
+        <Authors>duckfist, squidman, dagit, charlieboy, quantam</Authors>
         <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
         <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
         <PackageTags></PackageTags>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <AssemblyVersion>0.6.6.*</AssemblyVersion>
-        <FileVersion>0.6.6</FileVersion>
+        <AssemblyVersion>0.6.7.*</AssemblyVersion>
+        <FileVersion>0.6.7</FileVersion>
         <Deterministic>false</Deterministic>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Platforms>AnyCPU;x64</Platforms>

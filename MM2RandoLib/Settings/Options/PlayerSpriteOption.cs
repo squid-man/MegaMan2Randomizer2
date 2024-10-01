@@ -8,6 +8,8 @@ namespace MM2Randomizer
         MegaMan,
         [Description("AVGN")]
         AVGN,
+        [Description("Bad Box Art")]
+        BadBoxArt,
         [Description("Bass")]
         Bass,
         [Description("Bass Reloaded")]
@@ -94,6 +96,8 @@ namespace MM2Randomizer
         RollFromMegaMan8,
         [Description("Samus")]
         Samus,
+        [Description("Stantler")]
+        Stantler,
         [Description("Vine Man")]
         VineMan,
     }

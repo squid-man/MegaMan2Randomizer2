@@ -25,6 +25,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_BATTON = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.Batton_Batman,
             Properties.EnemySpriteResources.Batton_Ghost,
             Properties.EnemySpriteResources.Batton_Vader,
         };
@@ -199,6 +200,7 @@ namespace MM2Randomizer.Resources.SpritePatches
         private static readonly List<Byte[]?> ENEMY_SPRITE_LIST_SNIPER_JOE_AND_SNIPER_ARMOR = new List<Byte[]?>()
         {
             null,
+            Properties.EnemySpriteResources.SniperJoeAndSniperArmor_CBSDOat,
             Properties.EnemySpriteResources.SniperJoeAndSniperArmor_MegaMan1ContructionJoe,
             Properties.EnemySpriteResources.SniperJoeAndSniperArmor_ProtoJoe,
             Properties.EnemySpriteResources.SniperJoeAndSniperArmor_ProtoJoeAndMech,
