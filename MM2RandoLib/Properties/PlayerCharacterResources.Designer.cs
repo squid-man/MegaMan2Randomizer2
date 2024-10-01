@@ -10,8 +10,8 @@
 
 namespace MM2Randomizer.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -66,6 +66,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] PlayerCharacter_AVGN {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_AVGN", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PlayerCharacter_BadBoxArt.ips (type: Byte[]).
+        /// </summary>
+        internal static byte[] PlayerCharacter_BadBoxArt {
+            get {
+                object obj = ResourceManager.GetObject("PlayerCharacter_BadBoxArt", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -506,6 +516,16 @@ namespace MM2Randomizer.Properties {
         internal static byte[] PlayerCharacter_Samus {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_Samus", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PlayerCharacter_Stantler.ips (type: Byte[]).
+        /// </summary>
+        internal static byte[] PlayerCharacter_Stantler {
+            get {
+                object obj = ResourceManager.GetObject("PlayerCharacter_Stantler", resourceCulture);
                 return ((byte[])(obj));
             }
         }

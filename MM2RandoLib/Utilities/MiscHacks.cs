@@ -601,6 +601,12 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.BadBoxArt:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BadBoxArt);
+                        break;
+                }
+
                 case PlayerSpriteOption.Bass:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Bass);
@@ -856,6 +862,12 @@ namespace MM2Randomizer.Utilities
                 case PlayerSpriteOption.Samus:
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
+                    break;
+                }
+
+                case PlayerSpriteOption.Stantler:
+                {
+                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Stantler);
                     break;
                 }
 
