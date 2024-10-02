@@ -70,6 +70,10 @@ namespace MM2Randomizer
         MegaMari,
         [Description("Mega Ran")]
         MegaRan2Remix,
+        [Description("Mega Woman")]
+        MegaWoman,
+        [Description("Mega Woman (Purple)")]
+        MegaWomanPurp,
         [Description("My Little Pony")]
         MyLittlePony,
         [Description("New Lands")]
@@ -100,5 +104,7 @@ namespace MM2Randomizer
         Stantler,
         [Description("Vine Man")]
         VineMan,
+        [Description("Zneip")]
+        Zneip,
     }
 }

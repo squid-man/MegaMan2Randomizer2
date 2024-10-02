@@ -1903,6 +1903,20 @@
 							<Image
 	                            Width="168"
 	                            Height="168"
+	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaWoman.png"
+	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaWoman}"
+                            />
+
+							<Image
+	                            Width="168"
+	                            Height="168"
+	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MegaWomanPurp.png"
+	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MegaWomanPurp}"
+                            />
+
+							<Image
+	                            Width="168"
+	                            Height="168"
 	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_MyLittlePony.png"
 	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=MyLittlePony}"
                             />
@@ -2004,6 +2018,13 @@
                                 Height="168"
                                 Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_VineMan.png"
                                 IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=VineMan}"
+                            />
+							
+							<Image
+	                            Width="168"
+	                            Height="168"
+	                            Source="/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_Zneip.png"
+	                            IsVisible="{Binding AppConfigurationSettings.PlayerSprite, Converter={StaticResource PlayerSpriteToBooleanConverter}, ConverterParameter=Zneip}"
                             />
                         </Grid>
                     </StackPanel>
