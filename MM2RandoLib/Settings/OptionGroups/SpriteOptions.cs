@@ -1,17 +1,24 @@
-﻿using MM2Randomizer.Settings.Options;
+﻿using MM2RandoLib.Settings.Options;
+using MM2Randomizer.Settings.Options;
+using System.ComponentModel;
 
 namespace MM2Randomizer.Settings.OptionGroups
 {
-    public class SpriteOptions
+    public class SpriteOptions : OptionGroup
     {
-        public RandomizationOption<BooleanOption> RandomizeBossSprites { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Boss Sprites")]
+        public BoolOption RandomizeBossSprites { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeEnemySprites { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Enemy Sprites")]
+        public BoolOption RandomizeEnemySprites { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeEnvironmentSprites { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Special Weapon Sprites")]
+        public BoolOption RandomizeSpecialWeaponSprites { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeItemPickupSprites { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Item Pickup Sprites")]
+        public BoolOption RandomizeItemPickupSprites { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeSpecialWeaponSprites { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Environment Sprites")]
+        public BoolOption RandomizeEnvironmentSprites { get; } = new(true);
     }
 }

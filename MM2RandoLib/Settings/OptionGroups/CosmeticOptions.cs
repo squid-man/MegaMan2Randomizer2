@@ -1,23 +1,34 @@
-﻿using MM2Randomizer.Settings.Options;
+﻿using MM2RandoLib.Settings.Options;
+using MM2Randomizer.Settings.Options;
+using System.ComponentModel;
 
 namespace MM2Randomizer.Settings.OptionGroups
 {
-    public class CosmeticOptions
+    [CosmeticOptionGroup]
+    public class CosmeticOptions : OptionGroup
     {
-        public RandomizationOption<FontOption> Font { get; } = new RandomizationOption<FontOption>();
+        [Description("Randomize Color Palettes")]
+        public BoolOption RandomizeColorPalettes { get; } = new(true);
 
-        public RandomizationOption<HudElementOption> HudElement { get; } = new RandomizationOption<HudElementOption>();
+        [Description("Randomize Music Tracks")]
+        public BoolOption RandomizeMusicTracks { get; } = new(true);
 
-        public RandomizationOption<PlayerSpriteOption> PlayerSprite { get; } = new RandomizationOption<PlayerSpriteOption>();
+        [Description("Omit Unfriendly Music Tracks")]
+        public BoolOption OmitUnsafeMusicTracks { get; } = new(false);
 
-        public RandomizationOption<BooleanOption> RandomizeColorPalettes { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize In Game Text")]
+        public BoolOption RandomizeInGameText { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeInGameText { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Menus and Transition Screens")]
+        public BoolOption RandomizeMenusAndTransitionScreens { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeMusicTracks { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Character")]
+        public EnumOption<PlayerSpriteOption> PlayerSprite { get; } = new(PlayerSpriteOption.MegaMan);
 
-        public RandomizationOption<BooleanOption> OmitUnsafeMusicTracks { get; } = new RandomizationOption<BooleanOption>();
+        [Description("HUD")]
+        public EnumOption<HudElementOption> HudElement { get; } = new(HudElementOption.Default);
 
-        public RandomizationOption<BooleanOption> RandomizeMenusAndTransitionScreens { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Font")]
+        public EnumOption<FontOption> Font { get; } = new(FontOption.Default);
     }
 }

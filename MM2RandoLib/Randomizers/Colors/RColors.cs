@@ -659,7 +659,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x02D7D9, wilyMachineFrontColorReplacement, "Wily Machine Red 2 Color"); // 0x15
             in_Patch.Add(0x02D7D3, wilyMachineFrontColorReplacementLighter, "Wily Machine Light Red 1 Color"); // 0x15
 
-            if (BooleanOption.True == in_Context.ActualizedBehaviorSettings?.QualityOfLifeOption.DisableFlashingEffects)
+            if (in_Context.Settings.QualityOfLifeOptions.DisableFlashingEffects.Value)
             {
                 in_Patch.Add(0x2DA94, wilyMachineFrontColorReplacementLight, "Wily Machine Flash Color");
                 in_Patch.Add(0x2DA21, wilyMachineFrontColorReplacementLighter, "Wily Machine Restore Color");
@@ -692,7 +692,7 @@ namespace MM2Randomizer.Randomizers.Colors
             in_Patch.Add(0x0034C6, dragonOrangeColorReplacementLightest, "Dragon Orange Mouth");
             in_Patch.Add(0x0034C7, dragonOrangeColorReplacementLighter, "Dragon Orange Color 3");
 
-            if (BooleanOption.True == in_Context.ActualizedBehaviorSettings?.QualityOfLifeOption.DisableFlashingEffects)
+            if (in_Context.Settings.QualityOfLifeOptions.DisableFlashingEffects.Value)
             {
                 in_Patch.Add(0x002D1B0, dragonOrangeColorReplacementLightest, "Dragon Hit Flash Color");
                 in_Patch.Add(0x002D185, dragonOrangeColorReplacementLighter, "Dragon Hit Restore Color");

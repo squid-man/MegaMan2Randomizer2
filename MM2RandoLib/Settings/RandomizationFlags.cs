@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Diagnostics;
+using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Settings
 {
@@ -13,7 +15,7 @@ namespace MM2Randomizer.Settings
         // Constructors
         //
 
-        public RandomizationFlags(Int32 in_FlagCharacters)
+        public RandomizationFlags(Int32 in_FlagCharacters, bool in_BgFill = false)
         {
             if (in_FlagCharacters <= 0)
             {
@@ -26,6 +28,13 @@ namespace MM2Randomizer.Settings
             this.mMaxFlagCharacters = in_FlagCharacters;
             this.mBitArray = new BitArray(length);
             this.mCurrentIndex = 0;
+
+            if (in_BgFill)
+            {
+                ISeed seed = SeedFactory.Create(GeneratorType.MT19937, "");
+                for (Int32 i = 0; i < length; i++)
+                    this.mBitArray[i] = seed.NextBoolean();
+            }
         }
 
 
@@ -43,21 +52,43 @@ namespace MM2Randomizer.Settings
             this.mBitArray[this.mCurrentIndex++] = in_Value;
         }
 
-        public void PushValue<T>(T in_Value) where T : Enum
+        public void PushValue(Int32 in_Value, Int32 in_NumValues)
         {
-            Array enumValues = Enum.GetValues(typeof(T));
+            Debug.Assert(in_Value >= 0);
+            Debug.Assert(in_Value < in_NumValues);
 
-            Int32 newIndex = this.mCurrentIndex + enumValues.Length;
-
-            if (newIndex > this.mMaxLength)
+            Int32 numBits = (Int32)Math.Ceiling(Math.Log2((double)in_NumValues));
+            if (mCurrentIndex + numBits > this.mMaxLength)
             {
                 throw new IndexOutOfRangeException();
             }
 
-            foreach (T enumValue in enumValues)
+            for (Int32 i = 0; i < numBits; i++)
             {
-                this.mBitArray[this.mCurrentIndex++] = in_Value.Equals(enumValue);
+                this.mBitArray[this.mCurrentIndex++] = (in_Value & 1) != 0;
+                in_Value >>= 1;
             }
+        }
+
+        public void PushValue<T>(T in_Value) where T : Enum
+        {
+            PushEnum((object)in_Value);
+        }
+
+        public void PushEnum(Object in_Value)
+        {
+            Array enumValues = Enum.GetValues(in_Value.GetType());
+            Int32 valIdx = 0;
+            for (Int32 i = 0; i < enumValues.Length; i++)
+            {
+                if (in_Value.Equals(enumValues.GetValue(i)))
+                {
+                    valIdx = i;
+                    break;
+                }
+            }
+
+            PushValue(valIdx, enumValues.Length);
         }
 
         public Boolean PopValue()
@@ -97,13 +128,13 @@ namespace MM2Randomizer.Settings
         }
 
 
-        public String ToFlagString()
+        public String ToFlagString(char? in_FillChar = null)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
             Int32 flagCharacterIndex = 0;
-
-            while (flagCharacterIndex < this.mMaxLength)
+            Int32 maxIndex = in_FillChar is not null ? this.mCurrentIndex : this.mMaxLength;
+            while (flagCharacterIndex < maxIndex)
             {
                 Byte flagFieldValue = 0;
 
@@ -115,6 +146,10 @@ namespace MM2Randomizer.Settings
 
                 stringBuilder.Append(RandomizationFlags.FlagValueToAsciiCharacterLookup[flagFieldValue]);
             }
+
+            stringBuilder.Append(
+                in_FillChar ?? RandomizationFlags.FlagValueToAsciiCharacterLookup[0],
+                (this.mMaxLength - flagCharacterIndex) / BITS_PER_FLAG_CHARACTER);
 
             return stringBuilder.ToString();
         }
@@ -162,143 +197,9 @@ namespace MM2Randomizer.Settings
         // Constants
         //
 
-        private const Int32 BITS_PER_FLAG_CHARACTER = 6;
+        private const Int32 BITS_PER_FLAG_CHARACTER = 5;
 
-        private static readonly Dictionary<Byte, Char> FlagValueToAsciiCharacterLookup = new Dictionary<Byte, Char>()
-        {
-            { 0x00, 'A' },
-            { 0x01, 'B' },
-            { 0x02, 'C' },
-            { 0x03, 'D' },
-            { 0x04, 'E' },
-            { 0x05, 'F' },
-            { 0x06, 'G' },
-            { 0x07, 'H' },
-            { 0x08, 'I' },
-            { 0x09, 'J' },
-            { 0x0A, 'K' },
-            { 0x0B, 'L' },
-            { 0x0C, 'M' },
-            { 0x0D, 'N' },
-            { 0x0E, 'O' },
-            { 0x0F, 'P' },
-            { 0x10, 'Q' },
-            { 0x11, 'R' },
-            { 0x12, 'S' },
-            { 0x13, 'T' },
-            { 0x14, 'U' },
-            { 0x15, 'V' },
-            { 0x16, 'W' },
-            { 0x17, 'X' },
-            { 0x18, 'Y' },
-            { 0x19, 'Z' },
-            { 0x1A, '1' },
-            { 0x1B, '2' },
-            { 0x1C, '3' },
-            { 0x1D, '4' },
-            { 0x1E, '5' },
-            { 0x1F, '6' },
-            { 0x20, '7' },
-            { 0x21, '8' },
-            { 0x22, '9' },
-            { 0x23, '0' },
-            { 0x24, 'a' },
-            { 0x25, 'b' },
-            { 0x26, 'c' },
-            { 0x27, 'd' },
-            { 0x28, 'e' },
-            { 0x29, 'f' },
-            { 0x2A, 'g' },
-            { 0x2B, 'h' },
-            { 0x2C, 'i' },
-            { 0x2D, 'j' },
-            { 0x2E, 'k' },
-            { 0x2F, 'l' },
-            { 0x30, 'm' },
-            { 0x31, 'n' },
-            { 0x32, 'o' },
-            { 0x33, 'p' },
-            { 0x34, 'q' },
-            { 0x35, 'r' },
-            { 0x36, 's' },
-            { 0x37, 't' },
-            { 0x38, 'u' },
-            { 0x39, 'v' },
-            { 0x3A, 'w' },
-            { 0x3B, 'x' },
-            { 0x3C, 'y' },
-            { 0x3D, 'z' },
-            { 0x3E, '!' },
-            { 0x3F, '?' },
-        };
-
-        private static readonly Dictionary<Char, Byte> AsciiCharacterToFlagValueLookup = new Dictionary<Char, Byte>()
-        {
-            { 'A', 0x00 },
-            { 'B', 0x01 },
-            { 'C', 0x02 },
-            { 'D', 0x03 },
-            { 'E', 0x04 },
-            { 'F', 0x05 },
-            { 'G', 0x06 },
-            { 'H', 0x07 },
-            { 'I', 0x08 },
-            { 'J', 0x09 },
-            { 'K', 0x0A },
-            { 'L', 0x0B },
-            { 'M', 0x0C },
-            { 'N', 0x0D },
-            { 'O', 0x0E },
-            { 'P', 0x0F },
-            { 'Q', 0x10 },
-            { 'R', 0x11 },
-            { 'S', 0x12 },
-            { 'T', 0x13 },
-            { 'U', 0x14 },
-            { 'V', 0x15 },
-            { 'W', 0x16 },
-            { 'X', 0x17 },
-            { 'Y', 0x18 },
-            { 'Z', 0x19 },
-            { '1', 0x1A },
-            { '2', 0x1B },
-            { '3', 0x1C },
-            { '4', 0x1D },
-            { '5', 0x1E },
-            { '6', 0x1F },
-            { '7', 0x20 },
-            { '8', 0x21 },
-            { '9', 0x22 },
-            { '0', 0x23 },
-            { 'a', 0x24 },
-            { 'b', 0x25 },
-            { 'c', 0x26 },
-            { 'd', 0x27 },
-            { 'e', 0x28 },
-            { 'f', 0x29 },
-            { 'g', 0x2A },
-            { 'h', 0x2B },
-            { 'i', 0x2C },
-            { 'j', 0x2D },
-            { 'k', 0x2E },
-            { 'l', 0x2F },
-            { 'm', 0x30 },
-            { 'n', 0x31 },
-            { 'o', 0x32 },
-            { 'p', 0x33 },
-            { 'q', 0x34 },
-            { 'r', 0x35 },
-            { 's', 0x36 },
-            { 't', 0x37 },
-            { 'u', 0x38 },
-            { 'v', 0x39 },
-            { 'w', 0x3A },
-            { 'x', 0x3B },
-            { 'y', 0x3C },
-            { 'z', 0x3D },
-            { '!', 0x3E },
-            { '?', 0x3F },
-        };
-
+        private static readonly string FlagValueToAsciiCharacterLookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZ345679";
+        private static readonly Dictionary<Char, Byte> AsciiCharacterToFlagValueLookup = FlagValueToAsciiCharacterLookup.ToDictionary(x => x, x => (Byte)FlagValueToAsciiCharacterLookup.IndexOf(x));
     }
 }

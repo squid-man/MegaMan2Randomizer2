@@ -1,17 +1,24 @@
-﻿using MM2Randomizer.Settings.Options;
+﻿using MM2RandoLib.Settings.Options;
+using MM2Randomizer.Settings.Options;
+using System.ComponentModel;
 
 namespace MM2Randomizer.Settings.OptionGroups
 {
-    public class ChargingSpeedOptions
+    public class ChargingSpeedOptions : OptionGroup
     {
-        public RandomizationOption<ChargingSpeedOption> CastleBossEnergy { get; } = new RandomizationOption<ChargingSpeedOption>();
+        [Description("Hit Point Charging Speed")]
+        public EnumOption<ChargingSpeedOption> HitPoints { get; } = new(ChargingSpeedOption.Fastest);
 
-        public RandomizationOption<ChargingSpeedOption> EnergyTank { get; } = new RandomizationOption<ChargingSpeedOption>();
+        [Description("Weapon Energy Charging Speed")]
+        public EnumOption<ChargingSpeedOption> WeaponEnergy { get; } = new(ChargingSpeedOption.Fastest);
 
-        public RandomizationOption<ChargingSpeedOption> HitPoints { get; } = new RandomizationOption<ChargingSpeedOption>();
+        [Description("Energy Tank Charging Speed")]
+        public EnumOption<ChargingSpeedOption> EnergyTank { get; } = new(ChargingSpeedOption.Fastest);
 
-        public RandomizationOption<ChargingSpeedOption> RobotMasterEnergy { get; } = new RandomizationOption<ChargingSpeedOption>();
+        [Description("Robot Master Energy Charging Speed")]
+        public EnumOption<ChargingSpeedOption> RobotMasterEnergy { get; } = new(ChargingSpeedOption.Fastest);
 
-        public RandomizationOption<ChargingSpeedOption> WeaponEnergy { get; } = new RandomizationOption<ChargingSpeedOption>();
+        [Description("Castle Boss Energy Charging Speed")]
+        public EnumOption<ChargingSpeedOption> CastleBossEnergy { get; } = new(ChargingSpeedOption.Fastest);
     }
 }

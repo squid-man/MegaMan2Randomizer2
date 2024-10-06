@@ -510,13 +510,11 @@ public class RMusic : IRandomizer
         debug.AppendLine("Random Music Module");
         debug.AppendLine("--------------------------------------------");
 
-        Debug.Assert(in_Context.ActualizedCosmeticSettings is not null);
-
         LoggerAdapter loggerAdapter = new(debug);
         Log.Push(loggerAdapter);
         try
         {
-            this.ImportMusic(in_Patch, in_Context.Seed, in_Context.ActualizedCosmeticSettings.CosmeticOption.OmitUnsafeMusicTracks == BooleanOption.True);
+            this.ImportMusic(in_Patch, in_Context.Seed, in_Context.Settings.CosmeticOptions.OmitUnsafeMusicTracks.Value);
         }
         finally
         {
