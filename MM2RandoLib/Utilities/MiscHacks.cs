@@ -742,23 +742,11 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
-                case PlayerSpriteOption.MegaWoman:
-                {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaWoman);
-                        break;
-                }
-
-                case PlayerSpriteOption.MegaWomanPurp:
-                {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaWomanPurp);
-                        break;
-                }
-
                 case PlayerSpriteOption.MyLittlePony:
-                {
+                    {
                         p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MyLittlePony);
                         break;
-                }
+                    }
 
                 case PlayerSpriteOption.NewLands:
                 {
@@ -767,16 +755,16 @@ namespace MM2Randomizer.Utilities
                 }
 
                 case PlayerSpriteOption.Pit:
-                {
+                    {
                         p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Pit);
                         break;
-                }
+                    }
 
                 case PlayerSpriteOption.Pikachu:
-                {
+                    {
                         p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Pikachu);
                         break;
-                }
+                    }
 
                 case PlayerSpriteOption.ProtoMan:
                 {
@@ -842,12 +830,6 @@ namespace MM2Randomizer.Utilities
                 {
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_VineMan);
                     break;
-                }
-
-                case PlayerSpriteOption.Zneip:
-                {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Zneip);
-                        break;
                 }
             }
         }

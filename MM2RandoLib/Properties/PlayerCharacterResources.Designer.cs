@@ -83,16 +83,6 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayerCharacter_BadBoxArt {
-            get {
-                object obj = ResourceManager.GetObject("PlayerCharacter_BadBoxArt", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] PlayerCharacter_Bass {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_Bass", resourceCulture);
@@ -403,26 +393,6 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayerCharacter_MegaWoman {
-            get {
-                object obj = ResourceManager.GetObject("PlayerCharacter_MegaWoman", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] PlayerCharacter_MegaWomanPurp {
-            get {
-                object obj = ResourceManager.GetObject("PlayerCharacter_MegaWomanPurp", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] PlayerCharacter_MyLittlePony {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_MyLittlePony", resourceCulture);
@@ -563,29 +533,9 @@ namespace MM2Randomizer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PlayerCharacter_Stantler {
-            get {
-                object obj = ResourceManager.GetObject("PlayerCharacter_Stantler", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] PlayerCharacter_VineMan {
             get {
                 object obj = ResourceManager.GetObject("PlayerCharacter_VineMan", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] PlayerCharacter_Zneip {
-            get {
-                object obj = ResourceManager.GetObject("PlayerCharacter_Zneip", resourceCulture);
                 return ((byte[])(obj));
             }
         }
