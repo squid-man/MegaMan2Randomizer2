@@ -1,37 +1,53 @@
-﻿using MM2Randomizer.Settings.Options;
+﻿using MM2RandoLib.Settings.Options;
+using MM2Randomizer.Settings.Options;
+using System.ComponentModel;
 
 namespace MM2Randomizer.Settings.OptionGroups
 {
-    public class GameplayOptions
+    public class GameplayOptions : OptionGroup
     {
-        public RandomizationOption<BooleanOption> BurstChaserMode { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Special Weapon Behavior")]
+        public BoolOption RandomizeSpecialWeaponBehavior { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> FasterCutsceneText { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Boss Weaknesses")]
+        public BoolOption RandomizeBossWeaknesses { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> HideStageNames { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Robot Master Locations")]
+        public BoolOption RandomizeRobotMasterLocations { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeBossWeaknesses { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Robot Master Behavior")]
+        public BoolOption RandomizeRobotMasterBehavior { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeEnemySpawns { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Special Item Locations")]
+        public BoolOption RandomizeSpecialItemLocations { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeEnemyWeaknesses { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Enemy Spawns")]
+        public BoolOption RandomizeEnemySpawns { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeFalseFloors { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize Enemy Weaknesses")]
+        public BoolOption RandomizeEnemyWeaknesses { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeRefightTeleporters { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Randomize False Floors")]
+        public BoolOption RandomizeFalseFloors { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeRobotMasterBehavior { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Enable Faster Cutscene Text")]
+        public BoolOption FasterCutsceneText { get; } = new(true);
 
-        public RandomizationOption<BooleanOption> RandomizeRobotMasterLocations { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Enable Burst Chaser Mode")]
+        public BoolOption BurstChaserMode { get; } = new(false);
 
-        public RandomizationOption<BooleanOption> RandomizeRobotMasterStageSelection { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Hide Stage Names")]
+        public BoolOption HideStageNames { get; } = new(false);
 
-        public RandomizationOption<BooleanOption> RandomizeSpecialItemLocations { get; } = new RandomizationOption<BooleanOption>();
+        [Description("Instant Death Ignores Invincibility")]
+        [Tooltip("Instant death hazards such as spikes will be lethal regardless of invincibility frames like in Mega Man 1.")]
+        public BoolOption MercilessMode { get; } = new(false);
 
-        public RandomizationOption<BooleanOption> RandomizeSpecialWeaponBehavior { get; set; } = new RandomizationOption<BooleanOption>();
-
-        public RandomizationOption<BooleanOption> RandomizeSpecialWeaponReward { get; set; } = new RandomizationOption<BooleanOption>();
-
-        public RandomizationOption<BooleanOption> MercilessMode { get; set; } = new RandomizationOption<BooleanOption>();
+        [NoCreateControl]
+        public BoolOption RandomizeRefightTeleporters { get; } = new(true);
+        [NoCreateControl]
+        public BoolOption RandomizeRobotMasterStageSelection { get; } = new(true);
+        [NoCreateControl]
+        public BoolOption RandomizeSpecialWeaponReward { get; } = new(true);
     }
 }

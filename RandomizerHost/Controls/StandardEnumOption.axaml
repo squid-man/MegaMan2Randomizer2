@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="using:RandomizerHost.Converters"
+             xmlns:ctls="using:RandomizerHost.Controls"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="40"
+             x:Class="RandomizerHost.Controls.StandardEnumOption"
+             Name="Control"
+>
+  <!-- Static Resources -->
+  <UserControl.Resources>
+    <converters:EnumValueToDescriptionConverter x:Key="EnumValueToDescriptionConverter"/>
+  </UserControl.Resources>
+
+  <DockPanel
+    Margin="0,4"
+    LastChildFill="True"
+    IsVisible="{Binding Info.CreateControl}"
+    IsEnabled="{Binding !Override}"
+  >
+    <ctls:StandardOptionRandomSlider DockPanel.Dock="Left"/>
+    <ComboBox
+        Name="ComboBox"
+        ToolTip.Tip="{Binding Info.Tooltip}"
+        HorizontalAlignment="Stretch"
+        IsEnabled="{Binding !UiRandomize}"
+        Items="{Binding EnumValues}"
+        SelectedItem="{Binding UiValue}"
+    >
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding #Control.ItemPrefix}"/>
+            <TextBlock Text="{Binding, Converter={StaticResource EnumValueToDescriptionConverter}}"/>
+            <TextBlock Text="{Binding #Control.ItemSuffix}"/>
+          </StackPanel>
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+  </DockPanel>
+</UserControl>

@@ -165,7 +165,7 @@ namespace MM2Randomizer.Randomizers.Stages
                 stage.PortraitDestination.New = StageSelect[newStageOrder[i]].PortraitDestination.Old;
 
                 // Erase the portrait text if StageNameHidden flag is set
-                if (BooleanOption.True == in_Context.ActualizedBehaviorSettings?.GameplayOption.HideStageNames)
+                if (in_Context.Settings.GameplayOptions.HideStageNames.Value)
                 {
                     for (Int32 k = 0; k < 6; k++)
                     {

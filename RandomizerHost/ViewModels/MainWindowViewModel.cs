@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
@@ -9,6 +10,7 @@ using System.Xml;
 using Avalonia.Controls;
 using Avalonia.Themes.Fluent;
 using MM2Randomizer;
+using MM2Randomizer.Settings;
 using RandomizerHost.Settings;
 using RandomizerHost.Views;
 using ReactiveUI;
@@ -25,44 +27,49 @@ namespace RandomizerHost.ViewModels
         {
             this.AppConfigurationSettings = new AppConfigurationSettings();
             this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+            this.AppConfigurationSettings.RandomizationSettingsAdapter.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+
+            this.SettingsPresets = new(Settings);
+            this.SettingsPreset = this.SettingsPresets.Presets[0];
+
+            // If there are any missing fields in the defined presets, display them here
+            try
+            {
+                this.SettingsPresets.ValidatePresets(Settings.AllOptions);
+            }
+            catch (Exception e)
+            {
+                // There MUST be a better way to do this
+                MessageBox.Show(null, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+            }
 
             // If the application configuration settings does not have a saved value,
             // try to load the Mega Man 2 rom from the executable path
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings.RomSourcePath))
             {
-                String tryLocalpath = Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "MM2.nes");
-                String tryLocalpath2 = Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "Mega Man 2.nes");
-                String tryLocalpath3 = Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "Megaman II (U) [!].nes");
+                string curDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                Debug.Assert(curDir is not null);
 
-                if (File.Exists(tryLocalpath))
+                String[] tryNames = new String[]
                 {
-                    this.AppConfigurationSettings.RomSourcePath = tryLocalpath;
-                    this.IsShowingHint = false;
-                }
-                if (File.Exists(tryLocalpath2))
+                    "MM2.nes",
+                    "Mega Man 2.nes",
+                    "Megaman II (U) [!].nes",
+                };
+                foreach (var path in tryNames.Select(name => Path.Combine(curDir, name)))
                 {
-                    this.AppConfigurationSettings.RomSourcePath = tryLocalpath2;
-                    this.IsShowingHint = false;
-                }
-                if (File.Exists(tryLocalpath3))
-                {
-                    this.AppConfigurationSettings.RomSourcePath = tryLocalpath3;
+                    if (!File.Exists(path))
+                        continue;
+
+                    this.AppConfigurationSettings.RomSourcePath = path;
                     this.IsShowingHint = false;
                 }
             }
 
-            this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainngFolder, this.WhenAnyValue(x => x.CanOpenContainngFolder));
+            this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainingFolder, this.WhenAnyValue(x => x.CanOpenContainngFolder));
             this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.AppConfigurationSettings.IsSeedValid));
             this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.AppConfigurationSettings.IsRomValid));
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
-            this.ToggleTournamentModeCommand = ReactiveCommand.Create<Window>(this.ToggleTournamentMode);
-            this.ToggleTournamentMode2Command = ReactiveCommand.Create<Window>(this.ToggleTournamentMode2);
 
             this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
             this.ExportSettingsCommand = ReactiveCommand.Create<Window>(this.ExportSettings);
@@ -86,13 +93,14 @@ namespace RandomizerHost.ViewModels
         public ICommand ImportSettingsCommand { get; }
         public ICommand ExportSettingsCommand { get; }
         public ICommand SetThemeCommand { get; }
-        public ICommand ToggleTournamentModeCommand { get; }
-        public ICommand ToggleTournamentMode2Command { get; }
 
 
         //
         // Properties
         //
+
+        public RandomizationSettings Settings => AppConfigurationSettings.RandomizationSettings;
+        public SettingsPresets SettingsPresets { get; }
 
         public AppConfigurationSettings AppConfigurationSettings
         {
@@ -114,11 +122,28 @@ namespace RandomizerHost.ViewModels
 
         public Boolean IsCoreModulesChecked
         {
-            get => this.AppConfigurationSettings.EnableRandomizationOfRobotMasterStageSelection &&
-                   this.AppConfigurationSettings.EnableRandomizationOfSpecialWeaponReward &&
-                   this.AppConfigurationSettings.EnableRandomizationOfRefightTeleporters;
+            get => this.AppConfigurationSettings.RandomizationSettings.GameplayOptions.RandomizeRobotMasterStageSelection.Value &&
+                   this.AppConfigurationSettings.RandomizationSettings.GameplayOptions.RandomizeSpecialWeaponReward.Value &&
+                   this.AppConfigurationSettings.RandomizationSettings.GameplayOptions.RandomizeRefightTeleporters.Value;
         }
 
+        public SettingsPreset SettingsPreset
+        {
+            get => mSettingsPreset;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref mSettingsPreset, value);
+
+                IsTournament = !string.IsNullOrEmpty(value?.TournamentTitleScreenString);
+                Settings.SettingsPreset = value; 
+            }
+        }
+
+        public bool IsTournament
+        {
+            get => mIsTournament;
+            private set => this.RaiseAndSetIfChanged(ref mIsTournament, value);
+        }
 
         //
         // Public Methods
@@ -203,7 +228,7 @@ namespace RandomizerHost.ViewModels
         }
 
 
-        public void OpenContainngFolder()
+        public void OpenContainingFolder()
         {
             if (false == String.IsNullOrEmpty(this.mCurrentRandomizationContext?.FileName))
             {
@@ -224,504 +249,13 @@ namespace RandomizerHost.ViewModels
         }
 
 
-        public void ToggleTournamentMode(Window in_Window)
-        {
-            if (true == this.mAppConfigurationSettings.TournamentMode)
-            {
-                // Disable the toggle switches
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_CastleBossEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableFlashingEffects = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisablePauseLock = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableWaterfall = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableFasterCutsceneText = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableHiddenStageNames = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfColorPalettes = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfFalseFloors = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfInGameText = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HudElement = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_MercilessMode = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_PlayerSprite = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed = false;
-
-                // Disable the check boxes
-                this.mAppConfigurationSettings.TournamentMode2 = false;
-                this.mAppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.EnableSetting_DisableFlashingEffects = false;
-                this.mAppConfigurationSettings.EnableSetting_DisablePauseLock = false;
-                this.mAppConfigurationSettings.EnableSetting_DisableWaterfall = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableFasterCutsceneText = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableHiddenStageNames = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossWeaknesses = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfColorPalettes = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySpawns = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemyWeaknesses = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfFalseFloors = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfInGameText = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = false;
-                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = false;
-                this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = false;
-                //this.mAppConfigurationSettings.EnableSetting_Font = false;
-                this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = false;
-                //this.mAppConfigurationSettings.EnableSetting_HudElement = false;
-                this.mAppConfigurationSettings.EnableSetting_MercilessMode = false;
-                //this.mAppConfigurationSettings.EnableSetting_PlayerSprite = false;
-                this.mAppConfigurationSettings.EnableSetting_RobotMasterEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.EnableSetting_WeaponEnergyRefillSpeed = false;
-
-                // Set all of the toggle buttons to false
-                this.mAppConfigurationSettings.RandomlyChooseSetting_CastleBossEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_DisableFlashingEffects = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_DisablePauseLock = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_DisableWaterfall = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableFasterCutsceneText = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableHiddenStageNames = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossWeaknesses = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfColorPalettes = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySpawns = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfFalseFloors = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfInGameText = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMusicTracks = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_OmitUnsafeMusicTracks = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableUnderwaterLagReduction = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableBirdEggFix = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnergyTankRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_Font = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_HitPointRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_HudElement = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_MercilessMode = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_PlayerSprite = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_RobotMasterEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_WeaponEnergyRefillSpeed = false;
-
-                // Set the chosen settings for the 2024 Flagset A
-                this.mAppConfigurationSettings.EnableRandomizationOfEnemyWeaknesses = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfRobotMasterBehavior = true;
-                this.mAppConfigurationSettings.CreateLogFile = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfSpecialWeaponSprites = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfMenusAndTransitionScreens = true;
-                this.mAppConfigurationSettings.CastleBossEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableHiddenStageNames = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfSpecialItemLocations = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfEnemySpawns = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfMusicTracks = true;
-                this.mAppConfigurationSettings.OmitUnsafeMusicTracks = true;
-                this.mAppConfigurationSettings.EnableUnderwaterLagReduction = true;
-                this.mAppConfigurationSettings.MercilessMode = false;
-                this.mAppConfigurationSettings.DisablePauseLock = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfEnemySprites = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfBossWeaknesses = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfSpecialWeaponBehavior = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfColorPalettes = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfFalseFloors = true;
-                this.mAppConfigurationSettings.EnableFasterCutsceneText = true;
-                this.mAppConfigurationSettings.EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfItemPickupSprites = true;
-                this.mAppConfigurationSettings.HitPointRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableRandomizationOfRobotMasterLocations = true;
-                this.mAppConfigurationSettings.RobotMasterEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.DisableWaterfall = true;
-                this.mAppConfigurationSettings.EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.EnergyTankRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableRandomizationOfInGameText = true;
-                this.mAppConfigurationSettings.DisableFlashingEffects = true;
-                this.mAppConfigurationSettings.EnableBirdEggFix = true;
-                this.mAppConfigurationSettings.WeaponEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableRandomizationOfEnvironmentSprites = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfBossSprites = true;
-
-                // Disable the buttons
-                this.AppConfigurationSettings.Enable_ImportSettings = false;
-                this.AppConfigurationSettings.Enable_ExportSettings = false;
-                this.AppConfigurationSettings.Enable_CreateLogFile = false;
-
-                this.mAppConfigurationSettings.CreateLogFile = false;
-            }
-            else
-            {
-                // Enable the toggle switches
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_CastleBossEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableFlashingEffects = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisablePauseLock = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableWaterfall = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBurstChaserMode = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableFasterCutsceneText = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableHiddenStageNames = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableLeftwardWallEjection = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfColorPalettes = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfFalseFloors = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfInGameText = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HudElement = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_MercilessMode = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_PlayerSprite = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed = true;
-
-                // Enable the check boxes
-                this.mAppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.EnableSetting_DisableFlashingEffects = true;
-                this.mAppConfigurationSettings.EnableSetting_DisablePauseLock = true;
-                this.mAppConfigurationSettings.EnableSetting_DisableWaterfall = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableBurstChaserMode = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableFasterCutsceneText = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableHiddenStageNames = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableLeftwardWallEjection = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossWeaknesses = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfColorPalettes = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySpawns = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemyWeaknesses = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnvironmentSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfFalseFloors = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfInGameText = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = true;
-                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = true;
-                this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = true;
-                //this.mAppConfigurationSettings.EnableSetting_Font = true;
-                this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = true;
-                //this.mAppConfigurationSettings.EnableSetting_HudElement = true;
-                this.mAppConfigurationSettings.EnableSetting_MercilessMode = true;
-                //this.mAppConfigurationSettings.EnableSetting_PlayerSprite = true;
-                this.mAppConfigurationSettings.EnableSetting_RobotMasterEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.EnableSetting_WeaponEnergyRefillSpeed = true;
-
-                // Enable the buttons
-                this.AppConfigurationSettings.Enable_ImportSettings = true;
-                this.AppConfigurationSettings.Enable_ExportSettings = true;
-                this.AppConfigurationSettings.Enable_CreateLogFile = true;
-            }
-        }
-
-        public void ToggleTournamentMode2(Window in_Window)
-        {
-            if (true == this.mAppConfigurationSettings.TournamentMode2)
-            {
-                // Disable the toggle switches
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_CastleBossEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableFlashingEffects = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisablePauseLock = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableWaterfall = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableFasterCutsceneText = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableHiddenStageNames = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfColorPalettes = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfFalseFloors = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfInGameText = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HudElement = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_MercilessMode = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_PlayerSprite = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed = false;
-
-                // Disable the check boxes
-                this.mAppConfigurationSettings.TournamentMode = false;
-                this.mAppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.EnableSetting_DisableFlashingEffects = false;
-                this.mAppConfigurationSettings.EnableSetting_DisablePauseLock = false;
-                this.mAppConfigurationSettings.EnableSetting_DisableWaterfall = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableFasterCutsceneText = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableHiddenStageNames = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossWeaknesses = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfColorPalettes = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySpawns = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemyWeaknesses = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfFalseFloors = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfInGameText = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = false;
-                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = false;
-                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = false;
-                this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = false;
-                //this.mAppConfigurationSettings.EnableSetting_Font = false;
-                this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = false;
-                //this.mAppConfigurationSettings.EnableSetting_HudElement = false;
-                this.mAppConfigurationSettings.EnableSetting_MercilessMode = false;
-                //this.mAppConfigurationSettings.EnableSetting_PlayerSprite = false;
-                this.mAppConfigurationSettings.EnableSetting_RobotMasterEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.EnableSetting_WeaponEnergyRefillSpeed = false;
-
-                // Set all of the toggle buttons to false
-                this.mAppConfigurationSettings.RandomlyChooseSetting_CastleBossEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_DisableFlashingEffects = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_DisablePauseLock = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_DisableWaterfall = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableFasterCutsceneText = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableHiddenStageNames = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfBossWeaknesses = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfColorPalettes = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySpawns = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnemyWeaknesses = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfFalseFloors = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfInGameText = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMenusAndTransitionScreens = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfMusicTracks = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_OmitUnsafeMusicTracks = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterBehavior = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfRobotMasterLocations = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialItemLocations = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponBehavior = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableUnderwaterLagReduction = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnableBirdEggFix = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_EnergyTankRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_Font = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_HitPointRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_HudElement = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_MercilessMode = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_PlayerSprite = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_RobotMasterEnergyRefillSpeed = false;
-                this.mAppConfigurationSettings.RandomlyChooseSetting_WeaponEnergyRefillSpeed = false;
-
-                // Set the chosen settings for the 2024 Flagset B
-                this.mAppConfigurationSettings.EnableRandomizationOfEnemyWeaknesses = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfRobotMasterBehavior = true;
-                this.mAppConfigurationSettings.CreateLogFile = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfSpecialWeaponSprites = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfMenusAndTransitionScreens = true;
-                this.mAppConfigurationSettings.CastleBossEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableHiddenStageNames = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfSpecialItemLocations = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfEnemySpawns = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfMusicTracks = true;
-                this.mAppConfigurationSettings.OmitUnsafeMusicTracks = true;
-                this.mAppConfigurationSettings.EnableUnderwaterLagReduction = true;
-                this.mAppConfigurationSettings.MercilessMode = false;
-                this.mAppConfigurationSettings.DisablePauseLock = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfEnemySprites = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfBossWeaknesses = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfSpecialWeaponBehavior = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfColorPalettes = true;
-                this.mAppConfigurationSettings.EnableRandomizationOfFalseFloors = true;
-                this.mAppConfigurationSettings.EnableFasterCutsceneText = true;
-                this.mAppConfigurationSettings.EnableBurstChaserMode = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfItemPickupSprites = false;
-                this.mAppConfigurationSettings.HitPointRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableRandomizationOfRobotMasterLocations = true;
-                this.mAppConfigurationSettings.RobotMasterEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.DisableWaterfall = true;
-                this.mAppConfigurationSettings.EnableLeftwardWallEjection = false;
-                this.mAppConfigurationSettings.EnergyTankRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableRandomizationOfInGameText = true;
-                this.mAppConfigurationSettings.DisableFlashingEffects = true;
-                this.mAppConfigurationSettings.EnableBirdEggFix = true;
-                this.mAppConfigurationSettings.WeaponEnergyRefillSpeed = MM2Randomizer.Settings.Options.ChargingSpeedOption.Fastest;
-                this.mAppConfigurationSettings.EnableRandomizationOfEnvironmentSprites = false;
-                this.mAppConfigurationSettings.EnableRandomizationOfBossSprites = false;
-
-                // Disable the buttons
-                this.AppConfigurationSettings.Enable_ImportSettings = false;
-                this.AppConfigurationSettings.Enable_ExportSettings = false;
-                this.AppConfigurationSettings.Enable_CreateLogFile = false;
-
-                this.mAppConfigurationSettings.CreateLogFile = false;
-            }
-            else
-            {
-                // Enable the toggle switches
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_CastleBossEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableFlashingEffects = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisablePauseLock = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_DisableWaterfall = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBurstChaserMode = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableFasterCutsceneText = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableHiddenStageNames = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableLeftwardWallEjection = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfBossWeaknesses = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfColorPalettes = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySpawns = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemySprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnemyWeaknesses = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfEnvironmentSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfFalseFloors = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfInGameText = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfItemPickupSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfMusicTracks = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_OmitUnsafeMusicTracks = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterBehavior = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfRobotMasterLocations = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialItemLocations = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableRandomizationOfSpecialWeaponSprites = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableUnderwaterLagReduction = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnableBirdEggFix = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_EnergyTankRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_Font = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HitPointRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_HudElement = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_MercilessMode = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_PlayerSprite = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_RobotMasterEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.Enable_RandomChoiceSetting_WeaponEnergyRefillSpeed = true;
-
-                // Enable the check boxes
-                this.mAppConfigurationSettings.EnableSetting_CastleBossEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.EnableSetting_DisableFlashingEffects = true;
-                this.mAppConfigurationSettings.EnableSetting_DisablePauseLock = true;
-                this.mAppConfigurationSettings.EnableSetting_DisableWaterfall = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableBurstChaserMode = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableFasterCutsceneText = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableHiddenStageNames = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableLeftwardWallEjection = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfBossWeaknesses = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfColorPalettes = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySpawns = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemySprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnemyWeaknesses = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfEnvironmentSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfFalseFloors = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfInGameText = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfItemPickupSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMenusAndTransitionScreens = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfMusicTracks = true;
-                this.mAppConfigurationSettings.EnableSetting_OmitUnsafeMusicTracks = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterBehavior = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfRobotMasterLocations = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialItemLocations = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponBehavior = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableRandomizationOfSpecialWeaponSprites = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableUnderwaterLagReduction = true;
-                this.mAppConfigurationSettings.EnableSetting_EnableBirdEggFix = true;
-                this.mAppConfigurationSettings.EnableSetting_EnergyTankRefillSpeed = true;
-                //this.mAppConfigurationSettings.EnableSetting_Font = true;
-                this.mAppConfigurationSettings.EnableSetting_HitPointRefillSpeed = true;
-                //this.mAppConfigurationSettings.EnableSetting_HudElement = true;
-                this.mAppConfigurationSettings.EnableSetting_MercilessMode = true;
-                //this.mAppConfigurationSettings.EnableSetting_PlayerSprite = true;
-                this.mAppConfigurationSettings.EnableSetting_RobotMasterEnergyRefillSpeed = true;
-                this.mAppConfigurationSettings.EnableSetting_WeaponEnergyRefillSpeed = true;
-
-                // Enable the buttons
-                this.AppConfigurationSettings.Enable_ImportSettings = true;
-                this.AppConfigurationSettings.Enable_ExportSettings = true;
-                this.AppConfigurationSettings.Enable_CreateLogFile = true;
-            }
-        }
-
         public void PerformRandomization(Boolean in_DefaultSeed)
         {
             // Perform randomization based on settings, then generate the ROM.
-            RandomMM2.RandomizerCreate(this.AppConfigurationSettings.AsRandomizerSettings(in_DefaultSeed), out RandomizationContext context);
+            this.AppConfigurationSettings.UpdateRandomizerSettings(in_DefaultSeed);
+            Settings.SettingsPreset = !object.ReferenceEquals(mSettingsPreset, SettingsPresets.Presets[0]) ? mSettingsPreset : null;
+
+            RandomMM2.RandomizerCreate(Settings, out RandomizationContext context);
             this.AppConfigurationSettings.HashValidationMessage = "Successfully copied and patched! File: " + context.FileName;
 
             // Get A-Z representation of seed
@@ -733,25 +267,7 @@ namespace RandomizerHost.ViewModels
 
             // Create log file if left shift is pressed while clicking
             if (true == this.AppConfigurationSettings.CreateLogFile &&
-                false == this.AppConfigurationSettings.TournamentMode)
-            {
-                String logFileName = $"MM2RNG-{seedBase26}.log";
-
-                using (StreamWriter sw = new StreamWriter(logFileName, false))
-                {
-                    sw.WriteLine("Mega Man 2 Randomizer");
-                    sw.WriteLine($"Version {RandomMM2.AssemblyVersion}");
-                    sw.WriteLine($"Seed {seedBase26}\n");
-                    sw.WriteLine(context.RandomStages.ToString());
-                    sw.WriteLine(context.RandomWeaponBehavior.ToString());
-                    sw.WriteLine(context.RandomEnemyWeakness.ToString());
-                    sw.WriteLine(context.RandomWeaknesses.ToString());
-                    sw.Write(context.Patch.GetStringSortedByAddress());
-                }
-            }
-
-            if (true == this.AppConfigurationSettings.CreateLogFile &&
-                false == this.AppConfigurationSettings.TournamentMode2)
+                !IsTournament)
             {
                 String logFileName = $"MM2RNG-{seedBase26}.log";
 
@@ -874,9 +390,13 @@ namespace RandomizerHost.ViewModels
         // Private Data Members
         //
 
-        private AppConfigurationSettings mAppConfigurationSettings;
+        private AppConfigurationSettings mAppConfigurationSettings = null;
         private RandomizationContext mCurrentRandomizationContext = null;
+        private SettingsPreset mSettingsPreset = null;
         private Boolean mIsShowingHint = true;
         private Boolean mCanOpenContainngFolder = false;
+
+        // NOTE This isn't actually necessary as it's computed from the value of mSettingsPreset, but having a field to hold the previous value makes it easier to wire to the property change notification system.
+        private bool mIsTournament = false;
     }
 }

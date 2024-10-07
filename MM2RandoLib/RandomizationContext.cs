@@ -12,6 +12,7 @@ using MM2Randomizer.Randomizers.Enemies;
 using MM2Randomizer.Randomizers.Stages;
 using MM2Randomizer.Resources.SpritePatches;
 using MM2Randomizer.Settings;
+using MM2Randomizer.Settings.OptionGroups;
 using MM2Randomizer.Settings.Options;
 using MM2Randomizer.Utilities;
 
@@ -44,10 +45,6 @@ namespace MM2Randomizer
 
         // Create randomization patch
         public Patch Patch { get; private set; } = new Patch();
-
-        public dynamic? ActualizedBehaviorSettings { get; private set; }
-
-        public dynamic? ActualizedCosmeticSettings { get; private set; }
 
 
         //================
@@ -129,62 +126,65 @@ namespace MM2Randomizer
             /// "GAMEPLAY SEED" MODULES
             ///==========================
 
-            this.ActualizedBehaviorSettings = this.Settings.ActualizeBehaviorSettings(this.Seed);
+            Settings.ActualizeBehaviorSettings(this.Seed);
+            var gameplayOpts = Settings.GameplayOptions;
+            var spriteOpts = Settings.SpriteOptions;
+            var chargingOpts = Settings.ChargingSpeedOptions;
+            var qolOpts = Settings.QualityOfLifeOptions;
 
             // List of randomizer modules to use; will add modules based on checkbox states
             List<IRandomizer> randomizers = new List<IRandomizer>();
-
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeRobotMasterStageSelection)
+            if (gameplayOpts.RandomizeRobotMasterStageSelection.Value)
             {
                 randomizers.Add(this.RandomStages);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeSpecialWeaponReward)
+            if (gameplayOpts.RandomizeSpecialWeaponReward.Value)
             {
                 randomizers.Add(this.RandomWeaponGet);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeSpecialWeaponBehavior)
+            if (gameplayOpts.RandomizeSpecialWeaponBehavior.Value)
             {
                 randomizers.Add(this.RandomWeaponBehavior);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeBossWeaknesses)
+            if (gameplayOpts.RandomizeBossWeaknesses.Value)
             {
                 randomizers.Add(this.RandomWeaknesses);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeRobotMasterBehavior)
+            if (gameplayOpts.RandomizeRobotMasterBehavior.Value)
             {
                 randomizers.Add(this.RandomBossAI);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeSpecialItemLocations)
+            if (gameplayOpts.RandomizeSpecialItemLocations.Value)
             {
                 randomizers.Add(this.RandomItemGet);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeRefightTeleporters)
+            if (gameplayOpts.RandomizeRefightTeleporters.Value)
             {
                 randomizers.Add(this.RandomTeleporters);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeEnemySpawns)
+            if (gameplayOpts.RandomizeEnemySpawns.Value)
             {
                 randomizers.Add(this.RandomEnemies);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeEnemyWeaknesses)
+            if (gameplayOpts.RandomizeEnemyWeaknesses.Value)
             {
                 randomizers.Add(this.RandomEnemyWeakness);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeRobotMasterLocations)
+            if (gameplayOpts.RandomizeRobotMasterLocations.Value)
             {
                 randomizers.Add(this.RandomBossInBossRoom);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeFalseFloors)
+            if (gameplayOpts.RandomizeFalseFloors.Value)
             {
                 randomizers.Add(this.RandomTilemap);
             }
@@ -197,27 +197,27 @@ namespace MM2Randomizer
             }
 
             // Apply random sprite changes
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.SpriteOption.RandomizeBossSprites)
+            if (spriteOpts.RandomizeBossSprites.Value)
             {
                 BossSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.SpriteOption.RandomizeEnemySprites)
+            if (spriteOpts.RandomizeEnemySprites.Value)
             {
                 EnemySpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.SpriteOption.RandomizeSpecialWeaponSprites)
+            if (spriteOpts.RandomizeSpecialWeaponSprites.Value)
             {
                 WeaponSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.SpriteOption.RandomizeItemPickupSprites)
+            if (spriteOpts.RandomizeItemPickupSprites.Value)
             {
                 PickupSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.SpriteOption.RandomizeEnvironmentSprites)
+            if (spriteOpts.RandomizeEnvironmentSprites.Value)
             {
                 EnvironmentSpriteRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
@@ -230,22 +230,23 @@ namespace MM2Randomizer
             // NOTE: Reset the seed for cosmetic options
             this.Seed.Reset();
 
-            this.ActualizedCosmeticSettings = this.Settings.ActualizeCosmeticSettings(this.Seed);
+            this.Settings.ActualizeCosmeticSettings(this.Seed);
+            var cosmOpts = Settings.CosmeticOptions;
 
             // List of randomizer modules to use; will add modules based on checkbox states
             List<IRandomizer> cosmeticRandomizers = new List<IRandomizer>();
 
-            if (BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeColorPalettes)
+            if (cosmOpts.RandomizeColorPalettes.Value)
             {
                 cosmeticRandomizers.Add(this.RandomColors);
             }
 
-            if (BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeMusicTracks)
+            if (cosmOpts.RandomizeMusicTracks.Value)
             {
                 cosmeticRandomizers.Add(this.RandomMusic);
             }
 
-            if (BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeInGameText)
+            if (cosmOpts.RandomizeInGameText.Value)
             {
                 cosmeticRandomizers.Add(this.RandomInGameText);
             }
@@ -258,7 +259,7 @@ namespace MM2Randomizer
             }
 
             // Apply random sprite changes
-            if (BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeMenusAndTransitionScreens)
+            if (cosmOpts.RandomizeMenusAndTransitionScreens.Value)
             {
                 MenusAndTransitionScreenRandomizer.ApplySprites(this.Seed, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
@@ -269,14 +270,14 @@ namespace MM2Randomizer
             // ================================================
 
             // Apply additional required incidental modifications
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeRobotMasterStageSelection ||
-                BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeInGameText)
+            if (gameplayOpts.RandomizeRobotMasterStageSelection.Value ||
+                cosmOpts.RandomizeInGameText.Value)
             {
                 MiscHacks.FixPortraits(
                     this.Patch,
-                    BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeRobotMasterStageSelection,
+                    gameplayOpts.RandomizeRobotMasterStageSelection.Value,
                     this.RandomStages,
-                    BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeInGameText,
+                    cosmOpts.RandomizeInGameText.Value,
                     this.RandomWeaponGet);
 
                 MiscHacks.FixWeaponLetters(
@@ -286,13 +287,13 @@ namespace MM2Randomizer
                     this.RandomInGameText);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.RandomizeEnemySpawns)
+            if (gameplayOpts.RandomizeEnemySpawns.Value)
             {
                 MiscHacks.FixM445PaletteGlitch(this.Patch);
             }
 
             // Apply final optional gameplay modifications
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.FasterCutsceneText)
+            if (gameplayOpts.FasterCutsceneText.Value)
             {
                 MiscHacks.SetFastWeaponGetText(this.Patch);
                 MiscHacks.SetFastReadyText(this.Patch);
@@ -300,40 +301,40 @@ namespace MM2Randomizer
                 MiscHacks.SkipItemGetPages(this.Patch);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.BurstChaserMode)
+            if (gameplayOpts.BurstChaserMode.Value)
             {
                 MiscHacks.SetBurstChaser(this.Patch);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisableFlashingEffects)
+            if (qolOpts.DisableFlashingEffects.Value)
             {
                 MiscHacks.DisableScreenFlashing(
                     this.Patch,
-                    BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.FasterCutsceneText,
-                    BooleanOption.True == this.ActualizedCosmeticSettings.CosmeticOption.RandomizeColorPalettes);
+                    gameplayOpts.FasterCutsceneText.Value,
+                    cosmOpts.RandomizeColorPalettes.Value);
             }
 
             MiscHacks.SetHitPointChargingSpeed(
                 this.Patch,
-                this.ActualizedBehaviorSettings.ChargingSpeedOption.HitPoints);
+                chargingOpts.HitPoints.Value);
 
             MiscHacks.SetWeaponEnergyChargingSpeed(
                 this.Patch,
-                this.ActualizedBehaviorSettings.ChargingSpeedOption.WeaponEnergy);
+                chargingOpts.WeaponEnergy.Value);
 
             // PreventETankUseAtFullLife must be applied before SetEnergyTankChargingSpeed
             MiscHacks.PreventETankUseAtFullLife(this.Patch);
             MiscHacks.SetEnergyTankChargingSpeed(
                 this.Patch,
-                this.ActualizedBehaviorSettings.ChargingSpeedOption.EnergyTank);
+                chargingOpts.EnergyTank.Value);
 
             MiscHacks.SetRobotMasterEnergyChargingSpeed(
                 this.Patch,
-                this.ActualizedBehaviorSettings.ChargingSpeedOption.RobotMasterEnergy);
+                chargingOpts.RobotMasterEnergy.Value);
 
             MiscHacks.SetCastleBossEnergyChargingSpeed(
                 this.Patch,
-                this.ActualizedBehaviorSettings.ChargingSpeedOption.CastleBossEnergy);
+                chargingOpts.CastleBossEnergy.Value);
 
             MiscHacks.DrawTitleScreenChanges(this.Patch, this.Seed.Identifier, this.Settings);
             MiscHacks.SetWily5NoMusicChange(this.Patch);
@@ -342,17 +343,17 @@ namespace MM2Randomizer
             MiscHacks.SetFastBossDefeatTeleport(this.Patch);
 
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.EnableUnderwaterLagReduction)
+            if (qolOpts.EnableUnderwaterLagReduction.Value)
             {
                 MiscHacks.ReduceUnderwaterLag(this.Patch);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisableWaterfall)
+            if (qolOpts.DisableWaterfall.Value)
             {
                 this.Patch.Add(0xFE10, (byte)1, "Disable Bubble Man stage palette animation");
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.EnableLeftwardWallEjection)
+            if (qolOpts.EnableLeftwardWallEjection.Value)
             {
                 MiscHacks.EnableLeftwardWallEjection(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
@@ -362,17 +363,17 @@ namespace MM2Randomizer
             this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, Properties.Resources.mm2rng_prepatch);
 
             // IPS patches should/must come after mm2ft as IPS patches are applied immediately and may be overwritten by deferred patches
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.DisablePauseLock)
+            if (qolOpts.DisablePauseLock.Value)
             {
                 MiscHacks.DisablePauseLock(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.GameplayOption.MercilessMode)
+            if (gameplayOpts.MercilessMode.Value)
             {
                 MiscHacks.EnableMercilessMode(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
-            if (BooleanOption.True == this.ActualizedBehaviorSettings.QualityOfLifeOption.EnableBirdEggFix)
+            if (qolOpts.EnableBirdEggFix.Value)
             {
                 MiscHacks.EnableBirdEggFix(this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
@@ -382,17 +383,17 @@ namespace MM2Randomizer
             MiscHacks.SetNewMegaManSprite(
                 this.Patch,
                 RandomizationContext.TEMPORARY_FILE_NAME,
-                this.ActualizedCosmeticSettings.CosmeticOption.PlayerSprite);
+                cosmOpts.PlayerSprite.Value);
 
             MiscHacks.SetNewHudElement(
                 this.Patch,
                 RandomizationContext.TEMPORARY_FILE_NAME,
-                this.ActualizedCosmeticSettings.CosmeticOption.HudElement);
+                cosmOpts.HudElement.Value);
 
             MiscHacks.SetNewFont(
                 this.Patch,
                 RandomizationContext.TEMPORARY_FILE_NAME,
-                this.ActualizedCosmeticSettings.CosmeticOption.Font);
+                cosmOpts.Font.Value);
 
 
             // Modify the Wily 5 game loop so that large weapon energy refills
