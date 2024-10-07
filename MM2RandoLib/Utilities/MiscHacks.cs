@@ -86,56 +86,11 @@ namespace MM2Randomizer.Utilities
 
 
             // Draw tournament mode/spoiler free information
-            if (settings.TournamentMode)
+            if (settings.IsTournament)
             {
-                // 0x037367 = Start of row beneath "seed"
-                String flagsAlpha = "TOURNAMENT";
-                for (Int32 i = 0; i < flagsAlpha.Length; i++)
-                {
-                    Char ch = flagsAlpha.ElementAt(i);
-                    Byte charIndex = (Byte)(Convert.ToByte(ch) - Convert.ToByte('A'));
-
-                    p.Add(0x037564 + i, (Byte)(0xC1 + charIndex), "Title Screen Tournament Text");
-                }
-
-                String flags2Alpha = "A";
-                for (Int32 i = 0; i < flags2Alpha.Length; i++)
-                {
-                    Char ch = flags2Alpha.ElementAt(i);
-                    Byte charIndex = (Byte)(Convert.ToByte(ch) - Convert.ToByte('A'));
-
-                    p.Add(0x03756F + i, (Byte)(0xC1 + charIndex), "Title Screen Tournament Text");
-                }
-
-                // Draw Hash symbols
-                // Use $B8-$BF with custom gfx, previously unused tiles after converting from MM2U to RM2
-                //p.Add(0x037367, (Byte)(0xB0), "Title Screen Flags");
-                //p.Add(0x037368, (Byte)(0xB1), "Title Screen Flags");
-                //p.Add(0x037369, (Byte)(0xB2), "Title Screen Flags");
-                //p.Add(0x03736A, (Byte)(0xB3), "Title Screen Flags");
-            }
-
-            // Draw tournament mode/spoiler free information
-            if (settings.TournamentMode2)
-            {
-                // 0x037367 = Start of row beneath "seed"
-                String flagsAlpha = "TOURNAMENT";
-                for (Int32 i = 0; i < flagsAlpha.Length; i++)
-                {
-                    Char ch = flagsAlpha.ElementAt(i);
-                    Byte charIndex = (Byte)(Convert.ToByte(ch) - Convert.ToByte('A'));
-
-                    p.Add(0x037564 + i, (Byte)(0xC1 + charIndex), "Title Screen Tournament Text");
-                }
-
-                String flags2Alpha = "B";
-                for (Int32 i = 0; i < flags2Alpha.Length; i++)
-                {
-                    Char ch = flags2Alpha.ElementAt(i);
-                    Byte charIndex = (Byte)(Convert.ToByte(ch) - Convert.ToByte('A'));
-
-                    p.Add(0x03756F + i, (Byte)(0xC1 + charIndex), "Title Screen Tournament Text");
-                }
+                p.Add(0x037564,
+                    settings.SettingsPreset!.TournamentTitleScreenString!.AsIntroString(), 
+                    "Title Screen Tournament Text");
 
                 // Draw Hash symbols
                 // Use $B8-$BF with custom gfx, previously unused tiles after converting from MM2U to RM2
