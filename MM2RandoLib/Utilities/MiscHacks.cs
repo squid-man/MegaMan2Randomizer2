@@ -742,6 +742,18 @@ namespace MM2Randomizer.Utilities
                     break;
                 }
 
+                case PlayerSpriteOption.MegaWoman:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaWoman);
+                        break;
+                    }
+
+                case PlayerSpriteOption.MegaWomanPurp:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaWomanPurp);
+                        break;
+                    }
+
                 case PlayerSpriteOption.MyLittlePony:
                     {
                         p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MyLittlePony);
@@ -831,6 +843,12 @@ namespace MM2Randomizer.Utilities
                     p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_VineMan);
                     break;
                 }
+
+                case PlayerSpriteOption.Zneip:
+                    {
+                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Zneip);
+                        break;
+                    }
             }
         }
 
