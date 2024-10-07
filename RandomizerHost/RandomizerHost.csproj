@@ -57,6 +57,7 @@
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Stantler.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Zneip.png" />
     <None Include="Assets\MegaMan2Randomizer.ico">
+		
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
