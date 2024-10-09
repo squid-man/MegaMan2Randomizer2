@@ -94,5 +94,10 @@ namespace MM2Randomizer.Enums
                 mWilyBosses.Add(this);
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Name}, {Offset:x}";
+        }
     }
 }

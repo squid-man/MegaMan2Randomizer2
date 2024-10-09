@@ -48,7 +48,11 @@ namespace MM2Randomizer.Randomizers
             // Flash Man    0x03C28E   32
             // Metal Man    0x03C28F   64
             // Crash Man    0x03C290   128
-            this.mNewWeaponOrder = in_Context.Seed.Shuffle(this.mNewWeaponOrder);
+            var stgWpnOrder = in_Context.Seed.Shuffle(
+                EBossIndex.RobotMasters.ToDictionary(x => x, x => x));
+            this.mNewWeaponOrder = stgWpnOrder.ToDictionary(
+                sw => sw.Key, 
+                sw => (ERMWeaponValueBit)(1 << sw.Value.Offset));
 
             // Create table for which weapon is awarded by which robot master
             // This also affects which portrait is blacked out on the stage select
@@ -57,6 +61,10 @@ namespace MM2Randomizer.Randomizers
             {
                 in_Patch.Add((Int32)(ERMStageWeaponAddress.HeatMan + i.Offset), (Byte)this.mNewWeaponOrder[i], $"{(EDmgVsBoss.Offset)i} Weapon Get");
             }
+
+            // Create a table to get what stage awards each weapon, for the password system
+            foreach (var (stg, wpn) in stgWpnOrder)
+                in_Patch.Add(0x38008 + wpn.Offset, checked((Byte)stg.Offset), $"{stg.Name} Reverse Stage Weapon Table Entry");
 
             // Create a copy of the default weapon order table to be used by teleporter function
             // This is needed to fix teleporters breaking from the new weapon order.
