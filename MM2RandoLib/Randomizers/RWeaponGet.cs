@@ -50,9 +50,9 @@ namespace MM2Randomizer.Randomizers
             // Crash Man    0x03C290   128
             var stgWpnOrder = in_Context.Seed.Shuffle(
                 EBossIndex.RobotMasters.ToDictionary(x => x, x => x));
-            this.mNewWeaponOrder = stgWpnOrder.ToDictionary(
+            mNewWeaponOrder = stgWpnOrder.ToDictionary(
                 sw => sw.Key, 
-                sw => (ERMWeaponValueBit)(1 << sw.Value.Offset));
+                sw => mNewWeaponOrder[sw.Value]);
 
             // Create table for which weapon is awarded by which robot master
             // This also affects which portrait is blacked out on the stage select
