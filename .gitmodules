@@ -3,6 +3,3 @@
 	url = https://github.com/TheRealQuantam/FtRandoLib.git
 	branch = main
 	
-[submodule "snarfblasm"]
-	path = snarfblasm
-	url = https://github.com/TheRealQuantam/snarfblasm.git

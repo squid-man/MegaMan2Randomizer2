@@ -1338,17 +1338,11 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\FtRandoLib\FtRandoLib.csproj" />
-      <ProjectReference Include="..\snarfblasm\snarfblasm.csproj">
-        <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-      </ProjectReference>
     </ItemGroup>
     <ItemGroup>
       <None Update="Resources\mm2rng_prepatch.asm">
         <Generator></Generator>
       </None>
     </ItemGroup>
-    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-      <Exec Command="$(SolutionDir)snarfblasm/$(OutputPath)/snarfblasm.exe $(ProjectDir)Resources/mm2rng_prepatch.asm $(ProjectDir)Resources/mm2rng_prepatch.ips -checking:on -newer:on" />
-    </Target>
     
 </Project>
