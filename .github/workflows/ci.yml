@@ -26,9 +26,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet }}
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '2.0.x'
       - run: dotnet build MM2Randomizer.sln
       - run: dotnet test MM2Randomizer.sln
       - run: dotnet publish --runtime osx-x64 --configuration Release

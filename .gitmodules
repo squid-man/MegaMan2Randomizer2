@@ -5,4 +5,4 @@
 	
 [submodule "snarfblasm"]
 	path = snarfblasm
-	url = https://github.com/gzip/snarfblasm.git
+	url = https://github.com/TheRealQuantam/snarfblasm.git
