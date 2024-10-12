@@ -55,6 +55,7 @@ namespace RandomizerHost.ViewModels
                     "MM2.nes",
                     "Mega Man 2.nes",
                     "Megaman II (U) [!].nes",
+                    "Mega Man 2 (USA).nes",
                 };
                 foreach (var path in tryNames.Select(name => Path.Combine(curDir, name)))
                 {

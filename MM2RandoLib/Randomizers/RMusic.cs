@@ -419,7 +419,7 @@ public class Mm2Importer : Importer
         LibraryParserOptions? opts = null)
     {
         string jsonData = ReadUtf8Resource(
-            "MM2RandoLib.Resources.SoundTrackConfiguration.json5");
+            "Resources.SoundTrackConfiguration.json5");
         return LoadJsonLibrarySongs<C2Song, C2SongInfo, C2SongGroupInfo>(jsonData, LoadC2Songs, opts);
     }
 
@@ -427,19 +427,12 @@ public class Mm2Importer : Importer
         LibraryParserOptions? opts = null)
     {
         string jsonData = ReadUtf8Resource(
-            "MM2RandoLib.Resources.FtSoundTrackConfiguration.json5");
+            "Resources.FtSoundTrackConfiguration.json5");
         return LoadFtJsonLibrarySongs(jsonData, opts);
     }
 
     string ReadUtf8Resource(string name)
-    {
-        using (var resStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
-        {
-            Debug.Assert(resStream is not null);
-            using (var reader = new StreamReader(resStream, Encoding.UTF8))
-                return reader.ReadToEnd();
-        }
-    }
+        => Assembly.GetExecutingAssembly().LoadUtf8Resource(name);
 
     protected override ImportedModuleInfo CreateImportedModuleInfo(Module mod)
     {

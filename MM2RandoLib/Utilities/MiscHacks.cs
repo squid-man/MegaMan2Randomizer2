@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Random;
 using MM2Randomizer.Randomizers;
 using MM2Randomizer.Randomizers.Stages;
+using MM2Randomizer.Resources;
 using MM2Randomizer.Settings;
 using MM2Randomizer.Settings.Options;
 
@@ -13,6 +18,60 @@ namespace MM2Randomizer.Utilities
 {
     public static class MiscHacks
     {
+        public static Dictionary<ResourceNode, ResourceNode?> ApplyOneIpsPerDir(
+            RandomizationContext context,
+            string basePath,
+            bool canBeNull = true,
+            ISeed? seed = null,
+            Patch? patch = null,
+            string? outFileName = null,
+            ResourceTree? resTree = null)
+        {
+            if (seed is null)
+                seed = context.Seed;
+            if (patch is null)
+                patch = context.Patch;
+            if (outFileName is null)
+                outFileName = RandomizationContext.TEMPORARY_FILE_NAME;
+            if (resTree is null)
+                resTree = context.ResourceTree;
+
+            return ApplyOneIpsPerDir(
+                resTree,
+                seed,
+                patch,
+                basePath,
+                canBeNull,
+                outFileName);
+        }
+
+        public static  Dictionary<ResourceNode, ResourceNode?> ApplyOneIpsPerDir(
+            ResourceTree resTree,
+            ISeed seed,
+            Patch patch,
+            string basePath,
+            bool canBeNull,
+            string outFileName)
+        {
+            var relRoot = resTree.Find(basePath);
+            var selDirNodes = relRoot.PickOneFilePerDirectory(
+                seed, 
+                canBeNull,
+                null,
+                n => n.Name.EndsWith(".ips", StringComparison.InvariantCultureIgnoreCase));
+
+            foreach (var (dirNode, fileNode) in selDirNodes)
+            {
+                if (fileNode is null)
+                    continue;
+
+                var ips = resTree.LoadResource(fileNode);
+                patch.ApplyIPSPatch(outFileName, ips);
+            }
+
+            return selDirNodes;
+        }
+
         public static void DrawTitleScreenChanges(Patch p, String in_SeedBase26, RandomizationSettings settings)
         {
             // Adjust cursor positions
@@ -536,392 +595,165 @@ namespace MM2Randomizer.Utilities
         }
 
         /// <summary>
+        /// Load the IPS for the specified Mega Man player sprite, or null if the specified sprite is the default. Throws FileNotFoundException if the sprite cannot be found (should never happen).
+        /// </summary>
+        private static byte[]? LoadMegaManSpriteIps(
+            ResourceTree resTree,
+            PlayerSpriteOption sprite)
+        {
+            string spriteName = sprite.ToString();
+            var enumInfo = sprite.GetType().GetMember(spriteName).First();
+            var pathAttr = enumInfo.GetCustomAttribute<PlayerSpritePathAttribute>();
+            var dirAttr = enumInfo.GetCustomAttribute<PlayerSpriteParentDirectoryAttribute>();
+
+            var relRoot = resTree.Find("SpritePatches.Characters");
+            ResourceNode? tgtNode = null;
+            if (pathAttr is not null)
+            {
+                //// Does this code even work? It's not used and hasn't been tested.
+                if (pathAttr.Path == "")
+                    return null;
+
+                string searchStr = $".{pathAttr.Path}.ips";
+                foreach (var node in relRoot.Descendants.Where(n => n.IsFile))
+                {
+                    if (string.Compare(
+                        node.Path.Substring(relRoot.Path.Length),
+                        searchStr,
+                        StringComparison.InvariantCultureIgnoreCase) == 0)
+                    {
+                        tgtNode = node;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                var dirNode = relRoot.Find(dirAttr?.Name ?? spriteName);
+                tgtNode = dirNode.Files.FirstOrDefault(n => string.Compare(
+                    n.Name, 
+                    $"{spriteName}.ips", 
+                    StringComparison.InvariantCultureIgnoreCase) == 0);
+                if (tgtNode is null)
+                    tgtNode = dirNode.Files.FirstOrDefault(n => string.Compare(
+                        n.Name,
+                        $"PlayerCharacter_{spriteName}.ips",
+                        StringComparison.InvariantCultureIgnoreCase) == 0);
+            }
+
+            if (tgtNode is null)
+                throw new FileNotFoundException();
+
+            return resTree.LoadResource(tgtNode);
+        }
+
+        /// <summary>
         /// Replace the player's sprite graphics with a different sprite.
         /// This method applies the graphics patch directly to the ROM at
         /// tempFileName. If 'MegaMan' is the sprite, no patch is applied.
         /// </summary>
-        public static void SetNewMegaManSprite(Patch p, String tempFileName, PlayerSpriteOption sprite)
+        public static void SetNewMegaManSprite(
+            ResourceTree resTree,
+            Patch p, 
+            String tempFileName, 
+            PlayerSpriteOption sprite)
         {
-            switch (sprite)
-            {
-                case PlayerSpriteOption.MegaMan:
-                default:
-                {
-                    break;
-                }
+#if DEBUG
+            // Verify all sprites work
+            foreach (var spriteValue in Enum.GetValues<PlayerSpriteOption>())
+                LoadMegaManSpriteIps(resTree, spriteValue);
+#endif
 
-                case PlayerSpriteOption.AVGN:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_AVGN);
-                    break;
-                }
-
-                case PlayerSpriteOption.BadBoxArt:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BadBoxArt);
-                        break;
-                }
-
-                case PlayerSpriteOption.Bass:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Bass);
-                    break;
-                }
-
-                case PlayerSpriteOption.BassReloaded:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BassReloaded);
-                    break;
-                }
-
-                case PlayerSpriteOption.BatMan:
-                {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BatMan);
-                        break;
-                }
-
-                case PlayerSpriteOption.BreakMan:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_BreakMan);
-                    break;
-                }
-
-                case PlayerSpriteOption.Byte:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Byte);
-                    break;
-                }
-
-                case PlayerSpriteOption.ByteRed:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ByteRed);
-                    break;
-                }
-
-                case PlayerSpriteOption.CasualTom:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CasualTom);
-                    break;
-                }
-
-                case PlayerSpriteOption.Charlieboy:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Charlieboy);
-                    break;
-                }
-
-                case PlayerSpriteOption.CharlieboyAlt:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CharlieboyAlt);
-                    break;
-                }
-
-                case PlayerSpriteOption.Coda:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Coda);
-                        break;
-                    }
-
-                case PlayerSpriteOption.CutMansBadScissorsDay:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_CutMansBadScissorsDay);
-                    break;
-                }
-
-                case PlayerSpriteOption.FinalFantasyBlackBelt:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyBlackBelt);
-                        break;
-                    }
-
-                case PlayerSpriteOption.FinalFantasyBlackMage:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyBlackMage);
-                        break;
-                    }
-
-                case PlayerSpriteOption.FinalFantasyFighter:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighter);
-                    break;
-                }
-
-                case PlayerSpriteOption.FinalFantasyFighterBlue:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyFighterBlue);
-                    break;
-                }
-
-                case PlayerSpriteOption.FinalFantasyWhiteMage:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_FinalFantasyWhiteMage);
-                        break;
-                    }
-
-                case PlayerSpriteOption.Francesca:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Francesca);
-                        break;
-                    }
-
-                case PlayerSpriteOption.Guard:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Guard);
-                        break;
-                    }
-
-                case PlayerSpriteOption.HatsuneMiku:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_HatsuneMiku);
-                    break;
-                }
-
-                case PlayerSpriteOption.JavaIslandIndonesia:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JavaIslandIndonesia);
-                    break;
-                }
-
-                case PlayerSpriteOption.JustinBailey:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_JustinBailey);
-                    break;
-                }
-
-                case PlayerSpriteOption.Link:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Link);
-                    break;
-                }
-
-                case PlayerSpriteOption.LuckyMan:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuckyMan);
-                    break;
-                }
-
-                case PlayerSpriteOption.LuigiArcade:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_LuigiArcade);
-                    break;
-                }
-
-                case PlayerSpriteOption.ManII:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ManII);
-                        break;
-                    }
-
-                case PlayerSpriteOption.MarioArcade:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MarioArcade);
-                    break;
-                }
-
-                case PlayerSpriteOption.MegaClaus:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaClaus);
-                        break;
-                    }
-
-                case PlayerSpriteOption.MegaManX:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaManX);
-                    break;
-                }
-
-                case PlayerSpriteOption.MegaMari:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaMari);
-                    break;
-                }
-
-                case PlayerSpriteOption.MegaRan2Remix:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MegaRan2Remix);
-                    break;
-                }
-
-                case PlayerSpriteOption.MyLittlePony:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_MyLittlePony);
-                        break;
-                    }
-
-                case PlayerSpriteOption.NewLands:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_NewLands);
-                    break;
-                }
-
-                case PlayerSpriteOption.Pit:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Pit);
-                        break;
-                    }
-
-                case PlayerSpriteOption.Pikachu:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Pikachu);
-                        break;
-                    }
-
-                case PlayerSpriteOption.ProtoMan:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_ProtoMan);
-                    break;
-                }
-
-                case PlayerSpriteOption.PrototypeTom:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_PrototypeTom);
-                    break;
-                }
-
-                case PlayerSpriteOption.QuickMan:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_QuickMan);
-                    break;
-                }
-
-                case PlayerSpriteOption.Quint:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Quint);
-                    break;
-                }
-
-                case PlayerSpriteOption.Remix:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Remix);
-                    break;
-                }
-
-                case PlayerSpriteOption.Rock:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Rock);
-                    break;
-                }
-
-                case PlayerSpriteOption.Roll:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Roll);
-                    break;
-                }
-
-                case PlayerSpriteOption.RollFromMegaMan8:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_RollFromMegaMan8);
-                    break;
-                }
-
-                case PlayerSpriteOption.Samus:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Samus);
-                    break;
-                }
-
-                case PlayerSpriteOption.Stantler:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_Stantler);
-                    break;
-                }
-
-                case PlayerSpriteOption.VineMan:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.PlayerCharacterResources.PlayerCharacter_VineMan);
-                    break;
-                }
-            }
+            var ips = LoadMegaManSpriteIps(resTree, sprite);
+            if (ips is not null)
+                p.ApplyIPSPatch(tempFileName, ips);
         }
 
+        /// <summary>
+        /// Loads the IPS patch corresponding to the specified enum value. Throws FileNotFoundException if the specified patch cannot be found (should never happen).
+        /// </summary>
+        /// <param name="basePath">The base path of which all options are descendants.</param>
+        /// <param name="fallbackPrefix">If a resource of the form $"{basePath}.{value.ToString()}.ips" cannot be found, try $"{basePath}.{fallbackPrefix}{value.ToString()}.ips".</param>
+        private static byte[] LoadEnumBasedIps<TEnum>(
+            ResourceTree resTree, 
+            string basePath,
+            string? fallbackPrefix,
+            TEnum value)
+            where TEnum : struct, Enum
+        {
+            var relRoot = resTree.Find(basePath);
+            string valueName = value.ToString();
+            var node = relRoot.Files.FirstOrDefault(n => string.Compare(
+                n.Name,
+                $"{valueName}.ips",
+                StringComparison.InvariantCultureIgnoreCase) == 0);
+            if (node is null && fallbackPrefix is not null)
+                node = relRoot.Files.FirstOrDefault(n => string.Compare(
+                    n.Name,
+                    $"{fallbackPrefix}{valueName}.ips",
+                    StringComparison.InvariantCultureIgnoreCase) == 0);
+
+            if (node is null)
+                throw new FileNotFoundException();
+
+            return resTree.LoadResource(node);
+        }
+
+        /// <summary>
+        /// Applies the IPS patch corresponding to the specified enum value. Throws FileNotFoundException if the specified patch cannot be found (should never happen).
+        /// </summary>
+        /// <param name="p">The patcher.</param>
+        /// <param name="tempFileName">The filename to apply the patch to.</param>
+        /// <param name="basePath">The base path of which all options are descendants.</param>
+        /// <param name="fallbackPrefix">If a resource of the form $"{basePath}.{value.ToString()}.ips" cannot be found, try $"{basePath}.{fallbackPrefix}{value.ToString()}.ips".</param>
+        /// <param name="defaultValue">The value of TEnum which corresponds to no patch being applied.</param>
+        private static void ApplyEnumBasedIps<TEnum>(
+            ResourceTree resTree,
+            Patch p,
+            String tempFileName,
+            string basePath,
+            string? fallbackPrefix,
+            TEnum? defaultValue,
+            TEnum value)
+            where TEnum : struct, Enum
+        {
+#if DEBUG
+            foreach (var testValue in Enum.GetValues<TEnum>())
+                if (defaultValue is null 
+                    || !testValue.Equals(defaultValue))
+                    LoadEnumBasedIps(
+                        resTree, 
+                        basePath,
+                        fallbackPrefix,
+                        testValue);
+#endif
+
+            if (defaultValue is not null && value.Equals(defaultValue))
+                return;
+
+            var ips = LoadEnumBasedIps(
+                resTree, basePath, fallbackPrefix, value);
+            p.ApplyIPSPatch(tempFileName, ips);
+        }
 
         /// <summary>
         /// Replace the HUD elements in the game with different sprites.
         /// This method applies the graphics patch directly to the ROM at
         /// tempFileName. If 'Default' is the HUD element, no patch is applied.
         /// </summary>
-        public static void SetNewHudElement(Patch p, String tempFileName, HudElementOption hudElement)
+        public static void SetNewHudElement(
+            ResourceTree resTree, 
+            Patch p, 
+            String tempFileName, 
+            HudElementOption hudElement)
         {
-            switch (hudElement)
-            {
-                case HudElementOption.Default:
-                default:
-                {
-                    break;
-                }
-
-                case HudElementOption.Batman:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Batman);
-                    break;
-                }
-
-                case HudElementOption.Byte:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Byte);
-                    break;
-                }
-
-                case HudElementOption.CB:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CB);
-                    break;
-                }
-
-                case HudElementOption.CutMansBadScissorsDay:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_CutMansBadScissorsDay);
-                    break;
-                }
-
-                case HudElementOption.JavaIslandIndonesia:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_JavaIslandIndonesia);
-                    break;
-                }
-
-                case HudElementOption.KrionConquest:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_KrionConquest);
-                        break;
-                    }
-
-                case HudElementOption.ManII:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_ManII);
-                        break;
-                    }
-
-                case HudElementOption.Metroid:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Metroid);
-                    break;
-                }
-
-                case HudElementOption.MyLittlePony:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_MyLittlePony);
-                        break;
-                    }
-
-                case HudElementOption.Paperboy:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Paperboy);
-                    break;
-                }
-
-                case HudElementOption.Remix:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_Remix);
-                    break;
-                }
-                    
-                case HudElementOption.RockMan2Guard:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.HudElementResources.HudElements_RockMan2Guard);
-                        break;
-                    }
-            }
+            ApplyEnumBasedIps(resTree,
+                p,
+                tempFileName,
+                "SpritePatches.HudElements",
+                "HudElements_",
+                HudElementOption.Default,
+                hudElement);
         }
 
 
@@ -930,94 +762,19 @@ namespace MM2Randomizer.Utilities
         /// This method applies the graphics patch directly to the ROM at
         /// tempFileName. If 'Default' is the font , no patch is applied.
         /// </summary>
-        public static void SetNewFont(Patch p, String tempFileName, FontOption font)
+        public static void SetNewFont(
+            ResourceTree resTree,
+            Patch p, 
+            String tempFileName, 
+            FontOption font)
         {
-            switch (font)
-            {
-                case FontOption.Default:
-                default:
-                {
-                    break;
-                }
-
-                case FontOption.Batman:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Batman);
-                    break;
-                }
-
-                case FontOption.CutMansBadScissorsDay:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_CutMansBadScissorsDay);
-                    break;
-                }
-
-                case FontOption.DoubleDragon2:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_DoubleDragon2);
-                    break;
-                }
-
-                case FontOption.FinalFantasy:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_FinalFantasy);
-                        break;
-                    }
-
-                case FontOption.JavaIslandIndonesia:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_JavaIslandIndonesia);
-                    break;
-                }
-
-                case FontOption.Karnov:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Karnov);
-                    break;
-                }
-
-                case FontOption.Krustys:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Krustys);
-                    break;
-                }
-
-                case FontOption.MegaMan6:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_MegaMan6);
-                        break;
-                    }
-
-                case FontOption.Minecraft:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Minecraft);
-                        break;
-                    }
-
-                case FontOption.Paperboy:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_Paperboy);
-                    break;
-                }
-
-                case FontOption.SimonsQuest:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_SimonsQuest);
-                        break;
-                    }
-
-                case FontOption.SuperMarioWorld:
-                    {
-                        p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_SuperMarioWorld);
-                        break;
-                    }
-
-                case FontOption.TMNT2:
-                {
-                    p.ApplyIPSPatch(tempFileName, Properties.FontSpriteResources.Font_TMNT2);
-                    break;
-                }
-            }
+            ApplyEnumBasedIps(resTree,
+                p,
+                tempFileName,
+                "SpritePatches.Fonts",
+                "Font_",
+                FontOption.Default,
+                font);
         }
 
 
@@ -1163,29 +920,29 @@ namespace MM2Randomizer.Utilities
             p.Add(LargeWeaponEnergyRefill4_TypeAddress, LargeWeaponEnergyRefillType);
         }
 
-        public static void EnableLeftwardWallEjection(Patch p, String tempFileName)
+        public static void EnableLeftwardWallEjection(ResourceTree resTree, Patch p, String tempFileName)
         {
-            p.ApplyIPSPatch(tempFileName, Properties.Resources.leftwardwallejectionpatch);
+            p.ApplyIPSPatch(tempFileName, resTree.LoadResource("leftwardwallejectionpatch.ips"));
         }
 
-        public static void DisablePauseLock(Patch p, String tempFileName)
+        public static void DisablePauseLock(ResourceTree resTree, Patch p, String tempFileName)
         {
-            p.ApplyIPSPatch(tempFileName, Properties.Resources.pausepatch);
+            p.ApplyIPSPatch(tempFileName, resTree.LoadResource("pausepatch.ips"));
         }
 
-        public static void EnableMercilessMode(Patch p, String tempFileName)
+        public static void EnableMercilessMode(ResourceTree resTree, Patch p, String tempFileName)
         {
-            p.ApplyIPSPatch(tempFileName, Properties.Resources.mercilesspatch);
+            p.ApplyIPSPatch(tempFileName, resTree.LoadResource("mercilesspatch.ips"));
         }
 
-        public static void EnableBirdEggFix(Patch p, String tempFileName)
+        public static void EnableBirdEggFix(ResourceTree resTree, Patch p, String tempFileName)
         {
-            p.ApplyIPSPatch(tempFileName, Properties.Resources.mm2bird_egg_fix);
+            p.ApplyIPSPatch(tempFileName, resTree.LoadResource("mm2bird_egg_fix.ips"));
         }
 
-        public static void EnableClownBotFix(Patch p, String tempFileName)
+        public static void EnableClownBotFix(ResourceTree resTree, Patch p, String tempFileName)
         {
-            p.ApplyIPSPatch(tempFileName, Properties.Resources.mm2clown_bot_fix);
+            p.ApplyIPSPatch(tempFileName, resTree.LoadResource("mm2clown_bot_fix.ips"));
         }
     }
 }
