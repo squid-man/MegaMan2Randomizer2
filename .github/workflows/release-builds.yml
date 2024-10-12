@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        dotnet: ['2.0.x', '8.0.x']
+        dotnet: ['8.0.x']
     name: Make Release
     steps:
       - uses: actions/checkout@v2
@@ -25,6 +25,9 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.1.x'
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.0.x'
       - run: dotnet build MM2Randomizer.sln
       - run: dotnet test MM2Randomizer.sln
       - run: |
