@@ -663,7 +663,6 @@
       <EmbeddedResource Include="Resources\level_components.json" />
       <EmbeddedResource Include="Resources\mercilesspatch.ips" />
       <EmbeddedResource Include="Resources\mm2bird_egg_fix.ips" />
-      <EmbeddedResource Include="Resources\mm2clown_bot_fix.ips" />
       <EmbeddedResource Include="Resources\mm2ft.ips" />
       <EmbeddedResource Include="Resources\mm2rng_prepatch.ips" />
       <EmbeddedResource Include="Resources\pausepatch.ips" />
@@ -1339,6 +1338,17 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\FtRandoLib\FtRandoLib.csproj" />
+      <ProjectReference Include="..\snarfblasm\snarfblasm.csproj">
+        <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+      <None Update="Resources\mm2rng_prepatch.asm">
+        <Generator></Generator>
+      </None>
+    </ItemGroup>
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="&quot;$(SolutionDir)snarfblasm\bin\$(Configuration)\snarfblasm.exe&quot; &quot;Resources\mm2rng_prepatch.asm&quot; &quot;Resources\mm2rng_prepatch.ips&quot; -checking:on -newer:on&#xD;&#xA;" />
+    </Target>
     
 </Project>
