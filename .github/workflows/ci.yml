@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        dotnet: ['8.0.x']
+        dotnet: ['2.0.x', '8.0.x']
     name: Dotnet ${{ matrix.dotnet }} - ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
