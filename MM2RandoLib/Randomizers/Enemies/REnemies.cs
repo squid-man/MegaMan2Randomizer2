@@ -6,6 +6,7 @@ using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
 using MM2Randomizer.Random;
+using MM2Randomizer.Resources;
 using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer.Randomizers.Enemies
@@ -46,7 +47,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             this.RoomGroups.Clear();
             this.EnemyInstances.Clear();
 
-            this.ReadEnemyInstancesFromFile();
+            this.ReadEnemyInstancesFromFile(in_Context.ResourceTree);
             this.ChangeRoomSpriteBankSlots(in_Patch);
             this.InitializeEnemies();
             this.InitializeRooms();
@@ -58,9 +59,9 @@ namespace MM2Randomizer.Randomizers.Enemies
         /// <summary>
         /// Read enemylist.csv to construct EnemyInstances.
         /// </summary>
-        private void ReadEnemyInstancesFromFile()
+        private void ReadEnemyInstancesFromFile(ResourceTree in_ResTree)
         {
-            EnemySet enemySet = Properties.Resources.EnemySet.Deserialize<EnemySet>();
+            EnemySet enemySet = in_ResTree.LoadUtf8Resource("EnemySet.xml").Deserialize<EnemySet>();
 
             foreach (Enemy enemy in enemySet)
             {

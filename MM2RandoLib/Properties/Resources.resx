@@ -121,12 +121,6 @@
   <data name="bossnames" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bossnames.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
   </data>
-  <data name="mm2rng_prepatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mm2rng_prepatch.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="level_components" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\level_components.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
-  </data>
   <data name="CompanyNameConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CompanyNameConfig.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -136,31 +130,7 @@
   <data name="CreditTextConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CreditTextConfig.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="EnemySet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EnemySet.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="EnemyWeaknessSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EnemyWeaknessSet.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="IntroStoryConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IntroStoryConfig.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="mm2ft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mm2ft.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mercilesspatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mercilesspatch.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pausepatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pausepatch.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="leftwardwallejectionpatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\leftwardwallejectionpatch.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mm2bird_egg_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mm2bird_egg_fix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mm2clown_bot_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mm2clown_bot_fix.ips;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -5,6 +5,7 @@ using System.Text;
 using MM2Randomizer.Data;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
+using MM2Randomizer.Resources;
 
 namespace MM2Randomizer.Randomizers.Enemies
 {
@@ -43,7 +44,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
         public void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
-            EnemyWeaknessSet enemyWeaknessSet = Properties.Resources.EnemyWeaknessSet.Deserialize<EnemyWeaknessSet>();
+            EnemyWeaknessSet enemyWeaknessSet = in_Context.ResourceTree.LoadUtf8Resource("EnemyWeaknessSet.xml").Deserialize<EnemyWeaknessSet>();
 
             foreach (EnemyWeakness enemyWeakness in enemyWeaknessSet)
             {
