@@ -1348,7 +1348,7 @@
       </None>
     </ItemGroup>
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-      <Exec Command="&quot;$(SolutionDir)snarfblasm/bin/$(Configuration)/snarfblasm.exe&quot; &quot;$(ProjectDir)Resources/mm2rng_prepatch.asm&quot; &quot;$(ProjectDir)Resources/mm2rng_prepatch.ips&quot; -checking:on -newer:on&#xD;&#xA;" />
+      <Exec Command="&quot;$(SolutionDir)snarfblasm/bin/$(Configuration)/$(TargetFramework)/snarfblasm.exe&quot; &quot;$(ProjectDir)Resources/mm2rng_prepatch.asm&quot; &quot;$(ProjectDir)Resources/mm2rng_prepatch.ips&quot; -checking:on -newer:on&#xD;&#xA;" />
     </Target>
     
 </Project>

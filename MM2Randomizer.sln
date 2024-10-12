@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomizerHost", "Randomize
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FtRandoLib", "FtRandoLib\FtRandoLib.csproj", "{B2DD3A1D-E34D-4C33-BC89-616FE57DCF7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snarfblasm", "snarfblasm\snarfblasm.csproj", "{32A2ABA0-B151-43DD-BCC9-30F409E219BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "snarfblasm", "snarfblasm\snarfblasm.csproj", "{32A2ABA0-B151-43DD-BCC9-30F409E219BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
