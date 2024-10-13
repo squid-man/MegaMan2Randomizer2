@@ -89,7 +89,7 @@ public class SettingsPresets
         _presets.Add(new("", Enumerable.Empty<OptionPreset>()));
 
         SettingsPreset tourn2024A = new(
-            "2024 Tournament A", 
+            "2024 Tournament A",
             "TOURNAMENT A",
             [
                 new(s.GameplayOptions.RandomizeRefightTeleporters, true),
@@ -123,6 +123,7 @@ public class SettingsPresets
                 new(s.QualityOfLifeOptions.DisablePauseLock, true),
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, false),
                 new(s.QualityOfLifeOptions.EnableBirdEggFix, true),
+                new(s.QualityOfLifeOptions.StageSelectDefault, false),
                 new(s.CosmeticOptions.RandomizeColorPalettes, true),
                 new(s.CosmeticOptions.RandomizeMusicTracks, true),
                 new(s.CosmeticOptions.OmitUnsafeMusicTracks, true),

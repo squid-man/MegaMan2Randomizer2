@@ -23,5 +23,9 @@ namespace MM2Randomizer.Settings.OptionGroups
 
         [Description("Fix Bird Object Despawn")]
         public BoolOption EnableBirdEggFix { get; } = new(true);
+
+        [Description("Make Stage Select Default")]
+        [Tooltip("Make Stage Select the default choice after obtaining weapons rather than Password.")]
+        public BoolOption StageSelectDefault { get; } = new(true);
     }
 }

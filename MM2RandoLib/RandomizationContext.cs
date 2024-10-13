@@ -403,6 +403,11 @@ namespace MM2Randomizer
                 MiscHacks.EnableBirdEggFix(ResourceTree, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
+            if (qolOpts.StageSelectDefault.Value)
+            {
+                MiscHacks.MakeStageSelectDefault(Patch);
+            }
+
             MiscHacks.EnableClownBotFix(ResourceTree, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
 
             MiscHacks.SetNewMegaManSprite(

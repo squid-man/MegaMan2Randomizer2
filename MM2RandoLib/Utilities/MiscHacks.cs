@@ -594,6 +594,11 @@ namespace MM2Randomizer.Utilities
             p.Add(etankSubLocation, eTankSubroutineBytes, "Prevent E-Tank Use at Full Life");
         }
 
+        public static void MakeStageSelectDefault(Patch patch)
+        {
+            patch.Add(0x37bea, 1, "Set stage select to default option");
+        }
+
         /// <summary>
         /// Load the IPS for the specified Mega Man player sprite, or null if the specified sprite is the default. Throws FileNotFoundException if the sprite cannot be found (should never happen).
         /// </summary>
