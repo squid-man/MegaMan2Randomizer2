@@ -50,6 +50,11 @@ namespace MM2Randomizer
 
         public const String TEMPORARY_FILE_NAME = "temp.nes";
 
+        /// <summary>
+        /// Quality of life hack: if InvisiPico, do NOT randomize Pico movement.
+        /// </summary>
+        public bool IsInvisiPico = false;
+
         //================
         // "CORE" MODULES
         //================
@@ -205,14 +210,8 @@ namespace MM2Randomizer
                 randomizers.Add(this.RandomTilemap);
             }
 
-            // Conduct randomization of behavior options
-            foreach (IRandomizer randomizer in randomizers)
-            {
-                randomizer.Randomize(this.Patch, this);
-                Debug.WriteLine(randomizer);
-            }
-
             // Apply random sprite changes
+            // Boss sprites need to be randomized before running normal randomizers because InvisiPico is a special case
             if (spriteOpts.RandomizeBossSprites.Value)
             {
                 bossPatches = MiscHacks.ApplyOneIpsPerDir(
@@ -220,6 +219,18 @@ namespace MM2Randomizer
                 bossSprites = bossPatches
                     .Where(kv => BossDirNames.ContainsKey(kv.Key.Name))
                     .ToDictionary(kv => BossDirNames[kv.Key.Name], kv => kv.Value);
+
+                // Very hacky. But I'm not sure what a better way to do it would be.
+                var picoNode = bossSprites[EBossIndex.Pico];
+                IsInvisiPico = picoNode is not null && picoNode.Name.Contains(
+                    "CheatMode", StringComparison.InvariantCultureIgnoreCase);
+            }
+
+            // Conduct randomization of behavior options
+            foreach (IRandomizer randomizer in randomizers)
+            {
+                randomizer.Randomize(this.Patch, this);
+                Debug.WriteLine(randomizer);
             }
 
             if (spriteOpts.RandomizeEnemySprites.Value)
