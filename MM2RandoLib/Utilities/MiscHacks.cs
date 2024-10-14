@@ -939,10 +939,5 @@ namespace MM2Randomizer.Utilities
         {
             p.ApplyIPSPatch(tempFileName, resTree.LoadResource("mm2bird_egg_fix.ips"));
         }
-
-        public static void EnableClownBotFix(ResourceTree resTree, Patch p, String tempFileName)
-        {
-            p.ApplyIPSPatch(tempFileName, resTree.LoadResource("mm2clown_bot_fix.ips"));
-        }
     }
 }
