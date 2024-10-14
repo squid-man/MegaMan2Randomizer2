@@ -158,6 +158,14 @@ namespace MM2Randomizer
         [Dir("MegaRan")]
         MegaRan2Remix,
 
+        [Description("Mega Woman")]
+        [Dir("MegaWoman")]
+        MegaWoman,
+
+        [Description("Mega Woman (Purple)")]
+        [Dir("MegaWoman")]
+        MegaWomanPurp,
+
         [Description("My Little Pony")]
         MyLittlePony,
 
@@ -206,5 +214,8 @@ namespace MM2Randomizer
 
         [Description("Vine Man")]
         VineMan,
+
+        [Description("Zneip")]
+        Zneip,
     }
 }

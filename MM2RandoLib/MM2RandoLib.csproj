@@ -827,6 +827,8 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_MegaMari.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_Rock.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWoman.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWomanPurp.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MyLittlePony\PlayerCharacter_MyLittlePony.ips" />
@@ -843,6 +845,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Characters\Zneip\PlayerCharacter_Zneip.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Ghost.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Vader.ips" />
