@@ -104,7 +104,6 @@
       <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_GameMakerClown.ips" />
       <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_GutsMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_Leo.ips" />
-      <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_LilMac.ips" />
       <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_MegaMan4Squid.ips" />
       <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_MegaManMugshot.ips" />
       <None Remove="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_Metroid.ips" />
@@ -153,7 +152,6 @@
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Bowser.ips" />
       <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Cray.ips" />
-      <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Technodrome.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Another.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_CutMansBadScissorsDay.ips" />
@@ -168,7 +166,6 @@
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Shades.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Swag.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMan.ips" />
-      <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_ElecMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_Peercast.ips" />
@@ -334,7 +331,6 @@
       <None Remove="Resources\SpritePatches\Environment\BossDoors\BossDoors_DK.ips" />
       <None Remove="Resources\SpritePatches\Environment\BossDoors\BossDoors_Link.ips" />
       <None Remove="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_DoctorMarioV1.ips" />
-      <None Remove="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_DoctorMarioV2.ips" />
       <None Remove="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_SuperMarioBros3.ips" />
       <None Remove="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_SuperMarioBros3V2.ips" />
       <None Remove="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_SuperMarioBros3V3.ips" />
@@ -385,7 +381,6 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\StageTile_AirMan_Block_Clear.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\StageTile_AirMan_Block_Cloud.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_BabyMetroid.ips" />
-      <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_CutmanBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Gamma.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Platform.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_DiveMan.ips" />
@@ -526,10 +521,8 @@
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_BasicMaster.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_Claw.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_Exile.ips" />
-      <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_None.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_Ultra.ips" />
-      <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\TitleScreen\TitleScreen_FinalFantasy.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\WeaponGetScreen\WeaponGetScreen_Claw.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\WeaponGetScreen\WeaponGetScreen_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\WeaponGetScreen\WeaponGetScreen_MissingTile.ips" />
@@ -663,7 +656,6 @@
       <EmbeddedResource Include="Resources\level_components.json" />
       <EmbeddedResource Include="Resources\mercilesspatch.ips" />
       <EmbeddedResource Include="Resources\mm2bird_egg_fix.ips" />
-      <EmbeddedResource Include="Resources\mm2clown_bot_fix.ips" />
       <EmbeddedResource Include="Resources\mm2ft.ips" />
       <EmbeddedResource Include="Resources\mm2rng_prepatch.ips" />
       <EmbeddedResource Include="Resources\pausepatch.ips" />
@@ -706,7 +698,6 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_GameMakerClown.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_GutsMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_Leo.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_LilMac.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_MegaMan4Squid.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_MegaManMugshot.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\BossDoorSign\BossDoorSign_Metroid.ips" />
@@ -755,7 +746,6 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Bowser.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Cray.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Technodrome.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Another.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_CutMansBadScissorsDay.ips" />
@@ -770,7 +760,6 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Shades.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Swag.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMan.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_ElecMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_Peercast.ips" />
@@ -838,6 +827,8 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_MegaMari.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_Rock.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWoman.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWomanPurp.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MyLittlePony\PlayerCharacter_MyLittlePony.ips" />
@@ -854,6 +845,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Characters\Zneip\PlayerCharacter_Zneip.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Ghost.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Vader.ips" />
@@ -936,7 +928,6 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\BossDoors\BossDoors_DK.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\BossDoors\BossDoors_Link.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_DoctorMarioV1.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_DoctorMarioV2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_SuperMarioBros3.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_SuperMarioBros3V2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\DestructibleBlock\DestructibleBlock_SuperMarioBros3V3.ips" />
@@ -987,7 +978,6 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\StageTile_AirMan_Block_Clear.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Block\StageTile_AirMan_Block_Cloud.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_BabyMetroid.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_CutmanBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Gamma.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Platform.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_DiveMan.ips" />
@@ -1128,10 +1118,8 @@
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_BasicMaster.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_Claw.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_Exile.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_None.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\StageSelectScreen\StageSelectScreen_Ultra.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\TitleScreen\TitleScreen_FinalFantasy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\WeaponGetScreen\WeaponGetScreen_Claw.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\WeaponGetScreen\WeaponGetScreen_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\WeaponGetScreen\WeaponGetScreen_MissingTile.ips" />
@@ -1339,6 +1327,11 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\FtRandoLib\FtRandoLib.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="Resources\mm2rng_prepatch.asm">
+        <Generator></Generator>
+      </None>
     </ItemGroup>
     
 </Project>

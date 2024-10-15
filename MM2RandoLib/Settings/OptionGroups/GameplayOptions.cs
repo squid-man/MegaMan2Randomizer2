@@ -43,6 +43,9 @@ namespace MM2Randomizer.Settings.OptionGroups
         [Tooltip("Instant death hazards such as spikes will be lethal regardless of invincibility frames like in Mega Man 1.")]
         public BoolOption MercilessMode { get; } = new(false);
 
+        [Description("Randomize PicoPico-kun Spawns")]
+        public BoolOption RandomizePicoPicoSpawns { get; } = new(true);
+
         [NoCreateControl]
         public BoolOption RandomizeRefightTeleporters { get; } = new(true);
         [NoCreateControl]
