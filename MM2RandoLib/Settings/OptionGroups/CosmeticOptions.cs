@@ -25,6 +25,9 @@ namespace MM2Randomizer.Settings.OptionGroups
         [Description("Character")]
         public EnumOption<PlayerSpriteOption> PlayerSprite { get; } = new(PlayerSpriteOption.MegaMan);
 
+        [Description("Cannon Shot")]
+        public EnumOption<CannonShotOption> CannonShot { get; } = new(CannonShotOption.PlasmaCannon);
+
         [Description("HUD")]
         public EnumOption<HudElementOption> HudElement { get; } = new(HudElementOption.Default);
 

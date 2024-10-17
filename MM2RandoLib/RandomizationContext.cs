@@ -416,6 +416,12 @@ namespace MM2Randomizer
                 RandomizationContext.TEMPORARY_FILE_NAME,
                 cosmOpts.PlayerSprite.Value);
 
+            MiscHacks.SetNewCannonShot(
+                ResourceTree,
+                this.Patch,
+                RandomizationContext.TEMPORARY_FILE_NAME,
+                cosmOpts.CannonShot.Value);
+
             MiscHacks.SetNewHudElement(
                 ResourceTree,
                 this.Patch,
