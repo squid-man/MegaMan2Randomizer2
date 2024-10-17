@@ -747,14 +747,35 @@ namespace MM2Randomizer.Utilities
         }
 
         /// <summary>
+        /// Replace the cannot shot sprite in the game with different sprites.
+        /// This method applies the graphics patch directly to the ROM at
+        /// tempFileName. If 'PlasmaCannon' is the HUD element, no patch is applied.
+        /// </summary>
+        public static void SetNewCannonShot(
+            ResourceTree resTree, 
+            Patch p, 
+            String tempFileName, 
+            CannonShotOption cannonShot)
+        {
+            ApplyEnumBasedIps(resTree,
+                p,
+                tempFileName,
+                "SpritePatches.CannonShot",
+                "CannonShot_",
+                CannonShotOption.PlasmaCannon,
+                cannonShot);
+        }
+
+
+        /// <summary>
         /// Replace the HUD elements in the game with different sprites.
         /// This method applies the graphics patch directly to the ROM at
         /// tempFileName. If 'Default' is the HUD element, no patch is applied.
         /// </summary>
         public static void SetNewHudElement(
-            ResourceTree resTree, 
-            Patch p, 
-            String tempFileName, 
+            ResourceTree resTree,
+            Patch p,
+            String tempFileName,
             HudElementOption hudElement)
         {
             ApplyEnumBasedIps(resTree,
