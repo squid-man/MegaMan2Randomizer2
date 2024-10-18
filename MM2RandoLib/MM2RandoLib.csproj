@@ -270,6 +270,7 @@
       <None Remove="Resources\SpritePatches\Enemies\FlyBoy\FlyBoy_VineMan.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Lightning.ips" />
 	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />
 	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips" />
@@ -390,6 +391,7 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Platform.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_DiveMan.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_SplashWoman.ips" />
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Platform\StageTile_BubbleMan_Platform_Block1.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Platform\StageTile_BubbleMan_Platform_SMB3.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\StageTile_BubbleMan_Waterfall_CBv1.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\StageTile_BubbleMan_Waterfall_CBv2.ips" />
@@ -876,6 +878,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\FlyBoy\FlyBoy_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Lightning.ips" />
 	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />	
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips" />
@@ -996,6 +999,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Platform.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_DiveMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_SplashWoman.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Platform\StageTile_BubbleMan_Platform_Block1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Platform\StageTile_BubbleMan_Platform_SMB3.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\StageTile_BubbleMan_Waterfall_CBv1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Waterfall\StageTile_BubbleMan_Waterfall_CBv2.ips" />
