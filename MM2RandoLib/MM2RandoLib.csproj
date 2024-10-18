@@ -520,6 +520,7 @@
       <None Remove="Resources\SpritePatches\HudElements\HudElements_Paperboy.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_Remix.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_RockMan2Guard.ips" />
+	  <None Remove="Resources\SpritePatches\HudElements\HudElements_Star.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_FinalFantasy.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_MegaMan5MiniCastle.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_None.ips" />
@@ -1125,6 +1126,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Paperboy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Remix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_RockMan2Guard.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Star.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_FinalFantasy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_MegaMan5MiniCastle.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_None.ips" />

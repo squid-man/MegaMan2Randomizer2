@@ -30,5 +30,7 @@ namespace MM2Randomizer.Settings.Options
         Remix,
         [Description("Rock Man 2 Guard")]
         RockMan2Guard,
+        [Description("Star")]
+        Star,
     }
 }
