@@ -233,6 +233,8 @@
       <None Remove="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_MegaMari.ips" />
       <None Remove="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_Rock.ips" />
       <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
+	  <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWoman.ips" />
+	  <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWomanPurp.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <None Remove="Resources\SpritePatches\Characters\MyLittlePony\PlayerCharacter_MyLittlePony.ips" />
@@ -249,6 +251,7 @@
       <None Remove="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <None Remove="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
       <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
+	  <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Zneip.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Ghost.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Vader.ips" />
@@ -267,9 +270,11 @@
       <None Remove="Resources\SpritePatches\Enemies\FlyBoy\FlyBoy_VineMan.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips" />
-      <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
+	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />
+	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips" />
-      <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
+	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Pacman.ips" />
+	  <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_Evil.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_MM3Cat.ips" />
       <None Remove="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_CutMansBadScissorsDay.ips" />
@@ -870,8 +875,10 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\FlyBoy\FlyBoy_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />	
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips" />
+	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Pacman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_Evil.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_MM3Cat.ips" />
