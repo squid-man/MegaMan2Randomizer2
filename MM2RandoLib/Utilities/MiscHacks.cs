@@ -25,8 +25,7 @@ namespace MM2Randomizer.Utilities
             ISeed? seed = null,
             Patch? patch = null,
             string? outFileName = null,
-            ResourceTree? resTree = null,
-            bool rebasePatch = true)
+            ResourceTree? resTree = null)
         {
             if (seed is null)
                 seed = context.Seed;
@@ -43,8 +42,7 @@ namespace MM2Randomizer.Utilities
                 patch,
                 basePath,
                 canBeNull,
-                outFileName,
-                rebasePatch);
+                outFileName);
         }
 
         public static  Dictionary<ResourceNode, ResourceNode?> ApplyOneIpsPerDir(
@@ -53,8 +51,7 @@ namespace MM2Randomizer.Utilities
             Patch patch,
             string basePath,
             bool canBeNull,
-            string outFileName,
-            bool rebasePatch = true)
+            string outFileName)
         {
             var relRoot = resTree.Find(basePath);
             var selDirNodes = relRoot.PickOneFilePerDirectory(
@@ -69,7 +66,7 @@ namespace MM2Randomizer.Utilities
                     continue;
 
                 var ips = resTree.LoadResource(fileNode);
-                patch.ApplyIPSPatch(outFileName, ips, rebasePatch);
+                patch.ApplyIPSPatch(outFileName, ips);
             }
 
             return selDirNodes;
@@ -674,7 +671,7 @@ namespace MM2Randomizer.Utilities
 
             var ips = LoadMegaManSpriteIps(resTree, sprite);
             if (ips is not null)
-                p.ApplyIPSPatch(tempFileName, ips, false);
+                p.ApplyIPSPatch(tempFileName, ips);
         }
 
         /// <summary>
@@ -715,7 +712,6 @@ namespace MM2Randomizer.Utilities
         /// <param name="basePath">The base path of which all options are descendants.</param>
         /// <param name="fallbackPrefix">If a resource of the form $"{basePath}.{value.ToString()}.ips" cannot be found, try $"{basePath}.{fallbackPrefix}{value.ToString()}.ips".</param>
         /// <param name="defaultValue">The value of TEnum which corresponds to no patch being applied.</param>
-        /// <param name="rebasePatch">The patch is not aware of the relocation of the common bank and should be rebased.</param>
         private static void ApplyEnumBasedIps<TEnum>(
             ResourceTree resTree,
             Patch p,
@@ -723,8 +719,7 @@ namespace MM2Randomizer.Utilities
             string basePath,
             string? fallbackPrefix,
             TEnum? defaultValue,
-            TEnum value,
-            bool rebasePatch = true)
+            TEnum value)
             where TEnum : struct, Enum
         {
 #if DEBUG
@@ -743,7 +738,7 @@ namespace MM2Randomizer.Utilities
 
             var ips = LoadEnumBasedIps(
                 resTree, basePath, fallbackPrefix, value);
-            p.ApplyIPSPatch(tempFileName, ips, rebasePatch);
+            p.ApplyIPSPatch(tempFileName, ips);
         }
 
         /// <summary>

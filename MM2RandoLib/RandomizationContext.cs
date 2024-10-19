@@ -20,9 +20,6 @@ namespace MM2Randomizer
 {
     public class RandomizationContext
     {
-        internal record WriteSpec(int Offs, IReadOnlyList<byte> Data);
-        internal record BlockCopySpec(int SrcOffs, int TgtOffs, int Size);
-
         //
         // Constructors
         //
@@ -114,7 +111,14 @@ namespace MM2Randomizer
 
         internal void Initialize()
         {
-            CreateInitialRom(TEMPORARY_FILE_NAME);
+            // Load user provided ROM
+            using (Stream stream = new FileStream(this.Settings.RomSourcePath, FileMode.Open, FileAccess.Read))
+            {
+                using (Stream output = File.OpenWrite(RandomizationContext.TEMPORARY_FILE_NAME))
+                {
+                    stream.CopyTo(output);
+                }
+            }
 
             // In tournament mode, offset the seed by 1 call, making seeds mode-dependent
             /*
@@ -250,7 +254,7 @@ namespace MM2Randomizer
             if (spriteOpts.RandomizeEnvironmentSprites.Value)
             {
                 envSprites = MiscHacks.ApplyOneIpsPerDir(
-                    this, "SpritePatches.Environment", rebasePatch: false);
+                    this, "SpritePatches.Environment");
             }
 
 
@@ -390,6 +394,11 @@ namespace MM2Randomizer
                 MiscHacks.EnableLeftwardWallEjection(ResourceTree, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
             }
 
+            // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
+            this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, ResourceTree.LoadResource("mm2ft.ips"), false);
+            this.Patch.ApplyIPSPatch(RandomizationContext.TEMPORARY_FILE_NAME, ResourceTree.LoadResource("mm2rng_prepatch.ips"));
+
+            // IPS patches should/must come after mm2ft as IPS patches are applied immediately and may be overwritten by deferred patches
             if (qolOpts.DisablePauseLock.Value)
             {
                 MiscHacks.DisablePauseLock(ResourceTree, this.Patch, RandomizationContext.TEMPORARY_FILE_NAME);
@@ -445,94 +454,6 @@ namespace MM2Randomizer
 
             // Finish the copy/rename and open Explorer at that location
             File.Move(RandomizationContext.TEMPORARY_FILE_NAME, this.FileName);
-        }
-
-        /// <summary>
-        /// Perform 0 or more copy and subsequent write actions to the ROM file. This is done outside the normal patching system because it must come before other IPS files which directly modify the ROM.
-        /// </summary>
-        /// <param name="in_RomPath"></param>
-        /// <param name="in_CopySpecs">Copy operations to perform.</param>
-        /// <param name="in_WriteSpecs">Write operations to perform.</param>
-        internal void ModifyRomFile(
-            string in_RomPath, 
-            IEnumerable<BlockCopySpec>? in_CopySpecs = null,
-            IEnumerable<WriteSpec>? in_WriteSpecs = null)
-        {
-            using (FileStream romFile = new(
-                in_RomPath, FileMode.Open, FileAccess.ReadWrite))
-            {
-                var rom = new byte[romFile.Length];
-                romFile.ReadExactly(rom, 0, rom.Length);
-
-                if (in_CopySpecs is not null)
-                {
-                    foreach (var spec in in_CopySpecs)
-                    {
-                        romFile.Position = spec.TgtOffs;
-                        romFile.Write(rom, spec.SrcOffs, spec.Size);
-                    }
-                }
-
-                if (in_WriteSpecs is not null)
-                {
-                    foreach (var spec in in_WriteSpecs)
-                    {
-                        romFile.Position = spec.Offs;
-
-                        byte[]? buff = spec.Data as byte[];
-                        if (buff is null)
-                            buff = spec.Data.ToArray();
-
-                        romFile.Write(buff, 0, buff.Length);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Apply the base patches to the ROM that must come before anything else including other IPS files.
-        /// </summary>
-        private void CreateInitialRom(string in_RomPath)
-        {
-            File.Copy(this.Settings.RomSourcePath, in_RomPath, true);
-
-            // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
-            this.Patch.ApplyIPSPatch(
-                in_RomPath, ResourceTree.LoadResource("mm2ft.ips"), false);
-            this.Patch.ApplyIPSPatch(
-                in_RomPath, ResourceTree.LoadResource("mm2rng_prepatch.ips"));
-
-            CopyWilyTilesets(in_RomPath);
-        }
-
-        /// <summary>
-        /// Duplicate the portions of the tileset that are shared between Wily 2-5. Makes the following modifications:
-        /// Wily 3's copy of 6a10:6e10 (PPU 1600:1a00) is now located at 3f610.
-        /// Wily 4's copy of 6a10:6e10 is now located at 3fa10.
-        /// Wily 5's copy of ac10:ae10 (PPU 1200:1400) is now located at 3fe10.
-        /// </summary>
-        private void CopyWilyTilesets(string in_RomPath)
-        {
-            /* All stages have a list of regions to copy to VRAM at start (this includes both sprites at PPU 0:1000 and background at 1000:2000). For Wily 1-6 these lists are at bd00 of bank # - 1. The first byte of each list specifies the number of entries, and each entry is a byte triplet AA NN BB where A is the MSB of the ROM address to copy from, N is the number of 256-byte blocks to copy, and B is the 16 KB ROM bank number.
-             * The vanilla values of these tables for the background portion, with * and # indicating the portions that need to be duplicated:
-             * Wily 1 @+10: 80 06 09  AA 0A 00
-             * Wily 2 @+13: 80 06 09  AA 0A 01*
-             * WIly 3 @ +d: 80 06 09  AA 04 01* AA 05 02# AC 01 02#
-             * Wily 4 @ +d: 80 06 09  AA 04 01* AA 06 03
-             * Wily 5 @ +d: 80 02 09  AC 02 02# 84 01 09  AA 01 04  AA 0A 04
-             * Wily 6 @ +d: 80 08 09  B0 08 02 */
-
-            ModifyRomFile(in_RomPath,
-                [
-                    new(0x6a10, 0x3f610, 0x400), // Wily 3 copy of 2's data
-                    new(0x6a10, 0x3fa10, 0x400), // Wily 4 copy of 2's data
-                    new(0xac10, 0x3fe10, 0x200), // Wily 5 copy of 3's data
-                ],
-                [
-                    new(0x8010 + 0x3d10, Convert.FromHexString("b6040f")), // Wily 3 ref
-                    new(0xc010 + 0x3d10, Convert.FromHexString("ba040f")), // Wily 4 ref
-                    new(0x10010 + 0x3d10, Convert.FromHexString("be020f")), // Wily 5 ref
-                ]);
         }
 
         //
