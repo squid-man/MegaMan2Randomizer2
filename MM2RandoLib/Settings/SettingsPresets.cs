@@ -89,7 +89,7 @@ public class SettingsPresets
         _presets.Add(new("", Enumerable.Empty<OptionPreset>()));
 
         SettingsPreset tourn2024A = new(
-            "2024 Tournament A",
+            "Tournament A (Any%,Revealed)",
             "TOURNAMENT A",
             [
                 new(s.GameplayOptions.RandomizeRefightTeleporters, true),
@@ -105,10 +105,10 @@ public class SettingsPresets
                 new(s.GameplayOptions.RandomizeFalseFloors, true),
                 new(s.GameplayOptions.FasterCutsceneText, true),
                 new(s.GameplayOptions.BurstChaserMode, false),
-                new(s.GameplayOptions.HideStageNames, true),
+                new(s.GameplayOptions.HideStageNames, false),
                 new(s.GameplayOptions.MercilessMode, false),
-                new(s.GameplayOptions.RandomizePicoPicoSpawns, false),
-                new(s.GameplayOptions.DisallowBubbleBarrierWeakness, false),
+                new(s.GameplayOptions.RandomizePicoPicoSpawns, true),
+                new(s.GameplayOptions.DisallowBubbleBarrierWeakness, true),
                 new(s.SpriteOptions.RandomizeBossSprites, true),
                 new(s.SpriteOptions.RandomizeEnemySprites, true),
                 new(s.SpriteOptions.RandomizeSpecialWeaponSprites, true),
@@ -126,7 +126,7 @@ public class SettingsPresets
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, false),
                 new(s.QualityOfLifeOptions.EnableBirdEggFix, true),
                 new(s.QualityOfLifeOptions.StageSelectDefault, false),
-                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
+                new(s.QualityOfLifeOptions.AllowSelfDestruct, true),
                 NewPreset(s.QualityOfLifeOptions.AccidentalEtankProtectionLevel, PercentOption.Percent100),
                 NewPreset(s.QualityOfLifeOptions.AddWeaponEnergyOnDeath, PercentOption.Percent0),
                 new(s.CosmeticOptions.RandomizeColorPalettes, true),
@@ -137,16 +137,33 @@ public class SettingsPresets
             ]);
         _presets.Add(tourn2024A);
 
-        _presets.Add(new(
-            "2024 Tournament B",
+
+    SettingsPreset tourn2024B = (new(
+            "Tournament B (Zipless,Revealed)",
             "TOURNAMENT B",
             tourn2024A,
             [
-                new(s.SpriteOptions.RandomizeBossSprites, false),
-                new(s.SpriteOptions.RandomizeEnemySprites, false),
-                new(s.SpriteOptions.RandomizeSpecialWeaponSprites, false),
-                new(s.SpriteOptions.RandomizeItemPickupSprites, false),
-                new(s.SpriteOptions.RandomizeEnvironmentSprites, false),
+                new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
+                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
+            ]));
+        _presets.Add(tourn2024B);
+
+        _presets.Add(new(
+            "Tournament C (Any% Hidden)",
+            "TOURNAMENT C",
+            tourn2024A,
+            [
+                new(s.GameplayOptions.HideStageNames, true),
+            ]));
+
+        _presets.Add(new(
+            "Tournament D (Zipless,Hidden)",
+            "TOURNAMENT D",
+            tourn2024B,
+            [
+                new(s.GameplayOptions.HideStageNames, true),
+                new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
+                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
             ]));
     }
 
