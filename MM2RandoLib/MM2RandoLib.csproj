@@ -1276,7 +1276,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_GodWorld.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_JavaIslandIndonesia.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_MM6_Tornado.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_DeusExMachina.ips" />
