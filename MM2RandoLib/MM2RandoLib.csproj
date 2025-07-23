@@ -186,13 +186,13 @@
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Peercast.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2E.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2Plus.ips" />
-	  <None Remove="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CoolDraga.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Dragocorn.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Shades.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Swag.ips" />
-	  <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Vineman.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Vineman.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_ElecMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips" />
@@ -435,7 +435,7 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_BabyMetroid.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Gamma.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Platform.ips" />
-	  <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Vineman.ips" />	
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Vineman.ips" />	
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_DiveMan.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_SplashWoman.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Platform\StageTile_BubbleMan_Platform_Block1.ips" />
@@ -457,7 +457,7 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_Gutsman.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MegaMan1.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_TMNT2.ips" />
-	  <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MetDispenser.ips" />	
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MetDispenser.ips" />	
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan3.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan4.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_SuperMarioBros3Stars.ips" />
@@ -629,7 +629,7 @@
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_GodWorld.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_JavaIslandIndonesia.ips" />
-	  <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_MM6_Tornado.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_MM6_Tornado.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_VineMan.ips" />
@@ -832,13 +832,13 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Peercast.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2E.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2Plus.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />	
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />	
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CoolDraga.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Dragocorn.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Shades.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Swag.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Vineman.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Vineman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_ElecMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips" />
@@ -1081,7 +1081,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_BabyMetroid.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Gamma.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_Platform.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_VineMan.ips" />	
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\AirMan\Goblin\StageTile_AirMan_Goblin_VineMan.ips" />	
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_DiveMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Block\StageTile_BubbleMan_Block_SplashWoman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\BubbleMan\Platform\StageTile_BubbleMan_Platform_Block1.ips" />
@@ -1102,7 +1102,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\DaylightBackground\StageTile_CrashMan_DaylightBackground_SuperMarioBrosClouds.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_Gutsman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MegaMan1.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MetDispenser.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MetDispenser.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_TMNT2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan3.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan4.ips" />
@@ -1275,7 +1275,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_GodWorld.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_JavaIslandIndonesia.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_MM6_Tornado.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_MM6_Tornado.ips" />
 	  <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_VineMan.ips" />
