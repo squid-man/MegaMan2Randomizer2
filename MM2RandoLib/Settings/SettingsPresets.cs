@@ -137,8 +137,8 @@ public class SettingsPresets
             ]);
         _presets.Add(tournA);
 
-
     SettingsPreset tournB = (new(
+
             "Tournament B (Zipless,Revealed)",
             "TOURNAMENT B",
             tournA,
@@ -147,6 +147,24 @@ public class SettingsPresets
                 new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
             ]));
         _presets.Add(tournB);
+
+        _presets.Add(new(
+            "Tournament C (Any% Hidden)",
+            "TOURNAMENT C",
+            tournA,
+            [
+                new(s.GameplayOptions.HideStageNames, true),
+            ]));
+
+        _presets.Add(new(
+            "Tournament D (Zipless,Hidden)",
+            "TOURNAMENT D",
+            tournB,
+            [
+                new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
+                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
+            ]));
+        _presets.Add(tourn2024B);
 
         _presets.Add(new(
             "Tournament C (Any% Hidden)",
