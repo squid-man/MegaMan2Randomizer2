@@ -88,7 +88,7 @@ public class SettingsPresets
         var s = settings;
         _presets.Add(new("", Enumerable.Empty<OptionPreset>()));
 
-        SettingsPreset tourn2024A = new(
+        SettingsPreset tournA = new(
             "Tournament A (Any%,Revealed)",
             "TOURNAMENT A",
             [
@@ -114,9 +114,9 @@ public class SettingsPresets
                 new(s.SpriteOptions.RandomizeSpecialWeaponSprites, true),
                 new(s.SpriteOptions.RandomizeItemPickupSprites, true),
                 new(s.SpriteOptions.RandomizeEnvironmentSprites, true),
-                NewPreset(s.ChargingSpeedOptions.HitPoints, ChargingSpeedOptionWithInstant.Normalx8),
-                NewPreset(s.ChargingSpeedOptions.WeaponEnergy, ChargingSpeedOptionWithInstant.Normalx8),
-                NewPreset(s.ChargingSpeedOptions.EnergyTank, ChargingSpeedOptionWithInstant.Normalx8),
+                NewPreset(s.ChargingSpeedOptions.HitPoints, ChargingSpeedOptionWithInstant.Instant),
+                NewPreset(s.ChargingSpeedOptions.WeaponEnergy, ChargingSpeedOptionWithInstant.Instant),
+                NewPreset(s.ChargingSpeedOptions.EnergyTank, ChargingSpeedOptionWithInstant.Instant),
                 NewPreset(s.ChargingSpeedOptions.RobotMasterEnergy, ChargingSpeedOption.Fastest),
                 NewPreset(s.ChargingSpeedOptions.CastleBossEnergy, ChargingSpeedOption.Fastest),
                 new(s.QualityOfLifeOptions.DisableFlashingEffects, true),
@@ -135,23 +135,23 @@ public class SettingsPresets
                 new(s.CosmeticOptions.RandomizeInGameText, true),
                 new(s.CosmeticOptions.RandomizeMenusAndTransitionScreens, true)
             ]);
-        _presets.Add(tourn2024A);
+        _presets.Add(tournA);
 
 
-    SettingsPreset tourn2024B = (new(
+    SettingsPreset tournB = (new(
             "Tournament B (Zipless,Revealed)",
             "TOURNAMENT B",
-            tourn2024A,
+            tournA,
             [
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
                 new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
             ]));
-        _presets.Add(tourn2024B);
+        _presets.Add(tournB);
 
         _presets.Add(new(
             "Tournament C (Any% Hidden)",
             "TOURNAMENT C",
-            tourn2024A,
+            tournA,
             [
                 new(s.GameplayOptions.HideStageNames, true),
             ]));
@@ -159,7 +159,7 @@ public class SettingsPresets
         _presets.Add(new(
             "Tournament D (Zipless,Hidden)",
             "TOURNAMENT D",
-            tourn2024B,
+            tournB,
             [
                 new(s.GameplayOptions.HideStageNames, true),
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),

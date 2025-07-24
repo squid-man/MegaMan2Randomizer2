@@ -41,6 +41,7 @@ namespace RandomizerHost.ViewModels
                 String[] tryNames = new String[]
                 {
                     "MM2.nes",
+                    "MegaMan2.nes",
                     "Mega Man 2.nes",
                     "Megaman II (U) [!].nes",
                     "Mega Man 2 (USA).nes",
