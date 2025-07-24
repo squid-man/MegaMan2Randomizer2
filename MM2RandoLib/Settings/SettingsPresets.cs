@@ -161,24 +161,6 @@ public class SettingsPresets
             "TOURNAMENT D",
             tournB,
             [
-                new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
-                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
-            ]));
-        _presets.Add(tourn2024B);
-
-        _presets.Add(new(
-            "Tournament C (Any% Hidden)",
-            "TOURNAMENT C",
-            tournA,
-            [
-                new(s.GameplayOptions.HideStageNames, true),
-            ]));
-
-        _presets.Add(new(
-            "Tournament D (Zipless,Hidden)",
-            "TOURNAMENT D",
-            tournB,
-            [
                 new(s.GameplayOptions.HideStageNames, true),
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
                 new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
