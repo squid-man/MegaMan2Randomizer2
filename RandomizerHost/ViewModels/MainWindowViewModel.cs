@@ -19,13 +19,22 @@ namespace RandomizerHost.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        //
-        // Constructor
-        //
+    public string Version { get; }
 
-        public MainWindowViewModel()
+    //
+    // Constructor
+    //
+
+    public MainWindowViewModel()
         {
-            this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+
+      Version = Assembly
+      .GetExecutingAssembly()
+      .GetName()
+      .Version?
+      .ToString() ?? "Unknown";
+
+      this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
             this.AppConfigurationSettings.RandomizationSettingsAdapter.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
 
             this.SettingsPresets = new(Settings);

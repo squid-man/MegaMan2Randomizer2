@@ -67,13 +67,24 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-		<TextBlock
+      <TextBlock
 	Grid.Row="0"
 	Grid.Column="0"
 	Grid.ColumnSpan="2"
 	TextAlignment="Left"
 	FontSize="9"
-	Text="Version 0.6.7.*"
+  Text="Version"
+	IsVisible="{Binding IsShowingHint}"
+            />
+      
+		<TextBlock
+	Grid.Row="0"
+	Grid.Column="0"
+	Grid.ColumnSpan="2"
+	TextAlignment="Left"
+  Margin="36,0"
+	FontSize="9"
+  Text="{Binding Version}"
 	IsVisible="{Binding IsShowingHint}"
             />
 		
