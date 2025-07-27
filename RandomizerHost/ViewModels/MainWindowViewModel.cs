@@ -68,6 +68,7 @@ namespace RandomizerHost.ViewModels
             this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainingFolder, this.WhenAnyValue(x => x.CanOpenContainingFolder));
             this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsSeedValid));
             this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
+            this.CreateFromRandomSeedCommandx10 = ReactiveCommand.Create<Window>(this.CreateFromRandomSeedx10, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
 
             this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
@@ -88,6 +89,7 @@ namespace RandomizerHost.ViewModels
         public ICommand OpenRomFileCommand { get; }
         public ICommand CreateFromGivenSeedCommand { get; }
         public ICommand CreateFromRandomSeedCommand { get; }
+        public ICommand CreateFromRandomSeedCommandx10 { get; }
         public ICommand OpenContainingFolderCommand { get; }
         public ICommand ImportSettingsCommand { get; }
         public ICommand ExportSettingsCommand { get; }
@@ -232,8 +234,22 @@ namespace RandomizerHost.ViewModels
             }
         }
 
+        public async void CreateFromRandomSeedx10(Window in_Window)
+        {
+            try
+            {
+                this.PerformRandomizationx10(in_DefaultSeed: true);
+                this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+            }
+            catch (Exception e)
+            {
+                string s = e.ToString();
+                await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+            }
+        }
 
-        public void OpenContainingFolder()
+
+    public void OpenContainingFolder()
         {
             if (false == String.IsNullOrEmpty(this.mCurrentRandomizationContext?.FileName))
             {
@@ -293,7 +309,49 @@ namespace RandomizerHost.ViewModels
             this.CanOpenContainingFolder = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         }
 
-        public async void ImportSettings(Window in_Window)
+    public void PerformRandomizationx10(Boolean in_DefaultSeed)
+    {
+      for (int i = 1; i <= 10; i++)
+      {
+        // Perform randomization based on settings, then generate the ROM.
+        this.AppConfigurationSettings!.UpdateRandomizerSettings(in_DefaultSeed);
+      Settings.SettingsPreset = !object.ReferenceEquals(mSettingsPreset, SettingsPresets.Presets[0]) ? mSettingsPreset : null;
+
+      RandomMM2.RandomizerCreatex10(Settings, out RandomizationContext context);
+      this.AppConfigurationSettings.HashValidationMessage = "Successfully copied and patched x10!";
+
+      // Get A-Z representation of seed
+      String seedBase26 = context.Seed.Identifier;
+
+      this.mCurrentRandomizationContext = context;
+
+      Debug.WriteLine("\nSeed: " + seedBase26 + "\n");
+
+      // Create log file if left shift is pressed while clicking
+      if (true == this.AppConfigurationSettings.CreateLogFile &&
+          !IsTournament)
+      {
+          String logFileName = $"MM2RNG-{seedBase26}.log";
+
+          using (StreamWriter sw = new StreamWriter(logFileName, false))
+          {
+            sw.WriteLine("Mega Man 2 Randomizer");
+            sw.WriteLine($"Version {RandomMM2.AssemblyVersion}");
+            sw.WriteLine($"Seed {seedBase26}\n");
+            sw.WriteLine(context.RandomStages.ToString());
+            sw.WriteLine(context.RandomWeaponBehavior.ToString());
+            sw.WriteLine(context.RandomEnemyWeakness.ToString());
+            sw.WriteLine(context.RandomWeaknesses.ToString());
+            sw.Write(context.Patch.GetStringSortedByAddress());
+          }
+        }
+      }
+
+      // Flag UI as having created a ROM, enabling the "open folder" button
+      this.CanOpenContainingFolder = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+    }
+
+    public async void ImportSettings(Window in_Window)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 

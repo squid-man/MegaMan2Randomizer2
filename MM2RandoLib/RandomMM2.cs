@@ -29,8 +29,26 @@ namespace MM2Randomizer
             out_Context.Initialize();
         }
 
+        public static void RandomizerCreatex10(RandomizationSettings in_Settings, out RandomizationContext out_Context)
+        {
+            ISeed seed;
 
-        static public Version AssemblyVersion
+            // Initialize the seed
+            if (null == in_Settings.SeedString)
+            { 
+                seed = SeedFactory.Create(GeneratorType.MT19937);
+            }
+            else
+            {
+                seed = SeedFactory.Create(GeneratorType.MT19937, in_Settings.SeedString);
+            }
+
+        out_Context = new RandomizationContext(in_Settings, seed);
+        out_Context.Initialize();
+        }
+
+
+    static public Version AssemblyVersion
         {
             get
             {

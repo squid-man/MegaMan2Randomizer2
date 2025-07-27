@@ -265,15 +265,25 @@
                 Create From Random Seed
             </Button>
 
-            <Button
-                Name="Button_OpenContainingFolder"
-                Height="30"
-                Width="315"
-                Margin="2"
-                Command="{Binding OpenContainingFolderCommand}"
+          <Button
+            Name="Button_CreateFromRandomSeedx10"
+            Height="30"
+            Width="315"
+            Margin="2"
+            Command="{Binding CreateFromRandomSeedCommandx10}"
+            CommandParameter="{Binding ElementName=MainWindow}"
             >
-                Open Containing Folder
-            </Button>
+            Create From Random Seed x 10
+          </Button>
+
+          <CheckBox
+            Name="CheckBox_CreateLogFile"
+            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+            IsEnabled="{Binding !IsTournament}"
+            >
+            Create Log File
+          </CheckBox>
+            
         </StackPanel>
 
         <!-- Export and Import Buttons -->
@@ -283,6 +293,16 @@
             Margin="12"
             Orientation="Vertical"
         >
+          <Button
+                Name="Button_OpenContainingFolder"
+                Height="30"
+                Width="315"
+                Margin="2"
+                Command="{Binding OpenContainingFolderCommand}"
+            >
+                Open Containing Folder
+            </Button>
+          
             <Button
                 Name="Button_ImportSettings"
                 Height="30"
@@ -306,14 +326,6 @@
             >
                 Export Settings
             </Button>
-
-            <CheckBox
-                Name="CheckBox_CreateLogFile"
-                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
-                IsEnabled="{Binding !IsTournament}"
-            >
-                Create Log File
-            </CheckBox>
 
             <TextBlock
                 Text="🎲 = Randomize Option ☑️ = Option Enabled "
