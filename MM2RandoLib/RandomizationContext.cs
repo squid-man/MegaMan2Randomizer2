@@ -434,23 +434,7 @@ namespace MM2Randomizer
     {
       for (int i = 1; i <= 10; i++)
       {
-        File.Copy(this.Settings.RomSourcePath, in_RomPath, true);
-
-        // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
-        this.Patch.ApplyIPSPatch(
-            in_RomPath, ResourceTree.LoadResource("mm2ft.ips"), false);
-
-        CopyWilyTilesets(in_RomPath);
-
-        var asm = CreateAssemblyEngine();
-
-        var rom = File.ReadAllBytes(TEMPORARY_FILE_NAME);
-        AsmModuleFromResource("config.asm", asm);
-        AsmModuleFromResource("prepatch.asm", asm);
-
-        rom = asm.ApplySynchronously(rom);
-
-        File.WriteAllBytes(TEMPORARY_FILE_NAME, rom);
+        CreateInitialRom(in_RomPath);
       }
     }
 
