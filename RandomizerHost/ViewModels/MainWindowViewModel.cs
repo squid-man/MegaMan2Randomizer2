@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml;
 using Avalonia.Controls;
@@ -68,8 +67,7 @@ namespace RandomizerHost.ViewModels
 
             this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainingFolder, this.WhenAnyValue(x => x.CanOpenContainingFolder));
             this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsSeedValid));
-            this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromRandomSeed, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
-            this.CreateFromRandomSeedCommandx10 = ReactiveCommand.Create<Window>(CreateFromRandomSeedx10, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
+            this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(CreateFromRandomSeedMultiple, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
 
             this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
@@ -90,7 +88,6 @@ namespace RandomizerHost.ViewModels
         public ICommand OpenRomFileCommand { get; }
         public ICommand CreateFromGivenSeedCommand { get; }
         public ICommand CreateFromRandomSeedCommand { get; }
-        public ICommand CreateFromRandomSeedCommandx10 { get; }
         public ICommand OpenContainingFolderCommand { get; }
         public ICommand ImportSettingsCommand { get; }
         public ICommand ExportSettingsCommand { get; }
@@ -152,6 +149,14 @@ namespace RandomizerHost.ViewModels
             private set => this.RaiseAndSetIfChanged(ref mIsTournament, value);
         }
 
+        // Add this property to bind to your slider (default value 1)
+        private int mRandomSeedCount = 1;
+        public int RandomSeedCount
+        {
+            get => mRandomSeedCount;
+            set => this.RaiseAndSetIfChanged(ref mRandomSeedCount, value);
+        }
+
         //
         // Public Methods
         //
@@ -204,7 +209,7 @@ namespace RandomizerHost.ViewModels
         {
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
             {
-                this.CreateFromRandomSeed(in_Window);
+                this.CreateFromRandomSeedMultiple(in_Window);
             }
             else
             {
@@ -221,37 +226,23 @@ namespace RandomizerHost.ViewModels
         }
 
 
-        public async void CreateFromRandomSeed(Window in_Window)
+        public async void CreateFromRandomSeedMultiple(Window in_Window)
         {
-            try
+            for (int i = 1; i <= this.RandomSeedCount; i++)
             {
-                this.PerformRandomization(in_DefaultSeed: true);
-                this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                try
+                {
+                    this.PerformRandomization(in_DefaultSeed: true);
+                    this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                    this.AppConfigurationSettings.HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
+                }
+                catch (Exception e)
+                {
+                    string s = e.ToString();
+                    await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+                }
             }
-            catch (Exception e)
-            {
-                string s = e.ToString();
-                await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
-            }
         }
-
-    public async void CreateFromRandomSeedx10(Window in_Window)
-    {
-      for (int i = 1; i <= 10; i++)
-      {
-        try
-        {
-          this.PerformRandomization(in_DefaultSeed: true);
-          this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
-          this.AppConfigurationSettings.HashValidationMessage = "Successfully copied and patched x10 ROMs!";
-        }
-        catch (Exception e)
-        {
-          string s = e.ToString();
-          await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
-        }
-      }
-    }
 
 
     public void OpenContainingFolder()
@@ -361,7 +352,7 @@ namespace RandomizerHost.ViewModels
                 new FileDialogFilter()
                 {
                     Name = @"XML Settings",
-                    Extensions = new List<String>()
+                    Extensions = new List<String>
                     {
                         @"xml"
                     }

@@ -87,7 +87,7 @@
   Text="{Binding Version}"
 	IsVisible="{Binding IsShowingHint}"
             />
-		
+   
 		<!-- The main header image for the host -->
         <Image
             Grid.Row="0"
@@ -170,10 +170,9 @@
                 BorderThickness="3"
             >
                 <!--
-                    NOTE:
+                    NOTES:
                         Avalonia issue #1625: Do not use TextAlignment="Center"
                         See: https://github.com/AvaloniaUI/Avalonia/issues/1625
-
                 <TextBlock
                     FontWeight="Bold"
                     TextAlignment="Center"
@@ -243,47 +242,42 @@
             Margin="10"
             Orientation="Vertical"
         >
-            <Button
-                Name="Button_CreateFromGivenSeed"
-                Height="30"
-                Width="315"
-                Margin="2"
-                Command="{Binding CreateFromGivenSeedCommand}"
-                CommandParameter="{Binding ElementName=MainWindow}"
-            >
-                Create From Given Seed
-            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button
+                    Name="Button_CreateFromGivenSeed"
+                    Height="30"
+                    Width="150"
+                    Margin="2"
+                    Command="{Binding CreateFromGivenSeedCommand}"
+                    CommandParameter="{Binding ElementName=MainWindow}">
+                    Create From Given
+                </Button>
+                <Button
+                    Name="Button_GenerateRandomSeedMultiple"
+                    Height="30"
+                    Width="150"
+                    Margin="2,2,2,2"
+                    Command="{Binding CreateFromRandomSeedCommand}"
+                    CommandParameter="{Binding ElementName=MainWindow}"
+                    IsEnabled="{Binding AppConfigurationSettings.IsRomValid}">
+                    Generate Seed(s)
+                </Button>
+            </StackPanel>
 
-            <Button
-                Name="Button_CreateFromRandomSeed"
-                Height="30"
-                Width="315"
-                Margin="2"
-                Command="{Binding CreateFromRandomSeedCommand}"
-                CommandParameter="{Binding ElementName=MainWindow}"
-            >
-                Create From Random Seed
-            </Button>
 
-          <Button
-            Name="Button_CreateFromRandomSeedx10"
-            Height="30"
-            Width="315"
-            Margin="2"
-            Command="{Binding CreateFromRandomSeedCommandx10}"
-            CommandParameter="{Binding ElementName=MainWindow}"
-            >
-            Create From Random Seed x 10
-          </Button>
-
-          <CheckBox
-            Name="CheckBox_CreateLogFile"
-            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
-            IsEnabled="{Binding !IsTournament}"
-            >
-            Create Log File
-          </CheckBox>
-            
+          <TextBlock
+            Text="{Binding RandomSeedCount, StringFormat='Number of random seeds to generate: {0}'}"
+            Margin="2,2,2,8"
+            FontSize="11"
+            />
+          
+            <Slider 
+                Minimum="1" 
+                Maximum="25"
+                Value="{Binding RandomSeedCount}"
+                TickFrequency="1"
+                IsSnapToTickEnabled="True"
+            />
         </StackPanel>
 
         <!-- Export and Import Buttons -->
@@ -296,37 +290,46 @@
           <Button
                 Name="Button_OpenContainingFolder"
                 Height="30"
-                Width="315"
+                Width="300"
                 Margin="2"
                 Command="{Binding OpenContainingFolderCommand}"
             >
                 Open Containing Folder
             </Button>
           
-            <Button
-                Name="Button_ImportSettings"
-                Height="30"
-                Width="300"
-                Margin="2"
-                Command="{Binding ImportSettingsCommand}"
-                CommandParameter="{Binding ElementName=MainWindow}"
-                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ImportSettings}"
-            >
-                Import Settings
-            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button
+                    Name="Button_ImportSettings"
+                    Height="30"
+                    Width="150"
+                    Margin="2"
+                    Command="{Binding ImportSettingsCommand}"
+                    CommandParameter="{Binding ElementName=MainWindow}"
+                    IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ImportSettings}"
+                >
+                    Import Settings
+                </Button>
 
-            <Button
-                Name="Button_ExportSettings"
-                Height="30"
-                Width="300"
-                Margin="2"
-                Command="{Binding ExportSettingsCommand}"
-                CommandParameter="{Binding ElementName=MainWindow}"
-                IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ExportSettings}"
-            >
-                Export Settings
-            </Button>
+                <Button
+                    Name="Button_ExportSettings"
+                    Height="30"
+                    Width="150"
+                    Margin="2"
+                    Command="{Binding ExportSettingsCommand}"
+                    CommandParameter="{Binding ElementName=MainWindow}"
+                    IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ExportSettings}"
+                >
+                    Export Settings
+                </Button>
+            </StackPanel>
 
+          <CheckBox
+            Name="CheckBox_CreateLogFile"
+            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+            IsEnabled="{Binding !IsTournament}">
+            Create Log File
+          </CheckBox>
+          
             <TextBlock
                 Text="🎲 = Randomize Option ☑️ = Option Enabled "
                 DockPanel.Dock="Left"
