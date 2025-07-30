@@ -86,7 +86,8 @@ public class SettingsPresets
     public SettingsPresets(RandomizationSettings settings)
     {
         var s = settings;
-        _presets.Add(new("", Enumerable.Empty<OptionPreset>()));
+
+        _presets.Add(new("Off", Enumerable.Empty<OptionPreset>()));
 
         SettingsPreset tournA = new(
             "Tournament A (Any%,Revealed)",
@@ -137,15 +138,14 @@ public class SettingsPresets
             ]);
         _presets.Add(tournA);
 
-    SettingsPreset tournB = (new(
-
+        SettingsPreset tournB = new(
             "Tournament B (Zipless,Revealed)",
             "TOURNAMENT B",
             tournA,
             [
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
                 new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
-            ]));
+            ]);
         _presets.Add(tournB);
 
         _presets.Add(new(
