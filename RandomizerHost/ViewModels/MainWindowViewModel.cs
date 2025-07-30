@@ -69,7 +69,6 @@ namespace RandomizerHost.ViewModels
             this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsSeedValid));
             this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(CreateFromRandomSeedMultiple, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
             this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
-
             this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
             this.ExportSettingsCommand = ReactiveCommand.Create<Window>(this.ExportSettings);
             this.SetThemeCommand = ReactiveCommand.Create(this.SetTheme);

@@ -149,7 +149,6 @@ namespace MM2Randomizer
         internal void Initialize()
         {
             CreateInitialRom(TEMPORARY_FILE_NAME);
-            CreateInitialRomx10(TEMPORARY_FILE_NAME);
 
       // Not certain whether this must come first
       AsmModuleFromResource("config.asm");
@@ -429,14 +428,6 @@ namespace MM2Randomizer
 
             File.WriteAllBytes(TEMPORARY_FILE_NAME, rom);
         }
-
-    private void CreateInitialRomx10(string in_RomPath)
-    {
-      for (int i = 1; i <= 10; i++)
-      {
-        CreateInitialRom(in_RomPath);
-      }
-    }
 
     /// <summary>
     /// Duplicate the portions of the tileset that are shared between Wily 2-5. Makes the following modifications:
