@@ -28,9 +28,7 @@ namespace MM2Randomizer
             out_Context = new RandomizationContext(in_Settings, seed);
             out_Context.Initialize();
         }
-
-
-        static public Version AssemblyVersion
+    static public Version AssemblyVersion
         {
             get
             {

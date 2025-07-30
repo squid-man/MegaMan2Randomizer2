@@ -36,7 +36,7 @@ namespace MM2RandoLib.Tests
                 RandomizationContext ctx;
                 RandomMM2.RandomizerCreate(settings, out ctx);
 
-                return;
+        return;
             }
             finally
             {

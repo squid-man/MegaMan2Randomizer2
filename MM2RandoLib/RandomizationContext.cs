@@ -150,8 +150,8 @@ namespace MM2Randomizer
         {
             CreateInitialRom(TEMPORARY_FILE_NAME);
 
-            // Not certain whether this must come first
-            AsmModuleFromResource("config.asm");
+      // Not certain whether this must come first
+      AsmModuleFromResource("config.asm");
 
             // In tournament mode, offset the seed by 1 call, making seeds mode-dependent
             /*
@@ -429,13 +429,13 @@ namespace MM2Randomizer
             File.WriteAllBytes(TEMPORARY_FILE_NAME, rom);
         }
 
-        /// <summary>
-        /// Duplicate the portions of the tileset that are shared between Wily 2-5. Makes the following modifications:
-        /// Wily 3's copy of 6a10:6e10 (PPU 1600:1a00) is now located at 3f610.
-        /// Wily 4's copy of 6a10:6e10 is now located at 3fa10.
-        /// Wily 5's copy of ac10:ae10 (PPU 1200:1400) is now located at 3fe10.
-        /// </summary>
-        private void CopyWilyTilesets(string in_RomPath)
+    /// <summary>
+    /// Duplicate the portions of the tileset that are shared between Wily 2-5. Makes the following modifications:
+    /// Wily 3's copy of 6a10:6e10 (PPU 1600:1a00) is now located at 3f610.
+    /// Wily 4's copy of 6a10:6e10 is now located at 3fa10.
+    /// Wily 5's copy of ac10:ae10 (PPU 1200:1400) is now located at 3fe10.
+    /// </summary>
+    private void CopyWilyTilesets(string in_RomPath)
         {
             /* All stages have a list of regions to copy to VRAM at start (this includes both sprites at PPU 0:1000 and background at 1000:2000). For Wily 1-6 these lists are at bd00 of bank # - 1. The first byte of each list specifies the number of entries, and each entry is a byte triplet AA NN BB where A is the MSB of the ROM address to copy from, N is the number of 256-byte blocks to copy, and B is the 16 KB ROM bank number.
              * The vanilla values of these tables for the background portion, with * and # indicating the portions that need to be duplicated:
