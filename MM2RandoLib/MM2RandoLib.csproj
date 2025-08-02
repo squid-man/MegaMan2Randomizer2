@@ -177,7 +177,6 @@
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2E.ips" />
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Bowser.ips" />
-      <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Cray.ips" />
       <None Remove="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Technodrome.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Another.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_CutMansBadScissorsDay.ips" />
@@ -823,7 +822,6 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2E.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Bowser.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Cray.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\GutsTank\GutsTank_Technodrome.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Another.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_CutMansBadScissorsDay.ips" />
