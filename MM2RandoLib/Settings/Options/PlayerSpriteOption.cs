@@ -166,6 +166,10 @@ namespace MM2Randomizer
         [Dir("MegaWoman")]
         MegaWomanPurp,
 
+        [Description("MMXtreme Zero")]
+        [Dir("MMXtreme")]
+        MMXtreme_Zero,
+
         [Description("My Little Pony")]
         MyLittlePony,
 
