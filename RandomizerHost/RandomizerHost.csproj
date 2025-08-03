@@ -55,6 +55,7 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaRan2Remix.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaWoman.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaWomanPurp.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MMXtreme_Zero.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MyLittlePony.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_PrototypeTom.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_QuickMan.png" />

@@ -282,6 +282,7 @@
 	  <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWomanPurp.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
+      <None Remove="Resources\SpritePatches\Characters\MMXtreme\PlayerCharacter_MMXtreme_Zero.ips" />
       <None Remove="Resources\SpritePatches\Characters\MyLittlePony\PlayerCharacter_MyLittlePony.ips" />
       <None Remove="Resources\SpritePatches\Characters\NewLands\PlayerCharacter_NewLands.ips" />
       <None Remove="Resources\SpritePatches\Characters\Pikachu\PlayerCharacter_Pikachu.ips" />
@@ -927,6 +928,7 @@
 	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWomanPurp.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\MMXtreme\PlayerCharacter_MMXtreme_Zero.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MyLittlePony\PlayerCharacter_MyLittlePony.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\NewLands\PlayerCharacter_NewLands.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Pikachu\PlayerCharacter_Pikachu.ips" />
