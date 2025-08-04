@@ -292,6 +292,8 @@
       <None Remove="Resources\SpritePatches\Characters\QuickMan\PlayerCharacter_QuickMan.ips" />
       <None Remove="Resources\SpritePatches\Characters\Quint\PlayerCharacter_Quint.ips" />
       <None Remove="Resources\SpritePatches\Characters\Remix\PlayerCharacter_Remix.ips" />
+      <None Remove="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RnR_Roll.ips" />
+      <None Remove="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RnR_Roll_Nolips.ips" />
       <None Remove="Resources\SpritePatches\Characters\Roll\PlayerCharacter_Roll.ips" />
       <None Remove="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RollFromMegaMan8.ips" />
       <None Remove="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
@@ -938,6 +940,8 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\QuickMan\PlayerCharacter_QuickMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Quint\PlayerCharacter_Quint.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Remix\PlayerCharacter_Remix.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RnR_Roll.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RnR_Roll_Nolips.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Roll\PlayerCharacter_Roll.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RollFromMegaMan8.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />

@@ -61,6 +61,8 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_QuickMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Quint.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Remix.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_RnR_Roll.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_RnR_Roll_Nolips.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Samus.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Stantler.png" />
 	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Zneip.png" />
