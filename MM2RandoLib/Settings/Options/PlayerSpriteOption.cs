@@ -201,7 +201,7 @@ namespace MM2Randomizer
         [Description("Rock")]
         [Dir("MegaMan")]
         Rock,
-
+    
         [Description("Roll")]
         Roll,
 
@@ -209,7 +209,15 @@ namespace MM2Randomizer
         [Dir("Roll")]
         RollFromMegaMan8,
 
-        [Description("Samus")]
+        [Description("Roll (Rock n Roll)")]
+        [Dir("Roll")]
+        RnR_Roll,
+
+        [Description("Roll (R&R no lipstick)")]
+        [Dir("Roll")]
+        RnR_Roll_Nolips,
+
+    [Description("Samus")]
         [Dir("Metroid")]
         Samus,
 
