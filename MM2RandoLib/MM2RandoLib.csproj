@@ -186,6 +186,7 @@
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2E.ips" />
       <None Remove="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\Machine\Machine_MM10.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CoolDraga.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Dragocorn.ips" />
@@ -498,8 +499,11 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_Checkered.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_DDBricks.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_MM3.ips" />
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Anko.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_CutmansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Karnath.ips" />
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_MegaMet.ips" />
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyCapsule.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyCastle.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyTV.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\Wily 2\Background\CrissCross.ips" />
@@ -537,7 +541,11 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V1.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V2.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V3.ips" />
+      <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Block_MM6.ips" />
+      <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Blocky.ips" />
+      <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Bubble.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_ElecmanMM1.ips" />
+      <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Flameguy.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Iceman_MM1.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Mario2Mushroom.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Mario_Block.ips" />
@@ -545,6 +553,7 @@
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_MM4_Balloon_Adapter.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_MM5_Mtank.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Rinka_Spawner.ips" />
+      <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Spike.ips" />
       <None Remove="Resources\SpritePatches\Fonts\Font_Batman.ips" />
       <None Remove="Resources\SpritePatches\Fonts\Font_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Fonts\Font_DoubleDragon2.ips" />
@@ -831,7 +840,8 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_Peercast.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2E.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\HeatMan\HeatMan_RockMan2Plus.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />	
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\Machine\Machine_MM1.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\Machine\Machine_MM10.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CoolDraga.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MechaDragon\MechaDragon_Dragocorn.ips" />
@@ -1144,8 +1154,11 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_Checkered.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_DDBricks.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 1\Floor\StageTile_Wily1_Floor_MM3.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Anko.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_CutmansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_Karnath.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_MegaMet.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyCapsule.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyCastle.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\AnimatedTile\StageTile_Wily2_Animated_WilyTV.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\Wily 2\Background\CrissCross.ips" />
@@ -1183,7 +1196,11 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\WoodMan\Grass\StageTile_WoodMan_Grass_SuperMarioBros3V3.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Block_MM6.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Blocky.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Bubble.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_ElecmanMM1.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Flameguy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Iceman_MM1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Mario2Mushroom.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Mario_Block.ips" />
@@ -1191,6 +1208,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_MM4_Balloon_Adapter.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_MM5_Mtank.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Rinka_Spawner.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Spike.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Fonts\Font_Batman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Fonts\Font_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Fonts\Font_DoubleDragon2.ips" />
