@@ -23,6 +23,9 @@
     <!-- Static Resources -->
     <Window.Resources>
         <converters:PlayerSpriteToImageConverter x:Key="PlayerSpriteToImageConverter"/>
+        <converters:FontToImageConverter x:Key="FontToImageConverter"/>
+        <converters:HudElementsToImageConverter x:Key="HudElementsToImageConverter"/>
+        <converters:CannonShotToImageConverter x:Key="CannonShotToImageConverter"/>
         <converters:EnumValueToDescriptionConverter x:Key="EnumValueToDescriptionConverter"/>
       
         <DataTemplate 
@@ -459,13 +462,45 @@
                         </ItemsControl>
                     </StackPanel>
 
-                    <!-- Custom Sprite Selection -->
-                    <StackPanel Grid.Column="2">
-                        <Image
-                              Width="168"
-                              Height="168"
-                              Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
-                        />
+                    <!-- Custom Sprite / Cosmetic Previews -->
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                        <WrapPanel Orientation="Horizontal" ItemWidth="125" ItemHeight="125" HorizontalAlignment="Left">
+                            <StackPanel Margin="4" Width="100" HorizontalAlignment="Center">
+                                <Image
+                                      Width="100"
+                                      Height="100"
+                                      Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
+                                />
+                                <TextBlock Text="Character" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
+                          
+                          <StackPanel Margin="4" Width="84" HorizontalAlignment="Center">
+                            <Image
+                                  Width="84"
+                                  Height="84"
+                                  Source="{Binding Settings.CosmeticOptions.CannonShot.BaseValue, Converter={StaticResource CannonShotToImageConverter}}"
+                                />
+                            <TextBlock Text="Cannon Shot" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                          </StackPanel>
+                          
+                            <StackPanel Margin="4" Width="100" HorizontalAlignment="Center">
+                                <Image
+                                      Width="84"
+                                      Height="84"
+                                      Source="{Binding Settings.CosmeticOptions.HudElement.BaseValue, Converter={StaticResource HudElementsToImageConverter}}"
+                                />
+                                <TextBlock Text="HUD" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
+
+                          <StackPanel Margin="4" Width="168" HorizontalAlignment="Center">
+                            <Image
+                                  Width="84"
+                                  Height="84"
+                                  Source="{Binding Settings.CosmeticOptions.Font.BaseValue, Converter={StaticResource FontToImageConverter}}"
+                                />
+                            <TextBlock Text="Font" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                          </StackPanel>
+                        </WrapPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>
