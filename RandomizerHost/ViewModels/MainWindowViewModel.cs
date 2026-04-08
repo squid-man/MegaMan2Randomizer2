@@ -7,7 +7,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 using System.Xml;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Styling;
 using Avalonia.Themes.Fluent;
 using MM2Randomizer;
 using MM2Randomizer.Settings;
@@ -193,7 +195,9 @@ namespace RandomizerHost.ViewModels
                 this.IsShowingHint = false;
                 this.mAppConfigurationSettings.RomSourcePath = fileName;
 
-                TextBox romFile = in_Window.FindControl<TextBox>("TextBox_RomFile");
+                TextBox? romFile = in_Window.FindControl<TextBox>("TextBox_RomFile");
+                Debug.Assert(romFile != null);
+
                 romFile.Focus();
 
                 if (null != romFile.Text)
@@ -382,22 +386,9 @@ namespace RandomizerHost.ViewModels
 
         public void SetTheme()
         {
-            if (true == this.mAppConfigurationSettings.EnableAppUiDarkTheme)
-            {
-                Avalonia.Application.Current!.Styles[0] =
-                    new FluentTheme(new Uri("avares://Dummy/App.xaml"))
-                    {
-                        Mode = FluentThemeMode.Dark
-                    };
-            }
-            else
-            {
-                Avalonia.Application.Current!.Styles[0] =
-                    new FluentTheme(new Uri("avares://Dummy/App.xaml"))
-                    {
-                        Mode = FluentThemeMode.Light
-                    };
-            }
+            Application.Current!.RequestedThemeVariant = mAppConfigurationSettings.EnableAppUiDarkTheme
+                ? ThemeVariant.Dark
+                : ThemeVariant.Light;
         }
 
 

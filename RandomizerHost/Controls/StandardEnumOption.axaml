@@ -25,7 +25,7 @@
         ToolTip.Tip="{Binding Info.Tooltip}"
         HorizontalAlignment="Stretch"
         IsEnabled="{Binding !UiRandomize}"
-        Items="{Binding EnumValues}"
+        ItemsSource="{Binding EnumValues}"
         SelectedItem="{Binding UiValue}"
     >
       <ComboBox.ItemTemplate>

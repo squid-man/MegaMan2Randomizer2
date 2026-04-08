@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace RandomizerHost.Views
 {
-    public class MainWindow : Window
+    public partial class MainWindow : Window
     {
         //
         // Constructor
@@ -35,7 +35,9 @@ namespace RandomizerHost.Views
 
             ///
             // Set up drag and drop for the rom file path text box
-            TextBox textBoxRomFile = this.Find<TextBox>("TextBox_RomFile");
+            TextBox? textBoxRomFile = this.Find<TextBox>("TextBox_RomFile");
+            Debug.Assert(textBoxRomFile != null);
+
             DragDrop.SetAllowDrop(textBoxRomFile, true);
             textBoxRomFile.AddHandler(DragDrop.DragOverEvent, this.DragOver);
             textBoxRomFile.AddHandler(DragDrop.DropEvent, this.Drop);

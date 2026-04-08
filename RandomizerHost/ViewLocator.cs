@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using RandomizerHost.ViewModels;
@@ -9,8 +10,10 @@ namespace RandomizerHost
     {
         public bool SupportsRecycling => false;
 
-        public IControl Build(object data)
+        public Control Build(object? data)
         {
+            Debug.Assert(data != null);
+
             String name = data.GetType().FullName!.Replace("ViewModel", "View");
             Type? type = Type.GetType(name);
 
@@ -24,7 +27,7 @@ namespace RandomizerHost
             }
         }
 
-        public bool Match(object data)
+        public bool Match(object? data)
         {
             return data is ViewModelBase;
         }
