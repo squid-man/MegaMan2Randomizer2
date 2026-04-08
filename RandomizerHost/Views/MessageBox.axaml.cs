@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -6,7 +7,7 @@ using Avalonia.Markup.Xaml;
 
 namespace RandomizerHost.Views
 {
-    public class MessageBox : Window
+    public partial class MessageBox : Window
     {
         public enum MessageBoxButtons
         {
@@ -26,7 +27,7 @@ namespace RandomizerHost.Views
 
         public MessageBox()
         {
-            AvaloniaXamlLoader.Load(this);
+            InitializeComponent();
         }
 
         public static Task<MessageBoxResult> Show(Window parent, String text, String title, MessageBoxButtons buttons)
@@ -36,9 +37,7 @@ namespace RandomizerHost.Views
                 Title = title
             };
 
-            msgbox.FindControl<TextBlock>("Text").Text = text;
-
-            StackPanel buttonPanel = msgbox.FindControl<StackPanel>("Buttons");
+            msgbox.Text.Text = text;
 
             MessageBoxResult res = MessageBoxResult.Ok;
 
@@ -51,7 +50,7 @@ namespace RandomizerHost.Views
                     msgbox.Close();
                 };
 
-                buttonPanel.Children.Add(btn);
+                msgbox.Buttons.Children.Add(btn);
 
                 if (def)
                 {

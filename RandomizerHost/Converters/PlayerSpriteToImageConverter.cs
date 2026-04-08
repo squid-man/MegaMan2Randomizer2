@@ -20,12 +20,9 @@ public class PlayerSpriteToImageConverter : IValueConverter
         if (value is not PlayerSpriteOption || !targetType.IsAssignableFrom(typeof(Bitmap)))
             throw new NotSupportedException();
 
-        var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-        Debug.Assert(assets is not null);
-
         //// TODO: Put this format string somewhere better
         Uri uri = new($"avares://{nameof(RandomizerHost)}/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_{value.ToString()}.png");
-        var asset = assets.Open(uri);
+        var asset = AssetLoader.Open(uri);
         return new Bitmap(asset);
     }
 
