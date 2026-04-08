@@ -20,11 +20,8 @@ public class CannonShotToImageConverter : IValueConverter
         if (value is not CannonShotOption || !targetType.IsAssignableFrom(typeof(Bitmap)))
             throw new NotSupportedException();
 
-        var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-        Debug.Assert(assets is not null);
-
         Uri uri = new($"avares://{nameof(RandomizerHost)}/Assets/CannonShotSpritePreviews/CannonShot_{value.ToString()}.png");
-        var asset = assets.Open(uri);
+        var asset = AssetLoader.Open(uri);
         return new Bitmap(asset);
     }
 

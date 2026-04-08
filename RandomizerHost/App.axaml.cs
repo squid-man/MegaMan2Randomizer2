@@ -1,9 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Styling;
 using RandomizerHost.ViewModels;
 using RandomizerHost.Views;
-using Avalonia.Themes.Default;
 
 namespace RandomizerHost
 {
@@ -11,6 +11,7 @@ namespace RandomizerHost
     {
         public override void Initialize()
         {
+            RequestedThemeVariant = ThemeVariant.Dark;
             AvaloniaXamlLoader.Load(this);
         }
 

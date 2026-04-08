@@ -13,8 +13,7 @@
         Height="730"
         x:Class="RandomizerHost.Views.MainWindow"
         Icon="/Assets/MegaMan2Randomizer.ico"
-        Title="RandomizerHost"
-        Name="MainWindow">
+        Title="RandomizerHost">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
@@ -234,7 +233,7 @@
             />
             <ComboBox
                 HorizontalAlignment="Stretch"
-                Items="{Binding SettingsPresets.Presets}"
+                ItemsSource="{Binding SettingsPresets.Presets}"
                 SelectedItem="{Binding SettingsPreset}"
             />
         </DockPanel>
@@ -363,7 +362,7 @@
                             IsChecked="{Binding IsCoreModulesChecked, Mode=OneWay}"
                         />
                     </Grid>
-                    <ItemsControl Items="{Binding Settings.GameplayOptions.AutoCreateOptions}">
+                    <ItemsControl ItemsSource="{Binding Settings.GameplayOptions.AutoCreateOptions}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel
@@ -381,7 +380,7 @@
                 Sprites
             -->
             <TabItem Header="Sprites">
-                <ItemsControl Items="{Binding Settings.SpriteOptions.AutoCreateOptions}">
+                <ItemsControl ItemsSource="{Binding Settings.SpriteOptions.AutoCreateOptions}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel
@@ -401,7 +400,7 @@
                 <ItemsControl 
                     Width="450"
                     HorizontalAlignment="Left"
-                    Items="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
+                    ItemsSource="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
                     ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
                 >
                     <ItemsControl.ItemsPanel>
@@ -420,8 +419,8 @@
                 Quality of Life Patches
             -->
             <TabItem Header="QoL Patches">
-                <ItemsControl 
-                  Items="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
+                <ItemsControl
+                  ItemsSource="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
                   ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
                 >
                     <ItemsControl.ItemsPanel>
@@ -448,7 +447,7 @@
 
                     <StackPanel Grid.Column="0">
                         <ItemsControl
-                            Items="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
+                            ItemsSource="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
                             ItemTemplate="{DynamicResource PrefixedDescriptionEnumComboBox}"
                         >
                             <ItemsControl.ItemsPanel>
