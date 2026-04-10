@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Markup.Xaml;
-using System.Reactive.Linq;
+using Avalonia.Platform.Storage;
+using RandomizerHost.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reactive.Linq;
 
 namespace RandomizerHost.Views
 {
@@ -19,69 +21,47 @@ namespace RandomizerHost.Views
         public MainWindow()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
+
+            // I don't know why but I can't get it to find the handlers when these are specified in the AXAML
+            DragDrop.AddDropHandler(this, OnDrop);
+            DragDrop.AddDragOverHandler(this, OnDragOver);
         }
 
 
-        //
-        // Initialization
-        //
-
-        private void InitializeComponent()
+        private void OnDragOver(object? sender, DragEventArgs e)
         {
-            AvaloniaXamlLoader.Load(this);
+            var res = GetDragDropPath(e);
 
-            ///
-            // Set up drag and drop for the rom file path text box
-            TextBox? textBoxRomFile = this.Find<TextBox>("TextBox_RomFile");
-            Debug.Assert(textBoxRomFile != null);
-
-            DragDrop.SetAllowDrop(textBoxRomFile, true);
-            textBoxRomFile.AddHandler(DragDrop.DragOverEvent, this.DragOver);
-            textBoxRomFile.AddHandler(DragDrop.DropEvent, this.Drop);
-            textBoxRomFile.PropertyChanged += this.TextBoxRomFile_PropertyChanged;
+            e.DragEffects = res.Effects;
         }
 
-        private void TextBoxRomFile_PropertyChanged(Object? sender, AvaloniaPropertyChangedEventArgs? e)
+        private void OnDrop(object? sender, DragEventArgs e)
         {
+            var res = GetDragDropPath(e);
+            e.DragEffects = res.Effects;
+
+            if (res.Path == null)
+                return;
+
+            TextBox_RomFile.Text = res.Path;
         }
 
-        private void DragOver(Object? sender, DragEventArgs? in_DragEventArgs)
+        private static (string? Path, DragDropEffects Effects) GetDragDropPath(DragEventArgs e)
         {
-            Debug.Assert(in_DragEventArgs is not null);
-
             // Only allow if the dragged data contains text or filenames
-            if (true == in_DragEventArgs.Data.Contains(DataFormats.Text) ||
-                true == in_DragEventArgs.Data.Contains(DataFormats.FileNames))
-            {
-                // Only allow copy or link as drop operations
-                in_DragEventArgs.DragEffects = in_DragEventArgs.DragEffects & (DragDropEffects.Copy | DragDropEffects.Link);
-            }
-            else
-            {
-                in_DragEventArgs.DragEffects = DragDropEffects.None;
-            }
-        }
+            string? path = null;
+            if (e.DataTransfer.Contains(DataFormat.Text))
+                path = e.DataTransfer.TryGetText();
+            else if (e.DataTransfer.Formats.Contains(DataFormat.File)
+                && (e.DataTransfer.TryGetFiles() ?? Array.Empty<IStorageItem>()).Length == 1)
+                path = e.DataTransfer.TryGetFile()!.TryGetLocalPath()!;
 
+            if (path == null
+                || !path.ToLowerInvariant().EndsWith(".nes")
+                || !File.Exists(path))
+                return (null, DragDropEffects.None);
 
-        private void Drop(Object? in_Sender, DragEventArgs? in_DragEventArgs)
-        {
-            TextBox romFile = (TextBox)(in_Sender!);
-
-            Debug.Assert(in_DragEventArgs is not null);
-
-            if (true == in_DragEventArgs.Data.Contains(DataFormats.Text))
-            {
-                romFile.Text = in_DragEventArgs.Data.GetText();
-            }
-            else if (true == in_DragEventArgs.Data.Contains(DataFormats.FileNames))
-            {
-                var fileName = in_DragEventArgs.Data.GetFileNames()!.First();
-                if (fileName is not null)
-                    romFile.Text = fileName;
-            }
+            return (path, e.DragEffects & (DragDropEffects.Copy | DragDropEffects.Link));
         }
     }
 }

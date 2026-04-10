@@ -66,6 +66,4 @@ public partial class StandardEnumOption : UserControl
     {
         InitializeComponent();
     }
-
-    private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 }
