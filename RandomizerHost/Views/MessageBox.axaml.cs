@@ -37,10 +37,7 @@ namespace RandomizerHost.Views
                 Title = title
             };
 
-            msgbox.FindControl<TextBlock>("Text")!.Text = text;
-
-            StackPanel? buttonPanel = msgbox.FindControl<StackPanel>("Buttons");
-            Debug.Assert(buttonPanel != null);
+            msgbox.Text.Text = text;
 
             MessageBoxResult res = MessageBoxResult.Ok;
 
@@ -53,7 +50,7 @@ namespace RandomizerHost.Views
                     msgbox.Close();
                 };
 
-                buttonPanel.Children.Add(btn);
+                msgbox.Buttons.Children.Add(btn);
 
                 if (def)
                 {

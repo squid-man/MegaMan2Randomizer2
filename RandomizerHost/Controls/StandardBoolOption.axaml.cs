@@ -22,6 +22,4 @@ public partial class StandardBoolOption : UserControl
     {
         InitializeComponent();
     }
-
-    private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 }

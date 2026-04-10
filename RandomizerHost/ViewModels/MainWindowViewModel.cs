@@ -1,42 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Windows.Input;
-using System.Xml;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Platform.Storage;
 using Avalonia.Styling;
-using Avalonia.Themes.Fluent;
+using CommunityToolkit.Mvvm;
+using CommunityToolkit.Mvvm.Input;
 using MM2Randomizer;
 using MM2Randomizer.Settings;
 using RandomizerHost.Settings;
 using RandomizerHost.Views;
 using ReactiveUI;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Xml;
 
 namespace RandomizerHost.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public partial class MainWindowViewModel : ViewModelBase
     {
-    public string Version { get; }
+        public string Version { get; }
 
-    //
-    // Constructor
-    //
+        //
+        // Constructor
+        //
 
-    public MainWindowViewModel()
+        public MainWindowViewModel()
         {
 
-      Version = Assembly
-      .GetExecutingAssembly()
-      .GetName()
-      .Version?
-      .ToString() ?? "Unknown";
+            Version = Assembly
+                .GetExecutingAssembly()
+                .GetName()
+                .Version?
+                .ToString() ?? "Unknown";
 
-      this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+            this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
             this.AppConfigurationSettings.RandomizationSettingsAdapter.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
 
             this.SettingsPresets = new(Settings);
@@ -66,33 +68,12 @@ namespace RandomizerHost.ViewModels
                     this.IsShowingHint = false;
                 }
             }
-
-            this.OpenContainingFolderCommand = ReactiveCommand.Create(this.OpenContainingFolder, this.WhenAnyValue(x => x.CanOpenContainingFolder));
-            this.CreateFromGivenSeedCommand = ReactiveCommand.Create<Window>(this.CreateFromGivenSeed, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsSeedValid));
-            this.CreateFromRandomSeedCommand = ReactiveCommand.Create<Window>(CreateFromRandomSeedMultiple, this.WhenAnyValue(x => x.AppConfigurationSettings!.IsRomValid));
-            this.OpenRomFileCommand = ReactiveCommand.Create<Window>(this.OpenRomFile);
-            this.ImportSettingsCommand = ReactiveCommand.Create<Window>(this.ImportSettings);
-            this.ExportSettingsCommand = ReactiveCommand.Create<Window>(this.ExportSettings);
-            this.SetThemeCommand = ReactiveCommand.Create(this.SetTheme);
         }
 
         private void AppConfigurationSettings_PropertyChanged(Object? sender, System.ComponentModel.PropertyChangedEventArgs? e)
         {
             this.AppConfigurationSettings!.Save();
         }
-
-
-        //
-        // Commands
-        //
-
-        public ICommand OpenRomFileCommand { get; }
-        public ICommand CreateFromGivenSeedCommand { get; }
-        public ICommand CreateFromRandomSeedCommand { get; }
-        public ICommand OpenContainingFolderCommand { get; }
-        public ICommand ImportSettingsCommand { get; }
-        public ICommand ExportSettingsCommand { get; }
-        public ICommand SetThemeCommand { get; }
 
 
         //
@@ -159,66 +140,62 @@ namespace RandomizerHost.ViewModels
         }
 
         //
-        // Public Methods
+        // Commands
         //
 
-        public async void OpenRomFile(Window in_Window)
+        [RelayCommand]
+        protected async Task OpenRomFile(Window in_Window)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var storage = in_Window.StorageProvider;
+            var initDir = exeDir != null
+                ? await storage.TryGetFolderFromPathAsync(exeDir)
+                : null;
 
-            openFileDialog.AllowMultiple = false;
-
-            openFileDialog.Filters!.Add(
-                new FileDialogFilter()
-                {
-                    Name = @"ROM Image",
-                    Extensions = new List<String>()
-                    {
-                        @"nes"
-                    }
-                });
-
-            openFileDialog.Title = @"Open Mega Man 2 (U) NES ROM File";
-
-            // Call the ShowDialog method to show the dialog box.
-            String exePath = Assembly.GetExecutingAssembly().Location;
-            String exeDir = Path.GetDirectoryName(exePath)!;
-            openFileDialog.Directory = exeDir;
-
-            String[]? dialogResult = await openFileDialog.ShowAsync(in_Window);
+            var stgFiles = await storage.OpenFilePickerAsync(new()
+            {
+                Title = "Open Mega Man 2 (US) NES ROM File",
+                FileTypeFilter = mNesRomFileTypes,
+                SuggestedStartLocation = initDir,
+                SuggestedFileType = mNesRomFileTypes[0],
+                AllowMultiple = false,
+            });
 
             // Process input if the user clicked OK.
-            if (dialogResult is not null && dialogResult.Length > 0)
+            if (stgFiles.Count != 1)
+                return;
+
+            //// TODO: Handle web cases
+            string? fileName = stgFiles[0].TryGetLocalPath()!;
+
+            this.IsShowingHint = false;
+            this.mAppConfigurationSettings.RomSourcePath = fileName;
+
+            TextBox? romFile = in_Window.FindControl<TextBox>("TextBox_RomFile");
+            Debug.Assert(romFile != null);
+
+            romFile.Text = fileName;
+            /*romFile.Focus();
+
+            if (null != romFile.Text)
             {
-                String fileName = dialogResult[0];
-
-                this.IsShowingHint = false;
-                this.mAppConfigurationSettings.RomSourcePath = fileName;
-
-                TextBox? romFile = in_Window.FindControl<TextBox>("TextBox_RomFile");
-                Debug.Assert(romFile != null);
-
-                romFile.Focus();
-
-                if (null != romFile.Text)
-                {
-                    romFile.SelectionStart = romFile.Text.Length;
-                }
-            }
+                romFile.SelectionStart = romFile.Text.Length;
+            }*/
         }
 
 
-        public async void CreateFromGivenSeed(Window in_Window)
+        [RelayCommand]
+        protected async Task CreateFromGivenSeed(Window in_Window)
         {
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
             {
-                this.CreateFromRandomSeedMultiple(in_Window);
+                await this.CreateFromRandomSeedMultiple(in_Window);
             }
             else
             {
                 try
                 {
-                    this.PerformRandomization(in_DefaultSeed: false);
+                    this.PerformRandomization(in_Window, in_DefaultSeed: false);
                     this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
                 }
                 catch (Exception e)
@@ -229,13 +206,14 @@ namespace RandomizerHost.ViewModels
         }
 
 
-        public async void CreateFromRandomSeedMultiple(Window in_Window)
+        [RelayCommand]
+        protected async Task CreateFromRandomSeedMultiple(Window in_Window)
         {
             for (int i = 1; i <= this.RandomSeedCount; i++)
             {
                 try
                 {
-                    this.PerformRandomization(in_DefaultSeed: true);
+                    this.PerformRandomization(in_Window, in_DefaultSeed: true);
                     this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
                     this.AppConfigurationSettings.HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
                 }
@@ -248,28 +226,30 @@ namespace RandomizerHost.ViewModels
         }
 
 
-    public void OpenContainingFolder()
+        [RelayCommand]
+        protected async Task OpenContainingFolder(Window in_Window)
         {
-            if (false == String.IsNullOrEmpty(this.mCurrentRandomizationContext?.FileName))
+            var launcher = TopLevel.GetTopLevel(in_Window)?.Launcher;
+            if (launcher == null)
+                return;
+
+            if (!string.IsNullOrEmpty(this.mCurrentRandomizationContext?.FileName))
             {
                 try
                 {
-                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", this.mCurrentRandomizationContext.FileName));
+                    if (await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext!.FileName))!))))
+                        return;
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.ToString());
-                    Process.Start("explorer.exe", String.Format("/select,\"{0}\"", Assembly.GetExecutingAssembly().Location));
                 }
             }
-            else
-            {
-                Process.Start("explorer.exe", String.Format("/select,\"{0}\"", Assembly.GetExecutingAssembly().Location));
-            }
+
+            await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
         }
 
-
-        public void PerformRandomization(Boolean in_DefaultSeed)
+        void PerformRandomization(Window in_Window, Boolean in_DefaultSeed)
         {
             // Perform randomization based on settings, then generate the ROM.
             this.AppConfigurationSettings!.UpdateRandomizerSettings(in_DefaultSeed);
@@ -305,84 +285,76 @@ namespace RandomizerHost.ViewModels
             }
 
             // Flag UI as having created a ROM, enabling the "open folder" button
-            this.CanOpenContainingFolder = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            CanOpenContainingFolder = TopLevel.GetTopLevel(in_Window)?.Launcher != null;
         }
-    public async void ImportSettings(Window in_Window)
+
+        [RelayCommand]
+        protected async Task ImportSettings(Window in_Window)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var storage = in_Window.StorageProvider;
+            var initDir = exeDir != null
+                ? await storage.TryGetFolderFromPathAsync(exeDir)
+                : null;
 
-            openFileDialog.AllowMultiple = false;
-
-            openFileDialog.Filters!.Add(
-                new FileDialogFilter()
-                {
-                    Name = @"XML Settings",
-                    Extensions = new List<String>()
-                    {
-                        @"xml"
-                    }
-                });
-
-            openFileDialog.Title = @"Import Settings";
-
-            // Call the ShowDialog method to show the dialog box.
-            String exePath = Assembly.GetExecutingAssembly().Location;
-            String exeDir = Path.GetDirectoryName(exePath)!;
-            openFileDialog.Directory = exeDir;
-
-            String[]? dialogResult = await openFileDialog.ShowAsync(in_Window);
+            var stgFiles = await storage.OpenFilePickerAsync(new()
+            {
+                Title = "Import Settings",
+                FileTypeFilter = mXmlSettingsFileTypes,
+                SuggestedStartLocation = initDir,
+                SuggestedFileType = mXmlSettingsFileTypes[0],
+                AllowMultiple = false,
+            });
 
             // Process input if the user clicked OK.
-            if (dialogResult is not null && dialogResult.Length > 0)
+            if (stgFiles.Count != 1)
+                return;
+
+            using (var stream = await stgFiles[0].OpenReadAsync())
             {
-                String fileName = dialogResult[0];
-                using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+                using (XmlReader xmlReader = XmlReader.Create(stream, new XmlReaderSettings() { IgnoreComments = true, IgnoreWhitespace = true }))
                 {
-                    using (XmlReader xmlReader = XmlReader.Create(fileStream, new XmlReaderSettings() { IgnoreComments = true, IgnoreWhitespace = true }))
-                    {
-                        this.AppConfigurationSettings!.ReadXml(xmlReader);
-                        xmlReader.Close();
-                    }
+                    this.AppConfigurationSettings!.ReadXml(xmlReader);
+                    xmlReader.Close();
                 }
             }
         }
 
-        public async void ExportSettings(Window in_Window)
+        [RelayCommand]
+        protected async Task ExportSettings(Window in_Window)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var storage = in_Window.StorageProvider;
+            var initDir = exeDir != null
+                ? await storage.TryGetFolderFromPathAsync(exeDir)
+                : null;
 
-            saveFileDialog.Filters!.Add(
-                new FileDialogFilter()
-                {
-                    Name = @"XML Settings",
-                    Extensions = new List<String>
-                    {
-                        @"xml"
-                    }
-                });
-
-            saveFileDialog.Title = @"Export Settings";
-
-            // Call the ShowDialog method to show the dialog box.
-            String exePath = Assembly.GetExecutingAssembly().Location;
-            String exeDir = Path.GetDirectoryName(exePath)!;
-            saveFileDialog.Directory = exeDir;
-
-            String? dialogResult = await saveFileDialog.ShowAsync(in_Window);
+            var stgFile = await storage.SaveFilePickerAsync(new()
+            {
+                Title = "Export Settings",
+                FileTypeChoices = mXmlSettingsFileTypes,
+                SuggestedStartLocation = initDir,
+                SuggestedFileType = mXmlSettingsFileTypes[0],
+                ShowOverwritePrompt = true,
+            });
 
             // Process input if the user clicked OK.
-            if (!String.IsNullOrEmpty(dialogResult))
+            if (stgFile == null)
+                return;
+
+            using (var stream = await stgFile.OpenWriteAsync())
             {
-                String fileName = dialogResult;
-                using (FileStream fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+                using (XmlWriter xmlWriter = XmlWriter.Create(stream))
                 {
-                    using (XmlWriter xmlWriter = XmlWriter.Create(fileStream))
-                    {
-                        this.AppConfigurationSettings!.WriteXml(xmlWriter);
-                    }
+                    this.AppConfigurationSettings!.WriteXml(xmlWriter);
                 }
             }
         }
+
+
+        //
+        // Public Methods
+        //
 
         public void SetTheme()
         {
@@ -395,6 +367,14 @@ namespace RandomizerHost.ViewModels
         //
         // Private Data Members
         //
+
+        private static readonly FilePickerFileType[] mNesRomFileTypes = [
+            new("NES ROMs") { Patterns = ["*.nes"] }
+        ];
+
+        private static readonly FilePickerFileType[] mXmlSettingsFileTypes = [
+            new("XML Settings") { Patterns = ["*.xml"] }
+        ];
 
         private AppConfigurationSettings mAppConfigurationSettings = new AppConfigurationSettings();
         private RandomizationContext? mCurrentRandomizationContext = null;
