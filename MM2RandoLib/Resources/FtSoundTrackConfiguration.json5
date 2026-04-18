@@ -7996,6 +7996,7 @@
 		{
 			title: "Kid Icarus- Angel Land Story",
 			author: "Hirokazu Tanaka",
+			primary_square_chan: 1,
 			items: [
 				{
 					enabled: false,
