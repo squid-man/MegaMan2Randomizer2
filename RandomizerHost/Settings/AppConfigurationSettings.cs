@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -18,15 +19,57 @@ using MM2Randomizer;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Settings;
 using MM2Randomizer.Settings.Options;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace RandomizerHost.Settings
 {
-    public sealed class AppConfigurationSettings : ApplicationSettingsBase, IXmlSerializable
+    public partial class AppConfigurationSettings : ReactiveObject
+    {
+        [JsonIgnore]
+        public readonly RandomizationSettings RandomizationSettings = new();
+
+        [Reactive]
+        public string SeedString { get; set; } = "";
+
+        [Reactive]
+        public string RomSourcePath { get; set; } = "";
+
+        [Reactive]
+        public bool EnableAppUiDarkTheme { get; set; } = true;
+
+        [Reactive]
+        public bool CreateLogFile { get; set; } = false;
+
+        /*bool IsRomSourcePathValid;
+        bool IsSeedValid;
+        bool IsRomValid;
+        bool IsRomValidText;
+        bool RomStatusTooltip;
+        bool HashValidationMessage;*/
+
+        public void ReadXml(XmlReader in_Reader)
+        { }
+
+        public void WriteXml(XmlWriter in_Writer)
+        { }
+
+        /*public void UpdateRandomizerSettings(bool defaultSeed)
+        {
+            var settings = RandomizationSettings;
+
+            settings.SeedString = (true == defaultSeed) ? null : SeedString;
+            settings.RomSourcePath = RomSourcePath;
+            settings.CreateLogFile = CreateLogFile && !settings.IsTournament;
+        }*/
+    }
+
+    /*public sealed class AppConfigurationSettingsOld : ApplicationSettingsBase, IXmlSerializable
     {
         //
         // Constructor
         //
-        public AppConfigurationSettings()
+        public AppConfigurationSettingsOld()
         {
             RandomizationSettingsAdapter = new(
                 this.RandomizationSettings, 
@@ -49,8 +92,8 @@ namespace RandomizerHost.Settings
             get
             {
                 String value = this.GetValueOrDefault(
-                    AppConfigurationSettings.SEED_STRING_SETTING_NAME,
-                    AppConfigurationSettings.SEED_STRING_DEFAULT_VALUE);
+                    AppConfigurationSettingsOld.SEED_STRING_SETTING_NAME,
+                    AppConfigurationSettingsOld.SEED_STRING_DEFAULT_VALUE);
 
                 this.ValidateSeed(ref value);
 
@@ -59,7 +102,7 @@ namespace RandomizerHost.Settings
 
             set
             {
-                this[AppConfigurationSettings.SEED_STRING_SETTING_NAME] = value;
+                this[AppConfigurationSettingsOld.SEED_STRING_SETTING_NAME] = value;
             }
         }
 
@@ -71,8 +114,8 @@ namespace RandomizerHost.Settings
             get
             {
                 String value = this.GetValueOrDefault(
-                    AppConfigurationSettings.ROM_SOURCE_PATH_SETTING_NAME,
-                    AppConfigurationSettings.ROM_SOURCE_PATH_DEFAULT_VALUE);
+                    AppConfigurationSettingsOld.ROM_SOURCE_PATH_SETTING_NAME,
+                    AppConfigurationSettingsOld.ROM_SOURCE_PATH_DEFAULT_VALUE);
 
                 // Validate the file path, which sets read-only flags, here
                 // because both getting and setting calls this method, and the
@@ -86,7 +129,7 @@ namespace RandomizerHost.Settings
 
             set
             {
-                this[AppConfigurationSettings.ROM_SOURCE_PATH_SETTING_NAME] = value;
+                this[AppConfigurationSettingsOld.ROM_SOURCE_PATH_SETTING_NAME] = value;
             }
         }
 
@@ -101,13 +144,13 @@ namespace RandomizerHost.Settings
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.ENABLE_APP_UI_DARK_THEME_SETTING_NAME,
-                    AppConfigurationSettings.ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE);
+                    AppConfigurationSettingsOld.ENABLE_APP_UI_DARK_THEME_SETTING_NAME,
+                    AppConfigurationSettingsOld.ENABLE_APP_UI_DARK_THEME_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.ENABLE_APP_UI_DARK_THEME_SETTING_NAME] = value;
+                this[AppConfigurationSettingsOld.ENABLE_APP_UI_DARK_THEME_SETTING_NAME] = value;
             }
         }
 
@@ -124,13 +167,13 @@ namespace RandomizerHost.Settings
             get
             {
                 return this.GetValueOrDefault(
-                    AppConfigurationSettings.CREATE_LOG_FILE_SETTING_NAME,
-                    AppConfigurationSettings.CREATE_LOG_FILE_DEFAULT_VALUE);
+                    AppConfigurationSettingsOld.CREATE_LOG_FILE_SETTING_NAME,
+                    AppConfigurationSettingsOld.CREATE_LOG_FILE_DEFAULT_VALUE);
             }
 
             set
             {
-                this[AppConfigurationSettings.CREATE_LOG_FILE_SETTING_NAME] = value;
+                this[AppConfigurationSettingsOld.CREATE_LOG_FILE_SETTING_NAME] = value;
             }
         }
 
@@ -403,7 +446,7 @@ namespace RandomizerHost.Settings
                 if (XmlNodeType.Text == in_Reader.NodeType)
                 {
                     SettingsProperty settingsProperty = this.Properties[propertyName];
-                    this[propertyName] = AppConfigurationSettings.ConvertFromString(in_Reader.Value, settingsProperty.PropertyType);
+                    this[propertyName] = AppConfigurationSettingsOld.ConvertFromString(in_Reader.Value, settingsProperty.PropertyType);
                 }
             }
         }
@@ -454,9 +497,9 @@ namespace RandomizerHost.Settings
                 FileInfo info = new FileInfo(in_FilePath);
                 Int64 fileSize = info.Length;
 
-                if (fileSize > AppConfigurationSettings.ONE_MEGABYTE)
+                if (fileSize > AppConfigurationSettingsOld.ONE_MEGABYTE)
                 {
-                    Double sizeInMegabytes = fileSize / AppConfigurationSettings.BYTES_PER_MEGABYTE;
+                    Double sizeInMegabytes = fileSize / AppConfigurationSettingsOld.BYTES_PER_MEGABYTE;
 
                     this.HashValidationMessage = $"File is too large! {sizeInMegabytes:0.00} MB";
                     this.IsRomValid = false;
@@ -607,5 +650,5 @@ namespace RandomizerHost.Settings
         //
         // Scalar Property Constants
         //
-    }
+    }*/
 }

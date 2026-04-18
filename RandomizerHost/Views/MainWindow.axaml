@@ -13,7 +13,11 @@
         Height="730"
         x:Class="RandomizerHost.Views.MainWindow"
         Icon="/Assets/MegaMan2Randomizer.ico"
-        Title="RandomizerHost">
+        Title="RandomizerHost"
+		DragDrop.AllowDrop="True"
+		DragDrop.DragOver="OnDragOver"
+		DragDrop.Drop="OnDrop"
+>
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
@@ -140,7 +144,7 @@
                         Command="{Binding OpenRomFileCommand}"
                         CommandParameter="{Binding $parent[Window]}"
                     >
-                        ....
+                        ...
                     </Button>
 
                     <TextBox
@@ -150,7 +154,7 @@
                         Width="570"
                         Margin="0,0,0,0"
                         Text="{Binding AppConfigurationSettings.RomSourcePath}"
-						DragDrop.AllowDrop="True"
+						IsReadOnly="True"
                     />
                 
                     <TextBlock
@@ -159,8 +163,8 @@
                         MinWidth="35"
                         Margin="4,4"
                         FontSize="22"
-                        Text="{Binding AppConfigurationSettings.IsRomValidText}"
-                        ToolTip.Tip="{Binding AppConfigurationSettings.RomStatusTooltip}"
+                        Text="{Binding IsRomValidText}"
+                        ToolTip.Tip="{Binding RomStatusTooltip}"
                     />
                 </DockPanel>
             </Border>
@@ -184,7 +188,7 @@
 
                 <TextBlock
                     FontWeight="Bold"
-                    Text="{Binding AppConfigurationSettings.HashValidationMessage}"
+                    Text="{Binding HashValidationMessage}"
                 />
             </Border>
         </Grid>
@@ -206,7 +210,7 @@
             Grid.Row="2"
             Grid.Column="0"
             HorizontalAlignment="Stretch"
-            IsEnabled="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
+            IsEnabled="{Binding IsRomSourcePathValid}"
         >
             <TextBlock
                 Text="Seed:"
@@ -253,7 +257,7 @@
                     Margin="2"
                     Command="{Binding CreateFromGivenSeedCommand}"
                     CommandParameter="{Binding $parent[Window]}"
-					IsEnabled="{Binding AppConfigurationSettings.IsSeedValid}"
+					IsEnabled="{Binding IsSeedValid}"
 				>
                     Create From Given
                 </Button>
@@ -264,7 +268,7 @@
                     Margin="2,2,2,2"
                     Command="{Binding CreateFromRandomSeedMultipleCommand}"
                     CommandParameter="{Binding $parent[Window]}"
-                    IsEnabled="{Binding AppConfigurationSettings.IsRomValid}"
+                    IsEnabled="{Binding IsRomValid}"
 				>
                     Generate Seed(s)
                 </Button>
@@ -313,7 +317,6 @@
                     Margin="2"
                     Command="{Binding ImportSettingsCommand}"
                     CommandParameter="{Binding $parent[Window]}"
-                    IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ImportSettings}"
                 >
                     Import Settings
                 </Button>
@@ -325,7 +328,6 @@
                     Margin="2"
                     Command="{Binding ExportSettingsCommand}"
                     CommandParameter="{Binding $parent[Window]}"
-                    IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ExportSettings}"
                 >
                     Export Settings
                 </Button>
