@@ -239,7 +239,7 @@
             <ComboBox
                 HorizontalAlignment="Stretch"
                 ItemsSource="{Binding SettingsPresets.Presets}"
-                SelectedItem="{Binding SettingsPreset}"
+                SelectedIndex="{Binding AppConfigurationSettings.SettingsPresetIndex}"
             />
         </DockPanel>
     

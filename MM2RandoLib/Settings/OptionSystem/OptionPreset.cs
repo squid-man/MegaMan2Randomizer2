@@ -9,13 +9,13 @@ namespace MM2RandoLib.Settings.Options;
 /// </summary>
 public class OptionPreset
 {
-    public readonly IOption Option;
+    public readonly string Path;
     public readonly bool Randomize;
     public readonly object Value;
 
     public OptionPreset(IOption option, bool randomize, object value)
     {
-        Option = option;
+        Path = option.Info!.PathString;
         Randomize = randomize;
         Value = value;
     }
@@ -32,6 +32,6 @@ public class OptionPreset
 
     public override string ToString()
     {
-        return $"{Option.Info?.Name}, {Randomize}, {Value}";
+        return $"{Path}, {Randomize}, {Value}";
     }
 }

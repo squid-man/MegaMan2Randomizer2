@@ -5,6 +5,7 @@ using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.Input;
+using MM2RandoLib.Settings.Options;
 using MM2Randomizer;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Settings;
@@ -23,7 +24,6 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace RandomizerHost.ViewModels
 {
@@ -35,8 +35,12 @@ namespace RandomizerHost.ViewModels
         // Constructor
         //
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(AppConfigurationSettings settings, Action<byte[]> saveSettings)
         {
+            AppConfigurationSettings = settings;
+            Settings = settings.RandomizationSettings;
+            SettingsPresets = new(Settings);
+            SaveSettings = saveSettings;
 
             Version = Assembly
                 .GetExecutingAssembly()
@@ -44,11 +48,18 @@ namespace RandomizerHost.ViewModels
                 .Version?
                 .ToString() ?? "Unknown";
 
-            this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
-            //this.AppConfigurationSettings.RandomizationSettingsAdapter.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
-
-            this.SettingsPresets = new(Settings);
-            this.SettingsPreset = this.SettingsPresets.Presets[0];
+            // These need to use Switch/WhenAnyValue because AppConfigurationSettings will change when settings are imported
+            var cfgObs = this.WhenAnyValue(vm => vm.AppConfigurationSettings);
+            cfgObs.Subscribe(OnAppConfigurationSettingsChanged);
+            cfgObs.SwitchSubscribe(
+                c => c.WhenAnyValue(c => c.RomSourcePath),
+                OnRomSourcePathChanged);
+            cfgObs.SwitchSubscribe(
+                c => c.WhenAnyValue(c => c.SettingsPresetIndex),
+                OnSettingsPresetIndexChanged);
+            cfgObs.SwitchSelect(c => c.WhenAnyValue(c => c.SeedString))
+                .Select(s => IsValidSeed(s))
+                .ToProperty(this, vm => vm.IsSeedValid, out _isSeedValid);
 
             // If the application configuration settings does not have a saved value,
             // try to load the Mega Man 2 rom from the executable path
@@ -74,27 +85,144 @@ namespace RandomizerHost.ViewModels
                     IsShowingHint = false;
                 }
             }
+        }
 
-            this.WhenAnyValue(vm => vm.AppConfigurationSettings.SeedString)
-                .Select(x => IsValidSeed(AppConfigurationSettings.SeedString))
-                .ToProperty(this, vm => vm.IsSeedValid, out _isSeedValid);
+        private void OnAppConfigurationSettingsChanged(AppConfigurationSettings settings)
+        {
+            Settings = settings.RandomizationSettings;
+
+            if (settings.SettingsPresetIndex >= SettingsPresets.Presets.Count)
+                settings.SettingsPresetIndex = 0;
+
+            this.AppConfigurationSettings.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+
+            foreach (var opt in AppConfigurationSettings.RandomizationSettings.AllOptions)
+                opt.PropertyChanged += this.AppConfigurationSettings_PropertyChanged;
+        }
+
+        private void OnSettingsPresetIndexChanged(int newIndex)
+        {
+            SettingsPreset = SettingsPresets.Presets[newIndex];
+            IsTournament = !string.IsNullOrEmpty(SettingsPreset.TournamentTitleScreenString);
+            Settings.SettingsPreset = SettingsPreset;
         }
 
         private void AppConfigurationSettings_PropertyChanged(Object? sender, System.ComponentModel.PropertyChangedEventArgs? e)
         {
-            //this.AppConfigurationSettings!.Save();
+            if (e is null)
+                return;
+
+            if (sender is IOption opt
+                && e.PropertyName != nameof(IOption.BaseValue)
+                && e.PropertyName != nameof(IOption.Randomize))
+                return;
+
+            var optsData = AppConfigurationSettings.Serialize();
+            Trace.WriteLine(Encoding.UTF8.GetString(optsData));
+
+            SaveSettings(optsData);
         }
 
+        private void OnRomSourcePathChanged(string path)
+        {
+            IsShowingHint = false;
+
+            if (true == String.IsNullOrWhiteSpace(path))
+            {
+                IsRomSourcePathValid = false;
+                IsRomValid = false;
+                IsRomValidText = "";
+                RomStatusTooltip = "";
+                HashValidationMessage = String.Empty;
+
+                return;
+            }
+
+            IsRomValidText = "❌";
+            IsRomSourcePathValid = File.Exists(path);
+
+            if (true == IsRomSourcePathValid)
+            {
+                // Ensure file size is small so that we can take the hash
+                FileInfo info = new FileInfo(path);
+                Int64 fileSize = info.Length;
+
+                if (fileSize > ONE_MEGABYTE)
+                {
+                    Double sizeInMegabytes = fileSize / BYTES_PER_MEGABYTE;
+
+                    HashValidationMessage = $"File is too large! {sizeInMegabytes:0.00} MB";
+                    IsRomValid = false;
+                }
+                else
+                {
+                    byte[]? file = File.ReadAllBytes(path),
+                        rom = file[0x10..(file.Length - 1)];
+
+                    Dictionary<string, Func<byte[], byte[]>> romHashAlgs = new()
+                    {
+                        { "CRC", rom => Crc32.Hash(rom).Reverse().ToArray() },
+                        { "MD5", MD5.HashData},
+                    };
+                    Dictionary<string, Func<byte[], byte[]>> fileHashAlgs = new()
+                    {
+                        { "CRC", rom => Crc32.Hash(rom).Reverse().ToArray() },
+                        { "MD5", MD5.HashData },
+                        { "SHA-1", SHA1.HashData },
+                        { "SHA-256", SHA256.HashData },
+                    };
+
+                    var ByteToString = (byte[] b) => BitConverter.ToString(b)
+                        .Replace("-", String.Empty).ToLowerInvariant();
+                    var romHashes = romHashAlgs.ToDictionary(nf => nf.Key,
+                        nf => ByteToString(nf.Value(rom)));
+                    var fileHashes = fileHashAlgs.ToDictionary(nf => nf.Key,
+                        nf => ByteToString(nf.Value(file)));
+
+                    StringBuilder tipSb = new();
+                    tipSb.AppendLine("ROM");
+                    foreach (var (name, fn) in romHashAlgs)
+                        tipSb.AppendLine($"{name}: {ByteToString(fn(rom))}");
+
+                    tipSb.AppendLine();
+                    tipSb.AppendLine("File");
+                    foreach (var (name, fn) in fileHashAlgs)
+                        tipSb.AppendLine($"{name}: {ByteToString(fn(file))}");
+
+                    // Check that the hash matches a supported hash
+                    IsRomValid = EXPECTED_SHA256_HASH_LIST.Contains(
+                        fileHashes["SHA-256"]);
+                    RomStatusTooltip = tipSb.ToString();
+
+                    if (IsRomValid)
+                    {
+                        HashValidationMessage = "ROM checksum is valid.";
+                        IsRomValidText = "✅";
+                    }
+                    else
+                    {
+                        HashValidationMessage = "ROM checksum is INVALID.";
+                    }
+                }
+            }
+            else
+            {
+                IsRomValid = false;
+                HashValidationMessage = "File does not exist.";
+            }
+        }
 
         //
         // Properties
         //
 
-        public RandomizationSettings Settings => AppConfigurationSettings!.RandomizationSettings;
-        public SettingsPresets SettingsPresets { get; }
+        [Reactive]
+        public AppConfigurationSettings AppConfigurationSettings { get; private set; }
 
-        public AppConfigurationSettings AppConfigurationSettings { get; } 
-            = new AppConfigurationSettings();
+        [Reactive]
+        public RandomizationSettings Settings { get; private set; }
+
+        public SettingsPresets SettingsPresets { get; }
 
         [Reactive]
         public bool IsRomSourcePathValid { get; private set; } = false;
@@ -132,17 +260,8 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        public SettingsPreset? SettingsPreset
-        {
-            get => mSettingsPreset;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref mSettingsPreset, value);
-
-                IsTournament = !string.IsNullOrEmpty(value?.TournamentTitleScreenString);
-                Settings.SettingsPreset = value; 
-            }
-        }
+        [Reactive]
+        public SettingsPreset? SettingsPreset { get; private set; } = null;
 
         [Reactive]
         public bool IsTournament { get; private set; } = false;
@@ -178,9 +297,7 @@ namespace RandomizerHost.ViewModels
                 return;
 
             //// TODO: Handle web cases
-            string? fileName = stgFiles[0].TryGetLocalPath()!;
-
-            TrySetRomPath(fileName);
+            AppConfigurationSettings.RomSourcePath = stgFiles[0].TryGetLocalPath()!;
         }
 
         [RelayCommand]
@@ -258,7 +375,7 @@ namespace RandomizerHost.ViewModels
             rndOpts.RomSourcePath = settings.RomSourcePath;
             rndOpts.CreateLogFile = settings.CreateLogFile && !rndOpts.IsTournament;
 
-            Settings.SettingsPreset = !object.ReferenceEquals(mSettingsPreset, SettingsPresets.Presets[0]) ? mSettingsPreset : null;
+            //Settings.SettingsPreset = AppConfigurationSettings.SettingsPresetIndex != 0 ? SettingsPreset : null;
 
             RandomMM2.RandomizerCreate(Settings, out RandomizationContext context);
             HashValidationMessage = "Successfully copied and patched! File: " + context.FileName;
@@ -305,9 +422,9 @@ namespace RandomizerHost.ViewModels
             var stgFiles = await storage.OpenFilePickerAsync(new()
             {
                 Title = "Import Settings",
-                FileTypeFilter = mXmlSettingsFileTypes,
+                FileTypeFilter = mJsonSettingsFileTypes,
                 SuggestedStartLocation = initDir,
-                SuggestedFileType = mXmlSettingsFileTypes[0],
+                SuggestedFileType = mJsonSettingsFileTypes[0],
                 AllowMultiple = false,
             });
 
@@ -317,11 +434,10 @@ namespace RandomizerHost.ViewModels
 
             using (var stream = await stgFiles[0].OpenReadAsync())
             {
-                using (XmlReader xmlReader = XmlReader.Create(stream, new XmlReaderSettings() { IgnoreComments = true, IgnoreWhitespace = true }))
-                {
-                    this.AppConfigurationSettings!.ReadXml(xmlReader);
-                    xmlReader.Close();
-                }
+                var data = new byte[stream.Length];
+                await stream.ReadExactlyAsync(data);
+
+                AppConfigurationSettings = AppConfigurationSettings.Deserialize(data);
             }
         }
 
@@ -337,9 +453,9 @@ namespace RandomizerHost.ViewModels
             var stgFile = await storage.SaveFilePickerAsync(new()
             {
                 Title = "Export Settings",
-                FileTypeChoices = mXmlSettingsFileTypes,
+                FileTypeChoices = mJsonSettingsFileTypes,
                 SuggestedStartLocation = initDir,
-                SuggestedFileType = mXmlSettingsFileTypes[0],
+                SuggestedFileType = mJsonSettingsFileTypes[0],
                 ShowOverwritePrompt = true,
             });
 
@@ -347,13 +463,9 @@ namespace RandomizerHost.ViewModels
             if (stgFile == null)
                 return;
 
+            var data = AppConfigurationSettings.Serialize();
             using (var stream = await stgFile.OpenWriteAsync())
-            {
-                using (XmlWriter xmlWriter = XmlWriter.Create(stream))
-                {
-                    this.AppConfigurationSettings!.WriteXml(xmlWriter);
-                }
-            }
+                await stream.WriteAsync(data);
         }
 
 
@@ -380,7 +492,9 @@ namespace RandomizerHost.ViewModels
             if (path == null)
                 return false;
 
-            return TrySetRomPath(path);
+            AppConfigurationSettings.RomSourcePath = path;
+
+            return true;
         }
 
 
@@ -405,15 +519,13 @@ namespace RandomizerHost.ViewModels
             new("NES ROMs") { Patterns = ["*.nes"] }
         ];
 
-        private static readonly FilePickerFileType[] mXmlSettingsFileTypes = [
-            new("XML Settings") { Patterns = ["*.xml"] }
+        private static readonly FilePickerFileType[] mJsonSettingsFileTypes = [
+            new("JSON Settings") { Patterns = ["*.json", "*.jsn"] }
         ];
 
-        private RandomizationContext? mCurrentRandomizationContext = null;
-        private SettingsPreset? mSettingsPreset = null;
+        private Action<byte[]> SaveSettings;
 
-        // NOTE This isn't actually necessary as it's computed from the value of mSettingsPreset, but having a field to hold the previous value makes it easier to wire to the property change notification system.
-        private bool mIsTournament = false;
+        private RandomizationContext? mCurrentRandomizationContext = null;
 
         private static string? GetDragDropPath(IDataTransfer transfer)
         {
@@ -431,99 +543,6 @@ namespace RandomizerHost.ViewModels
                 return path;
 
             return null;
-        }
-
-        private bool TrySetRomPath(String in_FilePath)
-        {
-            IsShowingHint = false;
-
-            if (true == String.IsNullOrWhiteSpace(in_FilePath))
-            {
-                IsRomSourcePathValid = false;
-                IsRomValid = false;
-                IsRomValidText = "";
-                RomStatusTooltip = "";
-                HashValidationMessage = String.Empty;
-
-                return false;
-            }
-
-            IsRomValidText = "❌";
-            IsRomSourcePathValid = File.Exists(in_FilePath);
-
-            if (true == IsRomSourcePathValid)
-            {
-                // Ensure file size is small so that we can take the hash
-                FileInfo info = new FileInfo(in_FilePath);
-                Int64 fileSize = info.Length;
-
-                if (fileSize > ONE_MEGABYTE)
-                {
-                    Double sizeInMegabytes = fileSize / BYTES_PER_MEGABYTE;
-
-                    HashValidationMessage = $"File is too large! {sizeInMegabytes:0.00} MB";
-                    IsRomValid = false;
-                }
-                else
-                {
-                    byte[]? file = File.ReadAllBytes(in_FilePath),
-                        rom = file[0x10..(file.Length - 1)];
-
-                    Dictionary<string, Func<byte[], byte[]>> romHashAlgs = new()
-                    {
-                        { "CRC", rom => Crc32.Hash(rom).Reverse().ToArray() },
-                        { "MD5", MD5.HashData},
-                    };
-                    Dictionary<string, Func<byte[], byte[]>> fileHashAlgs = new()
-                    {
-                        { "CRC", rom => Crc32.Hash(rom).Reverse().ToArray() },
-                        { "MD5", MD5.HashData },
-                        { "SHA-1", SHA1.HashData },
-                        { "SHA-256", SHA256.HashData },
-                    };
-
-                    var ByteToString = (byte[] b) => BitConverter.ToString(b)
-                        .Replace("-", String.Empty).ToLowerInvariant();
-                    var romHashes = romHashAlgs.ToDictionary(nf => nf.Key,
-                        nf => ByteToString(nf.Value(rom)));
-                    var fileHashes = fileHashAlgs.ToDictionary(nf => nf.Key,
-                        nf => ByteToString(nf.Value(file)));
-
-                    StringBuilder tipSb = new();
-                    tipSb.AppendLine("ROM");
-                    foreach (var (name, fn) in romHashAlgs)
-                        tipSb.AppendLine($"{name}: {ByteToString(fn(rom))}");
-
-                    tipSb.AppendLine();
-                    tipSb.AppendLine("File");
-                    foreach (var (name, fn) in fileHashAlgs)
-                        tipSb.AppendLine($"{name}: {ByteToString(fn(file))}");
-
-                    // Check that the hash matches a supported hash
-                    IsRomValid = EXPECTED_SHA256_HASH_LIST.Contains(
-                        fileHashes["SHA-256"]);
-                    RomStatusTooltip = tipSb.ToString();
-
-                    if (IsRomValid)
-                    {
-                        HashValidationMessage = "ROM checksum is valid.";
-                        IsRomValidText = "✅";
-                    }
-                    else
-                    {
-                        HashValidationMessage = "ROM checksum is INVALID.";
-                    }
-                }
-            }
-            else
-            {
-                IsRomValid = false;
-                HashValidationMessage = "File does not exist.";
-            }
-
-            AppConfigurationSettings.RomSourcePath = in_FilePath;
-
-            return true;
         }
 
         private bool IsValidSeed(string seed)
