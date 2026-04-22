@@ -51,17 +51,17 @@ public class SettingsPreset
 
         if (basePreset is not null)
         {
-            Dictionary<IOption, int> optIdcs
+            Dictionary<string, int> optIdcs
                 = new(ReferenceEqualityComparer.Instance);
             List<OptionPreset> presets = new();
             foreach (var preset in Enumerable.Concat(basePreset.Options, opts))
             {
                 int optIdx;
-                if (optIdcs.TryGetValue(preset.Option, out optIdx))
+                if (optIdcs.TryGetValue(preset.Path, out optIdx))
                     presets[optIdx] = preset;
                 else
                 {
-                    optIdcs[preset.Option] = presets.Count;
+                    optIdcs[preset.Path] = presets.Count;
                     presets.Add(preset);
                 }
             }
@@ -191,20 +191,21 @@ public class SettingsPresets
     /// </summary>
     /// <param name="allOpts">The full list of options in the randomizer</param>
     /// <exception cref="Exception"></exception>
-    public void ValidatePresets(IEnumerable<IOption> allOpts)
+    public void ValidatePresets(RandomizationSettings settings)
     {
         foreach (var preset in _presets.Skip(1))
         {
-            List<IOption> unset = allOpts
-                .Except<IOption>(preset.Options.Select(x => x.Option))
-                .Where(x => !x.Info?.IsCosmetic ?? true)
+            List<string> unset = settings.AllOptions
+                .Where(o => !o.Info!.IsCosmetic)
+                .Select(o => o.Info!.PathString)
+                .Except<string>(preset.Options.Select(x => x.Path))
                 .ToList();
 
             if (unset.Count != 0)
             {
                 throw new Exception(
                     $"{preset.Name} has the following missing options: "
-                        + string.Join(", ", unset.Select(x => x.Info?.PathString)));
+                        + string.Join(", ", unset));
             }
         }
     }

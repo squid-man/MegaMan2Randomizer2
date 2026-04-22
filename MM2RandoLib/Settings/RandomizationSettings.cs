@@ -37,13 +37,14 @@ namespace MM2Randomizer.Settings
                 HashSet<IOption> optsSet = new(ReferenceEqualityComparer.Instance);
                 if (value is not null)
                 {
-                    foreach (var opt in value.Options)
+                    foreach (var preset in value.Options)
                     {
-                        opt.Option.OverrideRandomize = opt.Randomize;
-                        opt.Option.OverrideValue = opt.Value;
-                        opt.Option.Override = true;
+                        var opt = OptionsByPath[preset.Path];
+                        opt.OverrideRandomize = opt.Randomize;
+                        opt.OverrideValue = opt.Value;
+                        opt.Override = true;
 
-                        optsSet.Add(opt.Option);
+                        optsSet.Add(opt);
                     }
                 }
 

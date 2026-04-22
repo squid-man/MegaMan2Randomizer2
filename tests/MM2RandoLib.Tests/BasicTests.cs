@@ -60,7 +60,7 @@ namespace MM2RandoLib.Tests
             RandomizationSettings settings = new();
             SettingsPresets presets = new(settings);
 
-            presets.ValidatePresets(settings.AllOptions);
+            presets.ValidatePresets(settings);
         }
     }
 }
