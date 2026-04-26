@@ -7,11 +7,13 @@
         xmlns:opts="clr-namespace:MM2RandoLib.Settings.Options;assembly=MM2RandoLib"
         xmlns:ctls="using:RandomizerHost.Controls"
         mc:Ignorable="d"
-        d:DesignWidth="650"
+        d:DesignWidth="680"
         d:DesignHeight="730"
-        Width="650"
+        Width="680"
         Height="730"
         x:Class="RandomizerHost.Views.MainWindow"
+		x:DataType="vm:MainWindowViewModel"
+		Name="Window"
         Icon="/Assets/MegaMan2Randomizer.ico"
         Title="RandomizerHost"
 		DragDrop.AllowDrop="True"
@@ -36,7 +38,7 @@
             DataType="{x:Type opts:IEnumOption}"
         >
             <ctls:StandardEnumOption 
-                Option="{Binding .}"
+                Option="{Binding}"
                 ItemPrefix="{Binding Info.Description, StringFormat='{}{0}: '}"
             />
         </DataTemplate>
@@ -45,7 +47,7 @@
             DataType="{x:Type opts:IEnumOption}"
         >
             <ctls:StandardEnumOption 
-                Option="{Binding .}"
+                Option="{Binding}"
                 ItemSuffix="{Binding Info.Description, StringFormat=' {0}'}"
             />
         </DataTemplate>
@@ -54,7 +56,7 @@
     <!-- Data Templates -->
     <Window.DataTemplates>
         <DataTemplate DataType="{x:Type opts:BoolOption}">
-            <ctls:StandardBoolOption Option="{Binding $parent.DataContext}"/>
+            <ctls:StandardBoolOption Option="{Binding}"/>
         </DataTemplate>
     </Window.DataTemplates>
   
@@ -69,7 +71,7 @@
             <RowDefinition Height="75"/>
             <RowDefinition Height="85"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="95"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -142,7 +144,7 @@
                         Width="35"
                         Margin="4,0"
                         Command="{Binding OpenRomFileCommand}"
-                        CommandParameter="{Binding $parent[Window]}"
+                        CommandParameter="{Binding #Window}"
                     >
                         ...
                     </Button>
@@ -256,7 +258,7 @@
                     Width="150"
                     Margin="2"
                     Command="{Binding CreateFromGivenSeedCommand}"
-                    CommandParameter="{Binding $parent[Window]}"
+                    CommandParameter="{Binding #Window}"
 					IsEnabled="{Binding IsSeedValid}"
 				>
                     Create From Given
@@ -267,7 +269,7 @@
                     Width="150"
                     Margin="2,2,2,2"
                     Command="{Binding CreateFromRandomSeedMultipleCommand}"
-                    CommandParameter="{Binding $parent[Window]}"
+                    CommandParameter="{Binding #Window}"
                     IsEnabled="{Binding IsRomValid}"
 				>
                     Generate Seed(s)
@@ -303,7 +305,7 @@
                 Width="300"
                 Margin="2"
                 Command="{Binding OpenContainingFolderCommand}"
-				CommandParameter="{Binding $parent[Window]}"
+				CommandParameter="{Binding #Window}"
 				IsEnabled="{Binding CanOpenContainingFolder}"
             >
                 Open Containing Folder
@@ -316,7 +318,7 @@
                     Width="150"
                     Margin="2"
                     Command="{Binding ImportSettingsCommand}"
-                    CommandParameter="{Binding $parent[Window]}"
+                    CommandParameter="{Binding #Window}"
                 >
                     Import Settings
                 </Button>
@@ -327,7 +329,7 @@
                     Width="150"
                     Margin="2"
                     Command="{Binding ExportSettingsCommand}"
-                    CommandParameter="{Binding $parent[Window]}"
+                    CommandParameter="{Binding #Window}"
                 >
                     Export Settings
                 </Button>
