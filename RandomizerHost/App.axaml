@@ -1,27 +1,28 @@
 ﻿<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:RandomizerHost"
-			 xmlns:fluent="using:Avalonia.Themes.Fluent"
-             x:Class="RandomizerHost.App">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RandomizerHost"
+    xmlns:fluent="using:Avalonia.Themes.Fluent"
+    x:Class="RandomizerHost.App"
+>
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
 
     <Application.Styles>
-		<fluent:FluentTheme />
-		<Style Selector = "Button">
-			<Setter Property = "Background" Value = "Salmon"/>
-				<Setter Property="FontSize" Value="14"/>
-				<Setter Property="FontWeight" Value="Bold"/>
-		</Style>
-		<Style Selector="TextBlock">
-			<Setter Property="FontSize" Value="12"/>
-		</Style>
-		<Style Selector="Button:pressed /template/ ContentPresenter">
-			<Setter Property="TextBlock.Foreground" Value="Maroon"/>
-		</Style>
-		<Style Selector="CheckBox">
-			<Setter Property="FontSize" Value="12"/>
-		</Style>
+        <fluent:FluentTheme />
+        <Style Selector = "Button">
+            <Setter Property = "Background" Value = "Salmon"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style Selector="Button:pressed /template/ ContentPresenter">
+            <Setter Property="TextBlock.Foreground" Value="Maroon"/>
+        </Style>
+        <Style Selector="CheckBox">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
     </Application.Styles>
 </Application>

@@ -8,8 +8,8 @@
     d:DesignHeight="450"
     x:Class="RandomizerHost.Views.MessageBox"
     SizeToContent="WidthAndHeight"
-    CanResize="False">
-
+    CanResize="False"
+>
     <StackPanel HorizontalAlignment="Center">
         <TextBlock HorizontalAlignment="Center" Name="Text"/>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Name="Buttons">
