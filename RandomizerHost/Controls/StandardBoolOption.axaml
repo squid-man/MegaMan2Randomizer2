@@ -3,11 +3,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ctls="using:RandomizerHost.Controls"
+			 xmlns:opts="using:MM2RandoLib.Settings.Options"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="30"
              x:Class="RandomizerHost.Controls.StandardBoolOption"
-             DataContext="{Binding $self.Option}"
+			 x:DataType="opts:BoolOption"
+			 Name="Control"
              >
   <StackPanel
+	DataContext="{Binding #Control.Option}"
     Orientation="Horizontal"
     IsVisible="{Binding Info.CreateControl}"
     IsEnabled="{Binding !Override}"

@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="using:RandomizerHost.Converters"
              xmlns:ctls="using:RandomizerHost.Controls"
+			 xmlns:opts="using:MM2RandoLib.Settings.Options"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="40"
              x:Class="RandomizerHost.Controls.StandardEnumOption"
+			 x:DataType="opts:IEnumOption"
              Name="Control"
 >
   <!-- Static Resources -->
@@ -14,6 +16,7 @@
   </UserControl.Resources>
 
   <DockPanel
+	DataContext="{Binding #Control.Option}"
     Margin="0,4"
     LastChildFill="True"
     IsVisible="{Binding Info.CreateControl}"
