@@ -27,7 +27,7 @@ namespace RandomizerHost.Views
 
         public MessageBox()
         {
-            AvaloniaXamlLoader.Load(this);
+            InitializeComponent();
         }
 
         public static Task<MessageBoxResult> Show(Window parent, String text, String title, MessageBoxButtons buttons)
