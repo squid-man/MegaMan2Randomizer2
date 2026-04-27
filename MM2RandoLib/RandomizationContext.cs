@@ -22,7 +22,6 @@ using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer
 {
-    using static js65.Js65Callbacks;
     using AsmEngine = ClearScriptEngine;
 
     public class RandomizationContext
