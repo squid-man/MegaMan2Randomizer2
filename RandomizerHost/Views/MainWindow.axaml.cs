@@ -1,10 +1,13 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using MM2Randomizer.Randomizers;
+using RandomizerHost;
 using RandomizerHost.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace RandomizerHost.Views
 {

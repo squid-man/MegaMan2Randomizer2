@@ -29,8 +29,6 @@ namespace RandomizerHost.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        public string Version { get; }
-
         //
         // Constructor
         //
@@ -42,11 +40,25 @@ namespace RandomizerHost.ViewModels
             SettingsPresets = new(Settings);
             SaveSettings = saveSettings;
 
-            Version = Assembly
-                .GetExecutingAssembly()
-                .GetName()
-                .Version?
-                .ToString() ?? "Unknown";
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            string verStr = version?.ToString() ?? "";
+
+            if (!GitInfo.IsOfficialBuild)
+            {
+                string branch = GitInfo.Branch, cmtSuff = "", dbgSuff = "";
+                if (!GitInfo.IsDirty)
+                    cmtSuff = $":{GitInfo.Commit}";
+
+#if DEBUG
+                dbgSuff += " (Debug)";
+#endif
+
+                verStr += $" EXPERIMENTAL [{branch}{cmtSuff}]{dbgSuff}";
+            }
+            else if (verStr.Length == 0)
+                verStr = "Unknown";
+
+            Version = verStr;
 
             // These need to use Switch/WhenAnyValue because AppConfigurationSettings will change when settings are imported
             var cfgObs = this.WhenAnyValue(vm => vm.AppConfigurationSettings);
@@ -217,6 +229,8 @@ namespace RandomizerHost.ViewModels
         public partial RandomizationSettings Settings { get; private set; }
 
         public SettingsPresets SettingsPresets { get; }
+
+        public string Version { get; }
 
         [Reactive]
         public partial bool IsRomSourcePathValid { get; private set; } = false;
