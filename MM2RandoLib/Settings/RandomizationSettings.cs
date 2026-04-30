@@ -40,8 +40,8 @@ namespace MM2Randomizer.Settings
                     foreach (var preset in value.Options)
                     {
                         var opt = OptionsByPath[preset.Path];
-                        opt.OverrideRandomize = opt.Randomize;
-                        opt.OverrideValue = opt.Value;
+                        opt.OverrideRandomize = preset.Randomize;
+                        opt.OverrideValue = preset.Value;
                         opt.Override = true;
 
                         optsSet.Add(opt);
