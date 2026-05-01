@@ -20,26 +20,6 @@ namespace RandomizerHost.Views
         public MainWindow()
         {
             InitializeComponent();
-
-            /// TODO: Find a better place for this
-            var version = Assembly.GetExecutingAssembly().GetName().Version;
-            var versionString = version?.ToString(version.Revision > 0 ? 4 : 3);
-            string title = $"Mega Man 2 Randomizer {versionString}";
-
-            if (!GitInfo.IsOfficialBuild)
-            {
-                string branch = GitInfo.Branch, cmtSuff = "", dbgSuff = "";
-                if (!GitInfo.IsDirty)
-                    cmtSuff = $":{GitInfo.Commit}";
-
-#if DEBUG
-                dbgSuff = " (Debug)";
-#endif
-
-                title += $" EXPERIMENTAL [{branch}{cmtSuff}]{dbgSuff}";
-            }
-
-            Title = title;
         }
 
 

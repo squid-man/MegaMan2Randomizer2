@@ -15,7 +15,7 @@
     x:DataType="vm:MainWindowViewModel"
     Name="Window"
     Icon="/Assets/MegaMan2Randomizer.ico"
-    Title="RandomizerHost"
+    Title="Mega Man 2 Randomizer"
     DragDrop.AllowDrop="True"
     DragDrop.DragOver="OnDragOver"
     DragDrop.Drop="OnDrop"
@@ -82,7 +82,6 @@
             TextAlignment="Left"
             FontSize="9"
             Text="Version"
-            IsVisible="{Binding IsShowingHint}"
         />
       
         <TextBlock
@@ -93,7 +92,6 @@
             Margin="36,0"
             FontSize="9"
             Text="{Binding Version}"
-            IsVisible="{Binding IsShowingHint}"
         />
    
         <!-- The main header image for the host -->
