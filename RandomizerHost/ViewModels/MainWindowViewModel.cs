@@ -12,7 +12,7 @@ using MM2Randomizer.Settings;
 using RandomizerHost.Settings;
 using RandomizerHost.Views;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
+using ReactiveUI.SourceGenerators;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -223,35 +223,35 @@ namespace RandomizerHost.ViewModels
         //
 
         [Reactive]
-        public AppConfigurationSettings AppConfigurationSettings { get; private set; }
+        public partial AppConfigurationSettings AppConfigurationSettings { get; private set; }
 
         [Reactive]
-        public RandomizationSettings Settings { get; private set; }
+        public partial RandomizationSettings Settings { get; private set; }
 
         public SettingsPresets SettingsPresets { get; }
 
         public string Version { get; }
 
         [Reactive]
-        public bool IsRomSourcePathValid { get; private set; } = false;
+        public partial bool IsRomSourcePathValid { get; private set; } = false;
 
         private readonly ObservableAsPropertyHelper<bool> _isSeedValid;
         public bool IsSeedValid => _isSeedValid.Value;
 
         [Reactive]
-        public bool IsRomValid { get; private set; } = false;
+        public partial bool IsRomValid { get; private set; } = false;
 
         [Reactive]
-        public string IsRomValidText { get; private set; } = "";
+        public partial string IsRomValidText { get; private set; } = "";
 
         [Reactive]
-        public string RomStatusTooltip { get; private set; } = "";
+        public partial string RomStatusTooltip { get; private set; } = "";
 
         [Reactive]
-        public string HashValidationMessage { get; private set; } = "";
+        public partial string HashValidationMessage { get; private set; } = "";
 
         [Reactive]
-        public bool CanOpenContainingFolder { get; private set; } = false;
+        public partial bool CanOpenContainingFolder { get; private set; } = false;
 
         public Boolean IsCoreModulesChecked
         {
@@ -266,14 +266,14 @@ namespace RandomizerHost.ViewModels
         }
 
         [Reactive]
-        public SettingsPreset? SettingsPreset { get; private set; } = null;
+        public partial SettingsPreset? SettingsPreset { get; private set; } = null;
 
         [Reactive]
-        public bool IsTournament { get; private set; } = false;
+        public partial bool IsTournament { get; private set; } = false;
 
         // Add this property to bind to your slider
         [Reactive]
-        public int RandomSeedCount { get; set; } = 1;
+        public partial int RandomSeedCount { get; set; } = 1;
 
         //
         // Commands

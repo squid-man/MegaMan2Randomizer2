@@ -18,7 +18,7 @@ using MM2Randomizer.Extensions;
 using MM2Randomizer.Settings;
 using MM2Randomizer.Settings.Options;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
+using ReactiveUI.SourceGenerators;
 
 namespace RandomizerHost.Settings
 {
@@ -147,22 +147,27 @@ namespace RandomizerHost.Settings
     public partial class AppConfigurationSettings : ReactiveObject
     {
         [Reactive]
-        public RandomizationSettings RandomizationSettings { get; set; } = new();
+        public partial RandomizationSettings RandomizationSettings { get; set; } = new();
 
         [Reactive]
-        public string SeedString { get; set; } = "";
+        public partial string SeedString { get; set; } = "";
 
         [Reactive]
-        public string RomSourcePath { get; set; } = "";
+        public partial string RomSourcePath { get; set; } = "";
 
         [Reactive]
-        public bool EnableAppUiDarkTheme { get; set; } = true;
+        public partial bool EnableAppUiDarkTheme { get; set; } = true;
 
         [Reactive]
-        public bool CreateLogFile { get; set; } = false;
+        public partial bool CreateLogFile { get; set; } = false;
 
         [Reactive]
-        public int SettingsPresetIndex { get; set; } = 0;
+        public partial int SettingsPresetIndex { get; set; } = 0;
+
+        public AppConfigurationSettings()
+        {
+            // Required for Reactive properties to work properly
+        }
 
         public static AppConfigurationSettings Deserialize(byte[] data)
         {
