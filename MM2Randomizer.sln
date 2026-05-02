@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 17
-VisualStudioVersion = 17.11.35327.3
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11723.231 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MM2RandoLib", "MM2RandoLib\MM2RandoLib.csproj", "{2F96FE8D-29DC-46F3-9D26-FC85DC2225C8}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FtRandoLib", "FtRandoLib\FtRandoLib.csproj", "{B2DD3A1D-E34D-4C33-BC89-616FE57DCF7A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MM2RandoLib.Tests", "tests\MM2RandoLib.Tests\MM2RandoLib.Tests.csproj", "{9ACE6FCC-17A0-4B3B-BA37-267526BEAD16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerHost.Desktop", "RandomizerHost.Desktop\RandomizerHost.Desktop.csproj", "{67119781-E221-04DD-CCEC-96E18103B153}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizerHost.Browser", "RandomizerHost.Browser\RandomizerHost.Browser.csproj", "{A1756856-1324-2805-94E8-51B280F8EB41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,22 @@ Global
 		{9ACE6FCC-17A0-4B3B-BA37-267526BEAD16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9ACE6FCC-17A0-4B3B-BA37-267526BEAD16}.Release|x64.ActiveCfg = Release|Any CPU
 		{9ACE6FCC-17A0-4B3B-BA37-267526BEAD16}.Release|x64.Build.0 = Release|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Debug|x64.Build.0 = Debug|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Release|x64.ActiveCfg = Release|Any CPU
+		{67119781-E221-04DD-CCEC-96E18103B153}.Release|x64.Build.0 = Release|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Debug|x64.Build.0 = Debug|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Release|x64.ActiveCfg = Release|Any CPU
+		{A1756856-1324-2805-94E8-51B280F8EB41}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -35,6 +35,20 @@ namespace RandomizerHost
                         settings, data => SaveSettings(cfgPath, data)),
                 };
             }
+            else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+            {
+                string cfgPath = GetConfigFilePath();
+                AppConfigurationSettings settings = File.Exists(cfgPath)
+                    ? AppConfigurationSettings.Deserialize(
+                        File.ReadAllBytes(cfgPath))
+                    : new();
+
+                singleView.MainView = new MainView
+                {
+                    DataContext = new MainViewModel(
+                        settings, data => SaveSettings(cfgPath, data)),
+                };
+            }
 
             base.OnFrameworkInitializationCompleted();
         }
