@@ -140,7 +140,10 @@
                     <Button
                         Name="Button_OpenRomFile"
                         Width="35"
+						Height="30"
                         Margin="4,0"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
                         Command="{Binding OpenRomFileCommand}"
                         CommandParameter="{Binding #Window}"
                     >
