@@ -126,7 +126,7 @@
                 TextAlignment="Center"
                 FontSize="9"
                 Text="To get started, drag a Mega Man 2 ROM onto this window, or click the &quot;. . .&quot; button to browse."
-                IsVisible="{Binding IsShowingHint}"
+                IsVisible="{Binding !IsRomSourcePathValid}"
             />
 
             <!-- Row 1 -->

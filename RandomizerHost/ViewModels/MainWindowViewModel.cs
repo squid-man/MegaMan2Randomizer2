@@ -88,14 +88,10 @@ namespace RandomizerHost.ViewModels
                     "Megaman II (U) [!].nes",
                     "Mega Man 2 (USA).nes",
                 };
-                foreach (var path in tryNames.Select(name => Path.Combine(curDir, name)))
-                {
-                    if (!File.Exists(path))
-                        continue;
-
+                foreach (var path in tryNames
+                    .Select(name => Path.Combine(curDir, name))
+                    .Where(path => File.Exists(path)))
                     AppConfigurationSettings.RomSourcePath = path;
-                    IsShowingHint = false;
-                }
             }
         }
 
@@ -137,8 +133,6 @@ namespace RandomizerHost.ViewModels
 
         private void OnRomSourcePathChanged(string path)
         {
-            IsShowingHint = false;
-
             if (true == String.IsNullOrWhiteSpace(path))
             {
                 IsRomSourcePathValid = false;
@@ -255,9 +249,6 @@ namespace RandomizerHost.ViewModels
 
         [Reactive]
         public string HashValidationMessage { get; private set; } = "";
-
-        [Reactive]
-        public bool IsShowingHint { get; private set; } = true;
 
         [Reactive]
         public bool CanOpenContainingFolder { get; private set; } = false;
