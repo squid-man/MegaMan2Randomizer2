@@ -9,6 +9,8 @@ using MM2RandoLib.Settings.Options;
 using MM2Randomizer;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Settings;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using RandomizerHost.Settings;
 using RandomizerHost.Views;
 using ReactiveUI;
@@ -27,13 +29,13 @@ using System.Threading.Tasks;
 
 namespace RandomizerHost.ViewModels
 {
-    public partial class MainWindowViewModel : ViewModelBase
+    public partial class MainViewModel : ViewModelBase
     {
         //
         // Constructor
         //
 
-        public MainWindowViewModel(AppConfigurationSettings settings, Action<byte[]> saveSettings)
+        public MainViewModel(AppConfigurationSettings settings, Action<byte[]> saveSettings)
         {
             AppConfigurationSettings = settings;
             Settings = settings.RandomizationSettings;
@@ -280,10 +282,10 @@ namespace RandomizerHost.ViewModels
         //
 
         [RelayCommand]
-        protected async Task OpenRomFile(Window in_Window)
+        protected async Task OpenRomFile(Visual in_View)
         {
             string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var storage = in_Window.StorageProvider;
+            var storage = TopLevel.GetTopLevel(in_View)!.StorageProvider;
             var initDir = exeDir != null
                 ? await storage.TryGetFolderFromPathAsync(exeDir)
                 : null;
@@ -306,51 +308,51 @@ namespace RandomizerHost.ViewModels
         }
 
         [RelayCommand]
-        protected async Task CreateFromGivenSeed(Window in_Window)
+        protected async Task CreateFromGivenSeed(Visual in_View)
         {
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
             {
-                await this.CreateFromRandomSeedMultiple(in_Window);
+                await this.CreateFromRandomSeedMultiple(in_View);
             }
             else
             {
                 try
                 {
-                    this.PerformRandomization(in_Window, in_DefaultSeed: false);
+                    this.PerformRandomization(in_View, in_DefaultSeed: false);
                     this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
                 }
                 catch (Exception e)
                 {
-                    await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+                    await MessageBox.ShowAsync(in_View, e.ToString(), "Error", ButtonEnum.Ok);
                 }
             }
         }
 
 
         [RelayCommand]
-        protected async Task CreateFromRandomSeedMultiple(Window in_Window)
+        protected async Task CreateFromRandomSeedMultiple(Visual in_View)
         {
             for (int i = 1; i <= this.RandomSeedCount; i++)
             {
                 try
                 {
-                    this.PerformRandomization(in_Window, in_DefaultSeed: true);
+                    this.PerformRandomization(in_View, in_DefaultSeed: true);
                     this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
                     HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
                 }
                 catch (Exception e)
                 {
                     string s = e.ToString();
-                    await MessageBox.Show(in_Window, e.ToString(), "Error", MessageBox.MessageBoxButtons.Ok);
+                    await MessageBox.ShowAsync(in_View, e.ToString(), "Error", ButtonEnum.Ok);
                 }
             }
         }
 
 
         [RelayCommand]
-        protected async Task OpenContainingFolder(Window in_Window)
+        protected async Task OpenContainingFolder(Visual in_View)
         {
-            var launcher = TopLevel.GetTopLevel(in_Window)?.Launcher;
+            var launcher = TopLevel.GetTopLevel(in_View)?.Launcher;
             if (launcher == null)
                 return;
 
@@ -370,7 +372,7 @@ namespace RandomizerHost.ViewModels
             await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
         }
 
-        void PerformRandomization(Window in_Window, Boolean in_DefaultSeed)
+        void PerformRandomization(Visual in_View, Boolean in_DefaultSeed)
         {
             // Perform randomization based on settings, then generate the ROM.
             var settings = AppConfigurationSettings;
@@ -412,14 +414,14 @@ namespace RandomizerHost.ViewModels
             }
 
             // Flag UI as having created a ROM, enabling the "open folder" button
-            CanOpenContainingFolder = TopLevel.GetTopLevel(in_Window)?.Launcher != null;
+            CanOpenContainingFolder = TopLevel.GetTopLevel(in_View)?.Launcher != null;
         }
 
         [RelayCommand]
-        protected async Task ImportSettings(Window in_Window)
+        protected async Task ImportSettings(Visual in_View)
         {
             string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var storage = in_Window.StorageProvider;
+            var storage = TopLevel.GetTopLevel(in_View)!.StorageProvider;
             var initDir = exeDir != null
                 ? await storage.TryGetFolderFromPathAsync(exeDir)
                 : null;
@@ -447,10 +449,10 @@ namespace RandomizerHost.ViewModels
         }
 
         [RelayCommand]
-        protected async Task ExportSettings(Window in_Window)
+        protected async Task ExportSettings(Visual in_View)
         {
             string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var storage = in_Window.StorageProvider;
+            var storage = TopLevel.GetTopLevel(in_View)!.StorageProvider;
             var initDir = exeDir != null
                 ? await storage.TryGetFolderFromPathAsync(exeDir)
                 : null;
