@@ -1,0 +1,16 @@
+name: Release Dev Build
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - develop
+      - ava-update4
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-core.yml
+    with:
+      target-folder: dev
+      is-official: false

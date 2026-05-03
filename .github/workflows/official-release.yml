@@ -1,0 +1,15 @@
+name: Release Official Build
+
+on:
+  push:
+    tags:
+      - '*'
+      - '!*dev*'
+      
+jobs:
+  build:
+    uses: ./.github/workflows/build-core.yml
+    with:
+      target-folder: .
+      is-official: true
+        

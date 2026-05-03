@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:vm="using:RandomizerHost.ViewModels"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	x:Class="RandomizerHost.Views.ProgressDialog"
+	x:DataType="vm:ProgressDialogViewModel"
+>
+	<Panel
+		Background="#80000000"
+	>
+		<Border Width="400"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Background="{DynamicResource SystemRegionBrush}"
+			BorderBrush="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+			BorderThickness="1"
+			CornerRadius="3"
+			BoxShadow="0 4 20 0 #40000000"
+		>
+			<StackPanel
+				VerticalAlignment="Top"
+				Margin="12"
+			>
+				<!--<TextBlock
+					HorizontalAlignment="Center"
+					Padding="0, 10"
+					FontSize="24"
+					MaxLines="1"
+				>
+					Creating ROM...
+				</TextBlock>-->
+				<TextBlock
+					HorizontalAlignment="Stretch"
+					Padding="0, 6"
+					MaxLines="1"
+					Text="{Binding MessageLines[0]}"
+				/>
+				<TextBlock
+					HorizontalAlignment="Stretch"
+					Padding="0, 6"
+					MaxLines="1"
+					Text="{Binding MessageLines[1]}"
+				/>
+				<TextBlock
+					HorizontalAlignment="Stretch"
+					Padding="0, 6"
+					MaxLines="1"
+					Text="{Binding MessageLines[2]}"
+				/>
+				<Button
+					Name="CancelButton"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Bottom"
+					Margin="0, 20, 0, 0"
+					Padding="6"
+				>
+						Cancel
+					</Button>
+				</StackPanel>
+		</Border>
+	</Panel>
+</UserControl>

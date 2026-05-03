@@ -24,7 +24,7 @@ namespace MM2Randomizer.Utilities
             bool canBeNull = true,
             ISeed? seed = null,
             Patch? patch = null,
-            string? outFileName = null,
+            byte[]? rom = null,
             ResourceTree? resTree = null,
             bool? rebasePatch = null)
         {
@@ -32,8 +32,8 @@ namespace MM2Randomizer.Utilities
                 seed = context.Seed;
             if (patch is null)
                 patch = context.Patch;
-            if (outFileName is null)
-                outFileName = RandomizationContext.TEMPORARY_FILE_NAME;
+            if (rom is null)
+                rom = context.Rom;
             if (resTree is null)
                 resTree = context.ResourceTree;
 
@@ -43,7 +43,7 @@ namespace MM2Randomizer.Utilities
                 patch,
                 basePath,
                 canBeNull,
-                outFileName,
+                rom,
                 rebasePatch);
         }
 
@@ -53,7 +53,7 @@ namespace MM2Randomizer.Utilities
             Patch patch,
             string basePath,
             bool canBeNull,
-            string outFileName,
+            byte[] rom,
             bool? rebasePatch = null)
         {
             var relRoot = resTree.Find(basePath);
@@ -69,7 +69,7 @@ namespace MM2Randomizer.Utilities
                     continue;
 
                 var ips = resTree.LoadResource(fileNode);
-                patch.ApplyIPSPatch(outFileName, ips, rebasePatch);
+                patch.ApplyIPSPatch(rom, ips, rebasePatch);
             }
 
             return selDirNodes;
@@ -85,18 +85,11 @@ namespace MM2Randomizer.Utilities
             // Draw version header and value onto the title screen
             //
 
-            Byte[] versionHeader = "VER. ".AsIntroString();
-            p.Add(0x037402, versionHeader, "Title Screen Version Header");
+            string versionString = $"VER. {RandomMM2.AssemblyVersion}";
+            if (GitInfo.IsDirty || !GitInfo.IsOfficialBuild)
+                versionString += " X";
 
-            System.Reflection.Assembly assembly = typeof(RandomMM2).Assembly;
-            Version version = assembly.GetName().Version ?? throw new NullReferenceException(@"Assembly version cannot be null");
-            String stringVersion = version.ToString();
-
-            for (Int32 i = 0; i < stringVersion.Length; i++)
-            {
-                Byte value = stringVersion[i].AsIntroCharacter();
-                p.Add(0x037407 + i, value, "Title Screen Version Value");
-            }
+            p.Add(0x037402, versionString.AsIntroString(), "Title Screen Version Header");
 
 
             //
@@ -300,7 +293,7 @@ namespace MM2Randomizer.Utilities
         public static void SetNewMegaManSprite(
             ResourceTree resTree,
             Patch p, 
-            String tempFileName, 
+            byte[] rom,
             PlayerSpriteOption sprite)
         {
 #if DEBUG
@@ -309,9 +302,9 @@ namespace MM2Randomizer.Utilities
                 LoadMegaManSpriteIps(resTree, spriteValue);
 #endif
 
-            var ips = LoadMegaManSpriteIps(resTree, sprite);
+            var ips = LoadMegaManSpriteIps(resTree, sprite)!;
             if (ips is not null)
-                p.ApplyIPSPatch(tempFileName, ips);
+                p.ApplyIPSPatch(rom, ips);
         }
 
         /// <summary>
@@ -348,7 +341,7 @@ namespace MM2Randomizer.Utilities
         /// Applies the IPS patch corresponding to the specified enum value. Throws FileNotFoundException if the specified patch cannot be found (should never happen).
         /// </summary>
         /// <param name="p">The patcher.</param>
-        /// <param name="tempFileName">The filename to apply the patch to.</param>
+        /// <param name="rom">The ROM to apply the patch to.</param>
         /// <param name="basePath">The base path of which all options are descendants.</param>
         /// <param name="fallbackPrefix">If a resource of the form $"{basePath}.{value.ToString()}.ips" cannot be found, try $"{basePath}.{fallbackPrefix}{value.ToString()}.ips".</param>
         /// <param name="defaultValue">The value of TEnum which corresponds to no patch being applied.</param>
@@ -356,7 +349,7 @@ namespace MM2Randomizer.Utilities
         private static void ApplyEnumBasedIps<TEnum>(
             ResourceTree resTree,
             Patch p,
-            String tempFileName,
+            byte[] rom,
             string basePath,
             string? fallbackPrefix,
             TEnum? defaultValue,
@@ -380,7 +373,7 @@ namespace MM2Randomizer.Utilities
 
             var ips = LoadEnumBasedIps(
                 resTree, basePath, fallbackPrefix, value);
-            p.ApplyIPSPatch(tempFileName, ips, rebasePatch);
+            p.ApplyIPSPatch(rom, ips, rebasePatch);
         }
 
         /// <summary>
@@ -391,12 +384,12 @@ namespace MM2Randomizer.Utilities
         public static void SetNewCannonShot(
             ResourceTree resTree, 
             Patch p, 
-            String tempFileName, 
+            byte[] rom, 
             CannonShotOption cannonShot)
         {
             ApplyEnumBasedIps(resTree,
                 p,
-                tempFileName,
+                rom,
                 "SpritePatches.CannonShot",
                 "CannonShot_",
                 CannonShotOption.PlasmaCannon,
@@ -412,12 +405,12 @@ namespace MM2Randomizer.Utilities
         public static void SetNewHudElement(
             ResourceTree resTree,
             Patch p,
-            String tempFileName,
+            byte[] rom,
             HudElementOption hudElement)
         {
             ApplyEnumBasedIps(resTree,
                 p,
-                tempFileName,
+                rom,
                 "SpritePatches.HudElements",
                 "HudElements_",
                 HudElementOption.Default,
@@ -432,13 +425,13 @@ namespace MM2Randomizer.Utilities
         /// </summary>
         public static void SetNewFont(
             ResourceTree resTree,
-            Patch p, 
-            String tempFileName, 
+            Patch p,
+            byte[] rom,
             FontOption font)
         {
             ApplyEnumBasedIps(resTree,
                 p,
-                tempFileName,
+                rom,
                 "SpritePatches.Fonts",
                 "Font_",
                 FontOption.Default,

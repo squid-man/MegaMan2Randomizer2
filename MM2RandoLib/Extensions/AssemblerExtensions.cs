@@ -8,10 +8,9 @@ namespace MM2Randomizer.Extensions
 {
     public static class AssemblerExtensions
     {
-        public static byte[] ApplySynchronously(this Assembler asm, byte[] rom)
+        public static async Task<byte[]> ApplyAsync(this Assembler asm, byte[] rom)
         {
-            var task = Task.Run(async () => await asm.Apply(rom));
-            var res = task.Result;
+            var res = await asm.Apply(rom);
             Debug.Assert(res is not null);
 
             // TODO: Error handling for this should be improved at some point
