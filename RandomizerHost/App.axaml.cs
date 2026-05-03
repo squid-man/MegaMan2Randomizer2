@@ -31,7 +31,7 @@ namespace RandomizerHost
 
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(
+                    DataContext = new MainViewModel(
                         settings, data => SaveSettings(cfgPath, data)),
                 };
             }

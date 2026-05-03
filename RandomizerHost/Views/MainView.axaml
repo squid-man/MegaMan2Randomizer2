@@ -1,0 +1,522 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:RandomizerHost.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:RandomizerHost.Converters"
+    xmlns:opts="clr-namespace:MM2RandoLib.Settings.Options;assembly=MM2RandoLib"
+    xmlns:ctls="using:RandomizerHost.Controls"
+    mc:Ignorable="d"
+    d:DesignWidth="680"
+    d:DesignHeight="730"
+    Width="680"
+    Height="730"
+    x:Class="RandomizerHost.Views.MainView"
+    x:DataType="vm:MainViewModel"
+    Name="View"
+    DragDrop.AllowDrop="True"
+    DragDrop.DragOver="OnDragOver"
+    DragDrop.Drop="OnDrop"
+>
+
+    <Design.DataContext>
+		<vm:MainViewModel/>
+    </Design.DataContext>
+    
+    <!-- Static Resources -->
+	<UserControl.Resources>
+        <converters:PlayerSpriteToImageConverter x:Key="PlayerSpriteToImageConverter"/>
+        <converters:FontToImageConverter x:Key="FontToImageConverter"/>
+        <converters:HudElementsToImageConverter x:Key="HudElementsToImageConverter"/>
+        <converters:CannonShotToImageConverter x:Key="CannonShotToImageConverter"/>
+        <converters:EnumValueToDescriptionConverter x:Key="EnumValueToDescriptionConverter"/>
+      
+        <DataTemplate 
+            x:Key="PrefixedDescriptionEnumComboBox"
+            DataType="{x:Type opts:IEnumOption}"
+        >
+            <ctls:StandardEnumOption 
+                Option="{Binding}"
+                ItemPrefix="{Binding Info.Description, StringFormat='{}{0}: '}"
+            />
+        </DataTemplate>
+        <DataTemplate 
+            x:Key="SuffixedDescriptionEnumComboBox"
+            DataType="{x:Type opts:IEnumOption}"
+        >
+            <ctls:StandardEnumOption 
+                Option="{Binding}"
+                ItemSuffix="{Binding Info.Description, StringFormat=' {0}'}"
+            />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <!-- Data Templates -->
+	<UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type opts:BoolOption}">
+            <ctls:StandardBoolOption Option="{Binding}"/>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+  
+    <!-- Main Body -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="95"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            TextAlignment="Left"
+            FontSize="9"
+            Text="Version"
+        />
+      
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            TextAlignment="Left"
+            Margin="36,0"
+            FontSize="9"
+            Text="{Binding Version}"
+        />
+   
+        <!-- The main header image for the host -->
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Stretch="None"
+            Source="/Assets/Header.png"
+        />
+
+        <!-- This grid holds the open file dialog button -->
+        <Grid
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+        >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="32"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Row 0 -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                TextAlignment="Center"
+                FontSize="9"
+                Text="To get started, drag a Mega Man 2 ROM onto this window, or click the &quot;. . .&quot; button to browse."
+                IsVisible="{Binding !IsRomSourcePathValid}"
+            />
+
+            <!-- Row 1 -->
+            <Border
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Stretch"
+                BorderThickness="3"
+            >
+                <DockPanel>
+                    <Button
+                        Name="Button_OpenRomFile"
+                        Width="35"
+						Height="30"
+                        Margin="4,0"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+                        Command="{Binding OpenRomFileCommand}"
+                        CommandParameter="{Binding #View}"
+                    >
+                        ...
+                    </Button>
+
+                    <TextBox
+                        Name="TextBox_RomFile"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Width="570"
+                        Margin="0,0,0,0"
+                        Text="{Binding AppConfigurationSettings.RomSourcePath}"
+                        IsReadOnly="True"
+                    />
+                
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        MinWidth="35"
+                        Margin="4,4"
+                        FontSize="22"
+                        Text="{Binding IsRomValidText}"
+                        ToolTip.Tip="{Binding RomStatusTooltip}"
+                    />
+                </DockPanel>
+            </Border>
+
+            <!-- Row 2 -->
+            <Border
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Stretch"
+                BorderThickness="3"
+            >
+                <!--
+                    NOTES:
+                        Avalonia issue #1625: Do not use TextAlignment="Center"
+                        See: https://github.com/AvaloniaUI/Avalonia/issues/1625
+                <TextBlock
+                    FontWeight="Bold"
+                    TextAlignment="Center"
+                    Text="{Binding RandoSettings.HashValidationMessage}"
+                -->
+
+                <TextBlock
+                    FontWeight="Bold"
+                    Text="{Binding HashValidationMessage}"
+                />
+            </Border>
+        </Grid>
+        <ToggleSwitch
+            Name="ToggleSwitch_EnableAppUiDarkTheme"
+            IsChecked="{Binding AppConfigurationSettings.EnableAppUiDarkTheme}"
+            Command="{Binding SetTheme}"
+            OffContent="🔅"
+            OnContent="🌑"
+        />
+        <TextBlock
+                Text="Set Theme"
+                DockPanel.Dock="Left"
+                VerticalAlignment="Center"
+                Margin="75,0,0,0"
+        />
+        <!-- Seed textbox -->
+        <DockPanel
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            IsEnabled="{Binding IsRomSourcePathValid}"
+        >
+            <TextBlock
+                Text="Seed:"
+                DockPanel.Dock="Left"
+                VerticalAlignment="Center"
+            />
+
+            <TextBox
+                Name="TextBox_Seed"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="0,3,3,3"
+                Text="{Binding Path=AppConfigurationSettings.SeedString}"
+            />
+        </DockPanel>
+        <DockPanel
+           Grid.Row="2"
+           Grid.Column="1"
+           Margin="16,3,12,3"
+           VerticalAlignment="Center" 
+        >
+            <TextBlock 
+              DockPanel.Dock="Left"
+                VerticalAlignment="Center" Text="Flag Preset:  "
+            />
+            <ComboBox
+                HorizontalAlignment="Stretch"
+                ItemsSource="{Binding SettingsPresets.Presets}"
+                SelectedIndex="{Binding AppConfigurationSettings.SettingsPresetIndex}"
+            />
+        </DockPanel>
+    
+        <!-- Buttons -->
+        <StackPanel
+            Grid.Row="3"
+            Margin="10"
+            Orientation="Vertical"
+        >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button
+                    Name="Button_CreateFromGivenSeed"
+                    Height="30"
+                    Width="150"
+                    Margin="2"
+                    Command="{Binding CreateFromGivenSeedCommand}"
+                    CommandParameter="{Binding #View}"
+                    IsEnabled="{Binding IsSeedValid}"
+                >
+                    Create From Given
+                </Button>
+                <Button
+                    Name="Button_GenerateRandomSeedMultiple"
+                    Height="30"
+                    Width="150"
+                    Margin="2,2,2,2"
+                    Command="{Binding CreateFromRandomSeedMultipleCommand}"
+                    CommandParameter="{Binding #View}"
+                    IsEnabled="{Binding IsRomValid}"
+                >
+                    Generate Seed(s)
+                </Button>
+            </StackPanel>
+
+            <TextBlock
+                Text="{Binding RandomSeedCount, StringFormat='Number of random seeds to generate: {0}'}"
+                Margin="2,2,2,8"
+                FontSize="11"
+            />
+          
+            <Slider 
+                Minimum="1" 
+                Maximum="25"
+                Value="{Binding RandomSeedCount}"
+                TickFrequency="1"
+                IsSnapToTickEnabled="True"
+            />
+        </StackPanel>
+
+        <!-- Export and Import Buttons -->
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="12"
+            Orientation="Vertical"
+        >
+          <Button
+                Name="Button_OpenContainingFolder"
+                Height="30"
+                Width="300"
+                Margin="2"
+                Command="{Binding OpenContainingFolderCommand}"
+                CommandParameter="{Binding #View}"
+                IsEnabled="{Binding CanOpenContainingFolder}"
+            >
+                Open Containing Folder
+            </Button>
+          
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button
+                    Name="Button_ImportSettings"
+                    Height="30"
+                    Width="150"
+                    Margin="2"
+                    Command="{Binding ImportSettingsCommand}"
+                    CommandParameter="{Binding #View}"
+                >
+                    Import Settings
+                </Button>
+
+                <Button
+                    Name="Button_ExportSettings"
+                    Height="30"
+                    Width="150"
+                    Margin="2"
+                    Command="{Binding ExportSettingsCommand}"
+                    CommandParameter="{Binding #View}"
+                >
+                    Export Settings
+                </Button>
+            </StackPanel>
+
+            <CheckBox
+                Name="CheckBox_CreateLogFile"
+                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+                IsEnabled="{Binding !IsTournament}">
+                Create Log File
+            </CheckBox>
+          
+            <TextBlock
+                Text="🎲 = Randomize Option ☑️ = Option Enabled "
+                DockPanel.Dock="Left"
+                VerticalAlignment="Bottom"
+            />
+        </StackPanel>
+        
+        <!--Settings Tabs-->
+        <TabControl
+            Grid.Row="4"
+            Grid.ColumnSpan="2"
+            Margin="-1,25,-1,-1"
+        >
+            <!--
+                Gameplay
+            -->
+            <TabItem Header="Gameplay">
+                <StackPanel Orientation="Horizontal">
+                    <!--
+                        CheckBoxes are placed inside Grids, so we can have
+                        MouseOver behavior while CheckBoxes are disabled
+                    -->
+                    <Grid Name="Grid_CoreModules">
+                        <CheckBox
+                            Content="Randomizer Core"
+                            IsVisible="false"
+                            IsEnabled="False"
+                            IsChecked="{Binding IsCoreModulesChecked, Mode=OneWay}"
+                        />
+                    </Grid>
+                    <ItemsControl ItemsSource="{Binding Settings.GameplayOptions.AutoCreateOptions}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel
+                                    Orientation="Vertical"
+                                    Margin="0,0,0,16"
+                                />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </TabItem>
+
+
+            <!--
+                Sprites
+            -->
+            <TabItem Header="Sprites">
+                <ItemsControl ItemsSource="{Binding Settings.SpriteOptions.AutoCreateOptions}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel
+                                Orientation="Vertical"
+                                Margin="0,0,0,16"
+                            />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </TabItem>
+
+
+            <!--
+                Refill Speeds
+            -->
+            <TabItem Header="Refill Speeds" IsEnabled="True">
+                <ItemsControl 
+                    Width="450"
+                    HorizontalAlignment="Left"
+                    ItemsSource="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
+                    ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
+                >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel
+                                Orientation="Vertical"
+                                Margin="0,0,0,16"
+                            />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </TabItem>
+
+
+            <!--
+                Quality of Life Patches
+            -->
+            <TabItem Header="QoL Patches">
+                <ItemsControl
+                  ItemsSource="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
+                  ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
+                >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel
+                                Orientation="Vertical"
+                                Margin="0,0,0,16"
+                            />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </TabItem>
+
+
+            <!--
+                Cosmetics
+            -->
+            <TabItem Header="Cosmetics">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <ItemsControl
+                            ItemsSource="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
+                            ItemTemplate="{DynamicResource PrefixedDescriptionEnumComboBox}"
+                        >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel
+                                        Orientation="Vertical"
+                                        Margin="0,0,0,16"
+                                    />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <!-- Custom Sprite / Cosmetic Previews -->
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                        <WrapPanel Orientation="Horizontal" ItemWidth="125" ItemHeight="125" HorizontalAlignment="Left">
+                            <StackPanel Margin="4" Width="100" HorizontalAlignment="Center">
+                                <Image
+                                    Width="100"
+                                    Height="100"
+                                    Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
+                                />
+                                <TextBlock Text="Character" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
+                          
+                            <StackPanel Margin="4" Width="84" HorizontalAlignment="Center">
+                                <Image
+                                    Width="84"
+                                    Height="84"
+                                    Source="{Binding Settings.CosmeticOptions.CannonShot.BaseValue, Converter={StaticResource CannonShotToImageConverter}}"
+                                />
+                                <TextBlock Text="Cannon Shot" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
+                          
+                            <StackPanel Margin="4" Width="100" HorizontalAlignment="Center">
+                                <Image
+                                    Width="84"
+                                    Height="84"
+                                    Source="{Binding Settings.CosmeticOptions.HudElement.BaseValue, Converter={StaticResource HudElementsToImageConverter}}"
+                                />
+                                <TextBlock Text="HUD" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="4" Width="168" HorizontalAlignment="Center">
+                                <Image
+                                    Width="84"
+                                    Height="84"
+                                    Source="{Binding Settings.CosmeticOptions.Font.BaseValue, Converter={StaticResource FontToImageConverter}}"
+                                />
+                                <TextBlock Text="Font" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            
+
+            <!-- Make invisible for now -->
+            <TabItem Header="Experimental" IsEnabled="True" IsVisible="False">
+            </TabItem>
+        </TabControl>
+    </Grid>
+    
+</UserControl>
