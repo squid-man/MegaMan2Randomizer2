@@ -84,19 +84,13 @@ namespace MM2Randomizer.Patcher
         /// <summary>
         /// TODO
         /// </summary>
-        /// <param name="filename"></param>
-        public void ApplyRandoPatch(String filename)
+        /// <param name="rom"></param>
+        public void ApplyRandoPatch(byte[] rom)
         {
-            using (FileStream stream = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite))
-            {
-                //GetStringSortedByAddress();
+            //GetStringSortedByAddress();
 
-                foreach (KeyValuePair<Int32, ChangeByteRecord> kvp in Bytes)
-                {
-                    stream.Position = kvp.Key;
-                    stream.WriteByte(kvp.Value.Value);
-                }
-            }
+            foreach (var rec in Bytes.Values)
+                rom[rec.Address] = rec.Value;
         }
 
 
@@ -135,54 +129,76 @@ namespace MM2Randomizer.Patcher
         /// <summary>
         /// TODO
         /// </summary>
-        /// <param name="romname"></param>
-        /// <param name="patchBytes"></param>
+        /// <param name="in_FileName"></param>
+        /// <param name="in_IpsPatch"></param>
         /// <param name="in_RebasePatch">If true or false, whether to relocate writes to the vanilla common bank (0x3c010+) to the expanded common bank (0x7c010+). If null, patches will be rebased unless they contain patches above the vanilla ROM size (0x40010+).</param>
         public void ApplyIPSPatch(String in_FileName, Byte[] in_IpsPatch, Boolean? in_RebasePatch = null)
         {
-            var ipsSegs = EnumIpsSegments(in_IpsPatch).ToList();
-            Boolean rebasePatch = in_RebasePatch 
-                ?? !ipsSegs.Any(s => s.TgtOffs + s.Size > 0x40010);
-
             using (FileStream romStream = new FileStream(
                 in_FileName,
                 FileMode.Open,
                 FileAccess.ReadWrite,
                 FileShare.ReadWrite))
             {
-                Int64 romLength = romStream.Length;
-                foreach (var seg in ipsSegs)
+                ApplyIPSPatch(romStream, in_IpsPatch, in_RebasePatch);
+            }
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="in_Rom"></param>
+        /// <param name="in_IpsPatch"></param>
+        /// <param name="in_RebasePatch">If true or false, whether to relocate writes to the vanilla common bank (0x3c010+) to the expanded common bank (0x7c010+). If null, patches will be rebased unless they contain patches above the vanilla ROM size (0x40010+).</param>
+        public void ApplyIPSPatch(Byte[] in_Rom, Byte[] in_IpsPatch, Boolean? in_RebasePatch = null)
+        {
+            using (MemoryStream stream = new(in_Rom))
+                ApplyIPSPatch(stream, in_IpsPatch, in_RebasePatch);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="in_RomStream"></param>
+        /// <param name="in_IpsPatch"></param>
+        /// <param name="in_RebasePatch">If true or false, whether to relocate writes to the vanilla common bank (0x3c010+) to the expanded common bank (0x7c010+). If null, patches will be rebased unless they contain patches above the vanilla ROM size (0x40010+).</param>
+        public void ApplyIPSPatch(Stream in_RomStream, Byte[] in_IpsPatch, Boolean? in_RebasePatch = null)
+        {
+            var ipsSegs = EnumIpsSegments(in_IpsPatch).ToList();
+            Boolean rebasePatch = in_RebasePatch 
+                ?? !ipsSegs.Any(s => s.TgtOffs + s.Size > 0x40010);
+            Int64 romLength = in_RomStream.Length;
+            foreach (var seg in ipsSegs)
+            {
+                Int32 offset = seg.TgtOffs,
+                    recordSize = seg.Size;
+                if (rebasePatch)
                 {
-                    Int32 offset = seg.TgtOffs,
-                        recordSize = seg.Size;
-                    if (rebasePatch)
-                    {
-                        if (offset + recordSize > 0x40010)
-                            throw new ArgumentException(@"The IPS patch contains unrebasable changes");
+                    if (offset + recordSize > 0x40010)
+                        throw new ArgumentException(@"The IPS patch contains unrebasable changes");
 
-                        if (offset >= 0x3c010)
-                            offset += 0x40000;
-                        else if (offset + recordSize > 0x3c010)
-                            // If any such patches appear this will need to be implemented
-                            throw new NotImplementedException(@"Patches with changes that cross the bank $e/f boundary are not supported");
-                    }
+                    if (offset >= 0x3c010)
+                        offset += 0x40000;
+                    else if (offset + recordSize > 0x3c010)
+                        // If any such patches appear this will need to be implemented
+                        throw new NotImplementedException(@"Patches with changes that cross the bank $e/f boundary are not supported");
+                }
 
-                    romStream.Seek(offset, SeekOrigin.Begin);
+                in_RomStream.Seek(offset, SeekOrigin.Begin);
 
-                    // IPS Record
-                    if (!seg.IsRle)
-                    {
-                        romStream.Write(in_IpsPatch, seg.SrcOffs, recordSize);
-                    }
-                    // IPS RLE Record
-                    else
-                    {
-                        // Initialize an array of bytes to the specified value
-                        Byte[] repeatBuffer = new Byte[recordSize];
-                        Array.Fill(repeatBuffer, in_IpsPatch[seg.SrcOffs]);
+                // IPS Record
+                if (!seg.IsRle)
+                {
+                    in_RomStream.Write(in_IpsPatch, seg.SrcOffs, recordSize);
+                }
+                // IPS RLE Record
+                else
+                {
+                    // Initialize an array of bytes to the specified value
+                    Byte[] repeatBuffer = new Byte[recordSize];
+                    Array.Fill(repeatBuffer, in_IpsPatch[seg.SrcOffs]);
 
-                        romStream.Write(repeatBuffer);
-                    }
+                    in_RomStream.Write(repeatBuffer);
                 }
             }
         }

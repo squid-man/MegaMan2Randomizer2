@@ -31,7 +31,7 @@ namespace MM2Randomizer.Settings
 
             if (in_BgFill)
             {
-                ISeed seed = SeedFactory.Create(GeneratorType.MT19937, "");
+                ISeed seed = new PcgSeed("");
                 for (Int32 i = 0; i < length; i++)
                     this.mBitArray[i] = seed.NextBoolean();
             }

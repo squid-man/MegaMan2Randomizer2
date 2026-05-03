@@ -11,6 +11,17 @@ namespace MM2Randomizer;
 
 public static class AssemblyExtensions
 {
+    public static string? GetShortName(this Assembly asm)
+        => asm.GetName().Name;
+
+    public static Version? GetVersion(this Assembly asm)
+        => asm.GetName().Version;
+
+    public static string GetVersionString(this Assembly asm)
+        => asm.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
+            ?? asm.GetVersion()?.ToString()
+            ?? "0.0.0.0";
+
     /// <summary>
     /// Load an embedded binary resource.
     /// </summary>
@@ -88,13 +99,13 @@ public static class AssemblyExtensions
         if (string.IsNullOrEmpty(prefix))
         {
             return asmPrefix
-                ? prefix = asm.GetName().Name + dot
+                ? prefix = asm.GetShortName() + dot
                 : null;
         }
         else if (!asmPrefix)
             return prefix + dot;
         else
-            return $"{asm.GetName().Name}.{prefix}{dot}";
+            return $"{asm.GetShortName()}.{prefix}{dot}";
 
     }
 
