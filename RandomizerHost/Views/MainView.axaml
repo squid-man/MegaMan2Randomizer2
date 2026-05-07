@@ -18,7 +18,6 @@
     DragDrop.DragEnter="OnDragOver"
     DragDrop.DragOver="OnDragOver"
     DragDrop.Drop="OnDrop"
-    Background="Red"
 >
 
     <Design.DataContext>
