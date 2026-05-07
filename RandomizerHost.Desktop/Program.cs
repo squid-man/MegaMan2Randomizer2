@@ -1,4 +1,7 @@
 ﻿using Avalonia;
+using Microsoft.Extensions.DependencyInjection;
+using MM2RandoLib;
+using MM2RandoLib.Utilities;
 using ReactiveUI.Avalonia;
 using System;
 
@@ -22,5 +25,13 @@ sealed class Program
 #endif
             .WithInterFont()
             .LogToTrace()
-            .UseReactiveUI(b => { });
+            .UseReactiveUI(b => { })
+            .AfterSetup(builder =>
+            {
+                var services = new ServiceCollection();
+                services.AddSingleton<IHostPlatformServices, DesktopPlatformServices>();
+
+                ((App)builder.Instance!).InitializeServices(
+                    services.BuildServiceProvider());
+            });
 }

@@ -15,16 +15,18 @@
     x:DataType="vm:MainViewModel"
     Name="View"
     DragDrop.AllowDrop="True"
+    DragDrop.DragEnter="OnDragOver"
     DragDrop.DragOver="OnDragOver"
     DragDrop.Drop="OnDrop"
+    Background="Red"
 >
 
     <Design.DataContext>
-		<vm:MainViewModel/>
+        <vm:MainViewModel/>
     </Design.DataContext>
     
     <!-- Static Resources -->
-	<UserControl.Resources>
+    <UserControl.Resources>
         <converters:PlayerSpriteToImageConverter x:Key="PlayerSpriteToImageConverter"/>
         <converters:FontToImageConverter x:Key="FontToImageConverter"/>
         <converters:HudElementsToImageConverter x:Key="HudElementsToImageConverter"/>
@@ -52,7 +54,7 @@
     </UserControl.Resources>
 
     <!-- Data Templates -->
-	<UserControl.DataTemplates>
+    <UserControl.DataTemplates>
         <DataTemplate DataType="{x:Type opts:BoolOption}">
             <ctls:StandardBoolOption Option="{Binding}"/>
         </DataTemplate>
@@ -138,10 +140,10 @@
                     <Button
                         Name="Button_OpenRomFile"
                         Width="35"
-						Height="30"
+                        Height="30"
                         Margin="4,0"
-						HorizontalContentAlignment="Center"
-						VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
                         Command="{Binding OpenRomFileCommand}"
                         CommandParameter="{Binding #View}"
                     >
@@ -154,7 +156,7 @@
                         VerticalAlignment="Stretch"
                         Width="570"
                         Margin="0,0,0,0"
-                        Text="{Binding AppConfigurationSettings.RomSourcePath}"
+                        Text="{Binding RomSourcePath}"
                         IsReadOnly="True"
                     />
                 

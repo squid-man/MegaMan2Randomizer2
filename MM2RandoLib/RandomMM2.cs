@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Reflection;
+using MM2RandoLib;
+using MM2RandoLib.Utilities;
 using MM2Randomizer.Random;
 using MM2Randomizer.Settings;
 
@@ -11,7 +13,11 @@ namespace MM2Randomizer
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static void RandomizerCreate(RandomizationSettings in_Settings, out RandomizationContext out_Context)
+        public static void RandomizerCreate(
+            RandomizationSettings in_Settings, 
+            IPlatformServices in_PlatformServices, 
+            byte[] in_Rom,
+            out RandomizationContext out_Context)
         {
             ISeed seed;
 
@@ -25,10 +31,10 @@ namespace MM2Randomizer
                 seed = SeedFactory.Create(GeneratorType.MT19937, in_Settings.SeedString);
             }
 
-            out_Context = new RandomizationContext(in_Settings, seed);
+            out_Context = new RandomizationContext(in_Settings, seed, in_PlatformServices, in_Rom);
             out_Context.Initialize();
         }
-    static public Version AssemblyVersion
+        static public Version AssemblyVersion
         {
             get
             {

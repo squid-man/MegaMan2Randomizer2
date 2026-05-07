@@ -153,7 +153,7 @@ namespace RandomizerHost.Settings
         public partial string SeedString { get; set; } = "";
 
         [Reactive]
-        public partial string RomSourcePath { get; set; } = "";
+        public partial string RomSourceBookmark { get; set; } = "";
 
         [Reactive]
         public partial bool EnableAppUiDarkTheme { get; set; } = true;
@@ -196,7 +196,7 @@ namespace RandomizerHost.Settings
             var settings = RandomizationSettings;
 
             settings.SeedString = defaultSeed ? null : SeedString;
-            settings.RomSourcePath = RomSourcePath;
+            settings.RomSourcePath = RomSourceBookmark;
             settings.CreateLogFile = CreateLogFile && !settings.IsTournament;
         }
     }
