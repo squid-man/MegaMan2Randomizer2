@@ -84,7 +84,9 @@ public class DesktopPlatformServices : IHostPlatformServices
     }
 
     public Assembler CreateAssembler(Js65Options? options, bool debugJavascript)
+#pragma warning disable CA1416 // Validate platform compatibility
         => new ClearScriptEngine(options, true, debugJavascript);
+#pragma warning restore CA1416 // Validate platform compatibility
 
     public IRomSaver CreateRomSaver(string? basePath)
         => new DesktopRomSaver(basePath);
