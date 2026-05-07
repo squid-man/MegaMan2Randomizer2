@@ -1,5 +1,8 @@
+using js65;
+using MM2RandoLib;
 using MM2Randomizer;
 using MM2Randomizer.Settings;
+using RandomizerHost.Desktop;
 using System;
 using System.IO;
 
@@ -31,12 +34,10 @@ namespace MM2RandoLib.Tests
                 settings.QualityOfLifeOptions.EnableBirdEggFix.BaseValue = true;
                 settings.QualityOfLifeOptions.DisableFlashingEffects.BaseValue = true;
 
-                File.WriteAllBytes(settings.RomSourcePath, new byte[0x80010]);
-
                 RandomizationContext ctx;
-                RandomMM2.RandomizerCreate(settings, out ctx);
+                RandomMM2.RandomizerCreate(settings, new DesktopPlatformServices(), new byte[0x80010], out ctx);
 
-        return;
+                return;
             }
             finally
             {

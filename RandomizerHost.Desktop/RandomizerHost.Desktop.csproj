@@ -16,10 +16,13 @@
     <PackageReference Include="Avalonia" Version="12.0.2" />
     <PackageReference Include="Avalonia.Desktop" Version="12.0.2" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.2" />
+    <PackageReference Include="js65.clearscript" Version="1.0.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
     <PackageReference Include="ReactiveUI.Avalonia" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DesktopPlatformServices\DesktopPlatformServices.csproj" />
     <ProjectReference Include="..\RandomizerHost\RandomizerHost.csproj" />
   </ItemGroup>
 </Project>

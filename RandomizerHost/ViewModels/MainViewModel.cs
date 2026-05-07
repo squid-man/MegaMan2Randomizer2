@@ -5,7 +5,9 @@ using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.Input;
+using MM2RandoLib;
 using MM2RandoLib.Settings.Options;
+using MM2RandoLib.Utilities;
 using MM2Randomizer;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Settings;
@@ -35,12 +37,14 @@ namespace RandomizerHost.ViewModels
         // Constructor
         //
 
-        public MainViewModel(AppConfigurationSettings settings, Action<byte[]> saveSettings)
+        public MainViewModel(IHostPlatformServices libPlatformServices)
         {
-            AppConfigurationSettings = settings;
-            Settings = settings.RandomizationSettings;
+            // Need to defer loading settings until an async context
+
+            PlatformServices = libPlatformServices;
+            AppConfigurationSettings = new();
+            Settings = AppConfigurationSettings.RandomizationSettings;
             SettingsPresets = new(Settings);
-            SaveSettings = saveSettings;
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             string verStr = version?.ToString() ?? "";
@@ -66,34 +70,61 @@ namespace RandomizerHost.ViewModels
             var cfgObs = this.WhenAnyValue(vm => vm.AppConfigurationSettings);
             cfgObs.Subscribe(OnAppConfigurationSettingsChanged);
             cfgObs.SwitchSubscribe(
-                c => c.WhenAnyValue(c => c.RomSourcePath),
-                OnRomSourcePathChanged);
-            cfgObs.SwitchSubscribe(
                 c => c.WhenAnyValue(c => c.SettingsPresetIndex),
                 OnSettingsPresetIndexChanged);
             cfgObs.SwitchSelect(c => c.WhenAnyValue(c => c.SeedString))
                 .Select(s => IsValidSeed(s))
                 .ToProperty(this, vm => vm.IsSeedValid, out _isSeedValid);
+        }
 
-            // If the application configuration settings does not have a saved value,
-            // try to load the Mega Man 2 rom from the executable path
-            if (true == String.IsNullOrEmpty(this.AppConfigurationSettings.RomSourcePath))
+        public async Task OnViewCreated(Visual view)
+        {
+            // First time there is a storage provider that can be used
+            var top = TopLevel.GetTopLevel(view);
+            var stg = top!.StorageProvider;
+
+            var settingsData = await PlatformServices.LoadSettingsData();
+            if (settingsData != null)
             {
-                string? curDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                Debug.Assert(curDir is not null);
+                AppConfigurationSettings = AppConfigurationSettings.Deserialize(settingsData);
+                Settings = AppConfigurationSettings.RandomizationSettings;
+            }
 
-                String[] tryNames = new String[]
+            // Check for a cached ROM in the browser
+            string? romPath;
+            byte[]? romData;
+            if (PlatformServices.TryLoadCachedRom(
+                out romPath, out romData))
+            {
+                await SetRomFile(
+                    romPath,
+                    () => Task.FromResult((Stream)new MemoryStream(romData)),
+                    false);
+
+                if (mRom != null)
+                    // I bet I'm going to regret this
+                    AppConfigurationSettings.RomSourceBookmark = "";
+            }
+
+            // See if there's a bookmark in settings
+            if (mRom == null)
+            {
+                // If the application configuration settings does not have a saved value,
+                // try to load the Mega Man 2 rom from the executable path
+                if (AppConfigurationSettings.RomSourceBookmark == "")
                 {
-                    "MM2.nes",
-                    "MegaMan2.nes",
-                    "Mega Man 2.nes",
-                    "Megaman II (U) [!].nes",
-                    "Mega Man 2 (USA).nes",
-                };
-                foreach (var path in tryNames
-                    .Select(name => Path.Combine(curDir, name))
-                    .Where(path => File.Exists(path)))
-                    AppConfigurationSettings.RomSourcePath = path;
+                    romPath = await PlatformServices.GetInitialRomPath();
+                    if (romPath != null)
+                    {
+                        var stgFile = await stg.TryGetFileFromPathAsync(romPath);
+                        if (stgFile != null && stgFile.CanBookmark)
+                            AppConfigurationSettings.RomSourceBookmark
+                                = await stgFile.SaveBookmarkAsync() ?? "";
+                    }
+                }
+
+                await SetRomFile(
+                    stg, AppConfigurationSettings.RomSourceBookmark, false);
             }
         }
 
@@ -128,54 +159,84 @@ namespace RandomizerHost.ViewModels
                 return;
 
             var optsData = AppConfigurationSettings.Serialize();
-            Trace.WriteLine(Encoding.UTF8.GetString(optsData));
+            //Trace.WriteLine(Encoding.UTF8.GetString(optsData));
 
-            SaveSettings(optsData);
+            PlatformServices.SaveSettingsData(optsData);
         }
 
-        private void OnRomSourcePathChanged(string path)
+        private async Task SetRomFile(IStorageProvider stg, string? bmString, bool forceClear)
         {
-            if (true == String.IsNullOrWhiteSpace(path))
-            {
-                IsRomSourcePathValid = false;
-                IsRomValid = false;
-                IsRomValidText = "";
-                RomStatusTooltip = "";
-                HashValidationMessage = String.Empty;
+            IStorageBookmarkFile? file = null;
+            if (!string.IsNullOrEmpty(bmString))
+                file = await stg.OpenFileBookmarkAsync(bmString);
 
-                return;
+            await SetRomFile(file, forceClear);
+        }
+
+        private async Task SetRomFile(IStorageFile? file, bool forceClear)
+        {
+            string path = "";
+            Func<Task<Stream>>? OpenStream = null;
+
+            if (file != null)
+            {
+                path = file.TryGetLocalPath() ?? file.Name;
+                OpenStream = () => file!.OpenReadAsync();
             }
 
+            await SetRomFile(path, OpenStream, forceClear);
+        }
+
+        private async Task SetRomFile(
+            string path, 
+            Func<Task<Stream>>? OpenStream, 
+            bool forceClear)
+        {
+            if (OpenStream == null && !forceClear)
+                return;
+
+            mRom = null;
+
+            IsRomSourcePathValid = false;
+            IsRomValid = false;
+            RomSourcePath = "Invalid File";
+            IsRomValidText = "";
+            RomStatusTooltip = "";
+            HashValidationMessage = String.Empty;
+
+            if (OpenStream == null)
+                return;
+
             IsRomValidText = "❌";
-            IsRomSourcePathValid = File.Exists(path);
 
-            if (true == IsRomSourcePathValid)
+            try
             {
-                // Ensure file size is small so that we can take the hash
-                FileInfo info = new FileInfo(path);
-                Int64 fileSize = info.Length;
-
-                if (fileSize > ONE_MEGABYTE)
+                using (Stream stream = await OpenStream())
                 {
-                    Double sizeInMegabytes = fileSize / BYTES_PER_MEGABYTE;
+                    RomSourcePath = path;
 
-                    HashValidationMessage = $"File is too large! {sizeInMegabytes:0.00} MB";
-                    IsRomValid = false;
-                }
-                else
-                {
-                    byte[]? file = File.ReadAllBytes(path),
-                        rom = file[0x10..(file.Length - 1)];
+                    var data = new byte[SOURCE_ROM_SIZE];
+                    var fileSize = await stream.ReadAtLeastAsync(data, data.Length, false);
 
+                    if (fileSize != SOURCE_ROM_SIZE
+                        || await stream.ReadAsync(data) != 0)
+                    {
+                        HashValidationMessage = "Incorrect ROM size";
+                        return;
+                    }
+
+                    var rom = data[ROM_HEADER_SIZE..];
+
+                    // Don't need to explicitly check file size because the hash will fail if it was only partially read
                     Dictionary<string, Func<byte[], byte[]>> romHashAlgs = new()
                     {
                         { "CRC", rom => Crc32.Hash(rom).Reverse().ToArray() },
-                        { "MD5", MD5.HashData},
+                        //{ "MD5", MD5.HashData},
                     };
                     Dictionary<string, Func<byte[], byte[]>> fileHashAlgs = new()
                     {
                         { "CRC", rom => Crc32.Hash(rom).Reverse().ToArray() },
-                        { "MD5", MD5.HashData },
+                        //{ "MD5", MD5.HashData },
                         { "SHA-1", SHA1.HashData },
                         { "SHA-256", SHA256.HashData },
                     };
@@ -185,7 +246,7 @@ namespace RandomizerHost.ViewModels
                     var romHashes = romHashAlgs.ToDictionary(nf => nf.Key,
                         nf => ByteToString(nf.Value(rom)));
                     var fileHashes = fileHashAlgs.ToDictionary(nf => nf.Key,
-                        nf => ByteToString(nf.Value(file)));
+                        nf => ByteToString(nf.Value(data)));
 
                     StringBuilder tipSb = new();
                     tipSb.AppendLine("ROM");
@@ -195,7 +256,7 @@ namespace RandomizerHost.ViewModels
                     tipSb.AppendLine();
                     tipSb.AppendLine("File");
                     foreach (var (name, fn) in fileHashAlgs)
-                        tipSb.AppendLine($"{name}: {ByteToString(fn(file))}");
+                        tipSb.AppendLine($"{name}: {ByteToString(fn(data))}");
 
                     // Check that the hash matches a supported hash
                     IsRomValid = EXPECTED_SHA256_HASH_LIST.Contains(
@@ -204,25 +265,29 @@ namespace RandomizerHost.ViewModels
 
                     if (IsRomValid)
                     {
+                        PlatformServices.SaveRomCache(path, data);
+
+                        mRom = data;
                         HashValidationMessage = "ROM checksum is valid.";
                         IsRomValidText = "✅";
+                        IsRomSourcePathValid = true;
                     }
                     else
-                    {
                         HashValidationMessage = "ROM checksum is INVALID.";
-                    }
                 }
             }
-            else
+            catch (Exception e)
             {
                 IsRomValid = false;
-                HashValidationMessage = "File does not exist.";
+                HashValidationMessage = e.ToString();
             }
         }
 
         //
         // Properties
         //
+
+        public IHostPlatformServices PlatformServices{ get; }
 
         [Reactive]
         public partial AppConfigurationSettings AppConfigurationSettings { get; private set; }
@@ -233,6 +298,9 @@ namespace RandomizerHost.ViewModels
         public SettingsPresets SettingsPresets { get; }
 
         public string Version { get; }
+
+        [Reactive]
+        public partial string RomSourcePath { get; private set; } = "";
 
         [Reactive]
         public partial bool IsRomSourcePathValid { get; private set; } = false;
@@ -303,8 +371,16 @@ namespace RandomizerHost.ViewModels
             if (stgFiles.Count != 1)
                 return;
 
-            //// TODO: Handle web cases
-            AppConfigurationSettings.RomSourcePath = stgFiles[0].TryGetLocalPath()!;
+            try
+            {
+                await SetRomFile(stgFiles[0], true);
+
+                AppConfigurationSettings.RomSourceBookmark = await stgFiles[0].SaveBookmarkAsync() ?? "";
+            }
+            catch
+            {
+                AppConfigurationSettings.RomSourceBookmark = "";
+            }
         }
 
         [RelayCommand]
@@ -318,8 +394,14 @@ namespace RandomizerHost.ViewModels
             {
                 try
                 {
-                    this.PerformRandomization(in_View, in_DefaultSeed: false);
-                    this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                    using (var romSaver = PlatformServices.CreateRomSaver(
+                        Path.GetDirectoryName(RomSourcePath)))
+                    {
+                        this.PerformRandomization(in_View, false, romSaver);
+                        this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+
+                        await romSaver.Commit();
+                    }
                 }
                 catch (Exception e)
                 {
@@ -332,19 +414,24 @@ namespace RandomizerHost.ViewModels
         [RelayCommand]
         protected async Task CreateFromRandomSeedMultiple(Visual in_View)
         {
-            for (int i = 1; i <= this.RandomSeedCount; i++)
+            try
             {
-                try
+                using (var romSaver = PlatformServices.CreateRomSaver(
+                    Path.GetDirectoryName(RomSourcePath)))
                 {
-                    this.PerformRandomization(in_View, in_DefaultSeed: true);
-                    this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
-                    HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
+                    for (int i = 1; i <= this.RandomSeedCount; i++)
+                    {
+                        this.PerformRandomization(in_View, true, romSaver);
+                        this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                        HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
+                    }
+
+                    await romSaver.Commit();
                 }
-                catch (Exception e)
-                {
-                    string s = e.ToString();
-                    await MessageBox.ShowAsync(in_View, e.ToString(), "Error", ButtonEnum.Ok);
-                }
+            }
+            catch (Exception e)
+            {
+                await MessageBox.ShowAsync(in_View, e.ToString(), "Error", ButtonEnum.Ok);
             }
         }
 
@@ -372,19 +459,19 @@ namespace RandomizerHost.ViewModels
             await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
         }
 
-        void PerformRandomization(Visual in_View, Boolean in_DefaultSeed)
+        void PerformRandomization(Visual in_View, Boolean in_DefaultSeed, IRomSaver in_RomSaver)
         {
             // Perform randomization based on settings, then generate the ROM.
             var settings = AppConfigurationSettings;
             var rndOpts = AppConfigurationSettings.RandomizationSettings;
 
             rndOpts.SeedString = (true == in_DefaultSeed) ? null : settings.SeedString;
-            rndOpts.RomSourcePath = settings.RomSourcePath;
+            rndOpts.RomSourcePath = RomSourcePath;
             rndOpts.CreateLogFile = settings.CreateLogFile && !rndOpts.IsTournament;
 
             //Settings.SettingsPreset = AppConfigurationSettings.SettingsPresetIndex != 0 ? SettingsPreset : null;
 
-            RandomMM2.RandomizerCreate(Settings, out RandomizationContext context);
+            RandomMM2.RandomizerCreate(Settings, PlatformServices, mRom!, out RandomizationContext context);
             HashValidationMessage = "Successfully copied and patched! File: " + context.FileName;
 
             // Get A-Z representation of seed
@@ -412,6 +499,9 @@ namespace RandomizerHost.ViewModels
                     sw.Write(context.Patch.GetStringSortedByAddress());
                 }
             }
+
+            in_RomSaver.AddFile(
+                Path.GetFileName(context.FileName), context.Rom);
 
             // Flag UI as having created a ROM, enabling the "open folder" button
             CanOpenContainingFolder = TopLevel.GetTopLevel(in_View)?.Launcher != null;
@@ -487,19 +577,15 @@ namespace RandomizerHost.ViewModels
                 : ThemeVariant.Light;
         }
 
-        public bool CanAcceptDrop(IDataTransfer transfer)
+        public async Task<bool> TryDrop(IStorageProvider storage, IDataTransfer transfer)
         {
-            var path = GetDragDropPath(transfer);
-            return path != null;
-        }
+            Console.WriteLine("TryDrop");
 
-        public bool TryDrop(IStorageProvider storage, IDataTransfer transfer)
-        {
-            var path = GetDragDropPath(transfer);
-            if (path == null)
+            var file = GetDragDropFile(transfer);
+            if (file == null)
                 return false;
 
-            AppConfigurationSettings.RomSourcePath = path;
+            await SetRomFile(file, true);
 
             return true;
         }
@@ -511,6 +597,8 @@ namespace RandomizerHost.ViewModels
 
         private const Double BYTES_PER_MEGABYTE = 1024d * 1024d;
         private const Int64 ONE_MEGABYTE = 1024 * 1024;
+        private const int ROM_HEADER_SIZE = 0x10;
+        private const int SOURCE_ROM_SIZE = 0x40000 + ROM_HEADER_SIZE;
 
         private readonly List<String> EXPECTED_SHA256_HASH_LIST = new List<String>()
         {
@@ -530,26 +618,33 @@ namespace RandomizerHost.ViewModels
             new("JSON Settings") { Patterns = ["*.json", "*.jsn"] }
         ];
 
-        private Action<byte[]> SaveSettings;
+        private byte[]? mRom = null;
 
         private RandomizationContext? mCurrentRandomizationContext = null;
 
-        private static string? GetDragDropPath(IDataTransfer transfer)
+        private static IStorageFile? GetDragDropFile(IDataTransfer transfer)
         {
+            Console.WriteLine("GetDragDropFile");
+
             // Only allow if the dragged data contains text or filenames
-            string? path = null;
-            if (transfer.Contains(DataFormat.Text))
-                path = transfer.TryGetText();
-            else if (transfer.Formats.Contains(DataFormat.File)
-                && (transfer.TryGetFiles() ?? Array.Empty<IStorageItem>()).Length == 1)
-                path = transfer.TryGetFile()!.TryGetLocalPath()!;
+            IStorageFile? file = null;
+            var files = transfer.TryGetFiles();
+            if (files != null)
+                Console.WriteLine(files.Length);
+            if (files != null && files.Length == 1)
+            {
+                file = files[0] as IStorageFile;
+                Console.WriteLine(file);
+            }
 
-            if (path != null
-                && path.ToLowerInvariant().EndsWith(".nes")
-                && File.Exists(path))
-                return path;
+            if (file != null)
+                Console.WriteLine(file.Name);
 
-            return null;
+            if (file == null
+                || !file.Name.ToLowerInvariant().EndsWith(".nes"))
+                return null;
+
+            return file;
         }
 
         private bool IsValidSeed(string seed)
