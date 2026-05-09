@@ -1393,8 +1393,7 @@
     <ItemGroup>
       <PackageReference Include="js65.interop" Version="1.0.7" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
-      <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
-      <PackageReference Include="Troschuetz.Random" Version="5.0.1" />
+      <PackageReference Include="System.IO.Hashing" Version="10.0.7" />
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Properties\BossSpriteResources.Designer.cs">
