@@ -27,8 +27,8 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet build RandomizerHost.Desktop/RandomizerHost.Desktop.csproj
-      - run: dotnet test tests\MM2RandoLib.Tests\MM2RandoLib.Tests.csproj --configuration Debug
-      - run: dotnet test tests\MM2RandoLib.Tests\MM2RandoLib.Tests.csproj --configuration Release
+      - run: dotnet test tests/MM2RandoLib.Tests/MM2RandoLib.Tests.csproj --configuration Debug
+      - run: dotnet test tests/MM2RandoLib.Tests/MM2RandoLib.Tests.csproj --configuration Release
       - run: dotnet publish --runtime osx-x64 --configuration Release
       - run: dotnet publish --runtime linux-x64 --configuration Release
       - run: dotnet publish --runtime win-x64 --configuration Release
