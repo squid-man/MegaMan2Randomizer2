@@ -19,21 +19,11 @@ namespace MM2Randomizer
             byte[] in_Rom,
             out RandomizationContext out_Context)
         {
-            ISeed seed;
-
-            // Initialize the seed
-            if (null == in_Settings.SeedString)
-            {
-                seed = SeedFactory.Create(GeneratorType.MT19937);
-            }
-            else
-            {
-                seed = SeedFactory.Create(GeneratorType.MT19937, in_Settings.SeedString);
-            }
-
+            ISeed seed = new PcgSeed(in_Settings.SeedString);
             out_Context = new RandomizationContext(in_Settings, seed, in_PlatformServices, in_Rom);
             out_Context.Initialize();
         }
+
         static public Version AssemblyVersion
         {
             get

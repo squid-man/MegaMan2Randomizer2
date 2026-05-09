@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.HashFunction;
-using System.Data.HashFunction.FNV;
 using System.IO;
+using System.IO.Hashing;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
@@ -57,57 +56,10 @@ namespace MM2Randomizer.Extensions
 
 
         public static Int32 ToInt32Hash(this String in_String)
-        {
-            // Convert the String to an array for hashing
-            Byte[] seedStringBytes = Encoding.Unicode.GetBytes(in_String);
-
-            // Create a new config in order to hash to a 32-bit number
-            FNVConfig c = new FNVConfig()
-            {
-                HashSizeInBits = 32,
-                Prime = new System.Numerics.BigInteger(1099511628211),
-                Offset = new System.Numerics.BigInteger(14695981039346656037),
-            };
-
-            // Compute the hash
-            IHashValue hashValue = FNV1aFactory.Instance.Create(c).ComputeHash(seedStringBytes);
-
-            if (true == BitConverter.IsLittleEndian)
-            {
-                return BitConverter.ToInt32(hashValue.Hash, 0);
-            }
-            else
-            {
-                return BitConverter.ToInt32(hashValue.Hash.Reverse().ToArray(), 0);
-            }
-        }
+            => (Int32)Crc32.HashToUInt32(Encoding.Unicode.GetBytes(in_String));
 
         public static UInt64 ToUInt64Hash(this String in_String)
-        {
-            // Convert the String to an array for hashing
-            Byte[] seedStringBytes = Encoding.Unicode.GetBytes(in_String);
-
-            // Create a new config in order to hash to a 64-bit number
-            FNVConfig c = new FNVConfig()
-            {
-                HashSizeInBits = 64,
-                Prime = new System.Numerics.BigInteger(1099511628211),
-                Offset = new System.Numerics.BigInteger(14695981039346656037),
-            };
-
-            // Compute the hash
-            IHashValue hashValue = FNV1aFactory.Instance.Create(c).ComputeHash(seedStringBytes);
-
-            if (true == BitConverter.IsLittleEndian)
-            {
-                return BitConverter.ToUInt64(hashValue.Hash, 0);
-            }
-            else
-            {
-                return BitConverter.ToUInt64(hashValue.Hash.Reverse().ToArray(), 0);
-            }
-        }
-
+            => Crc64.HashToUInt64(Encoding.Unicode.GetBytes(in_String));
 
         public static Byte[] AsIntroString(this String in_String)
         {
