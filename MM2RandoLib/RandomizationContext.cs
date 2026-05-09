@@ -154,9 +154,9 @@ namespace MM2Randomizer
         // Internal Methods
         //
 
-        internal void Initialize()
+        internal async Task Initialize()
         {
-            CreateInitialRom();
+            await CreateInitialRom();
 
             // Not certain whether this must come first
             AsmModuleFromResource("config.asm");
@@ -356,7 +356,7 @@ namespace MM2Randomizer
 
             ApplyOptionActions();
 
-            CompileAssembly();
+            await CompileAssembly();
 
             // Apply patch with randomized content
             this.Patch.ApplyRandoPatch(Rom);
@@ -395,7 +395,7 @@ namespace MM2Randomizer
         /// <summary>
         /// Apply the base patches to the ROM that must come before anything else including other IPS files.
         /// </summary>
-        private void CreateInitialRom()
+        private async Task CreateInitialRom()
         {
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
             using (MemoryStream stream = new())
@@ -415,7 +415,7 @@ namespace MM2Randomizer
             AsmModuleFromResource("config.asm", asm);
             AsmModuleFromResource("prepatch.asm", asm);
 
-            PrepatchRom = asm.ApplySynchronously(Rom);
+            PrepatchRom = await asm.ApplyAsync(Rom);
             Rom = PrepatchRom.ToArray();
         }
 
@@ -565,14 +565,14 @@ namespace MM2Randomizer
             return asm;
         }
 
-        private void CompileAssembly()
+        private async Task CompileAssembly()
         {
             // Setup the obligatory assembly modules
             foreach (var node in AsmRoot.Find("Auto").Files)
                 AsmModuleFromResource(node);
 
             // And compile
-            Rom = Assembler.ApplySynchronously(Rom);
+            Rom = await Assembler.ApplyAsync(Rom);
         }
 
         private string AsmFileReadTextCallback(string basePath, string path)

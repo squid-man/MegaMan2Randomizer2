@@ -14,7 +14,7 @@ namespace MM2RandoLib.Tests
         /// Verify that the randomizer can successfully create a ROM. This is necessary because assembly modules will not be compiled until a ROM is created.
         /// </summary>
         [Fact]
-        public void CanBuildRom()
+        public async Task CanBuildRom()
         {
             var curDir = Directory.GetCurrentDirectory();
             var tempDir = Directory.CreateTempSubdirectory("mm2r");
@@ -34,8 +34,7 @@ namespace MM2RandoLib.Tests
                 settings.QualityOfLifeOptions.EnableBirdEggFix.BaseValue = true;
                 settings.QualityOfLifeOptions.DisableFlashingEffects.BaseValue = true;
 
-                RandomizationContext ctx;
-                RandomMM2.RandomizerCreate(settings, new DesktopPlatformServices(), new byte[0x80010], out ctx);
+                RandomizationContext ctx = await RandomMM2.RandomizerCreate(settings, new DesktopPlatformServices(), new byte[0x80010]);
 
                 return;
             }

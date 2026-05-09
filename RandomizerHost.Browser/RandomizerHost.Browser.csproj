@@ -14,6 +14,7 @@
 	  <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
 	  <PackageReference Include="js65.browser" Version="1.0.7" />
+	  <PackageReference Include="js65.interop" Version="1.0.7" />
 	  <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
 	  <PackageReference Include="ReactiveUI.Avalonia" Version="12.0.1" />
