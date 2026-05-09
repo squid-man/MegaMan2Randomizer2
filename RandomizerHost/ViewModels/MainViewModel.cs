@@ -397,7 +397,7 @@ namespace RandomizerHost.ViewModels
                     using (var romSaver = PlatformServices.CreateRomSaver(
                         Path.GetDirectoryName(RomSourcePath)))
                     {
-                        this.PerformRandomization(in_View, false, romSaver);
+                        await this.PerformRandomization(in_View, false, romSaver);
                         this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
 
                         await romSaver.Commit();
@@ -421,7 +421,7 @@ namespace RandomizerHost.ViewModels
                 {
                     for (int i = 1; i <= this.RandomSeedCount; i++)
                     {
-                        this.PerformRandomization(in_View, true, romSaver);
+                        await this.PerformRandomization(in_View, true, romSaver);
                         this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
                         HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
                     }
@@ -459,7 +459,7 @@ namespace RandomizerHost.ViewModels
             await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
         }
 
-        void PerformRandomization(Visual in_View, Boolean in_DefaultSeed, IRomSaver in_RomSaver)
+        async Task PerformRandomization(Visual in_View, Boolean in_DefaultSeed, IRomSaver in_RomSaver)
         {
             // Perform randomization based on settings, then generate the ROM.
             var settings = AppConfigurationSettings;
@@ -471,7 +471,7 @@ namespace RandomizerHost.ViewModels
 
             //Settings.SettingsPreset = AppConfigurationSettings.SettingsPresetIndex != 0 ? SettingsPreset : null;
 
-            RandomMM2.RandomizerCreate(Settings, PlatformServices, mRom!, out RandomizationContext context);
+            RandomizationContext context = await RandomMM2.RandomizerCreate(Settings, PlatformServices, mRom!);
             HashValidationMessage = "Successfully copied and patched! File: " + context.FileName;
 
             // Get A-Z representation of seed
