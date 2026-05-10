@@ -3,8 +3,6 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Platform.Storage;
 using Avalonia.Styling;
-using CommunityToolkit.Mvvm;
-using CommunityToolkit.Mvvm.Input;
 using MM2RandoLib;
 using MM2RandoLib.Settings.Options;
 using MM2RandoLib.Utilities;
@@ -12,9 +10,7 @@ using MM2Randomizer;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Settings;
 using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 using RandomizerHost.Settings;
-using RandomizerHost.Views;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 using System;
@@ -321,6 +317,9 @@ namespace RandomizerHost.ViewModels
         public partial string HashValidationMessage { get; private set; } = "";
 
         [Reactive]
+        public partial string? ContainingFolder { get; private set; } = null;
+
+        [Reactive]
         public partial bool CanOpenContainingFolder { get; private set; } = false;
 
         public Boolean IsCoreModulesChecked
@@ -349,33 +348,13 @@ namespace RandomizerHost.ViewModels
         // Commands
         //
 
-        [RelayCommand]
-        protected async Task OpenRomFile(Visual in_View)
+        public async Task OpenRomFile(IStorageFile file)
         {
-            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var storage = TopLevel.GetTopLevel(in_View)!.StorageProvider;
-            var initDir = exeDir != null
-                ? await storage.TryGetFolderFromPathAsync(exeDir)
-                : null;
-
-            var stgFiles = await storage.OpenFilePickerAsync(new()
-            {
-                Title = "Open Mega Man 2 (US) NES ROM File",
-                FileTypeFilter = mNesRomFileTypes,
-                SuggestedStartLocation = initDir,
-                SuggestedFileType = mNesRomFileTypes[0],
-                AllowMultiple = false,
-            });
-
-            // Process input if the user clicked OK.
-            if (stgFiles.Count != 1)
-                return;
-
             try
             {
-                await SetRomFile(stgFiles[0], true);
+                await SetRomFile(file, true);
 
-                AppConfigurationSettings.RomSourceBookmark = await stgFiles[0].SaveBookmarkAsync() ?? "";
+                AppConfigurationSettings.RomSourceBookmark = await file.SaveBookmarkAsync() ?? "";
             }
             catch
             {
@@ -383,83 +362,52 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        [RelayCommand]
-        protected async Task CreateFromGivenSeed(Visual in_View)
+        public async Task CreateFromGivenSeed(bool canLaunch)
         {
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
             {
-                await this.CreateFromRandomSeedMultiple(in_View);
+                await this.CreateFromRandomSeedMultiple(canLaunch);
             }
             else
-            {
-                try
-                {
-                    using (var romSaver = PlatformServices.CreateRomSaver(
-                        Path.GetDirectoryName(RomSourcePath)))
-                    {
-                        await this.PerformRandomization(in_View, false, romSaver);
-                        this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
-
-                        await romSaver.Commit();
-                    }
-                }
-                catch (Exception e)
-                {
-                    await MessageBox.ShowAsync(in_View, e.ToString(), "Error", ButtonEnum.Ok);
-                }
-            }
-        }
-
-
-        [RelayCommand]
-        protected async Task CreateFromRandomSeedMultiple(Visual in_View)
-        {
-            try
             {
                 using (var romSaver = PlatformServices.CreateRomSaver(
                     Path.GetDirectoryName(RomSourcePath)))
                 {
-                    for (int i = 1; i <= this.RandomSeedCount; i++)
-                    {
-                        await this.PerformRandomization(in_View, true, romSaver);
-                        this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
-                        HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
-                    }
+                    await this.PerformRandomization(false, romSaver);
+                    this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+
+                    // Flag UI as having created a ROM, enabling the "open folder" button
+                    ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
+                    CanOpenContainingFolder = canLaunch;
 
                     await romSaver.Commit();
                 }
             }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(in_View, e.ToString(), "Error", ButtonEnum.Ok);
-            }
         }
 
 
-        [RelayCommand]
-        protected async Task OpenContainingFolder(Visual in_View)
+        public async Task CreateFromRandomSeedMultiple(bool canLaunch)
         {
-            var launcher = TopLevel.GetTopLevel(in_View)?.Launcher;
-            if (launcher == null)
-                return;
-
-            if (!string.IsNullOrEmpty(this.mCurrentRandomizationContext?.FileName))
+            using (var romSaver = PlatformServices.CreateRomSaver(
+                Path.GetDirectoryName(RomSourcePath)))
             {
-                try
+                for (int i = 1; i <= this.RandomSeedCount; i++)
                 {
-                    if (await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext!.FileName))!))))
-                        return;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.ToString());
-                }
-            }
+                    await this.PerformRandomization(true, romSaver);
 
-            await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
+                    this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                    HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
+
+                    // Flag UI as having created a ROM, enabling the "open folder" button
+                    ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
+                    CanOpenContainingFolder = canLaunch;
+                }
+
+                await romSaver.Commit();
+            }
         }
 
-        async Task PerformRandomization(Visual in_View, Boolean in_DefaultSeed, IRomSaver in_RomSaver)
+        public async Task PerformRandomization(Boolean in_DefaultSeed, IRomSaver in_RomSaver)
         {
             // Perform randomization based on settings, then generate the ROM.
             var settings = AppConfigurationSettings;
@@ -502,34 +450,11 @@ namespace RandomizerHost.ViewModels
 
             in_RomSaver.AddFile(
                 Path.GetFileName(context.FileName), context.Rom);
-
-            // Flag UI as having created a ROM, enabling the "open folder" button
-            CanOpenContainingFolder = TopLevel.GetTopLevel(in_View)?.Launcher != null;
         }
 
-        [RelayCommand]
-        protected async Task ImportSettings(Visual in_View)
+        public async Task ImportSettings(IStorageFile file)
         {
-            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var storage = TopLevel.GetTopLevel(in_View)!.StorageProvider;
-            var initDir = exeDir != null
-                ? await storage.TryGetFolderFromPathAsync(exeDir)
-                : null;
-
-            var stgFiles = await storage.OpenFilePickerAsync(new()
-            {
-                Title = "Import Settings",
-                FileTypeFilter = mJsonSettingsFileTypes,
-                SuggestedStartLocation = initDir,
-                SuggestedFileType = mJsonSettingsFileTypes[0],
-                AllowMultiple = false,
-            });
-
-            // Process input if the user clicked OK.
-            if (stgFiles.Count != 1)
-                return;
-
-            using (var stream = await stgFiles[0].OpenReadAsync())
+            using (var stream = await file.OpenReadAsync())
             {
                 var data = new byte[stream.Length];
                 await stream.ReadExactlyAsync(data);
@@ -538,30 +463,10 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        [RelayCommand]
-        protected async Task ExportSettings(Visual in_View)
+        public async Task ExportSettings(IStorageFile file)
         {
-            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var storage = TopLevel.GetTopLevel(in_View)!.StorageProvider;
-            var initDir = exeDir != null
-                ? await storage.TryGetFolderFromPathAsync(exeDir)
-                : null;
-
-            var stgFile = await storage.SaveFilePickerAsync(new()
-            {
-                Title = "Export Settings",
-                FileTypeChoices = mJsonSettingsFileTypes,
-                SuggestedStartLocation = initDir,
-                SuggestedFileType = mJsonSettingsFileTypes[0],
-                ShowOverwritePrompt = true,
-            });
-
-            // Process input if the user clicked OK.
-            if (stgFile == null)
-                return;
-
             var data = AppConfigurationSettings.Serialize();
-            using (var stream = await stgFile.OpenWriteAsync())
+            using (var stream = await file.OpenWriteAsync())
                 await stream.WriteAsync(data);
         }
 
@@ -606,17 +511,13 @@ namespace RandomizerHost.ViewModels
             "49136b412ff61beac6e40d0bbcd8691a39a50cd2744fdcdde3401eed53d71edf", // Mega Man 2 (USA)
         };
 
+        static readonly FilePickerFileType[] mJsonSettingsFileTypes = [
+            new("JSON Settings") { Patterns = ["*.json", "*.jsn"] }
+        ];
+
         //
         // Private Data Members
         //
-
-        private static readonly FilePickerFileType[] mNesRomFileTypes = [
-            new("NES ROMs") { Patterns = ["*.nes"] }
-        ];
-
-        private static readonly FilePickerFileType[] mJsonSettingsFileTypes = [
-            new("JSON Settings") { Patterns = ["*.json", "*.jsn"] }
-        ];
 
         private byte[]? mRom = null;
 

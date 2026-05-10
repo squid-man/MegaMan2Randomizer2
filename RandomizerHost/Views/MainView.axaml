@@ -6,6 +6,7 @@
     xmlns:converters="using:RandomizerHost.Converters"
     xmlns:opts="clr-namespace:MM2RandoLib.Settings.Options;assembly=MM2RandoLib"
     xmlns:ctls="using:RandomizerHost.Controls"
+    xmlns:views="using:RandomizerHost.Views"
     mc:Ignorable="d"
     d:DesignWidth="680"
     d:DesignHeight="730"
@@ -143,8 +144,8 @@
                         Margin="4,0"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
-                        Command="{Binding OpenRomFileCommand}"
-                        CommandParameter="{Binding #View}"
+                        Command="{Binding #View.OpenRomFileCommand}"
+                        x:DataType="views:MainView"
                     >
                         ...
                     </Button>
@@ -257,9 +258,9 @@
                     Height="30"
                     Width="150"
                     Margin="2"
-                    Command="{Binding CreateFromGivenSeedCommand}"
-                    CommandParameter="{Binding #View}"
+                    Command="{Binding #View.CreateFromGivenSeedCommand}"
                     IsEnabled="{Binding IsSeedValid}"
+                    x:CompileBindings="false"
                 >
                     Create From Given
                 </Button>
@@ -268,9 +269,9 @@
                     Height="30"
                     Width="150"
                     Margin="2,2,2,2"
-                    Command="{Binding CreateFromRandomSeedMultipleCommand}"
-                    CommandParameter="{Binding #View}"
+                    Command="{Binding #View.CreateFromRandomSeedMultipleCommand}"
                     IsEnabled="{Binding IsRomValid}"
+                    x:CompileBindings="false"
                 >
                     Generate Seed(s)
                 </Button>
@@ -303,9 +304,9 @@
                 Height="30"
                 Width="300"
                 Margin="2"
-                Command="{Binding OpenContainingFolderCommand}"
-                CommandParameter="{Binding #View}"
+                Command="{Binding #View.OpenContainingFolderCommand}"
                 IsEnabled="{Binding CanOpenContainingFolder}"
+                x:CompileBindings="false"
             >
                 Open Containing Folder
             </Button>
@@ -316,8 +317,8 @@
                     Height="30"
                     Width="150"
                     Margin="2"
-                    Command="{Binding ImportSettingsCommand}"
-                    CommandParameter="{Binding #View}"
+                    Command="{Binding #View.ImportSettingsCommand}"
+                    x:DataType="views:MainView"
                 >
                     Import Settings
                 </Button>
@@ -327,8 +328,8 @@
                     Height="30"
                     Width="150"
                     Margin="2"
-                    Command="{Binding ExportSettingsCommand}"
-                    CommandParameter="{Binding #View}"
+                    Command="{Binding #View.ExportSettingsCommand}"
+                    x:DataType="views:MainView"
                 >
                     Export Settings
                 </Button>
