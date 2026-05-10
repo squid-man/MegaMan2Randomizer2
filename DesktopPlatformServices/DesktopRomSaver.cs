@@ -29,12 +29,9 @@ public class DesktopRomSaver : IRomSaver
     {
         string path = Path.Combine(BasePath, filename),
             tempPath = Path.GetTempFileName();
+        
         File.WriteAllBytes(tempPath, data);
-
-        if (File.Exists(path))
-            File.Replace(tempPath, path, null);
-        else
-            File.Move(tempPath, path, true);
+        File.Move(tempPath, path, true);
     }
 
     public async Task Commit()
