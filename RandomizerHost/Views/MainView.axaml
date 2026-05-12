@@ -260,7 +260,6 @@
                     Margin="2"
                     Command="{Binding #View.CreateFromGivenSeedCommand}"
                     IsEnabled="{Binding IsSeedValid}"
-                    x:CompileBindings="false"
                 >
                     Create From Given
                 </Button>
@@ -271,7 +270,6 @@
                     Margin="2,2,2,2"
                     Command="{Binding #View.CreateFromRandomSeedMultipleCommand}"
                     IsEnabled="{Binding IsRomValid}"
-                    x:CompileBindings="false"
                 >
                     Generate Seed(s)
                 </Button>
@@ -306,7 +304,6 @@
                 Margin="2"
                 Command="{Binding #View.OpenContainingFolderCommand}"
                 IsEnabled="{Binding CanOpenContainingFolder}"
-                x:CompileBindings="false"
             >
                 Open Containing Folder
             </Button>
