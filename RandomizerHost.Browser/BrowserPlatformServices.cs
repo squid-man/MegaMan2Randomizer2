@@ -1,4 +1,5 @@
-﻿using js65;
+﻿using Avalonia.Platform.Storage;
+using js65;
 using MM2RandoLib.Utilities;
 using RandomizerHost;
 using System;
@@ -59,8 +60,8 @@ internal partial class BrowserPlatformServices : IHostPlatformServices
     public Assembler CreateAssembler(Js65Options? options, bool debugJavascript)
         => new BrowserJsEngine(options);
 
-    public IRomSaver CreateRomSaver(string? basePath)
-        => new BrowserRomSaver(basePath);
+    public IRomSaver CreateRomSaver(string? basePath, IStorageProvider storageProvider)
+        => new BrowserRomSaver(basePath, storageProvider);
 
     const string RandomizerSettingsName = "Settings.json";
     const string RomPathSettingName = "RomPath";

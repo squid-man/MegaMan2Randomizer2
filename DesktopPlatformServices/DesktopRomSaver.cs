@@ -1,4 +1,5 @@
-﻿using MM2RandoLib.Utilities;
+﻿using Avalonia.Platform.Storage;
+using MM2RandoLib.Utilities;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -27,6 +28,9 @@ public class DesktopRomSaver : IRomSaver
 
     public void AddFile(string filename, byte[] data)
     {
+        if (IsDisposed)
+            throw new ObjectDisposedException(nameof(DesktopRomSaver));
+
         string path = Path.Combine(BasePath, filename),
             tempPath = Path.GetTempFileName();
         
@@ -35,5 +39,8 @@ public class DesktopRomSaver : IRomSaver
     }
 
     public async Task Commit()
-    { }
+    {
+        if (IsDisposed)
+            throw new ObjectDisposedException(nameof(DesktopRomSaver));
+    }
 }
