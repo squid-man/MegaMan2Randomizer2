@@ -25,7 +25,9 @@ jobs:
       - name: Fix Base Href
         # GitHub Pages subfolders break absolute paths. 
         # This replaces <base href="/" /> with <base href="/MegaMan2Randomizer/" />
-        run: sed -i 's|<base href="/" />|<base href="/${{ github.event.repository.name }}/"|g' release/wwwroot/index.html
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          sed -i "s|<base href=\"/\" />|<base href=\"/$REPO_NAME/\"|g" release/wwwroot/index.html
         
       - name: Create 404 Page for Routing
         run: cp release/wwwroot/index.html release/wwwroot/404.html
