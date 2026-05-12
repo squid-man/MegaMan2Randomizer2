@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
   <PropertyGroup>
     <TargetFramework>net10.0-browser</TargetFramework>
     <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
@@ -16,10 +16,11 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.2" />
     <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-    <PackageReference Include="js65.browser" Version="1.0.7" />
+    <PackageReference Include="js65.browser" Version="1.0.7" GeneratePathProperty="true" />
     <PackageReference Include="js65.interop" Version="1.0.7" />
     <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="ReactiveUI.Avalonia" Version="12.0.1" />
     <PackageReference Include="System.IO.Hashing" Version="10.0.7" />
   </ItemGroup>
@@ -27,22 +28,30 @@
   <ItemGroup>
     <ProjectReference Include="..\RandomizerHost\RandomizerHost.csproj" />
   </ItemGroup>
-	
+  
   <ItemGroup>
     <WasmExtraFilesToDeploy Include="wwwroot\**" />
   </ItemGroup>
-	
+  
+  <Target Name="CopyJs65Assets" AfterTargets="ResolvePackageAssets">
+    <ItemGroup>
+      <Js65Files Include="$(Pkgjs65_browser)\assets\js65\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Js65Files)" DestinationFolder="$(MSBuildProjectDirectory)\wwwroot\js65\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+  
   <PropertyGroup>
     <PublishTrimmed>false</PublishTrimmed>
     <TrimMode>copyused</TrimMode>
   </PropertyGroup>
-	
+  
   <ItemGroup>
     <TrimmerRootAssembly Include="CommunityToolkit.Mvvm" />
     <TrimmerRootAssembly Include="js65.browser" />
     <TrimmerRootAssembly Include="js65.interop" />
     <TrimmerRootAssembly Include="MessageBox.Avalonia" />
     <TrimmerRootAssembly Include="Microsoft.Extensions.DependencyInjection" />
+    <TrimmerRootAssembly Include="Newtonsoft.Json" />
     <TrimmerRootAssembly Include="RandomizerHost" />
     <TrimmerRootAssembly Include="System.IO.Hashing" />
     <TrimmerRootAssembly Include="System.Security.Cryptography" />
