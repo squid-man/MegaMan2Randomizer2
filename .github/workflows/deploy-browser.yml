@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Make Release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          
+      - name: Install WASM Workload
+        run: dotnet workload install wasm-tools
+        
+      - name: Publish App
+        run: dotnet publish RandomizerHost.Browser.csproj -c Release -o release
+        
+      - name: Fix Base Href
+        # GitHub Pages subfolders break absolute paths. 
+        # This replaces <base href="/" /> with <base href="/MegaMan2Randomizer/" />
+        run: |
+          sed -i 's|<base href="/" />|<base href="/${{ github.event.repository.name }}/"|g' release/wwwroot/index.html
+          
+      - name: Create 404 Page for Routing
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+        - name: Add .nojekyll
+        # Prevents GitHub from ignoring files starting with underscores (common in .NET WASM)
+        run: touch release/wwwroot/.nojekyll
+
+      - name: Deploy 
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: release/wwwroot
+          branch: gh-pages # The branch the action will push the build to
