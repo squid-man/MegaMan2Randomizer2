@@ -1,4 +1,5 @@
-﻿using MM2RandoLib.Utilities;
+﻿using Avalonia.Platform.Storage;
+using MM2RandoLib.Utilities;
 using RandomizerHost.Settings;
 using System;
 using System.Collections.Generic;
@@ -18,4 +19,6 @@ public interface IHostPlatformServices : IPlatformServices
     void SaveRomCache(string path, byte[] data);
 
     Task<string?> GetInitialRomPath();
+
+    IRomSaver CreateRomSaver(string? basePath, IStorageProvider storageProvider);
 }

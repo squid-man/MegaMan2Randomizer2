@@ -362,48 +362,36 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        public async Task CreateFromGivenSeed(bool canLaunch)
+        public async Task CreateFromGivenSeed(IRomSaver romSaver, bool canLaunch)
         {
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
             {
-                await this.CreateFromRandomSeedMultiple(canLaunch);
+                await this.CreateFromRandomSeedMultiple(romSaver, canLaunch);
             }
             else
             {
-                using (var romSaver = PlatformServices.CreateRomSaver(
-                    Path.GetDirectoryName(RomSourcePath)))
-                {
-                    await this.PerformRandomization(false, romSaver);
-                    this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                await this.PerformRandomization(false, romSaver);
+                this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
 
-                    // Flag UI as having created a ROM, enabling the "open folder" button
-                    ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
-                    CanOpenContainingFolder = canLaunch;
-
-                    await romSaver.Commit();
-                }
+                // Flag UI as having created a ROM, enabling the "open folder" button
+                ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
+                CanOpenContainingFolder = canLaunch;
             }
         }
 
 
-        public async Task CreateFromRandomSeedMultiple(bool canLaunch)
+        public async Task CreateFromRandomSeedMultiple(IRomSaver romSaver, bool canLaunch)
         {
-            using (var romSaver = PlatformServices.CreateRomSaver(
-                Path.GetDirectoryName(RomSourcePath)))
+            for (int i = 1; i <= this.RandomSeedCount; i++)
             {
-                for (int i = 1; i <= this.RandomSeedCount; i++)
-                {
-                    await this.PerformRandomization(true, romSaver);
+                await this.PerformRandomization(true, romSaver);
 
-                    this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
-                    HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
+                this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+                HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
 
-                    // Flag UI as having created a ROM, enabling the "open folder" button
-                    ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
-                    CanOpenContainingFolder = canLaunch;
-                }
-
-                await romSaver.Commit();
+                // Flag UI as having created a ROM, enabling the "open folder" button
+                ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
+                CanOpenContainingFolder = canLaunch;
             }
         }
 

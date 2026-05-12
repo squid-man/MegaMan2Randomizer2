@@ -8,6 +8,4 @@ namespace MM2RandoLib.Utilities;
 public interface IPlatformServices
 {
     Assembler CreateAssembler(Js65Options? options, bool debugJavascript);
-
-    IRomSaver CreateRomSaver(string? basePath);
 }
