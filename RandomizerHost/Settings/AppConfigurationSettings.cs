@@ -171,7 +171,10 @@ namespace RandomizerHost.Settings
 
         public static AppConfigurationSettings Deserialize(byte[] data)
         {
-            JsonSerializerOptions opts = new();
+            JsonSerializerOptions opts = new()
+            {
+                TypeInfoResolver = JsonContext.Default,
+            };
             opts.Converters.Add(new JsonStringEnumConverter());
             opts.Converters.Add(new RandomizationSettingsJsonConverter());
 
@@ -182,6 +185,7 @@ namespace RandomizerHost.Settings
         {
             JsonSerializerOptions opts = new()
             {
+                TypeInfoResolver = JsonContext.Default,
                 WriteIndented = true,
             };
             opts.Converters.Add(new JsonStringEnumConverter());
@@ -199,5 +203,9 @@ namespace RandomizerHost.Settings
             settings.RomSourcePath = RomSourceBookmark;
             settings.CreateLogFile = CreateLogFile && !settings.IsTournament;
         }
+
+        [JsonSerializable(typeof(AppConfigurationSettings))]
+        internal partial class JsonContext : JsonSerializerContext
+        { }
     }
 }
