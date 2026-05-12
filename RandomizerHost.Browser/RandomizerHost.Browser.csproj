@@ -41,18 +41,18 @@
   </Target>
   
   <PropertyGroup>
-    <PublishTrimmed>false</PublishTrimmed>
-    <TrimMode>copyused</TrimMode>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
   </PropertyGroup>
   
+  <!-- These aren't needed for partial trim mode, but they'll be useful hints in getting full mode working -->
   <ItemGroup>
     <TrimmerRootAssembly Include="CommunityToolkit.Mvvm" />
     <TrimmerRootAssembly Include="js65.browser" />
     <TrimmerRootAssembly Include="js65.interop" />
-    <TrimmerRootAssembly Include="MessageBox.Avalonia" />
+    <TrimmerRootAssembly Include="MsBox.Avalonia" />
     <TrimmerRootAssembly Include="Microsoft.Extensions.DependencyInjection" />
     <TrimmerRootAssembly Include="Newtonsoft.Json" />
-    <TrimmerRootAssembly Include="RandomizerHost" />
     <TrimmerRootAssembly Include="System.IO.Hashing" />
     <TrimmerRootAssembly Include="System.Security.Cryptography" />
   </ItemGroup>
