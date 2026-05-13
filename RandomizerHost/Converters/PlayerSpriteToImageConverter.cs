@@ -7,6 +7,7 @@ using MM2Randomizer;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 
 namespace RandomizerHost.Converters;
 
@@ -21,7 +22,7 @@ public class PlayerSpriteToImageConverter : IValueConverter
             throw new NotSupportedException();
 
         //// TODO: Put this format string somewhere better
-        Uri uri = new($"avares://{nameof(RandomizerHost)}/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_{value.ToString()}.png");
+        Uri uri = new($"avares://{Assembly.GetExecutingAssembly().GetShortName()}/Assets/PlayerCharacterSpritePreviews/PlayerCharacter_{value.ToString()}.png");
         var asset = AssetLoader.Open(uri);
         return new Bitmap(asset);
     }
