@@ -225,6 +225,7 @@ namespace RandomizerHost.Views
                 Title = "Export Settings",
                 FileTypeChoices = _jsonSettingsFileTypes,
                 SuggestedStartLocation = initDir,
+                SuggestedFileName = "settings.json",
                 SuggestedFileType = _jsonSettingsFileTypes[0],
                 ShowOverwritePrompt = true,
             }));
@@ -262,11 +263,18 @@ namespace RandomizerHost.Views
         }
 
         static readonly FilePickerFileType[] _nesRomFileTypes = [
-            new("NES ROMs") { Patterns = ["*.nes"] }
+            new("NES ROMs") {
+                Patterns = ["*.nes"],
+                MimeTypes = new[] { "application/octet-stream" },
+            }
         ];
 
         static readonly FilePickerFileType[] _jsonSettingsFileTypes = [
-            new("JSON Settings") { Patterns = ["*.json", "*.jsn"] }
+            new("JSON Settings")
+            {
+                Patterns = ["*.json", "*.jsn"],
+                MimeTypes = new[] { "application/json" },
+            }
         ];
 
         async Task<T?> DisplayDialog<T>(Task<T> dialog)

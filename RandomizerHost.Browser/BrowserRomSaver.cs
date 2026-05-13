@@ -111,11 +111,18 @@ internal class BrowserRomSaver : IRomSaver
     }
 
     static readonly FilePickerFileType[] _nesRomFileTypes = [
-        new("NES ROMs") { Patterns = ["*.nes"] }
+        new("NES ROMs") {
+            Patterns = ["*.nes"],
+            MimeTypes = new[] { "application/octet-stream" },
+        }
     ];
 
     static readonly FilePickerFileType[] _zipFileTypes = [
-        new("Zip Files") { Patterns = ["*.zip"] }
+        new("Zip Files") 
+        { 
+            Patterns = ["*.zip"],
+            MimeTypes = new[] { "application/zip", "application/x-zip-compressed" },
+        }
     ];
 
     IStorageProvider _stg;
