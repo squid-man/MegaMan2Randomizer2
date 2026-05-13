@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="using:RandomizerHost.Views"
         mc:Ignorable="d"
-        d:DesignWidth="680"
-        d:DesignHeight="730"
-        Width="680"
-        Height="730"
+        d:DesignWidth="720"
+        d:DesignHeight="720"
+        Width="720"
+        Height="720"
         x:Class="RandomizerHost.Views.MainWindow"
         Icon="/Assets/MegaMan2Randomizer.ico"
         Title="Mega Man 2 Randomizer"
 >
-    <views:MainView />
+    <views:MainView 
+        HorizontalAlignment="Stretch"
+		VerticalAlignment="Stretch"
+	/>
 </Window>
