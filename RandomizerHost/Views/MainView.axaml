@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     d:DesignWidth="720"
     d:DesignHeight="720"
-	MaxWidth="720"
+    MaxWidth="720"
     x:Class="RandomizerHost.Views.MainView"
     x:DataType="vm:MainViewModel"
     Name="View"
