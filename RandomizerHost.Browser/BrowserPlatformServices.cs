@@ -1,4 +1,5 @@
-﻿using Avalonia.Platform.Storage;
+﻿using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using js65;
 using MM2RandoLib.Utilities;
 using RandomizerHost;
@@ -56,6 +57,9 @@ internal partial class BrowserPlatformServices : IHostPlatformServices
 
     public async Task<string?> GetInitialRomPath()
         => null;
+
+    public bool CanPlatformLaunch(TopLevel topLevel)
+        => false;
 
     public Assembler CreateAssembler(Js65Options? options, bool debugJavascript)
         => new BrowserJsEngine(options);

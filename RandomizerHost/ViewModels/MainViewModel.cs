@@ -79,6 +79,8 @@ namespace RandomizerHost.ViewModels
             var top = TopLevel.GetTopLevel(view);
             var stg = top!.StorageProvider;
 
+            CanLaunch = PlatformServices.CanPlatformLaunch(top);
+
             var settingsData = await PlatformServices.LoadSettingsData();
             if (settingsData != null)
             {
@@ -286,6 +288,9 @@ namespace RandomizerHost.ViewModels
         public IHostPlatformServices PlatformServices{ get; }
 
         [Reactive]
+        public partial bool CanLaunch { get; private set; } = false;
+
+        [Reactive]
         public partial AppConfigurationSettings AppConfigurationSettings { get; private set; }
 
         [Reactive]
@@ -362,11 +367,11 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        public async Task CreateFromGivenSeed(IRomSaver romSaver, bool canLaunch)
+        public async Task CreateFromGivenSeed(IRomSaver romSaver)
         {
             if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
             {
-                await this.CreateFromRandomSeedMultiple(romSaver, canLaunch);
+                await this.CreateFromRandomSeedMultiple(romSaver);
             }
             else
             {
@@ -375,12 +380,12 @@ namespace RandomizerHost.ViewModels
 
                 // Flag UI as having created a ROM, enabling the "open folder" button
                 ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
-                CanOpenContainingFolder = canLaunch;
+                CanOpenContainingFolder = CanLaunch;
             }
         }
 
 
-        public async Task CreateFromRandomSeedMultiple(IRomSaver romSaver, bool canLaunch)
+        public async Task CreateFromRandomSeedMultiple(IRomSaver romSaver)
         {
             for (int i = 1; i <= this.RandomSeedCount; i++)
             {
@@ -391,7 +396,7 @@ namespace RandomizerHost.ViewModels
 
                 // Flag UI as having created a ROM, enabling the "open folder" button
                 ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
-                CanOpenContainingFolder = canLaunch;
+                CanOpenContainingFolder = CanLaunch;
             }
         }
 

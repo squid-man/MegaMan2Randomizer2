@@ -1,4 +1,5 @@
-﻿using Avalonia.Platform.Storage;
+﻿using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using js65;
 using MM2RandoLib.Utilities;
 using RandomizerHost.Settings;
@@ -83,6 +84,9 @@ public class DesktopPlatformServices : IHostPlatformServices
 
         return null;
     }
+
+    public bool CanPlatformLaunch(TopLevel topLevel)
+        => true;
 
     public Assembler CreateAssembler(Js65Options? options, bool debugJavascript)
 #pragma warning disable CA1416 // Validate platform compatibility

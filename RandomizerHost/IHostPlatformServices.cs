@@ -1,4 +1,5 @@
-﻿using Avalonia.Platform.Storage;
+﻿using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using MM2RandoLib.Utilities;
 using RandomizerHost.Settings;
 using System;
@@ -21,4 +22,6 @@ public interface IHostPlatformServices : IPlatformServices
     Task<string?> GetInitialRomPath();
 
     IRomSaver CreateRomSaver(string? basePath, IStorageProvider storageProvider);
+
+    bool CanPlatformLaunch(TopLevel topLevel);
 }
