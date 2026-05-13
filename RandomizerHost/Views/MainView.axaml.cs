@@ -112,8 +112,7 @@ namespace RandomizerHost.Views
                     Path.GetDirectoryName(ViewModel.RomSourcePath),
                     TopLevel.StorageProvider))
                 {
-                    await ViewModel.CreateFromGivenSeed(
-                        romSaver, TopLevel.Launcher != null);
+                    await ViewModel.CreateFromGivenSeed(romSaver);
 
                     await romSaver.Commit();
                 }
@@ -135,7 +134,7 @@ namespace RandomizerHost.Views
                     Path.GetDirectoryName(ViewModel.RomSourcePath),
                     TopLevel.StorageProvider))
                 {
-                    await ViewModel.CreateFromRandomSeedMultiple(romSaver, TopLevel.Launcher != null);
+                    await ViewModel.CreateFromRandomSeedMultiple(romSaver);
 
                     await romSaver.Commit();
                 }
@@ -168,7 +167,15 @@ namespace RandomizerHost.Views
                 }
             }
 
-            await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
+            try
+            {
+                await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
+            }
+            catch (Exception e)
+            {
+                await MessageBox.ShowAsync(
+                    this, e.ToString(), "Error", ButtonEnum.Ok);
+            }
         }
 
         [RelayCommand]
