@@ -3,10 +3,12 @@ using Avalonia.Data;
 using Avalonia.Data.Converters;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using MM2Randomizer;
 using MM2Randomizer.Settings.Options;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 
 namespace RandomizerHost.Converters;
 
@@ -20,7 +22,7 @@ public class HudElementsToImageConverter : IValueConverter
         if (value is not HudElementOption || !targetType.IsAssignableFrom(typeof(Bitmap)))
             throw new NotSupportedException();
 
-        Uri uri = new($"avares://{nameof(RandomizerHost)}/Assets/HudElementsSpritePreviews/HudElements_{value.ToString()}.png");
+        Uri uri = new($"avares://{Assembly.GetExecutingAssembly().GetShortName()}/Assets/HudElementsSpritePreviews/HudElements_{value.ToString()}.png");
         var asset = AssetLoader.Open(uri);
         return new Bitmap(asset);
     }
