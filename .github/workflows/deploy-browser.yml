@@ -1,6 +1,7 @@
 name: Deploy to GitHub Pages
+
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
         run: dotnet workload install wasm-tools
         
       - name: Publish App
-        run: dotnet publish RandomizerHost.Browser.csproj -c Release -o release
+        run: dotnet publish RandomizerHost.Browser -c Release -o release
         
       - name: Fix Base Href
         # GitHub Pages subfolders break absolute paths. 
