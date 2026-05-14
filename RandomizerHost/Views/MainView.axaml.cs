@@ -108,8 +108,9 @@ namespace RandomizerHost.Views
         {
             try
             {
-                using (var romSaver = ViewModel.PlatformServices.CreateRomSaver(
+                using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
                     Path.GetDirectoryName(ViewModel.RomSourcePath),
+                    1,
                     TopLevel.StorageProvider))
                 {
                     await ViewModel.CreateFromGivenSeed(romSaver);
@@ -117,6 +118,8 @@ namespace RandomizerHost.Views
                     await romSaver.Commit();
                 }
             }
+            catch (OperationCanceledException)
+            { }
             catch (Exception e)
             {
                 await MessageBox.ShowAsync(
@@ -130,8 +133,9 @@ namespace RandomizerHost.Views
         {
             try
             {
-                using (var romSaver = ViewModel.PlatformServices.CreateRomSaver(
+                using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
                     Path.GetDirectoryName(ViewModel.RomSourcePath),
+                    ViewModel.RandomSeedCount,
                     TopLevel.StorageProvider))
                 {
                     await ViewModel.CreateFromRandomSeedMultiple(romSaver);
@@ -139,6 +143,8 @@ namespace RandomizerHost.Views
                     await romSaver.Commit();
                 }
             }
+            catch (OperationCanceledException)
+            { }
             catch (Exception e)
             {
                 await MessageBox.ShowAsync(

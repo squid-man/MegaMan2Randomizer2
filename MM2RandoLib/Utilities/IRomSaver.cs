@@ -7,7 +7,7 @@ public interface IRomSaver : IDisposable
 {
     bool IsDisposed { get; }
 
-    void AddFile(string filename, byte[] data);
+    Task AddFile(string filename, byte[] data);
 
     Task Commit();
 }

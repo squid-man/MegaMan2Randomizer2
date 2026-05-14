@@ -26,7 +26,7 @@ public class DesktopRomSaver : IRomSaver
         IsDisposed = true;
     }
 
-    public void AddFile(string filename, byte[] data)
+    public async Task AddFile(string filename, byte[] data)
     {
         if (IsDisposed)
             throw new ObjectDisposedException(nameof(DesktopRomSaver));
