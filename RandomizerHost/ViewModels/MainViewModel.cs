@@ -441,7 +441,7 @@ namespace RandomizerHost.ViewModels
                 }
             }
 
-            in_RomSaver.AddFile(
+            await in_RomSaver.AddFile(
                 Path.GetFileName(context.FileName), context.Rom);
         }
 

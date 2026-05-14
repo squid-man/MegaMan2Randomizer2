@@ -93,7 +93,7 @@ public class DesktopPlatformServices : IHostPlatformServices
         => new ClearScriptEngine(options, true, debugJavascript);
 #pragma warning restore CA1416 // Validate platform compatibility
 
-    public IRomSaver CreateRomSaver(string? basePath, IStorageProvider storageProvider)
+    public async Task<IRomSaver> CreateRomSaver(string? basePath, int numFiles, IStorageProvider storageProvider)
         => new DesktopRomSaver(basePath);
 
     const string RandomizerSettingsFolderName = "Mega Man 2 Randomizer";

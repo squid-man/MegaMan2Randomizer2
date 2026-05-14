@@ -21,7 +21,7 @@ public interface IHostPlatformServices : IPlatformServices
 
     Task<string?> GetInitialRomPath();
 
-    IRomSaver CreateRomSaver(string? basePath, IStorageProvider storageProvider);
+    Task<IRomSaver> CreateRomSaver(string? basePath, int numFiles, IStorageProvider storageProvider);
 
     bool CanPlatformLaunch(TopLevel topLevel);
 }

@@ -64,8 +64,14 @@ internal partial class BrowserPlatformServices : IHostPlatformServices
     public Assembler CreateAssembler(Js65Options? options, bool debugJavascript)
         => new BrowserJsEngine(options);
 
-    public IRomSaver CreateRomSaver(string? basePath, IStorageProvider storageProvider)
-        => new BrowserRomSaver(basePath, storageProvider);
+    public async Task<IRomSaver> CreateRomSaver(string? basePath, int numFiles, IStorageProvider storageProvider)
+    {
+        var romSaver = new BrowserRomSaver(basePath, numFiles, storageProvider);
+
+        await romSaver.Initialize();
+
+        return romSaver;
+    }
 
     const string RandomizerSettingsName = "Settings.json";
     const string RomPathSettingName = "RomPath";
