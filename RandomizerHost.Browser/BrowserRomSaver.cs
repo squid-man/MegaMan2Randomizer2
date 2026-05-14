@@ -90,11 +90,12 @@ internal class BrowserRomSaver : IRomSaver
                 _archiveFileStream = await stgFile.OpenWriteAsync();
                 _archiveStream = new MemoryStream();
                 _archive = await ZipArchive.CreateAsync(_archiveStream, ZipArchiveMode.Create, true, null);
-
-                AddFileToArchive(filename, data!);
             }
 
-            AddFileToArchive(Path.GetFileName(filename), data);
+            var entry = _archive.CreateEntry(
+                Path.GetFileName(filename), CompressionLevel.Optimal);
+            using (var stream = entry.Open())
+                stream.Write(data);
         }
 
         _numFiles += 1;
@@ -142,13 +143,4 @@ internal class BrowserRomSaver : IRomSaver
     Stream? _archiveStream = null;
     ZipArchive? _archive = null;
     Stream? _archiveFileStream = null;
-
-    void AddFileToArchive(string filename, byte[] data)
-    {
-        Debug.Assert(_archive != null);
-
-        var entry = _archive.CreateEntry(filename, CompressionLevel.Optimal);
-        using (var stream = entry.Open())
-            stream.Write(data);
-    }
 }
