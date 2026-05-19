@@ -42,9 +42,7 @@ namespace RandomizerHost.ViewModels
             Settings = AppConfigurationSettings.RandomizationSettings;
             SettingsPresets = new(Settings);
 
-            var version = Assembly.GetExecutingAssembly().GetName().Version;
-            string verStr = version?.ToString() ?? "";
-
+            string verStr = RandomMM2.AssemblyVersion.ToString();
             if (!GitInfo.IsOfficialBuild)
             {
                 string branch = GitInfo.Branch, cmtSuff = "", dbgSuff = "";

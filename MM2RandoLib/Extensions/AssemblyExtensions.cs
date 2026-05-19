@@ -14,6 +14,9 @@ public static class AssemblyExtensions
     public static string? GetShortName(this Assembly asm)
         => asm.GetName().Name;
 
+    public static Version? GetVersion(this Assembly asm)
+        => asm.GetName().Version;
+
     /// <summary>
     /// Load an embedded binary resource.
     /// </summary>

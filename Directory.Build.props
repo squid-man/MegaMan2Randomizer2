@@ -1,0 +1,32 @@
+<Project>
+	<PropertyGroup>
+		<Product>Mega Man 2 Randomizer</Product>
+		<Authors>Duckfist, Squidman, Dagit, Charlieboy, Quantam</Authors>
+
+		<PackageTags></PackageTags>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
+
+		<RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
+
+		<DefaultTargetFramework>net10.0-browser</DefaultTargetFramework>
+		<LangVersion>latest</LangVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+
+		<MajorVersion>0</MajorVersion>
+		<MinorVersion>6</MinorVersion>
+		<PatchVersion>7</PatchVersion>
+		
+		<!-- Default Build Number for local builds -->
+		<BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
+		
+		<!-- Combine them into standard MSBuild properties -->
+		<VersionPrefix>$(MajorVersion).$(MinorVersion).$(PatchVersion)</VersionPrefix>
+		<VersionSuffix Condition="'$(BuildNumber)' != '0'">build.$(BuildNumber)</VersionSuffix>
+		
+		<!-- This sets the 4-part FileVersion and AssemblyVersion -->
+		<Version>$(VersionPrefix).$(BuildNumber)</Version>
+		<AssemblyVersion>$(VersionPrefix).$(BuildNumber)</AssemblyVersion>
+		<FileVersion>$(VersionPrefix).$(BuildNumber)</FileVersion>
+	</PropertyGroup>
+</Project>

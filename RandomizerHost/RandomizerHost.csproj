@@ -2,21 +2,11 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
     <AssemblyName>RandomizerHost.Common</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
     <PackageId>Mega Man 2 Randomizer</PackageId>
-    <Authors>Duckfist, Squidman, Dagit, Charlieboy, Quantam</Authors>
-    <Company />
-    <Product>Mega Man 2 Randomizer</Product>
-    <Version>0.6.7</Version>
-    <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
-    <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.7.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
-    <FileVersion>0.6.7</FileVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -98,52 +88,4 @@
       <DependentUpon>MessageBox.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <PropertyGroup>
-    <IsGitHubBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</IsGitHubBuild>
-    <IsGitHubBuild Condition="'$(IsGitHubBuild)' == ''">false</IsGitHubBuild>
-  </PropertyGroup>
-  
-  <Target Name="GenerateGitInfo" BeforeTargets="BeforeBuild">
-    <MakeDir Directories="$(IntermediateOutputPath)" />
-    <Exec Command="git rev-parse --short HEAD &gt; $(IntermediateOutputPath)git-hash.txt" />
-    <Exec Command="git rev-parse --abbrev-ref HEAD &gt; $(IntermediateOutputPath)git-branch.txt" />
-    <Exec Command="git tag --points-at HEAD &gt; $(IntermediateOutputPath)git-tag.txt" />
-    <Exec Command="git diff --quiet || echo dirty &gt; $(IntermediateOutputPath)git-dirty.txt" IgnoreExitCode="true" />
-
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-hash.txt"><Output TaskParameter="Lines" PropertyName="GitHash" /></ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-branch.txt"><Output TaskParameter="Lines" PropertyName="GitBranch" /></ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-tag.txt"><Output TaskParameter="Lines" ItemName="GitTag" /></ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-dirty.txt" Condition="Exists('$(IntermediateOutputPath)git-dirty.txt')"><Output TaskParameter="Lines" PropertyName="GitDirty" /></ReadLinesFromFile>
-    <PropertyGroup><IsDirtyValue>false</IsDirtyValue></PropertyGroup>
-    <PropertyGroup Condition="'$(GitDirty)' != ''"><IsDirtyValue>true</IsDirtyValue></PropertyGroup>
-  </Target>
-
-  <Target Name="WriteGitInfoFile" DependsOnTargets="GenerateGitInfo" BeforeTargets="BeforeBuild">
-    <PropertyGroup>
-      <GitTagsJoined>@(GitTag->'%(Identity)', ',')</GitTagsJoined>
-      <GitInfoText>
-// (auto-generated from .csproj)
-namespace RandomizerHost;
-
-public static partial class GitInfo
-{
-    static GitInfo()
-    {
-        Commit = "$(GitHash)";
-        Branch = "$(GitBranch)";
-        Tag = "$(GitTagsJoined)";
-        IsDirty = $(IsDirtyValue);
-        IsOfficialBuild = $(IsGitHubBuild);
-    }
-}
-      </GitInfoText>
-    </PropertyGroup>
-
-    <WriteLinesToFile File="$(IntermediateOutputPath)GitInfo.cs" Overwrite="true" Lines="$([System.Text.RegularExpressions.Regex]::Split('$(GitInfoText)', '\n'))" />
-
-    <ItemGroup>
-      <Compile Include="$(IntermediateOutputPath)GitInfo.cs" />
-    </ItemGroup>
-  </Target>
 </Project>

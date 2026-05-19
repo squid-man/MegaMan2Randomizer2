@@ -1,4 +1,4 @@
-﻿namespace RandomizerHost;
+﻿namespace MM2Randomizer;
 
 public static partial class GitInfo
 {

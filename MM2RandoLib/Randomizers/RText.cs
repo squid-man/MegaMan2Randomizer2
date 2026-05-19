@@ -94,10 +94,7 @@ namespace MM2Randomizer.Randomizers
             const Int32 INTRO_LINE2_OFFSET = 0x036EBE;
             const Int32 INTRO_LINE2_MAXLENGTH = 31;
 
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetEntryAssembly() ?? throw new NullReferenceException(@"The entry point for the process is unmanaged code rather than a managed assembly");
-            Version appVersion = assembly.GetName().Version ?? throw new NullReferenceException(@"The assembly version cannot be null");
-            String version = appVersion.ToString(2);
-
+            String version = RandomMM2.AssemblyVersion.ToString(3);
             String line = APP_NAME + version;
             line = line.PadCenter(INTRO_LINE2_MAXLENGTH);
 

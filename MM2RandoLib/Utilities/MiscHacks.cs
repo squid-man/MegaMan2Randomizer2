@@ -85,18 +85,11 @@ namespace MM2Randomizer.Utilities
             // Draw version header and value onto the title screen
             //
 
-            Byte[] versionHeader = "VER. ".AsIntroString();
-            p.Add(0x037402, versionHeader, "Title Screen Version Header");
+            string versionString = $"VER. {RandomMM2.AssemblyVersion}";
+            if (GitInfo.IsDirty || !GitInfo.IsOfficialBuild)
+                versionString += " EXP";
 
-            System.Reflection.Assembly assembly = typeof(RandomMM2).Assembly;
-            Version version = assembly.GetName().Version ?? throw new NullReferenceException(@"Assembly version cannot be null");
-            String stringVersion = version.ToString();
-
-            for (Int32 i = 0; i < stringVersion.Length; i++)
-            {
-                Byte value = stringVersion[i].AsIntroCharacter();
-                p.Add(0x037407 + i, value, "Title Screen Version Value");
-            }
+            p.Add(0x037402, versionString.AsIntroString(), "Title Screen Version Header");
 
 
             //
