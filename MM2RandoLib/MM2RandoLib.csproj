@@ -1,23 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
-        <Version>0.6.7</Version>
-        <Copyright></Copyright>
         <Description>.NET library that can generate a randomized ROM patch for Mega Man 2.</Description>
-        <Authors>duckfist, squidman, dagit, charlieboy, quantam</Authors>
-        <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
-        <PackageTags></PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
-        <AssemblyVersion>0.6.7.*</AssemblyVersion>
-        <FileVersion>0.6.7</FileVersion>
         <Deterministic>false</Deterministic>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <Platforms>AnyCPU;x64</Platforms>
-        <Company />
         <ApplicationIcon />
         <OutputType>Library</OutputType>
         <StartupObject />
@@ -1461,5 +1448,65 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\FtRandoLib\FtRandoLib.csproj" />
-    </ItemGroup>    
+    </ItemGroup>
+
+	<PropertyGroup>
+		<IsGitHubBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</IsGitHubBuild>
+		<IsGitHubBuild Condition="'$(IsGitHubBuild)' == ''">false</IsGitHubBuild>
+	</PropertyGroup>
+
+	<Target Name="GenerateGitInfo" BeforeTargets="BeforeBuild">
+		<MakeDir Directories="$(IntermediateOutputPath)" />
+		<Exec Command="git rev-parse --short HEAD &gt; $(IntermediateOutputPath)git-hash.txt" />
+		<Exec Command="git rev-parse --abbrev-ref HEAD &gt; $(IntermediateOutputPath)git-branch.txt" />
+		<Exec Command="git tag --points-at HEAD &gt; $(IntermediateOutputPath)git-tag.txt" />
+		<Exec Command="git diff --quiet || echo dirty &gt; $(IntermediateOutputPath)git-dirty.txt" IgnoreExitCode="true" />
+
+		<ReadLinesFromFile File="$(IntermediateOutputPath)git-hash.txt">
+			<Output TaskParameter="Lines" PropertyName="GitHash" />
+		</ReadLinesFromFile>
+		<ReadLinesFromFile File="$(IntermediateOutputPath)git-branch.txt">
+			<Output TaskParameter="Lines" PropertyName="GitBranch" />
+		</ReadLinesFromFile>
+		<ReadLinesFromFile File="$(IntermediateOutputPath)git-tag.txt">
+			<Output TaskParameter="Lines" ItemName="GitTag" />
+		</ReadLinesFromFile>
+		<ReadLinesFromFile File="$(IntermediateOutputPath)git-dirty.txt" Condition="Exists('$(IntermediateOutputPath)git-dirty.txt')">
+			<Output TaskParameter="Lines" PropertyName="GitDirty" />
+		</ReadLinesFromFile>
+		<PropertyGroup>
+			<IsDirtyValue>false</IsDirtyValue>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(GitDirty)' != ''">
+			<IsDirtyValue>true</IsDirtyValue>
+		</PropertyGroup>
+	</Target>
+
+	<Target Name="WriteGitInfoFile" DependsOnTargets="GenerateGitInfo" BeforeTargets="BeforeBuild">
+		<PropertyGroup>
+			<GitTagsJoined>@(GitTag->'%(Identity)', ',')</GitTagsJoined>
+			<GitInfoText>
+				// (auto-generated from .csproj)
+				namespace MM2Randomizer;
+
+				public static partial class GitInfo
+				{
+				static GitInfo()
+				{
+				Commit = "$(GitHash)";
+				Branch = "$(GitBranch)";
+				Tag = "$(GitTagsJoined)";
+				IsDirty = $(IsDirtyValue);
+				IsOfficialBuild = $(IsGitHubBuild);
+				}
+				}
+			</GitInfoText>
+		</PropertyGroup>
+
+		<WriteLinesToFile File="$(IntermediateOutputPath)GitInfo.cs" Overwrite="true" Lines="$([System.Text.RegularExpressions.Regex]::Split('$(GitInfoText)', '\n'))" />
+
+		<ItemGroup>
+			<Compile Include="$(IntermediateOutputPath)GitInfo.cs" />
+		</ItemGroup>
+	</Target>
 </Project>

@@ -27,11 +27,6 @@ namespace MM2Randomizer
         }
 
         static public Version AssemblyVersion
-        {
-            get
-            {
-                return Assembly.GetAssembly(typeof(RandomMM2))?.GetName().Version ?? new Version(0, 0, 0, 0);
-            }
-        }
+            => Assembly.GetExecutingAssembly().GetVersion() ?? new Version();
     }
 }
