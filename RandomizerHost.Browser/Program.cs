@@ -16,6 +16,7 @@ internal sealed partial class Program
             .WithDeveloperTools()
 #endif
             .WithInterFont()
+            .With(App.GetFontManagerOptions())
             .LogToTrace()
             .UseReactiveUI(b => { })
             .AfterSetup(builder =>

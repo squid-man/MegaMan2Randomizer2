@@ -204,6 +204,7 @@ namespace RandomizerHost.ViewModels
                 return;
 
             IsRomValidText = "❌";
+            IsRomValidColor = "Red";
 
             try
             {
@@ -266,6 +267,7 @@ namespace RandomizerHost.ViewModels
                         mRom = data;
                         HashValidationMessage = "ROM checksum is valid.";
                         IsRomValidText = "✅";
+                        IsRomValidColor = "LimeGreen";
                         IsRomSourcePathValid = true;
                     }
                     else
@@ -312,6 +314,9 @@ namespace RandomizerHost.ViewModels
 
         [Reactive]
         public partial string IsRomValidText { get; private set; } = "";
+
+        [Reactive]
+        public partial string IsRomValidColor { get; private set; } = "Red";
 
         [Reactive]
         public partial string RomStatusTooltip { get; private set; } = "";
