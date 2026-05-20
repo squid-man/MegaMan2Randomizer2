@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using Avalonia.Styling;
 using Microsoft.Extensions.DependencyInjection;
 using MM2RandoLib;
@@ -11,12 +12,25 @@ using RandomizerHost.Views;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace RandomizerHost
 {
     public class App : Application
     {
         public IServiceProvider? Services { get; private set; } = null;
+
+        public static FontManagerOptions GetFontManagerOptions()
+            => new()
+            {
+                DefaultFamilyName = "fonts:Inter#Inter",
+                FontFallbacks = [
+                    new()
+                {
+                    FontFamily = new FontFamily($"avares://{Assembly.GetExecutingAssembly().GetName().Name}/Assets#Font Awesome 7 Free Solid"),
+                }
+                ],
+            };
 
         public override void Initialize()
         {

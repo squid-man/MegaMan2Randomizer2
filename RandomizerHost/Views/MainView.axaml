@@ -166,6 +166,7 @@
                         Margin="4,4"
                         FontSize="22"
                         Text="{Binding IsRomValidText}"
+						Foreground="{Binding IsRomValidColor}"
                         ToolTip.Tip="{Binding RomStatusTooltip}"
                     />
                 </DockPanel>
@@ -198,8 +199,8 @@
             Name="ToggleSwitch_EnableAppUiDarkTheme"
             IsChecked="{Binding AppConfigurationSettings.EnableAppUiDarkTheme}"
             Command="{Binding SetTheme}"
-            OffContent="🔅"
-            OnContent="🌑"
+            OffContent="☼"
+            OnContent="⏾"
         />
         <TextBlock
                 Text="Set Theme"
