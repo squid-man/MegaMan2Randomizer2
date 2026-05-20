@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
         <Version>0.6.7</Version>
@@ -1396,7 +1397,6 @@
       <PackageReference Include="Microsoft.ClearScript.V8.Native.win-x64" Version="7.4.5" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
-      <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
       <PackageReference Include="Troschuetz.Random" Version="5.0.1" />
     </ItemGroup>
     <ItemGroup>
