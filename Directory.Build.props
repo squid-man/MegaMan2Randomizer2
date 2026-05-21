@@ -19,6 +19,7 @@
 			<GitHeight>0</GitHeight>
 			<GitHeight Condition="'$(MinVerPreRelease)' != ''">$(MinVerPreRelease.Substring($(MinVerPreRelease.LastIndexOf('.'))).TrimStart('.'))</GitHeight>
 			<MinVerPatchMinusOne>$([MSBuild]::Subtract($(MinVerPatch), 1))</MinVerPatchMinusOne>
+			<MinVerPatchMinusOne Condition="$(MinVerPatchMinusOne) &lt; 0">0</MinVerPatchMinusOne>
 			<AssemblyVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatchMinusOne).$(GitHeight)</AssemblyVersion>
 			<FileVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatchMinusOne).$(GitHeight)</FileVersion>
 		</PropertyGroup>
