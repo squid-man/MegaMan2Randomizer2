@@ -28,5 +28,8 @@ namespace MM2Randomizer
 
         static public Version AssemblyVersion
             => Assembly.GetExecutingAssembly().GetVersion() ?? new Version();
+
+        static public string AssemblyVersionString
+            => Assembly.GetExecutingAssembly().GetVersionString();
     }
 }

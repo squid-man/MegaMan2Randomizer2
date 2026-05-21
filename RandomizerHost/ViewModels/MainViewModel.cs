@@ -42,18 +42,15 @@ namespace RandomizerHost.ViewModels
             Settings = AppConfigurationSettings.RandomizationSettings;
             SettingsPresets = new(Settings);
 
-            string verStr = RandomMM2.AssemblyVersion.ToString();
+            string verStr = RandomMM2.AssemblyVersionString;
             if (!GitInfo.IsOfficialBuild)
             {
-                string branch = GitInfo.Branch, cmtSuff = "", dbgSuff = "";
-                if (!GitInfo.IsDirty)
-                    cmtSuff = $":{GitInfo.Commit}";
-
+                string branch = GitInfo.Branch, dbgSuff = "";
 #if DEBUG
                 dbgSuff += " (Debug)";
 #endif
 
-                verStr += $" EXPERIMENTAL [{branch}{cmtSuff}]{dbgSuff}";
+                verStr += $" [{branch}]{dbgSuff}";
             }
             else if (verStr.Length == 0)
                 verStr = "Unknown";
@@ -434,7 +431,7 @@ namespace RandomizerHost.ViewModels
                 using (StreamWriter sw = new StreamWriter(logFileName, false))
                 {
                     sw.WriteLine("Mega Man 2 Randomizer");
-                    sw.WriteLine($"Version {RandomMM2.AssemblyVersion}");
+                    sw.WriteLine($"Version {RandomMM2.AssemblyVersionString}");
                     sw.WriteLine($"Seed {seedBase26}\n");
                     sw.WriteLine(context.RandomStages.ToString());
                     sw.WriteLine(context.RandomWeaponBehavior.ToString());

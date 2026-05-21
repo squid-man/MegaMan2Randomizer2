@@ -16,6 +16,10 @@
     <PackageReference Include="Microsoft.ClearScript.V8.Native.win-arm64" Version="7.5.0" />
     <PackageReference Include="Microsoft.ClearScript.V8.Native.win-x64" Version="7.5.0" />
     <PackageReference Include="Microsoft.ClearScript.V8.Native.win-x86" Version="7.5.0" />
+    <PackageReference Include="MinVer" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

@@ -12,21 +12,15 @@
 		<DefaultTargetFramework>net10.0-browser</DefaultTargetFramework>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
-
-		<MajorVersion>0</MajorVersion>
-		<MinorVersion>6</MinorVersion>
-		<PatchVersion>7</PatchVersion>
-		
-		<!-- Default Build Number for local builds -->
-		<BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
-		
-		<!-- Combine them into standard MSBuild properties -->
-		<VersionPrefix>$(MajorVersion).$(MinorVersion).$(PatchVersion)</VersionPrefix>
-		<VersionSuffix Condition="'$(BuildNumber)' != '0'">build.$(BuildNumber)</VersionSuffix>
-		
-		<!-- This sets the 4-part FileVersion and AssemblyVersion -->
-		<Version>$(VersionPrefix).$(BuildNumber)</Version>
-		<AssemblyVersion>$(VersionPrefix).$(BuildNumber)</AssemblyVersion>
-		<FileVersion>$(VersionPrefix).$(BuildNumber)</FileVersion>
 	</PropertyGroup>
+	
+	<Target Name="CustomAssemblyVersioning" AfterTargets="MinVer">
+		<PropertyGroup>
+			<GitHeight>0</GitHeight>
+			<GitHeight Condition="'$(MinVerPreRelease)' != ''">$(MinVerPreRelease.Substring($(MinVerPreRelease.LastIndexOf('.'))).TrimStart('.'))</GitHeight>
+			<MinVerPatchMinusOne>$([MSBuild]::Subtract($(MinVerPatch), 1))</MinVerPatchMinusOne>
+			<AssemblyVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatchMinusOne).$(GitHeight)</AssemblyVersion>
+			<FileVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatchMinusOne).$(GitHeight)</FileVersion>
+		</PropertyGroup>
+	</Target>
 </Project>

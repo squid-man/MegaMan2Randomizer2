@@ -17,6 +17,11 @@ public static class AssemblyExtensions
     public static Version? GetVersion(this Assembly asm)
         => asm.GetName().Version;
 
+    public static string GetVersionString(this Assembly asm)
+        => asm.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
+            ?? asm.GetVersion()?.ToString()
+            ?? "0.0.0.0";
+
     /// <summary>
     /// Load an embedded binary resource.
     /// </summary>
