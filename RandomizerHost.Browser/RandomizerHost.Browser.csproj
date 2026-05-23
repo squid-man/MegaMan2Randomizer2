@@ -7,6 +7,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <InvariantGlobalization>true</InvariantGlobalization>
     <Nullable>enable</Nullable>
+	  
+	<!-- Disable compression for now since GitHub Pages doesn't support it -->
+    <CompressionEnabled>false</CompressionEnabled>
+    <BlazorEnableCompression>false</BlazorEnableCompression>
   </PropertyGroup>
 
   <ItemGroup>
