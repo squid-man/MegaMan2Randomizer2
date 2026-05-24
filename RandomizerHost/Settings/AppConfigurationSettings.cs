@@ -1,211 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Hashing;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using MM2RandoLib.Settings.Options;
-using MM2Randomizer;
-using MM2Randomizer.Extensions;
-using MM2Randomizer.Settings;
+﻿using MM2Randomizer.Settings;
 using MM2Randomizer.Settings.Options;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace RandomizerHost.Settings
+namespace RandomizerHost.Settings;
+
+public partial class AppConfigurationSettings : ReactiveObject
 {
-    class OptionJsonConverter : JsonConverter<IOption>
+    [Reactive]
+    public partial RandomizationSettings RandomizationSettings { get; set; } = new();
+
+    [Reactive]
+    public partial string SeedString { get; set; } = "";
+
+    [Reactive]
+    public partial string RomSourceBookmark { get; set; } = "";
+
+    [Reactive]
+    public partial bool EnableAppUiDarkTheme { get; set; } = true;
+
+    [Reactive]
+    public partial bool CreateLogFile { get; set; } = false;
+
+    [Reactive]
+    public partial int SettingsPresetIndex { get; set; } = 0;
+
+    public AppConfigurationSettings()
     {
-        public override bool CanConvert(Type typeToConvert)
-        {
-            return typeToConvert.IsAssignableTo(typeof(IOption));
-        }
-
-        public override IOption? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Write(Utf8JsonWriter writer, IOption value, JsonSerializerOptions options)
-        {
-            var optInfo = value!.Info!;
-            if (!optInfo.SaveLoad)
-                return;
-
-            writer.WriteStartObject(optInfo.Name);
-            writer.WritePropertyName("Value");
-            JsonSerializer.Serialize(writer, value.BaseValue, options);
-            writer.WriteBoolean("Randomize", value.Randomize);
-            writer.WriteEndObject();
-        }
+        // Required for Reactive properties to work properly
     }
 
-    class OptionGroupJsonConverter : JsonConverter<OptionGroup>
+    public static AppConfigurationSettings Deserialize(byte[] data)
     {
-
-        public override bool CanConvert(Type typeToConvert)
+        JsonSerializerOptions opts = new()
         {
-            return typeToConvert.IsAssignableTo(typeof(OptionGroup));
-        }
+            TypeInfoResolver = JsonContext.Default,
+        };
+        opts.Converters.Add(new JsonStringEnumConverter());
+        opts.Converters.Add(new RandomizationSettingsJsonConverter());
 
-        public override OptionGroup? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Write(Utf8JsonWriter writer, OptionGroup value, JsonSerializerOptions options)
-        {
-            writer.WriteStartObject();
-
-            foreach (var opt in value.Options)
-                JsonSerializer.Serialize(writer, opt, options);
-            
-            foreach (var (mbr, mbrInfo) in value.MemberInfos)
-            {
-                object? mbrValue;
-                if (mbrInfo is PropertyInfo propInfo)
-                    mbrValue = propInfo.GetValue(value);
-                else if (mbrInfo is FieldInfo fieldInfo)
-                    mbrValue = fieldInfo.GetValue(value);
-                else
-                    continue;
-
-                if (mbrValue is not OptionGroup grp)
-                    continue;
-
-                writer.WritePropertyName(mbrInfo.Name);
-                JsonSerializer.Serialize(writer, grp, options);
-            }
-
-            writer.WriteEndObject();
-        }
+        return JsonSerializer.Deserialize<AppConfigurationSettings>(data, opts)!;
     }
 
-    class RandomizationSettingsJsonConverter : JsonConverter<RandomizationSettings>
+    public byte[] Serialize()
     {
-        record ClassStackEntry(Dictionary<string, ClassStackEntry> Objects, Dictionary<string, object> Values);
-
-        public override RandomizationSettings? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        JsonSerializerOptions opts = new()
         {
-            RandomizationSettings settings = new();
+            TypeInfoResolver = JsonContext.Default,
+            WriteIndented = true,
+        };
+        opts.Converters.Add(new JsonStringEnumConverter());
+        opts.Converters.Add(new OptionJsonConverter());
+        opts.Converters.Add(new OptionGroupJsonConverter());
 
-            var jsonDoc = JsonDocument.ParseValue(ref reader);
-
-            ReadGroup(settings, jsonDoc.RootElement, "", settings);
-
-            return settings;
-
-        }
-
-        public override void Write(Utf8JsonWriter writer, RandomizationSettings value, JsonSerializerOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        void ReadGroup(
-            RandomizationSettings settings,
-            JsonElement grpEl,
-            string grpPath,
-            OptionGroup grp)
-        {
-            Type type = grp.GetType();
-            foreach (var en in grpEl.EnumerateObject())
-            {
-                string propName = en.Name;
-                string propPath = grpPath.Length != 0
-                    ? $"{grpPath}.{propName}"
-                    : propName;
-                if (settings.OptionsByPath.TryGetValue(propPath, out var iopt))
-                {
-                    var optEl = en.Value;
-                    var optType = iopt.Type;
-                    if (optEl.TryGetProperty("Value", out var valueEl))
-                    {
-                        if (optType == typeof(bool))
-                            iopt.BaseValue = valueEl.GetBoolean();
-                        else
-                            iopt.BaseValue = iopt.ParseType(valueEl.GetString()!);
-                    }
-
-                    if (optEl.TryGetProperty("Randomize", out var rndEl))
-                        iopt.Randomize = rndEl.GetBoolean();
-                }
-                else if (settings.GroupsByPath.TryGetValue(propPath, out var propGrp))
-                    ReadGroup(settings, en.Value, propPath, propGrp);
-            }
-        }
+        return JsonSerializer.SerializeToUtf8Bytes(this, opts);
     }
 
-    public partial class AppConfigurationSettings : ReactiveObject
+    public void UpdateRandomizerSettings(bool defaultSeed)
     {
-        [Reactive]
-        public partial RandomizationSettings RandomizationSettings { get; set; } = new();
+        var settings = RandomizationSettings;
 
-        [Reactive]
-        public partial string SeedString { get; set; } = "";
-
-        [Reactive]
-        public partial string RomSourceBookmark { get; set; } = "";
-
-        [Reactive]
-        public partial bool EnableAppUiDarkTheme { get; set; } = true;
-
-        [Reactive]
-        public partial bool CreateLogFile { get; set; } = false;
-
-        [Reactive]
-        public partial int SettingsPresetIndex { get; set; } = 0;
-
-        public AppConfigurationSettings()
-        {
-            // Required for Reactive properties to work properly
-        }
-
-        public static AppConfigurationSettings Deserialize(byte[] data)
-        {
-            JsonSerializerOptions opts = new()
-            {
-                TypeInfoResolver = JsonContext.Default,
-            };
-            opts.Converters.Add(new JsonStringEnumConverter());
-            opts.Converters.Add(new RandomizationSettingsJsonConverter());
-
-            return JsonSerializer.Deserialize<AppConfigurationSettings>(data, opts)!;
-        }
-
-        public byte[] Serialize()
-        {
-            JsonSerializerOptions opts = new()
-            {
-                TypeInfoResolver = JsonContext.Default,
-                WriteIndented = true,
-            };
-            opts.Converters.Add(new JsonStringEnumConverter());
-            opts.Converters.Add(new OptionJsonConverter());
-            opts.Converters.Add(new OptionGroupJsonConverter());
-
-            return JsonSerializer.SerializeToUtf8Bytes(this, opts);
-        }
-
-        public void UpdateRandomizerSettings(bool defaultSeed)
-        {
-            var settings = RandomizationSettings;
-
-            settings.SeedString = defaultSeed ? null : SeedString;
-            settings.RomSourcePath = RomSourceBookmark;
-            settings.CreateLogFile = CreateLogFile && !settings.IsTournament;
-        }
-
-        [JsonSerializable(typeof(AppConfigurationSettings))]
-        internal partial class JsonContext : JsonSerializerContext
-        { }
+        settings.SeedString = defaultSeed ? null : SeedString;
+        settings.RomSourcePath = RomSourceBookmark;
+        settings.CreateLogFile = CreateLogFile && !settings.IsTournament;
     }
+
+    [JsonSerializable(typeof(AppConfigurationSettings))]
+    internal partial class JsonContext : JsonSerializerContext
+    { }
 }
