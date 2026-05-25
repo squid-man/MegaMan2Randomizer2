@@ -84,12 +84,4 @@
   <ItemGroup>
     <ProjectReference Include="..\MM2RandoLib\MM2RandoLib.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Controls\StandardBoolOption.axaml.cs">
-      <DependentUpon>StandardBoolOption.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\MessageBox.axaml.cs">
-      <DependentUpon>MessageBox.axaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>
