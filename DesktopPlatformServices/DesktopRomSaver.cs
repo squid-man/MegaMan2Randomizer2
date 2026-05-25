@@ -1,5 +1,6 @@
 ﻿using Avalonia.Platform.Storage;
 using MM2RandoLib.Utilities;
+using MM2Randomizer;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ public class DesktopRomSaver : IRomSaver
     {
         BasePath = !string.IsNullOrEmpty(basePath)
             ? basePath
-            : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            : RandomMM2.BasePath;
     }
 
     public void Dispose()

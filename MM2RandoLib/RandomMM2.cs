@@ -3,6 +3,7 @@ using MM2RandoLib.Utilities;
 using MM2Randomizer.Random;
 using MM2Randomizer.Settings;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,6 +29,9 @@ namespace MM2Randomizer
 
             return ctx;
         }
+
+        static public string BasePath
+            => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
 
         static public Version AssemblyVersion
             => Assembly.GetExecutingAssembly().GetVersion() ?? new Version();

@@ -83,11 +83,8 @@ namespace RandomizerHost.Views
         [RelayCommand]
         async Task OpenRomFile()
         {
-            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var storage = TopLevel.StorageProvider;
-            var initDir = exeDir != null
-                ? await storage.TryGetFolderFromPathAsync(exeDir)
-                : null;
+            var initDir = await storage.TryGetFolderFromPathAsync(RandomMM2.BasePath);
 
             var stgFiles = await DisplayDialog(storage.OpenFilePickerAsync(new()
             {
@@ -112,7 +109,7 @@ namespace RandomizerHost.Views
             await RunWithProgressDialog(async (vm, token) =>
             {
                 using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
-                    Path.GetDirectoryName(ViewModel.RomSourcePath),
+                    RandomMM2.BasePath,
                     1,
                     TopLevel.StorageProvider))
                 {
@@ -132,7 +129,7 @@ namespace RandomizerHost.Views
             await RunWithProgressDialog(async (vm, token) =>
             {
                 using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
-                    Path.GetDirectoryName(ViewModel.RomSourcePath),
+                    RandomMM2.BasePath,
                     ViewModel.RandomSeedCount,
                     TopLevel.StorageProvider))
                 {
@@ -168,19 +165,15 @@ namespace RandomizerHost.Views
 
             await RunAndDisplayError(async () =>
             {
-                await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
+                await launcher.LaunchDirectoryInfoAsync(new(RandomMM2.BasePath));
             });
         }
 
         [RelayCommand]
         async Task ImportSettings()
         {
-            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var storage = TopLevel.GetTopLevel(this)!.StorageProvider;
-            var initDir = exeDir != null
-                ? await storage.TryGetFolderFromPathAsync(exeDir)
-                : null;
-
+            var initDir = await storage.TryGetFolderFromPathAsync(RandomMM2.BasePath);
             var stgFiles = await DisplayDialog(storage.OpenFilePickerAsync(new()
             {
                 Title = "Import Settings",
@@ -201,12 +194,8 @@ namespace RandomizerHost.Views
         [RelayCommand]
         async Task ExportSettings()
         {
-            string? exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var storage = TopLevel.GetTopLevel(this)!.StorageProvider;
-            var initDir = exeDir != null
-                ? await storage.TryGetFolderFromPathAsync(exeDir)
-                : null;
-
+            var initDir = await storage.TryGetFolderFromPathAsync(RandomMM2.BasePath);
             var stgFile = await DisplayDialogNullable(storage.SaveFilePickerAsync(new()
             {
                 Title = "Export Settings",
