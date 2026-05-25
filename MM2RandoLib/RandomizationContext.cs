@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using js65;
+﻿using js65;
 using MM2RandoLib;
 using MM2RandoLib.Settings.Options;
 using MM2RandoLib.Utilities;
@@ -21,6 +15,13 @@ using MM2Randomizer.Settings;
 using MM2Randomizer.Settings.OptionGroups;
 using MM2Randomizer.Settings.Options;
 using MM2Randomizer.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MM2Randomizer
 {
@@ -35,7 +36,13 @@ namespace MM2Randomizer
         // Constructors
         //
 
-        internal RandomizationContext(RandomizationSettings in_Settings, ISeed in_Seed, IPlatformServices in_PlatformServices, byte[] rom)
+        internal RandomizationContext(
+            RandomizationSettings in_Settings, 
+            ISeed in_Seed, 
+            IPlatformServices in_PlatformServices, 
+            byte[] rom,
+            IProgress<string?> in_Progress,
+            CancellationToken in_CancellationToken)
         {
             this.Seed = in_Seed;
             this.Settings = in_Settings;
@@ -52,6 +59,9 @@ namespace MM2Randomizer
             SourceRom = rom;
             PrepatchRom = Array.Empty<byte>();
             Rom = rom.ToArray();
+
+            Progress = in_Progress;
+            CancellationToken = in_CancellationToken;
         }
 
         //
@@ -69,6 +79,10 @@ namespace MM2Randomizer
         public byte[] SourceRom { get; }
         public byte[] PrepatchRom { get; private set; }
         public byte[] Rom { get; private set; }
+
+        public IProgress<string?> Progress { get; }
+
+        public CancellationToken CancellationToken { get; }
 
         // Create randomization patch
         public Patch Patch { get; private set; } = new Patch();
@@ -156,7 +170,12 @@ namespace MM2Randomizer
 
         internal async Task Initialize()
         {
+            // These steps complete so fast only two messages ever have time to display
+            UpdateProgressAndCheckCancellation("Performing randomization...");
+
             await CreateInitialRom();
+
+            CheckCancellation();
 
             // Not certain whether this must come first
             AsmModuleFromResource("config.asm");
@@ -314,6 +333,8 @@ namespace MM2Randomizer
             // No randomization after this point, only patching
             // ================================================
 
+            UpdateProgressAndCheckCancellation("Applying changes...");
+
             // Apply additional required incidental modifications
             if (gameplayOpts.RandomizeRobotMasterStageSelection.Value ||
                 gameplayOpts.RandomizeSpecialWeaponReward.Value)
@@ -415,7 +436,7 @@ namespace MM2Randomizer
             AsmModuleFromResource("config.asm", asm);
             AsmModuleFromResource("prepatch.asm", asm);
 
-            PrepatchRom = await asm.ApplyAsync(Rom);
+            PrepatchRom = await asm.ApplyAsync(Rom).WaitAsync(CancellationToken);
             Rom = PrepatchRom.ToArray();
         }
 
@@ -572,7 +593,7 @@ namespace MM2Randomizer
                 AsmModuleFromResource(node);
 
             // And compile
-            Rom = await Assembler.ApplyAsync(Rom);
+            Rom = await Assembler.ApplyAsync(Rom).WaitAsync(CancellationToken);
         }
 
         private string AsmFileReadTextCallback(string basePath, string path)
@@ -617,6 +638,19 @@ namespace MM2Randomizer
             string path, 
             Assembler? asm = null)
             => AsmModuleFromResource(AsmRoot.Find(path), asm);
+
+        private void CheckCancellation()
+        {
+            if (CancellationToken.IsCancellationRequested)
+                throw new OperationCanceledException();
+        }
+
+        private void UpdateProgressAndCheckCancellation(string progress)
+        {
+            Progress.Report(progress);
+
+            CheckCancellation();
+        }
 
         //
         // Private Data Members

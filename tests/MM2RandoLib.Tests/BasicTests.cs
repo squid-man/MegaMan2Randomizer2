@@ -8,6 +8,12 @@ using System.IO;
 
 namespace MM2RandoLib.Tests
 {
+    public class DummyProgress : IProgress<string?>
+    {
+        public void Report(string? value)
+        { }
+    }
+
     public class BasicTests
     {
         /// <summary>
@@ -34,7 +40,12 @@ namespace MM2RandoLib.Tests
                 settings.QualityOfLifeOptions.EnableBirdEggFix.BaseValue = true;
                 settings.QualityOfLifeOptions.DisableFlashingEffects.BaseValue = true;
 
-                RandomizationContext ctx = await RandomMM2.RandomizerCreate(settings, new DesktopPlatformServices(), new byte[0x80010]);
+                RandomizationContext ctx = await RandomMM2.RandomizerCreate(
+                    settings, 
+                    new DesktopPlatformServices(),
+                    new byte[0x80010],
+                    new DummyProgress(),
+                    new CancellationToken());
 
                 return;
             }

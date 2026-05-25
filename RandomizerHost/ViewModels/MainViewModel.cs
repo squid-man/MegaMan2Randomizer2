@@ -23,6 +23,7 @@ using System.Reactive.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RandomizerHost.ViewModels
@@ -367,40 +368,61 @@ namespace RandomizerHost.ViewModels
             }
         }
 
-        public async Task CreateFromGivenSeed(IRomSaver romSaver)
+        public async Task<string> CreateFromGivenSeed(
+            IRomSaver romSaver,
+            ProgressDialogViewModel progress,
+            CancellationToken cancellationToken)
         {
-            if (true == String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString))
-            {
-                await this.CreateFromRandomSeedMultiple(romSaver);
-            }
-            else
-            {
-                await this.PerformRandomization(false, romSaver);
-                this.AppConfigurationSettings.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+            progress.MessageLines[0] = "Generating ROM...";
 
-                // Flag UI as having created a ROM, enabling the "open folder" button
-                ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
-                CanOpenContainingFolder = CanLaunch;
-            }
+            var msg = await this.PerformRandomization(
+                String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString), 
+                romSaver, 
+                progress.GetProgressFromMessageLine(2), 
+                cancellationToken);
+
+            this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
+
+            // Flag UI as having created a ROM, enabling the "open folder" button
+            ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
+            CanOpenContainingFolder = CanLaunch;
+
+            return msg;
         }
 
 
-        public async Task CreateFromRandomSeedMultiple(IRomSaver romSaver)
+        public async Task<string> CreateFromRandomSeedMultiple(
+            IRomSaver romSaver,
+            ProgressDialogViewModel progress,
+            CancellationToken cancellationToken)
         {
+            if (RandomSeedCount == 1)
+                return await CreateFromGivenSeed(romSaver, progress, cancellationToken);
+
+            var overProg = progress.GetProgressFromMessageLine(0);
+            var romProg = progress.GetProgressFromMessageLine(2);
+
             for (int i = 1; i <= this.RandomSeedCount; i++)
             {
-                await this.PerformRandomization(true, romSaver);
+                overProg.Report($"Generating ROM {i} of {RandomSeedCount}...");
+
+                await this.PerformRandomization(true, romSaver, romProg, cancellationToken);
 
                 this.AppConfigurationSettings!.SeedString = this.mCurrentRandomizationContext!.Seed.SeedString;
-                HashValidationMessage = $"Successfully copied and patched {i} of {this.RandomSeedCount} ROMs!";
 
                 // Flag UI as having created a ROM, enabling the "open folder" button
                 ContainingFolder = Path.GetDirectoryName(Path.GetFullPath(mCurrentRandomizationContext.FileName));
                 CanOpenContainingFolder = CanLaunch;
             }
+
+            return $"Successfully generated {RandomSeedCount} ROMs.";
         }
 
-        public async Task PerformRandomization(Boolean in_DefaultSeed, IRomSaver in_RomSaver)
+        public async Task<string> PerformRandomization(
+            Boolean in_DefaultSeed, 
+            IRomSaver in_RomSaver,
+            IProgress<string?> in_Progress,
+            CancellationToken in_CancellationToken)
         {
             // Perform randomization based on settings, then generate the ROM.
             var settings = AppConfigurationSettings;
@@ -412,8 +434,12 @@ namespace RandomizerHost.ViewModels
 
             //Settings.SettingsPreset = AppConfigurationSettings.SettingsPresetIndex != 0 ? SettingsPreset : null;
 
-            RandomizationContext context = await RandomMM2.RandomizerCreate(Settings, PlatformServices, mRom!);
-            HashValidationMessage = "Successfully copied and patched! File: " + context.FileName;
+            RandomizationContext context = await RandomMM2.RandomizerCreate(
+                Settings, 
+                PlatformServices, 
+                mRom!,
+                in_Progress,
+                in_CancellationToken);
 
             // Get A-Z representation of seed
             String seedBase26 = context.Seed.Identifier;
@@ -443,6 +469,8 @@ namespace RandomizerHost.ViewModels
 
             await in_RomSaver.AddFile(
                 Path.GetFileName(context.FileName), context.Rom);
+
+            return "Successfully copied and patched!\n\nFile: " + context.FileName;
         }
 
         public async Task ImportSettings(IStorageFile file)

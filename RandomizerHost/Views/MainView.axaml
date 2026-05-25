@@ -516,6 +516,13 @@
             <TabItem Header="Experimental" IsEnabled="True" IsVisible="False">
             </TabItem>
         </TabControl>
+
+        <ContentControl 
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.RowSpan="100"
+            Grid.ColumnSpan="100"
+            Content="{Binding #View.ModalDialog}"
+        />
     </Grid>
-    
 </UserControl>

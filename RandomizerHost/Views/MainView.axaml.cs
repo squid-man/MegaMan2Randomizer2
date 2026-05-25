@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RandomizerHost.Views
@@ -22,6 +23,15 @@ namespace RandomizerHost.Views
     {
         public TopLevel TopLevel => TopLevel.GetTopLevel(this)!;
         public MainViewModel ViewModel => (MainViewModel)DataContext!;
+
+        public static readonly StyledProperty<Control?> ModalDialogProperty =
+            AvaloniaProperty.Register<Control, Control?>(nameof(ModalDialog));
+
+        public Control? ModalDialog
+        {
+            get => GetValue(ModalDialogProperty);
+            set => SetValue(ModalDialogProperty, value);
+        }
 
         public MainView()
         {
@@ -92,64 +102,47 @@ namespace RandomizerHost.Views
             if (stgFiles == null || stgFiles.Count != 1)
                 return;
 
-            try
-            {
-                await ViewModel.OpenRomFile(stgFiles[0]);
-            }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(
-                    this, e.ToString(), "Error", ButtonEnum.Ok);
-            }
+            await RunAndDisplayError(
+                async () => await ViewModel.OpenRomFile(stgFiles[0]));
         }
 
         [RelayCommand]
         async Task CreateFromGivenSeed()
         {
-            try
+            await RunWithProgressDialog(async (vm, token) =>
             {
                 using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
                     Path.GetDirectoryName(ViewModel.RomSourcePath),
                     1,
                     TopLevel.StorageProvider))
                 {
-                    await ViewModel.CreateFromGivenSeed(romSaver);
+                    var msg = await ViewModel.CreateFromGivenSeed(romSaver, vm, token);
 
                     await romSaver.Commit();
+
+                    return msg;
                 }
-            }
-            catch (OperationCanceledException)
-            { }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(
-                    this, e.ToString(), "Error", ButtonEnum.Ok);
-            }
+            });
         }
 
 
         [RelayCommand]
         async Task CreateFromRandomSeedMultiple()
         {
-            try
+            await RunWithProgressDialog(async (vm, token) =>
             {
                 using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
                     Path.GetDirectoryName(ViewModel.RomSourcePath),
                     ViewModel.RandomSeedCount,
                     TopLevel.StorageProvider))
                 {
-                    await ViewModel.CreateFromRandomSeedMultiple(romSaver);
+                    var msg = await ViewModel.CreateFromRandomSeedMultiple(romSaver, vm, token);
 
                     await romSaver.Commit();
+
+                    return msg;
                 }
-            }
-            catch (OperationCanceledException)
-            { }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(
-                    this, e.ToString(), "Error", ButtonEnum.Ok);
-            }
+            });
         }
 
 
@@ -173,15 +166,10 @@ namespace RandomizerHost.Views
                 }
             }
 
-            try
+            await RunAndDisplayError(async () =>
             {
                 await launcher.LaunchDirectoryInfoAsync(new(Path.TrimEndingDirectorySeparator(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!)));
-            }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(
-                    this, e.ToString(), "Error", ButtonEnum.Ok);
-            }
+            });
         }
 
         [RelayCommand]
@@ -206,15 +194,8 @@ namespace RandomizerHost.Views
             if (stgFiles == null || stgFiles.Count != 1)
                 return;
 
-            try
-            {
-                await ViewModel.ImportSettings(stgFiles[0]);
-            }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(
-                    this, e.ToString(), "Error", ButtonEnum.Ok);
-            }
+            await RunAndDisplayError(
+                async () => await ViewModel.ImportSettings(stgFiles[0]));
         }
 
         [RelayCommand]
@@ -240,15 +221,8 @@ namespace RandomizerHost.Views
             if (stgFile == null)
                 return;
 
-            try
-            {
-                await ViewModel.ExportSettings(stgFile);
-            }
-            catch (Exception e)
-            {
-                await MessageBox.ShowAsync(
-                    this, e.ToString(), "Error", ButtonEnum.Ok);
-            }
+            await RunAndDisplayError(
+                async () => await ViewModel.ExportSettings(stgFile));
         }
 
         static void SetDragDropEffects(DragEventArgs e, bool success)
@@ -282,6 +256,25 @@ namespace RandomizerHost.Views
                 MimeTypes = new[] { "application/json" },
             }
         ];
+
+        async Task<bool> RunAndDisplayError(Func<Task> action)
+        {
+            try
+            {
+                await action();
+
+                return true;
+            }
+            catch (OperationCanceledException)
+            { }
+            catch (Exception e)
+            {
+                await MessageBox.ShowAsync(
+                    this, e.ToString(), "Error", ButtonEnum.Ok);
+            }
+
+            return false;
+        }
 
         async Task<T?> DisplayDialog<T>(Task<T> dialog)
             where T : class
@@ -317,6 +310,30 @@ namespace RandomizerHost.Views
             }
             catch (OperationCanceledException)
             { return null; }
+        }
+
+        async Task RunWithProgressDialog(
+            Func<ProgressDialogViewModel, CancellationToken, Task<string?>> action)
+        {
+            await RunAndDisplayError(async () =>
+            {
+                var token = new CancellationTokenSource();
+                var vm = new ProgressDialogViewModel();
+                var progDlg = new ProgressDialog() { DataContext = vm };
+
+                progDlg.CancelButton.Click += (sender, e) => token.Cancel();
+
+                ModalDialog = progDlg;
+
+                var result = await action(vm, token.Token);
+
+                ModalDialog = null;
+
+                if (result != null)
+                    await MessageBox.ShowAsync(this, result, "");
+            });
+
+            ModalDialog = null;
         }
     }
 }
