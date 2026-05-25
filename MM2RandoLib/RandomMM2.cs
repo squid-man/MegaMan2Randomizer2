@@ -4,6 +4,7 @@ using MM2Randomizer.Random;
 using MM2Randomizer.Settings;
 using System;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MM2Randomizer
@@ -17,10 +18,12 @@ namespace MM2Randomizer
         public static async Task<RandomizationContext> RandomizerCreate(
             RandomizationSettings in_Settings, 
             IPlatformServices in_PlatformServices, 
-            byte[] in_Rom)
+            byte[] in_Rom,
+            IProgress<string?> in_Progress,
+            CancellationToken in_CancellationToken)
         {
             ISeed seed = new PcgSeed(in_Settings.SeedString);
-            var ctx = new RandomizationContext(in_Settings, seed, in_PlatformServices, in_Rom);
+            var ctx = new RandomizationContext(in_Settings, seed, in_PlatformServices, in_Rom, in_Progress, in_CancellationToken);
             await ctx.Initialize();
 
             return ctx;
