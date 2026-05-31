@@ -104,12 +104,31 @@ namespace RandomizerHost.Views
         }
 
         [RelayCommand]
+        async Task SelectOutputFolder()
+        {
+            var stg = TopLevel.StorageProvider;
+            if (!ViewModel.CanSelectFolder)
+                return;
+
+            var vm = ViewModel;
+            var folders = await DisplayDialog(stg.OpenFolderPickerAsync(new()
+            {
+                Title = "Select Output Folder",
+                SuggestedStartLocation = vm.OutputFolder,
+                AllowMultiple = false,
+            }));
+
+            if (folders != null && folders.Count == 1)
+                await ViewModel.SetOutputFolder(folders[0]);
+        }
+
+        [RelayCommand]
         async Task CreateFromGivenSeed()
         {
             await RunWithProgressDialog(async (vm, token) =>
             {
                 using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
-                    RandomMM2.BasePath,
+                    ViewModel.OutputFolder,
                     1,
                     TopLevel.StorageProvider))
                 {
@@ -129,7 +148,7 @@ namespace RandomizerHost.Views
             await RunWithProgressDialog(async (vm, token) =>
             {
                 using (var romSaver = await ViewModel.PlatformServices.CreateRomSaver(
-                    RandomMM2.BasePath,
+                    ViewModel.OutputFolder,
                     ViewModel.RandomSeedCount,
                     TopLevel.StorageProvider))
                 {

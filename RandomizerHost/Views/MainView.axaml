@@ -26,6 +26,7 @@
     
     <!-- Static Resources -->
     <UserControl.Resources>
+        <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
         <converters:PlayerSpriteToImageConverter x:Key="PlayerSpriteToImageConverter"/>
         <converters:FontToImageConverter x:Key="FontToImageConverter"/>
         <converters:HudElementsToImageConverter x:Key="HudElementsToImageConverter"/>
@@ -150,10 +151,49 @@
                 
                 <TextBlock
                     Grid.Column="3"
+                    HorizontalAlignment="Center"
                     FontSize="22"
                     Text="{Binding IsRomValidText}"
                     Foreground="{Binding IsRomValidColor}"
                     ToolTip.Tip="{Binding RomStatusTooltip}"
+                />
+
+                <!-- Output folder selection -->
+                <TextBlock 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Output Folder:"
+                    IsVisible="{Binding CanSelectFolder}"
+                />
+
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalContentAlignment="Center"
+                    Command="{Binding #View.SelectOutputFolderCommand}"
+                    IsVisible="{Binding CanSelectFolder}"
+                >
+                    ...
+                </Button>
+
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    HorizontalAlignment="Stretch"
+                    Text="{Binding OutputFolderPath}"
+                    IsReadOnly="True"
+                    IsVisible="{Binding CanSelectFolder}"
+                />
+                
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    HorizontalAlignment="Center"
+                    FontSize="22"
+                    Text="✅"
+                    Foreground="LimeGreen"
+                    IsVisible="{Binding CanSelectFolder}"
+                    Opacity="{Binding IsOutputFolderValid, Converter={StaticResource BoolToOpacityConverter}}"
                 />
             </Grid>
 
@@ -407,6 +447,7 @@
                         Columns="2"
                         RowSpacing="8"
                         ColumnSpacing="8"
+                        Margin="6"
                     >
                         <DockPanel
                             Grid.Row="0"

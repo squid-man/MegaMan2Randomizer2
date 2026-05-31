@@ -2,6 +2,7 @@
 using Avalonia.Platform.Storage;
 using js65;
 using MM2RandoLib.Utilities;
+using MM2Randomizer;
 using RandomizerHost.Settings;
 using System;
 using System.Diagnostics;
@@ -85,6 +86,13 @@ public class DesktopPlatformServices : IHostPlatformServices
         return null;
     }
 
+    public async Task<IStorageFolder?> GetDefaultOutputFolder(
+        IStorageProvider storage)
+        => await storage.TryGetFolderFromPathAsync(RandomMM2.BasePath);
+
+    public async Task<bool> CanPlatformWriteFiles()
+        => true;
+
     public bool CanPlatformLaunch(TopLevel topLevel)
         => true;
 
@@ -93,8 +101,8 @@ public class DesktopPlatformServices : IHostPlatformServices
         => new ClearScriptEngine(options, true, debugJavascript);
 #pragma warning restore CA1416 // Validate platform compatibility
 
-    public async Task<IRomSaver> CreateRomSaver(string? basePath, int numFiles, IStorageProvider storageProvider)
-        => new DesktopRomSaver(basePath);
+    public async Task<IRomSaver> CreateRomSaver(IStorageFolder? folder, int numFiles, IStorageProvider storageProvider)
+        => new FolderRomSaver(folder);
 
     const string RandomizerSettingsFolderName = "Mega Man 2 Randomizer";
     const string RandomizerSettingsFilename = "Settings.json";

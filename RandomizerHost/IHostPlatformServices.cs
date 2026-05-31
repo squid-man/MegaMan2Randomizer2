@@ -20,8 +20,10 @@ public interface IHostPlatformServices : IPlatformServices
     void SaveRomCache(string path, byte[] data);
 
     Task<string?> GetInitialRomPath();
+    Task<IStorageFolder?> GetDefaultOutputFolder(IStorageProvider storage);
 
-    Task<IRomSaver> CreateRomSaver(string? basePath, int numFiles, IStorageProvider storageProvider);
+    Task<IRomSaver> CreateRomSaver(IStorageFolder? folder, int numFiles, IStorageProvider storageProvider);
 
+    Task<bool> CanPlatformWriteFiles();
     bool CanPlatformLaunch(TopLevel topLevel);
 }

@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using MM2RandoLib.Utilities;
+using RandomizerHost;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -9,25 +10,30 @@ using System.IO.Compression;
 using System.Reflection;
 using System.Threading.Tasks;
 
-internal class BrowserRomSaver : IRomSaver
+internal class BrowserRomSaver : FolderRomSaver
 {
-    public bool IsDisposed { get; private set; } = false;
-
     public BrowserRomSaver(
-        string? basePath, 
+        IStorageFolder? folder, 
         int numFiles, 
         IStorageProvider storageProvider)
+        : base(folder)
     {
         _stg = storageProvider;
         _numExpectedFiles = numFiles;
     }
 
-    public void Dispose()
+    internal async Task Initialize()
+    {
+        if (IsDisposed)
+            throw new ObjectDisposedException(nameof(BrowserRomSaver));
+    }
+
+    public override void Dispose()
     {
         if (IsDisposed)
             return;
 
-        IsDisposed = true;
+        base.Dispose();
 
         if (_archive != null)
             _archive.Dispose();
@@ -37,16 +43,16 @@ internal class BrowserRomSaver : IRomSaver
             _archiveFileStream.Dispose();
     }
 
-    internal async Task Initialize()
+    public override async Task AddFile(string filename, byte[] data)
     {
         if (IsDisposed)
             throw new ObjectDisposedException(nameof(BrowserRomSaver));
-    }
 
-    public async Task AddFile(string filename, byte[] data)
-    {
-        if (IsDisposed)
-            throw new ObjectDisposedException(nameof(BrowserRomSaver));
+        if (Folder != null)
+        {
+            await base.AddFile(filename, data);
+            return;
+        }
 
         if (_numExpectedFiles == 1)
         {
@@ -101,12 +107,12 @@ internal class BrowserRomSaver : IRomSaver
         _numFiles += 1;
     }
 
-    public async Task Commit()
+    public override async Task Commit()
     {
         if (IsDisposed)
             throw new ObjectDisposedException(nameof(BrowserRomSaver));
 
-        IsDisposed = true;
+        base.Dispose();
 
         if (_archive != null)
         {

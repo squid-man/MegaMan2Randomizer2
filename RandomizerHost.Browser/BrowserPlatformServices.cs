@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using js65;
+using Microsoft.JSInterop;
 using MM2RandoLib.Utilities;
 using RandomizerHost;
 using System;
@@ -58,15 +59,26 @@ internal partial class BrowserPlatformServices : IHostPlatformServices
     public async Task<string?> GetInitialRomPath()
         => null;
 
+    public async Task<IStorageFolder?> GetDefaultOutputFolder(
+        IStorageProvider storage)
+        => null;
+
+    public async Task<bool> CanPlatformWriteFiles()
+    {
+        await JSHost.ImportAsync("Interop", "../interop.js");
+
+        return SupportsFileSystemWrites();
+    }
+
     public bool CanPlatformLaunch(TopLevel topLevel)
         => false;
 
     public Assembler CreateAssembler(Js65Options? options, bool debugJavascript)
         => new BrowserJsEngine(options);
 
-    public async Task<IRomSaver> CreateRomSaver(string? basePath, int numFiles, IStorageProvider storageProvider)
+    public async Task<IRomSaver> CreateRomSaver(IStorageFolder? folder, int numFiles, IStorageProvider storageProvider)
     {
-        var romSaver = new BrowserRomSaver(basePath, numFiles, storageProvider);
+        var romSaver = new BrowserRomSaver(folder, numFiles, storageProvider);
 
         await romSaver.Initialize();
 
@@ -82,4 +94,7 @@ internal partial class BrowserPlatformServices : IHostPlatformServices
 
     [JSImport("globalThis.localStorage.getItem")]
     internal static partial string? GetLocalSetting(string key);
+
+    [JSImport("supportsFileSystemWrites", "Interop")]
+    internal static partial bool SupportsFileSystemWrites();
 }

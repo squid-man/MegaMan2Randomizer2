@@ -19,6 +19,9 @@ public partial class AppConfigurationSettings : ReactiveObject
     public partial string RomSourceBookmark { get; set; } = "";
 
     [Reactive]
+    public partial string OutputFolderBookmark { get; set; } = "";
+
+    [Reactive]
     public partial bool EnableAppUiDarkTheme { get; set; } = true;
 
     [Reactive]

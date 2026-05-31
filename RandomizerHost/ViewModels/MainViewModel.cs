@@ -67,6 +67,19 @@ namespace RandomizerHost.ViewModels
             cfgObs.SwitchSelect(c => c.WhenAnyValue(c => c.SeedString))
                 .Select(s => IsValidSeed(s))
                 .ToProperty(this, vm => vm.IsSeedValid, out _isSeedValid);
+
+            this.WhenAnyValue(vm => vm.OutputFolder)
+                .Select(f => f?.TryGetLocalPath() ?? f?.Name ?? "")
+                .ToProperty(
+                    this, 
+                    vm => vm.OutputFolderPath, 
+                    out _outputFolderPath);
+            this.WhenAnyValue(vm => vm.OutputFolder)
+                .Select(f => f != null)
+                .ToProperty(
+                    this,
+                    vm => vm.IsOutputFolderValid,
+                    out _isOutputFolderValid);
         }
 
         public async Task OnViewCreated(Visual view)
@@ -76,6 +89,8 @@ namespace RandomizerHost.ViewModels
             var stg = top!.StorageProvider;
 
             CanLaunch = PlatformServices.CanPlatformLaunch(top);
+            CanSelectFolder = stg.CanPickFolder 
+                && await PlatformServices.CanPlatformWriteFiles();
 
             var settingsData = await PlatformServices.LoadSettingsData();
             if (settingsData != null)
@@ -120,6 +135,9 @@ namespace RandomizerHost.ViewModels
                 await SetRomFile(
                     stg, AppConfigurationSettings.RomSourceBookmark, false);
             }
+
+            await SetOutputFolder(
+                stg, AppConfigurationSettings.OutputFolderBookmark);
         }
 
         private void OnAppConfigurationSettingsChanged(AppConfigurationSettings settings)
@@ -195,7 +213,7 @@ namespace RandomizerHost.ViewModels
             IsRomValid = false;
             RomSourcePath = "Invalid File";
             IsRomValidText = "";
-            RomStatusTooltip = "";
+            RomStatusTooltip = null;
             HashValidationMessage = String.Empty;
 
             if (OpenStream == null)
@@ -279,11 +297,43 @@ namespace RandomizerHost.ViewModels
             }
         }
 
+        public async Task SetOutputFolder(IStorageFolder folder)
+            => await SetOutputFolder(await folder.SaveBookmarkAsync(), folder);
+
+        private async Task SetOutputFolder(
+            IStorageProvider storage,
+            string bookmark)
+        {
+            IStorageFolder? folder = null;
+            if (bookmark != "")
+            {
+                folder = await storage.OpenFolderBookmarkAsync(bookmark);
+                if (folder == null)
+                    bookmark = "";
+            }
+            else
+                // Do not set bookmark as this should not be persisted
+                folder = await PlatformServices.GetDefaultOutputFolder(storage);
+
+            await SetOutputFolder(bookmark, folder);
+        }
+
+        private async Task SetOutputFolder(
+            string? bookmark, 
+            IStorageFolder? folder)
+        {
+            AppConfigurationSettings.OutputFolderBookmark = bookmark ?? "";
+            OutputFolder = folder;
+        }
+
         //
         // Properties
         //
 
         public IHostPlatformServices PlatformServices{ get; }
+
+        [Reactive]
+        public partial bool CanSelectFolder { get; private set; } = false;
 
         [Reactive]
         public partial bool CanLaunch { get; private set; } = false;
@@ -304,6 +354,12 @@ namespace RandomizerHost.ViewModels
         [Reactive]
         public partial bool IsRomSourcePathValid { get; private set; } = false;
 
+        [Reactive]
+        public partial IStorageFolder? OutputFolder { get; private set; } = null;
+
+        private readonly ObservableAsPropertyHelper<string> _outputFolderPath;
+        public string OutputFolderPath => _outputFolderPath.Value;
+
         private readonly ObservableAsPropertyHelper<bool> _isSeedValid;
         public bool IsSeedValid => _isSeedValid.Value;
 
@@ -317,10 +373,13 @@ namespace RandomizerHost.ViewModels
         public partial string IsRomValidColor { get; private set; } = "Red";
 
         [Reactive]
-        public partial string RomStatusTooltip { get; private set; } = "";
+        public partial string? RomStatusTooltip { get; private set; } = null;
 
         [Reactive]
         public partial string HashValidationMessage { get; private set; } = "";
+
+        private readonly ObservableAsPropertyHelper<bool> _isOutputFolderValid;
+        public bool IsOutputFolderValid => _isOutputFolderValid.Value;
 
         [Reactive]
         public partial string? ContainingFolder { get; private set; } = null;
