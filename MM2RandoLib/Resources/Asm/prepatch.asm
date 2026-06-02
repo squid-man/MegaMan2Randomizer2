@@ -751,7 +751,7 @@
 .org $aac0
 .byte $11, $2c, $15, $0f, $30, $2c, $15, $26, $26, $27, $15
 
-; The title screen attributes map is at b2f1-b330
+; The title screen attributes map is at b2f1-b330, stored in reverse order
 
 .org $b31a
 .byte $5a, $99, $55, $55, $55, $55, $55, $66, $aa, $08, $00, $00, $01, $05, $55, $65

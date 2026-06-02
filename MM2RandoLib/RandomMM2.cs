@@ -12,6 +12,19 @@ namespace MM2Randomizer
 {
     public static class RandomMM2
     {
+        static RandomMM2()
+        {
+            BasePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            AssemblyVersion = Assembly.GetExecutingAssembly().GetVersion() ?? new Version();
+            AssemblyVersionString = Assembly.GetExecutingAssembly().GetVersionString();
+
+            int endIdx = AssemblyVersionString.IndexOfAny(['-', '+']);
+            if (endIdx < 0)
+                endIdx = AssemblyVersionString.Length;
+
+            BaseAssemblyVersionString = AssemblyVersionString[..endIdx];
+        }
+
         /// <summary>
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
@@ -30,13 +43,12 @@ namespace MM2Randomizer
             return ctx;
         }
 
-        static public string BasePath
-            => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+        static public string BasePath { get; }
 
-        static public Version AssemblyVersion
-            => Assembly.GetExecutingAssembly().GetVersion() ?? new Version();
+        static public Version AssemblyVersion { get; }
 
-        static public string AssemblyVersionString
-            => Assembly.GetExecutingAssembly().GetVersionString();
+        static public string AssemblyVersionString { get; }
+
+        static public string BaseAssemblyVersionString { get; }
     }
 }

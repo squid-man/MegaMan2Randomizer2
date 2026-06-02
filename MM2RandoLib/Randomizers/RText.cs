@@ -90,14 +90,11 @@ namespace MM2Randomizer.Randomizers
         /// </remarks>
         public static void PatchIntroVersion(Patch in_Patch)
         {
-            const String APP_NAME = "Mega Man 2 Randomizer v";
+            const String APP_NAME = "Mega Man 2 Randomizer";
             const Int32 INTRO_LINE2_OFFSET = 0x036EBE;
             const Int32 INTRO_LINE2_MAXLENGTH = 31;
 
-            String version = RandomMM2.AssemblyVersion.ToString(3);
-            String line = APP_NAME + version;
-            line = line.PadCenter(INTRO_LINE2_MAXLENGTH);
-
+            String line = APP_NAME.PadCenter(INTRO_LINE2_MAXLENGTH);
             in_Patch.Add(INTRO_LINE2_OFFSET, line.AsIntroString(), $"Splash Text: {line}");
         }
 
