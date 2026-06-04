@@ -33,18 +33,9 @@ namespace MM2Randomizer.Randomizers
             CompanyName companyName = in_Context.Seed.NextElement(enabledCompanyNames);
 
             // Write the intro text
+            RText.PatchSplashScreen(in_Patch, companyName, in_Context);
 
-            //       ©1988 CAPCOM CO.LTD
-            // TM AND ©1989 CAPCOM U.S.A.,INC.
-            //   MEGA MAN 2 RANDOMIZER 0.3.2
-            //           LICENSED BY
-            //    NINTENDO OF AMERICA. INC.
-
-            RText.PatchCompanyName(in_Patch, companyName);
-            RText.PatchIntroVersion(in_Patch);
-            RText.PatchForUse(in_Patch, in_Context.Seed);
             RText.PatchIntroStory(in_Patch, in_Context.Seed);
-
 
             // Write the new weapons names
             RText.PatchWeaponNames(in_Patch, in_Context.Seed, out Dictionary<EWeaponIndex, Char> newWeaponLetters);
@@ -61,75 +52,50 @@ namespace MM2Randomizer.Randomizers
         // Private Static Methods
         //
 
-        /// <summary>
-        /// This method patches the company name in the intro screen.
-        /// </summary>
-        /// <remarks>
-        /// Intro Screen Line 1: 0x036EA8 - 0x036EBA (19 chars)
-        /// ©2017 <company name> (13 chars for company, 19 total)
-        /// </remarks>
-        public static void PatchCompanyName(Patch in_Patch, CompanyName in_CompanyName)
+        public static void PatchSplashScreenLine(
+            Patch in_Patch, 
+            int in_LineIndex, 
+            string in_Text)
         {
-            const Int32 MAX_LINE_LENGTH = 19;
-            const Int32 INTRO_LINE1_ADDRESS = 0x036EA8;
-
-            String line = $"©{DateTime.Now.Year} {in_CompanyName.GetCompanyName()}".PadCenter(MAX_LINE_LENGTH);
+            if (in_Text.Length > 32)
+                in_Text = in_Text.Substring(0, 32);
 
             in_Patch.Add(
-                INTRO_LINE1_ADDRESS,
-                line.AsIntroString(),
-                $"Splash Text: {line}");
+                SplashScreenDataOffset + in_LineIndex * 32,
+                in_Text.PadCenter(32).AsIntroString(),
+                $"Splash Text @ {in_LineIndex}: {in_Text}");
         }
 
-
-        /// <summary>
-        /// This method patches the second line in the intro text.
-        /// </summary>
-        /// <remarks>
-        /// Intro Screen Line 2: 0x036EBE - 0x036EDC (31 chars)
-        /// </remarks>
-        public static void PatchIntroVersion(Patch in_Patch)
+        public static void PatchSplashScreen(
+            Patch in_Patch,
+            CompanyName in_CompanyName, 
+            RandomizationContext in_Context)
         {
-            const String APP_NAME = "Mega Man 2 Randomizer";
-            const Int32 INTRO_LINE2_OFFSET = 0x036EBE;
-            const Int32 INTRO_LINE2_MAXLENGTH = 31;
+            //       ©1988 CAPCOM CO.LTD
+            // TM AND ©1989 CAPCOM U.S.A.,INC.
+            //   MEGA MAN 2 RANDOMIZER 0.3.2
+            //           LICENSED BY
+            //    NINTENDO OF AMERICA. INC.
 
-            String line = APP_NAME.PadCenter(INTRO_LINE2_MAXLENGTH);
-            in_Patch.Add(INTRO_LINE2_OFFSET, line.AsIntroString(), $"Splash Text: {line}");
-        }
+            PatchSplashScreenLine(
+                in_Patch,
+                10,
+                $"©{DateTime.Now.Year} {in_CompanyName.GetCompanyName()}");
 
+            PatchSplashScreenLine(in_Patch, 12, "Mega Man 2 Randomizer");
 
-        /// <summary>
-        /// This method patches the third and fourth lines in the intro text.
-        /// </summary>
-        /// <remarks>
-        /// Intro Screen Line 3: 0x036EE0 - 0x036EEA (11 chars)
-        /// Intro Screen Line 4: 0x036EEE - 0x036F06 (25 chars)
-        /// </remarks>
-        public static void PatchForUse(Patch in_Patch, ISeed in_Seed)
-        {
-            const String INTRO_LINE3_PREFIX = "FOR USE ";
-            const Int32 INTRO_LINE3_ADDRESS = 0x036EE0;
-            const Int32 INTRO_LINE4_ADDRESS = 0x036EEE;
+            PatchSplashScreenLine(
+                in_Patch,
+                14,
+                "V" + RandomMM2.AssemblyVersionString);
 
             CountryNameSet countryNameSet = Properties.Resources.CountryNameConfig.Deserialize<CountryNameSet>();
             IEnumerable<CountryName> countryNames = countryNameSet.Where(x => true == x.Enabled);
-            CountryName countryName = in_Seed.NextElement(countryNames);
+            CountryName countryName = in_Context.Seed.NextElement(countryNames);
 
-            Int32 line3NextCharacterAddress = in_Patch.Add(
-                INTRO_LINE3_ADDRESS,
-                INTRO_LINE3_PREFIX.AsIntroString(),
-                $"Splash Text: {INTRO_LINE3_PREFIX}");
-
-            in_Patch.Add(
-                line3NextCharacterAddress,
-                countryName.GetFormattedPrefix(),
-                $"Splash Text: {countryName.Prefix}");
-
-            in_Patch.Add(
-                INTRO_LINE4_ADDRESS,
-                countryName.GetFormattedName(),
-                $"Splash Text: {countryName.Name}");
+            PatchSplashScreenLine(
+                in_Patch, 16, "FOR USE " + countryName.GetFormattedPrefix());
+            PatchSplashScreenLine(in_Patch, 18, countryName.GetFormattedName());
         }
 
 
@@ -446,6 +412,8 @@ namespace MM2Randomizer.Randomizers
         //
         // Private Data Members
         //
+
+        const int SplashScreenDataOffset = 0x1f * 0x2000 + 0x1200 + 0x10;
 
         Dictionary<EWeaponIndex, Char> mNewWeaponLetters = new()
         {

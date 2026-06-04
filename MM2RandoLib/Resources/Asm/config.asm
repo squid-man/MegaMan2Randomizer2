@@ -74,8 +74,9 @@ FREE "BANKF" [$d192, $d1de] ; $4d bytes
 FREE "BANKF" [$ff87, $ffe0) ; $59 bytes
 
 FREE "BANK1E" [$9a00, $a000) ; $600 bytes
-FREE "BANK1F" [$9100, $9600) ; $584 bytes
+FREE "BANK1F" [$9100, $9200) ; $100 bytes
 
+; 1f:9200:9600 is the uncompressed splash screen
 ; 1f:9600:a000 are used by duplicate Wily tilesets
 
 ; Banks $20:3e are currently reserved for mm2ft

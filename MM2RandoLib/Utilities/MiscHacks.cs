@@ -86,6 +86,9 @@ namespace MM2Randomizer.Utilities
             //
 
             string versionString = $"VER. {RandomMM2.AssemblyVersion}";
+            if (GitInfo.IsDirty || !GitInfo.IsOfficialBuild)
+                versionString += " X";
+
             p.Add(0x037402, versionString.AsIntroString(), "Title Screen Version Header");
 
 

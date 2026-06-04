@@ -746,6 +746,51 @@
 .byte $12, $1c
 
 .segment "BANKD"
+
+; Load the splash screen
+.org $9f11
+	; Okay to clobber everything
+
+	; Previous code that must be preserved
+	lda #$f
+	ldx #$1f
+
+:
+	sta $356, x
+	dex
+	bpl :-
+
+	; Load the splash screen data
+	lda #<.bank(SplashScreenData)
+	jsr SwitchBankAUnsafe
+
+	lda #<SplashScreenData
+	sta $0
+	lda #(>SplashScreenData + $20) ; Bank designated $8000 loaded at $a000
+	sta $1
+
+	ldx #$4
+	ldy #$0
+
+:
+	lda ($0), y
+	sta PPUDATA
+
+	iny
+	bne :-
+	inc $1
+	dex
+	bne :-
+
+	lda CurBankA
+	jsr SwitchBankAUnsafe
+
+	jmp :+
+
+FREE_UNTIL $9f4c
+
+:
+
 ; The title screen background palette is at abbe-abcc
 
 .org $aac0
@@ -813,5 +858,12 @@ TITLE_REL_TILE 8, 21
 ; Change last byte of Table_BossRushBGColor ??
 .org $84a2
 .byte $0a ; Was $21 (??)
+
+.segment "BANK1F"
+
+.org $9200
+SplashScreenData:
+	.res $3c0, 0 ; Tile map
+	.res $40, 0 ; Attribute data
 
 .segment "BANKF"
