@@ -42,6 +42,7 @@ jobs:
           dotnet test tests/MM2RandoLib.Tests -c Release
         
       - name: Publish Desktop
+        shell: bash
         run: |
           dotnet publish RandomizerHost.Desktop \
             -c Release \
@@ -77,6 +78,7 @@ jobs:
       # Grab the version here since it only runs once
       - name: Capture Version String
         id: capture-version
+        shell: bash
         run: |
           VERSION_STR=$(dotnet msbuild RandomizerHost.Browser \
             -t:GitVersioning \
@@ -88,11 +90,14 @@ jobs:
         run: dotnet build RandomizerHost.Browser -c Debug
 
       - name: Publish WASM
-        run: dotnet publish RandomizerHost.Browser \
-          -c Release \
-          -o wasm-output
+        shell: bash
+        run: |
+          dotnet publish RandomizerHost.Browser \
+            -c Release \
+            -o wasm-output
           
       - name: Fix Base Href
+        shell: bash
         # GitHub Pages subfolders break absolute paths. 
         # This replaces <base href="/" /> with <base href="/MegaMan2Randomizer/" />
         run: |
