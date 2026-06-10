@@ -7,7 +7,7 @@ on:
       - synchronize
 jobs:
   build:
-    uses: ./.github/worlflows/build-core.yml
+    uses: ./.github/workflows/build-core.yml
     with:
       target-folder: ''
       
