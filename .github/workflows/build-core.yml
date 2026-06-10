@@ -1,0 +1,142 @@
+name: Build Core
+
+on:
+  workflow_call:
+    inputs:
+      target-folder:
+        required: false
+        type: string
+        default: '' # No release
+      is-official:
+        required: false
+        type: boolean
+        default: false
+        
+jobs:
+  test-and-build-desktop:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+          - os: windows-latest
+            rid: win-x64
+          - os: macos-latest
+            rid: osx-x64
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Run Tests
+        run: |
+          dotnet test tests/MM2RandoLib.Tests -c Debug
+          dotnet test tests/MM2RandoLib.Tests -c Release
+        
+      - name: Publish Desktop
+        run: |
+          dotnet publish RandomizerHost.Desktop \
+            -c Release \
+            -r ${{ matrix.rid }} \
+            -o desktop-output/${{ matrix.rid }}
+          zip -j -r MegaMan2Randomizer2-${{ matrix.rid }}.zip \
+            desktop-output/${{ matrix.rid }}
+
+      - name: Upload Desktop Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-releases/desktop-${{ matrix.rid }}
+          path: MegaMan2Randomizer-${{ matrix.rid }}.zip
+          
+  build-browser:
+    runs-on: ubuntu-latest
+    outputs:
+      version_string: ${{ steps.capture-version.outputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          
+      - name: Install WASM Workload
+        run: dotnet workload install wasm-tools
+        
+      # Grab the version here since it only runs once
+      - name: Capture Version String
+        id: capture-version
+        run: |
+          VERSION_STR=$(dotnet msbuild RandomizerHost.Browser \
+            -t:GitVersioning \
+            --getProperty:InformationalVersion)
+          
+          echo "VERSION=$(echo $VERSION_STR | tr -d '[:space:]')" >> $GITHUB_OUTPUT
+          
+      - name: Build Debug
+        run: dotnet build RandomizerHost.Browser -c Debug
+
+      - name: Publish WASM
+        run: dotnet publish RandomizerHost.Browser \
+          -c Release \
+          -o wasm-output
+          
+      - name: Fix Base Href
+        # GitHub Pages subfolders break absolute paths. 
+        # This replaces <base href="/" /> with <base href="/MegaMan2Randomizer/" />
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          sed -i "s|<base href=\"/\" />|<base href=\"/$REPO_NAME/${{ inputs.target-folder }}/\"|g" wasm-output/wwwroot/index.html
+          cp wasm-output/wwwroot/index.html wasm-output/wwwroot/404.html
+          
+      - name: Add .nojekyll
+        # Prevents GitHub from ignoring files starting with underscores (common in .NET WASM)
+        run: touch wasm-output/wwwroot/.nojekyll
+        
+      - name: Upload WASM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-release
+          path: wasm-output/wwwroot/
+          
+  publish:
+    needs: [test-and-build-desktop, build-browser]
+    if: ${{ inputs.target-folder != '' }}
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.build-browser.outputs.version_string }}
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Publish Browser
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: browser-release
+          branch: gh-pages # The branch the action will push the build to
+          target-folder: ${{ inputs.target-folder }}
+          clean: true
+          clean-exclude: ${{ inputs.target-folder == '.' && 'dev/**' || '' }}
+
+      - name: Publish Desktop
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ inputs.is-official == true && 'Official Release' || 'Dev Build' }} ${{ env.VERSION }}
+          draft: ${{ inputs.is-official }}
+          prerelease: ${{ ! inputs.is-official }}
+          files: desktop-releases/*.zip
+          generate_release_notes: ${{ ! inputs.is-official }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

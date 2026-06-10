@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<Target Name="GitVersioning" BeforeTargets="BeforeBuild">
-		<Exec Command="git describe --tags --abbrev=0" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
+		<Exec Command="git describe --tags --abbrev=0 --exclude=&quot;*dev*&quot;" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
 			<Output TaskParameter="ConsoleOutput" PropertyName="_GitTag" />
 			<Output TaskParameter="ExitCode" PropertyName="_GitExitCode" />
 		</Exec>
@@ -35,7 +35,7 @@
 		<PropertyGroup>
 			<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 			
-			<_ActualTag Condition="'$(_GitExitCode)' != '0'">2026.0.0.0</_ActualTag>
+			<_ActualTag Condition="'$(_GitExitCode)' != '0'">1.0.0.0</_ActualTag>
 			<_ActualTag Condition="'$(_GitExitCode)' == '0'">$(_GitTag.Replace('v', ''))</_ActualTag>
 
 			<_IsDirty Condition="'$(_GitStatus)' != ''">true</_IsDirty>
@@ -44,7 +44,7 @@
 			<AssemblyVersion>$(_ActualTag)</AssemblyVersion>
 			<FileVersion>$(_ActualTag)</FileVersion>
 
-			<_Suffix Condition="'$(_IsAhead)' == 'true'">-$(_GitHeight)</_Suffix>
+			<_Suffix Condition="'$(_IsAhead)' == 'true'">-dev$(_GitHeight)</_Suffix>
 			<_DirtySuffix Condition="'$(_IsDirty)' == 'true'">-dirty</_DirtySuffix>
 
 			<InformationalVersion Condition="'$(_IsAhead)' != 'true' And '$(_IsDirty)' != 'true'">$(_ActualTag)</InformationalVersion>

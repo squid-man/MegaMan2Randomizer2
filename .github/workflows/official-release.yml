@@ -1,0 +1,12 @@
+name: Release Official Build
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    uses: ./.github/worlflows/build-core.yml
+    with:
+      target-folder: .
+      is-official: true
+        
