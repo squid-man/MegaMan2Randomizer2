@@ -133,7 +133,9 @@ jobs:
           mkdir desktop-zips
           for dir in MegaMan2Randomizer2-*; do
             name=$(basename "$dir")
-            zip -r "desktop-zips/${name}.zip" "$dir"
+            mv "${name}" MegaMan2Randomizer2
+            zip -f -x "*.pdb" MegaMan2Randomizer2
+            mv MegaMan2Randomizer2 "${name}"
           done
           
       - name: Publish Browser
