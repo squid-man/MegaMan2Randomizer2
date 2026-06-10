@@ -1,8 +1,17 @@
 name: Release Official Build
-on:
-  release:
-    types: [published]
 
+on:
+  push:
+    branches:
+      - master
+      - main
+      - develop
+      - ava-update4
+      
+    tags:
+      - '*'
+      - '!*dev*'
+      
 jobs:
   build:
     uses: ./.github/workflows/build-core.yml
