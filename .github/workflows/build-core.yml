@@ -52,7 +52,7 @@ jobs:
       - name: Upload Desktop Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-releases/MegaMan2Randomizer2-${{ matrix.rid }}
+          name: MegaMan2Randomizer2-${{ matrix.rid }}
           path: desktop-output/MegaMan2Randomizer2-${{ matrix.rid }}
           
   build-browser:
@@ -126,7 +126,7 @@ jobs:
       - name: Zip each artifact directory
         shell: bash
         run: |
-          for dir in desktop-releases/*; do
+          for dir in ./MegaMan2Randomizer2-*; do
             name=$(basename "$dir")
             zip -r "desktop-zips/${name}.zip" "$dir"
           done
