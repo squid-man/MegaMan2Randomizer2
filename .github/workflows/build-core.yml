@@ -120,7 +120,7 @@ jobs:
     env:
       VERSION: ${{ needs.build-browser.outputs.version_string }}
     steps:
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
           
