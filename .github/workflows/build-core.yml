@@ -47,15 +47,13 @@ jobs:
           dotnet publish RandomizerHost.Desktop \
             -c Release \
             -r ${{ matrix.rid }} \
-            -o desktop-output/${{ matrix.rid }}
-          zip -j -r MegaMan2Randomizer2-${{ matrix.rid }}.zip \
-            desktop-output/${{ matrix.rid }}
+            -o desktop-output/MegaMan2Randomizer2-${{ matrix.rid }}
 
       - name: Upload Desktop Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-releases/desktop-${{ matrix.rid }}
-          path: MegaMan2Randomizer-${{ matrix.rid }}.zip
+          name: desktop-releases/MegaMan2Randomizer2-${{ matrix.rid }}
+          path: desktop-output/MegaMan2Randomizer2-${{ matrix.rid }}
           
   build-browser:
     runs-on: ubuntu-latest
@@ -125,6 +123,14 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
 
+      - name: Zip each artifact directory
+        shell: bash
+        run: |
+          for dir in desktop-releases/*; do
+            name=$(basename "$dir")
+            zip -r "desktop-zips/${name}.zip" "$dir"
+          done
+          
       - name: Publish Browser
         uses: JamesIves/github-pages-deploy-action@v4
         with:
@@ -140,7 +146,7 @@ jobs:
           name: ${{ inputs.is-official == true && 'Official Release' || 'Dev Build' }} ${{ env.VERSION }}
           draft: ${{ inputs.is-official }}
           prerelease: ${{ ! inputs.is-official }}
-          files: desktop-releases/*.zip
+          files: desktop-zips/*.zip
           generate_release_notes: ${{ ! inputs.is-official }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
