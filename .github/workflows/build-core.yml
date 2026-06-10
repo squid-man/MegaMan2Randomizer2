@@ -148,6 +148,7 @@ jobs:
       - name: Publish Desktop
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.is-official == true && github.ref_name || env.VERSION }}
           name: ${{ inputs.is-official == true && 'Official Release' || 'Dev Build' }} ${{ env.VERSION }}
           draft: ${{ inputs.is-official }}
           prerelease: ${{ ! inputs.is-official }}
