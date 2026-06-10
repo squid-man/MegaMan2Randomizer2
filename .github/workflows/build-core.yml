@@ -126,7 +126,8 @@ jobs:
       - name: Zip each artifact directory
         shell: bash
         run: |
-          for dir in ./MegaMan2Randomizer2-*; do
+          mkdir desktop-zips
+          for dir in MegaMan2Randomizer2-*; do
             name=$(basename "$dir")
             zip -r "desktop-zips/${name}.zip" "$dir"
           done
