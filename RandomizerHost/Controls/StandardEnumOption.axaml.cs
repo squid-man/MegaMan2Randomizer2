@@ -7,15 +7,18 @@ namespace RandomizerHost.Controls;
 
 public partial class StandardEnumOption : UserControl
 {
+    private IEnumOption? _option;
+
     public IEnumOption? Option
     {
-        get => GetValue(OptionProperty);
-        set => SetValue(OptionProperty, value);
+        get => _option;
+        set => SetAndRaise(OptionProperty, ref _option, value);
     }
-    public static readonly StyledProperty<IEnumOption?> OptionProperty = AvaloniaProperty.Register<StandardEnumOption, IEnumOption?>(
+    public static readonly DirectProperty<StandardEnumOption, IEnumOption?> OptionProperty = AvaloniaProperty.RegisterDirect<StandardEnumOption, IEnumOption?>(
         nameof(Option),
+        c => c.Option,
+        (c, v) => c.Option = v,
         null,
-        false,
         Avalonia.Data.BindingMode.TwoWay);
 
     public string? ItemPrefix
@@ -40,32 +43,8 @@ public partial class StandardEnumOption : UserControl
         false,
         Avalonia.Data.BindingMode.TwoWay);
 
-    /*public string? FormatString
-    {
-        get => GetValue(FormatStringProperty);
-        set => SetValue(FormatStringProperty, value);
-    }
-    public static readonly StyledProperty<string?> FormatStringProperty = AvaloniaProperty.Register<StandardEnumOption, string?>(
-        nameof(FormatString),
-        null,
-        false,
-        Avalonia.Data.BindingMode.OneWay);
-
-    public int? ComboBoxWidth
-     {
-         get => GetValue(ComboBoxWidthProperty);
-         set => SetValue(ComboBoxWidthProperty, value);
-     }
-     public static readonly StyledProperty<int?> ComboBoxWidthProperty = AvaloniaProperty.Register<StandardEnumOption, int?>(
-         nameof(ComboBoxWidth),
-         null,
-         false,
-         Avalonia.Data.BindingMode.TwoWay);*/
-
     public StandardEnumOption()
     {
         InitializeComponent();
     }
-
-    private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 }

@@ -7,21 +7,22 @@ namespace RandomizerHost.Controls;
 
 public partial class StandardBoolOption : UserControl
 {
+    private BoolOption? _option;
+
     public BoolOption? Option
     {
-        get => GetValue(OptionProperty);
-        set => SetValue(OptionProperty, value);
+        get => _option;
+        set => SetAndRaise(OptionProperty, ref _option, value);
     }
-    public static readonly StyledProperty<BoolOption?> OptionProperty = AvaloniaProperty.Register<StandardBoolOption, BoolOption?>(
+    public static readonly DirectProperty<StandardBoolOption, BoolOption?> OptionProperty = AvaloniaProperty.RegisterDirect<StandardBoolOption, BoolOption?>(
         nameof(Option), 
+        c => c.Option,
+        (c, v) => c.Option = v,
         null, 
-        false, 
         Avalonia.Data.BindingMode.TwoWay);
 
     public StandardBoolOption()
     {
         InitializeComponent();
     }
-
-    private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 }

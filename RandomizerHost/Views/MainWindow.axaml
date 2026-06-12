@@ -1,25 +1,30 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:RandomizerHost.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:converters="using:RandomizerHost.Converters"
-        xmlns:opts="clr-namespace:MM2RandoLib.Settings.Options;assembly=MM2RandoLib"
-        xmlns:ctls="using:RandomizerHost.Controls"
-        mc:Ignorable="d"
-        d:DesignWidth="650"
-        d:DesignHeight="730"
-        Width="650"
-        Height="730"
-        x:Class="RandomizerHost.Views.MainWindow"
-        Icon="/Assets/MegaMan2Randomizer.ico"
-        Title="RandomizerHost"
-        Name="MainWindow">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:RandomizerHost.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:RandomizerHost.Converters"
+    xmlns:opts="clr-namespace:MM2RandoLib.Settings.Options;assembly=MM2RandoLib"
+    xmlns:ctls="using:RandomizerHost.Controls"
+    mc:Ignorable="d"
+    d:DesignWidth="680"
+    d:DesignHeight="730"
+    Width="680"
+    Height="730"
+    x:Class="RandomizerHost.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    Name="Window"
+    Icon="/Assets/MegaMan2Randomizer.ico"
+    Title="RandomizerHost"
+    DragDrop.AllowDrop="True"
+    DragDrop.DragOver="OnDragOver"
+    DragDrop.Drop="OnDrop"
+>
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-	
+    
     <!-- Static Resources -->
     <Window.Resources>
         <converters:PlayerSpriteToImageConverter x:Key="PlayerSpriteToImageConverter"/>
@@ -33,7 +38,7 @@
             DataType="{x:Type opts:IEnumOption}"
         >
             <ctls:StandardEnumOption 
-                Option="{Binding .}"
+                Option="{Binding}"
                 ItemPrefix="{Binding Info.Description, StringFormat='{}{0}: '}"
             />
         </DataTemplate>
@@ -42,7 +47,7 @@
             DataType="{x:Type opts:IEnumOption}"
         >
             <ctls:StandardEnumOption 
-                Option="{Binding .}"
+                Option="{Binding}"
                 ItemSuffix="{Binding Info.Description, StringFormat=' {0}'}"
             />
         </DataTemplate>
@@ -51,7 +56,7 @@
     <!-- Data Templates -->
     <Window.DataTemplates>
         <DataTemplate DataType="{x:Type opts:BoolOption}">
-            <ctls:StandardBoolOption Option="{Binding $parent.DataContext}"/>
+            <ctls:StandardBoolOption Option="{Binding}"/>
         </DataTemplate>
     </Window.DataTemplates>
   
@@ -66,32 +71,30 @@
             <RowDefinition Height="75"/>
             <RowDefinition Height="85"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="95"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-      <TextBlock
-	Grid.Row="0"
-	Grid.Column="0"
-	Grid.ColumnSpan="2"
-	TextAlignment="Left"
-	FontSize="9"
-  Text="Version"
-	IsVisible="{Binding IsShowingHint}"
-            />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            TextAlignment="Left"
+            FontSize="9"
+            Text="Version"
+        />
       
-		<TextBlock
-	Grid.Row="0"
-	Grid.Column="0"
-	Grid.ColumnSpan="2"
-	TextAlignment="Left"
-  Margin="36,0"
-	FontSize="9"
-  Text="{Binding Version}"
-	IsVisible="{Binding IsShowingHint}"
-            />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            TextAlignment="Left"
+            Margin="36,0"
+            FontSize="9"
+            Text="{Binding Version}"
+        />
    
-		<!-- The main header image for the host -->
+        <!-- The main header image for the host -->
         <Image
             Grid.Row="0"
             Grid.Column="0"
@@ -123,7 +126,7 @@
                 TextAlignment="Center"
                 FontSize="9"
                 Text="To get started, drag a Mega Man 2 ROM onto this window, or click the &quot;. . .&quot; button to browse."
-                IsVisible="{Binding IsShowingHint}"
+                IsVisible="{Binding !IsRomSourcePathValid}"
             />
 
             <!-- Row 1 -->
@@ -137,11 +140,14 @@
                     <Button
                         Name="Button_OpenRomFile"
                         Width="35"
+						Height="30"
                         Margin="4,0"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
                         Command="{Binding OpenRomFileCommand}"
-                        CommandParameter="{Binding ElementName=MainWindow}"
+                        CommandParameter="{Binding #Window}"
                     >
-                        ....
+                        ...
                     </Button>
 
                     <TextBox
@@ -151,6 +157,7 @@
                         Width="570"
                         Margin="0,0,0,0"
                         Text="{Binding AppConfigurationSettings.RomSourcePath}"
+                        IsReadOnly="True"
                     />
                 
                     <TextBlock
@@ -159,8 +166,8 @@
                         MinWidth="35"
                         Margin="4,4"
                         FontSize="22"
-                        Text="{Binding AppConfigurationSettings.IsRomValidText}"
-                        ToolTip.Tip="{Binding AppConfigurationSettings.RomStatusTooltip}"
+                        Text="{Binding IsRomValidText}"
+                        ToolTip.Tip="{Binding RomStatusTooltip}"
                     />
                 </DockPanel>
             </Border>
@@ -184,29 +191,29 @@
 
                 <TextBlock
                     FontWeight="Bold"
-                    Text="{Binding AppConfigurationSettings.HashValidationMessage}"
+                    Text="{Binding HashValidationMessage}"
                 />
             </Border>
         </Grid>
         <ToggleSwitch
             Name="ToggleSwitch_EnableAppUiDarkTheme"
             IsChecked="{Binding AppConfigurationSettings.EnableAppUiDarkTheme}"
-            Command="{Binding SetThemeCommand}"
+            Command="{Binding SetTheme}"
             OffContent="🔅"
             OnContent="🌑"
-            />
+        />
         <TextBlock
                 Text="Set Theme"
                 DockPanel.Dock="Left"
                 VerticalAlignment="Center"
                 Margin="75,0,0,0"
-            />
+        />
         <!-- Seed textbox -->
         <DockPanel
             Grid.Row="2"
             Grid.Column="0"
             HorizontalAlignment="Stretch"
-            IsEnabled="{Binding AppConfigurationSettings.IsRomSourcePathValid}"
+            IsEnabled="{Binding IsRomSourcePathValid}"
         >
             <TextBlock
                 Text="Seed:"
@@ -234,8 +241,8 @@
             />
             <ComboBox
                 HorizontalAlignment="Stretch"
-                Items="{Binding SettingsPresets.Presets}"
-                SelectedItem="{Binding SettingsPreset}"
+                ItemsSource="{Binding SettingsPresets.Presets}"
+                SelectedIndex="{Binding AppConfigurationSettings.SettingsPresetIndex}"
             />
         </DockPanel>
     
@@ -252,7 +259,9 @@
                     Width="150"
                     Margin="2"
                     Command="{Binding CreateFromGivenSeedCommand}"
-                    CommandParameter="{Binding ElementName=MainWindow}">
+                    CommandParameter="{Binding #Window}"
+                    IsEnabled="{Binding IsSeedValid}"
+                >
                     Create From Given
                 </Button>
                 <Button
@@ -260,18 +269,18 @@
                     Height="30"
                     Width="150"
                     Margin="2,2,2,2"
-                    Command="{Binding CreateFromRandomSeedCommand}"
-                    CommandParameter="{Binding ElementName=MainWindow}"
-                    IsEnabled="{Binding AppConfigurationSettings.IsRomValid}">
+                    Command="{Binding CreateFromRandomSeedMultipleCommand}"
+                    CommandParameter="{Binding #Window}"
+                    IsEnabled="{Binding IsRomValid}"
+                >
                     Generate Seed(s)
                 </Button>
             </StackPanel>
 
-
-          <TextBlock
-            Text="{Binding RandomSeedCount, StringFormat='Number of random seeds to generate: {0}'}"
-            Margin="2,2,2,8"
-            FontSize="11"
+            <TextBlock
+                Text="{Binding RandomSeedCount, StringFormat='Number of random seeds to generate: {0}'}"
+                Margin="2,2,2,8"
+                FontSize="11"
             />
           
             <Slider 
@@ -296,6 +305,8 @@
                 Width="300"
                 Margin="2"
                 Command="{Binding OpenContainingFolderCommand}"
+                CommandParameter="{Binding #Window}"
+                IsEnabled="{Binding CanOpenContainingFolder}"
             >
                 Open Containing Folder
             </Button>
@@ -307,8 +318,7 @@
                     Width="150"
                     Margin="2"
                     Command="{Binding ImportSettingsCommand}"
-                    CommandParameter="{Binding ElementName=MainWindow}"
-                    IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ImportSettings}"
+                    CommandParameter="{Binding #Window}"
                 >
                     Import Settings
                 </Button>
@@ -319,19 +329,18 @@
                     Width="150"
                     Margin="2"
                     Command="{Binding ExportSettingsCommand}"
-                    CommandParameter="{Binding ElementName=MainWindow}"
-                    IsEnabled="{Binding Path=AppConfigurationSettings.Enable_ExportSettings}"
+                    CommandParameter="{Binding #Window}"
                 >
                     Export Settings
                 </Button>
             </StackPanel>
 
-          <CheckBox
-            Name="CheckBox_CreateLogFile"
-            IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
-            IsEnabled="{Binding !IsTournament}">
-            Create Log File
-          </CheckBox>
+            <CheckBox
+                Name="CheckBox_CreateLogFile"
+                IsChecked="{Binding AppConfigurationSettings.CreateLogFile}"
+                IsEnabled="{Binding !IsTournament}">
+                Create Log File
+            </CheckBox>
           
             <TextBlock
                 Text="🎲 = Randomize Option ☑️ = Option Enabled "
@@ -363,7 +372,7 @@
                             IsChecked="{Binding IsCoreModulesChecked, Mode=OneWay}"
                         />
                     </Grid>
-                    <ItemsControl Items="{Binding Settings.GameplayOptions.AutoCreateOptions}">
+                    <ItemsControl ItemsSource="{Binding Settings.GameplayOptions.AutoCreateOptions}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel
@@ -381,7 +390,7 @@
                 Sprites
             -->
             <TabItem Header="Sprites">
-                <ItemsControl Items="{Binding Settings.SpriteOptions.AutoCreateOptions}">
+                <ItemsControl ItemsSource="{Binding Settings.SpriteOptions.AutoCreateOptions}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel
@@ -401,7 +410,7 @@
                 <ItemsControl 
                     Width="450"
                     HorizontalAlignment="Left"
-                    Items="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
+                    ItemsSource="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
                     ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
                 >
                     <ItemsControl.ItemsPanel>
@@ -420,8 +429,8 @@
                 Quality of Life Patches
             -->
             <TabItem Header="QoL Patches">
-                <ItemsControl 
-                  Items="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
+                <ItemsControl
+                  ItemsSource="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
                   ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
                 >
                     <ItemsControl.ItemsPanel>
@@ -448,7 +457,7 @@
 
                     <StackPanel Grid.Column="0">
                         <ItemsControl
-                            Items="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
+                            ItemsSource="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
                             ItemTemplate="{DynamicResource PrefixedDescriptionEnumComboBox}"
                         >
                             <ItemsControl.ItemsPanel>
@@ -467,39 +476,39 @@
                         <WrapPanel Orientation="Horizontal" ItemWidth="125" ItemHeight="125" HorizontalAlignment="Left">
                             <StackPanel Margin="4" Width="100" HorizontalAlignment="Center">
                                 <Image
-                                      Width="100"
-                                      Height="100"
-                                      Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
+                                    Width="100"
+                                    Height="100"
+                                    Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
                                 />
                                 <TextBlock Text="Character" HorizontalAlignment="Center" Margin="0,4,0,0"/>
                             </StackPanel>
                           
-                          <StackPanel Margin="4" Width="84" HorizontalAlignment="Center">
-                            <Image
-                                  Width="84"
-                                  Height="84"
-                                  Source="{Binding Settings.CosmeticOptions.CannonShot.BaseValue, Converter={StaticResource CannonShotToImageConverter}}"
+                            <StackPanel Margin="4" Width="84" HorizontalAlignment="Center">
+                                <Image
+                                    Width="84"
+                                    Height="84"
+                                    Source="{Binding Settings.CosmeticOptions.CannonShot.BaseValue, Converter={StaticResource CannonShotToImageConverter}}"
                                 />
-                            <TextBlock Text="Cannon Shot" HorizontalAlignment="Center" Margin="0,4,0,0"/>
-                          </StackPanel>
+                                <TextBlock Text="Cannon Shot" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
                           
                             <StackPanel Margin="4" Width="100" HorizontalAlignment="Center">
                                 <Image
-                                      Width="84"
-                                      Height="84"
-                                      Source="{Binding Settings.CosmeticOptions.HudElement.BaseValue, Converter={StaticResource HudElementsToImageConverter}}"
+                                    Width="84"
+                                    Height="84"
+                                    Source="{Binding Settings.CosmeticOptions.HudElement.BaseValue, Converter={StaticResource HudElementsToImageConverter}}"
                                 />
                                 <TextBlock Text="HUD" HorizontalAlignment="Center" Margin="0,4,0,0"/>
                             </StackPanel>
 
-                          <StackPanel Margin="4" Width="168" HorizontalAlignment="Center">
-                            <Image
-                                  Width="84"
-                                  Height="84"
-                                  Source="{Binding Settings.CosmeticOptions.Font.BaseValue, Converter={StaticResource FontToImageConverter}}"
+                            <StackPanel Margin="4" Width="168" HorizontalAlignment="Center">
+                                <Image
+                                    Width="84"
+                                    Height="84"
+                                    Source="{Binding Settings.CosmeticOptions.Font.BaseValue, Converter={StaticResource FontToImageConverter}}"
                                 />
-                            <TextBlock Text="Font" HorizontalAlignment="Center" Margin="0,4,0,0"/>
-                          </StackPanel>
+                                <TextBlock Text="Font" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            </StackPanel>
                         </WrapPanel>
                     </StackPanel>
                 </Grid>
