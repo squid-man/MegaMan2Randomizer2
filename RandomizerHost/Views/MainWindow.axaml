@@ -15,7 +15,7 @@
     x:DataType="vm:MainWindowViewModel"
     Name="Window"
     Icon="/Assets/MegaMan2Randomizer.ico"
-    Title="RandomizerHost"
+    Title="Mega Man 2 Randomizer"
     DragDrop.AllowDrop="True"
     DragDrop.DragOver="OnDragOver"
     DragDrop.Drop="OnDrop"
