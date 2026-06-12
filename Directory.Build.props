@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<Target Name="GitVersioning" BeforeTargets="BeforeBuild">
-		<Exec Command="git describe --tags --abbrev=0 --exclude=&quot;*dev*&quot;" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
+		<Exec Command="git describe --tags --abbrev=0 --exclude=&quot;*dev*&quot; --exclude=&quot;Release*&quot;" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
 			<Output TaskParameter="ConsoleOutput" PropertyName="_GitTag" />
 			<Output TaskParameter="ExitCode" PropertyName="_GitExitCode" />
 		</Exec>
