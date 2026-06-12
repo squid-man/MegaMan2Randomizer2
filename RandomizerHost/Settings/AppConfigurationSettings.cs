@@ -58,6 +58,7 @@ namespace RandomizerHost.Settings
 
         public override OptionGroup? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
+            // Reading groups doesn't use OptionGroupJsonConverter
             throw new NotImplementedException();
         }
 
@@ -76,10 +77,11 @@ namespace RandomizerHost.Settings
                 else if (mbrInfo is FieldInfo fieldInfo)
                     mbrValue = fieldInfo.GetValue(value);
                 else
-                    continue;
+                    throw new UnreachableException(
+                        "option group member info must be property or field");
 
                 if (mbrValue is not OptionGroup grp)
-                    continue;
+                    continue; // Options are already handled
 
                 writer.WritePropertyName(mbrInfo.Name);
                 JsonSerializer.Serialize(writer, grp, options);
