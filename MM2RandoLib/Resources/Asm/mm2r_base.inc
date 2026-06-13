@@ -60,6 +60,11 @@ ObjAnimVars = $680
 ObjFrameCtrs = $6a0
 ObjHitPoints = $6c0
 
+BossBehavior = $b1
+BossVar = $b2
+BossVar2 = $b4
+BossVar3 = $5ab
+
 NUM_ITEMS = $b
 MAX_ENERGY = $1c
 
