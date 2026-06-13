@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace RandomizerHost.Views;
 
@@ -65,9 +66,14 @@ internal class DialogMonitor : IDisposable
         _timer.Stop();
     }
 
-    void OnViewEvent(object? sender, EventArgs e)
+    async void OnViewEvent(object? sender, EventArgs e)
     {
         if (_timerExpired)
+        {
+            // On some platforms OnViewEvent can be called prior to the dialog close being handled
+            await Task.Delay(250);
+
             Dispose();
+        }
     }
 }
