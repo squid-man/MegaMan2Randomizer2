@@ -39,7 +39,7 @@ namespace MM2Randomizer.Settings.OptionGroups
         public BoolOption StageSelectDefault { get; } = new(true);
 
         [Description("Allow Self-Destruct")]
-        [Tooltip("Holding Up and A while pressing Start to pause instantly kills Mega Man. Good for getting out of soft-locks.")]
+        [Tooltip("Pressing Up + A + Select instantly kills Mega Man. Good for getting out of soft-locks.")]
         [AssembleFile("Options.self_destruct.asm")]
         public BoolOption AllowSelfDestruct { get; } = new(true);
 
