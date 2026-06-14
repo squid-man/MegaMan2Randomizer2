@@ -8,7 +8,7 @@ LfsrState = BossVar3
 	; Boss' life meter has fully filled
 	; 80D3  AD E1 04       LDA $04E1
 
-	jsr SetHeatManMode2
+	jsr InitHeatMan
 
 	FREE_UNTIL $80d6
 
@@ -40,7 +40,7 @@ LfsrState = BossVar3
 
 .reloc
 
-SetHeatManMode2:
+InitHeatMan:
 	lda #FAIR_HEAT_MAN_SEED
 	sta LfsrState
 
