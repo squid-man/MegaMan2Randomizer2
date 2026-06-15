@@ -17,7 +17,7 @@
         Tink            = 0x2D, 
         CrashAttach     = 0x2E,
         Cursor          = 0x2F,
-        Unpause         = 0x30,
+        TeleportIn      = 0x30,
         WeaponW         = 0x31, 
         Pause           = 0x32,    
         Unknown0        = 0x33,

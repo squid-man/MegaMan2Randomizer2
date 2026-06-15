@@ -60,7 +60,7 @@ namespace MM2Randomizer.Randomizers
                 ESoundID.Tink,
                 ESoundID.CrashAttach,
                 ESoundID.Cursor,
-                ESoundID.Unpause,
+                ESoundID.TeleportIn,
                 ESoundID.WeaponW,
                 ESoundID.Pause,
                 ESoundID.Unknown0,
