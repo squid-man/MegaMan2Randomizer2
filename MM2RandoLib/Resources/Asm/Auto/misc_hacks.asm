@@ -22,13 +22,10 @@
 	; Stop palette change on kill/despawn
 	NO_OP 3 ; Was jsr $f159
 
-.org $bc35
-
-EnemySfxTable:
-
 ; There are two acid drippers ($72 and $73), with two sound effects. $3e uses square 1, $3d uses square 2. Get rid of $3e as it interferes with the music.
-.org $bc35 + $73
-	.byte $3d ; Was $3e
+.org $bca7
+DripperSfxTable:
+	.byte $3d, $3d ; Was $3d, $3e
 	
 .segment "BANKF"
 
