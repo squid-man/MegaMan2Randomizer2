@@ -16,9 +16,13 @@
   JSR ice_stage_patch
   JMP $C000 ; aka Switch16kBank
 
+FREE_UNTIL $CC47
+
 ; Overwrite Flash Man's special tile #3 to ground
 .org $CC52
   .byte $01
+
+FREE_UNTIL $CC53
 
 .reloc
 ice_stage_patch:
