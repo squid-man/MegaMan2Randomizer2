@@ -202,7 +202,7 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 int iceStage = in_Context.Seed.NextUInt8(8);
                 in_Context.DefineSymbolLines.Add($".define ICE_STAGE ${iceStage}");
-                debug.AppendLine($"\nSelected ice stage: {EBossIndex.All[iceStage]}");
+                debug.AppendLine($"\nSelected ice stage: {EBossIndex.All[iceStage].Name}");
             }
         }
     }
