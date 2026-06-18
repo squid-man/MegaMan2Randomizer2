@@ -593,6 +593,50 @@
         </Lines>
     </IntroStory>
 
+    <!-- Mega Man Manual -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Mega Man</Title>
+        <Lines>
+            <Line>Mega Man vs the powerful   </Line>
+            <Line>leaders of Monsteropolis - </Line>
+
+            <Line>That strange, multi-faceted</Line>
+            <Line>land of robotic humanoids. </Line>
+
+            <Line>Dr Wright's creations were </Line>
+            <Line>re-programmed by Dr Wily!  </Line>
+
+            <Line>Resisting re-programming,  </Line>
+            <Line>Mega Man is our defender.  </Line>
+
+            <Line>He dares to penetrate the  </Line>
+            <Line>9 empires of Monsteropolis.</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Mega Man 2, retranslated -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Mega Man 2</Title>
+        <Lines>
+            <Line>A.D. 200X - THANKS TO THE  </Line>
+            <Line>SUPER ROBOT MEGA MAN,      </Line>
+
+            <Line>THE MAD SCIENTIST DR WILY'S</Line>
+            <Line>EVIL SCHEME WAS THWARTED.  </Line>
+
+            <Line>HOWEVER, DR WILY IS        </Line>
+            <Line>SCHEMING ONCE AGAIN.       </Line>
+
+            <Line>TO DEFEAT MEGA MAN AND     </Line>
+            <Line>ACHIEVE WORLD DOMINATION,  </Line>
+
+            <Line>HE HAS CREATED 8 NEW SUPER </Line>
+            <Line>ROBOTS OF HIS OWN...       </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Metal Gear Solid 3-->
     <IntroStory>
         <Enabled>true</Enabled>
