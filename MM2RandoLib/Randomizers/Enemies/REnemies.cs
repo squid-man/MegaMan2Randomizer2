@@ -485,7 +485,8 @@ namespace MM2Randomizer.Randomizers.Enemies
             // Quick Bank 0 - Used in empty room only
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.QuickW5, 0x013482, new Int32[] { 7 })); // Bank 1
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.QuickW5, 0x013494, new Int32[] { 15 })); // Bank 2
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.QuickW5, 0x0134A6, new Int32[] { 3, 4, 5, 8, 9, 10, 11, 12, 13, 14 })); // Bank 3
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.QuickW5, 0x0134A6, new Int32[] { 3, 4, 5, 8, 9, 10, 11, 12, 13, 14 }, // Bank 3
+                new Int32[] { 3 }, new Byte[] { 0x94, 0x02 })); // Laser sprite
             // Quick Bank 4 - Quick fight // 0x0134B8
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.QuickW5, 0x0134CA, new Int32[] { 1, 2 })); // Bank 5
             // Quick Bank 6 - W5 Teleporters
@@ -810,7 +811,7 @@ namespace MM2Randomizer.Randomizers.Enemies
                     // (i.e. certain rooms must use certain rows on the sprite table to draw mandatory objects or effects
                     if (sbrg.IsSpriteRestricted)
                     {
-                        // Check if this enemy uses the restricted row in the sprite bank
+                        // Check if this enemy uses a restricted row in the sprite bank
                         List<Int32> commonRows = en.SpriteBankRows.Intersect(sbrg.SpriteBankRowsRestriction).ToList();
                         if (commonRows.Count != 0)
                         {
