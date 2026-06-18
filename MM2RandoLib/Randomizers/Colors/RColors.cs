@@ -2102,25 +2102,24 @@ namespace MM2Randomizer.Randomizers.Colors
                 },
 
                 new ColorSet() { // Quick | Beams and Background
-                    addresses = new Int32[] {0x013e17, 0x013e18, 0x013e19, 0x013e1b, 0x013e1c, 0x013e1d},
-                    ColorBytes = new List<EColorsHex[]>() {
+                    addresses = new Int32[] {0x013e17, 0x013e18, 0x013e19, 0x134b5, 0x134b6, 0x134b7, 0x013e1b, 0x013e1c, 0x013e1d},
+                    ColorBytes = new List<EColorsHex[]>() { // Need extra copies of the beam colors to make the BG tiles and sprites match
                         // Default
-                        new EColorsHex[] {(EColorsHex)0x37,(EColorsHex)0x27,(EColorsHex)0x07,(EColorsHex)0x28,(EColorsHex)0x16,(EColorsHex)0x07, },
+                        new EColorsHex[] {(EColorsHex)0x37,(EColorsHex)0x27,(EColorsHex)0x07,(EColorsHex)0x37,(EColorsHex)0x27,(EColorsHex)0x07,(EColorsHex)0x28,(EColorsHex)0x16,(EColorsHex)0x07, },
                         // Purple
-                        new EColorsHex[] {(EColorsHex)0x34,(EColorsHex)0x24,(EColorsHex)0x04,(EColorsHex)0x25,(EColorsHex)0x13,(EColorsHex)0x04, },
+                        new EColorsHex[] {(EColorsHex)0x34,(EColorsHex)0x24,(EColorsHex)0x04,(EColorsHex)0x34,(EColorsHex)0x24,(EColorsHex)0x04,(EColorsHex)0x25,(EColorsHex)0x13,(EColorsHex)0x04, },
                         // Blue
-                        new EColorsHex[] {(EColorsHex)0x32,(EColorsHex)0x22,(EColorsHex)0x02,(EColorsHex)0x23,(EColorsHex)0x11,(EColorsHex)0x02, },
+                        new EColorsHex[] {(EColorsHex)0x32,(EColorsHex)0x22,(EColorsHex)0x02,(EColorsHex)0x32,(EColorsHex)0x22,(EColorsHex)0x02,(EColorsHex)0x23,(EColorsHex)0x11,(EColorsHex)0x02, },
                         // Cyan
-                        new EColorsHex[] {(EColorsHex)0x3C,(EColorsHex)0x2C,(EColorsHex)0x0C,(EColorsHex)0x21,(EColorsHex)0x1B,(EColorsHex)0x0C, },
+                        new EColorsHex[] {(EColorsHex)0x3C,(EColorsHex)0x2C,(EColorsHex)0x0C,(EColorsHex)0x3C,(EColorsHex)0x2C,(EColorsHex)0x0C,(EColorsHex)0x21,(EColorsHex)0x1B,(EColorsHex)0x0C, },
                         // Green
-                        new EColorsHex[] {(EColorsHex)0x3a,(EColorsHex)0x2a,(EColorsHex)0x0a,(EColorsHex)0x2b,(EColorsHex)0x19,(EColorsHex)0x0a, },
+                        new EColorsHex[] {(EColorsHex)0x3a,(EColorsHex)0x2a,(EColorsHex)0x0a,(EColorsHex)0x3a,(EColorsHex)0x2a,(EColorsHex)0x0a,(EColorsHex)0x2b,(EColorsHex)0x19,(EColorsHex)0x0a, },
                         // Green 2
-                        new EColorsHex[] {(EColorsHex)0x39,(EColorsHex)0x29,(EColorsHex)0x09,(EColorsHex)0x2a,(EColorsHex)0x18,(EColorsHex)0x09, },
+                        new EColorsHex[] {(EColorsHex)0x39,(EColorsHex)0x29,(EColorsHex)0x09,(EColorsHex)0x39,(EColorsHex)0x29,(EColorsHex)0x09,(EColorsHex)0x2a,(EColorsHex)0x18,(EColorsHex)0x09, },
                         // Gold
-                        new EColorsHex[] {(EColorsHex)0x38,(EColorsHex)0x28,(EColorsHex)0x08,(EColorsHex)0x29,(EColorsHex)0x17,(EColorsHex)0x08, },
+                        new EColorsHex[] {(EColorsHex)0x38,(EColorsHex)0x28,(EColorsHex)0x08,(EColorsHex)0x38,(EColorsHex)0x28,(EColorsHex)0x08,(EColorsHex)0x29,(EColorsHex)0x17,(EColorsHex)0x08, },
                         // Gray
-                        new EColorsHex[] {(EColorsHex)0x0f,(EColorsHex)0x0f,(EColorsHex)0x00,(EColorsHex)0x20,(EColorsHex)0x10,(EColorsHex)0x00, },
-
+                        new EColorsHex[] {(EColorsHex)0x0f,(EColorsHex)0x0f,(EColorsHex)0x00,(EColorsHex)0x0f,(EColorsHex)0x0f,(EColorsHex)0x00,(EColorsHex)0x20,(EColorsHex)0x10,(EColorsHex)0x00, },
                     }
                 },
 
