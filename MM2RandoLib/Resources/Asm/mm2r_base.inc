@@ -40,6 +40,7 @@ MIRROR_HORIZONTAL = 1
 
 FrameCtr = $1c
 CtrlState = $23
+NewButtonsPressed = $27
 LevelIdx = $2a
 CurObjIdx = $2b
 MmState = $2c
