@@ -253,6 +253,11 @@ namespace MM2Randomizer
                     "CheatMode", StringComparison.InvariantCultureIgnoreCase);
             }
 
+            // Generate a seed for fair Heat Man
+            if (gameplayOpts.FairHeatManDelays.Value)
+                DefineSymbolLines.Add(
+                    $".define FAIR_HEAT_MAN_SEED ${Seed.NextUInt8(1, 256):x}");
+
             // Conduct randomization of behavior options
             foreach (IRandomizer randomizer in randomizers)
             {
