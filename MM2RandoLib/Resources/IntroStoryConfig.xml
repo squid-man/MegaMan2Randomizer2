@@ -104,6 +104,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- Binding of Isaac -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>The Binding of Isaac</Title>
+        <Lines>
+            <Line>Mega Man and Dr Light lived</Line>
+            <Line>alone in a house on a hill.</Line>
+
+            <Line>Life was simple, and they  </Line>
+            <Line>were both happy. That was, </Line>
+
+            <Line>Until the day Dr Light     </Line>
+            <Line>heard a voice from above.  </Line>
+
+            <Line>I require a sacrifice! Your</Line>
+            <Line>son will be this sacrifice!</Line>
+
+            <Line>Mega Man found a hatch to  </Line>
+            <Line>the basement, and leapt in.</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Blue -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -815,6 +837,28 @@
 
             <Line>EXCEPT THE ONES</Line>
             <Line>WHO ARE DEAD</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Portal 2 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Portal 2</Title>
+        <Lines>
+            <Line>Oh. It's you. It's been a  </Line>
+            <Line>long time. How've you been?</Line>
+
+            <Line>I've been really busy being</Line>
+            <Line>dead. You know...          </Line>
+
+            <Line>                           </Line>
+            <Line>   After you murdered me.  </Line>
+
+            <Line>Since you went through the </Line>
+            <Line>trouble of waking me up,   </Line>
+
+            <Line>You must really, really    </Line>
+            <Line>love to test...            </Line>
         </Lines>
     </IntroStory>
 
