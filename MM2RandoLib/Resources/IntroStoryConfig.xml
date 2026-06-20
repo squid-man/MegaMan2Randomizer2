@@ -725,6 +725,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- Mega Man 8 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Mega Man 8</Title>
+        <Lines>
+            <Line>Dese? Seems to be enagy    </Line>
+            <Line>rezauces...                </Line>
+
+            <Line>But Ah've never seen this  </Line>
+            <Line>type on Oerth!             </Line>
+
+            <Line>I dunno where this enagy   </Line>
+            <Line>came fwom, but,            </Line>
+
+            <Line>We cannot let it fawl intah</Line>
+            <Line>Doctah Wawee's hands!      </Line>
+
+            <Line>You must wrecover all dee  </Line>
+            <Line>enagy imedaly, W-Mega Man! </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Metal Gear Solid 3-->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -837,6 +859,50 @@
             <Line> 'TAKE THE DRAGON SWORD OF </Line>
             <Line>    THE HAYABUSA FAMILY'   </Line>
             <Line>   I WILL GET MY REVENGE!  </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Pac-Man World 2 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Pac-Man World 2</Title>
+        <Lines>
+            <Line>Dr Wily has unwittingly    </Line>
+            <Line>released an ancient evil   </Line>
+
+            <Line>by removing the golden     </Line>
+            <Line>fruit from the tree.       </Line>
+
+            <Line>Sir Meg-a-lot sealed him   </Line>
+            <Line>away in ancient times.     </Line>
+
+            <Line>He has remained there...   </Line>
+            <Line>until now! Go, Mega Man!   </Line>
+
+            <Line>You must find the golden   </Line>
+            <Line>fruit and defeat Spooky!   </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Paper Mario: the Thousand-Year Door -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>TTYD</Title>
+        <Lines>
+            <Line>In my travels, I have found</Line>
+            <Line>a mystical treasure map.   </Line>
+
+            <Line>I got it from a merchant   </Line>
+            <Line>in a town called Rogueport.</Line>
+
+            <Line>But since I could never go </Line>
+            <Line>on a treasure hunt alone,  </Line>
+
+            <Line>I thought you could help!  </Line>
+            <Line>You will, won't you?       </Line>
+
+            <Line>I'll meet you at Rogueport.</Line>
+            <Line>                      Peach</Line>
         </Lines>
     </IntroStory>
 
@@ -1045,6 +1111,50 @@
 
             <Line>for some serious</Line>
             <Line>sidewalk shredding!</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Sly Cooper and the Thievius Raccoonus -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Sly Cooper</Title>
+        <Lines>
+            <Line>My ancestors kept all their</Line>
+            <Line>secrets in an ancient book,</Line>
+
+            <Line>                           </Line>
+            <Line>- The Thievius Raccoonus - </Line>
+
+            <Line>On the night I was supposed</Line>
+            <Line>to inherit the book,       </Line>
+
+            <Line>The Irate Eight ransacked  </Line>
+            <Line>our house and stole it.    </Line>
+
+            <Line>I pledge to track them down</Line>
+            <Line>and avenge my father.      </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Spyro: Ripto's Rage -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Spyro 2</Title>
+        <Lines>
+            <Line>Well, well, someone forgot </Line>
+            <Line>to invite ME to the party! </Line>
+
+            <Line>Are you trying to KEEP     </Line>
+            <Line>something from me?         </Line>
+
+            <Line>A robot? You brought a     </Line>
+            <Line>ROBOT to Avalar!?          </Line>
+
+            <Line>I HATE robots! GYAAAAAAAGH!</Line>
+            <Line>I'll deal with YOU later!  </Line>
+
+            <Line>...How do we get ourselves </Line>
+            <Line>into these messes, pal?    </Line>
         </Lines>
     </IntroStory>
 
