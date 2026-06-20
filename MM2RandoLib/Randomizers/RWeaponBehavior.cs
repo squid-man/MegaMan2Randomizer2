@@ -46,6 +46,7 @@ namespace MM2Randomizer.Randomizers
 
         private static List<ESoundID> GetSoundList()
         {
+            // See ESoundID for explanations of omitted SFX
             return new List<ESoundID>(new ESoundID[] {
                 ESoundID.WeaponF,
                 ESoundID.WeaponM,
