@@ -60,6 +60,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- Battle for Bikini Bottom -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>BfBB</Title>
+        <Lines>
+            <Line>Go away, Mega Man. You're  </Line>
+            <Line>in my thinking space.      </Line>
+
+            <Line>I've got to regain control </Line>
+            <Line>of my castle from robots.  </Line>
+
+            <Line>They just showed up and    </Line>
+            <Line>started calling me names.  </Line>
+
+            <Line>They even bent my spoons!  </Line>
+            <Line>I loved those spoons...    </Line>
+
+            <Line>Oh, won't you stop them?   </Line>
+            <Line>Before they bend my forks? </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Battle Toads -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -229,6 +251,50 @@
 
             <Line>by fortifying the</Line>
             <Line>entire Galuga archipelago.</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Crash Bandicoot: Warped -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Crash 3</Title>
+        <Lines>
+            <Line>After many eons, my evil   </Line>
+            <Line>twin, Dr Wily, is free.    </Line>
+
+            <Line>Long ago, I locked him up  </Line>
+            <Line>to protect the world.      </Line>
+
+            <Line>Now, free once again, he   </Line>
+            <Line>must be stopped!           </Line>
+
+            <Line>I have brought you to his  </Line>
+            <Line>time twisting machine.     </Line>
+
+            <Line>You must recover the power </Line>
+            <Line>crystals, Cr - Mega Man!   </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Crash Team Racing -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>CTR</Title>
+        <Lines>
+            <Line>So, you pesky Earth slugs  </Line>
+            <Line>like to race, eh?          </Line>
+
+            <Line>Well I, Dr Wily, am the    </Line>
+            <Line>best racer in the galaxy!  </Line>
+
+            <Line>I challenge the best driver</Line>
+            <Line>of your world to a race.   </Line>
+
+            <Line>If you win, I'll leave your</Line>
+            <Line>miserable rock alone.      </Line>
+
+            <Line>If I win, I'll turn your   </Line>
+            <Line>globe into a parking lot!  </Line>
         </Lines>
     </IntroStory>
 
@@ -858,7 +924,7 @@
             <Line>trouble of waking me up,   </Line>
 
             <Line>You must really, really    </Line>
-            <Line>love to test...            </Line>
+            <Line>love to jump n' shoot...   </Line>
         </Lines>
     </IntroStory>
 
