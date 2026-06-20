@@ -458,7 +458,8 @@ namespace MM2Randomizer.Randomizers.Enemies
 
             // Woodman & Wily 3 stage enemies
             // NOTE: Access to sprite banks 0-7, plus extra banks 0x90 and 0xA2
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00b470, new Int32[] { 10, 22 })); // Bank 0; Moved Room 10 from bank 3
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00b470, new Int32[] { 10, 22 }, // Bank 0; Moved Room 10 from bank 3
+                new Int32[] { 4 }, new byte[] { 0x9F, 0x04 })); // Splishy splash sprite. This one's not as important because it's at the very end of Wily 3, where you would only encounter it when jumping back into the water.
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00B482, new Int32[] { 1, 6 })); // Bank 1
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00B494, new Int32[] { 7 })); // Bank 2
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00B4A6, new Int32[] { 0 })); // Bank 3
@@ -466,15 +467,17 @@ namespace MM2Randomizer.Randomizers.Enemies
             // Rooms.Add(new EnemyRoom(EStageID.WoodW3, 0x00B4CA, new Int32[] { 2, 3, 4 })); // Bank 5 - Friender rooms
             // Wood Bank 6 - Wood fight 0x00B4DC
             // Wood Bank 7 - Gutsdozer fight
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00b500, new Int32[] { 8, 16 })); // Bank ? (0x90); Moved Room 8 from bank 3
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00b512, new Int32[] { 9, 17 })); // Bank ? (0xA2); Moved Room 9 from bank 3
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00b500, new Int32[] { 8, 16 })); // Bank 8 (0x90); Moved Room 8 from bank 3
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.WoodW3, 0x00b512, new Int32[] { 9, 17 }, // Bank 9 (0xA2); Moved Room 9 from bank 3
+                new Int32[] { 4 }, new byte[] { 0x9F, 0x04 })); // Splishy splash sprite
 
             // Bubbleman & Wily 4 stage enemies
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.BubbleW4, 0x00F470, new Int32[] { 0, 5 }, // Bank 0
-                new Int32[] { 2 }, new Byte[] { 0x9D, 0x02 })); // Falling platform sprite
-            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.BubbleW4, 0x00F482, new Int32[] { 1, 2, 3 })); // Bank 1
+                new Int32[] { 2, 4 }, new Byte[] { 0x9D, 0x02, 0x9F, 0x04 })); // Falling platform & splishy splash sprites
+            RoomGroups.Add(new SpriteBankRoomGroup(EStageID.BubbleW4, 0x00F482, new Int32[] { 1, 2, 3 }, // Bank 1
+                new Int32[] { 4 }, new byte[] { 0x9F, 0x04 })); // Splishy splash sprite
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.BubbleW4, 0x00F494, new Int32[] { 4 }, // Bank 2
-                new Int32[] { 0, 1 }, new Byte[] { 0x9E, 0x02, 0x9F, 0x02 })); // Shrimp sprites
+                new Int32[] { 0, 1 }, new Byte[] { 0x9E, 0x02, 0x9F, 0x02 })); // Shrimp sprites. TODO: Is this one actually necessary anymore? Seems the anko minibosses are removed.
             // Bubble Bank 3 - Bubbleman fight 0x00F4A6
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.BubbleW4, 0x00f4b8, new Int32[] { 9, 10, 13 })); // Bank 4
             RoomGroups.Add(new SpriteBankRoomGroup(EStageID.BubbleW4, 0x00f4ca, new Int32[] { 15, 17 }, // Bank 5
