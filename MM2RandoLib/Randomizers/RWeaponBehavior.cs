@@ -46,9 +46,9 @@ namespace MM2Randomizer.Randomizers
 
         private static List<ESoundID> GetSoundList()
         {
+            // See ESoundID for explanations of omitted SFX
             return new List<ESoundID>(new ESoundID[] {
                 ESoundID.WeaponF,
-                ESoundID.HeatmanUnused,
                 ESoundID.WeaponM,
                 ESoundID.WeaponP,
                 ESoundID.Shotman,
@@ -64,16 +64,15 @@ namespace MM2Randomizer.Randomizers
                 ESoundID.TeleportIn,
                 ESoundID.WeaponW,
                 ESoundID.Pause,
+                ESoundID.Unknown0,
                 ESoundID.WeaponH_Charge0,
                 ESoundID.WeaponH_Shoot,
                 ESoundID.FlyBoy,
-                ESoundID.TeleportOut,
                 ESoundID.Splash,
                 ESoundID.Yoku,
                 ESoundID.Droplet1,
                 ESoundID.WeaponA,
                 ESoundID.Unknown1,
-                ESoundID.Death,
                 ESoundID.OneUp,
             });
         }
