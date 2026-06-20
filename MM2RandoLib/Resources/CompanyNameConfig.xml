@@ -53,7 +53,32 @@ Name must not exceed 13 characters
 
     <CompanyName>
         <Enabled>true</Enabled>
+        <Name>Acme</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
         <Name>ACTIVISION</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Amazon</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Anthropic</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Aperture</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Apple</Name>
     </CompanyName>
 
     <CompanyName>
@@ -84,6 +109,11 @@ Name must not exceed 13 characters
 
     <CompanyName>
         <Enabled>true</Enabled>
+        <Name>Black Mesa</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
         <Name>Blizzard</Name>
     </CompanyName>
 
@@ -106,6 +136,11 @@ Name must not exceed 13 characters
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>COMPILE</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Crapcom</Name>
     </CompanyName>
 
     <!-- D -->
@@ -147,6 +182,11 @@ Name must not exceed 13 characters
 
     <CompanyName>
         <Enabled>true</Enabled>
+        <Name>Epic Games</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
         <Name>Eurocom</Name>
     </CompanyName>
 
@@ -184,6 +224,11 @@ Name must not exceed 13 characters
 
     <CompanyName>
         <Enabled>true</Enabled>
+        <Name>Google</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
         <Name>Gray Matter</Name>
     </CompanyName>
 
@@ -191,6 +236,11 @@ Name must not exceed 13 characters
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>HALKEN</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Heavy Iron</Name>
     </CompanyName>
 
     <CompanyName>
@@ -290,15 +340,30 @@ Name must not exceed 13 characters
 
     <CompanyName>
         <Enabled>true</Enabled>
+        <Name>Meta</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Microsoft</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
         <Name>MINDSCAPE</Name>
     </CompanyName>
 
+    <!-- N -->
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>NAMCO LTD.</Name>
     </CompanyName>
 
-    <!-- N -->
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>NASA</Name>
+    </CompanyName>
+
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>NATSUME</Name>
@@ -307,6 +372,16 @@ Name must not exceed 13 characters
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>Naughty Dog</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Netflix</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Nicalis</Name>
     </CompanyName>
 
     <CompanyName>
@@ -328,6 +403,11 @@ Name must not exceed 13 characters
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>Omega Force</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>OpenAI</Name>
     </CompanyName>
 
     <CompanyName>
@@ -579,6 +659,11 @@ Name must not exceed 13 characters
     <CompanyName>
         <Enabled>true</Enabled>
         <Name>Zippo Games</Name>
+    </CompanyName>
+
+    <CompanyName>
+        <Enabled>true</Enabled>
+        <Name>Zombocom</Name>
     </CompanyName>
 
     <CompanyName>
