@@ -247,13 +247,13 @@ namespace MM2Randomizer.Randomizers
         }
 
         public RWeaknesses()
-            : base([nameof(RWeaponBehavior)])
+            : base([nameof(RWeaponBehavior), nameof(RandomizationContext.BossStages)])
         { }
 
         public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             debug = new StringBuilder();
-            RandomizeU(in_Patch, in_Context.Seed);
+            RandomizeU(in_Patch, in_Context, in_Context.Seed);
             RandomizeWilyUJ(
                 in_Patch, 
                 in_Context.Seed, 
@@ -263,7 +263,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Identical to RandomWeaknesses() but using Mega Man 2 (U).nes offsets
         /// </summary>
-        private void RandomizeU(Patch in_Patch, ISeed in_Seed)
+        private void RandomizeU(Patch in_Patch, RandomizationContext in_Context, ISeed in_Seed)
         {
             Dictionary<EWeaponIndex, EDmgVsBoss> bossPrimaryWeaknessAddresses = EDmgVsBoss.GetTables(includeBuster: false, includeTimeStopper: true);
             Dictionary<EBossIndex, EDmgVsBoss> bossWeaknessShuffled = bossPrimaryWeaknessAddresses
@@ -382,18 +382,17 @@ namespace MM2Randomizer.Randomizers
                 }
             }
 
-            // TODO: Fix this debug output, it's incorrect. It corresponds to the stages, not bosses. Needs
-            // to be permuted based on random bosses in boss room.
             debug.AppendLine("Robot Master Weaknesses:");
             debug.AppendLine("P\tH\tA\tW\tB\tQ\tF\tM\tC:");
             debug.AppendLine("--------------------------------------------");
-            foreach(EBossIndex i in BotWeaknesses.Keys)
+            foreach (EBossIndex bossIdx in BotWeaknesses.Keys)
             {
+                EBossIndex stageIdx = EBossIndex.All[(int)in_Context.BossStages[bossIdx.Offset]];
                 foreach(EWeaponIndex j in EWeaponIndex.All)
                 {
-                    debug.Append(String.Format("{0}\t", BotWeaknesses[i][j]));
+                    debug.Append(String.Format("{0}\t", BotWeaknesses[stageIdx][j]));
                 }
-                debug.AppendLine("< " + ((EDmgVsBoss.Offset)i).ToString());
+                debug.AppendLine("< " + bossIdx.Name);
             }
             debug.Append(Environment.NewLine);
 
