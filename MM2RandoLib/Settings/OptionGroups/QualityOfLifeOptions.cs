@@ -52,5 +52,10 @@ namespace MM2Randomizer.Settings.OptionGroups
         [Tooltip("Regains this amount of energy for all weapons on death.")]
         [DefineValueSymbol("REGAIN_WEAPON_ENERGY_ON_DEATH")]
         public EnumOption<PercentOption> AddWeaponEnergyOnDeath { get; } = new(PercentOption.Percent0);
+
+        [Description("Prevent Rapid Dragon Fire")]
+        [Tooltip("Adds a cooldown to the Mecha Dragon's breath attack, preventing it from firing every frame at Mega Man’s height and eliminating the resulting lag.")]
+        [AssembleFile("Options.dragon_cooldown.asm")]
+        public BoolOption DragonBreathCooldown { get; } = new(false);
     }
 }
