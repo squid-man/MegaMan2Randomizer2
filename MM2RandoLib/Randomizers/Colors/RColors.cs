@@ -10,7 +10,7 @@ namespace MM2Randomizer.Randomizers.Colors
     /// <summary>
     /// Stage Color Palette Randomizer
     /// </summary>
-    public class RColors : IRandomizer
+    public class RColors : Randomizer
     {
         //
         // Constructors
@@ -25,7 +25,7 @@ namespace MM2Randomizer.Randomizers.Colors
         // IRandomizer Methods
         //
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             this.RandomizeStageColors(in_Patch, in_Context);
             this.RandomizeWeaponColors(in_Patch, in_Context);

@@ -8,7 +8,7 @@ using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RWeaknesses : IRandomizer
+    public class RWeaknesses : Randomizer
     {
         // Robot Master damage table. If RWeaknesses module is not enabled, these default values will be used.
         //           P H A W B F Q M C
@@ -246,9 +246,11 @@ namespace MM2Randomizer.Randomizers
             return debug.ToString();
         }
 
-        public RWeaknesses() { }
+        public RWeaknesses()
+            : base([nameof(RWeaponBehavior)])
+        { }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             debug = new StringBuilder();
             RandomizeU(in_Patch, in_Context.Seed);

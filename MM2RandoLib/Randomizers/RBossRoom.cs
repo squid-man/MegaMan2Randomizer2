@@ -5,7 +5,7 @@ using MM2Randomizer.Patcher;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RBossRoom : IRandomizer
+    public class RBossRoom : Randomizer
     {
         private readonly StringBuilder debug = new();
         public override String ToString()
@@ -43,6 +43,7 @@ namespace MM2Randomizer.Randomizers
         }
         
         public RBossRoom()
+            : base(null, [nameof(RBossRoom)])
         {
 
             debug = new();
@@ -212,7 +213,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards which weapon.
         /// </summary>
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             IList<BossRoomRandomComponent> bossRoomComponents = in_Context.Seed.Shuffle(this.Components);
 
@@ -282,5 +283,8 @@ namespace MM2Randomizer.Randomizers
                 debug.AppendLine($"{originalName} boss room has {newName} man");
             }
         }
+
+        public override void ProduceWithoutRandomization(RandomizationContext in_Context)
+        { }
     }
 }

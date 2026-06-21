@@ -8,7 +8,7 @@ using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RWeaponBehavior : IRandomizer
+    public class RWeaponBehavior : Randomizer
     {
         // Buster Heat Air Wood Bubble Quick Metal Crash
         private static IDictionary<EWeaponIndex, Double> AmmoUsage = new Dictionary<EWeaponIndex, Double>()
@@ -41,6 +41,7 @@ namespace MM2Randomizer.Randomizers
         }
 
         public RWeaponBehavior()
+            : base(null, [nameof(RWeaponBehavior)])
         {
         }
 
@@ -77,7 +78,7 @@ namespace MM2Randomizer.Randomizers
             });
         }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             debug.Clear();
             List<ESoundID> sounds = GetSoundList();

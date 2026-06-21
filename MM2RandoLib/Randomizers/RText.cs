@@ -11,13 +11,14 @@ using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RText : IRandomizer
+    public class RText : Randomizer
     {
         //
         // Constructor
         //
 
         public RText()
+            : base([nameof(RBossRoom)])
         {
         }
 
@@ -26,7 +27,7 @@ namespace MM2Randomizer.Randomizers
         // IRandomizer Methods
         //
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             CompanyNameSet companyNameSet = Properties.Resources.CompanyNameConfig.Deserialize<CompanyNameSet>();
             IEnumerable<CompanyName> enabledCompanyNames = companyNameSet.Where(x => true == x.Enabled);

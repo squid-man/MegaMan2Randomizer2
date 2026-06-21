@@ -469,7 +469,7 @@ public class Mm2Importer : Importer
     }
 }
 
-public class RMusic : IRandomizer
+public class RMusic : Randomizer
 {
     /// <summary>
     /// Map of which game songs belong to which music uses.
@@ -497,7 +497,7 @@ public class RMusic : IRandomizer
         return debug.ToString();
     }
 
-    public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+    public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
     {
         debug.AppendLine();
         debug.AppendLine("Random Music Module");

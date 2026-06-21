@@ -9,7 +9,7 @@ using MM2Randomizer.Settings.Options;
 
 namespace MM2Randomizer.Randomizers.Stages
 {
-    public class RStages : IRandomizer
+    public class RStages : Randomizer
     {
         private List<StageFromSelect>? StageSelect;
         private StringBuilder debug = new StringBuilder();
@@ -141,7 +141,7 @@ namespace MM2Randomizer.Randomizers.Stages
         /// <summary>
         /// Shuffle the Robot Master stages.  This shuffling will not be indicated by the Robot Master portraits.
         /// </summary>
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
 
             StageSelect = VanillaStageSelect();

@@ -14,7 +14,7 @@ namespace MM2Randomizer.Randomizers.Enemies
     /// <summary>
     /// Stage Enemy Type Randomizer
     /// </summary>
-    public class REnemies : IRandomizer
+    public class REnemies : Randomizer
     {
         private static readonly Int32 Stage0EnemyYAddress = 0x3810;
         private static readonly Int32 Stage0EnemyIDAddress = 0x3910;
@@ -40,7 +40,7 @@ namespace MM2Randomizer.Randomizers.Enemies
 
         public REnemies() { }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             this.EnemyTypes.Clear();
             this.EnemiesByType.Clear();
