@@ -65,6 +65,7 @@
       <None Remove="Resources\Asm\Options\bird_egg_fix.asm" />
       <None Remove="Resources\Asm\Options\burst_chaser.asm" />
       <None Remove="Resources\Asm\Options\disable_flashing.asm" />
+      <None Remove="Resources\Asm\Options\dragon_cooldown.asm" />
       <None Remove="Resources\Asm\Options\fair_heat_man.asm" />
       <None Remove="Resources\Asm\Options\faster_cutscenes.asm" />
       <None Remove="Resources\Asm\Options\merciless.asm" />
@@ -727,6 +728,7 @@
       <EmbeddedResource Include="Resources\Asm\Options\bird_egg_fix.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\burst_chaser.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\disable_flashing.asm" />
+      <EmbeddedResource Include="Resources\Asm\Options\dragon_cooldown.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\fair_heat_man.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\faster_cutscenes.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\merciless.asm" />

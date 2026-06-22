@@ -131,6 +131,7 @@ public class SettingsPresets
                 new(s.QualityOfLifeOptions.AllowSelfDestruct, true),
                 NewPreset(s.QualityOfLifeOptions.AccidentalEtankProtectionLevel, PercentOption.Percent100),
                 NewPreset(s.QualityOfLifeOptions.AddWeaponEnergyOnDeath, PercentOption.Percent0),
+                new(s.QualityOfLifeOptions.DragonBreathCooldown, false),
                 new(s.CosmeticOptions.RandomizeColorPalettes, true),
                 new(s.CosmeticOptions.RandomizeMusicTracks, true),
                 new(s.CosmeticOptions.OmitUnsafeMusicTracks, true),
