@@ -18,22 +18,22 @@ namespace MM2Randomizer.Data
         [XmlElement("Name")]
         public String? Name { get; set; }
 
-        public Byte[] GetFormattedPrefix()
+        public String GetFormattedPrefix()
         {
             String prefix = this.Prefix ?? String.Empty;
 
             // Truncate the prefix to the max length
             String truncatedPrefix = prefix.Substring(0, Math.Min(CountryName.MAX_PREFIX_LENGTH, prefix.Length));
-            return truncatedPrefix.PadRight(CountryName.MAX_PREFIX_LENGTH).AsIntroString();
+            return truncatedPrefix.PadRight(CountryName.MAX_PREFIX_LENGTH);
         }
 
-        public Byte[] GetFormattedName()
+        public String GetFormattedName()
         {
             String name = this.Name ?? String.Empty;
 
             // Truncate the prefix to the max length
             String truncatedName = name.Substring(0, Math.Min(CountryName.MAX_NAME_LENGTH, name.Length));
-            return truncatedName.PadCenter(CountryName.MAX_NAME_LENGTH).AsIntroString();
+            return truncatedName.PadCenter(CountryName.MAX_NAME_LENGTH);
         }
 
 

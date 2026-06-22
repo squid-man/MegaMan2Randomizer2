@@ -1,0 +1,38 @@
+﻿using Avalonia;
+using Microsoft.Extensions.DependencyInjection;
+using MM2RandoLib;
+using MM2RandoLib.Utilities;
+using ReactiveUI.Avalonia;
+using System;
+
+namespace RandomizerHost.Desktop;
+
+sealed class Program
+{
+    // Initialization code. Don't use any Avalonia, third-party APIs or any
+    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
+    // yet and stuff might break.
+    [STAThread]
+    public static void Main(string[] args) => BuildAvaloniaApp()
+        .StartWithClassicDesktopLifetime(args);
+
+    // Avalonia configuration, don't remove; also used by visual designer.
+    public static AppBuilder BuildAvaloniaApp()
+        => AppBuilder.Configure<App>()
+            .UsePlatformDetect()
+#if DEBUG
+            .WithDeveloperTools()
+#endif
+            .WithInterFont()
+            .With(App.GetFontManagerOptions())
+            .LogToTrace()
+            .UseReactiveUI(b => { })
+            .AfterSetup(builder =>
+            {
+                var services = new ServiceCollection();
+                services.AddSingleton<IHostPlatformServices, DesktopPlatformServices>();
+
+                ((App)builder.Instance!).InitializeServices(
+                    services.BuildServiceProvider());
+            });
+}

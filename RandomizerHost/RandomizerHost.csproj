@@ -1,23 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <AssemblyName>RandomizerHost</AssemblyName>
+    <AssemblyName>RandomizerHost.Common</AssemblyName>
     <ApplicationIcon>Assets\MegaMan2Randomizer.ico</ApplicationIcon>
     <PackageId>Mega Man 2 Randomizer</PackageId>
-    <Authors>Duckfist, Squidman, Dagit, Charlieboy, Quantam</Authors>
-    <Company />
-    <Product>Mega Man 2 Randomizer</Product>
-    <Version>0.6.7</Version>
-    <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
     <PackageIcon>MegaMan2Randomizer.ico</PackageIcon>
-    <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>0.6.7.*</AssemblyVersion>
     <Deterministic>false</Deterministic>
-    <StartupObject>RandomizerHost.Program</StartupObject>
-    <FileVersion>0.6.7</FileVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,31 +22,31 @@
     <None Remove="Assets\header.png" />
     <None Remove="Assets\MegaMan2Randomizer.ico" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_AVGN.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BadBoxArt.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BadBoxArt.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BassReloaded.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BatMan.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BatMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_BreakMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CasualTom.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Charlieboy.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CharlieboyAlt.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Coda.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CharlieboyAlt.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Coda.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_CutMansBadScissorsDay.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackBelt.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackMage.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackBelt.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyBlackMage.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyFighter.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyWhiteMage.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Francesca.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Guard.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_FinalFantasyWhiteMage.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Francesca.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Guard.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_HatsuneMiku.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_JustinBailey.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_LuckyMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_LuigiArcade.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MarioArcade.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaRan2Remix.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaWoman.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaWomanPurp.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaWoman.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MegaWomanPurp.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MMXtreme_Zero.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MyLittlePony.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_MyLittlePony.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_PrototypeTom.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_QuickMan.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Quint.png" />
@@ -65,8 +54,8 @@
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_RnR_Roll.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_RnR_Roll_Nolips.png" />
     <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Samus.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Stantler.png" />
-	<None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Zneip.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Stantler.png" />
+    <None Remove="Assets\PlayerCharacterSpritePreviews\PlayerCharacter_Zneip.png" />
     <None Include="Assets\MegaMan2Randomizer.ico">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -74,73 +63,21 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="12.0.4" />
-    <PackageReference Include="Avalonia.Desktop" Version="12.0.4" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
+    <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.2">
+        <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+        <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
     <PackageReference Include="ReactiveUI.Avalonia" Version="12.0.3" />
     <PackageReference Include="ReactiveUI.SourceGenerators" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.IO.Hashing" Version="10.0.7" />
+    <PackageReference Include="System.IO.Hashing" Version="10.0.9" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MM2RandoLib\MM2RandoLib.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Controls\StandardBoolOption.axaml.cs">
-      <DependentUpon>StandardBoolOption.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\MessageBox.axaml.cs">
-      <DependentUpon>MessageBox.axaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <PropertyGroup>
-    <IsGitHubBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</IsGitHubBuild>
-    <IsGitHubBuild Condition="'$(IsGitHubBuild)' == ''">false</IsGitHubBuild>
-  </PropertyGroup>
-  
-  <Target Name="GenerateGitInfo" BeforeTargets="BeforeBuild">
-    <MakeDir Directories="$(IntermediateOutputPath)" />
-    <Exec Command="git rev-parse --short HEAD &gt; $(IntermediateOutputPath)git-hash.txt" />
-    <Exec Command="git rev-parse --abbrev-ref HEAD &gt; $(IntermediateOutputPath)git-branch.txt" />
-    <Exec Command="git tag --points-at HEAD &gt; $(IntermediateOutputPath)git-tag.txt" />
-    <Exec Command="git diff --quiet || echo dirty &gt; $(IntermediateOutputPath)git-dirty.txt" IgnoreExitCode="true" />
-
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-hash.txt"><Output TaskParameter="Lines" PropertyName="GitHash" /></ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-branch.txt"><Output TaskParameter="Lines" PropertyName="GitBranch" /></ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-tag.txt"><Output TaskParameter="Lines" ItemName="GitTag" /></ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)git-dirty.txt" Condition="Exists('$(IntermediateOutputPath)git-dirty.txt')"><Output TaskParameter="Lines" PropertyName="GitDirty" /></ReadLinesFromFile>
-    <PropertyGroup><IsDirtyValue>false</IsDirtyValue></PropertyGroup>
-    <PropertyGroup Condition="'$(GitDirty)' != ''"><IsDirtyValue>true</IsDirtyValue></PropertyGroup>
-  </Target>
-
-  <Target Name="WriteGitInfoFile" DependsOnTargets="GenerateGitInfo" BeforeTargets="BeforeBuild">
-    <PropertyGroup>
-      <GitTagsJoined>@(GitTag->'%(Identity)', ',')</GitTagsJoined>
-      <GitInfoText>
-// (auto-generated from .csproj)
-namespace RandomizerHost;
-
-public static partial class GitInfo
-{
-    static GitInfo()
-    {
-        Commit = "$(GitHash)";
-        Branch = "$(GitBranch)";
-        Tag = "$(GitTagsJoined)";
-        IsDirty = $(IsDirtyValue);
-        IsOfficialBuild = $(IsGitHubBuild);
-    }
-}
-      </GitInfoText>
-    </PropertyGroup>
-
-    <WriteLinesToFile File="$(IntermediateOutputPath)GitInfo.cs" Overwrite="true" Lines="$([System.Text.RegularExpressions.Regex]::Split('$(GitInfoText)', '\n'))" />
-
-    <ItemGroup>
-      <Compile Include="$(IntermediateOutputPath)GitInfo.cs" />
-    </ItemGroup>
-  </Target>
 </Project>

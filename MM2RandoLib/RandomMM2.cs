@@ -1,39 +1,54 @@
-﻿using System;
-using System.Reflection;
+﻿using MM2RandoLib;
+using MM2RandoLib.Utilities;
 using MM2Randomizer.Random;
 using MM2Randomizer.Settings;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MM2Randomizer
 {
     public static class RandomMM2
     {
+        static RandomMM2()
+        {
+            BasePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            AssemblyVersion = Assembly.GetExecutingAssembly().GetVersion() ?? new Version();
+            AssemblyVersionString = Assembly.GetExecutingAssembly().GetVersionString();
+
+            int endIdx = AssemblyVersionString.IndexOfAny(['-', '+']);
+            if (endIdx < 0)
+                endIdx = AssemblyVersionString.Length;
+
+            BaseAssemblyVersionString = AssemblyVersionString[..endIdx];
+        }
+
         /// <summary>
         /// Perform the randomization based on the seed and user-provided settings, and then
         /// generate the new ROM.
         /// </summary>
-        public static void RandomizerCreate(RandomizationSettings in_Settings, out RandomizationContext out_Context)
+        public static async Task<RandomizationContext> RandomizerCreate(
+            RandomizationSettings in_Settings, 
+            IPlatformServices in_PlatformServices, 
+            byte[] in_Rom,
+            IProgress<string?> in_Progress,
+            CancellationToken in_CancellationToken)
         {
-            ISeed seed;
+            ISeed seed = new PcgSeed(in_Settings.SeedString);
+            var ctx = new RandomizationContext(in_Settings, seed, in_PlatformServices, in_Rom, in_Progress, in_CancellationToken);
+            await ctx.Initialize();
 
-            // Initialize the seed
-            if (null == in_Settings.SeedString)
-            {
-                seed = SeedFactory.Create(GeneratorType.MT19937);
-            }
-            else
-            {
-                seed = SeedFactory.Create(GeneratorType.MT19937, in_Settings.SeedString);
-            }
+            return ctx;
+        }
 
-            out_Context = new RandomizationContext(in_Settings, seed);
-            out_Context.Initialize();
-        }
-    static public Version AssemblyVersion
-        {
-            get
-            {
-                return Assembly.GetAssembly(typeof(RandomMM2))?.GetName().Version ?? new Version(0, 0, 0, 0);
-            }
-        }
+        static public string BasePath { get; }
+
+        static public Version AssemblyVersion { get; }
+
+        static public string AssemblyVersionString { get; }
+
+        static public string BaseAssemblyVersionString { get; }
     }
 }

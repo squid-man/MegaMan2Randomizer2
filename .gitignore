@@ -213,4 +213,5 @@ ModelManifest.xml
 /MM2Randomizer/u_backup.dat
 
 ## Ignore other files
+/RandomizerHost.Browser/wwwroot/js65
 *.nes

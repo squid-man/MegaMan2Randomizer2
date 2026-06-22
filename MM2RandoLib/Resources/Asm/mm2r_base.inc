@@ -38,6 +38,11 @@ MIRROR_HORIZONTAL = 1
 
 ;;;;;;;;;; Global variables and constants
 
+Cur16kBank = $29
+CurBankA = $67
+CurBankCtrl = $68
+SetBankTemp = $69
+
 FrameCtr = $1c
 CtrlState = $23
 NewButtonsPressed = $27
@@ -92,6 +97,13 @@ EnemyContactDamageTable = $ed5c
 ;;;;;;;;;; Function addresses
 
 DrawTitleLogoSprites = $a60f ; Bank d
+
+Switch16kBank = $c000
+SwitchBank8 = $d0a5
+SwitchBankA = $d0ad
+Switch16kBankUnsafe = $c05e
+SwitchBank8Unsafe = $c01f
+SwitchBankAUnsafe = $c024
 
 WaitForNmiOutOfGame = $c0ab
 EnqueueSound = $c051

@@ -1,17 +1,26 @@
+using js65;
+using MM2RandoLib;
 using MM2Randomizer;
 using MM2Randomizer.Settings;
+using RandomizerHost.Desktop;
 using System;
 using System.IO;
 
 namespace MM2RandoLib.Tests
 {
+    public class DummyProgress : IProgress<string?>
+    {
+        public void Report(string? value)
+        { }
+    }
+
     public class BasicTests
     {
         /// <summary>
         /// Verify that the randomizer can successfully create a ROM. This is necessary because assembly modules will not be compiled until a ROM is created.
         /// </summary>
         [Fact]
-        public void CanBuildRom()
+        public async Task CanBuildRom()
         {
             var curDir = Directory.GetCurrentDirectory();
             var tempDir = Directory.CreateTempSubdirectory("mm2r");
@@ -31,12 +40,14 @@ namespace MM2RandoLib.Tests
                 settings.QualityOfLifeOptions.EnableBirdEggFix.BaseValue = true;
                 settings.QualityOfLifeOptions.DisableFlashingEffects.BaseValue = true;
 
-                File.WriteAllBytes(settings.RomSourcePath, new byte[0x80010]);
+                RandomizationContext ctx = await RandomMM2.RandomizerCreate(
+                    settings, 
+                    new DesktopPlatformServices(),
+                    new byte[0x80010],
+                    new DummyProgress(),
+                    new CancellationToken());
 
-                RandomizationContext ctx;
-                RandomMM2.RandomizerCreate(settings, out ctx);
-
-        return;
+                return;
             }
             finally
             {

@@ -1,0 +1,58 @@
+<Project>
+	<PropertyGroup>
+		<Product>Mega Man 2 Randomizer</Product>
+		<Authors>Duckfist, Squidman, Dagit, Charlieboy, Quantam</Authors>
+
+		<PackageTags></PackageTags>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
+
+		<RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
+
+		<DefaultTargetFramework>net10.0-browser</DefaultTargetFramework>
+		<LangVersion>latest</LangVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+	</PropertyGroup>
+
+	<Target Name="GitVersioning" BeforeTargets="BeforeBuild">
+		<Exec Command="git describe --tags --abbrev=0 --exclude=&quot;*dev*&quot; --exclude=&quot;Release*&quot;" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
+			<Output TaskParameter="ConsoleOutput" PropertyName="_GitTag" />
+			<Output TaskParameter="ExitCode" PropertyName="_GitExitCode" />
+		</Exec>
+
+		<Exec Command="git rev-parse --short HEAD" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
+			<Output TaskParameter="ConsoleOutput" PropertyName="_GitHash" />
+		</Exec>
+
+		<Exec Condition="'$(_GitExitCode)' == '0'" Command="git rev-list --count $(_GitTag)..HEAD" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
+			<Output TaskParameter="ConsoleOutput" PropertyName="_GitHeight" />
+		</Exec>
+
+		<Exec Command="git status --porcelain" ConsoleToMSBuild="true" ContinueOnError="true" StandardOutputImportance="low">
+			<Output TaskParameter="ConsoleOutput" PropertyName="_GitStatus" />
+		</Exec>
+
+		<PropertyGroup>
+			<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+			
+			<_ActualTag Condition="'$(_GitExitCode)' != '0'">1.0.0.0</_ActualTag>
+			<_ActualTag Condition="'$(_GitExitCode)' == '0'">$(_GitTag.Replace('v', ''))</_ActualTag>
+
+			<_IsDirty Condition="'$(_GitStatus)' != ''">true</_IsDirty>
+			<_IsAhead Condition="'$(_GitHeight)' != '0' And '$(_GitHeight)' != ''">true</_IsAhead>
+
+			<AssemblyVersion>$(_ActualTag)</AssemblyVersion>
+			<FileVersion>$(_ActualTag)</FileVersion>
+
+			<_Suffix Condition="'$(_IsAhead)' == 'true'">-dev$(_GitHeight)</_Suffix>
+			<_DirtySuffix Condition="'$(_IsDirty)' == 'true'">-dirty</_DirtySuffix>
+
+			<InformationalVersion Condition="'$(_IsAhead)' != 'true' And '$(_IsDirty)' != 'true'">$(_ActualTag)</InformationalVersion>
+			<InformationalVersion Condition="'$(_IsAhead)' == 'true' Or '$(_IsDirty)' == 'true'">$(_ActualTag)$(_Suffix)$(_DirtySuffix)+$(_GitHash)</InformationalVersion>
+
+			<Version>$(AssemblyVersion)</Version>
+		</PropertyGroup>
+
+		<Message Importance="high" Text="** Built Version: $(InformationalVersion) **" />
+	</Target>
+</Project>

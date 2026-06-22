@@ -1,23 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
         <SignAssembly>True</SignAssembly>
         <Title>MM2RandoLib</Title>
-        <Version>0.6.7</Version>
-        <Copyright></Copyright>
         <Description>.NET library that can generate a randomized ROM patch for Mega Man 2.</Description>
-        <Authors>duckfist, squidman, dagit, charlieboy, quantam</Authors>
-        <PackageProjectUrl>https://github.com/squid-man/MegaMan2Randomizer2</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/squid-man/MegaMan2Randomizer2</RepositoryUrl>
-        <PackageTags></PackageTags>
-        <PackageReleaseNotes></PackageReleaseNotes>
-        <AssemblyVersion>0.6.7.*</AssemblyVersion>
-        <FileVersion>0.6.7</FileVersion>
         <Deterministic>false</Deterministic>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <Platforms>AnyCPU;x64</Platforms>
-        <Company />
         <ApplicationIcon />
         <OutputType>Library</OutputType>
         <StartupObject />
@@ -281,8 +268,8 @@
       <None Remove="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_MegaMari.ips" />
       <None Remove="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_Rock.ips" />
       <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
-	  <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWoman.ips" />
-	  <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWomanPurp.ips" />
+      <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWoman.ips" />
+      <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWomanPurp.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <None Remove="Resources\SpritePatches\Characters\MMXtreme\PlayerCharacter_MMXtreme_Zero.ips" />
@@ -302,7 +289,7 @@
       <None Remove="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <None Remove="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
       <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
-	  <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Zneip.ips" />
+      <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Zneip.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Ghost.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Vader.ips" />
@@ -322,11 +309,11 @@
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Lightning.ips" />
-	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />
-	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
       <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips" />
-	  <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Pacman.ips" />
-	  <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Pacman.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_Evil.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_MM3Cat.ips" />
       <None Remove="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_CutMansBadScissorsDay.ips" />
@@ -583,7 +570,7 @@
       <None Remove="Resources\SpritePatches\HudElements\HudElements_Paperboy.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_Remix.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_RockMan2Guard.ips" />
-	  <None Remove="Resources\SpritePatches\HudElements\HudElements_Star.ips" />
+      <None Remove="Resources\SpritePatches\HudElements\HudElements_Star.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_FinalFantasy.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_MegaMan5MiniCastle.ips" />
       <None Remove="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_None.ips" />
@@ -939,8 +926,8 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_MegaMari.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaMan\PlayerCharacter_Rock.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWoman.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWomanPurp.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWoman.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWomanPurp.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MMXtreme\PlayerCharacter_MMXtreme_Zero.ips" />
@@ -960,7 +947,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Characters\Zneip\PlayerCharacter_Zneip.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\Zneip\PlayerCharacter_Zneip.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Ghost.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Vader.ips" />
@@ -979,11 +966,11 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\FlyBoy\FlyBoy_VineMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Block.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Invisible.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Lightning.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />	
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamBody\ForceBeamBody_Lightning.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Crashwall.ips" />	
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Invisible.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_NyanCat.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Pacman.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\ForceBeamEnd\ForceBeamEnd_Pacman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_Evil.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_MM3Cat.ips" />
@@ -1241,7 +1228,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Paperboy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Remix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_RockMan2Guard.ips" />
-	  <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Star.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Star.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_FinalFantasy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_MegaMan5MiniCastle.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\MenusAndTransitionScreens\CastleScreen\Castle_None.ips" />
@@ -1393,13 +1380,9 @@
       <EmbeddedResource Remove="Properties\WeaponSpriteResources.resx" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="js65.clearscript" Version="1.0.7" />
       <PackageReference Include="js65.interop" Version="1.0.7" />
-      <PackageReference Include="Microsoft.ClearScript.V8.Native.linux-x64" Version="7.5.0" />
-      <PackageReference Include="Microsoft.ClearScript.V8.Native.osx-arm64" Version="7.5.0" />
-      <PackageReference Include="Microsoft.ClearScript.V8.Native.win-x64" Version="7.5.0" />
-      <PackageReference Include="System.Data.HashFunction.FNV" Version="2.0.0" />
-      <PackageReference Include="Troschuetz.Random" Version="5.0.1" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.9" />
+      <PackageReference Include="System.IO.Hashing" Version="10.0.9" />
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Properties\BossSpriteResources.Designer.cs">
@@ -1467,5 +1450,65 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\FtRandoLib\FtRandoLib.csproj" />
-    </ItemGroup>    
+    </ItemGroup>
+
+    <PropertyGroup>
+        <IsGitHubBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</IsGitHubBuild>
+        <IsGitHubBuild Condition="'$(IsGitHubBuild)' == ''">false</IsGitHubBuild>
+    </PropertyGroup>
+
+    <Target Name="GenerateGitInfo" BeforeTargets="BeforeBuild">
+        <MakeDir Directories="$(IntermediateOutputPath)" />
+        <Exec Command="git rev-parse --short HEAD &gt; $(IntermediateOutputPath)git-hash.txt" />
+        <Exec Command="git rev-parse --abbrev-ref HEAD &gt; $(IntermediateOutputPath)git-branch.txt" />
+        <Exec Command="git tag --points-at HEAD &gt; $(IntermediateOutputPath)git-tag.txt" />
+        <Exec Command="git diff --quiet || echo dirty &gt; $(IntermediateOutputPath)git-dirty.txt" IgnoreExitCode="true" />
+
+        <ReadLinesFromFile File="$(IntermediateOutputPath)git-hash.txt">
+            <Output TaskParameter="Lines" PropertyName="GitHash" />
+        </ReadLinesFromFile>
+        <ReadLinesFromFile File="$(IntermediateOutputPath)git-branch.txt">
+            <Output TaskParameter="Lines" PropertyName="GitBranch" />
+        </ReadLinesFromFile>
+        <ReadLinesFromFile File="$(IntermediateOutputPath)git-tag.txt">
+            <Output TaskParameter="Lines" ItemName="GitTag" />
+        </ReadLinesFromFile>
+        <ReadLinesFromFile File="$(IntermediateOutputPath)git-dirty.txt" Condition="Exists('$(IntermediateOutputPath)git-dirty.txt')">
+            <Output TaskParameter="Lines" PropertyName="GitDirty" />
+        </ReadLinesFromFile>
+        <PropertyGroup>
+            <IsDirtyValue>false</IsDirtyValue>
+        </PropertyGroup>
+        <PropertyGroup Condition="'$(GitDirty)' != ''">
+            <IsDirtyValue>true</IsDirtyValue>
+        </PropertyGroup>
+    </Target>
+
+    <Target Name="WriteGitInfoFile" DependsOnTargets="GenerateGitInfo" BeforeTargets="BeforeBuild">
+        <PropertyGroup>
+            <GitTagsJoined>@(GitTag->'%(Identity)', ',')</GitTagsJoined>
+            <GitInfoText>
+                // (auto-generated from .csproj)
+                namespace MM2Randomizer;
+
+                public static partial class GitInfo
+                {
+                static GitInfo()
+                {
+                Commit = "$(GitHash)";
+                Branch = "$(GitBranch)";
+                Tag = "$(GitTagsJoined)";
+                IsDirty = $(IsDirtyValue);
+                IsOfficialBuild = $(IsGitHubBuild);
+                }
+                }
+            </GitInfoText>
+        </PropertyGroup>
+
+        <WriteLinesToFile File="$(IntermediateOutputPath)GitInfo.cs" Overwrite="true" Lines="$([System.Text.RegularExpressions.Regex]::Split('$(GitInfoText)', '\n'))" />
+
+        <ItemGroup>
+            <Compile Include="$(IntermediateOutputPath)GitInfo.cs" />
+        </ItemGroup>
+    </Target>
 </Project>

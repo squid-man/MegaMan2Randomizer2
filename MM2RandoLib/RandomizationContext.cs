@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using js65;
+﻿using js65;
+using MM2RandoLib;
 using MM2RandoLib.Settings.Options;
+using MM2RandoLib.Utilities;
 using MM2Randomizer.Enums;
 using MM2Randomizer.Extensions;
 using MM2Randomizer.Patcher;
@@ -19,11 +15,16 @@ using MM2Randomizer.Settings;
 using MM2Randomizer.Settings.OptionGroups;
 using MM2Randomizer.Settings.Options;
 using MM2Randomizer.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MM2Randomizer
 {
-    using AsmEngine = ClearScriptEngine;
-
     public class RandomizationContext
     {
         internal record OptionAction(IOption Option, OptionActionAttribute Action);
@@ -35,7 +36,13 @@ namespace MM2Randomizer
         // Constructors
         //
 
-        internal RandomizationContext(RandomizationSettings in_Settings, ISeed in_Seed)
+        internal RandomizationContext(
+            RandomizationSettings in_Settings, 
+            ISeed in_Seed, 
+            IPlatformServices in_PlatformServices, 
+            byte[] rom,
+            IProgress<string?> in_Progress,
+            CancellationToken in_CancellationToken)
         {
             this.Seed = in_Seed;
             this.Settings = in_Settings;
@@ -46,12 +53,22 @@ namespace MM2Randomizer
             AsmIncBase = ResourceTree.LoadUtf8Resource(
                 AsmRoot.Find("mm2r_base.inc"));
 
+            PlatformServices = in_PlatformServices;
             Assembler = CreateAssemblyEngine();
+
+            SourceRom = rom;
+            PrepatchRom = Array.Empty<byte>();
+            Rom = rom.ToArray();
+
+            Progress = in_Progress;
+            CancellationToken = in_CancellationToken;
         }
 
         //
         // Properties
         //
+
+        public IPlatformServices PlatformServices { get; }
 
         public ISeed Seed { get; private set; }
 
@@ -59,12 +76,18 @@ namespace MM2Randomizer
 
         public String FileName { get; private set; }
 
+        public byte[] SourceRom { get; }
+        public byte[] PrepatchRom { get; private set; }
+        public byte[] Rom { get; private set; }
+
+        public IProgress<string?> Progress { get; }
+
+        public CancellationToken CancellationToken { get; }
+
         // Create randomization patch
         public Patch Patch { get; private set; } = new Patch();
 
         public ResourceTree ResourceTree { get; } = new(null, "Resources");
-
-        public const String TEMPORARY_FILE_NAME = "temp.nes";
 
         /// <summary>
         /// Quality of life hack: if InvisiPico, do NOT randomize Pico movement.
@@ -81,7 +104,7 @@ namespace MM2Randomizer
             includePaths = [""],
         };
 
-        public readonly AsmEngine Assembler;
+        public readonly Assembler Assembler;
         public readonly ResourceNode AsmRoot;
         public readonly string AsmIncBase;
         public readonly List<string> DefineSymbolLines = new();
@@ -145,12 +168,17 @@ namespace MM2Randomizer
         // Internal Methods
         //
 
-        internal void Initialize()
+        internal async Task Initialize()
         {
-            CreateInitialRom(TEMPORARY_FILE_NAME);
+            // These steps complete so fast only two messages ever have time to display
+            UpdateProgressAndCheckCancellation("Performing randomization...");
 
-      // Not certain whether this must come first
-      AsmModuleFromResource("config.asm");
+            await CreateInitialRom();
+
+            CheckCancellation();
+
+            // Not certain whether this must come first
+            AsmModuleFromResource("config.asm");
 
             // In tournament mode, offset the seed by 1 call, making seeds mode-dependent
             /*
@@ -310,6 +338,8 @@ namespace MM2Randomizer
             // No randomization after this point, only patching
             // ================================================
 
+            UpdateProgressAndCheckCancellation("Applying changes...");
+
             // Apply additional required incidental modifications
             if (gameplayOpts.RandomizeRobotMasterStageSelection.Value ||
                 gameplayOpts.RandomizeSpecialWeaponReward.Value)
@@ -328,83 +358,62 @@ namespace MM2Randomizer
             MiscHacks.SetNewMegaManSprite(
                 ResourceTree,
                 this.Patch,
-                RandomizationContext.TEMPORARY_FILE_NAME,
+                Rom,
                 cosmOpts.PlayerSprite.Value);
 
             MiscHacks.SetNewCannonShot(
                 ResourceTree,
                 this.Patch,
-                RandomizationContext.TEMPORARY_FILE_NAME,
+                Rom,
                 cosmOpts.CannonShot.Value);
 
             MiscHacks.SetNewHudElement(
                 ResourceTree,
                 this.Patch,
-                RandomizationContext.TEMPORARY_FILE_NAME,
+                Rom,
                 cosmOpts.HudElement.Value);
 
             MiscHacks.SetNewFont(
                 ResourceTree,
                 this.Patch,
-                RandomizationContext.TEMPORARY_FILE_NAME,
+                Rom,
                 cosmOpts.Font.Value);
             MiscHacks.AddLargeWeaponEnergyRefillPickupsToWily5TeleporterRoom(this.Patch);
 
             ApplyOptionActions();
 
-            CompileAssembly();
+            await CompileAssembly();
 
             // Apply patch with randomized content
-            this.Patch.ApplyRandoPatch(RandomizationContext.TEMPORARY_FILE_NAME);
-
-            // If a file of the same seed already exists, delete it
-            if (File.Exists(this.FileName))
-            {
-                File.Delete(this.FileName);
-            }
-
-            // Finish the copy/rename and open Explorer at that location
-            File.Move(RandomizationContext.TEMPORARY_FILE_NAME, this.FileName);
+            this.Patch.ApplyRandoPatch(Rom);
         }
 
         /// <summary>
-        /// Perform 0 or more copy and subsequent write actions to the ROM file. This is done outside the normal patching system because it must come before other IPS files which directly modify the ROM.
+        /// Perform 0 or more copy and subsequent write actions to the ROM. This is done outside the normal patching system because it must come before other IPS files which directly modify the ROM.
         /// </summary>
-        /// <param name="in_RomPath"></param>
         /// <param name="in_CopySpecs">Copy operations to perform.</param>
         /// <param name="in_WriteSpecs">Write operations to perform.</param>
         internal void ModifyRomFile(
-            string in_RomPath, 
             IEnumerable<BlockCopySpec>? in_CopySpecs = null,
             IEnumerable<WriteSpec>? in_WriteSpecs = null)
         {
-            using (FileStream romFile = new(
-                in_RomPath, FileMode.Open, FileAccess.ReadWrite))
+            var srcRom = Rom.ToArray();
+
+            if (in_CopySpecs is not null)
             {
-                var rom = new byte[romFile.Length];
-                romFile.ReadExactly(rom, 0, rom.Length);
+                foreach (var spec in in_CopySpecs)
+                    Array.Copy(srcRom, spec.SrcOffs, Rom, spec.TgtOffs, spec.Size);
+            }
 
-                if (in_CopySpecs is not null)
+            if (in_WriteSpecs is not null)
+            {
+                foreach (var spec in in_WriteSpecs)
                 {
-                    foreach (var spec in in_CopySpecs)
-                    {
-                        romFile.Position = spec.TgtOffs;
-                        romFile.Write(rom, spec.SrcOffs, spec.Size);
-                    }
-                }
+                    byte[]? buff = spec.Data as byte[];
+                    if (buff is null)
+                        buff = spec.Data.ToArray();
 
-                if (in_WriteSpecs is not null)
-                {
-                    foreach (var spec in in_WriteSpecs)
-                    {
-                        romFile.Position = spec.Offs;
-
-                        byte[]? buff = spec.Data as byte[];
-                        if (buff is null)
-                            buff = spec.Data.ToArray();
-
-                        romFile.Write(buff, 0, buff.Length);
-                    }
+                    Array.Copy(buff, 0, Rom, spec.Offs, buff.Length);
                 }
             }
         }
@@ -412,25 +421,28 @@ namespace MM2Randomizer
         /// <summary>
         /// Apply the base patches to the ROM that must come before anything else including other IPS files.
         /// </summary>
-        private void CreateInitialRom(string in_RomPath)
+        private async Task CreateInitialRom()
         {
-            File.Copy(this.Settings.RomSourcePath, in_RomPath, true);
-
             // Apply pre-patch changes via IPS patch (manual title screen, stage select, stage changes, player sprite)
-            this.Patch.ApplyIPSPatch(
-                in_RomPath, ResourceTree.LoadResource("mm2ft.ips"), false);
+            using (MemoryStream stream = new())
+            {
+                stream.Write(Rom);
 
-            CopyWilyTilesets(in_RomPath);
+                this.Patch.ApplyIPSPatch(
+                    stream, ResourceTree.LoadResource("mm2ft.ips"), false);
+
+                Rom = stream.ToArray();
+            }
+
+            CopyWilyTilesets();
 
             var asm = CreateAssemblyEngine();
 
-            var rom = File.ReadAllBytes(TEMPORARY_FILE_NAME);
             AsmModuleFromResource("config.asm", asm);
             AsmModuleFromResource("prepatch.asm", asm);
 
-            rom = asm.ApplySynchronously(rom);
-
-            File.WriteAllBytes(TEMPORARY_FILE_NAME, rom);
+            PrepatchRom = await asm.ApplyAsync(Rom).WaitAsync(CancellationToken);
+            Rom = PrepatchRom.ToArray();
         }
 
     /// <summary>
@@ -439,7 +451,7 @@ namespace MM2Randomizer
     /// Wily 4's copy of 6a10:6e10 is now located at 3fa10.
     /// Wily 5's copy of ac10:ae10 (PPU 1200:1400) is now located at 3fe10.
     /// </summary>
-    private void CopyWilyTilesets(string in_RomPath)
+    private void CopyWilyTilesets()
         {
             /* All stages have a list of regions to copy to VRAM at start (this includes both sprites at PPU 0:1000 and background at 1000:2000). For Wily 1-6 these lists are at bd00 of bank # - 1. The first byte of each list specifies the number of entries, and each entry is a byte triplet AA NN BB where A is the MSB of the ROM address to copy from, N is the number of 256-byte blocks to copy, and B is the 16 KB ROM bank number.
              * The vanilla values of these tables for the background portion, with * and # indicating the portions that need to be duplicated:
@@ -450,7 +462,7 @@ namespace MM2Randomizer
              * Wily 5 @ +d: 80 02 09  AC 02 02# 84 01 09  AA 01 04  AA 0A 04
              * Wily 6 @ +d: 80 08 09  B0 08 02 */
 
-            ModifyRomFile(in_RomPath,
+            ModifyRomFile(
                 [
                     new(0x6a10, 0x3f610, 0x400), // Wily 3 copy of 2's data
                     new(0x6a10, 0x3fa10, 0x400), // Wily 4 copy of 2's data
@@ -549,7 +561,7 @@ namespace MM2Randomizer
                             Patch,
                             opdAct.RootPath,
                             opdAct.AllowNone,
-                            TEMPORARY_FILE_NAME,
+                            Rom,
                             opdAct.RebaseIps is not null ? (bool)opdAct.RebaseIps : null);
                         OneIpsPerDirSelections[opt] = selFiles;
                     }
@@ -567,9 +579,9 @@ namespace MM2Randomizer
             return;
         }
 
-        private AsmEngine CreateAssemblyEngine()
+        private Assembler CreateAssemblyEngine()
         {
-            AsmEngine asm = new(AssemblerOptions);
+            var asm = PlatformServices.CreateAssembler(AssemblerOptions, false);
             asm.Callbacks = new Js65Callbacks
             {
                 OnFileReadText = AsmFileReadTextCallback,
@@ -579,17 +591,14 @@ namespace MM2Randomizer
             return asm;
         }
 
-        private void CompileAssembly()
+        private async Task CompileAssembly()
         {
             // Setup the obligatory assembly modules
             foreach (var node in AsmRoot.Find("Auto").Files)
                 AsmModuleFromResource(node);
 
             // And compile
-            var rom = File.ReadAllBytes(TEMPORARY_FILE_NAME);
-            rom = Assembler.ApplySynchronously(rom);
-
-            File.WriteAllBytes(TEMPORARY_FILE_NAME, rom);
+            Rom = await Assembler.ApplyAsync(Rom).WaitAsync(CancellationToken);
         }
 
         private string AsmFileReadTextCallback(string basePath, string path)
@@ -609,10 +618,10 @@ namespace MM2Randomizer
             if (basePath == "")
             {
                 if (path == "original.nes")
-                    return File.ReadAllBytes(Settings.RomSourcePath);
+                    return SourceRom;
                 //// Not sure this is a good idea
                 else if (path == "prepatch.nes")
-                    return File.ReadAllBytes(TEMPORARY_FILE_NAME);
+                    return PrepatchRom;
             }
 
             throw new FileNotFoundException();
@@ -634,6 +643,19 @@ namespace MM2Randomizer
             string path, 
             Assembler? asm = null)
             => AsmModuleFromResource(AsmRoot.Find(path), asm);
+
+        private void CheckCancellation()
+        {
+            if (CancellationToken.IsCancellationRequested)
+                throw new OperationCanceledException();
+        }
+
+        private void UpdateProgressAndCheckCancellation(string progress)
+        {
+            Progress.Report(progress);
+
+            CheckCancellation();
+        }
 
         //
         // Private Data Members
@@ -657,6 +679,5 @@ namespace MM2Randomizer
         };
 
         private readonly List<OptionAction> OptActsQueue = new();
-
     }
 }
