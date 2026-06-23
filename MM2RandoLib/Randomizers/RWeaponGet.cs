@@ -7,7 +7,7 @@ using MM2Randomizer.Patcher;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RWeaponGet : IRandomizer
+    public class RWeaponGet : Randomizer
     {
         private Dictionary<EBossIndex, ERMWeaponValueBit> mNewWeaponOrder;
 
@@ -36,7 +36,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards which weapon.
         /// </summary>
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             // StageBeat    Address    Value
             // -----------------------------

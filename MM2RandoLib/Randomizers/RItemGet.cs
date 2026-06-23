@@ -7,7 +7,7 @@ using MM2Randomizer.Patcher;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RItemGet : IRandomizer
+    public class RItemGet : Randomizer
     {
         private readonly StringBuilder debug = new();
         public override String ToString()
@@ -23,7 +23,7 @@ namespace MM2Randomizer.Randomizers
         /// <summary>
         /// Shuffle which Robot Master awards Items 1, 2, and 3.
         /// </summary>
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             // 0x03C291 - Item # from Heat Man
             // 0x03C292 - Item # from Air Man

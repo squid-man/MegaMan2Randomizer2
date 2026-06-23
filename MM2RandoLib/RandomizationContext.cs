@@ -62,6 +62,26 @@ namespace MM2Randomizer
 
             Progress = in_Progress;
             CancellationToken = in_CancellationToken;
+
+            // With the new explicit dependency system it should be unnecessary to order these. But for safety they are ordered in the order they appeared in Initialize. If it's discovered that there are undocumented dependencies, they need to be made explicit.
+            RandomStages = CreateRandomizer(new RStages());
+            RandomWeaponGet = CreateRandomizer(new RWeaponGet());
+
+            RandomWeaponBehavior = CreateRandomizer(new RWeaponBehavior());
+            RandomWeaknesses = CreateRandomizer(new RWeaknesses());
+            RandomBossAI = CreateRandomizer(new RBossAI());
+            RandomItemGet = CreateRandomizer(new RItemGet());
+
+            RandomTeleporters = CreateRandomizer(new RTeleporters()); // Out of order for some reason
+
+            RandomEnemies = CreateRandomizer(new REnemies());
+            RandomEnemyWeakness = CreateRandomizer(new REnemyWeaknesses());
+            RandomBossInBossRoom = CreateRandomizer(new RBossRoom());
+            RandomTilemap = CreateRandomizer(new RTilemap());
+
+            RandomColors = CreateCosmeticRandomizer(new RColors());
+            RandomMusic = CreateCosmeticRandomizer(new RMusic());
+            RandomInGameText = CreateCosmeticRandomizer(new RText());
         }
 
         //
@@ -88,6 +108,9 @@ namespace MM2Randomizer
         public Patch Patch { get; private set; } = new Patch();
 
         public ResourceTree ResourceTree { get; } = new(null, "Resources");
+
+        public List<Randomizer> GameplayRandomizers = new();
+        public List<Randomizer> CosmeticRandomizers = new();
 
         /// <summary>
         /// Quality of life hack: if InvisiPico, do NOT randomize Pico movement.
@@ -118,55 +141,58 @@ namespace MM2Randomizer
         // "CORE" MODULES
         //================
 
-        // NOTE: Just in case, link RStages, RWeaponGet, and RTeleporter into one "Core Randomizer" module
-        // Their interdependencies are too risky to separate as options, and likely nobody will want to customize this part anyways.
-        // Random portrait locations on stage select
-        public RStages RandomStages { get; private set; } = new RStages();
-        // Random weapon awarded from each stage
-        // WARNING: May be dependent on RTeleporters, verify?
-        // WARNING: May be dependent on RStages
-        public RWeaponGet RandomWeaponGet { get; private set; } = new RWeaponGet();
-        // Random teleporter destinations in Wily 5
-        public RTeleporters RandomTeleporters { get; private set; } = new RTeleporters();
+        public RStages RandomStages { get; }
+        public RWeaponGet RandomWeaponGet { get; }
+        public RTeleporters RandomTeleporters { get; }
 
 
         ///=========================
         /// "GAMEPLAY SEED" MODULES
         ///=========================
 
-        // Caution: RWeaknesses depends on this
-        public RWeaponBehavior RandomWeaponBehavior { get; private set; } = new RWeaponBehavior();
-        // Depends on RWeaponBehavior (ammo), can use default values
-        public RWeaknesses RandomWeaknesses { get; private set; } = new RWeaknesses();
-        // Independent
-        public RBossAI RandomBossAI { get; private set; } = new RBossAI();
-        // Independent
-        public RItemGet RandomItemGet { get; private set; } = new RItemGet();
-        // Independent
-        public REnemies RandomEnemies { get; private set; } = new REnemies();
-        // Independent
-        public REnemyWeaknesses RandomEnemyWeakness { get; private set; } = new REnemyWeaknesses();
-        // Caution: RText depends on this, but default values will be used if not enabled.
-        public RBossRoom RandomBossInBossRoom { get; private set; } = new RBossRoom();
-        // Independent
-        public RTilemap RandomTilemap { get; private set; } = new RTilemap();
+        public RWeaponBehavior RandomWeaponBehavior { get; }
+        public RWeaknesses RandomWeaknesses { get; }
+        public RBossAI RandomBossAI { get; }
+        public RItemGet RandomItemGet { get; }
+        public REnemies RandomEnemies { get; }
+        public REnemyWeaknesses RandomEnemyWeakness { get; }
+        public RBossRoom RandomBossInBossRoom { get; }
+        public RTilemap RandomTilemap { get; }
 
 
         ///==========================
         /// "COSMETIC SEED" MODULES
         ///==========================
 
-        // Independent
-        public RColors RandomColors { get; private set; } = new RColors();
-        // Independent
-        public RMusic RandomMusic { get; private set; } = new RMusic();
-        // Caution: Depends on RBossRoom, but can use default values if its not enabled.
-        public RText RandomInGameText { get; private set; } = new RText();
+        public RColors RandomColors { get; }
+        public RMusic RandomMusic { get; }
+        public RText RandomInGameText { get; }
+
+
+        //
+        // Dependencies Used by Randomization Modules
+        //
 
 
         //
         // Internal Methods
         //
+
+        private T CreateRandomizer<T>(T in_Randomizer)
+            where T : Randomizer
+        {
+            GameplayRandomizers.Add(in_Randomizer);
+
+            return in_Randomizer;
+        }
+
+        private T CreateCosmeticRandomizer<T>(T in_Randomizer)
+            where T : Randomizer
+        {
+            CosmeticRandomizers.Add(in_Randomizer);
+
+            return in_Randomizer;
+        }
 
         internal async Task Initialize()
         {
@@ -210,61 +236,41 @@ namespace MM2Randomizer
             ParseOptionActions(false);
 
             // List of randomizer modules to use; will add modules based on checkbox states
-            List<IRandomizer> randomizers = new List<IRandomizer>();
-            if (gameplayOpts.RandomizeRobotMasterStageSelection.Value)
-            {
-                randomizers.Add(this.RandomStages);
-            }
-
-            if (gameplayOpts.RandomizeSpecialWeaponReward.Value)
-            {
-                randomizers.Add(this.RandomWeaponGet);
-            }
-
-            if (gameplayOpts.RandomizeSpecialWeaponBehavior.Value)
-            {
-                randomizers.Add(this.RandomWeaponBehavior);
-            }
-
-            if (gameplayOpts.RandomizeBossWeaknesses.Value)
-            {
-                randomizers.Add(this.RandomWeaknesses);
-            }
-
-            if (gameplayOpts.RandomizeRobotMasterBehavior.Value)
-            {
-                randomizers.Add(this.RandomBossAI);
-            }
-
-            if (gameplayOpts.RandomizeSpecialItemLocations.Value)
-            {
-                randomizers.Add(this.RandomItemGet);
-            }
-
-            if (gameplayOpts.RandomizeRefightTeleporters.Value)
-            {
-                randomizers.Add(this.RandomTeleporters);
-            }
-
-            if (gameplayOpts.RandomizeEnemySpawns.Value)
-            {
-                randomizers.Add(this.RandomEnemies);
-            }
-
-            if (gameplayOpts.RandomizeEnemyWeaknesses.Value)
-            {
-                randomizers.Add(this.RandomEnemyWeakness);
-            }
+            HashSet<Randomizer> randomizers = new(ReferenceEqualityComparer.Instance);
+            HashSet<string> products = new();
 
             if (gameplayOpts.RandomizeRobotMasterLocations.Value)
-            {
                 randomizers.Add(this.RandomBossInBossRoom);
-            }
+
+            if (gameplayOpts.RandomizeRobotMasterStageSelection.Value)
+                randomizers.Add(this.RandomStages);
+
+            if (gameplayOpts.RandomizeSpecialWeaponReward.Value)
+                randomizers.Add(this.RandomWeaponGet);
+
+            if (gameplayOpts.RandomizeSpecialWeaponBehavior.Value)
+                randomizers.Add(this.RandomWeaponBehavior);
+
+            if (gameplayOpts.RandomizeBossWeaknesses.Value)
+                randomizers.Add(this.RandomWeaknesses);
+
+            if (gameplayOpts.RandomizeRobotMasterBehavior.Value)
+                randomizers.Add(this.RandomBossAI);
+
+            if (gameplayOpts.RandomizeSpecialItemLocations.Value)
+                randomizers.Add(this.RandomItemGet);
+
+            if (gameplayOpts.RandomizeRefightTeleporters.Value)
+                randomizers.Add(this.RandomTeleporters);
+
+            if (gameplayOpts.RandomizeEnemySpawns.Value)
+                randomizers.Add(this.RandomEnemies);
+
+            if (gameplayOpts.RandomizeEnemyWeaknesses.Value)
+                randomizers.Add(this.RandomEnemyWeakness);
 
             if (gameplayOpts.RandomizeFalseFloors.Value)
-            {
                 randomizers.Add(this.RandomTilemap);
-            }
 
             // Boss sprites need to be randomized before running normal randomizers because InvisiPico is a special case
             if (spriteOpts.RandomizeBossSprites.Value)
@@ -281,17 +287,12 @@ namespace MM2Randomizer
                     "CheatMode", StringComparison.InvariantCultureIgnoreCase);
             }
 
+            RunRandomizers(GameplayRandomizers, randomizers, products);
+
             // Generate a seed for fair Heat Man
             if (gameplayOpts.FairHeatManDelays.Value)
                 DefineSymbolLines.Add(
                     $".define FAIR_HEAT_MAN_SEED ${Seed.NextUInt8(1, 256):x}");
-
-            // Conduct randomization of behavior options
-            foreach (IRandomizer randomizer in randomizers)
-            {
-                randomizer.Randomize(this.Patch, this);
-                Debug.WriteLine(randomizer);
-            }
 
             ApplyOptionActions();
 
@@ -309,29 +310,19 @@ namespace MM2Randomizer
             ParseOptionActions(true);
 
             // List of randomizer modules to use; will add modules based on checkbox states
-            List<IRandomizer> cosmeticRandomizers = new List<IRandomizer>();
+            HashSet<Randomizer> cosmeticRandomizers = new(ReferenceEqualityComparer.Instance);
 
             if (cosmOpts.RandomizeColorPalettes.Value)
-            {
                 cosmeticRandomizers.Add(this.RandomColors);
-            }
 
             if (cosmOpts.RandomizeMusicTracks.Value)
-            {
                 cosmeticRandomizers.Add(this.RandomMusic);
-            }
 
             if (cosmOpts.RandomizeInGameText.Value)
-            {
                 cosmeticRandomizers.Add(this.RandomInGameText);
-            }
 
             // Conduct randomization of Cosmetic Modules
-            foreach (IRandomizer cosmetic in cosmeticRandomizers)
-            {
-                cosmetic.Randomize(this.Patch, this);
-                Debug.WriteLine(cosmetic);
-            }
+            RunRandomizers(CosmeticRandomizers, cosmeticRandomizers, products);
 
 
             // ================================================
@@ -386,6 +377,48 @@ namespace MM2Randomizer
 
             // Apply patch with randomized content
             this.Patch.ApplyRandoPatch(Rom);
+        }
+
+        private void RunRandomizers(
+            IEnumerable<Randomizer> in_Randomizers,
+            IReadOnlySet<Randomizer> in_EnabledRandomizers,
+            ISet<string> out_Products)
+        {
+            LinkedList<Randomizer> leftToRun = new(in_Randomizers);
+            while (leftToRun.Count != 0)
+            {
+                int numRun = 0;
+                var node = leftToRun.First;
+                while (node != null)
+                {
+                    var rnd = node.Value;
+                    var nextNode = node.Next;
+
+                    if (rnd.Dependencies.All(d => out_Products.Contains(d)))
+                    {
+                        if (in_EnabledRandomizers.Contains(rnd))
+                        {
+                            rnd.Randomize(Patch, this);
+                            Debug.WriteLine(rnd);
+                        }
+                        else
+                            rnd.ProduceWithoutRandomization(this);
+
+                        foreach (var prod in rnd.Products)
+                            out_Products.Add(prod);
+
+                        leftToRun.Remove(node);
+                        numRun++;
+                    }
+
+                    node = nextNode;
+                }
+
+                if (numRun == 0)
+                    throw new UnreachableException(
+                        "no randomizer produces the following dependencies: " 
+                            + string.Join(", ", leftToRun.SelectMany(r => r.Dependencies)));
+            }
         }
 
         /// <summary>
@@ -445,13 +478,13 @@ namespace MM2Randomizer
             Rom = PrepatchRom.ToArray();
         }
 
-    /// <summary>
-    /// Duplicate the portions of the tileset that are shared between Wily 2-5. Makes the following modifications:
-    /// Wily 3's copy of 6a10:6e10 (PPU 1600:1a00) is now located at 3f610.
-    /// Wily 4's copy of 6a10:6e10 is now located at 3fa10.
-    /// Wily 5's copy of ac10:ae10 (PPU 1200:1400) is now located at 3fe10.
-    /// </summary>
-    private void CopyWilyTilesets()
+        /// <summary>
+        /// Duplicate the portions of the tileset that are shared between Wily 2-5. Makes the following modifications:
+        /// Wily 3's copy of 6a10:6e10 (PPU 1600:1a00) is now located at 3f610.
+        /// Wily 4's copy of 6a10:6e10 is now located at 3fa10.
+        /// Wily 5's copy of ac10:ae10 (PPU 1200:1400) is now located at 3fe10.
+        /// </summary>
+        private void CopyWilyTilesets()
         {
             /* All stages have a list of regions to copy to VRAM at start (this includes both sprites at PPU 0:1000 and background at 1000:2000). For Wily 1-6 these lists are at bd00 of bank # - 1. The first byte of each list specifies the number of entries, and each entry is a byte triplet AA NN BB where A is the MSB of the ROM address to copy from, N is the number of 256-byte blocks to copy, and B is the 16 KB ROM bank number.
              * The vanilla values of these tables for the background portion, with * and # indicating the portions that need to be duplicated:

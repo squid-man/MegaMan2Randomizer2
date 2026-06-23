@@ -9,7 +9,7 @@ using MM2Randomizer.Resources;
 
 namespace MM2Randomizer.Randomizers.Enemies
 {
-    public class REnemyWeaknesses : IRandomizer
+    public class REnemyWeaknesses : Randomizer
     {
         private readonly static Int32 EnemyDamageAddressP = 0x07E9A8;
         private readonly static Int32 EnemyDamageAddressH = 0x07EA24;
@@ -42,7 +42,7 @@ namespace MM2Randomizer.Randomizers.Enemies
             return debug.ToString();
         }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             EnemyWeaknessSet enemyWeaknessSet = in_Context.ResourceTree.LoadUtf8Resource("EnemyWeaknessSet.xml").Deserialize<EnemyWeaknessSet>();
 

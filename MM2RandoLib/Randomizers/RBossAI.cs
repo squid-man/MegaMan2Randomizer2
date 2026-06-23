@@ -6,7 +6,7 @@ using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RBossAI : IRandomizer
+    public class RBossAI : Randomizer
     {
         public enum PicoPicoSpawnModes
         {
@@ -17,7 +17,7 @@ namespace MM2Randomizer.Randomizers
 
         public RBossAI() { }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             this.ChangeHeat(in_Patch, in_Context.Seed);
             this.ChangeAir(in_Patch, in_Context.Seed);

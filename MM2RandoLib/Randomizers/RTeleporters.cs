@@ -6,11 +6,11 @@ using MM2Randomizer.Utilities;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RTeleporters : IRandomizer
+    public class RTeleporters : Randomizer
     {
         public RTeleporters() { }
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             // Create list of default teleporter position values
             List<Position> DEFAULT_TELEPORTER_POSITIONS = new List<Position>

@@ -4,12 +4,12 @@ using MM2Randomizer.Random;
 
 namespace MM2Randomizer.Randomizers
 {
-    public class RTilemap : IRandomizer
+    public class RTilemap : Randomizer
     {
         public RTilemap() { }
 
 
-        public void Randomize(Patch in_Patch, RandomizationContext in_Context)
+        public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {
             //ReadLevelComponentJSON(p, r);
 
