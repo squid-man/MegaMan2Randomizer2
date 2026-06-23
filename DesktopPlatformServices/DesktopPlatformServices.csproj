@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RandomizerHost\RandomizerHost.csproj" />
+    <ProjectReference Include="..\RandomizerHost.Common\RandomizerHost.Common.csproj" />
   </ItemGroup>
 
 </Project>

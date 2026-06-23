@@ -5,7 +5,7 @@ VisualStudioVersion = 18.5.11723.231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MM2RandoLib", "MM2RandoLib\MM2RandoLib.csproj", "{2F96FE8D-29DC-46F3-9D26-FC85DC2225C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomizerHost", "RandomizerHost\RandomizerHost.csproj", "{38EECF7E-6242-4407-9D3B-6B8CAC414C44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomizerHost.Common", "RandomizerHost.Common\RandomizerHost.Common.csproj", "{38EECF7E-6242-4407-9D3B-6B8CAC414C44}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FtRandoLib", "FtRandoLib\FtRandoLib.csproj", "{B2DD3A1D-E34D-4C33-BC89-616FE57DCF7A}"
 EndProject
