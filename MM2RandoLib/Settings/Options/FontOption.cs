@@ -8,6 +8,8 @@ namespace MM2Randomizer.Settings.Options
         Default,
         [Description("Batman")]
         Batman,
+        [Description("CapMan")]
+        CapMan,
         [Description("Cut Man's Bad Scissors Day")]
         CutMansBadScissorsDay,
         [Description("Double Dragon 2")]
