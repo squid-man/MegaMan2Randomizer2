@@ -10,6 +10,8 @@ namespace MM2Randomizer.Settings.Options
         Batman,
         [Description("Byte")]
         Byte,
+        [Description("CapMan")]
+        CapMan,
         [Description("CB")]
         CB,
         [Description("CasualTom in VideoGameLand")]
