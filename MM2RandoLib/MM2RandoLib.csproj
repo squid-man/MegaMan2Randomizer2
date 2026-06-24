@@ -93,6 +93,7 @@
       <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_Cray.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_Exhaust.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_Garfield.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_Grayzone.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_Gyotot.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Alien\Alien_ManII.ips" />
@@ -204,6 +205,7 @@
       <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_DrLight.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_DrM.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_Garfield.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_MegaMan1.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_MegaMan3.ips" />
       <None Remove="Resources\SpritePatches\Bosses\Wily\Wily_RiverCityMan.ips" />
@@ -317,6 +319,7 @@
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_Evil.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Friender\Friender_MM3Cat.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_MetLord.ips" />
       <None Remove="Resources\SpritePatches\Enemies\KerogAndPetitKerog\KerogAndPetitKerog_CBSD.ips" />
@@ -350,6 +353,7 @@
       <None Remove="Resources\SpritePatches\Enemies\Robbit\Robbit_Turtle.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Scworm\Scworm_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Scworm\Scworm_FlameThrow.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\Shotman\Shotman_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Shotman\Shotman_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Shotman\Shotman_Turret.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Shrink\Shrink_MegaMan1Watcher.ips" />
@@ -536,6 +540,7 @@
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Block_MM6.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Blocky.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Bubble.ips" />
+      <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_ElecmanMM1.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Flameguy.ips" />
       <None Remove="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Iceman_MM1.ips" />
@@ -562,6 +567,7 @@
       <None Remove="Resources\SpritePatches\HudElements\HudElements_Batman.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_Byte.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_CB.ips" />
+      <None Remove="Resources\SpritePatches\HudElements\HudElements_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_JavaIslandIndonesia.ips" />
       <None Remove="Resources\SpritePatches\HudElements\HudElements_KrionConquest.ips" />
@@ -612,6 +618,7 @@
       <None Remove="Resources\SpritePatches\Other\mm2cutmanBSD_scenes_noColor.ips" />
       <None Remove="Resources\SpritePatches\Other\MMX_Teleport.ips" />
       <None Remove="Resources\SpritePatches\Other\Teleport_cleanup.ips" />
+      <None Remove="Resources\SpritePatches\Pickups\ETank\ETank_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Pickups\ETank\ETank_FinalFantasy.ips" />
       <None Remove="Resources\SpritePatches\Pickups\ETank\ETank_JavaIslandIndonesia.ips" />
       <None Remove="Resources\SpritePatches\Pickups\ETank\Etank_ManII.ips" />
@@ -622,10 +629,12 @@
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CharlieboyV2.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CharlieboyV3.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CharlieboyV4.ips" />
+      <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_ManII.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaMan1.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaManX.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Quickman.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_GodWorld.ips" />
@@ -634,12 +643,14 @@
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_VineMan.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_GodWorld.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_JavaIslandIndonesia.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_NoConstancy.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_RockMan2Plus.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_GodWorld.ips" />
       <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_JavaIslandIndonesia.ips" />
       <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_NoConstancy.ips" />
@@ -648,6 +659,7 @@
       <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SearchSnakeV1.ips" />
       <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SearchSnakeV2.ips" />
       <None Remove="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SparkShock.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_GodWorld.ips" />
@@ -678,6 +690,7 @@
       <None Remove="Resources\SpritePatches\Weapons\Item3\Item3_Met.ips" />
       <None Remove="Resources\SpritePatches\Weapons\Item3\Item3_Peercast.ips" />
       <None Remove="Resources\SpritePatches\Weapons\Item3\Item3_Rollchan2.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_GodWorld.ips" />
       <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_JavaIslandIndonesia.ips" />
@@ -687,6 +700,7 @@
       <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_RockMan2E.ips" />
       <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Weapons\LeafShield\LeafShield_SkullBarrier.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_FinalMix.ips" />
       <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_GodWorld.ips" />
@@ -697,6 +711,7 @@
       <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_RockMan2Plus.ips" />
       <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_ShadowBlade.ips" />
       <None Remove="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_Star.ips" />
+      <None Remove="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_CTVGL.ips" />
       <None Remove="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_Dagger.ips" />
       <None Remove="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_DeusExMachina.ips" />
       <None Remove="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_FinalMix.ips" />
@@ -752,6 +767,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_Cray.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_Exhaust.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_Garfield.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_Grayzone.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_Gyotot.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Alien\Alien_ManII.ips" />
@@ -863,6 +879,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_DrLight.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_DrM.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_Garfield.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_MegaMan1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_MegaMan3.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\Wily\Wily_RiverCityMan.ips" />
@@ -976,6 +993,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_Evil.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Friender\Friender_MM3Cat.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\KaminariGoro\KaminariGoro_MetLord.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\KerogAndPetitKerog\KerogAndPetitKerog_CBSD.ips" />
@@ -1009,6 +1027,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Robbit\Robbit_Turtle.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Scworm\Scworm_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Scworm\Scworm_FlameThrow.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\Shotman\Shotman_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Shotman\Shotman_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Shotman\Shotman_Turret.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Shrink\Shrink_MegaMan1Watcher.ips" />
@@ -1195,6 +1214,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Block_MM6.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Blocky.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Bubble.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_ElecmanMM1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Flameguy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\YokuBlock\YokuBlock_Iceman_MM1.ips" />
@@ -1221,6 +1241,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Batman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_Byte.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_CB.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_JavaIslandIndonesia.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\HudElements\HudElements_KrionConquest.ips" />
@@ -1271,6 +1292,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Other\mm2cutmanBSD_scenes_noColor.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Other\MMX_Teleport.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Other\Teleport_cleanup.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Pickups\ETank\ETank_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\ETank\ETank_FinalFantasy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\ETank\ETank_JavaIslandIndonesia.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\ETank\Etank_ManII.ips" />
@@ -1281,10 +1303,12 @@
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CharlieboyV2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CharlieboyV3.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CharlieboyV4.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_ManII.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaMan1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaManX.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Quickman.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_GodWorld.ips" />
@@ -1293,12 +1317,14 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_NoConstancy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_VineMan.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_GodWorld.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_JavaIslandIndonesia.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_NoConstancy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AtomicFire\AtomicFire_RockMan2Plus.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_GodWorld.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_JavaIslandIndonesia.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_NoConstancy.ips" />
@@ -1307,6 +1333,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SearchSnakeV1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SearchSnakeV2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\BubbleLead\BubbleLead_SparkShock.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\CrashBomber\CrashBomber_GodWorld.ips" />
@@ -1337,6 +1364,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\Item3\Item3_Met.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\Item3\Item3_Peercast.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\Item3\Item3_Rollchan2.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_GodWorld.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_JavaIslandIndonesia.ips" />
@@ -1346,6 +1374,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_RockMan2E.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\LeafShield\LeafShield_SkullBarrier.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_FinalMix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_GodWorld.ips" />
@@ -1356,6 +1385,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_RockMan2Plus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_ShadowBlade.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\MetalBlade\MetalBlade_Star.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_Dagger.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_DeusExMachina.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\QuickBoomerang\QuickBoomerang_FinalMix.ips" />
