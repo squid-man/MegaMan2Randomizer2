@@ -68,6 +68,7 @@
       <None Remove="Resources\Asm\Options\dragon_cooldown.asm" />
       <None Remove="Resources\Asm\Options\fair_heat_man.asm" />
       <None Remove="Resources\Asm\Options\faster_cutscenes.asm" />
+      <None Remove="Resources\Asm\Options\ice_stage.asm" />
       <None Remove="Resources\Asm\Options\merciless.asm" />
       <None Remove="Resources\Asm\Options\pause_with_items.asm" />
       <None Remove="Resources\Asm\Options\self_destruct.asm" />
@@ -746,6 +747,7 @@
       <EmbeddedResource Include="Resources\Asm\Options\dragon_cooldown.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\fair_heat_man.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\faster_cutscenes.asm" />
+      <EmbeddedResource Include="Resources\Asm\Options\ice_stage.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\merciless.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\pause_with_items.asm" />
       <EmbeddedResource Include="Resources\Asm\Options\self_destruct.asm" />

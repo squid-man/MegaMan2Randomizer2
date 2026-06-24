@@ -59,7 +59,6 @@ namespace MM2Randomizer.Settings.OptionGroups
         [Description("Randomize PicoPico-kun Spawns")]
         public BoolOption RandomizePicoPicoSpawns { get; } = new(true);
 
-
         [Description("Disallow Bubble Barrier Vulnerability")]
         [Tooltip("Do not allow Bubble Lead to be the vulnerability of Crash barriers to avoid strange interactions especially during Boobeam fight.")]
         public BoolOption DisallowBubbleBarrierWeakness { get; } = new(true);
@@ -68,5 +67,10 @@ namespace MM2Randomizer.Settings.OptionGroups
         [Tooltip("Randomize Heat Man delays at seed generation, repeating the same pattern every life to ensure the same pattern occurs for all players.")]
         [AssembleFile("Options.fair_heat_man.asm")]
         public BoolOption FairHeatManDelays { get; } = new(false);
+
+        [Description("Randomize Ice Stage")]
+        [Tooltip("Pick a random stage to have ice physics.")]
+        [AssembleFile("Options.ice_stage.asm")]
+        public BoolOption RandomizeIceStage { get; } = new(true);
     }
 }

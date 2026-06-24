@@ -111,6 +111,7 @@ public class SettingsPresets
                 new(s.GameplayOptions.RandomizePicoPicoSpawns, true),
                 new(s.GameplayOptions.DisallowBubbleBarrierWeakness, true),
                 new(s.GameplayOptions.FairHeatManDelays, false),
+                new(s.GameplayOptions.RandomizeIceStage, true),
                 new(s.SpriteOptions.RandomizeBossSprites, true),
                 new(s.SpriteOptions.RandomizeEnemySprites, true),
                 new(s.SpriteOptions.RandomizeSpecialWeaponSprites, true),

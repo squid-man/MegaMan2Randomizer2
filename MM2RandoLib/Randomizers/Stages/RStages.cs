@@ -197,6 +197,13 @@ namespace MM2Randomizer.Randomizers.Stages
             {
                 in_Patch.Add((Int32)stage.PortraitAddress, (Byte)stage.PortraitDestination.New, $"Stage Select {stage.PortraitName} Destination");
             }
+
+            if (in_Context.Settings.GameplayOptions.RandomizeIceStage.Value)
+            {
+                int iceStage = in_Context.Seed.NextUInt8(8);
+                in_Context.DefineSymbolLines.Add($".define ICE_STAGE ${iceStage}");
+                debug.AppendLine($"\nSelected ice stage: {EBossIndex.All[iceStage].Name}");
+            }
         }
     }
 
