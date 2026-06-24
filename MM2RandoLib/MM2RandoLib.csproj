@@ -59,6 +59,7 @@
       <None Remove="Resources\Asm\Auto\refill_speed.asm" />
       <None Remove="Resources\Asm\Auto\regain_energy_on_death.asm" />
       <None Remove="Resources\Asm\Auto\show_title_logo_sprites.asm" />
+      <None Remove="Resources\Asm\Auto\sniper_armor_respawn_fix.asm" />
       <None Remove="Resources\Asm\Auto\wily_5_respawns.asm" />
       <None Remove="Resources\Asm\config.asm" />
       <None Remove="Resources\Asm\mm2r_base.inc" />
@@ -722,6 +723,7 @@
       <EmbeddedResource Include="Resources\Asm\Auto\refill_speed.asm" />
       <EmbeddedResource Include="Resources\Asm\Auto\regain_energy_on_death.asm" />
       <EmbeddedResource Include="Resources\Asm\Auto\show_title_logo_sprites.asm" />
+      <EmbeddedResource Include="Resources\Asm\Auto\sniper_armor_respawn_fix.asm" />
       <EmbeddedResource Include="Resources\Asm\Auto\wily_5_respawns.asm" />
       <EmbeddedResource Include="Resources\Asm\config.asm" />
       <EmbeddedResource Include="Resources\Asm\mm2r_base.inc" />
