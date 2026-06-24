@@ -181,8 +181,8 @@ namespace MM2Randomizer.Extensions
         private static readonly Dictionary<Char, Byte> IntroCharacterLookup = new Dictionary<Char, Byte>()
         {
             { ' ',  0x00 },
-            { '-',  0x80 },
-            { '+',  0x80 }, // Inexact
+            { '-',  0x80 },  // Hyphen (technically a Japanese vowel extender thing)
+            { '+',  0x80 },  // Inexact
             { '0',  0xA0 },
             { '8',  0xA1 },
             { '2',  0xA2 },

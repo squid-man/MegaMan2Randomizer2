@@ -799,6 +799,35 @@ Name must not exceed 25 characters
 
 
     <!--
+        Technically real places, but...
+    -->
+
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>on</Prefix>
+        <Name>the Moon</Name>
+    </CountryName>
+
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>on</Prefix>
+        <Name>Phobos and Deimos</Name>
+    </CountryName>
+
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>on</Prefix>
+        <Name>the moons of Jupiter</Name>
+    </CountryName>
+
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>in</Prefix>
+        <Name>the Kuiper Belt</Name>
+    </CountryName>
+
+
+    <!--
         Fictional Places
     -->
 
@@ -1102,5 +1131,31 @@ Name must not exceed 25 characters
         <Enabled>true</Enabled>
         <Prefix>on</Prefix>
         <Name>Zebes</Name>
+    </CountryName>
+
+    <!-- Mega Man -->
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>in</Prefix>
+        <Name>Monsteropolis</Name>
+    </CountryName>
+
+    <!-- Cartoons -->
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>in</Prefix>
+        <Name>Bikini Bottom</Name>
+    </CountryName>
+
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>in</Prefix>
+        <Name>Springfield</Name>
+    </CountryName>
+
+    <CountryName>
+        <Enabled>true</Enabled>
+        <Prefix>in</Prefix>
+        <Name>Retroville</Name>
     </CountryName>
 </CountryNameSet>

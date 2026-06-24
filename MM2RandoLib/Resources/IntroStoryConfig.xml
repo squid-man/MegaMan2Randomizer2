@@ -60,6 +60,28 @@
         </Lines>
     </IntroStory>
 
+    <!-- Battle for Bikini Bottom -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>BfBB</Title>
+        <Lines>
+            <Line>Go away, Mega Man. You're  </Line>
+            <Line>in my thinking space.      </Line>
+
+            <Line>I've got to regain control </Line>
+            <Line>of my castle from robots.  </Line>
+
+            <Line>They just showed up and    </Line>
+            <Line>started calling me names.  </Line>
+
+            <Line>They even bent my spoons!  </Line>
+            <Line>I loved those spoons...    </Line>
+
+            <Line>Oh, won't you stop them?   </Line>
+            <Line>Before they bend my forks? </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Battle Toads -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -101,6 +123,28 @@
 
             <Line>who is in fact...</Line>
             <Line>Megaman</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Binding of Isaac -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>The Binding of Isaac</Title>
+        <Lines>
+            <Line>Mega Man and Dr Light lived</Line>
+            <Line>alone in a house on a hill.</Line>
+
+            <Line>Life was simple, and they  </Line>
+            <Line>were both happy. That was, </Line>
+
+            <Line>Until the day Dr Light     </Line>
+            <Line>heard a voice from above.  </Line>
+
+            <Line>I require a sacrifice! Your</Line>
+            <Line>son will be this sacrifice!</Line>
+
+            <Line>Mega Man found a hatch to  </Line>
+            <Line>the basement, and leapt in.</Line>
         </Lines>
     </IntroStory>
 
@@ -207,6 +251,50 @@
 
             <Line>by fortifying the</Line>
             <Line>entire Galuga archipelago.</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Crash Bandicoot: Warped -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Crash 3</Title>
+        <Lines>
+            <Line>After many eons, my evil   </Line>
+            <Line>twin, Dr Wily, is free.    </Line>
+
+            <Line>Long ago, I locked him up  </Line>
+            <Line>to protect the world.      </Line>
+
+            <Line>Now, free once again, he   </Line>
+            <Line>must be stopped!           </Line>
+
+            <Line>I have brought you to his  </Line>
+            <Line>time twisting machine.     </Line>
+
+            <Line>You must recover the power </Line>
+            <Line>crystals, Cr - Mega Man!   </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Crash Team Racing -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>CTR</Title>
+        <Lines>
+            <Line>So, you pesky Earth slugs  </Line>
+            <Line>like to race, eh?          </Line>
+
+            <Line>Well I, Dr Wily, am the    </Line>
+            <Line>best racer in the galaxy!  </Line>
+
+            <Line>I challenge the best driver</Line>
+            <Line>of your world to a race.   </Line>
+
+            <Line>If you win, I'll leave your</Line>
+            <Line>miserable rock alone.      </Line>
+
+            <Line>If I win, I'll turn your   </Line>
+            <Line>globe into a parking lot!  </Line>
         </Lines>
     </IntroStory>
 
@@ -593,6 +681,72 @@
         </Lines>
     </IntroStory>
 
+    <!-- Mega Man Manual -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Mega Man</Title>
+        <Lines>
+            <Line>Mega Man vs the powerful   </Line>
+            <Line>leaders of Monsteropolis - </Line>
+
+            <Line>That strange, multi-faceted</Line>
+            <Line>land of robotic humanoids. </Line>
+
+            <Line>Dr Wright's creations were </Line>
+            <Line>re-programmed by Dr Wily!  </Line>
+
+            <Line>Resisting re-programming,  </Line>
+            <Line>Mega Man is our defender.  </Line>
+
+            <Line>He dares to penetrate the  </Line>
+            <Line>9 empires of Monsteropolis.</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Mega Man 2, retranslated -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Mega Man 2</Title>
+        <Lines>
+            <Line>A.D. 200X - THANKS TO THE  </Line>
+            <Line>SUPER ROBOT MEGA MAN,      </Line>
+
+            <Line>THE MAD SCIENTIST DR WILY'S</Line>
+            <Line>EVIL SCHEME WAS THWARTED.  </Line>
+
+            <Line>HOWEVER, DR WILY IS        </Line>
+            <Line>SCHEMING ONCE AGAIN.       </Line>
+
+            <Line>TO DEFEAT MEGA MAN AND     </Line>
+            <Line>ACHIEVE WORLD DOMINATION,  </Line>
+
+            <Line>HE HAS CREATED 8 NEW SUPER </Line>
+            <Line>ROBOTS OF HIS OWN...       </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Mega Man 8 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Mega Man 8</Title>
+        <Lines>
+            <Line>Dese? Seems to be          </Line>
+            <Line>engay rezauces...          </Line>
+
+            <Line>But Ah've never seen this  </Line>
+            <Line>type on Oerth!             </Line>
+
+            <Line>I dunno where this enagy   </Line>
+            <Line>came fwom, but,            </Line>
+
+            <Line>We cannot let it fawl intah</Line>
+            <Line>Doctah Wawee's hands!      </Line>
+
+            <Line>You must wrecover all dee  </Line>
+            <Line>enagy imedaly, W-Mega Man! </Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Metal Gear Solid 3-->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -708,6 +862,50 @@
         </Lines>
     </IntroStory>
 
+    <!-- Pac-Man World 2 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Pac-Man World 2</Title>
+        <Lines>
+            <Line>Dr Wily has unwittingly    </Line>
+            <Line>released an ancient evil   </Line>
+
+            <Line>by removing the golden     </Line>
+            <Line>fruit from the tree.       </Line>
+
+            <Line>Sir Meg-a-lot sealed him   </Line>
+            <Line>away in ancient times.     </Line>
+
+            <Line>He has remained there...   </Line>
+            <Line>until now! Go, Mega Man!   </Line>
+
+            <Line>You must find the golden   </Line>
+            <Line>fruit and defeat Spooky!   </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Paper Mario: the Thousand-Year Door -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>TTYD</Title>
+        <Lines>
+            <Line>In my travels, I have found</Line>
+            <Line>a mystical treasure map.   </Line>
+
+            <Line>I got it from a merchant   </Line>
+            <Line>in a town called Rogueport.</Line>
+
+            <Line>But since I could never go </Line>
+            <Line>on a treasure hunt alone,  </Line>
+
+            <Line>I thought you could help!  </Line>
+            <Line>You will, won't you?       </Line>
+
+            <Line>I'll meet you at Rogueport.</Line>
+            <Line>                      Peach</Line>
+        </Lines>
+    </IntroStory>
+
     <!-- Pokemon -->
     <IntroStory>
         <Enabled>true</Enabled>
@@ -771,6 +969,28 @@
 
             <Line>EXCEPT THE ONES</Line>
             <Line>WHO ARE DEAD</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Portal 2 -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Portal 2</Title>
+        <Lines>
+            <Line>Oh. It's you. It's been a  </Line>
+            <Line>long time. How've you been?</Line>
+
+            <Line>I've been really busy being</Line>
+            <Line>dead. You know...          </Line>
+
+            <Line>                           </Line>
+            <Line>   After you murdered me.  </Line>
+
+            <Line>Since you went through the </Line>
+            <Line>trouble of waking me up,   </Line>
+
+            <Line>You must really, really    </Line>
+            <Line>love to jump n' shoot...   </Line>
         </Lines>
     </IntroStory>
 
@@ -891,6 +1111,50 @@
 
             <Line>for some serious</Line>
             <Line>sidewalk shredding!</Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Sly Cooper and the Thievius Raccoonus -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Sly Cooper</Title>
+        <Lines>
+            <Line>My ancestors kept all their</Line>
+            <Line>secrets in an ancient book,</Line>
+
+            <Line>                           </Line>
+            <Line>  - The Jumpius Shootus -  </Line>
+
+            <Line>On the night I was supposed</Line>
+            <Line>to inherit the book,       </Line>
+
+            <Line>The Irate Eight ransacked  </Line>
+            <Line>our house and stole it.    </Line>
+
+            <Line>I pledge to track them down</Line>
+            <Line>and avenge my father.      </Line>
+        </Lines>
+    </IntroStory>
+
+    <!-- Spyro: Ripto's Rage -->
+    <IntroStory>
+        <Enabled>true</Enabled>
+        <Title>Spyro 2</Title>
+        <Lines>
+            <Line>Well, well, someone forgot </Line>
+            <Line>to invite ME to the party! </Line>
+
+            <Line>Are you trying to KEEP     </Line>
+            <Line>something from me?         </Line>
+
+            <Line>A robot? You brought a     </Line>
+            <Line>ROBOT to Avalar!?          </Line>
+
+            <Line>I HATE robots! GYAAAAAAAGH!</Line>
+            <Line>I'll deal with YOU later!  </Line>
+
+            <Line>...How do we get ourselves </Line>
+            <Line>into these messes, pal?    </Line>
         </Lines>
     </IntroStory>
 
