@@ -69,7 +69,7 @@ namespace MM2Randomizer
         [Dir("MegaMan")]
         ByteRed,
 
-        [Description("Cap Man")]
+        [Description("CapMan")]
         CapMan,
 
         [Description("CasualTom")]
