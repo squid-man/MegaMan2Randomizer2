@@ -12,6 +12,8 @@ namespace MM2Randomizer.Settings.Options
         Byte,
         [Description("CB")]
         CB,
+        [Description("CasualTom in VideoGameLand")]
+        CTVGL,
         [Description("Cut Man's Bad Scissors Day")]
         CutMansBadScissorsDay,
         [Description("Java Island Indonesia")]
