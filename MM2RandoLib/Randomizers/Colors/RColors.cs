@@ -1520,10 +1520,10 @@ namespace MM2Randomizer.Randomizers.Colors
                 new ColorSet() { // Wily 2 | Boss Room
                     addresses = new Int32[] {
                         0x7f1b, 0x7f1c, 0x7f1d, // Need multiple identical palette animation entries
-                        0x7f3b, 0x7f3c, 0x7f3d, // ^
-                        0x7f4b, 0x7f4c, 0x7f4d, // ^
-                        0x7f5b, 0x7f5c, 0x7f5d, // ^
-                        0x7f6b, 0x7f6c, 0x7f6d, // ^
+                        0x7f3b, 0x7f3c, 0x7f3d,
+                        0x7f4b, 0x7f4c, 0x7f4d,
+                        0x7f5b, 0x7f5c, 0x7f5d,
+                        0x7f6b, 0x7f6c, 0x7f6d,
                         0x74fa, 0x74fb, 0x74fc, // Picopico sprite palette
                     },
                     ColorBytes = new List<EColorsHex[]>() {
