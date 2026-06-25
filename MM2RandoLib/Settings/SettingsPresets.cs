@@ -147,7 +147,6 @@ public class SettingsPresets
             tournA,
             [
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
-                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
             ]);
         _presets.Add(tournB);
 
@@ -166,9 +165,24 @@ public class SettingsPresets
             [
                 new(s.GameplayOptions.HideStageNames, true),
                 new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
-                new(s.QualityOfLifeOptions.AllowSelfDestruct, false),
             ]));
-    }
+
+        _presets.Add(new(
+            "Proto Challenge",
+            "PROTO CHALLENGE",
+            tournB,
+            [
+                new(s.GameplayOptions.RandomizePicoPicoSpawns, false),
+                new(s.GameplayOptions.RandomizeIceStage, false),
+                new(s.SpriteOptions.RandomizeBossSprites, false),
+                new(s.SpriteOptions.RandomizeEnemySprites, false),
+                new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
+                new(s.QualityOfLifeOptions.StageSelectDefault, true),
+                new(s.QualityOfLifeOptions.AllowSelfDestruct, true),
+                NewPreset(s.QualityOfLifeOptions.AccidentalEtankProtectionLevel, PercentOption.Percent50),
+                NewPreset(s.QualityOfLifeOptions.AddWeaponEnergyOnDeath, PercentOption.Percent30),
+    ]));
+  }
 
     /// <summary>
     /// Create a new preset for an enum option.
