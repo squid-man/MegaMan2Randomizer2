@@ -41,6 +41,9 @@ namespace MM2Randomizer
         [Path("")] // No resource
         MegaMan,
 
+        [Description("Arispici")]
+        Arispici,
+
         [Description("AVGN")]
         AVGN,
 
@@ -169,11 +172,14 @@ namespace MM2Randomizer
         [Dir("MegaWoman")]
         MegaWomanPurp,
 
-    [Description("MMXtreme Zero")]
-    [Dir("MMXtreme")]
-    MMXtreme_Zero,
+        [Description("MetalArmy")]
+        MetalArmy,
 
-    [Description("My Little Pony")]
+        [Description("MMXtreme Zero")]
+        [Dir("MMXtreme")]
+        MMXtreme_Zero,
+
+        [Description("My Little Pony")]
         MyLittlePony,
 
         [Description("New Lands")]
@@ -184,6 +190,9 @@ namespace MM2Randomizer
 
         [Description("Pit")]
         Pit,
+
+        [Description("PolyGirl")]
+        PolyGirl,
 
         [Description("Proto Man")]
         ProtoMan,
@@ -220,12 +229,15 @@ namespace MM2Randomizer
         [Dir("Roll")]
         RnR_Roll_Nolips,
 
-    [Description("Samus")]
+        [Description("Samus")]
         [Dir("Metroid")]
         Samus,
 
         [Description("Stantler")]
         Stantler,
+
+        [Description("Wagie Man")]
+        WagieMan,
 
         [Description("Vine Man")]
         VineMan,

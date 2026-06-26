@@ -175,6 +175,7 @@
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_CapMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_GrayZone.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_TimeMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_Peercast.ips" />
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2E.ips" />
       <None Remove="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2Plus.ips" />
@@ -203,6 +204,7 @@
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_ElecMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips" />
+      <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_NPlan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_Peercast.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_RockMan2E.ips" />
       <None Remove="Resources\SpritePatches\Bosses\MetalMan\MetalMan_RockMan2Plus.ips" />
@@ -253,6 +255,7 @@
       <None Remove="Resources\SpritePatches\CannonShot\StarCrash.ips" />
       <None Remove="Resources\SpritePatches\CannonShot\WaveHarpoon.ips" />
       <None Remove="Resources\SpritePatches\CannonShot\YamatoSpear.ips" />
+      <None Remove="Resources\SpritePatches\Characters\Arispici\PlayerCharacter_Arispici.ips" />
       <None Remove="Resources\SpritePatches\Characters\AVGN\PlayerCharacter_AVGN.ips" />
       <None Remove="Resources\SpritePatches\Characters\Bass\PlayerCharacter_Bass.ips" />
       <None Remove="Resources\SpritePatches\Characters\Bass\PlayerCharacter_BassReloaded.ips" />
@@ -292,7 +295,9 @@
       <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
       <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWoman.ips" />
       <None Remove="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaWomanPurp.ips" />
+      <None Remove="Resources\SpritePatches\Characters\MetalArmy\PlayerCharacter_MetalArmy.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
+      <None Remove="Resources\SpritePatches\Characters\PolyGirl\PlayerCharacter_PolyGirl.ips" />
       <None Remove="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <None Remove="Resources\SpritePatches\Characters\MMXtreme\PlayerCharacter_MMXtreme_Zero.ips" />
       <None Remove="Resources\SpritePatches\Characters\MyLittlePony\PlayerCharacter_MyLittlePony.ips" />
@@ -310,6 +315,7 @@
       <None Remove="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RollFromMegaMan8.ips" />
       <None Remove="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <None Remove="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
+      <None Remove="Resources\SpritePatches\Characters\WagieMan\PlayerCharacter_WagieMan.ips" />
       <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
       <None Remove="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Zneip.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
@@ -363,6 +369,7 @@
       <None Remove="Resources\SpritePatches\Enemies\M445\M445_CBSD.ips" />
       <None Remove="Resources\SpritePatches\Enemies\M445\M445_M422A.ips" />
       <None Remove="Resources\SpritePatches\Enemies\M445\M445_Metroid.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\M445\M445_NPlan.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Matasaburo\Matasaburo_CapMan.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Matasaburo\Matasaburo_EnhancedBlow.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Matasaburo\Matasaburo_MM6BenK.ips" />
@@ -381,6 +388,7 @@
       <None Remove="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_CapMan.ips" />
       <None Remove="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_NotTheBees.ips" />
+      <None Remove="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_PowerDrive.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Press\Press_CapMan.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Press\Press_Crusher2.ips" />
       <None Remove="Resources\SpritePatches\Enemies\Press\Press_FlatCrusher.ips" />
@@ -501,6 +509,7 @@
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\DaylightBackground\StageTile_CrashMan_DaylightBackground_SuperMarioBrosClouds.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_Gutsman.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MegaMan1.ips" />
+      <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_JewelMan.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_TMNT2.ips" />
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MetDispenser.ips" />	
       <None Remove="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan3.ips" />
@@ -686,6 +695,7 @@
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_ManII.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaMan1.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaManX.ips" />
+      <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_PolyGirl.ips" />
       <None Remove="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Quickman.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_CapMan.ips" />
       <None Remove="Resources\SpritePatches\Weapons\AirShooter\AirShooter_CTVGL.ips" />
@@ -912,6 +922,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_CapMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_GrayZone.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_TimeMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_Peercast.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2E.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\FlashMan\FlashMan_RockMan2Plus.ips" />
@@ -940,6 +951,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_CutMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_ElecMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_GrayZone.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_NPlan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_Peercast.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_RockMan2E.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\MetalMan\MetalMan_RockMan2Plus.ips" />
@@ -990,6 +1002,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\CannonShot\StarCrash.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\CannonShot\WaveHarpoon.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\CannonShot\YamatoSpear.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\Arispici\PlayerCharacter_Arispici.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\AVGN\PlayerCharacter_AVGN.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Bass\PlayerCharacter_Bass.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Bass\PlayerCharacter_BassReloaded.ips" />
@@ -1029,6 +1042,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaRan\PlayerCharacter_MegaRan2Remix.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWoman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MegaWoman\PlayerCharacter_MegaWomanPurp.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\MetalArmy\PlayerCharacter_MetalArmy.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_JustinBailey.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Metroid\PlayerCharacter_Samus.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\MMXtreme\PlayerCharacter_MMXtreme_Zero.ips" />
@@ -1036,6 +1050,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\NewLands\PlayerCharacter_NewLands.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Pikachu\PlayerCharacter_Pikachu.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Pit\PlayerCharacter_Pit.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\PolyGirl\PlayerCharacter_PolyGirl.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Pokemon\PlayerCharacter_Stantler.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\ProtoMan\PlayerCharacter_ProtoMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\QuickMan\PlayerCharacter_QuickMan.ips" />
@@ -1047,6 +1062,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Roll\PlayerCharacter_RollFromMegaMan8.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Stantler\PlayerCharacter_Stantler.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\VineMan\PlayerCharacter_VineMan.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Characters\WagieMan\PlayerCharacter_WagieMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Zelda\PlayerCharacter_Link.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Characters\Zneip\PlayerCharacter_Zneip.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Batton\Batton_Batman.ips" />
@@ -1100,6 +1116,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\M445\M445_CBSD.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\M445\M445_M422A.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\M445\M445_Metroid.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\M445\M445_NPlan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Matasaburo\Matasaburo_CapMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Matasaburo\Matasaburo_EnhancedBlow.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Matasaburo\Matasaburo_MM6BenK.ips" />
@@ -1118,6 +1135,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_CapMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_NotTheBees.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Enemies\PipiAndCopipi\PipiAndCopipi_PowerDrive.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Press\Press_CapMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Press\Press_Crusher2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Enemies\Press\Press_FlatCrusher.ips" />
@@ -1238,6 +1256,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_Gutsman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MegaMan1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_MetDispenser.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_JewelMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\Globe\StageTile_CrashMan_Globe_TMNT2.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan3.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Environment\StageTiles\CrashMan\NightBackground\StageTile_CrashMan_NightBackground_MegaMan4.ips" />
@@ -1422,6 +1441,7 @@
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_ManII.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaMan1.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_MegaManX.ips" />
+      <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_PolyGirl.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Pickups\HealthAndWeaponEnergy\HealthAndWeaponEnergy_Quickman.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_CTVGL.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Weapons\AirShooter\AirShooter_CapMan.ips" />
