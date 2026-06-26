@@ -70,6 +70,12 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Margin" Value="2"/>
         </Style>
+        <Style Selector="TabItem">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Padding" Value="4,2" />
+            <Setter Property="MinWidth" Value="60" />
+            <Setter Property="Margin" Value="2,0" />
+        </Style>
     </UserControl.Styles>
     
     <!-- Main Body -->
@@ -87,6 +93,7 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                 >
+                  <TextBlock Text="Community Edition"/>
                     <TextBlock
                         FontSize="9"
                         Text="{Binding Version, StringFormat='Version {0}'}"
@@ -346,191 +353,244 @@
             Margin="-6"
         >
             <!--
-                Gameplay
-            -->
-            <TabItem Header="Gameplay">
-                <StackPanel Orientation="Horizontal">
-                    <!--
-                        CheckBoxes are placed inside Grids, so we can have
-                        MouseOver behavior while CheckBoxes are disabled
-                    -->
-                    <Grid>
-                        <CheckBox
-                            Content="Randomizer Core"
-                            IsVisible="false"
-                            IsEnabled="False"
-                            IsChecked="{Binding IsCoreModulesChecked, Mode=OneWay}"
-                        />
-                    </Grid>
-                    <ItemsControl ItemsSource="{Binding Settings.GameplayOptions.AutoCreateOptions}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Vertical"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </StackPanel>
-            </TabItem>
+              Gameplay
+          -->
+          <TabItem Header="Gameplay">
+              <StackPanel Orientation="Horizontal">
+                  <!--
+                      CheckBoxes are placed inside Grids, so we can have
+                      MouseOver behavior while CheckBoxes are disabled
+                  -->
+                  <Grid>
+                      <CheckBox
+                          Content="Randomizer Core"
+                          IsVisible="false"
+                          IsEnabled="False"
+                          IsChecked="{Binding IsCoreModulesChecked, Mode=OneWay}"
+                      />
+                  </Grid>
+                  <ItemsControl ItemsSource="{Binding Settings.GameplayOptions.AutoCreateOptions}">
+                      <ItemsControl.ItemsPanel>
+                          <ItemsPanelTemplate>
+                              <WrapPanel Orientation="Vertical"/>
+                          </ItemsPanelTemplate>
+                      </ItemsControl.ItemsPanel>
+                  </ItemsControl>
+              </StackPanel>
+          </TabItem>
 
 
-            <!--
-                Sprites
-            -->
-            <TabItem Header="Sprites">
-                <ItemsControl ItemsSource="{Binding Settings.SpriteOptions.AutoCreateOptions}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </TabItem>
+          <!--
+              Sprites
+          -->
+          <TabItem Header="Sprites">
+              <ItemsControl ItemsSource="{Binding Settings.SpriteOptions.AutoCreateOptions}">
+                  <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                          <WrapPanel Orientation="Vertical"/>
+                      </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+              </ItemsControl>
+          </TabItem>
 
 
-            <!--
-                Refill Speeds
-            -->
-            <TabItem Header="Refill Speeds" IsEnabled="True">
-                <ItemsControl 
-                    Width="450"
-                    HorizontalAlignment="Left"
-                    ItemsSource="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
-                    ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
-                >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </TabItem>
-
-
-            <!--
-                Quality of Life Patches
-            -->
-            <TabItem Header="QoL Patches">
-                <ItemsControl
-                  ItemsSource="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
+          <!--
+              Refill Speeds
+          -->
+          <TabItem Header="Refill Speeds" IsEnabled="True">
+              <ItemsControl 
+                  Width="450"
+                  HorizontalAlignment="Left"
+                  ItemsSource="{Binding Settings.ChargingSpeedOptions.AutoCreateOptions}"
                   ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
-                >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </TabItem>
+              >
+                  <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                          <StackPanel Orientation="Vertical"/>
+                      </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+              </ItemsControl>
+          </TabItem>
 
 
-            <!--
-                Cosmetics
-            -->
-            <TabItem Header="Cosmetics">
-                <UniformGrid Columns="2" ColumnSpacing="8">
-                    <StackPanel Grid.Column="0">
-                        <ItemsControl
-                            ItemsSource="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
-                            ItemTemplate="{DynamicResource PrefixedDescriptionEnumComboBox}"
-                        >
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Vertical"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </StackPanel>
+          <!--
+              Quality of Life Patches
+          -->
+          <TabItem Header="QoL Patches">
+              <ItemsControl
+                ItemsSource="{Binding Settings.QualityOfLifeOptions.AutoCreateOptions}"
+                ItemTemplate="{DynamicResource SuffixedDescriptionEnumComboBox}"
+              >
+                  <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                          <WrapPanel Orientation="Vertical"/>
+                      </ItemsPanelTemplate>
+                  </ItemsControl.ItemsPanel>
+              </ItemsControl>
+          </TabItem>
 
-                    <!-- Custom Sprite / Cosmetic Previews -->
-                    <UniformGrid 
-                        Rows="2" 
-                        Columns="2"
-                        RowSpacing="8"
-                        ColumnSpacing="8"
-                        Margin="6"
-                    >
-                        <DockPanel
-                            Grid.Row="0"
-                            Grid.Column="0"
-                        >
-                            <TextBlock 
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Center"
-                                Text="Character" 
-                            />
-                            <Image
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Margin="4"
-                                Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
-                            />
-                        </DockPanel>
+
+          <!--
+              Cosmetics
+          -->
+          <TabItem Header="Cosmetics">
+              <UniformGrid Columns="2" ColumnSpacing="8">
+                  <StackPanel Grid.Column="0">
+                      <ItemsControl
+                          ItemsSource="{Binding Settings.CosmeticOptions.AutoCreateOptions}"
+                          ItemTemplate="{DynamicResource PrefixedDescriptionEnumComboBox}"
+                      >
+                          <ItemsControl.ItemsPanel>
+                              <ItemsPanelTemplate>
+                                  <WrapPanel Orientation="Vertical"/>
+                              </ItemsPanelTemplate>
+                          </ItemsControl.ItemsPanel>
+                      </ItemsControl>
+                  </StackPanel>
+
+                  <!-- Custom Sprite / Cosmetic Previews -->
+                  <UniformGrid 
+                      Rows="2" 
+                      Columns="2"
+                      RowSpacing="8"
+                      ColumnSpacing="8"
+                      Margin="6"
+                  >
+                      <DockPanel
+                          Grid.Row="0"
+                          Grid.Column="0"
+                      >
+                          <TextBlock 
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Center"
+                              Text="Character" 
+                          />
+                          <Image
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Margin="4"
+                              Source="{Binding Settings.CosmeticOptions.PlayerSprite.BaseValue, Converter={StaticResource PlayerSpriteToImageConverter}}"
+                          />
+                      </DockPanel>
                           
-                        <DockPanel
-                            Grid.Row="0"
-                            Grid.Column="1"
-                        >
-                            <TextBlock 
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Center"
-                                Text="Cannon Shot" 
-                            />
-                            <Image
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                MaxWidth="100"
-                                MaxHeight="100"
-                                Margin="4"
-                                Source="{Binding Settings.CosmeticOptions.CannonShot.BaseValue, Converter={StaticResource CannonShotToImageConverter}}"
-                            />
-                        </DockPanel>
+                      <DockPanel
+                          Grid.Row="0"
+                          Grid.Column="1"
+                      >
+                          <TextBlock 
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Center"
+                              Text="Cannon Shot" 
+                          />
+                          <Image
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              MaxWidth="100"
+                              MaxHeight="100"
+                              Margin="4"
+                              Source="{Binding Settings.CosmeticOptions.CannonShot.BaseValue, Converter={StaticResource CannonShotToImageConverter}}"
+                          />
+                      </DockPanel>
                           
-                        <DockPanel
-                            Grid.Row="1"
-                            Grid.Column="0"
-                        >
-                            <TextBlock 
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Center"
-                                Text="HUD" 
-                            />
-                            <Image
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Margin="4"
-                                Source="{Binding Settings.CosmeticOptions.HudElement.BaseValue, Converter={StaticResource HudElementsToImageConverter}}"
-                            />
-                        </DockPanel>
+                      <DockPanel
+                          Grid.Row="1"
+                          Grid.Column="0"
+                      >
+                          <TextBlock 
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Center"
+                              Text="HUD" 
+                          />
+                          <Image
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Margin="4"
+                              Source="{Binding Settings.CosmeticOptions.HudElement.BaseValue, Converter={StaticResource HudElementsToImageConverter}}"
+                          />
+                      </DockPanel>
                           
-                        <DockPanel
-                            Grid.Row="1"
-                            Grid.Column="1"
-                        >
-                            <TextBlock 
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Center"
-                                Text="Font" 
-                            />
-                            <Image
-                                DockPanel.Dock="Bottom"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                Margin="4"
-                                Source="{Binding Settings.CosmeticOptions.Font.BaseValue, Converter={StaticResource FontToImageConverter}}"
-                            />
-                        </DockPanel>
-                    </UniformGrid>
-                </UniformGrid>
-            </TabItem>
-            
+                      <DockPanel
+                          Grid.Row="1"
+                          Grid.Column="1"
+                      >
+                          <TextBlock 
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Center"
+                              Text="Font" 
+                          />
+                          <Image
+                              DockPanel.Dock="Bottom"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Margin="4"
+                              Source="{Binding Settings.CosmeticOptions.Font.BaseValue, Converter={StaticResource FontToImageConverter}}"
+                          />
+                      </DockPanel>
+                  </UniformGrid>
+              </UniformGrid>
+          </TabItem>
+          
+        <!-- Add this TabItem inside your TabControl -->
+        <TabItem Header="Credits">
+          <ScrollViewer>
+            <Grid Margin="12">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
 
-            <!-- Make invisible for now -->
-            <TabItem Header="Experimental" IsEnabled="True" IsVisible="False">
-            </TabItem>
-        </TabControl>
+              <!-- Centered "Contributors" title + SpriteCreditSourcesList link -->
+              <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+                <TextBlock Text="Community Contributors" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" Margin="0,4" TextDecorations="Underline"/>
+              </StackPanel>
+
+              <!--Contributor list  -->
+              <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock Text="Developers" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Squidman, Quantam, Charlieboy, Dagit, madewokherd, warmCabin" HorizontalAlignment="Center"/>
+                <TextBlock Text="Graphics" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Charlieboy, GamingWhileDad, Prodigy, Ptux7, MegaKyle83" HorizontalAlignment="Center"/>
+                <TextBlock Text="Music" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Quantam, LVCreed, Prodigy" HorizontalAlignment="Center"/>
+                <TextBlock Text="Original Design" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Duckfist" HorizontalAlignment="Center"/>
+                <TextBlock Text="" HorizontalAlignment="Center"/>
+                <!-- XAML -->
+                <TextBlock Text="Links" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline"/>
+                <TextBlock Text="Sprite Credit Sources List"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           TextDecorations="Underline"
+                           Foreground="CornflowerBlue"
+                           Cursor="Hand"
+                           PointerPressed="SpriteCreditsLink_PointerPressed"/>
+                <TextBlock Text="Randomizer Development Wiki"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           TextDecorations="Underline"
+                           Foreground="CornflowerBlue"
+                           Cursor="Hand"
+                           PointerPressed="DiscordLink_PointerPressed"/>
+                <TextBlock Text="Discord"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           TextDecorations="Underline"
+                           Foreground="CornflowerBlue"
+                           Cursor="Hand"
+                           PointerPressed="DiscordLink_PointerPressed"/>
+               </StackPanel>         
+            </Grid>
+          </ScrollViewer>
+        </TabItem>
+
+          <!-- Make invisible for now -->
+          <TabItem Header="Experimental" IsEnabled="True" IsVisible="False">
+          </TabItem>
+      </TabControl>
 
         <ContentControl 
             Grid.Row="0"
