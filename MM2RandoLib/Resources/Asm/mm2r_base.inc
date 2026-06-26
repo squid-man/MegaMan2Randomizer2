@@ -57,6 +57,7 @@ NumEtanks = $a7
 CurItemIdx = $a9 ; 0 if none
 Temp = $fd
 
+EnemyLevelIds = $100
 EnemyVars110 = $110
 EnemyVars120 = $120
 ObjSpriteIds = $400
@@ -110,6 +111,8 @@ EnqueueSound = $c051
 DoDeath = $c10b
 LoadStageTileset = $c45d
 DoPauseScreen = $c573
+ObjPhysics = $EEBA
+ObjPhysicsCollisionOnlyEnemy = $EFB3 ; Commonly used alternate entry point to ObjPhysics
 SpawnEnemyFromEnemy = $f159
 
 ; Macros
