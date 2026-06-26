@@ -543,37 +543,46 @@
                 <RowDefinition Height="*"/>
               </Grid.RowDefinitions>
 
-              <!-- Centered "Contributors" title + Project Lead(s) -->
+              <!-- Centered "Contributors" title + SpriteCreditSourcesList link -->
               <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                <TextBlock Text="Randomizer by Duckfist" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-                <TextBlock Text="Contributors" HorizontalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="0,4" TextDecorations="Underline"/>
-                <TextBlock Text="Community Build Lead Developer - Squidman" FontWeight="Bold" Margin="0,4"/>
+                <TextBlock Text="Community Contributors" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" Margin="0,4" TextDecorations="Underline"/>
               </StackPanel>
 
-              <!-- Left-aligned contributor list + link -->
-              <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <TextBlock Text="Head Sprite Developer - Charlieboy" Margin="0,4"/>
-                <TextBlock Text="Sprite Contributor - GamingWhileDad" Margin="0,4"/>
-                <TextBlock Text="Sprite Contributor - Prodigy" Margin="0,4"/>
-                <TextBlock Text="Sprite Contributor - Ptux7" Margin="0,4"/>
-                <TextBlock Text="Sprite Contributor - MegaKyle83" Margin="0,4"/>
+              <!--Contributor list  -->
+              <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock Text="Developers" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Squidman, Quantam, Charlieboy, Dagit, madewokherd, warmCabin" HorizontalAlignment="Center"/>
+                <TextBlock Text="Graphics" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Charlieboy, GamingWhileDad, Prodigy, Ptux7, MegaKyle83" HorizontalAlignment="Center"/>
+                <TextBlock Text="Music" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Quantam, LVCreed, Prodigy" HorizontalAlignment="Center"/>
+                <TextBlock Text="Original Design" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline" Foreground="Salmon"/>
+                <TextBlock Text="Duckfist" HorizontalAlignment="Center"/>
+                <TextBlock Text="" HorizontalAlignment="Center"/>
                 <!-- XAML -->
+                <TextBlock Text="Links" HorizontalAlignment="Center" FontSize="16" Margin="0,4" TextDecorations="Underline"/>
                 <TextBlock Text="Sprite Credit Sources List"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
                            TextDecorations="Underline"
-                           Foreground="Blue"
+                           Foreground="CornflowerBlue"
                            Cursor="Hand"
                            PointerPressed="SpriteCreditsLink_PointerPressed"/>
-
-              </StackPanel>
-              <!-- Right-aligned contributor list -->
-              <StackPanel Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock Text="Head Music Developer - Quantam" Margin="0,4"/>
-                <TextBlock Text="Music Consultant - LVCreed" Margin="0,4"/>
-                <TextBlock Text="Programming Contributor - Dagit" Margin="0,4"/>
-                <TextBlock Text="Feature Contributor - madewokherd" Margin="0,4"/>
-                <TextBlock Text="Feature Contributor - warmCabin" Margin="0,4"/>
-              </StackPanel>
-              
+                <TextBlock Text="Randomizer Development Wiki"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           TextDecorations="Underline"
+                           Foreground="CornflowerBlue"
+                           Cursor="Hand"
+                           PointerPressed="DiscordLink_PointerPressed"/>
+                <TextBlock Text="Discord"
+                           HorizontalAlignment="Center"
+                           FontWeight="Bold"
+                           TextDecorations="Underline"
+                           Foreground="CornflowerBlue"
+                           Cursor="Hand"
+                           PointerPressed="DiscordLink_PointerPressed"/>
+               </StackPanel>         
             </Grid>
           </ScrollViewer>
         </TabItem>

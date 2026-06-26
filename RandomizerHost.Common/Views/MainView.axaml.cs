@@ -361,5 +361,40 @@ namespace RandomizerHost.Views
                 // optionally log or show a user-visible error
             }
         }
+        private void WikiLink_PointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            var url = "https://github.com/squid-man/MegaMan2Randomizer2/wiki";
+            try
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception)
+            {
+                // optionally log or show a user-visible error
+            }
+        }
+        private void DiscordLink_PointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            var url = "https://discord.gg/CmRjkSe";
+            try
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception)
+            {
+            // optionally log or show a user-visible error
+            }
+        }
+
     }
 }
