@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using MM2Randomizer.Enums;
 using MM2Randomizer.Patcher;
 
 namespace MM2Randomizer.Randomizers
@@ -43,7 +45,7 @@ namespace MM2Randomizer.Randomizers
         }
         
         public RBossRoom()
-            : base(null, [nameof(RBossRoom)])
+            : base(null, [nameof(RandomizationContext.BossStages), nameof(RandomizationContext.StageBosses)])
         {
 
             debug = new();
@@ -270,6 +272,15 @@ namespace MM2Randomizer.Randomizers
 
             this.Components = bossRoomComponents;
 
+            in_Context.BossStages = new EStageID[bossRoomComponents.Count];
+            in_Context.StageBosses = new EBossIndex[bossRoomComponents.Count];
+            for (int i = 0; i < bossRoomComponents.Count; i++)
+            {
+                int bossIdx = bossRoomComponents[i].OriginalBossIndex;
+                in_Context.BossStages[bossIdx] = (EStageID)i;
+                in_Context.StageBosses[i] = EBossIndex.All[bossIdx];
+            }
+
             // Dump the boss rooms to the log
             debug.AppendLine("BossRoom Table:");
             debug.AppendLine("-------------------------------------");
@@ -285,6 +296,10 @@ namespace MM2Randomizer.Randomizers
         }
 
         public override void ProduceWithoutRandomization(RandomizationContext in_Context)
-        { }
+        {
+            in_Context.StageBosses = EBossIndex.RobotMasters.ToArray();
+            in_Context.BossStages = EBossIndex.RobotMasters
+                .Select(i => (EStageID)i.Offset).ToArray();
+        }
     }
 }

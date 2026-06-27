@@ -173,6 +173,9 @@ namespace MM2Randomizer
         // Dependencies Used by Randomization Modules
         //
 
+        public EBossIndex[] StageBosses { get; set; } = Array.Empty<EBossIndex>();
+        public EStageID[] BossStages { get; set; } = Array.Empty<EStageID>();
+
 
         //
         // Internal Methods

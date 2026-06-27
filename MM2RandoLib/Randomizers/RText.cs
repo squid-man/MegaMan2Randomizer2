@@ -18,7 +18,7 @@ namespace MM2Randomizer.Randomizers
         //
 
         public RText()
-            : base([nameof(RBossRoom)])
+            : base([nameof(RandomizationContext.BossStages)])
         {
         }
 
@@ -307,25 +307,10 @@ namespace MM2Randomizer.Randomizers
             {
                 sb = new StringBuilder();
 
-                // Since weaknesses are for the "Room", and the room bosses were shuffled,
-                // obtain the weakness for the boss at this room
-                // TODO: Optimize this mess; when the bossroom is shuffled it should save
-                // a mapping that could be reused here.
-                EBossIndex newIndex = i;
-                for (Int32 m = 0; m < in_Context.RandomBossInBossRoom.Components.Count; m++)
-                {
-                    RBossRoom.BossRoomRandomComponent room = in_Context.RandomBossInBossRoom.Components[m];
-
-                    if (room.OriginalBossIndex == i.Offset)
-                    {
-                        newIndex = i;
-                        break;
-                    }
-                }
-
+                var stgIdx = EBossIndex.All[(int)in_Context.BossStages[i.Offset]];
                 foreach (EWeaponIndex j in EWeaponIndex.All)
                 {
-                    Int32 dmg = RWeaknesses.BotWeaknesses[newIndex][j];
+                    Int32 dmg = RWeaknesses.BotWeaknesses[stgIdx][j];
                     sb.Append($"{RText.GetBossWeaknessDamageChar(dmg)} ");
                 }
 
