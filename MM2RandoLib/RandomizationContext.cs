@@ -290,6 +290,9 @@ namespace MM2Randomizer
                     "CheatMode", StringComparison.InvariantCultureIgnoreCase);
             }
 
+            // Need to reset the seed after that little shenanigan to ensure consistent gameplay results regardless of cosmetic settings
+            Seed.Reset();
+
             RunRandomizers(GameplayRandomizers, randomizers, products);
 
             // Generate a seed for fair Heat Man
