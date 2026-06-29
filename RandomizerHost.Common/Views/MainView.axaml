@@ -574,7 +574,7 @@
                            TextDecorations="Underline"
                            Foreground="CornflowerBlue"
                            Cursor="Hand"
-                           PointerPressed="DiscordLink_PointerPressed"/>
+                           PointerPressed="WikiLink_PointerPressed"/>
                 <TextBlock Text="Discord"
                            HorizontalAlignment="Center"
                            FontWeight="Bold"
