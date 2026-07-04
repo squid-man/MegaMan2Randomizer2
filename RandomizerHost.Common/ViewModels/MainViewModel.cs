@@ -430,12 +430,15 @@ namespace RandomizerHost.ViewModels
         public async Task<string> CreateFromGivenSeed(
             IRomSaver romSaver,
             ProgressDialogViewModel progress,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken,
+            bool forceNewSeed = false)
         {
             progress.MessageLines[0] = "Generating ROM...";
 
+            bool isEmptySeed = String.IsNullOrEmpty(
+                this.AppConfigurationSettings?.SeedString);
             var msg = await this.PerformRandomization(
-                String.IsNullOrEmpty(this.AppConfigurationSettings?.SeedString), 
+                isEmptySeed || forceNewSeed, 
                 romSaver, 
                 progress.GetProgressFromMessageLine(2), 
                 cancellationToken);
@@ -456,7 +459,8 @@ namespace RandomizerHost.ViewModels
             CancellationToken cancellationToken)
         {
             if (RandomSeedCount == 1)
-                return await CreateFromGivenSeed(romSaver, progress, cancellationToken);
+                return await CreateFromGivenSeed(
+                    romSaver, progress, cancellationToken, true);
 
             var overProg = progress.GetProgressFromMessageLine(0);
             var romProg = progress.GetProgressFromMessageLine(2);
@@ -474,7 +478,7 @@ namespace RandomizerHost.ViewModels
                 CanOpenContainingFolder = CanLaunch;
             }
 
-            return $"Successfully generated {RandomSeedCount} ROMs.";
+            return $"Successfully generated {RandomSeedCount} ROM(s).";
         }
 
         public async Task<string> PerformRandomization(
