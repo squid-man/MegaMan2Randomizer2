@@ -15,7 +15,8 @@ namespace MM2Randomizer.Randomizers
             RightTopVertical = 16,
         }
 
-        public RBossAI() { }
+        public RBossAI() : base(["IsInvisiPico"])
+        { }
 
         public override void Randomize(Patch in_Patch, RandomizationContext in_Context)
         {

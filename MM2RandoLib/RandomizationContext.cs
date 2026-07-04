@@ -79,6 +79,31 @@ namespace MM2Randomizer
             RandomBossInBossRoom = CreateRandomizer(new RBossRoom());
             RandomTilemap = CreateRandomizer(new RTilemap());
 
+            RandomFairHeatManDelay = CreateRandomizer(
+                new RandomizerFunction((p, c) =>
+                {
+                    // Generate a seed for fair Heat Man
+                    DefineSymbolLines.Add(
+                        $".define FAIR_HEAT_MAN_SEED ${c.Seed.NextUInt8(1, 256):x}");
+                }));
+
+            RandomBossSprites = CreateRandomizer(
+                new RandomizerFunction((p, c) =>
+                {
+                    var bossPatches = MiscHacks.ApplyOneIpsPerDir(
+                        this, "SpritePatches.Bosses");
+                    var bossSprites = bossPatches
+                        .Where(kv => BossDirNames.ContainsKey(kv.Key.Name))
+                        .ToDictionary(kv => BossDirNames[kv.Key.Name], kv => kv.Value);
+
+                    // Very hacky. But I'm not sure what a better way to do it would be.
+                    var picoNode = bossSprites[EBossIndex.Pico];
+                    c.IsInvisiPico = picoNode is not null && picoNode.Name.Contains(
+                        "CheatMode", StringComparison.InvariantCultureIgnoreCase);
+                },
+                c => { },
+                products: ["IsInvisiPico"]));
+
             RandomColors = CreateCosmeticRandomizer(new RColors());
             RandomMusic = CreateCosmeticRandomizer(new RMusic());
             RandomInGameText = CreateCosmeticRandomizer(new RText());
@@ -159,10 +184,14 @@ namespace MM2Randomizer
         public RBossRoom RandomBossInBossRoom { get; }
         public RTilemap RandomTilemap { get; }
 
+        public RandomizerFunction RandomFairHeatManDelay { get; }
+
 
         ///==========================
         /// "COSMETIC SEED" MODULES
         ///==========================
+
+        public RandomizerFunction RandomBossSprites { get; }
 
         public RColors RandomColors { get; }
         public RMusic RandomMusic { get; }
@@ -275,27 +304,14 @@ namespace MM2Randomizer
             if (gameplayOpts.RandomizeFalseFloors.Value)
                 randomizers.Add(this.RandomTilemap);
 
+            if (gameplayOpts.FairHeatManDelays.Value)
+                randomizers.Add(RandomFairHeatManDelay);
+
             // Boss sprites need to be randomized before running normal randomizers because InvisiPico is a special case
             if (spriteOpts.RandomizeBossSprites.Value)
-            {
-                var bossPatches = MiscHacks.ApplyOneIpsPerDir(
-                    this, "SpritePatches.Bosses");
-                var bossSprites = bossPatches
-                    .Where(kv => BossDirNames.ContainsKey(kv.Key.Name))
-                    .ToDictionary(kv => BossDirNames[kv.Key.Name], kv => kv.Value);
-
-                // Very hacky. But I'm not sure what a better way to do it would be.
-                var picoNode = bossSprites[EBossIndex.Pico];
-                IsInvisiPico = picoNode is not null && picoNode.Name.Contains(
-                    "CheatMode", StringComparison.InvariantCultureIgnoreCase);
-            }
+                randomizers.Add(RandomBossSprites);
 
             RunRandomizers(GameplayRandomizers, randomizers, products);
-
-            // Generate a seed for fair Heat Man
-            if (gameplayOpts.FairHeatManDelays.Value)
-                DefineSymbolLines.Add(
-                    $".define FAIR_HEAT_MAN_SEED ${Seed.NextUInt8(1, 256):x}");
 
             ApplyOptionActions();
 
@@ -387,6 +403,9 @@ namespace MM2Randomizer
             IReadOnlySet<Randomizer> in_EnabledRandomizers,
             ISet<string> out_Products)
         {
+            // Generate a subseed for each randomizer so each randomizer does not affect the randomization of later randomizers
+            ISeed rootSeed = Seed;
+
             LinkedList<Randomizer> leftToRun = new(in_Randomizers);
             while (leftToRun.Count != 0)
             {
@@ -399,6 +418,8 @@ namespace MM2Randomizer
 
                     if (rnd.Dependencies.All(d => out_Products.Contains(d)))
                     {
+                        Seed = new PcgSeed(rootSeed.NextInt32().ToString());
+
                         if (in_EnabledRandomizers.Contains(rnd))
                         {
                             rnd.Randomize(Patch, this);
@@ -422,6 +443,8 @@ namespace MM2Randomizer
                         "no randomizer produces the following dependencies: " 
                             + string.Join(", ", leftToRun.SelectMany(r => r.Dependencies)));
             }
+
+            Seed = rootSeed;
         }
 
         /// <summary>

@@ -105,6 +105,9 @@ namespace MM2Randomizer.Randomizers
             debug.Append(Environment.NewLine);
         }
 
+        public override void ProduceWithoutRandomization(RandomizationContext in_Context)
+        { }
+
         /// <summary>
         /// Get a random unique sound for a weapon to use
         /// </summary>
