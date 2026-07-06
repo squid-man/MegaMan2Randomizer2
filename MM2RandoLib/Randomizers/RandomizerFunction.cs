@@ -7,13 +7,18 @@ namespace MM2Randomizer.Randomizers;
 
 public class RandomizerFunction : Randomizer
 {
+    public override string Name { get; }
+
     public RandomizerFunction(
+        string name,
         Action<Patch, RandomizationContext> randomize,
         Action<RandomizationContext>? produceWithoutRandomization = null,
         IEnumerable<string>? dependencies = null, 
         IEnumerable<string>? products = null) 
         : base(dependencies, products)
     {
+        Name = name;
+
         RandomizeFunction = randomize;
         ProduceWithoutRandomizationFunction = produceWithoutRandomization;
     }
