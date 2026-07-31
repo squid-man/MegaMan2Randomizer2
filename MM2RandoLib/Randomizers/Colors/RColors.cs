@@ -1301,7 +1301,6 @@ namespace MM2Randomizer.Randomizers.Colors
                         new EColorsHex[] {  EColorsHex.Yellow, EColorsHex.Yellow },
                         new EColorsHex[] {  EColorsHex.Lime, EColorsHex.Lime },
                         new EColorsHex[] {  EColorsHex.RoyalBlue, EColorsHex.RoyalBlue },
-                        new EColorsHex[] {  EColorsHex.RoyalBlue, EColorsHex.RoyalBlue },
                         new EColorsHex[] {  EColorsHex.DarkGreen, EColorsHex.DarkGreen },
                         new EColorsHex[] {  EColorsHex.Black3, EColorsHex.Black3 },
                     }
