@@ -620,7 +620,7 @@ namespace MM2Randomizer
                     {
                         var selFiles = MiscHacks.ApplyOneIpsPerDir(
                             ResourceTree,
-                            Seed,
+                            new PcgSeed(Seed.Identifier + opdAct.RootPath),
                             Patch,
                             opdAct.RootPath,
                             opdAct.AllowNone,
