@@ -77,7 +77,7 @@ namespace MM2Randomizer.Enums
         PastelGreen= 0x3A,
         PastelCyan= 0x3B,
         Cyan= 0x3C,
-        BabyPink= 0x3D,
+        LighterGray= 0x3D,
         Black8= 0x3E,
         Black9= 0x3F
     }
