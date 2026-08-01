@@ -80,29 +80,33 @@ namespace MM2Randomizer
             RandomTilemap = CreateRandomizer(new RTilemap());
 
             RandomFairHeatManDelay = CreateRandomizer(
-                new RandomizerFunction((p, c) =>
-                {
-                    // Generate a seed for fair Heat Man
-                    DefineSymbolLines.Add(
-                        $".define FAIR_HEAT_MAN_SEED ${c.Seed.NextUInt8(1, 256):x}");
-                }));
+                new RandomizerFunction(
+                    "GenerateFairHeatManSeed",
+                    (p, c) =>
+                    {
+                        // Generate a seed for fair Heat Man
+                        DefineSymbolLines.Add(
+                            $".define FAIR_HEAT_MAN_SEED ${c.Seed.NextUInt8(1, 256):x}");
+                    }));
 
             RandomBossSprites = CreateRandomizer(
-                new RandomizerFunction((p, c) =>
-                {
-                    var bossPatches = MiscHacks.ApplyOneIpsPerDir(
-                        this, "SpritePatches.Bosses");
-                    var bossSprites = bossPatches
-                        .Where(kv => BossDirNames.ContainsKey(kv.Key.Name))
-                        .ToDictionary(kv => BossDirNames[kv.Key.Name], kv => kv.Value);
+                new RandomizerFunction(
+                    "RandomizeBossSprites",
+                    (p, c) =>
+                    {
+                        var bossPatches = MiscHacks.ApplyOneIpsPerDir(
+                            this, "SpritePatches.Bosses");
+                        var bossSprites = bossPatches
+                            .Where(kv => BossDirNames.ContainsKey(kv.Key.Name))
+                            .ToDictionary(kv => BossDirNames[kv.Key.Name], kv => kv.Value);
 
-                    // Very hacky. But I'm not sure what a better way to do it would be.
-                    var picoNode = bossSprites[EBossIndex.Pico];
-                    c.IsInvisiPico = picoNode is not null && picoNode.Name.Contains(
-                        "CheatMode", StringComparison.InvariantCultureIgnoreCase);
-                },
-                c => { },
-                products: ["IsInvisiPico"]));
+                        // Very hacky. But I'm not sure what a better way to do it would be.
+                        var picoNode = bossSprites[EBossIndex.Pico];
+                        c.IsInvisiPico = picoNode is not null && picoNode.Name.Contains(
+                            "CheatMode", StringComparison.InvariantCultureIgnoreCase);
+                    },
+                    c => { },
+                    products: ["IsInvisiPico"]));
 
             RandomColors = CreateCosmeticRandomizer(new RColors());
             RandomMusic = CreateCosmeticRandomizer(new RMusic());
@@ -418,7 +422,7 @@ namespace MM2Randomizer
 
                     if (rnd.Dependencies.All(d => out_Products.Contains(d)))
                     {
-                        Seed = new PcgSeed(rootSeed.NextInt32().ToString());
+                        Seed = new PcgSeed(rootSeed.Identifier + rnd.Name);
 
                         if (in_EnabledRandomizers.Contains(rnd))
                         {

@@ -7,11 +7,16 @@ namespace MM2Randomizer.Randomizers;
 
 public abstract class Randomizer
 {
+    // Every randomizer module must have a unique name
+    public virtual string Name => this.GetType().Name;
+
     // Dependencies are things that must be produced before this randomizer runs, and Products are things produced by this randomizer that may be dependencies of other randomizers. By convention both refer to fields of RandomizationContext that should be referenced using nameof, though legacy randomizers that aren't updated to pass info this way could use their own name.
     public IReadOnlyList<string> Dependencies { get; }
     public IReadOnlyList<string> Products { get; }
 
-    public Randomizer(IEnumerable<string>? dependencies = null, IEnumerable<string>? products = null)
+    public Randomizer(
+        IEnumerable<string>? dependencies = null, 
+        IEnumerable<string>? products = null)
     {
         Dependencies = dependencies != null
             ? dependencies.ToArray()

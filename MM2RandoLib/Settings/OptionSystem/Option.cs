@@ -204,8 +204,10 @@ public abstract class Option<T> : IOption
 
     public void Actualize(ISeed seed)
     {
+        // To ensure one option doesn't affect the entire random sequence, always generate a random value even if it's not used.
+        T rndValue = GetRandomizedOption(seed);
         Value = (_override ? _overrideRandomize : _randomize)
-            ? GetRandomizedOption(seed)
+            ? rndValue
             : (_override ? _overrideValue : _baseValue);
     }
 
