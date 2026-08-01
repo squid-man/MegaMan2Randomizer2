@@ -1271,80 +1271,38 @@ namespace MM2Randomizer.Randomizers.Colors
                 },
                 new ColorSet() { // Air | Clouds 
                     addresses = new Int32[] {
-                        0x7e13, 0x7e14, 0x7e15,
+                        0x7e13, 0x7e14, 0x7e15, // The "unanimated" colors you see briefly before it starts for real.
                         0x7e33, 0x7e43, 0x7e53, 0x7e63,
                         0x7e34, 0x7e44, 0x7e54, 0x7e64,
                         0x7e35, 0x7e45, 0x7e55, 0x7e65 },
                     ColorBytes = new List<EColorsHex[]>() {
+                        // LightVioletRed is a jarring "you shouldn't be able to see this" color.
                         new EColorsHex[] {
-                            EColorsHex.LightBlue,  EColorsHex.PastelBlue,  EColorsHex.White,
-                            EColorsHex.LightBlue,  EColorsHex.PastelBlue,  EColorsHex.White,  EColorsHex.PastelBlue,
-                            EColorsHex.PastelBlue, EColorsHex.White,       EColorsHex.White,  EColorsHex.White,
-                            EColorsHex.White,      EColorsHex.White,       EColorsHex.White,  EColorsHex.White,
+                            EColorsHex.PastelBlue,  EColorsHex.White,       EColorsHex.White,
+                            EColorsHex.White,       EColorsHex.PastelBlue,  EColorsHex.LightVioletRed,  EColorsHex.PastelBlue,
+                            EColorsHex.White,       EColorsHex.White,       EColorsHex.PastelBlue,      EColorsHex.White,
+                            EColorsHex.White,       EColorsHex.White,       EColorsHex.White,           EColorsHex.White,
                         },
                         new EColorsHex[] {
-                            EColorsHex.LightGray,  EColorsHex.LightGray,    EColorsHex.LightGray,
-                            EColorsHex.LightGray,  EColorsHex.Gray,         EColorsHex.DarkRed,     EColorsHex.Gray,
-                            EColorsHex.LightGray,  EColorsHex.LightGray,    EColorsHex.Gray,        EColorsHex.LightGray,
-                            EColorsHex.LightGray,  EColorsHex.LightGray,    EColorsHex.LightGray,   EColorsHex.LightGray,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x04, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x02, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x0c, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x0b, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x0a, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x08, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                        },
-                        new EColorsHex[] {
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x06, (EColorsHex)0x00,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x00, (EColorsHex)0x10,
-                            (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10, (EColorsHex)0x10,
+                            EColorsHex.SoftBlue,   EColorsHex.LightGray,  EColorsHex.LightGray,
+                            EColorsHex.LightGray,  EColorsHex.SoftBlue,   EColorsHex.LightVioletRed,  EColorsHex.SoftBlue,
+                            EColorsHex.LightGray,  EColorsHex.LightGray,  EColorsHex.SoftBlue,        EColorsHex.LightGray,
+                            EColorsHex.LightGray,  EColorsHex.LightGray,  EColorsHex.LightGray,       EColorsHex.LightGray,
                         },
                     }
                 },
                 new ColorSet() { // Air | Sky 
-                    addresses = new Int32[] { 0x7e22 },
+                    addresses = new Int32[] { 0x7e22, 0x7e53 }, // Duplicated to target the fringe color in the cloud animation
                     ColorBytes = new List<EColorsHex[]>() {
-                        new EColorsHex[] {  EColorsHex.LightBlue },
-                        new EColorsHex[] {  EColorsHex.LightPurple },
-                        new EColorsHex[] {  EColorsHex.LightOrange },
-                        new EColorsHex[] {  EColorsHex.YellowOrange },
-                        new EColorsHex[] {  EColorsHex.Yellow },
-                        new EColorsHex[] {  EColorsHex.Lime },
-                        new EColorsHex[] {  EColorsHex.RoyalBlue },
-                        new EColorsHex[] {  EColorsHex.RoyalBlue },
-                        new EColorsHex[] {  EColorsHex.DarkGreen },
-                        new EColorsHex[] {  EColorsHex.Black3 },
+                        new EColorsHex[] {  EColorsHex.LightBlue, EColorsHex.LightBlue },
+                        new EColorsHex[] {  EColorsHex.LightPurple, EColorsHex.LightPurple },
+                        new EColorsHex[] {  EColorsHex.LightOrange, EColorsHex.LightOrange },
+                        new EColorsHex[] {  EColorsHex.YellowOrange, EColorsHex.YellowOrange },
+                        new EColorsHex[] {  EColorsHex.Yellow, EColorsHex.Yellow },
+                        new EColorsHex[] {  EColorsHex.Lime, EColorsHex.Lime },
+                        new EColorsHex[] {  EColorsHex.RoyalBlue, EColorsHex.RoyalBlue },
+                        new EColorsHex[] {  EColorsHex.DarkGreen, EColorsHex.DarkGreen },
+                        new EColorsHex[] {  EColorsHex.Black3, EColorsHex.Black3 },
                     }
                 },
 
