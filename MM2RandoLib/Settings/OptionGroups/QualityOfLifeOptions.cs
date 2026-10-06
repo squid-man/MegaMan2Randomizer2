@@ -38,7 +38,7 @@ namespace MM2Randomizer.Settings.OptionGroups
         [PatchRom(0x37bea, 1)]
         public BoolOption StageSelectDefault { get; } = new(true);
 
-        [Description("Allow Self-Destruct")]
+        [Description("Allow Self-Destruct (Up + A + Select)")]
         [Tooltip("Pressing Up + A + Select instantly kills Mega Man. Good for getting out of soft-locks.")]
         [AssembleFile("Options.self_destruct.asm")]
         public BoolOption AllowSelfDestruct { get; } = new(true);

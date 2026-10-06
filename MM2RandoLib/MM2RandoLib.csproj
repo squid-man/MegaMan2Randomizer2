@@ -86,7 +86,6 @@
       <None Remove="Resources\SoundTrackConfiguration.json5" />
       <None Remove="Resources\SpritePatches\Bosses\AirMan\AirMan_Another.ips" />
       <None Remove="Resources\SpritePatches\Bosses\AirMan\AirMan_CapMan.ips" />
-      <None Remove="Resources\SpritePatches\Bosses\AirMan\AirMan_CutMansBadScissorsDay.ips" />
       <None Remove="Resources\SpritePatches\Bosses\AirMan\AirMan_GrayZone.ips" />
       <None Remove="Resources\SpritePatches\Bosses\AirMan\Airman_HornetMan.ips" />
       <None Remove="Resources\SpritePatches\Bosses\AirMan\AirMan_Peercast.ips" />
@@ -871,7 +870,6 @@
       <EmbeddedResource Include="Resources\SoundTrackConfiguration.json5" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\AirMan\AirMan_Another.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\AirMan\AirMan_CapMan.ips" />
-      <EmbeddedResource Include="Resources\SpritePatches\Bosses\AirMan\AirMan_CutMansBadScissorsDay.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\AirMan\AirMan_GrayZone.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\AirMan\Airman_HornetMan.ips" />
       <EmbeddedResource Include="Resources\SpritePatches\Bosses\AirMan\AirMan_Peercast.ips" />

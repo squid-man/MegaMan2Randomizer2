@@ -168,8 +168,60 @@ public class SettingsPresets
             ]));
 
         _presets.Add(new(
-            "Proto Challenge",
-            "PROTO CHALLENGE",
+            "Tournament A (No Sprites)",
+            "TOURNAMENT A",
+            tournA,
+            [
+                new(s.SpriteOptions.RandomizeBossSprites, false),
+                new(s.SpriteOptions.RandomizeEnemySprites, false),
+                new(s.SpriteOptions.RandomizeSpecialWeaponSprites, false),
+                new(s.SpriteOptions.RandomizeItemPickupSprites, false),
+                new(s.SpriteOptions.RandomizeEnvironmentSprites, false),
+            ]));
+
+        _presets.Add(new(
+            "Tournament B (No Sprites)",
+            "TOURNAMENT B",
+            tournB,
+            [
+                new(s.SpriteOptions.RandomizeBossSprites, false),
+                new(s.SpriteOptions.RandomizeEnemySprites, false),
+                new(s.SpriteOptions.RandomizeSpecialWeaponSprites, false),
+                new(s.SpriteOptions.RandomizeItemPickupSprites, false),
+                new(s.SpriteOptions.RandomizeEnvironmentSprites, false),
+            ]));
+
+        _presets.Add(new(
+            "Tournament C (No Sprites)",
+            "TOURNAMENT C",
+            tournA,
+            [
+                new(s.GameplayOptions.HideStageNames, true),
+                new(s.SpriteOptions.RandomizeBossSprites, false),
+                new(s.SpriteOptions.RandomizeEnemySprites, false),
+                new(s.SpriteOptions.RandomizeSpecialWeaponSprites, false),
+                new(s.SpriteOptions.RandomizeItemPickupSprites, false),
+                new(s.SpriteOptions.RandomizeEnvironmentSprites, false),
+            ]));
+
+        _presets.Add(new(
+            "Tournament D (No Sprites)",
+            "TOURNAMENT D",
+            tournB,
+            [
+                new(s.GameplayOptions.HideStageNames, true),
+                new(s.QualityOfLifeOptions.EnableLeftwardWallEjection, true),
+                new(s.SpriteOptions.RandomizeBossSprites, false),
+                new(s.SpriteOptions.RandomizeEnemySprites, false),
+                new(s.SpriteOptions.RandomizeSpecialWeaponSprites, false),
+                new(s.SpriteOptions.RandomizeItemPickupSprites, false),
+                new(s.SpriteOptions.RandomizeEnvironmentSprites, false),
+            ]));
+
+
+    _presets.Add(new(
+            "Proto Challenge '26",
+            "PROTO CHALLENGE '26",
             tournB,
             [
                 new(s.GameplayOptions.RandomizePicoPicoSpawns, false),
@@ -181,7 +233,34 @@ public class SettingsPresets
                 new(s.QualityOfLifeOptions.AllowSelfDestruct, true),
                 NewPreset(s.QualityOfLifeOptions.AccidentalEtankProtectionLevel, PercentOption.Percent50),
                 NewPreset(s.QualityOfLifeOptions.AddWeaponEnergyOnDeath, PercentOption.Percent30),
-    ]));
+            ]));
+
+        _presets.Add(new(
+            "Tournament Mode 2018",
+            "Tournament Mode '18",
+            tournA,
+            [
+                new(s.GameplayOptions.FasterCutsceneText, false),
+                new(s.GameplayOptions.RandomizeIceStage, false),
+                new(s.SpriteOptions.RandomizeBossSprites, false),
+                new(s.SpriteOptions.RandomizeEnemySprites, false),
+                new(s.SpriteOptions.RandomizeSpecialWeaponSprites, false),
+                new(s.SpriteOptions.RandomizeItemPickupSprites, false),
+                new(s.SpriteOptions.RandomizeEnvironmentSprites, false),
+                new(s.QualityOfLifeOptions.DisableFlashingEffects, false),
+                new(s.QualityOfLifeOptions.EnableUnderwaterLagReduction, false),
+                new(s.QualityOfLifeOptions.DisableWaterfall, false),
+                new(s.QualityOfLifeOptions.DisablePauseLock, false),
+                new(s.GameplayOptions.RandomizePicoPicoSpawns, false),
+                new(s.GameplayOptions.DisallowBubbleBarrierWeakness, false),
+                new(s.QualityOfLifeOptions.EnableBirdEggFix, false),
+                NewPreset(s.QualityOfLifeOptions.AccidentalEtankProtectionLevel, PercentOption.Percent0),
+                NewPreset(s.ChargingSpeedOptions.HitPoints, ChargingSpeedOptionWithInstant.Normal),
+                NewPreset(s.ChargingSpeedOptions.WeaponEnergy, ChargingSpeedOptionWithInstant.Normal),
+                NewPreset(s.ChargingSpeedOptions.EnergyTank, ChargingSpeedOptionWithInstant.Normal),
+                NewPreset(s.ChargingSpeedOptions.RobotMasterEnergy, ChargingSpeedOption.Normal),
+                NewPreset(s.ChargingSpeedOptions.CastleBossEnergy, ChargingSpeedOption.Normal),
+            ]));
   }
 
     /// <summary>
